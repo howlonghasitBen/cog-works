@@ -1,18 +1,31 @@
 /** GearHero — Industrial gear navigation hero section
  *
- * Large central gear with title text, surrounded by smaller satellite gears.
- * Uses nav_cog.svg for gear shape and nav_cog_innard.png for center fill.
- * Each satellite is a clickable nav item with icon + label.
+ * Large central gear that reveals satellite gears on click.
+ * Satellites can open sub-sub-menus of 3 cogs each.
+ * Uses nav_cog.svg + nav_cog_innard.png assets.
+ *
+ * Behavior:
+ * - No rotation by default; gears spin with ease-in-out on click
+ * - Satellites hidden until center cog clicked (spin-in entrance)
+ * - Clicking a satellite opens 3 sub-sub-cogs + moves satellite toward center
  */
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+
+export interface GearSubItem {
+  label: string
+  icon: React.ReactNode
+  onClick?: () => void
+  href?: string
+}
 
 export interface GearNavItem {
   label: string
   icon: React.ReactNode
   onClick?: () => void
   href?: string
+  subItems?: GearSubItem[]
 }
 
 export interface GearHeroProps {
@@ -25,49 +38,41 @@ export interface GearHeroProps {
   className?: string
 }
 
-/** A single cog with optional innard image and overlay content */
+/** Cog visual — outer SVG gear + inner circle image + content overlay */
 function Cog({
   size,
   cogSrc,
   innardSrc,
-  children,
   rotation = 0,
-  className = '',
+  children,
 }: {
   size: number
   cogSrc: string
   innardSrc?: string
-  children?: React.ReactNode
   rotation?: number
-  className?: string
+  children?: React.ReactNode
 }) {
+  // Innard fills ~72% of cog to close the gap
+  const innardSize = size * 0.72
   return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      {/* Rotating cog SVG */}
+    <div className="relative" style={{ width: size, height: size }}>
       <motion.img
         src={cogSrc}
         alt=""
         className="absolute inset-0 w-full h-full"
         style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }}
         animate={{ rotate: rotation }}
-        transition={{ duration: 0, ease: 'linear' }}
+        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         draggable={false}
       />
-      {/* Static innard image (centered, ~60% of cog size) */}
       {innardSrc && (
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden"
-          style={{ width: size * 0.52, height: size * 0.52 }}
+          style={{ width: innardSize, height: innardSize }}
         >
-          <img
-            src={innardSrc}
-            alt=""
-            className="w-full h-full object-cover"
-            draggable={false}
-          />
+          <img src={innardSrc} alt="" className="w-full h-full object-cover" draggable={false} />
         </div>
       )}
-      {/* Overlay content (text, icons) — static, doesn't rotate */}
       {children && (
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
           {children}
@@ -86,18 +91,67 @@ export default function GearHero({
   innardSrc = '/images/nav_cog_innard.png',
   className = '',
 }: GearHeroProps) {
-  const [rotation, setRotation] = useState(0)
-  const [hoveredItem, setHoveredItem] = useState<number | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [centerRotation, setCenterRotation] = useState(0)
+  const [satRotations, setSatRotations] = useState<number[]>(() => items.map(() => 0))
+  const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null)
+  const [subRotations, setSubRotations] = useState<number[]>([0, 0, 0])
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  // Slow continuous rotation
+  // Close on outside click
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRotation(r => r + 0.12)
-    }, 50)
-    return () => clearInterval(interval)
-  }, [])
+    if (!menuOpen) return
+    const handler = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setMenuOpen(false)
+        setActiveSubmenu(null)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [menuOpen])
+
+  const handleCenterClick = () => {
+    const opening = !menuOpen
+    setCenterRotation(r => r + 360)
+    if (opening) {
+      // Stagger satellite spin-in rotations
+      setSatRotations(items.map((_, i) => 360 + i * 30))
+    }
+    setMenuOpen(opening)
+    setActiveSubmenu(null)
+  }
+
+  const handleSatelliteClick = (index: number, item: GearNavItem) => {
+    if (item.subItems && item.subItems.length > 0) {
+      const opening = activeSubmenu !== index
+      // Spin the clicked satellite
+      setSatRotations(prev => {
+        const next = [...prev]
+        next[index] = prev[index] + 180
+        return next
+      })
+      if (opening) {
+        setSubRotations([360, 360 + 40, 360 + 80])
+      }
+      setActiveSubmenu(opening ? index : null)
+    } else {
+      item.onClick?.()
+    }
+  }
+
+  const handleSubClick = (subItem: GearSubItem, subIdx: number) => {
+    setSubRotations(prev => {
+      const next = [...prev]
+      next[subIdx] = prev[subIdx] + 180
+      return next
+    })
+    subItem.onClick?.()
+  }
 
   const radius = 280
+  const subRadius = 120
+  const pullInRadius = 200 // Satellite moves closer when submenu open
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
@@ -110,7 +164,6 @@ export default function GearHero({
           : 'linear-gradient(135deg, #0f1923 0%, #1a2a3a 30%, #0d1b2a 70%, #0a1628 100%)',
       }}
     >
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Light streaks */}
@@ -134,10 +187,17 @@ export default function GearHero({
       </div>
 
       {/* Gear assembly */}
-      <div className="relative z-10" style={{ width: radius * 2 + 220, height: radius * 2 + 220 }}>
+      <div
+        ref={containerRef}
+        className="relative z-10"
+        style={{ width: radius * 2 + 280, height: radius * 2 + 280 }}
+      >
         {/* Center gear */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Cog size={300} cogSrc={cogSrc} innardSrc={innardSrc} rotation={rotation}>
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+          onClick={handleCenterClick}
+        >
+          <Cog size={300} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation}>
             <h1
               className="text-3xl font-black text-white tracking-wider drop-shadow-lg"
               style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
@@ -155,50 +215,115 @@ export default function GearHero({
           </Cog>
         </div>
 
-        {/* Satellite gears */}
-        {items.map((item, i) => {
-          const angle = startAngle + angleStep * i
-          const x = Math.cos(angle) * radius
-          const y = Math.sin(angle) * radius
-          const isHovered = hoveredItem === i
-          const satRotation = -rotation * 1.4 // Counter-rotate for interlocking feel
+        {/* Satellite gears — only visible when menu is open */}
+        <AnimatePresence>
+          {menuOpen && items.map((item, i) => {
+            const angle = startAngle + angleStep * i
+            const isActive = activeSubmenu === i
+            const r = isActive ? pullInRadius : radius
+            const x = Math.cos(angle) * r
+            const y = Math.sin(angle) * r
+            const satSize = 130
 
-          const El = item.href ? 'a' : 'div'
-
-          return (
-            <div
-              key={i}
-              className="absolute left-1/2 top-1/2"
-              style={{ transform: `translate(${x - 65}px, ${y - 65}px)` }}
-            >
-              <El
-                className="relative block cursor-pointer"
-                style={{ width: 130, height: 130 }}
-                onClick={item.onClick}
-                onMouseEnter={() => setHoveredItem(i)}
-                onMouseLeave={() => setHoveredItem(null)}
-                {...(item.href ? { href: item.href } : {})}
+            return (
+              <motion.div
+                key={`sat-${i}`}
+                className="absolute left-1/2 top-1/2 z-20"
+                initial={{ x: 0, y: 0, opacity: 0, scale: 0.2 }}
+                animate={{
+                  x: x - satSize / 2,
+                  y: y - satSize / 2,
+                  opacity: 1,
+                  scale: 1,
+                }}
+                exit={{ x: 0, y: 0, opacity: 0, scale: 0.2 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 200,
+                  damping: 20,
+                  delay: i * 0.07,
+                }}
               >
-                <motion.div
-                  animate={{ scale: isHovered ? 1.15 : 1 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                {/* Satellite cog */}
+                <div
+                  className="cursor-pointer"
+                  onClick={() => handleSatelliteClick(i, item)}
                 >
-                  <Cog size={130} cogSrc={cogSrc} innardSrc={innardSrc} rotation={satRotation}>
-                    <span className="text-2xl drop-shadow-lg" style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))' }}>
-                      {item.icon}
-                    </span>
-                    <span
-                      className="text-[9px] font-bold text-white tracking-[0.15em] uppercase mt-0.5"
-                      style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
-                    >
-                      {item.label}
-                    </span>
-                  </Cog>
-                </motion.div>
-              </El>
-            </div>
-          )
-        })}
+                  <motion.div
+                    animate={{ scale: isActive ? 0.9 : 1 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={satRotations[i]}>
+                      <span className="text-2xl drop-shadow-lg"
+                        style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))' }}>
+                        {item.icon}
+                      </span>
+                      <span
+                        className="text-[9px] font-bold text-white tracking-[0.15em] uppercase mt-0.5"
+                        style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
+                      >
+                        {item.label}
+                      </span>
+                    </Cog>
+                  </motion.div>
+                </div>
+
+                {/* Sub-sub-menu cogs (3 per satellite) */}
+                <AnimatePresence>
+                  {isActive && item.subItems && item.subItems.slice(0, 3).map((sub, si) => {
+                    // Fan out from satellite, away from center
+                    const subAngleBase = angle // Continue outward from center
+                    const subSpread = Math.PI * 0.35
+                    const subAngle = subAngleBase + (si - 1) * subSpread
+                    const sx = Math.cos(subAngle) * subRadius
+                    const sy = Math.sin(subAngle) * subRadius
+                    const subSize = 85
+
+                    return (
+                      <motion.div
+                        key={`sub-${i}-${si}`}
+                        className="absolute z-30"
+                        style={{ left: satSize / 2, top: satSize / 2 }}
+                        initial={{ x: 0, y: 0, opacity: 0, scale: 0.1 }}
+                        animate={{
+                          x: sx - subSize / 2,
+                          y: sy - subSize / 2,
+                          opacity: 1,
+                          scale: 1,
+                        }}
+                        exit={{ x: 0, y: 0, opacity: 0, scale: 0.1 }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 250,
+                          damping: 18,
+                          delay: si * 0.06,
+                        }}
+                      >
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => handleSubClick(sub, si)}
+                        >
+                          <motion.div whileHover={{ scale: 1.12 }}>
+                            <Cog size={subSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={subRotations[si]}>
+                              <span className="text-lg drop-shadow-lg">{sub.icon}</span>
+                              <span
+                                className="text-[7px] font-bold text-white tracking-[0.12em] uppercase mt-0.5"
+                                style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
+                              >
+                                {sub.label}
+                              </span>
+                            </Cog>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </AnimatePresence>
+              </motion.div>
+            )
+          })}
+        </AnimatePresence>
       </div>
 
       <style>{`
