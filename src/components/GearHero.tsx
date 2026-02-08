@@ -34,7 +34,6 @@ export interface GearHeroProps {
   items: GearNavItem[]
   backgroundImage?: string
   cogSrc?: string
-  innardSrc?: string
   className?: string
 }
 
@@ -42,18 +41,14 @@ export interface GearHeroProps {
 function Cog({
   size,
   cogSrc,
-  innardSrc,
   rotation = 0,
   children,
 }: {
   size: number
   cogSrc: string
-  innardSrc?: string
   rotation?: number
   children?: React.ReactNode
 }) {
-  // Innard fills ~72% of cog to close the gap
-  const innardSize = size * 0.72
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <motion.img
@@ -65,14 +60,6 @@ function Cog({
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         draggable={false}
       />
-      {innardSrc && (
-        <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden"
-          style={{ width: innardSize, height: innardSize }}
-        >
-          <img src={innardSrc} alt="" className="w-full h-full object-cover" draggable={false} />
-        </div>
-      )}
       {children && (
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
           {children}
@@ -88,7 +75,6 @@ export default function GearHero({
   items,
   backgroundImage,
   cogSrc = '/images/nav_cog.svg',
-  innardSrc = '/images/nav_cog_innard.png',
   className = '',
 }: GearHeroProps) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -113,10 +99,11 @@ export default function GearHero({
 
   const handleCenterClick = () => {
     const opening = !menuOpen
+    // Center: clockwise (+)
     setCenterRotation(r => r + 360)
     if (opening) {
-      // Stagger satellite spin-in rotations
-      setSatRotations(items.map((_, i) => 360 + i * 30))
+      // Satellites: counter-clockwise (-), staggered
+      setSatRotations(items.map((_, i) => -360 - i * 30))
     }
     setMenuOpen(opening)
     setActiveSubmenu(null)
@@ -125,13 +112,15 @@ export default function GearHero({
   const handleSatelliteClick = (index: number, item: GearNavItem) => {
     if (item.subItems && item.subItems.length > 0) {
       const opening = activeSubmenu !== index
-      // Spin the clicked satellite
+      // Satellite: counter-clockwise (-), center reacts clockwise (+)
       setSatRotations(prev => {
         const next = [...prev]
-        next[index] = prev[index] + 180
+        next[index] = prev[index] - 180
         return next
       })
+      setCenterRotation(r => r + 90)
       if (opening) {
+        // Sub-cogs: clockwise (+)
         setSubRotations([360, 360 + 40, 360 + 80])
       }
       setActiveSubmenu(opening ? index : null)
@@ -141,11 +130,20 @@ export default function GearHero({
   }
 
   const handleSubClick = (subItem: GearSubItem, subIdx: number) => {
+    // Sub-cog: clockwise (+), parent satellite reacts counter-clockwise (-)
     setSubRotations(prev => {
       const next = [...prev]
       next[subIdx] = prev[subIdx] + 180
       return next
     })
+    if (activeSubmenu !== null) {
+      setSatRotations(prev => {
+        const next = [...prev]
+        next[activeSubmenu] = prev[activeSubmenu] - 90
+        return next
+      })
+      setCenterRotation(r => r + 45)
+    }
     subItem.onClick?.()
   }
 
@@ -197,7 +195,7 @@ export default function GearHero({
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30"
           onClick={handleCenterClick}
         >
-          <Cog size={300} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation}>
+          <Cog size={300} cogSrc={cogSrc} rotation={centerRotation}>
             <h1
               className="text-3xl font-black text-white tracking-wider drop-shadow-lg"
               style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
@@ -254,7 +252,7 @@ export default function GearHero({
                     transition={{ type: 'spring', stiffness: 300 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={satRotations[i]}>
+                    <Cog size={satSize} cogSrc={cogSrc} rotation={satRotations[i]}>
                       <span className="text-2xl drop-shadow-lg"
                         style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))' }}>
                         {item.icon}
@@ -305,7 +303,7 @@ export default function GearHero({
                           onClick={() => handleSubClick(sub, si)}
                         >
                           <motion.div whileHover={{ scale: 1.12 }}>
-                            <Cog size={subSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={subRotations[si]}>
+                            <Cog size={subSize} cogSrc={cogSrc} rotation={subRotations[si]}>
                               <span className="text-lg drop-shadow-lg">{sub.icon}</span>
                               <span
                                 className="text-[7px] font-bold text-white tracking-[0.12em] uppercase mt-0.5"
