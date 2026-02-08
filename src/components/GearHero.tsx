@@ -227,6 +227,64 @@ export default function GearHero({
         </div>
 
         {/* Satellite gears — only visible when menu is open */}
+        {/* Sub-cogs layer — z-0, rendered BEFORE satellites so they're behind */}
+        <AnimatePresence>
+          {menuOpen && items.map((item, i) => {
+            if (activeSubmenu !== i || !item.subItems) return null
+            const angle = startAngle + angleStep * i
+            const r = pullInRadius
+            const satCenterX = Math.cos(angle) * r
+            const satCenterY = Math.sin(angle) * r
+
+            return item.subItems.slice(0, 3).map((sub, si) => {
+              const subAngleBase = angle
+              const subSpread = Math.PI * 0.35
+              const subAngle = subAngleBase + (si - 1) * subSpread
+              const sx = satCenterX + Math.cos(subAngle) * subRadius
+              const sy = satCenterY + Math.sin(subAngle) * subRadius
+              const subSize = 85
+
+              return (
+                <motion.div
+                  key={`sub-${i}-${si}`}
+                  className="absolute left-1/2 top-1/2 z-0"
+                  initial={{ x: satCenterX - subSize / 2, y: satCenterY - subSize / 2, opacity: 0, scale: 0.1 }}
+                  animate={{
+                    x: sx - subSize / 2,
+                    y: sy - subSize / 2,
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  exit={{ x: satCenterX - subSize / 2, y: satCenterY - subSize / 2, opacity: 0, scale: 0.1 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 250,
+                    damping: 18,
+                    delay: si * 0.06,
+                  }}
+                >
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => handleSubClick(sub, si)}
+                  >
+                    <motion.div whileHover={{ scale: 1.12 }}>
+                      <Cog size={subSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={subRotations[si]}>
+                        <span
+                          className="text-[7px] font-bold text-white tracking-[0.12em] uppercase"
+                          style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
+                        >
+                          {sub.label}
+                        </span>
+                      </Cog>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )
+            })
+          })}
+        </AnimatePresence>
+
+        {/* Satellite cogs layer — z-10, rendered AFTER sub-cogs so they're in front */}
         <AnimatePresence>
           {menuOpen && items.map((item, i) => {
             const angle = startAngle + angleStep * i
@@ -255,7 +313,6 @@ export default function GearHero({
                   delay: i * 0.07,
                 }}
               >
-                {/* Satellite cog */}
                 <div
                   className="cursor-pointer"
                   onClick={() => handleSatelliteClick(i, item)}
@@ -275,51 +332,6 @@ export default function GearHero({
                     </Cog>
                   </motion.div>
                 </div>
-
-                {/* Sub-sub-menu cogs (3 per satellite) */}
-                <AnimatePresence>
-                  {isActive && item.subItems && item.subItems.slice(0, 3).map((sub, si) => {
-                    // Fan out from satellite, away from center
-                    const subAngleBase = angle // Continue outward from center
-                    const subSpread = Math.PI * 0.35
-                    const subAngle = subAngleBase + (si - 1) * subSpread
-                    const sx = Math.cos(subAngle) * subRadius
-                    const sy = Math.sin(subAngle) * subRadius
-                    const subSize = 85
-
-                    return (
-                      <motion.div
-                        key={`sub-${i}-${si}`}
-                        className="absolute z-0"
-                        style={{ left: satSize / 2, top: satSize / 2 }}
-                        initial={{ x: 0, y: 0, opacity: 0, scale: 0.1 }}
-                        animate={{
-                          x: sx - subSize / 2,
-                          y: sy - subSize / 2,
-                          opacity: 1,
-                          scale: 1,
-                        }}
-                        exit={{ x: 0, y: 0, opacity: 0, scale: 0.1 }}
-                        transition={{
-                          type: 'spring',
-                          stiffness: 250,
-                          damping: 18,
-                          delay: si * 0.06,
-                        }}
-                      >
-                        <div
-                          className="cursor-pointer"
-                          onClick={() => handleSubClick(sub, si)}
-                        >
-                          <motion.div whileHover={{ scale: 1.12 }}>
-                            <Cog size={subSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={subRotations[si]}>
-                            </Cog>
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    )
-                  })}
-                </AnimatePresence>
               </motion.div>
             )
           })}
