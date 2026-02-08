@@ -151,7 +151,7 @@ export default function GearHero({
 
   const radius = 280
   const subRadius = 120
-  const pullInRadius = 200 // Satellite moves closer when submenu open
+  const pullInRadius = 220 // Satellite moves closer when submenu open (tiny gap preserved)
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
@@ -192,9 +192,9 @@ export default function GearHero({
         className="relative z-10"
         style={{ width: radius * 2 + 280, height: radius * 2 + 280 }}
       >
-        {/* Center gear */}
+        {/* Center gear — highest z-index */}
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30"
           onClick={handleCenterClick}
         >
           <Cog size={300} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation}>
@@ -228,7 +228,7 @@ export default function GearHero({
             return (
               <motion.div
                 key={`sat-${i}`}
-                className="absolute left-1/2 top-1/2 z-20"
+                className="absolute left-1/2 top-1/2 z-10"
                 initial={{ x: 0, y: 0, opacity: 0, scale: 0.2 }}
                 animate={{
                   x: x - satSize / 2,
@@ -283,7 +283,7 @@ export default function GearHero({
                     return (
                       <motion.div
                         key={`sub-${i}-${si}`}
-                        className="absolute z-30"
+                        className="absolute z-0"
                         style={{ left: satSize / 2, top: satSize / 2 }}
                         initial={{ x: 0, y: 0, opacity: 0, scale: 0.1 }}
                         animate={{
