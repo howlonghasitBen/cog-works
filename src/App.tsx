@@ -148,10 +148,10 @@ export default function App() {
 
   const handleNavigate = useCallback((_parent: GearNavItem, subItem: GearSubItem, _pi: number, _si: number) => {
     setActivePage({ parent: _parent, sub: subItem })
-    // Auto-scroll to content after a beat
-    requestAnimationFrame(() => {
+    // Auto-scroll to content top
+    setTimeout(() => {
       scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
-    })
+    }, 50)
   }, [])
 
   const handleBackToTop = () => {
@@ -179,6 +179,11 @@ export default function App() {
       if (ticking) return
       ticking = true
       requestAnimationFrame(() => {
+        // Clamp: can't scroll above content top once a page is open
+        const minScroll = activePage ? window.innerHeight : 0
+        if (el.scrollTop < minScroll && activePage) {
+          el.scrollTop = minScroll
+        }
         const sy = el.scrollTop
         const vh = window.innerHeight
         const progress = Math.min(sy / vh, 1)
@@ -196,9 +201,9 @@ export default function App() {
       })
     }
 
-    el.addEventListener('scroll', onScroll, { passive: true })
+    el.addEventListener('scroll', onScroll, { passive: false })
     return () => el.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [activePage])
 
   // Reset scroll when leaving content
   useEffect(() => {
