@@ -1,97 +1,218 @@
-/** Cog Works — Component Playground */
+/** Cog Works — Component Playground
+ *
+ * Full-page gear navigation with parallax scroll transitions.
+ * Clicking a sub-cog scrolls the background down with parallax on the main cog,
+ * leaving 1/3 of the bottom visible at the top of the content screen.
+ */
+import { useState, useRef, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import GearHero from './components/GearHero'
+import type { GearNavItem, GearSubItem } from './components/GearHero'
 
-const heroItems = [
+/** Placeholder content pages for each sub-cog */
+function ContentPage({ parent, sub }: { parent: string; sub: string }) {
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-16">
+      <p className="text-xs text-amber-500 uppercase tracking-[0.3em] mb-3 font-mono">
+        {parent}
+      </p>
+      <h2 className="text-4xl font-black text-white mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+        {sub}
+      </h2>
+      <div className="h-px bg-gray-800 mb-8" />
+      <p className="text-gray-400 leading-relaxed text-lg mb-8">
+        This is the content area for <strong className="text-white">{sub}</strong> under{' '}
+        <strong className="text-white">{parent}</strong>. Each sub-cog navigation item loads its
+        own independently rendered content here.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[1, 2, 3, 4].map(i => (
+          <div key={i} className="border border-gray-800 p-6 hover:border-amber-700/50 transition-colors">
+            <div className="w-10 h-10 bg-gray-800 rounded-sm mb-4 flex items-center justify-center text-gray-500 font-mono text-sm">
+              {String(i).padStart(2, '0')}
+            </div>
+            <h3 className="text-white font-semibold text-sm mb-2" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+              Section {i}
+            </h3>
+            <p className="text-gray-500 text-sm">
+              Content block for {sub} — section {i}. Replace with your actual component content.
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const heroItems: GearNavItem[] = [
   {
     label: 'Services',
     icon: '🔧',
     subItems: [
-      { label: 'Design', icon: '🎨', onClick: () => console.log('Design') },
-      { label: 'Develop', icon: '💻', onClick: () => console.log('Develop') },
-      { label: 'Deploy', icon: '🚀', onClick: () => console.log('Deploy') },
+      { id: 'design', label: 'Design', icon: '🎨' },
+      { id: 'develop', label: 'Develop', icon: '💻' },
+      { id: 'deploy', label: 'Deploy', icon: '🚀' },
     ],
   },
   {
     label: 'Solutions',
     icon: '⚙️',
     subItems: [
-      { label: 'Web3', icon: '🔗', onClick: () => console.log('Web3') },
-      { label: 'AI', icon: '🤖', onClick: () => console.log('AI') },
-      { label: 'Cloud', icon: '☁️', onClick: () => console.log('Cloud') },
+      { id: 'web3', label: 'Web3', icon: '🔗' },
+      { id: 'ai', label: 'AI', icon: '🤖' },
+      { id: 'cloud', label: 'Cloud', icon: '☁️' },
     ],
   },
   {
     label: 'Support',
     icon: '🎧',
     subItems: [
-      { label: 'Docs', icon: '📖', onClick: () => console.log('Docs') },
-      { label: 'Chat', icon: '💬', onClick: () => console.log('Chat') },
-      { label: 'FAQ', icon: '❓', onClick: () => console.log('FAQ') },
+      { id: 'docs', label: 'Docs', icon: '📖' },
+      { id: 'chat', label: 'Chat', icon: '💬' },
+      { id: 'faq', label: 'FAQ', icon: '❓' },
     ],
   },
   {
     label: 'About',
     icon: 'ℹ️',
     subItems: [
-      { label: 'Team', icon: '👥', onClick: () => console.log('Team') },
-      { label: 'Mission', icon: '🎯', onClick: () => console.log('Mission') },
-      { label: 'Press', icon: '📰', onClick: () => console.log('Press') },
+      { id: 'team', label: 'Team', icon: '👥' },
+      { id: 'mission', label: 'Mission', icon: '🎯' },
+      { id: 'press', label: 'Press', icon: '📰' },
     ],
   },
   {
     label: 'Blog',
     icon: '📝',
     subItems: [
-      { label: 'Latest', icon: '🆕', onClick: () => console.log('Latest') },
-      { label: 'Guides', icon: '📚', onClick: () => console.log('Guides') },
-      { label: 'Videos', icon: '🎬', onClick: () => console.log('Videos') },
+      { id: 'latest', label: 'Latest', icon: '🆕' },
+      { id: 'guides', label: 'Guides', icon: '📚' },
+      { id: 'videos', label: 'Videos', icon: '🎬' },
     ],
   },
   {
     label: 'Contact',
     icon: '✉️',
     subItems: [
-      { label: 'Email', icon: '📧', onClick: () => console.log('Email') },
-      { label: 'Discord', icon: '💜', onClick: () => console.log('Discord') },
-      { label: 'Twitter', icon: '🐦', onClick: () => console.log('Twitter') },
+      { id: 'email', label: 'Email', icon: '📧' },
+      { id: 'discord', label: 'Discord', icon: '💜' },
+      { id: 'twitter', label: 'Twitter', icon: '🐦' },
     ],
   },
 ]
 
 export default function App() {
+  const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const handleNavigate = useCallback((_parent: GearNavItem, subItem: GearSubItem, _pi: number, _si: number) => {
+    setIsTransitioning(true)
+    // Start the scroll/parallax transition
+    setTimeout(() => {
+      setActivePage({ parent: _parent, sub: subItem })
+      // Let the animation play
+      setTimeout(() => setIsTransitioning(false), 600)
+    }, 100)
+  }, [])
+
+  const handleBackToTop = () => {
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setActivePage(null)
+      setTimeout(() => setIsTransitioning(false), 600)
+    }, 100)
+  }
+
   return (
-    <div className="min-h-screen bg-gray-950">
-      <GearHero
-        title="COG WORKS"
-        subtitle="Engineering the Future"
-        items={heroItems}
-      />
+    <div ref={containerRef} className="relative min-h-screen bg-gray-950 overflow-hidden">
+      {/* Hero section — slides up with parallax when navigating */}
+      <motion.div
+        className="relative w-full"
+        animate={{
+          y: activePage ? '-67vh' : '0vh',  // Move up so 1/3 of bottom (33vh) is visible at top
+        }}
+        transition={{
+          duration: 0.7,
+          ease: [0.4, 0, 0.2, 1],
+        }}
+      >
+        <GearHero
+          title="COG WORKS"
+          subtitle="Engineering the Future"
+          items={heroItems}
+          onNavigate={handleNavigate}
+        />
+      </motion.div>
 
-      <div className="max-w-4xl mx-auto px-6 py-20">
-        <h2 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-          Drop-in React Components
-        </h2>
-        <p className="text-gray-400 leading-relaxed">
-          Click the central gear to reveal navigation. Click any satellite to open its sub-menu of 3 cogs.
-          Each interaction spins the gears with ease-in-out transitions.
-        </p>
+      {/* Content page — slides up from below */}
+      <AnimatePresence mode="wait">
+        {activePage && (
+          <motion.div
+            key={activePage.sub.id || activePage.sub.label}
+            className="absolute top-0 left-0 w-full min-h-screen"
+            style={{ paddingTop: '33vh' }}  // Start below the visible 1/3 of cog
+            initial={{ y: '100vh', opacity: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1], delay: 0.1 },
+            }}
+            exit={{
+              y: '100vh',
+              opacity: 0,
+              transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+            }}
+          >
+            {/* Dark overlay under the cog peek area */}
+            <div
+              className="absolute top-0 left-0 w-full pointer-events-none"
+              style={{
+                height: '33vh',
+                background: 'linear-gradient(to bottom, transparent, #030712)',
+              }}
+            />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          {[
-            { name: 'GearHero', desc: 'Central gear + radial satellites + sub-sub-menus, all click-driven with spin animations' },
-            { name: 'CogMenu', desc: 'Compact radial menu expanding from a single cog icon' },
-            { name: 'CogSidebar', desc: 'Collapsible sidebar with spinning gear section headers' },
-            { name: 'CogDropdown', desc: 'Inline gear-triggered dropdown with dividers' },
-          ].map(c => (
-            <div key={c.name} className="border border-gray-800 p-5 hover:border-amber-700/50 transition-colors">
-              <h3 className="text-white font-bold text-sm mb-2" style={{ fontFamily: "'DM Mono', monospace" }}>
-                {'<'}{c.name}{' />'}
-              </h3>
-              <p className="text-gray-500 text-sm">{c.desc}</p>
+            {/* Content */}
+            <div className="relative bg-gray-950 min-h-[67vh] pb-24">
+              <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
             </div>
-          ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Footer — up arrow to return to cog nav */}
+      <AnimatePresence>
+        {activePage && !isTransitioning && (
+          <motion.button
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-12 h-12 flex items-center justify-center bg-gray-900 border border-gray-700 text-gray-400 cursor-pointer hover:border-amber-500 hover:text-amber-400 transition-colors rounded-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ delay: 0.5 }}
+            onClick={handleBackToTop}
+            aria-label="Back to navigation"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 15l-6-6-6 6" />
+            </svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Footer bar — only on hero */}
+      {!activePage && (
+        <div className="fixed bottom-0 left-0 w-full flex justify-center py-4 z-40">
+          <button
+            className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-400 transition-colors cursor-pointer bg-transparent border-none"
+            aria-label="Scroll down"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
         </div>
-      </div>
+      )}
     </div>
   )
 }

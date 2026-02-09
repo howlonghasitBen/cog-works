@@ -14,10 +14,12 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export interface GearSubItem {
+  id?: string
   label: string
   icon: React.ReactNode
   onClick?: () => void
   href?: string
+  content?: React.ReactNode
 }
 
 export interface GearNavItem {
@@ -36,6 +38,8 @@ export interface GearHeroProps {
   cogSrc?: string
   innardSrc?: string
   className?: string
+  /** Called when a sub-cog is clicked with the sub-item data */
+  onNavigate?: (parentItem: GearNavItem, subItem: GearSubItem, parentIndex: number, subIndex: number) => void
 }
 
 /** Cog visual — outer SVG gear + inner circle image + content overlay */
@@ -89,6 +93,7 @@ export default function GearHero({
   cogSrc = '/images/nav_cog.svg',
   innardSrc = '/images/nav_cog_innard.png',
   className = '',
+  onNavigate,
 }: GearHeroProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [centerRotation, setCenterRotation] = useState(0)
@@ -149,15 +154,25 @@ export default function GearHero({
       next[subIdx] = prev[subIdx] + 180
       return next
     })
-    if (activeSubmenu !== null) {
+    const parentIdx = activeSubmenu
+    if (parentIdx !== null) {
       setSatRotations(prev => {
         const next = [...prev]
-        next[activeSubmenu] = prev[activeSubmenu] - 90
+        next[parentIdx] = prev[parentIdx] - 90
         return next
       })
       setCenterRotation(r => r + 45)
     }
     subItem.onClick?.()
+
+    // Close menu + trigger navigation
+    setTimeout(() => {
+      setMenuOpen(false)
+      setActiveSubmenu(null)
+      if (onNavigate && parentIdx !== null) {
+        onNavigate(items[parentIdx], subItem, parentIdx, subIdx)
+      }
+    }, 400) // Brief delay so spin animation is visible
   }
 
   const radius = 280
