@@ -183,7 +183,7 @@ export default function GearHero({
 
   return (
     <section
-      className={`relative w-full min-h-[750px] flex items-center justify-center overflow-hidden ${className}`}
+      className={`relative w-full h-screen flex items-center justify-center overflow-hidden ${className}`}
       style={{
         background: backgroundImage
           ? `url(${backgroundImage}) center/cover no-repeat`

@@ -119,7 +119,7 @@ export default function App() {
       <motion.div
         className={`relative w-full ${activePage ? 'z-50' : 'z-10'}`}
         animate={{
-          y: activePage ? '-40vh' : '0vh',  // Parallax: less offset = more cog visible
+          y: activePage ? '-48vh' : '0vh',
         }}
         transition={{
           duration: 0.7,
