@@ -119,7 +119,7 @@ export default function App() {
       <motion.div
         className={`relative w-full ${activePage ? 'z-50' : 'z-10'}`}
         animate={{
-          y: activePage ? '-55vh' : '0vh',  // Parallax: moves less than full page
+          y: activePage ? '-40vh' : '0vh',  // Parallax: less offset = more cog visible
         }}
         transition={{
           duration: 0.7,
@@ -146,7 +146,7 @@ export default function App() {
           <motion.div
             key={activePage.sub.id || activePage.sub.label}
             className="absolute top-0 left-0 w-full min-h-screen z-20"
-            style={{ paddingTop: '45vh' }}  // Content starts below the cog peek zone
+            style={{ paddingTop: '60vh' }}  // Content starts below the cog peek zone
             initial={{ y: '100vh', opacity: 0 }}
             animate={{
               y: 0,
@@ -163,13 +163,13 @@ export default function App() {
             <div
               className="absolute top-0 left-0 w-full pointer-events-none"
               style={{
-                height: '45vh',
+                height: '60vh',
                 background: 'linear-gradient(to bottom, transparent 60%, #030712)',
               }}
             />
 
             {/* Content */}
-            <div className="relative bg-gray-950 min-h-screen pb-24">
+            <div className="relative bg-gray-950 pb-24" style={{ minHeight: '120vh' }}>
               <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
             </div>
           </motion.div>
