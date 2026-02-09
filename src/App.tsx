@@ -5,6 +5,69 @@
  */
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+
+/** Lightning bolt SVG between Adam and God Pepe fingers */
+function LightningBolt({ visible }: { visible: boolean }) {
+  // Path from Adam's finger (bottom-left ~30%, 65%) to God's finger (top-right ~72%, 30%)
+  // Jagged lightning bolt with random-ish zigzag
+  const bolts = [
+    'M 30 65 L 35 55 L 32 50 L 40 42 L 36 38 L 44 30 L 41 26 L 48 20 L 52 24 L 56 18 L 60 22 L 64 15 L 68 20 L 72 30',
+    'M 30 65 L 34 57 L 30 52 L 38 44 L 34 40 L 42 32 L 46 36 L 50 26 L 54 30 L 58 20 L 62 24 L 66 16 L 70 22 L 72 30',
+    'M 30 65 L 36 56 L 33 48 L 41 40 L 37 35 L 45 28 L 49 32 L 53 22 L 57 26 L 61 18 L 65 22 L 69 14 L 72 30',
+  ]
+
+  if (!visible) return null
+
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }} viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="0.8" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      {bolts.map((d, i) => (
+        <motion.path
+          key={i}
+          d={d}
+          fill="none"
+          stroke={i === 0 ? '#ffffff' : '#60a5fa'}
+          strokeWidth={i === 0 ? 0.4 : 0.2}
+          strokeLinecap="round"
+          filter="url(#glow)"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{
+            pathLength: [0, 1, 1, 0],
+            opacity: [0, 1, 0.8, 0],
+          }}
+          transition={{
+            duration: 0.6,
+            delay: i * 0.08,
+            repeat: Infinity,
+            repeatDelay: 0.8 + i * 0.15,
+            ease: 'easeOut',
+          }}
+        />
+      ))}
+      {/* Core bright flash */}
+      <motion.path
+        d={bolts[0]}
+        fill="none"
+        stroke="#e0f0ff"
+        strokeWidth={0.6}
+        strokeLinecap="round"
+        filter="url(#glow)"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 1.2 }}
+      />
+    </svg>
+  )
+}
 import GearHero from './components/GearHero'
 import type { GearNavItem, GearSubItem } from './components/GearHero'
 import StakingDashboard from './pages/StakingDashboard'
@@ -85,6 +148,7 @@ const heroItems: GearNavItem[] = [
 // ─── App ────────────────────────────────────────────────────────
 export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   // DOM refs for direct manipulation (no React re-renders during scroll)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -206,14 +270,14 @@ export default function App() {
           style={{ willChange: 'transform' }}
         >
           <div className="w-full h-screen" style={{
-            background: 'linear-gradient(135deg, #0f1923 0%, #1a2a3a 30%, #0d1b2a 70%, #0a1628 100%)',
+            background: 'linear-gradient(135deg, #0d0e1a 0%, #151838 30%, #1a1c3e 50%, #151838 70%, #0d0e1a 100%)',
           }}>
             <div className="absolute inset-0 bg-black/30" />
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-30" style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)' }} />
-              <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-20" style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)' }} />
-              <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-30" style={{ background: 'linear-gradient(270deg, #f97316, transparent)' }} />
-              <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15" style={{ background: 'linear-gradient(270deg, #fb923c, transparent)' }} />
+              <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-20" style={{ background: 'linear-gradient(90deg, #4a5699, transparent)' }} />
+              <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-15" style={{ background: 'linear-gradient(90deg, #6875b0, transparent)' }} />
+              <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-20" style={{ background: 'linear-gradient(270deg, #4a5699, transparent)' }} />
+              <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15" style={{ background: 'linear-gradient(270deg, #6875b0, transparent)' }} />
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ width: 520, height: 520 }}>
               <div className="absolute inset-0 rounded-full opacity-15" style={{ border: '1px solid #3b82f6', animation: 'gearPulse 4s ease-in-out infinite' }} />
@@ -233,6 +297,9 @@ export default function App() {
               className="absolute top-0 right-0 pointer-events-none"
               style={{ height: '55%', objectFit: 'contain', objectPosition: 'top right' }}
             />
+
+            {/* Lightning between fingers — appears on cog menu open */}
+            <LightningBolt visible={menuOpen} />
           </div>
         </div>
       </div>
@@ -250,6 +317,7 @@ export default function App() {
           onNavigate={handleNavigate}
           transparentBg
           onCenterClick={activePage ? handleBackToTop : undefined}
+          onMenuToggle={setMenuOpen}
         />
       </div>
 

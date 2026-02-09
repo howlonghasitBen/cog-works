@@ -96,7 +96,8 @@ export default function GearHero({
   transparentBg = false,
   onNavigate,
   onCenterClick,
-}: GearHeroProps & { transparentBg?: boolean; onCenterClick?: () => void }) {
+  onMenuToggle,
+}: GearHeroProps & { transparentBg?: boolean; onCenterClick?: () => void; onMenuToggle?: (open: boolean) => void }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [centerRotation, setCenterRotation] = useState(0)
   const [satRotations, setSatRotations] = useState<number[]>(() => items.map(() => 0))
@@ -129,6 +130,7 @@ export default function GearHero({
     }
     setMenuOpen(opening)
     setActiveSubmenu(null)
+    onMenuToggle?.(opening)
   }
 
   const handleSatelliteClick = (index: number, item: GearNavItem) => {
