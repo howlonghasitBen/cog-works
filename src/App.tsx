@@ -176,12 +176,13 @@ export default function App() {
         </div>
       </motion.div>
 
-      {/* Content page — scrollable below the sticky hero */}
+      {/* Content page — pulled up tight against the cog peek */}
       <AnimatePresence mode="wait">
         {activePage && (
           <motion.div
             key={activePage.sub.id || activePage.sub.label}
             className="relative z-20"
+            style={{ marginTop: '-60vh' }}  // Pull up to eliminate gap (matches parallax offset)
             initial={{ opacity: 0, y: 60 }}
             animate={{
               opacity: 1,
