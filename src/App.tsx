@@ -142,8 +142,9 @@ const BG_SPEED = 1.0
 
 export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
-  const [scrollY, setScrollY] = useState(0)
   const scrollRef = useRef<HTMLDivElement>(null)
+  const bgLayerRef = useRef<HTMLDivElement>(null)
+  const cogLayerRef = useRef<HTMLDivElement>(null)
 
   const handleNavigate = useCallback((_parent: GearNavItem, subItem: GearSubItem, _pi: number, _si: number) => {
     setActivePage({ parent: _parent, sub: subItem })
@@ -166,38 +167,51 @@ export default function App() {
     requestAnimationFrame(checkScroll)
   }
 
-  // Track scroll position for parallax transforms
+  // Parallax via direct DOM manipulation — no React re-renders during scroll
   useEffect(() => {
     const el = scrollRef.current
-    if (!el) return
-    const onScroll = () => setScrollY(el.scrollTop)
+    const bgEl = bgLayerRef.current
+    const cogEl = cogLayerRef.current
+    if (!el || !bgEl || !cogEl) return
+
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const sy = el.scrollTop
+        const vh = window.innerHeight
+        const progress = Math.min(sy / vh, 1)
+
+        // Background: full speed
+        bgEl.style.transform = `translateY(${-(sy * BG_SPEED)}px)`
+
+        // Cog: slower — center to top peek
+        const cogEndY = -(vh * 0.5 + 80)
+        const cogY = cogEndY * progress
+        cogEl.style.transform = `translateY(${cogY}px)`
+        cogEl.style.opacity = String(1 - progress * 0.5)
+
+        ticking = false
+      })
+    }
+
     el.addEventListener('scroll', onScroll, { passive: true })
     return () => el.removeEventListener('scroll', onScroll)
   }, [])
 
   // Reset scroll when leaving content
   useEffect(() => {
-    if (!activePage) {
-      scrollRef.current?.scrollTo({ top: 0 })
-      setScrollY(0)
+    if (!activePage && scrollRef.current) {
+      scrollRef.current.scrollTo({ top: 0 })
+      // Reset transforms
+      if (bgLayerRef.current) bgLayerRef.current.style.transform = 'translateY(0px)'
+      if (cogLayerRef.current) {
+        cogLayerRef.current.style.transform = 'translateY(0px)'
+        cogLayerRef.current.style.opacity = '1'
+      }
     }
   }, [activePage])
-
-  // Derived parallax transforms
-  const bgTranslate = -(scrollY * BG_SPEED)
-
-  // Cog parallax: GearHero is h-screen with cog centered internally (flex items-center justify-center)
-  // At scrollY=0: GearHero at top:0 → cog naturally centered in viewport ✓
-  // At scrollY=100vh: GearHero needs to be offset so cog sits at top of screen
-  // The cog center is at 50vh within the GearHero. We want it at ~70px from top of viewport.
-  // So GearHero top needs to be -(50vh - 70px) = about -50vh + 70px
-  const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-  const progress = Math.min(scrollY / vh, 1)
-  const cogStartY = 0                        // GearHero at top:0, cog centered
-  const cogEndY = -(vh * 0.5 + 80)            // Shift up so only bottom ~1/3 of cog peeks out
-  const cogY = cogStartY + (cogEndY - cogStartY) * progress
-  // Opacity: fully visible at center, semi-transparent at top
-  const cogOpacity = 1 - (progress * 0.5)  // 1.0 → 0.5
 
   return (
     <div
@@ -209,11 +223,9 @@ export default function App() {
       <div className="fixed inset-0 z-0">
         {/* Background layer — scrolls away fast */}
         <div
+          ref={bgLayerRef}
           className="absolute inset-0"
-          style={{
-            transform: activePage ? `translateY(${bgTranslate}px)` : 'none',
-            willChange: 'transform',
-          }}
+          style={{ willChange: 'transform' }}
         >
           <div
             className="w-full h-screen"
@@ -249,11 +261,10 @@ export default function App() {
 
       {/* Cog layer — OUTSIDE the z-0 fixed container so it stacks above content */}
       <div
+        ref={cogLayerRef}
         className="fixed inset-0 pointer-events-none"
         style={{
-          transform: `translateY(${cogY}px)`,
           zIndex: 20,
-          opacity: cogOpacity,
           willChange: 'transform, opacity',
         }}
       >
