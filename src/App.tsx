@@ -137,9 +137,8 @@ const heroItems: GearNavItem[] = [
   },
 ]
 
-// Parallax speeds: background scrolls at 1x, cog at 0.35x
+// Parallax: background at 1x, cog interpolates from center → top
 const BG_SPEED = 1.0
-const COG_SPEED = 0.35
 
 export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
@@ -156,8 +155,15 @@ export default function App() {
 
   const handleBackToTop = () => {
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
-    // Clear active page after scroll completes
-    setTimeout(() => setActivePage(null), 700)
+    // Clear active page once scroll reaches top
+    const checkScroll = () => {
+      if (scrollRef.current && scrollRef.current.scrollTop < 10) {
+        setActivePage(null)
+      } else {
+        requestAnimationFrame(checkScroll)
+      }
+    }
+    requestAnimationFrame(checkScroll)
   }
 
   // Track scroll position for parallax transforms
@@ -177,8 +183,20 @@ export default function App() {
     }
   }, [activePage])
 
-  // Derived parallax transform for background
+  // Derived parallax transforms
   const bgTranslate = -(scrollY * BG_SPEED)
+
+  // Cog position: interpolate from viewport center to top
+  // At scrollY=0, cog is at 50vh (center). At scrollY=innerHeight, cog is at top (-80px peek).
+  // progress: 0 (hero) → 1 (content)
+  const vh = typeof window !== 'undefined' ? window.innerHeight : 900
+  const progress = Math.min(scrollY / vh, 1)
+  // Center position = 50vh - half cog height. Top position = -80px (peek from top).
+  const cogCenterY = vh / 2 - 150  // 150 = half of 300px cog
+  const cogTopY = -80
+  const cogY = cogCenterY + (cogTopY - cogCenterY) * progress
+  // Opacity: fully visible at center, semi-transparent at top
+  const cogOpacity = 1 - (progress * 0.5)  // 1.0 → 0.5
 
   return (
     <div
@@ -226,48 +244,49 @@ export default function App() {
           </div>
         </div>
 
-        {/* Cog layer — parallax scroll (only when no content page) */}
-        {!activePage && (
-          <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{ zIndex: 5 }}
-          >
-            <GearHero
-              title="COG WORKS"
-              subtitle="Engineering the Future"
-              items={heroItems}
-              onNavigate={handleNavigate}
-              transparentBg
-            />
-          </div>
-        )}
+        {/* Cog layer — single cog, parallax-driven from center → top */}
+        <div
+          className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
+          style={{
+            top: cogY,
+            zIndex: 20,
+            opacity: cogOpacity,
+            willChange: 'top, opacity',
+            transition: activePage ? 'none' : 'top 0.5s ease-out, opacity 0.5s ease-out',
+          }}
+        >
+          {/* Full GearHero when at hero position, simplified cog when scrolled */}
+          {progress < 0.95 ? (
+            <div className="pointer-events-auto">
+              <GearHero
+                title="COG WORKS"
+                subtitle="Engineering the Future"
+                items={heroItems}
+                onNavigate={handleNavigate}
+                transparentBg
+              />
+            </div>
+          ) : (
+            <div
+              className="pointer-events-auto cursor-pointer relative"
+              onClick={handleBackToTop}
+              title="Back to navigation"
+              style={{ width: 300, height: 300 }}
+            >
+              <img src="/images/nav_cog.svg" alt="Back to menu" style={{ width: 300, height: 300 }} />
+              <img
+                src="/images/nav_cog_innard.png"
+                alt=""
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                style={{ width: 300 * 0.72, height: 300 * 0.72 }}
+              />
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Spacer — hero occupies the first screen height, pointer-events pass through to fixed cog */}
       <div className="relative h-screen z-0 pointer-events-none" />
-
-      {/* Pinned nav cog — semi-transparent, fixed at top center of content */}
-      {activePage && (
-        <div
-          className="fixed top-0 left-1/2 -translate-x-1/2 z-30 cursor-pointer"
-          style={{ marginTop: -80 }}
-          onClick={handleBackToTop}
-          title="Back to navigation"
-        >
-          <img
-            src="/images/nav_cog.svg"
-            alt="Back to menu"
-            className="opacity-50 hover:opacity-80 transition-opacity"
-            style={{ width: 200, height: 200 }}
-          />
-          <img
-            src="/images/nav_cog_innard.png"
-            alt=""
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50 hover:opacity-80 transition-opacity pointer-events-none"
-            style={{ width: 200 * 0.72, height: 200 * 0.72 }}
-          />
-        </div>
-      )}
 
       {/* Content page — scrollable, positioned after the hero spacer */}
       <AnimatePresence mode="wait">
