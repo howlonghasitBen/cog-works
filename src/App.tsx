@@ -155,10 +155,17 @@ export default function App() {
   }, [])
 
   const handleBackToTop = () => {
+    // If already near the top, just clear immediately
+    if (scrollRef.current && scrollRef.current.scrollTop < window.innerHeight * 0.5) {
+      scrollRef.current.scrollTo({ top: 0 })
+      setActivePage(null)
+      return
+    }
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
-    // Clear active page once scroll reaches top
+    // Clear active page once scroll reaches near top
     const checkScroll = () => {
-      if (scrollRef.current && scrollRef.current.scrollTop < 10) {
+      if (scrollRef.current && scrollRef.current.scrollTop < 50) {
+        scrollRef.current.scrollTo({ top: 0 })
         setActivePage(null)
       } else {
         requestAnimationFrame(checkScroll)
