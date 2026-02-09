@@ -145,12 +145,23 @@ export default function App() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const bgLayerRef = useRef<HTMLDivElement>(null)
   const cogLayerRef = useRef<HTMLDivElement>(null)
+  const scrollingToContent = useRef(false)  // Guard: ignore auto-return during initial scroll-down
 
   const handleNavigate = useCallback((_parent: GearNavItem, subItem: GearSubItem, _pi: number, _si: number) => {
     setActivePage({ parent: _parent, sub: subItem })
+    scrollingToContent.current = true
     // Auto-scroll to content after a beat
     requestAnimationFrame(() => {
       scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+      // Disable guard once scroll reaches content
+      const waitForScroll = () => {
+        if (scrollRef.current && scrollRef.current.scrollTop >= window.innerHeight * 0.9) {
+          scrollingToContent.current = false
+        } else {
+          requestAnimationFrame(waitForScroll)
+        }
+      }
+      requestAnimationFrame(waitForScroll)
     })
   }, [])
 
@@ -186,6 +197,13 @@ export default function App() {
       if (ticking) return
       ticking = true
       requestAnimationFrame(() => {
+        // Auto-return to nav if user scrolls near hero top (but not during initial scroll-down)
+        if (activePage && !scrollingToContent.current && el.scrollTop < window.innerHeight * 0.3) {
+          el.scrollTo({ top: 0 })
+          setActivePage(null)
+          ticking = false
+          return
+        }
         const sy = el.scrollTop
         const vh = window.innerHeight
         const progress = Math.min(sy / vh, 1)
@@ -205,7 +223,7 @@ export default function App() {
 
     el.addEventListener('scroll', onScroll, { passive: true })
     return () => el.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [activePage])
 
   // Reset scroll when leaving content
   useEffect(() => {
