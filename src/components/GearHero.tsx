@@ -183,11 +183,12 @@ export default function GearHero({
 
   return (
     <section
-      className={`relative w-full h-screen ${className}`}
+      className={`relative w-full ${className}`}
+      style={{ height: '200vh' }}  /* Extra height: bg scrolls off in first 100vh, cog sticks through second */
     >
-      {/* Background layer — scrolls away naturally, clipped to section bounds */}
+      {/* Background layer — fixed to top 100vh, scrolls away naturally */}
       <div
-        className="absolute inset-0 overflow-hidden"
+        className="absolute top-0 left-0 w-full h-screen overflow-hidden"
         style={{
           background: backgroundImage
             ? `url(${backgroundImage}) center/cover no-repeat`
@@ -217,9 +218,9 @@ export default function GearHero({
         </div>
       </div>
 
-      {/* Gear assembly — sticky, stays at top when scrolled */}
+      {/* Gear assembly — sticky, center cog stays visible as bg scrolls off */}
       <div
-        className="sticky top-0 w-full h-screen flex items-center justify-center z-10"
+        className="sticky top-0 w-full h-screen flex items-center justify-center z-10 pointer-events-none"
       >
         <div
           ref={containerRef}
@@ -228,7 +229,7 @@ export default function GearHero({
         >
         {/* Center gear — highest z-index */}
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 pointer-events-auto"
           onClick={handleCenterClick}
         >
           <Cog size={300} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation}>
@@ -287,7 +288,7 @@ export default function GearHero({
                   }}
                 >
                   <div
-                    className="cursor-pointer"
+                    className="cursor-pointer pointer-events-auto"
                     onClick={() => handleSubClick(sub, si)}
                   >
                     <motion.div whileHover={{ scale: 1.12 }}>
@@ -337,7 +338,7 @@ export default function GearHero({
                 }}
               >
                 <div
-                  className="cursor-pointer"
+                  className="cursor-pointer pointer-events-auto"
                   onClick={() => handleSatelliteClick(i, item)}
                 >
                   <motion.div
