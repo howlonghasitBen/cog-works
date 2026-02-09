@@ -151,62 +151,47 @@ export default function App() {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-gray-950">
-      {/* Sticky cog peek — only the cog, fixed at top when content is active */}
-      {activePage && (
+      {/* Hero section — sticky at top, parallax offset when content active */}
+      <motion.div
+        className={`sticky top-0 w-full ${activePage ? 'z-50' : 'z-10'}`}
+        animate={{
+          y: activePage ? '-60vh' : '0vh',
+        }}
+        transition={{
+          duration: 0.7,
+          ease: [0.4, 0, 0.2, 1],
+        }}
+      >
         <div
-          className="sticky top-0 z-50 w-full flex justify-center cursor-pointer"
-          style={{ height: 120, marginBottom: -120 }}
-          onClick={handleBackToTop}
-          title="Back to navigation"
+          className={activePage ? 'cursor-pointer' : ''}
+          onClick={activePage ? handleBackToTop : undefined}
+          title={activePage ? 'Back to navigation' : undefined}
         >
-          {/* Just the cog image peeking from top — only bottom ~40% visible */}
-          <motion.img
-            src="/images/nav_cog.svg"
-            alt="Back to menu"
-            className="relative"
-            style={{ width: 300, marginTop: -160 }}
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            whileHover={{ scale: 1.05, rotate: 15 }}
+          <GearHero
+            title="COG WORKS"
+            subtitle="Engineering the Future"
+            items={heroItems}
+            onNavigate={handleNavigate}
           />
         </div>
-      )}
+      </motion.div>
 
-      {/* Full hero section — hidden when content is active */}
-      <AnimatePresence>
-        {!activePage && (
-          <motion.div
-            className="relative z-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -100, transition: { duration: 0.5 } }}
-          >
-            <GearHero
-              title="COG WORKS"
-              subtitle="Engineering the Future"
-              items={heroItems}
-              onNavigate={handleNavigate}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Content page */}
+      {/* Content page — pulled up tight against the cog peek */}
       <AnimatePresence mode="wait">
         {activePage && (
           <motion.div
             key={activePage.sub.id || activePage.sub.label}
             className="relative z-20"
-            initial={{ opacity: 0, y: 40 }}
+            style={{ marginTop: '-60vh' }}  // Pull up to eliminate gap (matches parallax offset)
+            initial={{ opacity: 0, y: 60 }}
             animate={{
               opacity: 1,
               y: 0,
-              transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1], delay: 0.15 },
+              transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1], delay: 0.2 },
             }}
             exit={{
               opacity: 0,
-              y: 40,
+              y: 60,
               transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
             }}
           >
