@@ -194,7 +194,7 @@ export default function App() {
   const vh = typeof window !== 'undefined' ? window.innerHeight : 900
   const progress = Math.min(scrollY / vh, 1)
   const cogStartY = 0                        // GearHero at top:0, cog centered
-  const cogEndY = -(vh * 0.5 - 70)           // Shift up so cog center is 70px from top
+  const cogEndY = -(vh * 0.5 + 80)            // Shift up so only bottom ~1/3 of cog peeks out
   const cogY = cogStartY + (cogEndY - cogStartY) * progress
   // Opacity: fully visible at center, semi-transparent at top
   const cogOpacity = 1 - (progress * 0.5)  // 1.0 → 0.5
