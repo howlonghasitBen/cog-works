@@ -262,11 +262,10 @@ export default function App() {
       {/* Cog layer — OUTSIDE the z-0 fixed container so it stacks above content */}
       <div
         ref={cogLayerRef}
-        className={`fixed left-0 w-full pointer-events-none ${activePage ? 'top-0 h-[120px]' : 'inset-0'}`}
+        className="fixed inset-0 pointer-events-none select-none"
         style={{
           zIndex: 20,
           willChange: 'transform, opacity',
-          overflow: activePage ? 'visible' : undefined,
         }}
       >
         <div className="pointer-events-auto">
