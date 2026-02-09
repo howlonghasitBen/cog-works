@@ -72,6 +72,8 @@ const heroItems: GearNavItem[] = [
   ]},
   { label: 'Dashboard', icon: '📊', subItems: [
     { id: 'staking', label: 'Staking', icon: '🔄' },
+    { id: 'analytics', label: 'Analytics', icon: '📈' },
+    { id: 'history', label: 'History', icon: '📜' },
   ]},
   { label: 'Contact', icon: '✉️', subItems: [
     { id: 'email', label: 'Email', icon: '📧' },
