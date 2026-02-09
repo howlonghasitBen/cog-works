@@ -268,17 +268,14 @@ export default function App() {
           willChange: 'transform, opacity',
         }}
       >
-        <div
-          className={`pointer-events-auto ${activePage ? 'cursor-pointer' : ''}`}
-          onClick={activePage ? handleBackToTop : undefined}
-          title={activePage ? 'Back to navigation' : undefined}
-        >
+        <div className="pointer-events-auto">
           <GearHero
             title="COG WORKS"
             subtitle="Engineering the Future"
             items={heroItems}
             onNavigate={handleNavigate}
             transparentBg
+            onCenterClick={activePage ? handleBackToTop : undefined}
           />
         </div>
       </div>

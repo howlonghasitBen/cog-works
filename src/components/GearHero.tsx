@@ -95,7 +95,8 @@ export default function GearHero({
   className = '',
   transparentBg = false,
   onNavigate,
-}: GearHeroProps & { transparentBg?: boolean }) {
+  onCenterClick,
+}: GearHeroProps & { transparentBg?: boolean; onCenterClick?: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [centerRotation, setCenterRotation] = useState(0)
   const [satRotations, setSatRotations] = useState<number[]>(() => items.map(() => 0))
@@ -117,6 +118,8 @@ export default function GearHero({
   }, [menuOpen])
 
   const handleCenterClick = () => {
+    // If external handler provided (e.g. return to nav), use it
+    if (onCenterClick) { onCenterClick(); return }
     const opening = !menuOpen
     // Center: clockwise (+)
     setCenterRotation(r => r + 360)
