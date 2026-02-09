@@ -186,6 +186,13 @@ export default function App() {
       if (ticking) return
       ticking = true
       requestAnimationFrame(() => {
+        // If user scrolls near hero top while content is active, auto-return to nav
+        if (activePage && el.scrollTop < window.innerHeight * 0.3) {
+          el.scrollTo({ top: 0 })
+          setActivePage(null)
+          ticking = false
+          return
+        }
         const sy = el.scrollTop
         const vh = window.innerHeight
         const progress = Math.min(sy / vh, 1)
@@ -205,7 +212,7 @@ export default function App() {
 
     el.addEventListener('scroll', onScroll, { passive: true })
     return () => el.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [activePage])
 
   // Reset scroll when leaving content
   useEffect(() => {
