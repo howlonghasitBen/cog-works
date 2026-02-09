@@ -6,65 +6,150 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-/** Lightning bolt SVG between Adam and God Pepe fingers */
-function LightningBolt({ visible }: { visible: boolean }) {
-  // Path from Adam's finger (bottom-left ~30%, 65%) to God's finger (top-right ~72%, 30%)
-  // Jagged lightning bolt with random-ish zigzag
-  const bolts = [
-    'M 30 65 L 35 55 L 32 50 L 40 42 L 36 38 L 44 30 L 41 26 L 48 20 L 52 24 L 56 18 L 60 22 L 64 15 L 68 20 L 72 30',
-    'M 30 65 L 34 57 L 30 52 L 38 44 L 34 40 L 42 32 L 46 36 L 50 26 L 54 30 L 58 20 L 62 24 L 66 16 L 70 22 L 72 30',
-    'M 30 65 L 36 56 L 33 48 L 41 40 L 37 35 L 45 28 L 49 32 L 53 22 L 57 26 L 61 18 L 65 22 L 69 14 L 72 30',
-  ]
+/** Generate a randomized lightning bolt path from origin toward target center */
+function generateBolt(
+  startX: number, startY: number,
+  endX: number, endY: number,
+  segments: number = 8
+): string {
+  const points: [number, number][] = [[startX, startY]]
+  for (let i = 1; i <= segments; i++) {
+    const t = i / segments
+    const baseX = startX + (endX - startX) * t
+    const baseY = startY + (endY - startY) * t
+    // Random perpendicular offset — bigger in middle, smaller at ends
+    const spread = Math.sin(t * Math.PI) * 6
+    const offsetX = (Math.random() - 0.5) * spread
+    const offsetY = (Math.random() - 0.5) * spread
+    points.push([baseX + offsetX, baseY + offsetY])
+  }
+  return 'M ' + points.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(' L ')
+}
 
-  if (!visible) return null
+/** Generate a fork/branch off a main bolt */
+function generateFork(
+  mainPoints: string,
+  forkAt: number, // 0-1 along the bolt
+  endX: number, endY: number
+): string {
+  // Parse the main path to find the fork point
+  const coords = mainPoints.replace('M ', '').split(' L ').map(s => {
+    const [x, y] = s.trim().split(' ').map(Number)
+    return [x, y] as [number, number]
+  })
+  const idx = Math.floor(forkAt * (coords.length - 1))
+  const [fx, fy] = coords[idx]
+  // Fork toward endX/endY with fewer segments
+  return generateBolt(fx, fy, endX + (Math.random() - 0.5) * 8, endY + (Math.random() - 0.5) * 8, 4)
+}
+
+/** Lightning bolts between Adam and God Pepe fingers */
+function LightningBolt({ visible }: { visible: boolean }) {
+  // Adam's fingertip: bottom-left (~22%, 72%)
+  // God's fingertip: top-right (~82%, 18%)
+  // Both aim toward center (~50%, 48%)
+  const [bolts, setBolts] = useState<{ path: string; forks: string[] }[]>([])
+  const [tick, setTick] = useState(0)
+
+  // Regenerate bolts periodically for crackling effect
+  useEffect(() => {
+    if (!visible) { setBolts([]); return }
+    const generate = () => {
+      const newBolts = []
+      // 2 bolts from Adam (bottom-left → center)
+      for (let i = 0; i < 2; i++) {
+        const main = generateBolt(22, 72, 48 + Math.random() * 4, 46 + Math.random() * 4)
+        const forks = [
+          generateFork(main, 0.3 + Math.random() * 0.2, 45, 50),
+          generateFork(main, 0.6 + Math.random() * 0.2, 50, 45),
+        ]
+        newBolts.push({ path: main, forks })
+      }
+      // 2 bolts from God (top-right → center)
+      for (let i = 0; i < 2; i++) {
+        const main = generateBolt(82, 18, 52 + Math.random() * 4, 46 + Math.random() * 4)
+        const forks = [
+          generateFork(main, 0.3 + Math.random() * 0.2, 55, 42),
+          generateFork(main, 0.6 + Math.random() * 0.2, 50, 48),
+        ]
+        newBolts.push({ path: main, forks })
+      }
+      setBolts(newBolts)
+    }
+    generate()
+    const interval = setInterval(() => {
+      generate()
+      setTick(t => t + 1)
+    }, 200) // Regenerate every 200ms for crackling
+    return () => clearInterval(interval)
+  }, [visible])
+
+  if (!visible || bolts.length === 0) return null
 
   return (
     <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }} viewBox="0 0 100 100" preserveAspectRatio="none">
       <defs>
         <filter id="glow">
-          <feGaussianBlur stdDeviation="0.8" result="blur" />
+          <feGaussianBlur stdDeviation="0.6" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        <filter id="glowBright">
+          <feGaussianBlur stdDeviation="1.2" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="blur" />
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
-      {bolts.map((d, i) => (
-        <motion.path
-          key={i}
-          d={d}
-          fill="none"
-          stroke={i === 0 ? '#ffffff' : '#60a5fa'}
-          strokeWidth={i === 0 ? 0.4 : 0.2}
-          strokeLinecap="round"
-          filter="url(#glow)"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 1, 0],
-            opacity: [0, 1, 0.8, 0],
-          }}
-          transition={{
-            duration: 0.6,
-            delay: i * 0.08,
-            repeat: Infinity,
-            repeatDelay: 0.8 + i * 0.15,
-            ease: 'easeOut',
-          }}
-        />
+      {bolts.map((bolt, i) => (
+        <g key={`${tick}-${i}`}>
+          {/* Main bolt — bright core */}
+          <motion.path
+            d={bolt.path}
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth={0.35}
+            strokeLinecap="round"
+            filter="url(#glowBright)"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.9, 0.6, 0] }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
+          />
+          {/* Main bolt — blue aura */}
+          <motion.path
+            d={bolt.path}
+            fill="none"
+            stroke="#60a5fa"
+            strokeWidth={0.2}
+            strokeLinecap="round"
+            filter="url(#glow)"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.7, 0.4, 0] }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+          />
+          {/* Forks — thinner branches */}
+          {bolt.forks.map((fork, j) => (
+            <motion.path
+              key={j}
+              d={fork}
+              fill="none"
+              stroke="#93c5fd"
+              strokeWidth={0.15}
+              strokeLinecap="round"
+              filter="url(#glow)"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.5, 0.2, 0] }}
+              transition={{ duration: 0.12, delay: 0.03, ease: 'easeOut' }}
+            />
+          ))}
+        </g>
       ))}
-      {/* Core bright flash */}
-      <motion.path
-        d={bolts[0]}
-        fill="none"
-        stroke="#e0f0ff"
-        strokeWidth={0.6}
-        strokeLinecap="round"
-        filter="url(#glow)"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 1.2 }}
-      />
     </svg>
   )
 }
