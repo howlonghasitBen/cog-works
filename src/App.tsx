@@ -226,17 +226,18 @@ export default function App() {
           </div>
         </div>
 
-        {/* Cog layer — scrolls slower, stays visible longer */}
+        {/* Cog layer — scrolls slower, stays visible longer, above content */}
         <div
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
           style={{
             transform: activePage ? `translateY(${cogTranslate}px)` : 'none',
             willChange: 'transform',
+            zIndex: 20,
           }}
         >
           {/* Clickable cog — returns to nav when in content mode */}
           <div
-            className={activePage ? 'cursor-pointer' : ''}
+            className={`pointer-events-auto ${activePage ? 'cursor-pointer' : ''}`}
             onClick={activePage ? handleBackToTop : undefined}
             title={activePage ? 'Back to navigation' : undefined}
           >
