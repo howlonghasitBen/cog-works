@@ -183,11 +183,11 @@ export default function GearHero({
 
   return (
     <section
-      className={`relative w-full h-screen overflow-hidden ${className}`}
+      className={`relative w-full h-screen ${className}`}
     >
-      {/* Background layer — scrolls away naturally */}
+      {/* Background layer — scrolls away naturally, clipped to section bounds */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 overflow-hidden"
         style={{
           background: backgroundImage
             ? `url(${backgroundImage}) center/cover no-repeat`
