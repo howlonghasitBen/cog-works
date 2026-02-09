@@ -103,55 +103,50 @@ const heroItems: GearNavItem[] = [
 
 export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
-  const [isTransitioning, setIsTransitioning] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const handleNavigate = useCallback((_parent: GearNavItem, subItem: GearSubItem, _pi: number, _si: number) => {
-    setIsTransitioning(true)
-    // Start the scroll/parallax transition
-    setTimeout(() => {
-      setActivePage({ parent: _parent, sub: subItem })
-      // Let the animation play
-      setTimeout(() => setIsTransitioning(false), 600)
-    }, 100)
+    setActivePage({ parent: _parent, sub: subItem })
   }, [])
 
   const handleBackToTop = () => {
-    setIsTransitioning(true)
-    setTimeout(() => {
-      setActivePage(null)
-      setTimeout(() => setIsTransitioning(false), 600)
-    }, 100)
+    setActivePage(null)
   }
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-gray-950 overflow-hidden">
-      {/* Hero section — slides up with parallax when navigating */}
+      {/* Hero section — parallax: moves up slower than content, stays partially visible */}
       <motion.div
-        className="relative w-full"
+        className={`relative w-full ${activePage ? 'z-50' : 'z-10'}`}
         animate={{
-          y: activePage ? '-67vh' : '0vh',  // Move up so 1/3 of bottom (33vh) is visible at top
+          y: activePage ? '-55vh' : '0vh',  // Parallax: moves less than full page
         }}
         transition={{
           duration: 0.7,
           ease: [0.4, 0, 0.2, 1],
         }}
       >
-        <GearHero
-          title="COG WORKS"
-          subtitle="Engineering the Future"
-          items={heroItems}
-          onNavigate={handleNavigate}
-        />
+        <div
+          className={activePage ? 'cursor-pointer' : ''}
+          onClick={activePage ? handleBackToTop : undefined}
+          title={activePage ? 'Back to navigation' : undefined}
+        >
+          <GearHero
+            title="COG WORKS"
+            subtitle="Engineering the Future"
+            items={heroItems}
+            onNavigate={handleNavigate}
+          />
+        </div>
       </motion.div>
 
-      {/* Content page — slides up from below */}
+      {/* Content page — slides up from below, sits under the cog peek */}
       <AnimatePresence mode="wait">
         {activePage && (
           <motion.div
             key={activePage.sub.id || activePage.sub.label}
-            className="absolute top-0 left-0 w-full min-h-screen"
-            style={{ paddingTop: '33vh' }}  // Start below the visible 1/3 of cog
+            className="absolute top-0 left-0 w-full min-h-screen z-20"
+            style={{ paddingTop: '45vh' }}  // Content starts below the cog peek zone
             initial={{ y: '100vh', opacity: 0 }}
             animate={{
               y: 0,
@@ -164,55 +159,22 @@ export default function App() {
               transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
             }}
           >
-            {/* Dark overlay under the cog peek area */}
+            {/* Gradient fade from cog peek into content */}
             <div
               className="absolute top-0 left-0 w-full pointer-events-none"
               style={{
-                height: '33vh',
-                background: 'linear-gradient(to bottom, transparent, #030712)',
+                height: '45vh',
+                background: 'linear-gradient(to bottom, transparent 60%, #030712)',
               }}
             />
 
             {/* Content */}
-            <div className="relative bg-gray-950 min-h-[67vh] pb-24">
+            <div className="relative bg-gray-950 min-h-screen pb-24">
               <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Footer — up arrow to return to cog nav */}
-      <AnimatePresence>
-        {activePage && !isTransitioning && (
-          <motion.button
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-12 h-12 flex items-center justify-center bg-gray-900 border border-gray-700 text-gray-400 cursor-pointer hover:border-amber-500 hover:text-amber-400 transition-colors rounded-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ delay: 0.5 }}
-            onClick={handleBackToTop}
-            aria-label="Back to navigation"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 15l-6-6-6 6" />
-            </svg>
-          </motion.button>
-        )}
-      </AnimatePresence>
-
-      {/* Footer bar — only on hero */}
-      {!activePage && (
-        <div className="fixed bottom-0 left-0 w-full flex justify-center py-4 z-40">
-          <button
-            className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-400 transition-colors cursor-pointer bg-transparent border-none"
-            aria-label="Scroll down"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-        </div>
-      )}
     </div>
   )
 }
