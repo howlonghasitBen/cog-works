@@ -198,7 +198,7 @@ export default function App() {
       ticking = true
       requestAnimationFrame(() => {
         // Auto-return to nav if user scrolls near hero top (but not during initial scroll-down)
-        if (activePage && !scrollingToContent.current && el.scrollTop < window.innerHeight * 0.3) {
+        if (activePage && !scrollingToContent.current && el.scrollTop < window.innerHeight * 0.05) {
           el.scrollTo({ top: 0 })
           setActivePage(null)
           ticking = false
