@@ -18,7 +18,7 @@ function generateBolt(
     const baseX = startX + (endX - startX) * t
     const baseY = startY + (endY - startY) * t
     // Random perpendicular offset — bigger in middle, smaller at ends
-    const spread = Math.sin(t * Math.PI) * 6
+    const spread = Math.sin(t * Math.PI) * 12
     const offsetX = (Math.random() - 0.5) * spread
     const offsetY = (Math.random() - 0.5) * spread
     points.push([baseX + offsetX, baseY + offsetY])
@@ -40,13 +40,13 @@ function generateFork(
   const idx = Math.floor(forkAt * (coords.length - 1))
   const [fx, fy] = coords[idx]
   // Fork toward endX/endY with fewer segments
-  return generateBolt(fx, fy, endX + (Math.random() - 0.5) * 8, endY + (Math.random() - 0.5) * 8, 4)
+  return generateBolt(fx, fy, endX + (Math.random() - 0.5) * 15, endY + (Math.random() - 0.5) * 15, 5)
 }
 
 /** Lightning bolts between Adam and God Pepe fingers */
 function LightningBolt({ visible }: { visible: boolean }) {
-  // Adam's fingertip: bottom-left (~22%, 72%)
-  // God's fingertip: top-right (~82%, 18%)
+  // Adam's fingertip: bottom-left (~20%, 68%)
+  // God's fingertip: top-right (~72%, 28%) — his outstretched finger, not chest
   // Both aim toward center (~50%, 48%)
   const [bolts, setBolts] = useState<{ path: string; forks: string[] }[]>([])
   const [tick, setTick] = useState(0)
@@ -58,7 +58,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
       const newBolts = []
       // 2 bolts from Adam (bottom-left → center)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(22, 72, 48 + Math.random() * 4, 46 + Math.random() * 4)
+        const main = generateBolt(20, 68, 48 + Math.random() * 4, 46 + Math.random() * 4)
         const forks = [
           generateFork(main, 0.3 + Math.random() * 0.2, 45, 50),
           generateFork(main, 0.6 + Math.random() * 0.2, 50, 45),
@@ -67,7 +67,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
       }
       // 2 bolts from God (top-right → center)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(82, 18, 52 + Math.random() * 4, 46 + Math.random() * 4)
+        const main = generateBolt(72, 28, 52 + Math.random() * 4, 46 + Math.random() * 4)
         const forks = [
           generateFork(main, 0.3 + Math.random() * 0.2, 55, 42),
           generateFork(main, 0.6 + Math.random() * 0.2, 50, 48),
@@ -80,7 +80,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
     const interval = setInterval(() => {
       generate()
       setTick(t => t + 1)
-    }, 200) // Regenerate every 200ms for crackling
+    }, 500) // Regenerate every 500ms for slower crackling
     return () => clearInterval(interval)
   }, [visible])
 
@@ -118,20 +118,20 @@ function LightningBolt({ visible }: { visible: boolean }) {
             strokeLinecap="round"
             filter="url(#glowBright)"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.9, 0.6, 0] }}
-            transition={{ duration: 0.15, ease: 'easeOut' }}
+            animate={{ opacity: [0, 0.9, 0.7, 0.3, 0] }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
           />
           {/* Main bolt — blue aura */}
           <motion.path
             d={bolt.path}
             fill="none"
             stroke="#60a5fa"
-            strokeWidth={0.2}
+            strokeWidth={0.25}
             strokeLinecap="round"
             filter="url(#glow)"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.7, 0.4, 0] }}
-            transition={{ duration: 0.18, ease: 'easeOut' }}
+            animate={{ opacity: [0, 0.7, 0.5, 0.2, 0] }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
           />
           {/* Forks — thinner branches */}
           {bolt.forks.map((fork, j) => (
@@ -140,12 +140,12 @@ function LightningBolt({ visible }: { visible: boolean }) {
               d={fork}
               fill="none"
               stroke="#93c5fd"
-              strokeWidth={0.15}
+              strokeWidth={0.18}
               strokeLinecap="round"
               filter="url(#glow)"
               initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.5, 0.2, 0] }}
-              transition={{ duration: 0.12, delay: 0.03, ease: 'easeOut' }}
+              animate={{ opacity: [0, 0.6, 0.3, 0] }}
+              transition={{ duration: 0.35, delay: 0.05, ease: 'easeOut' }}
             />
           ))}
         </g>
