@@ -1,10 +1,10 @@
 /** Cog Works — Component Playground
  *
- * Full-page gear navigation with parallax scroll transitions.
- * Clicking a sub-cog scrolls the background down with parallax on the main cog,
- * leaving 1/3 of the bottom visible at the top of the content screen.
+ * Full-page gear navigation with true scroll-driven parallax.
+ * Background scrolls at 1x speed (normal), cog assembly at 0.4x (slower).
+ * When background is fully off-screen, cog remains peeking at the top.
  */
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import GearHero from './components/GearHero'
 import type { GearNavItem, GearSubItem } from './components/GearHero'
@@ -26,7 +26,7 @@ function ContentPage({ parent, sub }: { parent: string; sub: string }) {
       </p>
 
       <p className="text-gray-400 leading-relaxed mb-8">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -46,11 +46,11 @@ function ContentPage({ parent, sub }: { parent: string; sub: string }) {
       </div>
 
       <p className="text-gray-400 leading-relaxed mb-8">
-        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
       </p>
 
       <p className="text-gray-400 leading-relaxed mb-8">
-        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
       </p>
 
       <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
@@ -58,23 +58,23 @@ function ContentPage({ parent, sub }: { parent: string; sub: string }) {
       </h3>
 
       <p className="text-gray-400 leading-relaxed mb-8">
-        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
       </p>
 
       <p className="text-gray-400 leading-relaxed mb-8">
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
 
       <p className="text-gray-400 leading-relaxed mb-8">
-        Est enim felis euismod diam, nec tristique elit velit vitae erat. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+        Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
       </p>
 
       <p className="text-gray-400 leading-relaxed mb-8">
-        Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+        Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ut facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
       </p>
 
       <p className="text-gray-400 leading-relaxed">
-        Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ut facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
       </p>
     </div>
   )
@@ -137,60 +137,132 @@ const heroItems: GearNavItem[] = [
   },
 ]
 
+// Parallax speeds: background scrolls at 1x, cog at 0.35x
+const BG_SPEED = 1.0
+const COG_SPEED = 0.35
+
 export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const contentRef = useRef<HTMLDivElement>(null)
+  const [scrollY, setScrollY] = useState(0)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   const handleNavigate = useCallback((_parent: GearNavItem, subItem: GearSubItem, _pi: number, _si: number) => {
     setActivePage({ parent: _parent, sub: subItem })
-    // Scroll down so hero bg scrolls off but sticky cog remains
+    // Auto-scroll to content after a beat
     requestAnimationFrame(() => {
-      setTimeout(() => {
-        contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 100)
+      scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
     })
   }, [])
 
   const handleBackToTop = () => {
     setActivePage(null)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  // Track scroll position for parallax transforms
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const onScroll = () => setScrollY(el.scrollTop)
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Reset scroll when leaving content
+  useEffect(() => {
+    if (!activePage) {
+      scrollRef.current?.scrollTo({ top: 0 })
+      setScrollY(0)
+    }
+  }, [activePage])
+
+  // Derived parallax transforms
+  const bgTranslate = -(scrollY * BG_SPEED)   // Background moves up at full speed
+  const cogTranslate = -(scrollY * COG_SPEED)  // Cog moves up slower — stays visible longer
+
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-gray-950">
-      {/* Hero — background scrolls off, cog assembly is sticky inside */}
-      <div
-        className={activePage ? 'cursor-pointer' : ''}
-        onClick={activePage ? handleBackToTop : undefined}
-        title={activePage ? 'Back to navigation' : undefined}
-      >
-        <GearHero
-          title="COG WORKS"
-          subtitle="Engineering the Future"
-          items={heroItems}
-          onNavigate={handleNavigate}
-        />
+    <div
+      ref={scrollRef}
+      className="h-screen bg-gray-950"
+      style={{ overflowY: activePage ? 'auto' : 'hidden' }}
+    >
+      {/* Fixed hero layers — positioned behind scrollable content */}
+      <div className="fixed inset-0 z-0">
+        {/* Background layer — scrolls away fast */}
+        <div
+          className="absolute inset-0"
+          style={{
+            transform: activePage ? `translateY(${bgTranslate}px)` : 'none',
+            willChange: 'transform',
+          }}
+        >
+          <div
+            className="w-full h-screen"
+            style={{
+              background: 'linear-gradient(135deg, #0f1923 0%, #1a2a3a 30%, #0d1b2a 70%, #0a1628 100%)',
+            }}
+          >
+            <div className="absolute inset-0 bg-black/30" />
+
+            {/* Light streaks */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-30"
+                style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)' }} />
+              <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-20"
+                style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)' }} />
+              <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-30"
+                style={{ background: 'linear-gradient(270deg, #f97316, transparent)' }} />
+              <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15"
+                style={{ background: 'linear-gradient(270deg, #fb923c, transparent)' }} />
+            </div>
+
+            {/* Glow rings */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ width: 520, height: 520 }}>
+              <div className="absolute inset-0 rounded-full opacity-15"
+                style={{ border: '1px solid #3b82f6', animation: 'gearPulse 4s ease-in-out infinite' }} />
+              <div className="absolute rounded-full opacity-10"
+                style={{ inset: -35, border: '1px solid #60a5fa', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
+            </div>
+          </div>
+        </div>
+
+        {/* Cog layer — scrolls slower, stays visible longer */}
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{
+            transform: activePage ? `translateY(${cogTranslate}px)` : 'none',
+            willChange: 'transform',
+          }}
+        >
+          {/* Clickable cog — returns to nav when in content mode */}
+          <div
+            className={activePage ? 'cursor-pointer' : ''}
+            onClick={activePage ? handleBackToTop : undefined}
+            title={activePage ? 'Back to navigation' : undefined}
+          >
+            <GearHero
+              title="COG WORKS"
+              subtitle="Engineering the Future"
+              items={heroItems}
+              onNavigate={handleNavigate}
+              transparentBg
+            />
+          </div>
+        </div>
       </div>
 
-      {/* Content page — flows naturally after hero, scrolls over the background
-           while the sticky cog assembly stays visible at top */}
+      {/* Spacer — hero occupies the first screen height */}
+      <div className="relative h-screen z-0" />
+
+      {/* Content page — scrollable, positioned after the hero spacer */}
       <AnimatePresence mode="wait">
         {activePage && (
           <motion.div
             key={activePage.sub.id || activePage.sub.label}
-            ref={contentRef}
-            className="relative z-20 bg-gray-950"
+            className="relative z-10 bg-gray-950"
             initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
-            }}
-            exit={{
-              opacity: 0,
-              transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
-            }}
+            animate={{ opacity: 1, transition: { duration: 0.3 } }}
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
             <div className="relative pb-24">
               <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
@@ -198,6 +270,13 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <style>{`
+        @keyframes gearPulse {
+          0%, 100% { opacity: 0.15; transform: scale(1); }
+          50% { opacity: 0.3; transform: scale(1.05); }
+        }
+      `}</style>
     </div>
   )
 }

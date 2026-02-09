@@ -93,8 +93,9 @@ export default function GearHero({
   cogSrc = '/images/nav_cog.svg',
   innardSrc = '/images/nav_cog_innard.png',
   className = '',
+  transparentBg = false,
   onNavigate,
-}: GearHeroProps) {
+}: GearHeroProps & { transparentBg?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [centerRotation, setCenterRotation] = useState(0)
   const [satRotations, setSatRotations] = useState<number[]>(() => items.map(() => 0))
@@ -183,49 +184,45 @@ export default function GearHero({
 
   return (
     <section
-      className={`relative w-full h-screen ${className}`}
+      className={`relative w-full h-screen flex items-center justify-center overflow-hidden ${className}`}
+      style={transparentBg ? { background: 'transparent' } : {
+        background: backgroundImage
+          ? `url(${backgroundImage}) center/cover no-repeat`
+          : 'linear-gradient(135deg, #0f1923 0%, #1a2a3a 30%, #0d1b2a 70%, #0a1628 100%)',
+      }}
     >
-      {/* Background layer — scrolls away naturally, clipped to section bounds */}
+      {!transparentBg && (
+        <>
+          <div className="absolute inset-0 bg-black/30" />
+
+          {/* Light streaks */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-30"
+              style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)' }} />
+            <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-20"
+              style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)' }} />
+            <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-30"
+              style={{ background: 'linear-gradient(270deg, #f97316, transparent)' }} />
+            <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15"
+              style={{ background: 'linear-gradient(270deg, #fb923c, transparent)' }} />
+          </div>
+
+          {/* Glow rings */}
+          <div className="absolute pointer-events-none" style={{ width: 520, height: 520 }}>
+            <div className="absolute inset-0 rounded-full opacity-15"
+              style={{ border: '1px solid #3b82f6', animation: 'gearPulse 4s ease-in-out infinite' }} />
+            <div className="absolute rounded-full opacity-10"
+              style={{ inset: -35, border: '1px solid #60a5fa', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
+          </div>
+        </>
+      )}
+
+      {/* Gear assembly */}
       <div
-        className="absolute inset-0 overflow-hidden"
-        style={{
-          background: backgroundImage
-            ? `url(${backgroundImage}) center/cover no-repeat`
-            : 'linear-gradient(135deg, #0f1923 0%, #1a2a3a 30%, #0d1b2a 70%, #0a1628 100%)',
-        }}
+        ref={containerRef}
+        className="relative z-10"
+        style={{ width: radius * 2 + 280, height: radius * 2 + 280 }}
       >
-        <div className="absolute inset-0 bg-black/30" />
-
-        {/* Light streaks */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-30"
-            style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)' }} />
-          <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-20"
-            style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)' }} />
-          <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-30"
-            style={{ background: 'linear-gradient(270deg, #f97316, transparent)' }} />
-          <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15"
-            style={{ background: 'linear-gradient(270deg, #fb923c, transparent)' }} />
-        </div>
-
-        {/* Glow rings */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ width: 520, height: 520 }}>
-          <div className="absolute inset-0 rounded-full opacity-15"
-            style={{ border: '1px solid #3b82f6', animation: 'gearPulse 4s ease-in-out infinite' }} />
-          <div className="absolute rounded-full opacity-10"
-            style={{ inset: -35, border: '1px solid #60a5fa', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
-        </div>
-      </div>
-
-      {/* Gear assembly — sticky, stays at top when scrolled */}
-      <div
-        className="sticky top-0 w-full h-screen flex items-center justify-center z-10"
-      >
-        <div
-          ref={containerRef}
-          className="relative"
-          style={{ width: radius * 2 + 280, height: radius * 2 + 280 }}
-        >
         {/* Center gear — highest z-index */}
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30"
@@ -359,7 +356,6 @@ export default function GearHero({
             )
           })}
         </AnimatePresence>
-        </div>
       </div>
 
       <style>{`
