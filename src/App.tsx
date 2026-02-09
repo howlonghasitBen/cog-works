@@ -268,16 +268,14 @@ export default function App() {
           willChange: 'transform, opacity',
         }}
       >
-        <div className="pointer-events-auto">
-          <GearHero
-            title="COG WORKS"
-            subtitle="Engineering the Future"
-            items={heroItems}
-            onNavigate={handleNavigate}
-            transparentBg
-            onCenterClick={activePage ? handleBackToTop : undefined}
-          />
-        </div>
+        <GearHero
+          title="COG WORKS"
+          subtitle="Engineering the Future"
+          items={heroItems}
+          onNavigate={handleNavigate}
+          transparentBg
+          onCenterClick={activePage ? handleBackToTop : undefined}
+        />
       </div>
 
       {/* Spacer — hero occupies the first screen height, pointer-events pass through to fixed cog */}
