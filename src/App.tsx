@@ -219,6 +219,20 @@ export default function App() {
               <div className="absolute inset-0 rounded-full opacity-15" style={{ border: '1px solid #3b82f6', animation: 'gearPulse 4s ease-in-out infinite' }} />
               <div className="absolute rounded-full opacity-10" style={{ inset: -35, border: '1px solid #60a5fa', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
             </div>
+
+            {/* PSC figures — bottom-left and top-right */}
+            <img
+              src="/images/pscLeft.png"
+              alt=""
+              className="absolute bottom-0 left-0 pointer-events-none"
+              style={{ height: '55%', objectFit: 'contain', objectPosition: 'bottom left' }}
+            />
+            <img
+              src="/images/pscRight.png"
+              alt=""
+              className="absolute top-0 right-0 pointer-events-none"
+              style={{ height: '55%', objectFit: 'contain', objectPosition: 'top right' }}
+            />
           </div>
         </div>
       </div>
