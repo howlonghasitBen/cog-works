@@ -141,61 +141,58 @@ export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
+  const contentRef = useRef<HTMLDivElement>(null)
+
   const handleNavigate = useCallback((_parent: GearNavItem, subItem: GearSubItem, _pi: number, _si: number) => {
     setActivePage({ parent: _parent, sub: subItem })
+    // Scroll down so hero bg scrolls off but sticky cog remains
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    })
   }, [])
 
   const handleBackToTop = () => {
     setActivePage(null)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-gray-950">
-      {/* Hero section — sticky at top, parallax offset when content active */}
-      <motion.div
-        className={`sticky top-0 w-full ${activePage ? 'z-50' : 'z-10'}`}
-        animate={{
-          y: activePage ? '-60vh' : '0vh',
-        }}
-        transition={{
-          duration: 0.7,
-          ease: [0.4, 0, 0.2, 1],
-        }}
+      {/* Hero — background scrolls off, cog assembly is sticky inside */}
+      <div
+        className={activePage ? 'cursor-pointer' : ''}
+        onClick={activePage ? handleBackToTop : undefined}
+        title={activePage ? 'Back to navigation' : undefined}
       >
-        <div
-          className={activePage ? 'cursor-pointer' : ''}
-          onClick={activePage ? handleBackToTop : undefined}
-          title={activePage ? 'Back to navigation' : undefined}
-        >
-          <GearHero
-            title="COG WORKS"
-            subtitle="Engineering the Future"
-            items={heroItems}
-            onNavigate={handleNavigate}
-          />
-        </div>
-      </motion.div>
+        <GearHero
+          title="COG WORKS"
+          subtitle="Engineering the Future"
+          items={heroItems}
+          onNavigate={handleNavigate}
+        />
+      </div>
 
-      {/* Content page — pulled up tight against the cog peek */}
+      {/* Content page — flows naturally after hero, scrolls over the background
+           while the sticky cog assembly stays visible at top */}
       <AnimatePresence mode="wait">
         {activePage && (
           <motion.div
             key={activePage.sub.id || activePage.sub.label}
-            className="relative z-20"
-            style={{ marginTop: '-60vh' }}  // Pull up to eliminate gap (matches parallax offset)
-            initial={{ opacity: 0, y: 60 }}
+            ref={contentRef}
+            className="relative z-20 bg-gray-950"
+            initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
-              y: 0,
-              transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1], delay: 0.2 },
+              transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
             }}
             exit={{
               opacity: 0,
-              y: 60,
               transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
             }}
           >
-            <div className="relative bg-gray-950 pb-24">
+            <div className="relative pb-24">
               <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
             </div>
           </motion.div>
