@@ -159,20 +159,14 @@ export default function App() {
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // Track scroll position for parallax transforms + clamp when content active
+  // Track scroll position for parallax transforms
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
-    const onScroll = () => {
-      // Prevent scrolling back above the content page
-      if (activePage && el.scrollTop < window.innerHeight) {
-        el.scrollTop = window.innerHeight
-      }
-      setScrollY(el.scrollTop)
-    }
-    el.addEventListener('scroll', onScroll, { passive: false })
+    const onScroll = () => setScrollY(el.scrollTop)
+    el.addEventListener('scroll', onScroll, { passive: true })
     return () => el.removeEventListener('scroll', onScroll)
-  }, [activePage])
+  }, [])
 
   // Reset scroll when leaving content
   useEffect(() => {
@@ -232,18 +226,17 @@ export default function App() {
           </div>
         </div>
 
-        {/* Cog layer — scrolls slower, stays visible longer, above content for nav */}
+        {/* Cog layer — scrolls slower, stays visible longer */}
         <div
-          className="absolute inset-0 flex items-center justify-center z-30"
+          className="absolute inset-0 flex items-center justify-center"
           style={{
             transform: activePage ? `translateY(${cogTranslate}px)` : 'none',
             willChange: 'transform',
-            pointerEvents: 'none',
           }}
         >
           {/* Clickable cog — returns to nav when in content mode */}
           <div
-            className={activePage ? 'cursor-pointer pointer-events-auto' : 'pointer-events-auto'}
+            className={activePage ? 'cursor-pointer' : ''}
             onClick={activePage ? handleBackToTop : undefined}
             title={activePage ? 'Back to navigation' : undefined}
           >
