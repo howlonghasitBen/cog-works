@@ -8,3 +8,6 @@ export type { GearHeroProps, GearNavItem } from './GearHero'
 export type { CogMenuProps, CogMenuItem } from './CogMenu'
 export type { CogSidebarProps, SidebarSection } from './CogSidebar'
 export type { CogDropdownProps, CogDropdownItem } from './CogDropdown'
+
+export { default as CogDonut } from './CogDonut'
+export type { CogDonutProps, CogDonutSegment } from './CogDonut'

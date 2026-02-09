@@ -7,6 +7,7 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import GearHero from './components/GearHero'
 import type { GearNavItem, GearSubItem } from './components/GearHero'
+import StakingDashboard from './pages/StakingDashboard'
 
 // ─── Content Page ───────────────────────────────────────────────
 function ContentPage({ parent, sub }: { parent: string; sub: string }) {
@@ -68,6 +69,9 @@ const heroItems: GearNavItem[] = [
     { id: 'latest', label: 'Latest', icon: '🆕' },
     { id: 'guides', label: 'Guides', icon: '📚' },
     { id: 'videos', label: 'Videos', icon: '🎬' },
+  ]},
+  { label: 'Dashboard', icon: '📊', subItems: [
+    { id: 'staking', label: 'Staking', icon: '🔄' },
   ]},
   { label: 'Contact', icon: '✉️', subItems: [
     { id: 'email', label: 'Email', icon: '📧' },
@@ -247,7 +251,11 @@ export default function App() {
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
             <div className="relative pb-24">
-              <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
+              {activePage.sub.id === 'staking' ? (
+                <StakingDashboard />
+              ) : (
+                <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
+              )}
             </div>
           </motion.div>
         )}
