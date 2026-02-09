@@ -186,15 +186,16 @@ export default function App() {
   // Derived parallax transforms
   const bgTranslate = -(scrollY * BG_SPEED)
 
-  // Cog position: interpolate from viewport center to top
-  // At scrollY=0, cog is at 50vh (center). At scrollY=innerHeight, cog is at top (-80px peek).
-  // progress: 0 (hero) → 1 (content)
+  // Cog parallax: GearHero is h-screen with cog centered internally (flex items-center justify-center)
+  // At scrollY=0: GearHero at top:0 → cog naturally centered in viewport ✓
+  // At scrollY=100vh: GearHero needs to be offset so cog sits at top of screen
+  // The cog center is at 50vh within the GearHero. We want it at ~70px from top of viewport.
+  // So GearHero top needs to be -(50vh - 70px) = about -50vh + 70px
   const vh = typeof window !== 'undefined' ? window.innerHeight : 900
   const progress = Math.min(scrollY / vh, 1)
-  // Center position = 50vh - half cog height. Top position = -80px (peek from top).
-  const cogCenterY = vh / 2 - 150  // 150 = half of 300px cog
-  const cogTopY = -80
-  const cogY = cogCenterY + (cogTopY - cogCenterY) * progress
+  const cogStartY = 0                        // GearHero at top:0, cog centered
+  const cogEndY = -(vh * 0.5 - 70)           // Shift up so cog center is 70px from top
+  const cogY = cogStartY + (cogEndY - cogStartY) * progress
   // Opacity: fully visible at center, semi-transparent at top
   const cogOpacity = 1 - (progress * 0.5)  // 1.0 → 0.5
 
@@ -244,44 +245,29 @@ export default function App() {
           </div>
         </div>
 
-        {/* Cog layer — single cog, parallax-driven from center → top */}
+        {/* Cog layer — full GearHero, parallax-driven from center → top */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            top: cogY,
+            transform: `translateY(${cogY}px)`,
             zIndex: 20,
             opacity: cogOpacity,
-            willChange: 'top, opacity',
-            transition: activePage ? 'none' : 'top 0.5s ease-out, opacity 0.5s ease-out',
+            willChange: 'transform, opacity',
           }}
         >
-          {/* Full GearHero when at hero position, simplified cog when scrolled */}
-          {progress < 0.95 ? (
-            <div className="pointer-events-auto">
-              <GearHero
-                title="COG WORKS"
-                subtitle="Engineering the Future"
-                items={heroItems}
-                onNavigate={handleNavigate}
-                transparentBg
-              />
-            </div>
-          ) : (
-            <div
-              className="pointer-events-auto cursor-pointer relative"
-              onClick={handleBackToTop}
-              title="Back to navigation"
-              style={{ width: 300, height: 300 }}
-            >
-              <img src="/images/nav_cog.svg" alt="Back to menu" style={{ width: 300, height: 300 }} />
-              <img
-                src="/images/nav_cog_innard.png"
-                alt=""
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                style={{ width: 300 * 0.72, height: 300 * 0.72 }}
-              />
-            </div>
-          )}
+          <div
+            className={`pointer-events-auto ${activePage ? 'cursor-pointer' : ''}`}
+            onClick={activePage ? handleBackToTop : undefined}
+            title={activePage ? 'Back to navigation' : undefined}
+          >
+            <GearHero
+              title="COG WORKS"
+              subtitle="Engineering the Future"
+              items={heroItems}
+              onNavigate={handleNavigate}
+              transparentBg
+            />
+          </div>
         </div>
       </div>
 
