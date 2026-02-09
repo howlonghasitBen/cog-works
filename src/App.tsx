@@ -45,8 +45,8 @@ function generateFork(
 
 /** Lightning bolts between Adam and God Pepe fingers */
 function LightningBolt({ visible }: { visible: boolean }) {
-  // Adam's fingertip: bottom-left (~20%, 68%)
-  // God's fingertip: top-right (~72%, 28%) — his outstretched finger, not chest
+  // Adam's fingertip: bottom-left (~20%, 72%)
+  // God's fingertip: top-right (~68%, 28%) — his outstretched finger
   // Both aim toward center (~50%, 48%)
   const [bolts, setBolts] = useState<{ path: string; forks: string[] }[]>([])
   const [tick, setTick] = useState(0)
@@ -58,7 +58,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
       const newBolts = []
       // 2 bolts from Adam (bottom-left → center)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(20, 68, 48 + Math.random() * 4, 46 + Math.random() * 4)
+        const main = generateBolt(20, 72, 48 + Math.random() * 4, 48 + Math.random() * 4)
         const forks = [
           generateFork(main, 0.3 + Math.random() * 0.2, 45, 50),
           generateFork(main, 0.6 + Math.random() * 0.2, 50, 45),
@@ -67,7 +67,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
       }
       // 2 bolts from God (top-right → center)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(72, 28, 52 + Math.random() * 4, 46 + Math.random() * 4)
+        const main = generateBolt(68, 28, 52 + Math.random() * 4, 48 + Math.random() * 4)
         const forks = [
           generateFork(main, 0.3 + Math.random() * 0.2, 55, 42),
           generateFork(main, 0.6 + Math.random() * 0.2, 50, 48),
@@ -80,7 +80,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
     const interval = setInterval(() => {
       generate()
       setTick(t => t + 1)
-    }, 500) // Regenerate every 500ms for slower crackling
+    }, 1200) // Regenerate every 1.2s — watch the arcs draw
     return () => clearInterval(interval)
   }, [visible])
 
@@ -109,7 +109,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
       </defs>
       {bolts.map((bolt, i) => (
         <g key={`${tick}-${i}`}>
-          {/* Main bolt — bright core */}
+          {/* Main bolt — bright core, draws from origin to center */}
           <motion.path
             d={bolt.path}
             fill="none"
@@ -117,11 +117,11 @@ function LightningBolt({ visible }: { visible: boolean }) {
             strokeWidth={0.35}
             strokeLinecap="round"
             filter="url(#glowBright)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.9, 0.7, 0.3, 0] }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: [0, 1], opacity: [0.2, 1, 0.8, 0.3, 0] }}
+            transition={{ duration: 1.0, ease: 'easeInOut' }}
           />
-          {/* Main bolt — blue aura */}
+          {/* Main bolt — blue aura, slightly behind */}
           <motion.path
             d={bolt.path}
             fill="none"
@@ -129,11 +129,11 @@ function LightningBolt({ visible }: { visible: boolean }) {
             strokeWidth={0.25}
             strokeLinecap="round"
             filter="url(#glow)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.7, 0.5, 0.2, 0] }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: [0, 1], opacity: [0.1, 0.7, 0.5, 0.2, 0] }}
+            transition={{ duration: 1.1, ease: 'easeInOut' }}
           />
-          {/* Forks — thinner branches */}
+          {/* Forks — branch out partway through */}
           {bolt.forks.map((fork, j) => (
             <motion.path
               key={j}
@@ -143,9 +143,9 @@ function LightningBolt({ visible }: { visible: boolean }) {
               strokeWidth={0.18}
               strokeLinecap="round"
               filter="url(#glow)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.6, 0.3, 0] }}
-              transition={{ duration: 0.35, delay: 0.05, ease: 'easeOut' }}
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: [0, 1], opacity: [0, 0.6, 0.3, 0] }}
+              transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
             />
           ))}
         </g>
