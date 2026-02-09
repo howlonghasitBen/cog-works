@@ -245,29 +245,30 @@ export default function App() {
           </div>
         </div>
 
-        {/* Cog layer — full GearHero, parallax-driven from center → top */}
+      </div>
+
+      {/* Cog layer — OUTSIDE the z-0 fixed container so it stacks above content */}
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          transform: `translateY(${cogY}px)`,
+          zIndex: 20,
+          opacity: cogOpacity,
+          willChange: 'transform, opacity',
+        }}
+      >
         <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            transform: `translateY(${cogY}px)`,
-            zIndex: 20,
-            opacity: cogOpacity,
-            willChange: 'transform, opacity',
-          }}
+          className={`pointer-events-auto ${activePage ? 'cursor-pointer' : ''}`}
+          onClick={activePage ? handleBackToTop : undefined}
+          title={activePage ? 'Back to navigation' : undefined}
         >
-          <div
-            className={`pointer-events-auto ${activePage ? 'cursor-pointer' : ''}`}
-            onClick={activePage ? handleBackToTop : undefined}
-            title={activePage ? 'Back to navigation' : undefined}
-          >
-            <GearHero
-              title="COG WORKS"
-              subtitle="Engineering the Future"
-              items={heroItems}
-              onNavigate={handleNavigate}
-              transparentBg
-            />
-          </div>
+          <GearHero
+            title="COG WORKS"
+            subtitle="Engineering the Future"
+            items={heroItems}
+            onNavigate={handleNavigate}
+            transparentBg
+          />
         </div>
       </div>
 
