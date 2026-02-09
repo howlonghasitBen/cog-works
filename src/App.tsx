@@ -251,8 +251,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Spacer — hero occupies the first screen height */}
-      <div className="relative h-screen z-0" />
+      {/* Spacer — hero occupies the first screen height, pointer-events pass through to fixed cog */}
+      <div className="relative h-screen z-0 pointer-events-none" />
 
       {/* Content page — scrollable, positioned after the hero spacer */}
       <AnimatePresence mode="wait">
