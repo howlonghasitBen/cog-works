@@ -155,8 +155,9 @@ export default function App() {
   }, [])
 
   const handleBackToTop = () => {
-    setActivePage(null)
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+    // Clear active page after scroll completes
+    setTimeout(() => setActivePage(null), 700)
   }
 
   // Track scroll position for parallax transforms
@@ -176,9 +177,8 @@ export default function App() {
     }
   }, [activePage])
 
-  // Derived parallax transforms
-  const bgTranslate = -(scrollY * BG_SPEED)   // Background moves up at full speed
-  const cogTranslate = -(scrollY * COG_SPEED)  // Cog moves up slower — stays visible longer
+  // Derived parallax transform for background
+  const bgTranslate = -(scrollY * BG_SPEED)
 
   return (
     <div
@@ -226,20 +226,11 @@ export default function App() {
           </div>
         </div>
 
-        {/* Cog layer — scrolls slower, stays visible longer, above content */}
-        <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          style={{
-            transform: activePage ? `translateY(${cogTranslate}px)` : 'none',
-            willChange: 'transform',
-            zIndex: 20,
-          }}
-        >
-          {/* Clickable cog — returns to nav when in content mode */}
+        {/* Cog layer — parallax scroll (only when no content page) */}
+        {!activePage && (
           <div
-            className={`pointer-events-auto ${activePage ? 'cursor-pointer' : ''}`}
-            onClick={activePage ? handleBackToTop : undefined}
-            title={activePage ? 'Back to navigation' : undefined}
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ zIndex: 5 }}
           >
             <GearHero
               title="COG WORKS"
@@ -249,11 +240,34 @@ export default function App() {
               transparentBg
             />
           </div>
-        </div>
+        )}
       </div>
 
       {/* Spacer — hero occupies the first screen height, pointer-events pass through to fixed cog */}
       <div className="relative h-screen z-0 pointer-events-none" />
+
+      {/* Pinned nav cog — semi-transparent, fixed at top center of content */}
+      {activePage && (
+        <div
+          className="fixed top-0 left-1/2 -translate-x-1/2 z-30 cursor-pointer"
+          style={{ marginTop: -80 }}
+          onClick={handleBackToTop}
+          title="Back to navigation"
+        >
+          <img
+            src="/images/nav_cog.svg"
+            alt="Back to menu"
+            className="opacity-50 hover:opacity-80 transition-opacity"
+            style={{ width: 200, height: 200 }}
+          />
+          <img
+            src="/images/nav_cog_innard.png"
+            alt=""
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50 hover:opacity-80 transition-opacity pointer-events-none"
+            style={{ width: 200 * 0.72, height: 200 * 0.72 }}
+          />
+        </div>
+      )}
 
       {/* Content page — scrollable, positioned after the hero spacer */}
       <AnimatePresence mode="wait">
