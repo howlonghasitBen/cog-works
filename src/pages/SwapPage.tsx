@@ -236,11 +236,11 @@ function SwapArrows() {
 
 // ─── Main SwapPage ──────────────────────────────────────────────
 export default function SwapPage() {
-  const [sourceId, setSourceId] = useState<number | null>(null)
+  const [sourceIds, setSourceIds] = useState<Set<number>>(new Set())
   const [targetId, setTargetId] = useState<number | null>(null)
   const [poolSearch, setPoolSearch] = useState('')
 
-  const sourcePosition = USER_POSITIONS.find(p => p.id === sourceId)
+  const sourcePositions = USER_POSITIONS.filter(p => sourceIds.has(p.id))
   const targetPool = ALL_POOLS.find(p => p.id === targetId)
 
   const filteredPools = useMemo(() => {
@@ -249,17 +249,17 @@ export default function SwapPage() {
     return ALL_POOLS.filter(c => c.name.toLowerCase().includes(q) || c.type.toLowerCase().includes(q))
   }, [poolSearch])
 
-  const canSwap = sourceId !== null && targetId !== null && sourceId !== targetId
+  const canSwap = sourceIds.size > 0 && targetId !== null && !sourceIds.has(targetId)
 
   // Calculate swap output estimate
   const swapEstimate = useMemo(() => {
-    if (!sourcePosition || !targetPool) return null
-    // Simplified: your shares from source → WAVES → target card tokens
-    const wavesOut = Math.floor(sourcePosition.userShares * sourcePosition.priceWaves)
-    const tokensOut = Math.floor(wavesOut / targetPool.priceWaves)
+    if (sourcePositions.length === 0 || !targetPool) return null
+    // Sum all source positions
+    const totalWavesOut = sourcePositions.reduce((sum, p) => sum + Math.floor(p.userShares * p.priceWaves), 0)
+    const tokensOut = Math.floor(totalWavesOut / targetPool.priceWaves)
     const wouldSteal = tokensOut > targetPool.ownerShares
-    return { wavesOut, tokensOut, wouldSteal }
-  }, [sourcePosition, targetPool])
+    return { wavesOut: totalWavesOut, tokensOut, wouldSteal, sourceCount: sourcePositions.length }
+  }, [sourcePositions, targetPool])
 
   return (
     <div className="w-full px-4 flex items-center justify-center" style={{ marginTop: 60, minHeight: '100dvh' }}>
@@ -294,8 +294,13 @@ export default function SwapPage() {
                 userShares={pos.userShares}
                 userPercentage={pos.userPercentage}
                 isOwner={pos.isOwner}
-                selected={sourceId === pos.id}
-                onClick={() => setSourceId(sourceId === pos.id ? null : pos.id)}
+                selected={sourceIds.has(pos.id)}
+                onClick={() => setSourceIds(prev => {
+                  const next = new Set(prev)
+                  if (next.has(pos.id)) next.delete(pos.id)
+                  else next.add(pos.id)
+                  return next
+                })}
               />
             ))}
           </div>
@@ -308,25 +313,32 @@ export default function SwapPage() {
           </h2>
 
           <div className="flex-1 flex flex-col items-center justify-center">
-            {/* Source card */}
+            {/* Source cards */}
             <div className="w-full max-w-[260px]">
-              <p className="text-cyan-400 text-[10px] font-bold tracking-widest uppercase mb-2">Unstake From</p>
-              <div className={`rounded-xl border-2 p-4 transition-all ${
-                sourcePosition ? 'border-cyan-500/40 bg-gray-800/40' : 'border-dashed border-gray-700 bg-gray-800/20'
+              <p className="text-cyan-400 text-[10px] font-bold tracking-widest uppercase mb-2">
+                Unstake From {sourcePositions.length > 0 && `(${sourcePositions.length})`}
+              </p>
+              <div className={`rounded-xl border-2 p-3 transition-all space-y-2 ${
+                sourcePositions.length > 0 ? 'border-cyan-500/40 bg-gray-800/40' : 'border-dashed border-gray-700 bg-gray-800/20'
               }`}>
-                {sourcePosition ? (
-                  <div className="flex gap-3 items-center">
-                    <div className="w-16 h-20 rounded-md overflow-hidden border border-gray-600">
-                      <img src={sourcePosition.image} alt="" className="w-full h-full object-cover" />
+                {sourcePositions.length > 0 ? (
+                  sourcePositions.map(pos => (
+                    <div key={pos.id} className="flex gap-3 items-center">
+                      <div className="w-12 h-16 rounded-md overflow-hidden border border-gray-600 flex-shrink-0">
+                        <img src={pos.image} alt="" className="w-full h-full object-cover" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white text-xs font-semibold truncate">{pos.name} #{pos.number}</p>
+                        <p className="text-cyan-400 text-[10px] font-mono">{pos.userShares.toLocaleString()} shares</p>
+                      </div>
+                      <button
+                        onClick={() => setSourceIds(prev => { const n = new Set(prev); n.delete(pos.id); return n })}
+                        className="w-5 h-5 bg-gray-700 hover:bg-red-600 rounded-full flex items-center justify-center text-gray-400 hover:text-white text-[9px] cursor-pointer flex-shrink-0"
+                      >✕</button>
                     </div>
-                    <div>
-                      <p className="text-white text-sm font-semibold">{sourcePosition.name} #{sourcePosition.number}</p>
-                      <p className="text-[10px]" style={{ color: rarityColor[sourcePosition.rarity] }}>{sourcePosition.rarity}</p>
-                      <p className="text-cyan-400 text-xs font-mono mt-1">{sourcePosition.userShares.toLocaleString()} shares</p>
-                    </div>
-                  </div>
+                  ))
                 ) : (
-                  <p className="text-gray-600 text-sm text-center py-4">← Select a position</p>
+                  <p className="text-gray-600 text-sm text-center py-4">← Select positions</p>
                 )}
               </div>
             </div>
@@ -360,6 +372,12 @@ export default function SwapPage() {
             {/* Swap estimate */}
             {swapEstimate && (
               <div className="w-full max-w-[260px] mt-4 bg-gray-800/60 rounded-lg p-3 space-y-1.5 text-[11px] font-mono">
+                {swapEstimate.sourceCount > 1 && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Positions merged</span>
+                    <span className="text-cyan-400">{swapEstimate.sourceCount}</span>
+                  </div>
+                )}
                 <div className="flex justify-between">
                   <span className="text-gray-500">WAVES received</span>
                   <span className="text-cyan-400">{swapEstimate.wavesOut.toLocaleString()}</span>
