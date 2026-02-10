@@ -501,6 +501,14 @@ export default function SwapPage() {
             </span>
           </button>
 
+          {/* Buy $WAVES */}
+          <button
+            className="w-full mt-3 py-3 rounded-sm border-2 border-cyan-500/40 bg-[#121420] text-cyan-400 font-bold text-sm tracking-wider uppercase cursor-pointer transition-all duration-200 hover:border-cyan-400 hover:bg-cyan-500/10 hover:shadow-[0_2px_12px_rgba(34,211,238,0.2)]"
+            style={{ fontFamily: "'Inter Tight', sans-serif" }}
+          >
+            Buy $WAVES
+          </button>
+
           <style>{`
             @keyframes shimmer {
               0%, 100% { background-position: 0% 50%; }
