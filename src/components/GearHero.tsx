@@ -369,7 +369,7 @@ export default function GearHero({
                   type: 'spring',
                   stiffness: 200,
                   damping: 20,
-                  delay: i * 0.07,
+                  ...(activeSubmenu !== null ? {} : { delay: i * 0.07 }),
                 }}
               >
                 <div
