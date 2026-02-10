@@ -75,7 +75,7 @@ function Cog({
       <motion.img
         src={cogSrc}
         alt=""
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full z-10"
         style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }}
         animate={{ rotate: rotation }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
@@ -83,7 +83,7 @@ function Cog({
       />
       {innardSrc && (
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden z-0"
           style={{ width: innardSize, height: innardSize }}
         >
           <img
@@ -99,7 +99,7 @@ function Cog({
         </div>
       )}
       {children && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
           {children}
         </div>
       )}
