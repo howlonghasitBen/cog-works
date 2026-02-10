@@ -34,6 +34,8 @@ export interface GearNavItem {
   innardSrc?: string
   /** Slowly spin the innard image (degrees per second) */
   innardSpin?: number
+  /** Override innard size as fraction of cog size (default 0.72) */
+  innardScale?: number
 }
 
 export interface GearHeroProps {
@@ -55,17 +57,19 @@ function Cog({
   rotation = 0,
   innardSrc,
   innardSpin,
+  innardScale: innardScaleProp,
   children,
 }: {
   size: number
   cogSrc: string
   innardSrc?: string
   innardSpin?: number
+  innardScale?: number
   rotation?: number
   children?: React.ReactNode
 }) {
-  const innardScale = innardSpin ? 0.82 : 0.72
-  const innardSize = size * innardScale
+  const innardScaleVal = innardScaleProp ?? (innardSpin ? 0.82 : 0.72)
+  const innardSize = size * innardScaleVal
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <motion.img
@@ -381,7 +385,7 @@ export default function GearHero({
                     transition={{ type: 'spring', stiffness: 300 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={item.innardSrc || innardSrc} innardSpin={item.innardSpin} rotation={satRotations[i]}>
+                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={item.innardSrc || innardSrc} innardSpin={item.innardSpin} innardScale={item.innardScale} rotation={satRotations[i]}>
                       <span
                         className={`${scale < 0.7 ? 'text-[6px]' : 'text-[9px]'} font-bold text-white tracking-[0.15em] uppercase mt-0.5`}
                         style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}

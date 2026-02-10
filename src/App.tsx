@@ -223,7 +223,7 @@ const heroItems: GearNavItem[] = [
     { id: 'analytics', label: 'Analytics', icon: '📈' },
     { id: 'history', label: 'History', icon: '📜' },
   ]},
-  { label: 'X', icon: '✖', innardSrc: '/images/xLogo.png', subItems: [
+  { label: 'X', icon: '✖', innardSrc: '/images/xLogo.png', innardScale: 0.77, subItems: [
     { id: 'x-ben', label: 'Ben', icon: '👤', innardSrc: '/images/pfp_howlonghasitben.png', href: 'https://x.com/howlonghasitBen' },
     { id: 'x-surfgod', label: 'SurfGod', icon: '🏄', innardSrc: '/images/pfp_surfgod69.png', href: 'https://x.com/SurfGod69' },
     { id: 'x-wavestcg', label: 'WavesTCG', icon: '🃏', innardSrc: '/images/pfp_wavestcg.png', href: 'https://x.com/wavesTCG' },
