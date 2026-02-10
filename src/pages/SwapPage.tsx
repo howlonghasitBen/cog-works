@@ -31,8 +31,25 @@ interface CardPool {
   isOwner?: boolean
 }
 
-// ─── Mock Data ──────────────────────────────────────────────────
-const CARD_IMAGES = Array.from({ length: 12 }, (_, i) => `https://picsum.photos/seed/wcard${i}/200/280`)
+// ─── SURF Waves Cards Data ──────────────────────────────────────
+const BASE = 'https://howlonghasitben.github.io/surf-works/images/card-images'
+
+const SURF_CARDS = [
+  { name: '40till5', type: 'Creature – OG Memer', image: `${BASE}/40till5.png`, level: '∞', atk: '∞', def: '∞' },
+  { name: 'Ben', type: 'Creature — Artist', image: `${BASE}/ben.png`, level: '∞', atk: '∞', def: '∞' },
+  { name: 'Bliddo', type: 'Creature — COPYCAT', image: `${BASE}/bliddo.png`, level: '∞', atk: '∞', def: '∞' },
+  { name: 'Rampage', type: 'Creature – Cyclops', image: `${BASE}/cyclops.png`, level: '2', atk: '4', def: '5' },
+  { name: 'Ent', type: 'Creature — Living Forest', image: `${BASE}/ent.png`, level: '1', atk: '0', def: '4' },
+  { name: 'Fisherman', type: 'Creature — Peaceful Angler', image: `${BASE}/fisherman.png`, level: '∞', atk: '∞', def: '∞' },
+  { name: 'Forest Spirit', type: 'Creature — Nightmare Beast', image: `${BASE}/forestspirit.png`, level: '1', atk: '2', def: '2' },
+  { name: 'Getri', type: 'Creature — Wyrm', image: `${BASE}/wyrm.png`, level: '1', atk: '2', def: '1' },
+  { name: 'Getri', type: 'Creature — Hydra Beast', image: `${BASE}/hydra.png`, level: '2', atk: '6', def: '2' },
+  { name: 'Aetos', type: 'Creature — Fledgling Eagle', image: `${BASE}/fledgling_eagle.png`, level: '1', atk: '1', def: '2' },
+  { name: 'Aetos', type: 'Creature — Eagle Knight', image: `${BASE}/ya_eagle.png`, level: '2', atk: '4', def: '2' },
+  { name: 'Aetos', type: 'Creature — Armored Eagle', image: `${BASE}/aetos.png`, level: '3', atk: '8', def: '5' },
+  { name: 'Cag', type: 'Creature – Wanderer', image: `${BASE}/cag.png`, level: '∞', atk: '∞', def: '∞' },
+  { name: 'Moonwell Sanctuary', type: 'Consumable — Mana Restoration', image: `${BASE}/fairy%20fountain.png`, level: '★', atk: '-', def: '-' },
+]
 
 function mockAddr(seed: number): string {
   const hex = '0123456789abcdef'
@@ -43,13 +60,10 @@ function mockAddr(seed: number): string {
   return s
 }
 
-const NAMES = ['Fire Dragon', 'Ether Knight', 'Cyber Samurai', 'Swamp Thing', 'Ice Wizard', 'Stone Golem', 'Forest Elf', 'Shadow Rogue', 'Thunder Giant', 'Aqua Serpent', 'Void Walker', 'Crystal Mage']
-const TYPES = ['Fire Nature', 'Epic Magic', 'Rare Nature', 'Dark Shadow', 'Ice Frost', 'Earth Stone']
-const RARITIES: CardPool['rarity'][] = ['Common', 'Rare', 'Epic', 'Legendary']
-const TAGS = ['Blue Eyes', 'Mage', 'Nature', 'Fire', 'Ice', 'Dragon', 'Warrior', 'Epic', 'Legendary']
+const TAGS = ['Creature', 'Consumable', 'Eagle', 'Beast', 'OG', 'Legendary', 'Forest', 'Memer']
 
 function generatePools(): CardPool[] {
-  return NAMES.map((name, i) => {
+  return SURF_CARDS.map((card, i) => {
     const ownerShares = Math.floor(Math.random() * 800000) + 200000
     const stakers: Staker[] = [
       { address: mockAddr(i * 10), shares: ownerShares, percentage: 0 },
@@ -61,11 +75,11 @@ function generatePools(): CardPool[] {
 
     return {
       id: i,
-      name,
-      number: Math.floor(Math.random() * 99) + 1,
-      image: CARD_IMAGES[i],
-      rarity: RARITIES[Math.floor(Math.random() * RARITIES.length)],
-      type: TYPES[Math.floor(Math.random() * TYPES.length)],
+      name: card.name,
+      number: i + 1,
+      image: card.image,
+      rarity: card.level === '∞' ? 'Legendary' as const : card.level === '★' ? 'Epic' as const : +card.level >= 3 ? 'Rare' as const : 'Common' as const,
+      type: card.type,
       owner: stakers[0].address,
       ownerShares,
       totalStaked,
@@ -78,7 +92,7 @@ function generatePools(): CardPool[] {
 
 const ALL_POOLS = generatePools()
 
-// User's staked positions
+// User's staked positions (first 6 cards)
 const MY_CARDS: CardPool[] = ALL_POOLS.slice(0, 6).map(pool => ({
   ...pool,
   userShares: Math.floor(pool.ownerShares * (0.2 + Math.random() * 0.6)),
