@@ -161,7 +161,7 @@ import SwapPage from './pages/SwapPage'
 // ─── Content Page ───────────────────────────────────────────────
 function ContentPage({ parent, sub }: { parent: string; sub: string }) {
   return (
-    <div className="max-w-4xl mx-auto px-8 py-16 bg-gray-900/85 backdrop-blur-md rounded-2xl border border-gray-800/50 shadow-2xl my-8" style={{ minHeight: '120vh', marginTop: 60 }}>
+    <div className="max-w-4xl mx-auto px-8 py-16 bg-[#1a1d2e] rounded border-2 border-[#2a2d40] shadow-[0_4px_20px_rgba(0,0,0,0.3)] my-8" style={{ minHeight: '120vh', marginTop: 60 }}>
       <p className="text-xs text-amber-500 uppercase tracking-[0.3em] mb-3 font-mono">{parent}</p>
       <h2 className="text-4xl font-black text-white mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>{sub}</h2>
       <div className="h-px bg-gray-800 mb-8" />
@@ -348,7 +348,7 @@ export default function App() {
     <div
       ref={scrollRef}
       className="h-screen overflow-y-auto"
-      style={{ backgroundColor: '#d4956b' }}
+      style={{ background: 'linear-gradient(180deg, #D6DAF0 0%, #C9CEE8 50%, #BCC2E0 100%)' }}
     >
       {/* ─── Fixed background (parallax 1x) ─── */}
       <div className="fixed inset-0 z-0">
@@ -358,18 +358,18 @@ export default function App() {
           style={{ willChange: 'transform' }}
         >
           <div className="w-full h-screen" style={{
-            background: 'linear-gradient(135deg, #c17a4a 0%, #d4956b 30%, #e0a57a 50%, #d4956b 70%, #c17a4a 100%)',
+            background: 'linear-gradient(135deg, #C9CEE8 0%, #D6DAF0 30%, #DEE2F4 50%, #D6DAF0 70%, #C9CEE8 100%)',
           }}>
-            <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute inset-0 bg-black/5" />
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-20" style={{ background: 'linear-gradient(90deg, #fff8f0, transparent)' }} />
-              <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-15" style={{ background: 'linear-gradient(90deg, #fff0e0, transparent)' }} />
-              <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-20" style={{ background: 'linear-gradient(270deg, #fff8f0, transparent)' }} />
-              <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15" style={{ background: 'linear-gradient(270deg, #fff0e0, transparent)' }} />
+              <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-20" style={{ background: 'linear-gradient(90deg, #8890b8, transparent)' }} />
+              <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-15" style={{ background: 'linear-gradient(90deg, #9aa0c8, transparent)' }} />
+              <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-20" style={{ background: 'linear-gradient(270deg, #8890b8, transparent)' }} />
+              <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15" style={{ background: 'linear-gradient(270deg, #9aa0c8, transparent)' }} />
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ width: 520, height: 520 }}>
-              <div className="absolute inset-0 rounded-full opacity-15" style={{ border: '1px solid rgba(255,255,255,0.4)', animation: 'gearPulse 4s ease-in-out infinite' }} />
-              <div className="absolute rounded-full opacity-10" style={{ inset: -35, border: '1px solid rgba(255,255,255,0.3)', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
+              <div className="absolute inset-0 rounded-full opacity-15" style={{ border: '1px solid rgba(100,110,160,0.4)', animation: 'gearPulse 4s ease-in-out infinite' }} />
+              <div className="absolute rounded-full opacity-10" style={{ inset: -35, border: '1px solid rgba(100,110,160,0.3)', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
             </div>
 
             {/* PSC figures + lightning — togglable */}
@@ -414,27 +414,27 @@ export default function App() {
       {/* ─── Scroll spacer (hero zone = 1 viewport height) ─── */}
       <div className="relative h-screen z-0 pointer-events-none">
         {/* Suite/palette toggle — top-left of hero */}
-        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-30 pointer-events-auto flex border border-white/20 bg-gray-900/70 backdrop-blur-md rounded-lg overflow-hidden">
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-30 pointer-events-auto flex border-2 border-[#2a2d40] bg-[#1a1d2e] rounded-sm overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
           <button
             onClick={() => setPepesEnabled(false)}
-            className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${!pepesEnabled ? 'bg-white/15 text-white' : 'text-white/40 hover:text-white'}`}
+            className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${!pepesEnabled ? 'bg-[#2a2d40] text-white' : 'text-gray-500 hover:text-white'}`}
             title="Minimal theme"
           >🤵</button>
-          <div className="w-px bg-white/15" />
+          <div className="w-px bg-[#2a2d40]" />
           <button
             onClick={() => setPepesEnabled(true)}
-            className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${pepesEnabled ? 'bg-white/15 text-white' : 'text-white/40 hover:text-white'}`}
+            className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${pepesEnabled ? 'bg-[#2a2d40] text-white' : 'text-gray-500 hover:text-white'}`}
             title="Sistine theme"
           >🎨</button>
         </div>
         {/* Wallet Connect — bottom-right of hero */}
         <div className="absolute bottom-6 right-6 z-30 pointer-events-auto">
           <button
-            className="group relative flex items-center gap-3 px-6 py-3 cursor-pointer overflow-hidden rounded-xl border border-white/30 bg-gray-900/70 backdrop-blur-md text-white font-bold text-sm tracking-wider transition-all duration-300 hover:border-white/50 hover:bg-gray-900/80 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+            className="group relative flex items-center gap-3 px-5 py-2.5 cursor-pointer overflow-hidden rounded-sm border-2 border-[#2a2d40] bg-[#1a1d2e] text-white font-bold text-sm tracking-wider transition-all duration-200 hover:border-cyan-500/60 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
             style={{ fontFamily: "'Inter Tight', sans-serif" }}
           >
             {/* Animated gradient border glow */}
-            <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08), transparent 50%, rgba(255,255,255,0.04))' }} />
+            <div className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, rgba(34,211,238,0.05), transparent 50%)' }} />
             {/* Pulse dot */}
             <div className="relative">
               <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 group-hover:bg-emerald-400 transition-colors" />
@@ -459,7 +459,7 @@ export default function App() {
           <motion.div
             key={activePage.sub.id || activePage.sub.label}
             className="relative z-10"
-            style={{ backgroundColor: '#d4956b' }}
+            style={{ background: 'linear-gradient(180deg, #D6DAF0 0%, #C9CEE8 100%)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.3 } }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}

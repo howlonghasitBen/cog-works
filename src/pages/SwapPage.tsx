@@ -103,10 +103,10 @@ function InventoryCard({
 }) {
   return (
     <div className="cursor-pointer group" onClick={onClick}>
-      <div className={`relative rounded-lg overflow-hidden border-2 transition-all duration-200 aspect-[5/7] ${
+      <div className={`relative rounded-sm overflow-hidden border-2 transition-all duration-200 aspect-[5/7] ${
         selected
           ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)]'
-          : 'border-gray-700/60 hover:border-gray-500 hover:shadow-lg'
+          : 'border-gray-700/60 hover:border-[#4a4d60] hover:shadow-lg'
       }`}>
         <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
         {/* Bottom gradient overlay */}
@@ -152,9 +152,9 @@ function StageCard({
   placeholder: string
 }) {
   return (
-    <div className={`relative rounded-xl overflow-hidden border-2 transition-all ${
-      card ? 'border-cyan-500/50 bg-gray-800/30' : 'border-dashed border-gray-600 bg-gray-800/20'
-    }`} style={{ width: 180, height: 240 }}>
+    <div className={`relative rounded-sm overflow-hidden border-2 transition-all ${
+      card ? 'border-cyan-500/50 bg-[#121420]' : 'border-dashed border-[#3a3d50] bg-[#121420]'
+    }`} style={{ width: 220, height: 300 }}>
       {card ? (
         <>
           <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
@@ -197,7 +197,7 @@ function MultiStageCards({
   }
   // Scroll carousel for multi-select
   return (
-    <div style={{ width: 200 }}>
+    <div style={{ width: 240 }}>
       <div
         className="flex gap-3 overflow-x-scroll snap-x snap-mandatory pb-2 overscroll-x-contain"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent', WebkitOverflowScrolling: 'touch' }}
@@ -212,8 +212,8 @@ function MultiStageCards({
         {cards.map(card => (
           <div
             key={card.id}
-            className="relative rounded-xl overflow-hidden border-2 border-cyan-500/40 bg-gray-800 flex-shrink-0 snap-center"
-            style={{ width: 180, height: 240 }}
+            className="relative rounded-sm overflow-hidden border-2 border-cyan-500/40 bg-gray-800 flex-shrink-0 snap-center"
+            style={{ width: 220, height: 300 }}
           >
             <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
@@ -258,13 +258,13 @@ function MarketRow({
   isTarget: boolean
 }) {
   return (
-    <div className={`p-3 rounded-lg transition-all ${
+    <div className={`p-3 rounded-sm transition-all ${
       isTarget
         ? 'bg-emerald-900/20 border border-emerald-500/40'
-        : 'bg-gray-800/30 border border-gray-700/30 hover:border-gray-600'
+        : 'bg-[#121420] border border-[#2a2d40] hover:border-[#3a3d50]'
     }`}>
       <div className="flex gap-3">
-        <div className="w-24 h-32 rounded-md overflow-hidden border border-gray-700 flex-shrink-0">
+        <div className="w-24 h-32 rounded-md overflow-hidden border-2 border-[#2a2d40] flex-shrink-0">
           <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 min-w-0">
@@ -363,11 +363,11 @@ export default function SwapPage() {
   }, [])
 
   return (
-    <div className="w-full px-6 flex items-start justify-evenly" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 40, paddingBottom: 40 }}>
+    <div className="w-full px-4 flex items-start justify-center gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40 }}>
 
       {/* ─── LEFT: My Inventory ─── */}
-      <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-5 flex flex-col w-full max-w-[400px]" style={{ maxHeight: 'calc(100dvh - 120px)' }}>
-        <h2 className="text-white text-xl font-black tracking-wide mb-4" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-4 flex flex-col w-full max-w-[440px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ maxHeight: 'calc(100dvh - 100px)' }}>
+        <h2 className="text-white text-lg font-black tracking-wide mb-3 pb-2 border-b border-[#2a2d40]" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           MY INVENTORY
         </h2>
         {/* Search */}
@@ -377,7 +377,7 @@ export default function SwapPage() {
             placeholder="Search"
             value={inventorySearch}
             onChange={e => setInventorySearch(e.target.value)}
-            className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+            className="w-full bg-[#121420] border-2 border-[#2a2d40] rounded-sm px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
           />
           <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -399,12 +399,12 @@ export default function SwapPage() {
       </div>
 
       {/* ─── CENTER: Swap Stage ─── */}
-      <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-6 flex flex-col items-center w-full max-w-[380px]">
-        <h2 className="text-white text-xl font-black tracking-wide mb-6 text-center" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-5 flex flex-col items-center w-full max-w-[460px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ minHeight: 'calc(100dvh - 140px)' }}>
+        <h2 className="text-white text-lg font-black tracking-wide mb-5 pb-2 border-b border-[#2a2d40] w-full text-center" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           SWAP STAGE
         </h2>
 
-        <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl p-3">
+        <div className="bg-[#121420] border border-[#2a2d40] rounded-sm p-3">
           <MultiStageCards
             cards={selectedCards}
             onRemove={removeSelected}
@@ -414,7 +414,7 @@ export default function SwapPage() {
 
         <SwapArrows />
 
-        <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl p-3">
+        <div className="bg-[#121420] border border-[#2a2d40] rounded-sm p-3">
           <StageCard
             card={targetPool || null}
             onRemove={targetPool ? () => setTargetId(null) : undefined}
@@ -425,7 +425,7 @@ export default function SwapPage() {
         {/* Swap estimate + button */}
         <div className="w-full mt-6 space-y-3">
           {swapEstimate && (
-            <div className="bg-gray-800/50 rounded-lg p-3 space-y-1 text-[11px] font-mono">
+            <div className="bg-[#121420] rounded-sm p-3 space-y-1 text-[11px] font-mono">
               {swapEstimate.sourceCount > 1 && (
                 <div className="flex justify-between">
                   <span className="text-gray-500">Positions merged</span>
@@ -455,10 +455,10 @@ export default function SwapPage() {
 
           <button
             disabled={!canSwap}
-            className={`group relative w-full py-4 rounded-xl text-base font-black tracking-widest uppercase transition-all duration-300 overflow-hidden ${
+            className={`group relative w-full py-4 rounded-sm text-base font-black tracking-widest uppercase transition-all duration-300 overflow-hidden ${
               canSwap
                 ? 'cursor-pointer border'
-                : 'bg-gray-800 text-gray-600 cursor-not-allowed border border-gray-700'
+                : 'bg-gray-800 text-gray-600 cursor-not-allowed border-2 border-[#2a2d40]'
             } ${
               canSwap && swapEstimate?.wouldSteal
                 ? 'border-amber-500/60 text-black hover:shadow-[0_0_40px_rgba(245,158,11,0.4)]'
@@ -511,8 +511,8 @@ export default function SwapPage() {
       </div>
 
       {/* ─── RIGHT: Market Search ─── */}
-      <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-5 flex flex-col w-full max-w-[400px]" style={{ maxHeight: 'calc(100dvh - 120px)' }}>
-        <h2 className="text-white text-xl font-black tracking-wide mb-4" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-4 flex flex-col w-full max-w-[440px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ maxHeight: 'calc(100dvh - 100px)' }}>
+        <h2 className="text-white text-lg font-black tracking-wide mb-3 pb-2 border-b border-[#2a2d40]" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           MARKET SEARCH
         </h2>
         {/* Search + history button */}
@@ -523,10 +523,10 @@ export default function SwapPage() {
               placeholder="Search"
               value={marketSearch}
               onChange={e => setMarketSearch(e.target.value)}
-              className="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full bg-[#121420] border-2 border-[#2a2d40] rounded-sm px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
             />
           </div>
-          <button className="w-10 h-10 bg-gray-800/80 border border-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-colors cursor-pointer">
+          <button className="w-10 h-10 bg-[#121420] border-2 border-[#2a2d40] rounded-sm flex items-center justify-center text-gray-400 hover:text-white hover:border-[#4a4d60] transition-colors cursor-pointer">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -544,10 +544,10 @@ export default function SwapPage() {
                   return n
                 })
               }}
-              className={`px-2.5 py-1 rounded-md text-[10px] font-medium transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 rounded-sm text-[10px] font-medium transition-colors cursor-pointer ${
                 activeTags.has(tag)
                   ? 'bg-cyan-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border-2 border-[#2a2d40]'
               }`}
             >
               {tag}
