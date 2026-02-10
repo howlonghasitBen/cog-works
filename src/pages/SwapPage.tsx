@@ -195,12 +195,19 @@ function MultiStageCards({
   if (cards.length === 1) {
     return <StageCard card={cards[0]} onRemove={() => onRemove(cards[0].id)} placeholder="" />
   }
-  // Scroll carousel for multi-select — same card size as single
+  // Scroll carousel for multi-select
   return (
-    <div style={{ width: 180 }}>
+    <div style={{ width: 200 }}>
       <div
-        className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2"
-        style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent' }}
+        className="flex gap-3 overflow-x-scroll snap-x snap-mandatory pb-2 overscroll-x-contain"
+        style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent', WebkitOverflowScrolling: 'touch' }}
+        onWheel={e => {
+          // Convert vertical scroll to horizontal
+          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            e.currentTarget.scrollLeft += e.deltaY
+            e.preventDefault()
+          }
+        }}
       >
         {cards.map(card => (
           <div
