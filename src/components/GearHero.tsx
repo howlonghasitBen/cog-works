@@ -271,22 +271,7 @@ export default function GearHero({
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 pointer-events-auto"
           onClick={handleCenterClick}
         >
-          <Cog size={300 * scale} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation}>
-            <h1
-              className={`${scale < 0.7 ? 'text-lg' : 'text-3xl'} font-black text-white tracking-wider drop-shadow-lg`}
-              style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
-            >
-              {title}
-            </h1>
-            {subtitle && (
-              <p
-                className={`${scale < 0.7 ? 'text-[8px]' : 'text-xs'} text-gray-200 tracking-[0.3em] mt-1 uppercase`}
-                style={{ fontFamily: "'DM Mono', monospace", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
-              >
-                {subtitle}
-              </p>
-            )}
-          </Cog>
+          <Cog size={300 * scale} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation} />
         </div>
 
         {/* Satellite gears — only visible when menu is open */}
@@ -331,14 +316,7 @@ export default function GearHero({
                     onClick={() => handleSubClick(sub, si)}
                   >
                     <motion.div whileHover={{ scale: 1.12 }}>
-                      <Cog size={subSize} cogSrc={cogSrc} innardSrc={sub.innardSrc || innardSrc} innardSpin={sub.innardSpin} rotation={subRotations[si]}>
-                        <span
-                          className="text-[7px] font-bold text-white tracking-[0.12em] uppercase"
-                          style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
-                        >
-                          {sub.label}
-                        </span>
-                      </Cog>
+                      <Cog size={subSize} cogSrc={cogSrc} innardSrc={sub.innardSrc || innardSrc} innardSpin={sub.innardSpin} rotation={subRotations[si]} />
                     </motion.div>
                   </div>
                 </motion.div>
@@ -385,14 +363,7 @@ export default function GearHero({
                     transition={{ type: 'spring', stiffness: 300 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={item.innardSrc || innardSrc} innardSpin={item.innardSpin} innardScale={item.innardScale} rotation={satRotations[i]}>
-                      <span
-                        className={`${scale < 0.7 ? 'text-[6px]' : 'text-[9px]'} font-bold text-white tracking-[0.15em] uppercase mt-0.5`}
-                        style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
-                      >
-                        {item.label}
-                      </span>
-                    </Cog>
+                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={item.innardSrc || innardSrc} innardSpin={item.innardSpin} innardScale={item.innardScale} rotation={satRotations[i]} />
                   </motion.div>
                 </div>
               </motion.div>
