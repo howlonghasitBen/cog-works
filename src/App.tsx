@@ -157,6 +157,8 @@ import GearHero from './components/GearHero'
 import type { GearNavItem, GearSubItem } from './components/GearHero'
 import StakingDashboard from './pages/StakingDashboard'
 import SwapPage from './pages/SwapPage'
+import MintPage from './pages/MintPage'
+import ExplorePage from './pages/ExplorePage'
 
 // ─── Content Page ───────────────────────────────────────────────
 function ContentPage({ parent, sub }: { parent: string; sub: string }) {
@@ -195,7 +197,7 @@ function ContentPage({ parent, sub }: { parent: string; sub: string }) {
 // ─── Nav Items ──────────────────────────────────────────────────
 const heroItems: GearNavItem[] = [
   { label: 'Services', icon: '🔧', innardSrc: '/images/proof.jpg', innardScale: 0.68, subItems: [
-    { id: 'design', label: 'Design', icon: '🎨' },
+    { id: 'design', label: 'Design', icon: '🎨', innardSrc: '/images/scatter.svg', innardScale: 0.70, innardBg: '#36454F', innardImgScale: 0.857, href: 'https://www.scatter.art/collection/mumu-frens' },
     { id: 'develop', label: 'Develop', icon: '💻' },
     { id: 'deploy', label: 'Deploy', icon: '🚀' },
   ]},
@@ -247,6 +249,11 @@ export default function App() {
 
   // ─── Navigation ─────────────────────────────────────────────
   const handleNavigate = useCallback((parent: GearNavItem, sub: GearSubItem) => {
+    // External links open in new tab, don't scroll to ContentPage
+    if (sub.href) {
+      window.open(sub.href, '_blank', 'noopener')
+      return
+    }
     setActivePage({ parent, sub })
     isAnimating.current = true
     // Smooth scroll to content
@@ -469,6 +476,10 @@ export default function App() {
                 <StakingDashboard />
               ) : activePage.sub.id === 'cloud' ? (
                 <SwapPage />
+              ) : activePage.sub.id === 'web3' ? (
+                <MintPage />
+              ) : activePage.sub.id === 'ai' ? (
+                <ExplorePage />
               ) : (
                 <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
               )}

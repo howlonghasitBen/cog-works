@@ -22,6 +22,9 @@ export interface GearSubItem {
   content?: React.ReactNode
   innardSrc?: string
   innardSpin?: number
+  innardScale?: number
+  innardBg?: string
+  innardImgScale?: number
 }
 
 export interface GearNavItem {
@@ -58,6 +61,8 @@ function Cog({
   innardSrc,
   innardSpin,
   innardScale: innardScaleProp,
+  innardBg,
+  innardImgScale,
   children,
 }: {
   size: number
@@ -65,6 +70,8 @@ function Cog({
   innardSrc?: string
   innardSpin?: number
   innardScale?: number
+  innardBg?: string
+  innardImgScale?: number
   rotation?: number
   children?: React.ReactNode
 }) {
@@ -84,7 +91,7 @@ function Cog({
       {innardSrc && (
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden z-0"
-          style={{ width: innardSize, height: innardSize }}
+          style={{ width: innardSize, height: innardSize, backgroundColor: innardBg || 'transparent' }}
         >
           <img
             src={innardSrc}
@@ -93,6 +100,7 @@ function Cog({
             style={{
               borderRadius: '50%',
               ...(innardSpin ? { animation: `innardSpin ${360 / innardSpin}s linear infinite` } : {}),
+              ...(innardImgScale ? { transform: `scale(${innardImgScale})` } : {}),
             }}
             draggable={false}
           />
@@ -191,10 +199,14 @@ export default function GearHero({
       })
       setCenterRotation(r => r + 45)
     }
-    if (subItem.href) window.open(subItem.href, '_blank')
+    if (subItem.href) {
+      window.open(subItem.href, '_blank', 'noopener')
+      // Keep menu open for external links so user can navigate more
+      return
+    }
     subItem.onClick?.()
 
-    // Close menu + trigger navigation
+    // Close menu + trigger navigation (internal pages only)
     setTimeout(() => {
       setMenuOpen(false)
       setActiveSubmenu(null)
@@ -316,7 +328,7 @@ export default function GearHero({
                     onClick={() => handleSubClick(sub, si)}
                   >
                     <motion.div whileHover={{ scale: 1.12 }}>
-                      <Cog size={subSize} cogSrc={cogSrc} innardSrc={sub.innardSrc || innardSrc} innardSpin={sub.innardSpin} rotation={subRotations[si]} />
+                      <Cog size={subSize} cogSrc={cogSrc} innardSrc={sub.innardSrc || innardSrc} innardSpin={sub.innardSpin} innardScale={sub.innardScale} innardBg={sub.innardBg} innardImgScale={sub.innardImgScale} rotation={subRotations[si]} />
                     </motion.div>
                   </div>
                 </motion.div>
