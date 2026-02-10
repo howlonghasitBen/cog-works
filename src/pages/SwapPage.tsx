@@ -195,33 +195,25 @@ function MultiStageCards({
   if (cards.length === 1) {
     return <StageCard card={cards[0]} onRemove={() => onRemove(cards[0].id)} placeholder="" />
   }
-  // Stacked cards for multi-select
+  // Horizontal scrollable nav for multi-select
   return (
-    <div className="relative" style={{ width: 180, height: 240 }}>
-      {cards.map((card, i) => (
-        <div
-          key={card.id}
-          className="absolute rounded-xl overflow-hidden border-2 border-cyan-500/40 bg-gray-800"
-          style={{
-            width: 160, height: 210,
-            left: i * 12, top: i * 8,
-            zIndex: cards.length - i,
-          }}
-        >
-          <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/90 to-transparent" />
-          <div className="absolute bottom-0 inset-x-0 p-2">
-            <p className="text-white text-[10px] font-bold">{card.name} #{card.number}</p>
+    <div className="w-[180px]">
+      <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory" style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee33 transparent' }}>
+        {cards.map(card => (
+          <div key={card.id} className="relative rounded-lg overflow-hidden border-2 border-cyan-500/40 bg-gray-800 flex-shrink-0 snap-center" style={{ width: 120, height: 160 }}>
+            <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+            <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/90 to-transparent" />
+            <div className="absolute bottom-0 inset-x-0 p-1.5">
+              <p className="text-white text-[9px] font-bold truncate">{card.name} #{card.number}</p>
+            </div>
+            <button
+              onClick={() => onRemove(card.id)}
+              className="absolute top-1 right-1 w-5 h-5 bg-black/70 hover:bg-red-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white text-[9px] cursor-pointer"
+            >✕</button>
           </div>
-          <button
-            onClick={() => onRemove(card.id)}
-            className="absolute top-1 right-1 w-5 h-5 bg-black/70 hover:bg-red-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white text-[9px] cursor-pointer"
-          >✕</button>
-        </div>
-      ))}
-      <div className="absolute -bottom-1 -right-1 bg-cyan-600 text-white text-[9px] font-bold w-5 h-5 rounded-full flex items-center justify-center z-20">
-        {cards.length}
+        ))}
       </div>
+      <p className="text-cyan-400 text-[9px] font-mono text-center mt-1">{cards.length} cards selected — scroll →</p>
     </div>
   )
 }
