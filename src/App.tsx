@@ -156,6 +156,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
 import GearHero from './components/GearHero'
 import type { GearNavItem, GearSubItem } from './components/GearHero'
 import StakingDashboard from './pages/StakingDashboard'
+import SwapPage from './pages/SwapPage'
 
 // ─── Content Page ───────────────────────────────────────────────
 function ContentPage({ parent, sub }: { parent: string; sub: string }) {
@@ -440,6 +441,8 @@ export default function App() {
             <div className="relative pb-24">
               {activePage.sub.id === 'staking' ? (
                 <StakingDashboard />
+              ) : activePage.sub.id === 'cloud' ? (
+                <SwapPage />
               ) : (
                 <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
               )}
