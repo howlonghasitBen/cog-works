@@ -455,19 +455,58 @@ export default function SwapPage() {
 
           <button
             disabled={!canSwap}
-            className={`w-full py-3.5 rounded-xl text-base font-black tracking-wider transition-all ${
+            className={`group relative w-full py-4 rounded-xl text-base font-black tracking-widest uppercase transition-all duration-300 overflow-hidden ${
               canSwap
-                ? swapEstimate?.wouldSteal
-                  ? 'bg-amber-500 hover:bg-amber-400 text-black cursor-pointer shadow-[0_0_25px_rgba(245,158,11,0.3)]'
-                  : 'bg-emerald-500 hover:bg-emerald-400 text-white cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.3)]'
-                : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                ? 'cursor-pointer border'
+                : 'bg-gray-800 text-gray-600 cursor-not-allowed border border-gray-700'
+            } ${
+              canSwap && swapEstimate?.wouldSteal
+                ? 'border-amber-500/60 text-black hover:shadow-[0_0_40px_rgba(245,158,11,0.4)]'
+                : canSwap
+                  ? 'border-emerald-500/60 text-white hover:shadow-[0_0_40px_rgba(16,185,129,0.4)]'
+                  : ''
             }`}
             style={{ fontFamily: "'Inter Tight', sans-serif" }}
           >
-            {canSwap
-              ? swapEstimate?.wouldSteal ? '⚡ SWAP TO STEAL' : 'INITIATE SWAP'
-              : 'INITIATE SWAP'}
+            {/* Animated gradient background */}
+            {canSwap && (
+              <div
+                className="absolute inset-0 transition-opacity duration-300"
+                style={{
+                  background: swapEstimate?.wouldSteal
+                    ? 'linear-gradient(135deg, #f59e0b, #d97706, #f59e0b)'
+                    : 'linear-gradient(135deg, #059669, #10b981, #059669)',
+                  backgroundSize: '200% 200%',
+                  animation: 'shimmer 3s ease-in-out infinite',
+                }}
+              />
+            )}
+            {/* Glow pulse on hover */}
+            {canSwap && (
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{
+                background: swapEstimate?.wouldSteal
+                  ? 'radial-gradient(circle at center, rgba(245,158,11,0.3), transparent 70%)'
+                  : 'radial-gradient(circle at center, rgba(16,185,129,0.3), transparent 70%)',
+              }} />
+            )}
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              {canSwap && swapEstimate?.wouldSteal && (
+                <svg className="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M13 0L0 14h9v10l13-14h-9V0z" />
+                </svg>
+              )}
+              {canSwap
+                ? swapEstimate?.wouldSteal ? 'SWAP TO STEAL' : 'INITIATE SWAP'
+                : 'SELECT CARDS TO SWAP'}
+            </span>
           </button>
+
+          <style>{`
+            @keyframes shimmer {
+              0%, 100% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+            }
+          `}</style>
         </div>
       </div>
 

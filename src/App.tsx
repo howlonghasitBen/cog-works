@@ -429,13 +429,25 @@ export default function App() {
         {/* Wallet Connect — bottom-right of hero */}
         <div className="absolute bottom-6 right-6 z-30 pointer-events-auto">
           <button
-            className="flex items-center gap-2 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm rounded-lg cursor-pointer transition-colors shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+            className="group relative flex items-center gap-3 px-6 py-3 cursor-pointer overflow-hidden rounded-xl border border-cyan-500/40 bg-gray-900/80 backdrop-blur-sm text-white font-bold text-sm tracking-wider transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.25),inset_0_0_30px_rgba(34,211,238,0.05)]"
             style={{ fontFamily: "'Inter Tight', sans-serif" }}
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+            {/* Animated gradient border glow */}
+            <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(135deg, rgba(34,211,238,0.1), transparent 50%, rgba(16,185,129,0.1))' }} />
+            {/* Pulse dot */}
+            <div className="relative">
+              <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 group-hover:bg-emerald-400 transition-colors" />
+              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping opacity-40" />
+            </div>
+            {/* Wallet icon */}
+            <svg className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 013 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 013 6v3" />
             </svg>
-            Connect Wallet
+            <span className="relative z-10 uppercase">Connect Wallet</span>
+            {/* Chevron */}
+            <svg className="w-3.5 h-3.5 text-gray-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         </div>
       </div>
