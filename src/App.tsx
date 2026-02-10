@@ -393,16 +393,16 @@ export default function App() {
       </div>
 
       {/* ─── Suite/palette toggle — top-left corner ─── */}
-      <div className="fixed top-4 left-4 z-30 flex border border-gray-700 bg-gray-900/80">
+      <div className="fixed top-3 left-3 sm:top-4 sm:left-4 z-30 flex border-2 border-gray-600 bg-gray-900/90 rounded-sm">
         <button
           onClick={() => setPepesEnabled(false)}
-          className={`px-3 py-2 text-sm cursor-pointer transition-colors ${!pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
+          className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${!pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
           title="Minimal theme"
         >🤵</button>
-        <div className="w-px bg-gray-700" />
+        <div className="w-0.5 bg-gray-600" />
         <button
           onClick={() => setPepesEnabled(true)}
-          className={`px-3 py-2 text-sm cursor-pointer transition-colors ${pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
+          className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
           title="Sistine theme"
         >🎨</button>
       </div>

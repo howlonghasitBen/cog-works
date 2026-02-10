@@ -10,7 +10,7 @@
  * - Clicking a satellite opens 3 sub-sub-cogs + moves satellite toward center
  */
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export interface GearSubItem {
@@ -181,9 +181,24 @@ export default function GearHero({
     }, 400) // Brief delay so spin animation is visible
   }
 
-  const radius = 280
-  const subRadius = 120
-  const pullInRadius = 220 // Satellite moves closer when submenu open (tiny gap preserved)
+  // Responsive scaling — shrink on mobile
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024)
+  useEffect(() => {
+    const onResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  const scale = useMemo(() => {
+    if (windowWidth < 480) return 0.45   // small phone
+    if (windowWidth < 640) return 0.55   // phone
+    if (windowWidth < 768) return 0.65   // large phone / small tablet
+    if (windowWidth < 1024) return 0.8   // tablet
+    return 1                              // desktop
+  }, [windowWidth])
+
+  const radius = 280 * scale
+  const subRadius = 120 * scale
+  const pullInRadius = 220 * scale
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
@@ -233,16 +248,16 @@ export default function GearHero({
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 pointer-events-auto"
           onClick={handleCenterClick}
         >
-          <Cog size={300} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation}>
+          <Cog size={300 * scale} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation}>
             <h1
-              className="text-3xl font-black text-white tracking-wider drop-shadow-lg"
+              className={`${scale < 0.7 ? 'text-lg' : 'text-3xl'} font-black text-white tracking-wider drop-shadow-lg`}
               style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
             >
               {title}
             </h1>
             {subtitle && (
               <p
-                className="text-xs text-gray-200 tracking-[0.3em] mt-1 uppercase"
+                className={`${scale < 0.7 ? 'text-[8px]' : 'text-xs'} text-gray-200 tracking-[0.3em] mt-1 uppercase`}
                 style={{ fontFamily: "'DM Mono', monospace", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
               >
                 {subtitle}
@@ -267,7 +282,7 @@ export default function GearHero({
               const subAngle = subAngleBase + (si - 1) * subSpread
               const sx = satCenterX + Math.cos(subAngle) * subRadius
               const sy = satCenterY + Math.sin(subAngle) * subRadius
-              const subSize = 85
+              const subSize = 85 * scale
 
               return (
                 <motion.div
@@ -317,7 +332,7 @@ export default function GearHero({
             const r = isActive ? pullInRadius : radius
             const x = Math.cos(angle) * r
             const y = Math.sin(angle) * r
-            const satSize = 130
+            const satSize = 130 * scale
 
             return (
               <motion.div
@@ -349,7 +364,7 @@ export default function GearHero({
                   >
                     <Cog size={satSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={satRotations[i]}>
                       <span
-                        className="text-[9px] font-bold text-white tracking-[0.15em] uppercase mt-0.5"
+                        className={`${scale < 0.7 ? 'text-[6px]' : 'text-[9px]'} font-bold text-white tracking-[0.15em] uppercase mt-0.5`}
                         style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
                       >
                         {item.label}
