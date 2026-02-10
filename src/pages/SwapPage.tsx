@@ -363,7 +363,7 @@ export default function SwapPage() {
   }, [])
 
   return (
-    <div className="w-full px-4 flex items-stretch justify-between gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40 }}>
+    <div className="w-full flex items-stretch justify-between gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40, paddingLeft: 42, paddingRight: 42 }}>
 
       {/* ─── LEFT: My Inventory ─── */}
       <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-4 flex flex-col w-full max-w-[440px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ maxHeight: 'calc(100dvh - 100px)' }}>
