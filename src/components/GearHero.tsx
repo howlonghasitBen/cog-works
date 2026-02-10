@@ -62,7 +62,8 @@ function Cog({
   rotation?: number
   children?: React.ReactNode
 }) {
-  const innardSize = size * 0.72
+  const innardScale = innardSpin ? 0.82 : 0.72
+  const innardSize = size * innardScale
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <motion.img
