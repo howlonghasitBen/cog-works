@@ -9,17 +9,17 @@ export default function MintPage() {
   const [tab, setTab] = useState<Tab>('create')
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-6 flex flex-col items-center justify-evenly" style={{ minHeight: '100vh', marginTop: 60 }}>
+    <div className="w-full" style={{ minHeight: '100vh', marginTop: 60 }}>
       {/* Tab Navigation */}
-      <div className="flex gap-1 mb-6 border-b-2 border-[#2a2d40] w-full justify-center">
+      <div className="flex gap-6 justify-center mb-2 py-3">
         {(['create', 'portfolio'] as Tab[]).map(t => (
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors
+            className={`px-6 py-2 text-sm font-bold uppercase tracking-wider transition-colors border-b-2
               ${tab === t
-                ? 'text-white border-b-2 border-cyan-400 -mb-[2px]'
-                : 'text-gray-400 hover:text-gray-200'
+                ? 'text-[#1a1d2e] border-amber-500'
+                : 'text-gray-500 border-transparent hover:text-gray-700'
               }`}
           >
             {t === 'create' ? '🎨 Create' : '📦 Portfolio'}
@@ -27,10 +27,8 @@ export default function MintPage() {
         ))}
       </div>
 
-      {/* Tab Content */}
-      <div className="w-full flex-1 flex items-center justify-center">
-        {tab === 'create' ? <MintCard onToast={noop} /> : <Portfolio onToast={noop} />}
-      </div>
+      {/* Tab Content — full width, no constraints */}
+      {tab === 'create' ? <MintCard onToast={noop} /> : <Portfolio onToast={noop} />}
     </div>
   )
 }
