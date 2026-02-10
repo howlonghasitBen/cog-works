@@ -262,8 +262,8 @@ export default function SwapPage() {
   }, [sourcePosition, targetPool])
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 py-8" style={{ marginTop: 60 }}>
-      <div className="grid grid-cols-[1fr_minmax(340px,1fr)_1.2fr] gap-5 min-h-[80vh]">
+    <div className="max-w-[1400px] mx-auto px-4 flex items-center justify-center" style={{ marginTop: 60, minHeight: '100dvh' }}>
+      <div className="grid grid-cols-[1fr_minmax(340px,1fr)_1.2fr] gap-5 w-full">
 
         {/* ─── LEFT: Your Staked Positions ─── */}
         <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col">
