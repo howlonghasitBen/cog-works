@@ -393,34 +393,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* ─── Suite/palette toggle — top-left corner, hero only ─── */}
-      <div className={`fixed top-3 left-3 sm:top-4 sm:left-4 z-30 flex border-2 border-gray-600 bg-gray-900/90 rounded-sm transition-opacity duration-300 ${activePage ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <button
-          onClick={() => setPepesEnabled(false)}
-          className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${!pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
-          title="Minimal theme"
-        >🤵</button>
-        <div className="w-0.5 bg-gray-600" />
-        <button
-          onClick={() => setPepesEnabled(true)}
-          className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
-          title="Sistine theme"
-        >🎨</button>
-      </div>
-
-      {/* ─── Wallet Connect — bottom-right, hero only ─── */}
-      <div className={`fixed bottom-6 right-6 z-30 transition-opacity duration-300 ${activePage ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <button
-          className="flex items-center gap-2 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm rounded-lg cursor-pointer transition-colors shadow-[0_0_20px_rgba(34,211,238,0.25)]"
-          style={{ fontFamily: "'Inter Tight', sans-serif" }}
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          Connect Wallet
-        </button>
-      </div>
-
       {/* ─── Fixed cog layer (parallax ~0.35x) — above content ─── */}
       <div
         ref={cogRef}
@@ -439,7 +411,34 @@ export default function App() {
       </div>
 
       {/* ─── Scroll spacer (hero zone = 1 viewport height) ─── */}
-      <div className="relative h-screen z-0 pointer-events-none" />
+      <div className="relative h-screen z-25">
+        {/* Suite/palette toggle — top-left of hero */}
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-30 pointer-events-auto flex border-2 border-gray-600 bg-gray-900/90 rounded-sm">
+          <button
+            onClick={() => setPepesEnabled(false)}
+            className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${!pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
+            title="Minimal theme"
+          >🤵</button>
+          <div className="w-0.5 bg-gray-600" />
+          <button
+            onClick={() => setPepesEnabled(true)}
+            className={`px-3 py-2 text-xl sm:px-5 sm:py-3 sm:text-3xl cursor-pointer transition-colors ${pepesEnabled ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-white'}`}
+            title="Sistine theme"
+          >🎨</button>
+        </div>
+        {/* Wallet Connect — bottom-right of hero */}
+        <div className="absolute bottom-6 right-6 z-30 pointer-events-auto">
+          <button
+            className="flex items-center gap-2 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm rounded-lg cursor-pointer transition-colors shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+            style={{ fontFamily: "'Inter Tight', sans-serif" }}
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            Connect Wallet
+          </button>
+        </div>
+      </div>
 
       {/* ─── Content ─── */}
       <AnimatePresence mode="wait">
