@@ -160,7 +160,7 @@ import StakingDashboard from './pages/StakingDashboard'
 // ─── Content Page ───────────────────────────────────────────────
 function ContentPage({ parent, sub }: { parent: string; sub: string }) {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16" style={{ minHeight: '150vh' }}>
+    <div className="max-w-4xl mx-auto px-6 py-16" style={{ minHeight: '150vh', marginTop: 42 }}>
       <p className="text-xs text-amber-500 uppercase tracking-[0.3em] mb-3 font-mono">{parent}</p>
       <h2 className="text-4xl font-black text-white mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>{sub}</h2>
       <div className="h-px bg-gray-800 mb-8" />

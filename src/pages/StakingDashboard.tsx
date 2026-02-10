@@ -45,7 +45,7 @@ export default function StakingDashboard() {
   }, [search, sort, filter])
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10">
+    <div className="max-w-7xl mx-auto px-6 py-10" style={{ marginTop: 42 }}>
       <h2 className="text-3xl font-black text-white mb-2" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
         Whirlpool Staking Dashboard
       </h2>
