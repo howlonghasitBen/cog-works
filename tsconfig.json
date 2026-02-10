@@ -16,8 +16,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@marketplace/*": ["../erc-1142/marketplace/src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "../erc-1142/marketplace/src"]
 }
