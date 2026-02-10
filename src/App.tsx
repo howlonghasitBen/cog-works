@@ -201,7 +201,7 @@ const heroItems: GearNavItem[] = [
   { label: 'Solutions', icon: '⚙️', innardSrc: '/images/whirlpool.png', innardSpin: 15, subItems: [
     { id: 'web3', label: 'Web3', icon: '🔗', innardSrc: '/images/harpoon.png' },
     { id: 'ai', label: 'AI', icon: '🤖', innardSrc: '/images/stakeLogo.png' },
-    { id: 'cloud', label: 'Cloud', icon: '☁️' },
+    { id: 'cloud', label: 'Cloud', icon: '☁️', innardSrc: '/images/surfSwap.png' },
   ]},
   { label: 'Support', icon: '🎧', subItems: [
     { id: 'docs', label: 'Docs', icon: '📖' },
