@@ -4,7 +4,7 @@
  * 3-column: My Inventory | Swap Stage | Market Search
  */
 
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo } from 'react'
 
 // ─── Types ──────────────────────────────────────────────────────
 interface Staker {
@@ -363,10 +363,10 @@ export default function SwapPage() {
   }, [])
 
   return (
-    <div className="w-full px-6 flex items-start justify-evenly" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 32, paddingBottom: 32 }}>
+    <div className="w-full px-6 flex items-start justify-evenly" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 40, paddingBottom: 40 }}>
 
       {/* ─── LEFT: My Inventory ─── */}
-      <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col w-full max-w-[400px]" style={{ maxHeight: 'calc(100dvh - 120px)' }}>
+      <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-5 flex flex-col w-full max-w-[400px]" style={{ maxHeight: 'calc(100dvh - 120px)' }}>
         <h2 className="text-white text-xl font-black tracking-wide mb-4" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           MY INVENTORY
         </h2>
@@ -399,7 +399,7 @@ export default function SwapPage() {
       </div>
 
       {/* ─── CENTER: Swap Stage ─── */}
-      <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-6 flex flex-col items-center w-full max-w-[380px]">
+      <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-6 flex flex-col items-center w-full max-w-[380px]">
         <h2 className="text-white text-xl font-black tracking-wide mb-6 text-center" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           SWAP STAGE
         </h2>
@@ -511,7 +511,7 @@ export default function SwapPage() {
       </div>
 
       {/* ─── RIGHT: Market Search ─── */}
-      <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col w-full max-w-[400px]" style={{ maxHeight: 'calc(100dvh - 120px)' }}>
+      <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-5 flex flex-col w-full max-w-[400px]" style={{ maxHeight: 'calc(100dvh - 120px)' }}>
         <h2 className="text-white text-xl font-black tracking-wide mb-4" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           MARKET SEARCH
         </h2>
