@@ -194,13 +194,13 @@ function ContentPage({ parent, sub }: { parent: string; sub: string }) {
 
 // ─── Nav Items ──────────────────────────────────────────────────
 const heroItems: GearNavItem[] = [
-  { label: 'Services', icon: '🔧', subItems: [
+  { label: 'Services', icon: '🔧', innardSrc: '/images/proof.jpg', innardScale: 0.68, subItems: [
     { id: 'design', label: 'Design', icon: '🎨' },
     { id: 'develop', label: 'Develop', icon: '💻' },
     { id: 'deploy', label: 'Deploy', icon: '🚀' },
   ]},
   { label: 'Solutions', icon: '⚙️', innardSrc: '/images/whirlpool.png', innardSpin: 15, subItems: [
-    { id: 'web3', label: 'Web3', icon: '🔗', innardSrc: '/images/harpoon.png' },
+    { id: 'web3', label: 'Web3', icon: '🔗', innardSrc: '/images/nftMint.png' },
     { id: 'ai', label: 'AI', icon: '🤖', innardSrc: '/images/stakeLogo.png' },
     { id: 'cloud', label: 'Cloud', icon: '☁️', innardSrc: '/images/surfSwap.png' },
   ]},
