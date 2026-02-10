@@ -1,4 +1,3 @@
-/** Create page — card editor with part selector, live preview, and field editor */
 import { useState } from 'react'
 import { CARD_PARTS, createDefaultCard } from './editor/types'
 import type { CardEditorData } from './editor/types'
@@ -10,7 +9,7 @@ interface MintCardProps {
   onToast?: (msg: string, type: 'success' | 'error' | 'info') => void
 }
 
-export default function MintCard({ onToast }: MintCardProps) {
+export default function MintCard({ onToast: _onToast }: MintCardProps) {
   const [card, setCard] = useState<CardEditorData>(createDefaultCard())
   const [selectedPart, setSelectedPart] = useState<string>('identity')
 
@@ -40,47 +39,33 @@ export default function MintCard({ onToast }: MintCardProps) {
   }
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-8">
-      <h1 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Inter Tight, sans-serif' }}>
+    <div className="max-w-[1400px] mx-auto">
+      <h1 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: 'Inter Tight, sans-serif' }}>
         Create Card
       </h1>
       <p className="text-sm text-gray-500 mb-8">
         Design your Whirlpool card with the editor below.
       </p>
 
-      {/* Editor layout — CSS Grid for true center preview */}
       <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_280px] gap-6 items-start">
-        {/* Part selector */}
         <div>
-          <div className="bg-white border border-gray-200 rounded-none overflow-hidden shadow-sm">
-            <PartSelector
-              parts={CARD_PARTS}
-              selectedPart={selectedPart}
-              onSelectPart={setSelectedPart}
-            />
+          <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded-sm overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+            <PartSelector parts={CARD_PARTS} selectedPart={selectedPart} onSelectPart={setSelectedPart} />
           </div>
         </div>
 
-        {/* Preview — true center column */}
         <div className="flex justify-center items-start">
           <CardPreview card={card} />
         </div>
 
-        {/* Part editor */}
         <div>
-          <div className="bg-white border border-gray-200 rounded-none overflow-hidden shadow-sm">
-            <PartEditor
-              part={selectedPart}
-              partSchema={CARD_PARTS[selectedPart]}
-              card={card}
-              onUpdateField={updateField}
-              onUpdateFields={updateFields}
-            />
+          <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded-sm overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+            <PartEditor part={selectedPart} partSchema={CARD_PARTS[selectedPart]} card={card}
+              onUpdateField={updateField} onUpdateFields={updateFields} />
           </div>
 
-          {/* Mint Coming Soon */}
-          <div className="mt-6 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-center">
-            <p className="text-lg font-bold text-amber-800" style={{ fontFamily: 'Inter Tight, sans-serif' }}>
+          <div className="mt-6 p-5 rounded-sm bg-amber-900/20 border-2 border-amber-700/50 text-center">
+            <p className="text-lg font-bold text-amber-400" style={{ fontFamily: 'Inter Tight, sans-serif' }}>
               🌊 Minting Coming Soon
             </p>
             <p className="text-sm text-amber-600 mt-2">
