@@ -199,7 +199,7 @@ const heroItems: GearNavItem[] = [
     { id: 'deploy', label: 'Deploy', icon: '🚀' },
   ]},
   { label: 'Solutions', icon: '⚙️', innardSrc: '/images/whirlpool.png', innardSpin: 15, subItems: [
-    { id: 'web3', label: 'Web3', icon: '🔗' },
+    { id: 'web3', label: 'Web3', icon: '🔗', innardSrc: '/images/harpoon.png' },
     { id: 'ai', label: 'AI', icon: '🤖' },
     { id: 'cloud', label: 'Cloud', icon: '☁️' },
   ]},

@@ -20,6 +20,8 @@ export interface GearSubItem {
   onClick?: () => void
   href?: string
   content?: React.ReactNode
+  innardSrc?: string
+  innardSpin?: number
 }
 
 export interface GearNavItem {
@@ -321,7 +323,7 @@ export default function GearHero({
                     onClick={() => handleSubClick(sub, si)}
                   >
                     <motion.div whileHover={{ scale: 1.12 }}>
-                      <Cog size={subSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={subRotations[si]}>
+                      <Cog size={subSize} cogSrc={cogSrc} innardSrc={sub.innardSrc || innardSrc} innardSpin={sub.innardSpin} rotation={subRotations[si]}>
                         <span
                           className="text-[7px] font-bold text-white tracking-[0.12em] uppercase"
                           style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
