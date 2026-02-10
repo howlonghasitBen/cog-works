@@ -363,7 +363,7 @@ export default function SwapPage() {
   }, [])
 
   return (
-    <div className="w-full px-4 flex items-start justify-center gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40 }}>
+    <div className="w-full px-4 flex items-stretch justify-between gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40 }}>
 
       {/* ─── LEFT: My Inventory ─── */}
       <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-4 flex flex-col w-full max-w-[440px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ maxHeight: 'calc(100dvh - 100px)' }}>
@@ -399,7 +399,7 @@ export default function SwapPage() {
       </div>
 
       {/* ─── CENTER: Swap Stage ─── */}
-      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-5 flex flex-col items-center w-full max-w-[460px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ minHeight: 'calc(100dvh - 140px)' }}>
+      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-5 flex flex-col items-center w-full max-w-[460px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
         <h2 className="text-white text-lg font-black tracking-wide mb-5 pb-2 border-b border-[#2a2d40] w-full text-center" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           SWAP STAGE
         </h2>
