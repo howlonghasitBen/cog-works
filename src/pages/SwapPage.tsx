@@ -195,74 +195,33 @@ function MultiStageCards({
   if (cards.length === 1) {
     return <StageCard card={cards[0]} onRemove={() => onRemove(cards[0].id)} placeholder="" />
   }
-  // Carousel for multi-select
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [activeIdx, setActiveIdx] = useState(0)
-
-  const scrollTo = (idx: number) => {
-    const clamped = Math.max(0, Math.min(idx, cards.length - 1))
-    setActiveIdx(clamped)
-    scrollRef.current?.children[clamped]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
-  }
-
+  // Scroll carousel for multi-select — same card size as single
   return (
-    <div className="w-[180px]">
-      <div className="relative">
-        {/* Left arrow */}
-        {activeIdx > 0 && (
-          <button
-            onClick={() => scrollTo(activeIdx - 1)}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-gray-900/90 border border-gray-600 hover:border-cyan-500 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 cursor-pointer transition-colors"
+    <div style={{ width: 180 }}>
+      <div
+        className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2"
+        style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent' }}
+      >
+        {cards.map(card => (
+          <div
+            key={card.id}
+            className="relative rounded-xl overflow-hidden border-2 border-cyan-500/40 bg-gray-800 flex-shrink-0 snap-center"
+            style={{ width: 180, height: 240 }}
           >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
-          </button>
-        )}
-        {/* Right arrow */}
-        {activeIdx < cards.length - 1 && (
-          <button
-            onClick={() => scrollTo(activeIdx + 1)}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-gray-900/90 border border-gray-600 hover:border-cyan-500 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 cursor-pointer transition-colors"
-          >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
-          </button>
-        )}
-        {/* Cards strip */}
-        <div ref={scrollRef} className="flex gap-2 overflow-hidden">
-          {cards.map((card, i) => (
-            <div
-              key={card.id}
-              className={`relative rounded-xl overflow-hidden border-2 bg-gray-800 flex-shrink-0 transition-all duration-300 ${
-                i === activeIdx ? 'border-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.3)]' : 'border-gray-700/50 opacity-40 scale-90'
-              }`}
-              style={{ width: 180, height: 240, transform: `translateX(${-(activeIdx * 192)}px)` }}
-            >
-              <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent" />
-              <div className="absolute bottom-0 inset-x-0 p-2.5">
-                <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
-                <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity}</p>
-              </div>
-              <button
-                onClick={() => onRemove(card.id)}
-                className="absolute top-2 right-2 w-6 h-6 bg-black/70 hover:bg-red-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white text-xs cursor-pointer"
-              >✕</button>
+            <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
+            <div className="absolute bottom-0 inset-x-0 p-3">
+              <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
+              <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
             </div>
-          ))}
-        </div>
-      </div>
-      {/* Dots */}
-      <div className="flex items-center justify-center gap-1.5 mt-2">
-        {cards.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => scrollTo(i)}
-            className={`rounded-full transition-all cursor-pointer ${
-              i === activeIdx ? 'w-2 h-2 bg-cyan-400' : 'w-1.5 h-1.5 bg-gray-600 hover:bg-gray-400'
-            }`}
-          />
+            <button
+              onClick={() => onRemove(card.id)}
+              className="absolute top-2 right-2 w-6 h-6 bg-black/70 hover:bg-red-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white text-xs cursor-pointer"
+            >✕</button>
+          </div>
         ))}
-        <span className="text-gray-500 text-[9px] font-mono ml-2">{activeIdx + 1}/{cards.length}</span>
       </div>
+      <p className="text-cyan-400 text-[9px] font-mono text-center mt-1">{cards.length} selected</p>
     </div>
   )
 }
