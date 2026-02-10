@@ -9,9 +9,9 @@ export default function MintPage() {
   const [tab, setTab] = useState<Tab>('create')
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-6">
+    <div className="w-full max-w-6xl mx-auto px-6 flex flex-col items-center justify-evenly" style={{ minHeight: '100vh', marginTop: 60 }}>
       {/* Tab Navigation */}
-      <div className="flex gap-1 mb-6 border-b-2 border-[#2a2d40]">
+      <div className="flex gap-1 mb-6 border-b-2 border-[#2a2d40] w-full justify-center">
         {(['create', 'portfolio'] as Tab[]).map(t => (
           <button
             key={t}
@@ -28,7 +28,9 @@ export default function MintPage() {
       </div>
 
       {/* Tab Content */}
-      {tab === 'create' ? <MintCard onToast={noop} /> : <Portfolio onToast={noop} />}
+      <div className="w-full flex-1 flex items-center justify-center">
+        {tab === 'create' ? <MintCard onToast={noop} /> : <Portfolio onToast={noop} />}
+      </div>
     </div>
   )
 }

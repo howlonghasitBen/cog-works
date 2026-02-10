@@ -158,12 +158,11 @@ import type { GearNavItem, GearSubItem } from './components/GearHero'
 import StakingDashboard from './pages/StakingDashboard'
 import SwapPage from './pages/SwapPage'
 import MintPage from './pages/MintPage'
-import ExplorePage from './pages/ExplorePage'
 
 // ─── Content Page ───────────────────────────────────────────────
 function ContentPage({ parent, sub }: { parent: string; sub: string }) {
   return (
-    <div className="max-w-4xl mx-auto px-8 py-16 bg-[#1a1d2e] rounded border-2 border-[#2a2d40] shadow-[0_4px_20px_rgba(0,0,0,0.3)] my-8" style={{ minHeight: '120vh', marginTop: 60 }}>
+    <div className="max-w-4xl mx-auto px-8 py-16 bg-[#1a1d2e] rounded border-2 border-[#2a2d40] shadow-[0_4px_20px_rgba(0,0,0,0.3)] my-8" style={{ minHeight: '100vh', marginTop: 60 }}>
       <p className="text-xs text-amber-500 uppercase tracking-[0.3em] mb-3 font-mono">{parent}</p>
       <h2 className="text-4xl font-black text-white mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>{sub}</h2>
       <div className="h-px bg-gray-800 mb-8" />
@@ -478,8 +477,6 @@ export default function App() {
                 <SwapPage />
               ) : activePage.sub.id === 'web3' ? (
                 <MintPage />
-              ) : activePage.sub.id === 'ai' ? (
-                <ExplorePage />
               ) : (
                 <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />
               )}
