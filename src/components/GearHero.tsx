@@ -86,7 +86,10 @@ function Cog({
             src={innardSrc}
             alt=""
             className="w-full h-full object-cover"
-            style={innardSpin ? { animation: `innardSpin ${360 / innardSpin}s linear infinite` } : undefined}
+            style={{
+              borderRadius: '50%',
+              ...(innardSpin ? { animation: `innardSpin ${360 / innardSpin}s linear infinite` } : {}),
+            }}
             draggable={false}
           />
         </div>
@@ -184,6 +187,7 @@ export default function GearHero({
       })
       setCenterRotation(r => r + 45)
     }
+    if (subItem.href) window.open(subItem.href, '_blank')
     subItem.onClick?.()
 
     // Close menu + trigger navigation
