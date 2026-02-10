@@ -411,7 +411,7 @@ export default function App() {
       </div>
 
       {/* ─── Scroll spacer (hero zone = 1 viewport height) ─── */}
-      <div className="relative h-screen z-25">
+      <div className="relative h-screen z-0 pointer-events-none">
         {/* Suite/palette toggle — top-left of hero */}
         <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-30 pointer-events-auto flex border-2 border-gray-600 bg-gray-900/90 rounded-sm">
           <button
