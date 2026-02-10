@@ -234,6 +234,7 @@ const heroItems: GearNavItem[] = [
 export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [pepesEnabled, setPepesEnabled] = useState(true)
 
   // DOM refs for direct manipulation (no React re-renders during scroll)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -369,25 +370,36 @@ export default function App() {
               <div className="absolute rounded-full opacity-10" style={{ inset: -35, border: '1px solid #60a5fa', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
             </div>
 
-            {/* PSC figures — bottom-left and top-right */}
-            <img
-              src="/images/pscLeft.png"
-              alt=""
-              className="absolute bottom-0 left-0 pointer-events-none"
-              style={{ height: '55%', objectFit: 'contain', objectPosition: 'bottom left' }}
-            />
-            <img
-              src="/images/pscRight.png"
-              alt=""
-              className="absolute top-0 right-0 pointer-events-none"
-              style={{ height: '55%', objectFit: 'contain', objectPosition: 'top right' }}
-            />
-
-            {/* Lightning between fingers — appears on cog menu open */}
-            <LightningBolt visible={menuOpen} />
+            {/* PSC figures + lightning — togglable */}
+            {pepesEnabled && (
+              <>
+                <img
+                  src="/images/pscLeft.png"
+                  alt=""
+                  className="absolute bottom-0 left-0 pointer-events-none"
+                  style={{ height: '55%', objectFit: 'contain', objectPosition: 'bottom left' }}
+                />
+                <img
+                  src="/images/pscRight.png"
+                  alt=""
+                  className="absolute top-0 right-0 pointer-events-none"
+                  style={{ height: '55%', objectFit: 'contain', objectPosition: 'top right' }}
+                />
+                <LightningBolt visible={menuOpen} />
+              </>
+            )}
           </div>
         </div>
       </div>
+
+      {/* ─── Suite/palette toggle — top-left corner ─── */}
+      <button
+        onClick={() => setPepesEnabled(p => !p)}
+        className="fixed top-4 left-4 z-30 bg-gray-900/80 border border-gray-700 hover:border-amber-500/50 px-3 py-2 text-xs font-mono text-gray-400 hover:text-white transition-colors cursor-pointer"
+        title={pepesEnabled ? 'Switch to minimal theme' : 'Switch to Sistine theme'}
+      >
+        {pepesEnabled ? '🎨 Sistine' : '⚙️ Minimal'}
+      </button>
 
       {/* ─── Fixed cog layer (parallax ~0.35x) — above content ─── */}
       <div
