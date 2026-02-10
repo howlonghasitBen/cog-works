@@ -262,11 +262,11 @@ export default function SwapPage() {
   }, [sourcePosition, targetPool])
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 flex items-center justify-center" style={{ marginTop: 60, minHeight: '100dvh' }}>
-      <div className="grid grid-cols-[1fr_minmax(340px,1fr)_1.2fr] gap-5 w-full">
+    <div className="w-full px-4 flex items-center justify-center" style={{ marginTop: 60, minHeight: '100dvh' }}>
+      <div className="flex justify-evenly w-full gap-5">
 
         {/* ─── LEFT: Your Staked Positions ─── */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col">
+        <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col max-w-[380px] w-full">
           <h2 className="text-white text-lg font-black tracking-wide mb-1" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
             YOUR POSITIONS
           </h2>
@@ -302,7 +302,7 @@ export default function SwapPage() {
         </div>
 
         {/* ─── CENTER: Swap Stage ─── */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col">
+        <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col max-w-[360px] w-full">
           <h2 className="text-white text-lg font-black tracking-wide mb-4" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
             SWAP STAGE
           </h2>
@@ -401,7 +401,7 @@ export default function SwapPage() {
         </div>
 
         {/* ─── RIGHT: Pool Explorer ─── */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col">
+        <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 flex flex-col max-w-[420px] w-full">
           <h2 className="text-white text-lg font-black tracking-wide mb-1" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
             POOL EXPLORER
           </h2>
