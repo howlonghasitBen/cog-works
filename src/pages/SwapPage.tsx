@@ -257,30 +257,30 @@ function MarketRow({
         : 'bg-gray-800/30 border border-gray-700/30 hover:border-gray-600'
     }`}>
       <div className="flex gap-3">
-        <div className="w-16 h-20 rounded-md overflow-hidden border border-gray-700 flex-shrink-0">
+        <div className="w-24 h-32 rounded-md overflow-hidden border border-gray-700 flex-shrink-0">
           <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
+            <p className="text-white text-base font-bold">{card.name} #{card.number}</p>
             {isTarget && (
               <span className="text-[8px] font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">TARGETED</span>
             )}
           </div>
-          <p className="text-[10px] mt-0.5" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
+          <p className="text-xs mt-0.5" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
           {/* Compact staker row */}
-          <div className="flex items-center gap-1.5 mt-1.5">
-            <span className="text-[9px] text-gray-500">👑</span>
-            <span className="text-[9px] text-amber-400 font-mono">{card.owner}</span>
-            <span className="text-[9px] text-gray-600">({card.ownerShares.toLocaleString()})</span>
+          <div className="flex items-center gap-1.5 mt-2">
+            <span className="text-xs text-gray-500">👑</span>
+            <span className="text-xs text-amber-400 font-mono">{card.owner}</span>
+            <span className="text-xs text-gray-600">({card.ownerShares.toLocaleString()})</span>
           </div>
-          <div className="flex items-center justify-between mt-1.5">
-            <span className="text-[9px] text-gray-500">
+          <div className="flex items-center justify-between mt-2">
+            <span className="text-xs text-gray-500">
               Steal: <span className="text-emerald-400 font-mono font-bold">{card.stealAmount.toLocaleString()}</span> tokens
             </span>
             <button
               onClick={onSelect}
-              className={`px-3 py-1 rounded text-[10px] font-bold transition-all cursor-pointer ${
+              className={`px-4 py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
                 isTarget
                   ? 'bg-emerald-600/30 text-emerald-400 border border-emerald-500/50'
                   : 'bg-cyan-600 hover:bg-cyan-500 text-white'
@@ -393,48 +393,26 @@ export default function SwapPage() {
 
       {/* ─── CENTER: Swap Stage ─── */}
       <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-6 flex flex-col items-center w-full max-w-[380px]">
-        <h2 className="text-white text-xl font-black tracking-wide mb-6 self-start" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+        <h2 className="text-white text-xl font-black tracking-wide mb-6 text-center" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
           SWAP STAGE
         </h2>
 
-        {/* YOU OFFER section */}
-        <div className="flex items-center gap-5 w-full justify-center">
-          <div className="flex flex-col items-center">
-            <span className="text-cyan-400 font-black text-base tracking-wider" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-              YOU
-            </span>
-            <span className="text-cyan-400 font-black text-base tracking-wider" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-              OFFER
-            </span>
-          </div>
-          <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl p-3">
-            <MultiStageCards
-              cards={selectedCards}
-              onRemove={removeSelected}
-              placeholder="← Select from inventory"
-            />
-          </div>
+        <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl p-3">
+          <MultiStageCards
+            cards={selectedCards}
+            onRemove={removeSelected}
+            placeholder="← Select from inventory"
+          />
         </div>
 
         <SwapArrows />
 
-        {/* YOU RECEIVE section */}
-        <div className="flex items-center gap-5 w-full justify-center">
-          <div className="flex flex-col items-center">
-            <span className="text-cyan-400 font-black text-base tracking-wider" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-              YOU
-            </span>
-            <span className="text-cyan-400 font-black text-base tracking-wider" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-              RECEIVE
-            </span>
-          </div>
-          <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl p-3">
-            <StageCard
-              card={targetPool || null}
-              onRemove={targetPool ? () => setTargetId(null) : undefined}
-              placeholder="Browse market →"
-            />
-          </div>
+        <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl p-3">
+          <StageCard
+            card={targetPool || null}
+            onRemove={targetPool ? () => setTargetId(null) : undefined}
+            placeholder="Browse market →"
+          />
         </div>
 
         {/* Swap estimate + button */}
