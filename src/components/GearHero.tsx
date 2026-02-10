@@ -28,6 +28,10 @@ export interface GearNavItem {
   onClick?: () => void
   href?: string
   subItems?: GearSubItem[]
+  /** Override innard image for this satellite (e.g. whirlpool.png) */
+  innardSrc?: string
+  /** Slowly spin the innard image (degrees per second) */
+  innardSpin?: number
 }
 
 export interface GearHeroProps {
@@ -48,11 +52,13 @@ function Cog({
   cogSrc,
   rotation = 0,
   innardSrc,
+  innardSpin,
   children,
 }: {
   size: number
   cogSrc: string
   innardSrc?: string
+  innardSpin?: number
   rotation?: number
   children?: React.ReactNode
 }) {
@@ -73,7 +79,13 @@ function Cog({
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden"
           style={{ width: innardSize, height: innardSize }}
         >
-          <img src={innardSrc} alt="" className="w-full h-full object-cover" draggable={false} />
+          <img
+            src={innardSrc}
+            alt=""
+            className="w-full h-full object-cover"
+            style={innardSpin ? { animation: `innardSpin ${360 / innardSpin}s linear infinite` } : undefined}
+            draggable={false}
+          />
         </div>
       )}
       {children && (
@@ -362,7 +374,7 @@ export default function GearHero({
                     transition={{ type: 'spring', stiffness: 300 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={innardSrc} rotation={satRotations[i]}>
+                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={item.innardSrc || innardSrc} innardSpin={item.innardSpin} rotation={satRotations[i]}>
                       <span
                         className={`${scale < 0.7 ? 'text-[6px]' : 'text-[9px]'} font-bold text-white tracking-[0.15em] uppercase mt-0.5`}
                         style={{ fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
@@ -382,6 +394,10 @@ export default function GearHero({
         @keyframes gearPulse {
           0%, 100% { opacity: 0.15; transform: scale(1); }
           50% { opacity: 0.3; transform: scale(1.05); }
+        }
+        @keyframes innardSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
       `}</style>
     </section>
