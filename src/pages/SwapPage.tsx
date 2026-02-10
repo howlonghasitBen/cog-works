@@ -202,10 +202,10 @@ function MultiStageCards({
         className="flex gap-3 overflow-x-scroll snap-x snap-mandatory pb-2 overscroll-x-contain"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent', WebkitOverflowScrolling: 'touch' }}
         onWheel={e => {
-          // Convert vertical scroll to horizontal
+          // Convert vertical scroll to horizontal, stop page scroll
+          e.stopPropagation()
           if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
             e.currentTarget.scrollLeft += e.deltaY
-            e.preventDefault()
           }
         }}
       >
