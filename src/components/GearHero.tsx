@@ -312,12 +312,14 @@ export default function GearHero({
       {!transparentBg && (
         <>
           <div className="absolute inset-0 bg-black/30" />
+        </>
+      )}
 
-          {/* Lightning — grows segment by segment from fingertips through satellites to center */}
+          {/* Lightning — grows segment by segment from fingertips through satellites to center (renders regardless of transparentBg) */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none"
             style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out', zIndex: 10 }}>
             {/* DEBUG: remove after confirming visibility */}
-            {touchStep >= 0 && console.log('Lightning touchStep:', touchStep, 'left segs:', lightningSegments.left.length, 'right segs:', lightningSegments.right.length)}
+            {touchStep >= 0 && (() => { console.log('Lightning touchStep:', touchStep, 'left segs:', lightningSegments.left.length, 'right segs:', lightningSegments.right.length); return null })()}
             {/* Render accumulated segments for both bolts */}
             {touchStep >= 0 && lightningSegments.left.slice(0, touchStep + 1).map((seg, i) => {
               const dx = seg.toX - seg.fromX, dy = seg.toY - seg.fromY
@@ -386,8 +388,6 @@ export default function GearHero({
             <div className="absolute rounded-full opacity-10"
               style={{ inset: -35, border: '1px solid #60a5fa', animation: 'gearPulse 4s ease-in-out infinite 1s' }} />
           </div>
-        </>
-      )}
 
       {/* Gear assembly */}
       <div
