@@ -13,20 +13,76 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-/** Animated lightning arc that follows a circular path around a cog */
-function CogLightning({ size, color = '#60a5fa', bolts = 3 }: { size: number; color?: string; bolts?: number }) {
+/** Draw a jagged lightning bolt between two points */
+function drawBolt(
+  ctx: CanvasRenderingContext2D,
+  x1: number, y1: number, x2: number, y2: number,
+  t: number, seed: number, jitter: number = 8,
+) {
+  const steps = 12
+  const dx = x2 - x1, dy = y2 - y1
+  // Perpendicular direction for jaggedness
+  const len = Math.sqrt(dx * dx + dy * dy) || 1
+  const nx = -dy / len, ny = dx / len
+
+  ctx.beginPath()
+  for (let i = 0; i <= steps; i++) {
+    const frac = i / steps
+    const bx = x1 + dx * frac
+    const by = y1 + dy * frac
+    const jag = i === 0 || i === steps ? 0
+      : (Math.sin(i * 7.3 + t * 11 + seed) * jitter + Math.sin(i * 13.7 + t * 7 + seed * 2) * jitter * 0.5)
+    const px = bx + nx * jag
+    const py = by + ny * jag
+    if (i === 0) ctx.moveTo(px, py)
+    else ctx.lineTo(px, py)
+  }
+  ctx.stroke()
+}
+
+/** Draw a lightning arc that follows a circular path */
+function drawArcBolt(
+  ctx: CanvasRenderingContext2D,
+  cx: number, cy: number, r: number,
+  startAngle: number, arcLen: number,
+  t: number, seed: number, jitter: number = 6,
+) {
+  const steps = 20
+  const step = arcLen / steps
+  ctx.beginPath()
+  for (let i = 0; i <= steps; i++) {
+    const a = startAngle + step * i
+    const jag = i === 0 || i === steps ? 0
+      : (Math.sin(i * 7.3 + t * 12 + seed) * jitter + Math.sin(i * 13.1 + t * 8) * jitter * 0.4)
+    const px = cx + Math.cos(a) * (r + jag)
+    const py = cy + Math.sin(a) * (r + jag)
+    if (i === 0) ctx.moveTo(px, py)
+    else ctx.lineTo(px, py)
+  }
+  ctx.stroke()
+}
+
+interface CogPos { x: number; y: number; r: number }
+
+/** Full-assembly lightning overlay: arcs around cogs + bolts connecting them */
+function LightningOverlay({
+  width, height,
+  center, satellites, subCogs,
+  activeSubmenu,
+}: {
+  width: number; height: number
+  center: CogPos
+  satellites: CogPos[]
+  subCogs: CogPos[][] // subCogs[satIdx][subIdx]
+  activeSubmenu: number | null
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const frameRef = useRef<number>(0)
-  const boltStateRef = useRef<{ offset: number; speed: number; arcLen: number; seed: number }[]>([])
+  const seedsRef = useRef<number[]>([])
 
-  // Initialize bolt states
-  if (boltStateRef.current.length !== bolts) {
-    boltStateRef.current = Array.from({ length: bolts }, (_, i) => ({
-      offset: (i / bolts) * Math.PI * 2,
-      speed: 0.8 + Math.random() * 1.2,
-      arcLen: Math.PI * (0.3 + Math.random() * 0.4),
-      seed: Math.random() * 1000,
-    }))
+  // Stable random seeds for each connection
+  if (seedsRef.current.length < 50) {
+    seedsRef.current = Array.from({ length: 50 }, () => Math.random() * 1000)
   }
 
   const draw = useCallback(() => {
@@ -36,50 +92,88 @@ function CogLightning({ size, color = '#60a5fa', bolts = 3 }: { size: number; co
     if (!ctx) return
 
     const dpr = window.devicePixelRatio || 1
-    canvas.width = size * dpr
-    canvas.height = size * dpr
+    canvas.width = width * dpr
+    canvas.height = height * dpr
     ctx.scale(dpr, dpr)
-    ctx.clearRect(0, 0, size, size)
+    ctx.clearRect(0, 0, width, height)
 
-    const cx = size / 2
-    const cy = size / 2
-    const r = size * 0.42 // just inside the gear teeth
-    const now = performance.now() / 1000
+    const t = performance.now() / 1000
+    const seeds = seedsRef.current
+    const color = '#60a5fa'
+    const colorBright = '#93c5fd'
 
-    for (const bolt of boltStateRef.current) {
-      const startAngle = bolt.offset + now * bolt.speed
-      const steps = 24
-      const stepAngle = bolt.arcLen / steps
+    // --- 1. Arc lightning around center cog ---
+    ctx.strokeStyle = color
+    ctx.lineWidth = 1.5
+    ctx.shadowColor = color
+    ctx.shadowBlur = 10
+    ctx.globalAlpha = 0.5
+    drawArcBolt(ctx, center.x, center.y, center.r * 0.46, t * 0.6, Math.PI * 0.8, t, seeds[0])
+    drawArcBolt(ctx, center.x, center.y, center.r * 0.46, t * 0.6 + Math.PI, Math.PI * 0.6, t, seeds[1])
 
-      ctx.beginPath()
-      ctx.strokeStyle = color
-      ctx.lineWidth = 1.5
-      ctx.shadowColor = color
-      ctx.shadowBlur = 8
-      ctx.globalAlpha = 0.6 + Math.sin(now * 3 + bolt.seed) * 0.3
+    // --- 2. Bolts from center edge → each satellite ---
+    satellites.forEach((sat, i) => {
+      const dx = sat.x - center.x, dy = sat.y - center.y
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1
+      const ux = dx / dist, uy = dy / dist
+      // Start from center cog edge, end at satellite cog edge
+      const x1 = center.x + ux * center.r * 0.48
+      const y1 = center.y + uy * center.r * 0.48
+      const x2 = sat.x - ux * sat.r * 0.48
+      const y2 = sat.y - uy * sat.r * 0.48
 
-      for (let j = 0; j <= steps; j++) {
-        const a = startAngle + stepAngle * j
-        // Jagged displacement perpendicular to the circle
-        const jag = j === 0 || j === steps ? 0 : (Math.sin(j * 7.3 + now * 12 + bolt.seed) * 4 + Math.sin(j * 13.1 + now * 8) * 2)
-        const pr = r + jag
-        const px = cx + Math.cos(a) * pr
-        const py = cy + Math.sin(a) * pr
-        if (j === 0) ctx.moveTo(px, py)
-        else ctx.lineTo(px, py)
-      }
-      ctx.stroke()
+      // Pulse: bolts flicker
+      const flicker = Math.sin(t * 4 + seeds[i + 2]) * 0.5 + 0.5
+      ctx.globalAlpha = 0.3 + flicker * 0.4
+      ctx.strokeStyle = colorBright
+      ctx.lineWidth = 1.2
+      drawBolt(ctx, x1, y1, x2, y2, t, seeds[i + 2], 10)
 
       // Glow pass
-      ctx.lineWidth = 4
-      ctx.globalAlpha = 0.15
-      ctx.stroke()
+      ctx.lineWidth = 3
+      ctx.globalAlpha = 0.08 + flicker * 0.07
+      drawBolt(ctx, x1, y1, x2, y2, t, seeds[i + 2], 10)
+
+      // --- Arc around satellite cog ---
+      ctx.strokeStyle = color
+      ctx.lineWidth = 1.2
+      ctx.globalAlpha = 0.35
+      const satArcStart = Math.atan2(-uy, -ux) + Math.PI * 0.3
+      drawArcBolt(ctx, sat.x, sat.y, sat.r * 0.46, satArcStart + t * 0.4, Math.PI * 0.7, t, seeds[i + 10])
+    })
+
+    // --- 3. Bolts from active satellite → sub-cogs ---
+    if (activeSubmenu !== null && subCogs[activeSubmenu]) {
+      const sat = satellites[activeSubmenu]
+      if (sat) {
+        subCogs[activeSubmenu].forEach((sub, si) => {
+          const dx = sub.x - sat.x, dy = sub.y - sat.y
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1
+          const ux = dx / dist, uy = dy / dist
+          const x1 = sat.x + ux * sat.r * 0.48
+          const y1 = sat.y + uy * sat.r * 0.48
+          const x2 = sub.x - ux * sub.r * 0.48
+          const y2 = sub.y - uy * sub.r * 0.48
+
+          const flicker = Math.sin(t * 5 + seeds[si + 20]) * 0.5 + 0.5
+          ctx.globalAlpha = 0.3 + flicker * 0.5
+          ctx.strokeStyle = colorBright
+          ctx.lineWidth = 1
+          drawBolt(ctx, x1, y1, x2, y2, t, seeds[si + 20], 6)
+
+          // Arc around sub-cog
+          ctx.strokeStyle = color
+          ctx.lineWidth = 1
+          ctx.globalAlpha = 0.3
+          drawArcBolt(ctx, sub.x, sub.y, sub.r * 0.46, t * 0.8 + si, Math.PI * 0.5, t, seeds[si + 30])
+        })
+      }
     }
 
     ctx.globalAlpha = 1
     ctx.shadowBlur = 0
     frameRef.current = requestAnimationFrame(draw)
-  }, [size, color, bolts])
+  }, [width, height, center, satellites, subCogs, activeSubmenu])
 
   useEffect(() => {
     frameRef.current = requestAnimationFrame(draw)
@@ -89,8 +183,8 @@ function CogLightning({ size, color = '#60a5fa', bolts = 3 }: { size: number; co
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-[5] pointer-events-none"
-      style={{ width: size, height: size }}
+      className="absolute inset-0 z-[15] pointer-events-none"
+      style={{ width, height }}
     />
   )
 }
@@ -188,8 +282,6 @@ function Cog({
           />
         </div>
       )}
-      {/* Lightning arcs along the circular path */}
-      <CogLightning size={size} color="#60a5fa" bolts={3} />
       {children && (
         <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
           {children}
@@ -321,6 +413,45 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
+  // Compute cog positions for lightning overlay (relative to container center)
+  const containerW = radius * 2 + 280
+  const containerH = radius * 2 + 280
+  const cx = containerW / 2
+  const cy = containerH / 2
+  const centerCogSize = 300 * scale
+  const satSize = 130 * scale
+  const subSize = 85 * scale
+
+  const lightningCenter: CogPos = { x: cx, y: cy, r: centerCogSize }
+
+  const lightningSatellites: CogPos[] = useMemo(() => {
+    if (!menuOpen) return []
+    return items.map((_, i) => {
+      const angle = startAngle + angleStep * i
+      const isActive = activeSubmenu === i
+      const r = isActive ? pullInRadius : radius
+      return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r, r: satSize }
+    })
+  }, [menuOpen, items.length, activeSubmenu, startAngle, angleStep, radius, pullInRadius, cx, cy, satSize, scale])
+
+  const lightningSubCogs: CogPos[][] = useMemo(() => {
+    if (!menuOpen || activeSubmenu === null) return []
+    return items.map((item, i) => {
+      if (i !== activeSubmenu || !item.subItems) return []
+      const angle = startAngle + angleStep * i
+      const satCX = Math.cos(angle) * pullInRadius
+      const satCY = Math.sin(angle) * pullInRadius
+      return item.subItems.slice(0, 3).map((_, si) => {
+        const subAngle = angle + (si - 1) * (Math.PI * 0.35)
+        return {
+          x: cx + satCX + Math.cos(subAngle) * subRadius,
+          y: cy + satCY + Math.sin(subAngle) * subRadius,
+          r: subSize,
+        }
+      })
+    })
+  }, [menuOpen, activeSubmenu, items, startAngle, angleStep, pullInRadius, subRadius, cx, cy, subSize, scale])
+
   return (
     <section
       className={`relative w-full h-screen flex items-center justify-center overflow-hidden pointer-events-none ${className}`}
@@ -362,6 +493,18 @@ export default function GearHero({
         className="relative z-10"
         style={{ width: radius * 2 + 280, height: radius * 2 + 280 }}
       >
+        {/* Lightning overlay connecting all cogs */}
+        {menuOpen && (
+          <LightningOverlay
+            width={containerW}
+            height={containerH}
+            center={lightningCenter}
+            satellites={lightningSatellites}
+            subCogs={lightningSubCogs}
+            activeSubmenu={activeSubmenu}
+          />
+        )}
+
         {/* Center gear — highest z-index */}
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 pointer-events-auto"
