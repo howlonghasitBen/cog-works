@@ -250,127 +250,71 @@ export default function GearHero({
         <>
           <div className="absolute inset-0 bg-black/30" />
 
-          {/* Light streaks — transition from straight lines to circular arcs around nav cog */}
+          {/* Light streaks — originals fade out, arcs fade in (same 4 divs reused) */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Left blue streak — main: straight line → becomes CW arc around center */}
-            <div
-              className="absolute transition-all duration-1000 ease-in-out"
-              style={menuOpen ? {
-                // Arc: large circle centered on nav cog, only top border visible
+            {/* Original straight streaks — visible when menu closed */}
+            <div className="absolute h-[2px] w-[55%] left-0 top-[33%]"
+              style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)', opacity: menuOpen ? 0 : 0.3, transition: 'opacity 0.6s' }} />
+            <div className="absolute h-[1px] w-[40%] left-0 top-[36%]"
+              style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)', opacity: menuOpen ? 0 : 0.2, transition: 'opacity 0.6s' }} />
+            <div className="absolute h-[2px] w-[50%] right-0 top-[64%]"
+              style={{ background: 'linear-gradient(270deg, #f97316, transparent)', opacity: menuOpen ? 0 : 0.3, transition: 'opacity 0.6s' }} />
+            <div className="absolute h-[1px] w-[35%] right-0 top-[67%]"
+              style={{ background: 'linear-gradient(270deg, #fb923c, transparent)', opacity: menuOpen ? 0 : 0.15, transition: 'opacity 0.6s' }} />
+
+            {/* Circular arc versions — same streaks traveling CW around the satellite ring */}
+            {/* Blue main arc (top-right half of ring) */}
+            <div className="absolute left-1/2 top-1/2 rounded-full"
+              style={{
                 width: radius * 2 + 60,
                 height: radius * 2 + 60,
-                left: '50%',
-                top: '50%',
                 transform: 'translate(-50%, -50%)',
-                borderRadius: '50%',
                 border: '2px solid transparent',
                 borderTopColor: '#3b82f6',
                 borderRightColor: '#3b82f6',
-                opacity: 0.3,
-                background: 'none',
-                filter: 'drop-shadow(0 0 6px #3b82f6)',
-              } : {
-                width: '55%',
-                height: 2,
-                left: 0,
-                top: '33%',
-                transform: 'none',
-                borderRadius: 0,
-                border: 'none',
-                opacity: 0.3,
-                background: 'linear-gradient(90deg, #3b82f6, transparent)',
-                filter: 'none',
-              }}
-            />
-            {/* Left blue streak — secondary: straight → thinner arc */}
-            <div
-              className="absolute transition-all duration-1000 ease-in-out"
-              style={menuOpen ? {
+                filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.5))',
+                opacity: menuOpen ? 0.35 : 0,
+                transition: 'opacity 0.8s ease-in-out 0.3s',
+              }} />
+            {/* Blue secondary arc (slightly rotated) */}
+            <div className="absolute left-1/2 top-1/2 rounded-full"
+              style={{
                 width: radius * 2 + 60,
                 height: radius * 2 + 60,
-                left: '50%',
-                top: '50%',
                 transform: 'translate(-50%, -50%) rotate(15deg)',
-                borderRadius: '50%',
                 border: '1px solid transparent',
                 borderTopColor: '#60a5fa',
                 borderRightColor: '#60a5fa',
-                opacity: 0.2,
-                background: 'none',
-                filter: 'drop-shadow(0 0 4px #60a5fa)',
-              } : {
-                width: '40%',
-                height: 1,
-                left: 0,
-                top: '36%',
-                transform: 'none',
-                borderRadius: 0,
-                border: 'none',
-                opacity: 0.2,
-                background: 'linear-gradient(90deg, #60a5fa, transparent)',
-                filter: 'none',
-              }}
-            />
-            {/* Right orange streak — main: straight → becomes CW arc (bottom half) */}
-            <div
-              className="absolute transition-all duration-1000 ease-in-out"
-              style={menuOpen ? {
+                filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
+                opacity: menuOpen ? 0.2 : 0,
+                transition: 'opacity 0.8s ease-in-out 0.4s',
+              }} />
+            {/* Orange main arc (bottom-left half of ring) */}
+            <div className="absolute left-1/2 top-1/2 rounded-full"
+              style={{
                 width: radius * 2 + 60,
                 height: radius * 2 + 60,
-                left: '50%',
-                top: '50%',
                 transform: 'translate(-50%, -50%) rotate(180deg)',
-                borderRadius: '50%',
                 border: '2px solid transparent',
                 borderTopColor: '#f97316',
                 borderRightColor: '#f97316',
-                opacity: 0.3,
-                background: 'none',
-                filter: 'drop-shadow(0 0 6px #f97316)',
-              } : {
-                width: '50%',
-                height: 2,
-                right: 0,
-                left: 'auto',
-                top: '64%',
-                transform: 'none',
-                borderRadius: 0,
-                border: 'none',
-                opacity: 0.3,
-                background: 'linear-gradient(270deg, #f97316, transparent)',
-                filter: 'none',
-              }}
-            />
-            {/* Right orange streak — secondary: straight → thinner arc */}
-            <div
-              className="absolute transition-all duration-1000 ease-in-out"
-              style={menuOpen ? {
+                filter: 'drop-shadow(0 0 8px rgba(249,115,22,0.5))',
+                opacity: menuOpen ? 0.35 : 0,
+                transition: 'opacity 0.8s ease-in-out 0.3s',
+              }} />
+            {/* Orange secondary arc (slightly rotated) */}
+            <div className="absolute left-1/2 top-1/2 rounded-full"
+              style={{
                 width: radius * 2 + 60,
                 height: radius * 2 + 60,
-                left: '50%',
-                top: '50%',
                 transform: 'translate(-50%, -50%) rotate(195deg)',
-                borderRadius: '50%',
                 border: '1px solid transparent',
                 borderTopColor: '#fb923c',
                 borderRightColor: '#fb923c',
-                opacity: 0.15,
-                background: 'none',
-                filter: 'drop-shadow(0 0 4px #fb923c)',
-              } : {
-                width: '35%',
-                height: 1,
-                right: 0,
-                left: 'auto',
-                top: '67%',
-                transform: 'none',
-                borderRadius: 0,
-                border: 'none',
-                opacity: 0.15,
-                background: 'linear-gradient(270deg, #fb923c, transparent)',
-                filter: 'none',
-              }}
-            />
+                filter: 'drop-shadow(0 0 4px rgba(251,146,60,0.4))',
+                opacity: menuOpen ? 0.15 : 0,
+                transition: 'opacity 0.8s ease-in-out 0.4s',
+              }} />
           </div>
 
           {/* Glow rings */}
