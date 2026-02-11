@@ -315,70 +315,76 @@ export default function GearHero({
         </>
       )}
 
-          {/* Lightning — grows segment by segment from fingertips through satellites to center (renders regardless of transparentBg) */}
+          {/* Lightning — original streaks re-aim through satellites CW then to center */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none"
             style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out', zIndex: 10 }}>
-            {/* DEBUG: remove after confirming visibility */}
-            {touchStep >= 0 && (() => { console.log('Lightning touchStep:', touchStep, 'left segs:', lightningSegments.left.length, 'right segs:', lightningSegments.right.length); return null })()}
-            {/* Render accumulated segments for both bolts */}
-            {touchStep >= 0 && lightningSegments.left.slice(0, touchStep + 1).map((seg, i) => {
-              const dx = seg.toX - seg.fromX, dy = seg.toY - seg.fromY
-              const len = Math.sqrt(dx * dx + dy * dy)
-              const angle = Math.atan2(dy, dx) * 180 / Math.PI
-              return (
-                <div key={`left-${i}`}>
-                  <div className="absolute origin-left" style={{
-                    left: seg.fromX, top: seg.fromY,
-                    width: len, height: 2,
-                    transform: `rotate(${angle}deg)`,
-                    background: i === 0
-                      ? 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)'
-                      : '#3b82f6',
+            {(() => {
+              if (touchStep < 0) return null
+              const vh = typeof window !== 'undefined' ? window.innerHeight : 900
+              const vw = windowWidth
+              // Current target for each bolt
+              const leftTarget = touchStep < lightningSegments.left.length
+                ? lightningSegments.left[touchStep]
+                : lightningSegments.left[lightningSegments.left.length - 1]
+              const rightTarget = touchStep < lightningSegments.right.length
+                ? lightningSegments.right[touchStep]
+                : lightningSegments.right[lightningSegments.right.length - 1]
+
+              // Left bolt: origin at left edge, 33%
+              const lox = 0, loy = vh * 0.33
+              const ldx = leftTarget.toX - lox, ldy = leftTarget.toY - loy
+              const lLen = Math.sqrt(ldx * ldx + ldy * ldy)
+              const lAngle = Math.atan2(ldy, ldx) * 180 / Math.PI
+
+              // Right bolt: origin at right edge, 64%
+              const rox = vw, roy = vh * 0.64
+              const rdx = rightTarget.toX - rox, rdy = rightTarget.toY - roy
+              const rLen = Math.sqrt(rdx * rdx + rdy * rdy)
+              const rAngle = Math.atan2(rdy, rdx) * 180 / Math.PI
+
+              return <>
+                {/* Left streak — main */}
+                <div className="absolute h-[2px] left-0 top-[33%] origin-left"
+                  style={{
+                    width: lLen,
+                    transform: `rotate(${lAngle}deg)`,
+                    background: 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
                     filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                    opacity: 0.6,
+                    opacity: 0.3,
+                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
                   }} />
-                  <div className="absolute origin-left" style={{
-                    left: seg.fromX, top: seg.fromY + 3,
-                    width: len * 0.85, height: 1,
-                    transform: `rotate(${angle}deg)`,
-                    background: i === 0
-                      ? 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)'
-                      : '#60a5fa',
+                {/* Left streak — secondary */}
+                <div className="absolute h-[1px] left-0 top-[36%] origin-left"
+                  style={{
+                    width: lLen * 0.85,
+                    transform: `rotate(${lAngle}deg)`,
+                    background: 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
                     filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                    opacity: 0.4,
+                    opacity: 0.2,
+                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
                   }} />
-                </div>
-              )
-            })}
-            {touchStep >= 0 && lightningSegments.right.slice(0, touchStep + 1).map((seg, i) => {
-              const dx = seg.toX - seg.fromX, dy = seg.toY - seg.fromY
-              const len = Math.sqrt(dx * dx + dy * dy)
-              const angle = Math.atan2(dy, dx) * 180 / Math.PI
-              return (
-                <div key={`right-${i}`}>
-                  <div className="absolute origin-left" style={{
-                    left: seg.fromX, top: seg.fromY,
-                    width: len, height: 2,
-                    transform: `rotate(${angle}deg)`,
-                    background: i === 0
-                      ? 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)'
-                      : '#3b82f6',
+                {/* Right streak — main */}
+                <div className="absolute h-[2px] right-0 top-[64%] origin-right"
+                  style={{
+                    width: rLen,
+                    transform: `rotate(${rAngle}deg)`,
+                    background: 'linear-gradient(270deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
                     filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                    opacity: 0.6,
+                    opacity: 0.3,
+                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
                   }} />
-                  <div className="absolute origin-left" style={{
-                    left: seg.fromX, top: seg.fromY + 3,
-                    width: len * 0.85, height: 1,
-                    transform: `rotate(${angle}deg)`,
-                    background: i === 0
-                      ? 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)'
-                      : '#60a5fa',
+                {/* Right streak — secondary */}
+                <div className="absolute h-[1px] right-0 top-[67%] origin-right"
+                  style={{
+                    width: rLen * 0.85,
+                    transform: `rotate(${rAngle}deg)`,
+                    background: 'linear-gradient(270deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
                     filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                    opacity: 0.4,
+                    opacity: 0.2,
+                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
                   }} />
-                </div>
-              )
-            })}
+              </>
+            })()}
           </div>
 
           {/* Glow rings */}
