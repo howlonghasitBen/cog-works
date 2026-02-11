@@ -237,97 +237,6 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
-  // Compute SVG path strings for the two lightning streaks
-  // Path 1 (left/blue): left finger → up to xLinks → CW around top (mumuFrens, Whirlpool) → down right side → to center
-  // Path 2 (right/orange): right finger → left to right sats → CW around bottom → up left side → to center
-  const lightningPaths = useMemo(() => {
-    if (!menuOpen || items.length === 0) return null
-
-    // Satellite positions sorted CW by angle
-    const sats = items.map((_, i) => {
-      const a = startAngle + angleStep * i
-      return { angle: a, idx: i }
-    }).sort((a, b) => a.angle - b.angle)
-
-    // We need positions in percentages of the section (100vw x 100vh)
-    // The gear assembly is centered, so satellites are at:
-    // x = 50% + cos(angle) * radius/vw * 100
-    // y = 50% + sin(angle) * radius/vh * 100
-    // But clip-path path() uses px, so we'll use viewport-relative values
-    // Actually, we need to compute in the coordinate space of the section
-    // Since section is 100vw x 100vh, and gear is centered:
-    const vw = windowWidth
-    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    const cx = vw / 2
-    const cy = vh / 2
-    const cogArc = 65 * scale * 0.6
-
-    const satPos = sats.map(s => ({
-      x: cx + Math.cos(s.angle) * radius,
-      y: cy + Math.sin(s.angle) * radius,
-      angle: s.angle,
-      idx: s.idx,
-    }))
-    const n = satPos.length
-
-    // Build SVG path: traces CW arc around each sat's outer half, connected along the ring
-    const buildRingSegment = (fromIdx: number, count: number): string => {
-      let d = ''
-      for (let step = 0; step < count; step++) {
-        const si = (fromIdx + step) % n
-        const sat = satPos[si]
-        const afc = Math.atan2(sat.y - cy, sat.x - cx)
-        // Arc start/end on outer half
-        const aStart = afc + Math.PI - Math.PI / 2
-        const aEnd = afc + Math.PI + Math.PI / 2
-        // Start point of arc
-        const sx = sat.x + Math.cos(aStart) * cogArc
-        const sy = sat.y + Math.sin(aStart) * cogArc
-        if (step === 0 && d === '') {
-          d += `L ${sx} ${sy} `
-        } else {
-          d += `L ${sx} ${sy} `
-        }
-        // Arc (SVG arc command)
-        const ex = sat.x + Math.cos(aEnd) * cogArc
-        const ey = sat.y + Math.sin(aEnd) * cogArc
-        d += `A ${cogArc} ${cogArc} 0 0 1 ${ex} ${ey} `
-
-        // Connect to next sat along ring
-        if (step < count - 1) {
-          const nextSi = (fromIdx + step + 1) % n
-          const nextSat = satPos[nextSi]
-          d += `L ${nextSat.x + Math.cos(Math.atan2(nextSat.y - cy, nextSat.x - cx) + Math.PI - Math.PI / 2) * cogArc} ${nextSat.y + Math.sin(Math.atan2(nextSat.y - cy, nextSat.x - cx) + Math.PI - Math.PI / 2) * cogArc} `
-        }
-      }
-      return d
-    }
-
-    // Find satellites nearest to each finger tip
-    const leftFinger = { x: vw * 0.55, y: vh * 0.33 }
-    const rightFinger = { x: vw * 0.50, y: vh * 0.64 }
-    
-    const nearest = (fx: number, fy: number) => {
-      let best = 0, bestD = Infinity
-      satPos.forEach((s, i) => {
-        const d = Math.sqrt((s.x - fx) ** 2 + (s.y - fy) ** 2)
-        if (d < bestD) { bestD = d; best = i }
-      })
-      return best
-    }
-
-    const li = nearest(leftFinger.x, leftFinger.y)
-    const ri = nearest(rightFinger.x, rightFinger.y)
-    const half = Math.ceil(n / 2)
-
-    // Path 1 (blue): left finger → CW through first half of ring → center
-    const p1 = `M 0 ${vh * 0.33} L ${leftFinger.x} ${leftFinger.y} ${buildRingSegment(li, half)} L ${cx} ${cy}`
-    // Path 2 (orange): right finger → CW through second half of ring → center
-    const p2 = `M ${vw} ${vh * 0.64} L ${rightFinger.x} ${rightFinger.y} ${buildRingSegment(ri, n - half + 1)} L ${cx} ${cy}`
-
-    return { p1, p2 }
-  }, [menuOpen, items.length, startAngle, angleStep, radius, scale, windowWidth])
-
   return (
     <section
       className={`relative w-full h-screen flex items-center justify-center overflow-hidden pointer-events-none ${className}`}
@@ -341,43 +250,128 @@ export default function GearHero({
         <>
           <div className="absolute inset-0 bg-black/30" />
 
-          {/* Light streaks — straight when closed, curved through satellites when open */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ transition: 'opacity 0.5s', opacity: menuOpen ? 0 : 1 }}>
-            <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-30"
-              style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)' }} />
-            <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-20"
-              style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)' }} />
-            <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-30"
-              style={{ background: 'linear-gradient(270deg, #f97316, transparent)' }} />
-            <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15"
-              style={{ background: 'linear-gradient(270deg, #fb923c, transparent)' }} />
+          {/* Light streaks — transition from straight lines to circular arcs around nav cog */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Left blue streak — main: straight line → becomes CW arc around center */}
+            <div
+              className="absolute transition-all duration-1000 ease-in-out"
+              style={menuOpen ? {
+                // Arc: large circle centered on nav cog, only top border visible
+                width: radius * 2 + 60,
+                height: radius * 2 + 60,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                borderRadius: '50%',
+                border: '2px solid transparent',
+                borderTopColor: '#3b82f6',
+                borderRightColor: '#3b82f6',
+                opacity: 0.3,
+                background: 'none',
+                filter: 'drop-shadow(0 0 6px #3b82f6)',
+              } : {
+                width: '55%',
+                height: 2,
+                left: 0,
+                top: '33%',
+                transform: 'none',
+                borderRadius: 0,
+                border: 'none',
+                opacity: 0.3,
+                background: 'linear-gradient(90deg, #3b82f6, transparent)',
+                filter: 'none',
+              }}
+            />
+            {/* Left blue streak — secondary: straight → thinner arc */}
+            <div
+              className="absolute transition-all duration-1000 ease-in-out"
+              style={menuOpen ? {
+                width: radius * 2 + 60,
+                height: radius * 2 + 60,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%) rotate(15deg)',
+                borderRadius: '50%',
+                border: '1px solid transparent',
+                borderTopColor: '#60a5fa',
+                borderRightColor: '#60a5fa',
+                opacity: 0.2,
+                background: 'none',
+                filter: 'drop-shadow(0 0 4px #60a5fa)',
+              } : {
+                width: '40%',
+                height: 1,
+                left: 0,
+                top: '36%',
+                transform: 'none',
+                borderRadius: 0,
+                border: 'none',
+                opacity: 0.2,
+                background: 'linear-gradient(90deg, #60a5fa, transparent)',
+                filter: 'none',
+              }}
+            />
+            {/* Right orange streak — main: straight → becomes CW arc (bottom half) */}
+            <div
+              className="absolute transition-all duration-1000 ease-in-out"
+              style={menuOpen ? {
+                width: radius * 2 + 60,
+                height: radius * 2 + 60,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%) rotate(180deg)',
+                borderRadius: '50%',
+                border: '2px solid transparent',
+                borderTopColor: '#f97316',
+                borderRightColor: '#f97316',
+                opacity: 0.3,
+                background: 'none',
+                filter: 'drop-shadow(0 0 6px #f97316)',
+              } : {
+                width: '50%',
+                height: 2,
+                right: 0,
+                left: 'auto',
+                top: '64%',
+                transform: 'none',
+                borderRadius: 0,
+                border: 'none',
+                opacity: 0.3,
+                background: 'linear-gradient(270deg, #f97316, transparent)',
+                filter: 'none',
+              }}
+            />
+            {/* Right orange streak — secondary: straight → thinner arc */}
+            <div
+              className="absolute transition-all duration-1000 ease-in-out"
+              style={menuOpen ? {
+                width: radius * 2 + 60,
+                height: radius * 2 + 60,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%) rotate(195deg)',
+                borderRadius: '50%',
+                border: '1px solid transparent',
+                borderTopColor: '#fb923c',
+                borderRightColor: '#fb923c',
+                opacity: 0.15,
+                background: 'none',
+                filter: 'drop-shadow(0 0 4px #fb923c)',
+              } : {
+                width: '35%',
+                height: 1,
+                right: 0,
+                left: 'auto',
+                top: '67%',
+                transform: 'none',
+                borderRadius: 0,
+                border: 'none',
+                opacity: 0.15,
+                background: 'linear-gradient(270deg, #fb923c, transparent)',
+                filter: 'none',
+              }}
+            />
           </div>
-          {/* Curved lightning paths — visible when menu open */}
-          {lightningPaths && (
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ transition: 'opacity 0.8s', opacity: menuOpen ? 1 : 0 }}>
-              <defs>
-                <filter id="lightning-glow">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              {/* Blue path (left finger) — glow */}
-              <path d={lightningPaths.p1} fill="none" stroke="#3b82f6" strokeWidth="4" opacity="0.15" filter="url(#lightning-glow)" />
-              {/* Blue path (left finger) — main */}
-              <path d={lightningPaths.p1} fill="none" stroke="#3b82f6" strokeWidth="2" opacity="0.3" filter="url(#lightning-glow)" />
-              {/* Blue path — thin secondary */}
-              <path d={lightningPaths.p1} fill="none" stroke="#60a5fa" strokeWidth="1" opacity="0.2" filter="url(#lightning-glow)" transform="translate(0, 3)" />
-              {/* Orange path (right finger) — glow */}
-              <path d={lightningPaths.p2} fill="none" stroke="#f97316" strokeWidth="4" opacity="0.15" filter="url(#lightning-glow)" />
-              {/* Orange path (right finger) — main */}
-              <path d={lightningPaths.p2} fill="none" stroke="#f97316" strokeWidth="2" opacity="0.3" filter="url(#lightning-glow)" />
-              {/* Orange path — thin secondary */}
-              <path d={lightningPaths.p2} fill="none" stroke="#fb923c" strokeWidth="1" opacity="0.15" filter="url(#lightning-glow)" transform="translate(0, 3)" />
-            </svg>
-          )}
 
           {/* Glow rings */}
           <div className="absolute pointer-events-none" style={{ width: 520, height: 520 }}>
