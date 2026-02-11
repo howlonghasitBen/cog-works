@@ -15,58 +15,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 interface CogPos { x: number; y: number; r: number }
 
-/**
- * Builds a path of [x,y] points that:
- * 1. Enters from an edge point
- * 2. Arcs clockwise around each satellite (semi-circle on the outer side)
- * 3. Travels to the next satellite
- * 4. Finally shoots into the center cog
- */
-function buildLightningPath(
-  entry: { x: number; y: number },
-  satellites: CogPos[],
-  center: CogPos,
-  clockwise: boolean,
-): [number, number][] {
-  const pts: [number, number][] = []
-  const arcSteps = 16
-
-  // Start from entry
-  pts.push([entry.x, entry.y])
-
-  for (let si = 0; si < satellites.length; si++) {
-    const sat = satellites[si]
-    const arcR = sat.r * 0.52
-
-    // Angle from previous point (or entry) to this satellite
-    const prev = pts[pts.length - 1]
-    const inAngle = Math.atan2(sat.y - prev[1], sat.x - prev[0])
-
-    // Arc: semi-circle on the far side from center, clockwise
-    const sweepDir = clockwise ? 1 : -1
-    for (let j = 0; j <= arcSteps; j++) {
-      const t = j / arcSteps
-      const a = inAngle + Math.PI * 0.1 + t * Math.PI * sweepDir
-      pts.push([sat.x + Math.cos(a) * arcR, sat.y + Math.sin(a) * arcR])
-    }
-  }
-
-  // Final: shoot into center
-  pts.push([center.x, center.y])
-  return pts
-}
-
 /** Sample a point along a polyline path at fractional distance t ∈ [0,1] */
 function samplePath(pts: [number, number][], t: number): [number, number] {
   if (pts.length < 2) return pts[0] || [0, 0]
-  // Compute total length
   let totalLen = 0
   const segLens: number[] = []
   for (let i = 1; i < pts.length; i++) {
     const dx = pts[i][0] - pts[i - 1][0], dy = pts[i][1] - pts[i - 1][1]
-    const len = Math.sqrt(dx * dx + dy * dy)
-    segLens.push(len)
-    totalLen += len
+    segLens.push(Math.sqrt(dx * dx + dy * dy))
+    totalLen += segLens[segLens.length - 1]
   }
   const target = t * totalLen
   let acc = 0
@@ -84,50 +41,135 @@ function samplePath(pts: [number, number][], t: number): [number, number] {
 }
 
 /**
- * LightningStreaks — canvas overlay that draws animated light streaks
- * flowing from edges, wrapping clockwise around satellites, converging to center.
- * Matches the fingertip light streak gradient style (#60a5fa → transparent).
+ * LightningStreaks — Two lightning paths originate from the fingertip light streaks,
+ * travel to the satellite ring, then follow a circular path through all satellites
+ * (one CW, one CCW) forming a complete circle, then converge to dead center.
+ *
+ * Phase 1: Streak travels from finger tip → first satellite on its side
+ * Phase 2: Streak follows the satellite circle (through each satellite cog)
+ * Phase 3: Both streaks meet, full circle formed → redirect to center
  */
 function LightningStreaks({
   width, height,
   center, satellites,
+  sectionHeight,
 }: {
   width: number; height: number
   center: CogPos
   satellites: CogPos[]
+  sectionHeight: number
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const frameRef = useRef<number>(0)
 
-  // Sort satellites clockwise by angle from center for path chaining
-  const sortedCW = useMemo(() => {
+  // Sort satellites by angle from center
+  const sortedByAngle = useMemo(() => {
     if (!satellites.length) return []
-    return [...satellites].sort((a, b) => {
-      const aa = Math.atan2(a.y - center.y, a.x - center.x)
-      const ab = Math.atan2(b.y - center.y, b.x - center.x)
-      return aa - ab
-    })
+    return [...satellites].map((s, i) => ({
+      ...s,
+      angle: Math.atan2(s.y - center.y, s.x - center.x),
+      idx: i,
+    })).sort((a, b) => a.angle - b.angle)
   }, [satellites, center])
 
-  const sortedCCW = useMemo(() => [...sortedCW].reverse(), [sortedCW])
-
-  // Build two paths: one CW, one CCW, entering from opposite sides
+  // Build the two paths
   const paths = useMemo(() => {
-    if (!sortedCW.length) return []
-    const half = Math.ceil(sortedCW.length / 2)
+    if (sortedByAngle.length < 2) return []
+    const satR = Math.sqrt(
+      (sortedByAngle[0].x - center.x) ** 2 + (sortedByAngle[0].y - center.y) ** 2
+    )
+    const arcSteps = 12 // steps for arc around each satellite
 
-    // Path A: enters from left, takes first half of satellites CW
-    const satsA = sortedCW.slice(0, half)
-    const entryA = { x: 0, y: center.y - 30 }
-    const pathA = buildLightningPath(entryA, satsA, center, true)
+    // Finger tips: where the existing light streaks end
+    // Left finger: at 33% from top of the section, extends 55% rightward
+    // Right finger: at 64% from top, extends 50% leftward
+    // Convert from section-relative to container-relative coordinates
+    // The section is full screen, container is centered within it
+    // Finger positions in section space → need to map to container space
+    // Container top-left = (sectionW/2 - width/2, sectionH/2 - height/2)
+    const sectionW = typeof window !== 'undefined' ? window.innerWidth : 1920
+    const cOffX = sectionW / 2 - width / 2
+    const cOffY = sectionHeight / 2 - height / 2
 
-    // Path B: enters from right, takes second half CCW
-    const satsB = sortedCCW.slice(0, sortedCW.length - half)
-    const entryB = { x: width, y: center.y + 30 }
-    const pathB = buildLightningPath(entryB, satsB, center, false)
+    // Left finger tip in container coords
+    const leftFingerX = sectionW * 0.55 - cOffX
+    const leftFingerY = sectionHeight * 0.33 - cOffY
+
+    // Right finger tip in container coords
+    const rightFingerX = sectionW * 0.50 - cOffX  // right-0 w-[50%] means starts at 50%
+    const rightFingerY = sectionHeight * 0.64 - cOffY
+
+    // Find nearest satellite to each finger tip
+    const findNearest = (fx: number, fy: number) => {
+      let best = 0, bestDist = Infinity
+      sortedByAngle.forEach((s, i) => {
+        const d = Math.sqrt((s.x - fx) ** 2 + (s.y - fy) ** 2)
+        if (d < bestDist) { bestDist = d; best = i }
+      })
+      return best
+    }
+
+    const startA = findNearest(leftFingerX, leftFingerY)
+    const startB = findNearest(rightFingerX, rightFingerY)
+
+    // Build circular path through satellites
+    const buildCirclePath = (
+      fingerX: number, fingerY: number,
+      startIdx: number, direction: 1 | -1,
+    ): [number, number][] => {
+      const pts: [number, number][] = []
+      const n = sortedByAngle.length
+
+      // Phase 1: finger tip → first satellite
+      pts.push([fingerX, fingerY])
+
+      // Phase 2: arc through satellites along the ring
+      // Go through half the circle (to meet the other streak)
+      const halfCount = Math.ceil(n / 2)
+
+      for (let step = 0; step <= halfCount; step++) {
+        const si = ((startIdx + step * direction) % n + n) % n
+        const sat = sortedByAngle[si]
+
+        // Add arc around this satellite (semi-circle on outer side)
+        const angleToCenter = Math.atan2(center.y - sat.y, center.x - sat.x)
+        const arcR = sat.r * 0.5
+        for (let j = 0; j <= arcSteps; j++) {
+          const t = j / arcSteps
+          // Arc on the outer side (away from center), sweeping in `direction`
+          const a = angleToCenter + Math.PI + (t - 0.5) * Math.PI * direction
+          pts.push([sat.x + Math.cos(a) * arcR, sat.y + Math.sin(a) * arcR])
+        }
+
+        // If not the last satellite, add connecting segment along the ring
+        if (step < halfCount) {
+          const nextSi = ((startIdx + (step + 1) * direction) % n + n) % n
+          const nextSat = sortedByAngle[nextSi]
+          // Intermediate points along the ring between satellites
+          const a1 = Math.atan2(sat.y - center.y, sat.x - center.x)
+          const a2 = Math.atan2(nextSat.y - center.y, nextSat.x - center.x)
+          let sweep = a2 - a1
+          if (direction > 0 && sweep < 0) sweep += Math.PI * 2
+          if (direction < 0 && sweep > 0) sweep -= Math.PI * 2
+          for (let j = 1; j <= 8; j++) {
+            const t = j / 9
+            const a = a1 + sweep * t
+            pts.push([center.x + Math.cos(a) * satR, center.y + Math.sin(a) * satR])
+          }
+        }
+      }
+
+      // Phase 3: converge to dead center
+      pts.push([center.x, center.y])
+
+      return pts
+    }
+
+    const pathA = buildCirclePath(leftFingerX, leftFingerY, startA, 1)   // CW
+    const pathB = buildCirclePath(rightFingerX, rightFingerY, startB, -1) // CCW
 
     return [pathA, pathB]
-  }, [sortedCW, sortedCCW, center, width])
+  }, [sortedByAngle, center, width, sectionHeight])
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current
@@ -142,53 +184,59 @@ function LightningStreaks({
     ctx.clearRect(0, 0, width, height)
 
     const now = performance.now() / 1000
-    // Each streak is a moving head with a fading tail
-    const speed = 0.15 // full path traversal time fraction per second
-    const tailLen = 0.25 // fraction of path that's visible behind head
-
-    const colors = ['#60a5fa', '#f97316'] // blue from left, orange from right
+    const speed = 0.12
+    const tailLen = 0.30
+    const colors = ['#60a5fa', '#f97316']
 
     paths.forEach((path, pi) => {
       if (path.length < 2) return
 
-      // Head position cycles along the path
       const headT = (now * speed + pi * 0.5) % 1.0
       const tailT = Math.max(0, headT - tailLen)
 
-      // Draw the streak as a gradient line segment
-      const segments = 40
+      // Main streak
+      const segments = 50
       for (let s = 0; s < segments; s++) {
         const t1 = tailT + (headT - tailT) * (s / segments)
         const t2 = tailT + (headT - tailT) * ((s + 1) / segments)
         const p1 = samplePath(path, t1)
         const p2 = samplePath(path, t2)
-
-        const alpha = (s / segments) // brighter toward head
+        const alpha = (s / segments)
         ctx.beginPath()
         ctx.moveTo(p1[0], p1[1])
         ctx.lineTo(p2[0], p2[1])
         ctx.strokeStyle = colors[pi]
-        ctx.lineWidth = 2
-        ctx.globalAlpha = alpha * 0.5
+        ctx.lineWidth = 2.5
+        ctx.globalAlpha = alpha * 0.55
         ctx.shadowColor = colors[pi]
-        ctx.shadowBlur = 8
+        ctx.shadowBlur = 10
         ctx.stroke()
       }
 
-      // Thin secondary streak (offset, dimmer, slightly behind)
-      const head2T = (now * speed + pi * 0.5 - 0.03) % 1.0
-      const tail2T = Math.max(0, head2T - tailLen * 0.6)
-      for (let s = 0; s < 20; s++) {
-        const t1 = tail2T + (head2T - tail2T) * (s / 20)
-        const t2 = tail2T + (head2T - tail2T) * ((s + 1) / 20)
+      // Bright core at head
+      const headPt = samplePath(path, headT)
+      ctx.beginPath()
+      ctx.arc(headPt[0], headPt[1], 3, 0, Math.PI * 2)
+      ctx.fillStyle = '#ffffff'
+      ctx.globalAlpha = 0.7
+      ctx.shadowColor = colors[pi]
+      ctx.shadowBlur = 15
+      ctx.fill()
+
+      // Thin secondary streak
+      const head2T = (now * speed + pi * 0.5 - 0.04) % 1.0
+      const tail2T = Math.max(0, head2T - tailLen * 0.5)
+      for (let s = 0; s < 25; s++) {
+        const t1 = tail2T + (head2T - tail2T) * (s / 25)
+        const t2 = tail2T + (head2T - tail2T) * ((s + 1) / 25)
         const p1 = samplePath(path, t1)
         const p2 = samplePath(path, t2)
         ctx.beginPath()
-        ctx.moveTo(p1[0] + 3, p1[1] + 3)
-        ctx.lineTo(p2[0] + 3, p2[1] + 3)
+        ctx.moveTo(p1[0] + 4, p1[1] + 4)
+        ctx.lineTo(p2[0] + 4, p2[1] + 4)
         ctx.strokeStyle = colors[pi]
         ctx.lineWidth = 1
-        ctx.globalAlpha = (s / 20) * 0.25
+        ctx.globalAlpha = (s / 25) * 0.2
         ctx.shadowBlur = 4
         ctx.stroke()
       }
@@ -501,6 +549,7 @@ export default function GearHero({
             height={radius * 2 + 280}
             center={{ x: (radius * 2 + 280) / 2, y: (radius * 2 + 280) / 2, r: centerCogSize }}
             satellites={satellitePositions}
+            sectionHeight={typeof window !== 'undefined' ? window.innerHeight : 900}
           />
         )}
 
