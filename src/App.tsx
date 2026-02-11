@@ -154,10 +154,11 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
     return () => clearInterval(interval)
   }, [visible, adamFrom.x, adamFrom.y, adamTarget.x, adamTarget.y, godFrom.x, godFrom.y, godTarget.x, godTarget.y])
 
-  if (!visible || bolts.length === 0) return null
+  if (!visible) return null
+  if (bolts.length === 0) return null
 
   return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }} viewBox="0 0 100 100" preserveAspectRatio="none">
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5, opacity: visible ? 1 : 0, transition: 'opacity 0.2s' }} viewBox="0 0 100 100" preserveAspectRatio="none">
       <defs>
         <filter id="glow">
           <feGaussianBlur stdDeviation="0.6" result="blur" />
@@ -452,7 +453,7 @@ export default function App() {
             background: 'linear-gradient(135deg, #C9CEE8 0%, #D6DAF0 30%, #DEE2F4 50%, #D6DAF0 70%, #C9CEE8 100%)',
           }}>
             <div className="absolute inset-0 bg-black/5" />
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: menuOpen ? 0 : 1, transition: 'opacity 0.4s' }}>
               <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-20" style={{ background: 'linear-gradient(90deg, #8890b8, transparent)' }} />
               <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-15" style={{ background: 'linear-gradient(90deg, #9aa0c8, transparent)' }} />
               <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-20" style={{ background: 'linear-gradient(270deg, #8890b8, transparent)' }} />
