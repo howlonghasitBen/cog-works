@@ -82,7 +82,7 @@ function Cog({
       <motion.img
         src={cogSrc}
         alt=""
-        className="absolute inset-0 w-full h-full z-10"
+        className="absolute inset-0 w-full h-full z-10 pointer-events-none"
         style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }}
         animate={{ rotate: rotation }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
