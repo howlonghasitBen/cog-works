@@ -70,7 +70,12 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
     return () => clearTimeout(t)
   }, [visible])
   useEffect(() => {
-    if (touchStep < 0 || touchStep > sats.length) return
+    if (touchStep < 0) return
+    if (touchStep > sats.length) {
+      // All touched + reached center → reset for next cycle
+      const t = setTimeout(() => setTouchStep(0), 800)
+      return () => clearTimeout(t)
+    }
     const t = setTimeout(() => setTouchStep(s => s + 1), 400)
     return () => clearTimeout(t)
   }, [touchStep, sats.length])
@@ -112,21 +117,21 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
       const aty = adamTarget.y + (Math.random() - 0.5) * 4
       const gtx = godTarget.x + (Math.random() - 0.5) * 4
       const gty = godTarget.y + (Math.random() - 0.5) * 4
-      // 2 bolts from Adam (bottom-left → current target)
+      // 2 bolts from Adam (bottom-left → current target) — forks aim at same target
       for (let i = 0; i < 2; i++) {
         const main = generateBolt(adamX, adamY, atx, aty)
         const forks = [
-          generateFork(main, 0.3 + Math.random() * 0.2, atx - 5, aty + 5),
-          generateFork(main, 0.6 + Math.random() * 0.2, atx + 5, aty - 5),
+          generateFork(main, 0.3 + Math.random() * 0.2, atx + (Math.random() - 0.5) * 3, aty + (Math.random() - 0.5) * 3),
+          generateFork(main, 0.6 + Math.random() * 0.2, atx + (Math.random() - 0.5) * 3, aty + (Math.random() - 0.5) * 3),
         ]
         newBolts.push({ path: main, forks })
       }
-      // 2 bolts from God (top-right → current target)
+      // 2 bolts from God (top-right → current target) — forks aim at same target
       for (let i = 0; i < 2; i++) {
         const main = generateBolt(godX, godY, gtx, gty)
         const forks = [
-          generateFork(main, 0.3 + Math.random() * 0.2, gtx + 5, gty - 5),
-          generateFork(main, 0.6 + Math.random() * 0.2, gtx - 5, gty + 5),
+          generateFork(main, 0.3 + Math.random() * 0.2, gtx + (Math.random() - 0.5) * 3, gty + (Math.random() - 0.5) * 3),
+          generateFork(main, 0.6 + Math.random() * 0.2, gtx + (Math.random() - 0.5) * 3, gty + (Math.random() - 0.5) * 3),
         ]
         newBolts.push({ path: main, forks })
       }
