@@ -10,256 +10,8 @@
  * - Clicking a satellite opens 3 sub-sub-cogs + moves satellite toward center
  */
 
-import { useState, useRef, useEffect, useMemo, useCallback } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
-interface CogPos { x: number; y: number; r: number }
-
-/** Sample a point along a polyline path at fractional distance t ∈ [0,1] */
-function samplePath(pts: [number, number][], t: number): [number, number] {
-  if (pts.length < 2) return pts[0] || [0, 0]
-  let totalLen = 0
-  const segLens: number[] = []
-  for (let i = 1; i < pts.length; i++) {
-    const dx = pts[i][0] - pts[i - 1][0], dy = pts[i][1] - pts[i - 1][1]
-    segLens.push(Math.sqrt(dx * dx + dy * dy))
-    totalLen += segLens[segLens.length - 1]
-  }
-  const target = t * totalLen
-  let acc = 0
-  for (let i = 0; i < segLens.length; i++) {
-    if (acc + segLens[i] >= target) {
-      const frac = segLens[i] > 0 ? (target - acc) / segLens[i] : 0
-      return [
-        pts[i][0] + (pts[i + 1][0] - pts[i][0]) * frac,
-        pts[i][1] + (pts[i + 1][1] - pts[i][1]) * frac,
-      ]
-    }
-    acc += segLens[i]
-  }
-  return pts[pts.length - 1]
-}
-
-/**
- * LightningStreaks — Two lightning paths originate from the fingertip light streaks,
- * travel to the satellite ring, then follow a circular path through all satellites
- * (one CW, one CCW) forming a complete circle, then converge to dead center.
- *
- * Phase 1: Streak travels from finger tip → first satellite on its side
- * Phase 2: Streak follows the satellite circle (through each satellite cog)
- * Phase 3: Both streaks meet, full circle formed → redirect to center
- */
-function LightningStreaks({
-  width, height,
-  center, satellites,
-  sectionHeight,
-}: {
-  width: number; height: number
-  center: CogPos
-  satellites: CogPos[]
-  sectionHeight: number
-}) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const frameRef = useRef<number>(0)
-
-  // Sort satellites by angle from center
-  const sortedByAngle = useMemo(() => {
-    if (!satellites.length) return []
-    return [...satellites].map((s, i) => ({
-      ...s,
-      angle: Math.atan2(s.y - center.y, s.x - center.x),
-      idx: i,
-    })).sort((a, b) => a.angle - b.angle)
-  }, [satellites, center])
-
-  // Build the two paths
-  const paths = useMemo(() => {
-    if (sortedByAngle.length < 2) return []
-    const satR = Math.sqrt(
-      (sortedByAngle[0].x - center.x) ** 2 + (sortedByAngle[0].y - center.y) ** 2
-    )
-    const arcSteps = 12 // steps for arc around each satellite
-
-    // Finger tips: where the existing light streaks end
-    // Left finger: at 33% from top of the section, extends 55% rightward
-    // Right finger: at 64% from top, extends 50% leftward
-    // Convert from section-relative to container-relative coordinates
-    // The section is full screen, container is centered within it
-    // Finger positions in section space → need to map to container space
-    // Container top-left = (sectionW/2 - width/2, sectionH/2 - height/2)
-    const sectionW = typeof window !== 'undefined' ? window.innerWidth : 1920
-    const cOffX = sectionW / 2 - width / 2
-    const cOffY = sectionHeight / 2 - height / 2
-
-    // Left finger tip in container coords
-    const leftFingerX = sectionW * 0.55 - cOffX
-    const leftFingerY = sectionHeight * 0.33 - cOffY
-
-    // Right finger tip in container coords
-    const rightFingerX = sectionW * 0.50 - cOffX  // right-0 w-[50%] means starts at 50%
-    const rightFingerY = sectionHeight * 0.64 - cOffY
-
-    // Find nearest satellite to each finger tip
-    const findNearest = (fx: number, fy: number) => {
-      let best = 0, bestDist = Infinity
-      sortedByAngle.forEach((s, i) => {
-        const d = Math.sqrt((s.x - fx) ** 2 + (s.y - fy) ** 2)
-        if (d < bestDist) { bestDist = d; best = i }
-      })
-      return best
-    }
-
-    const startA = findNearest(leftFingerX, leftFingerY)
-    const startB = findNearest(rightFingerX, rightFingerY)
-
-    // Build circular path through satellites
-    const buildCirclePath = (
-      fingerX: number, fingerY: number,
-      startIdx: number, direction: 1 | -1,
-    ): [number, number][] => {
-      const pts: [number, number][] = []
-      const n = sortedByAngle.length
-
-      // Phase 1: finger tip → first satellite
-      pts.push([fingerX, fingerY])
-
-      // Phase 2: arc through satellites along the ring
-      // Go through half the circle (to meet the other streak)
-      const halfCount = Math.ceil(n / 2)
-
-      for (let step = 0; step <= halfCount; step++) {
-        const si = ((startIdx + step * direction) % n + n) % n
-        const sat = sortedByAngle[si]
-
-        // Add arc around this satellite (semi-circle on outer side)
-        const angleToCenter = Math.atan2(center.y - sat.y, center.x - sat.x)
-        const arcR = sat.r * 0.5
-        for (let j = 0; j <= arcSteps; j++) {
-          const t = j / arcSteps
-          // Arc on the outer side (away from center), sweeping in `direction`
-          const a = angleToCenter + Math.PI + (t - 0.5) * Math.PI * direction
-          pts.push([sat.x + Math.cos(a) * arcR, sat.y + Math.sin(a) * arcR])
-        }
-
-        // If not the last satellite, add connecting segment along the ring
-        if (step < halfCount) {
-          const nextSi = ((startIdx + (step + 1) * direction) % n + n) % n
-          const nextSat = sortedByAngle[nextSi]
-          // Intermediate points along the ring between satellites
-          const a1 = Math.atan2(sat.y - center.y, sat.x - center.x)
-          const a2 = Math.atan2(nextSat.y - center.y, nextSat.x - center.x)
-          let sweep = a2 - a1
-          if (direction > 0 && sweep < 0) sweep += Math.PI * 2
-          if (direction < 0 && sweep > 0) sweep -= Math.PI * 2
-          for (let j = 1; j <= 8; j++) {
-            const t = j / 9
-            const a = a1 + sweep * t
-            pts.push([center.x + Math.cos(a) * satR, center.y + Math.sin(a) * satR])
-          }
-        }
-      }
-
-      // Phase 3: converge to dead center
-      pts.push([center.x, center.y])
-
-      return pts
-    }
-
-    const pathA = buildCirclePath(leftFingerX, leftFingerY, startA, 1)   // CW
-    const pathB = buildCirclePath(rightFingerX, rightFingerY, startB, -1) // CCW
-
-    return [pathA, pathB]
-  }, [sortedByAngle, center, width, sectionHeight])
-
-  const draw = useCallback(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const dpr = window.devicePixelRatio || 1
-    canvas.width = width * dpr
-    canvas.height = height * dpr
-    ctx.scale(dpr, dpr)
-    ctx.clearRect(0, 0, width, height)
-
-    const now = performance.now() / 1000
-    const speed = 0.12
-    const tailLen = 0.30
-    const colors = ['#60a5fa', '#f97316']
-
-    paths.forEach((path, pi) => {
-      if (path.length < 2) return
-
-      const headT = (now * speed + pi * 0.5) % 1.0
-      const tailT = Math.max(0, headT - tailLen)
-
-      // Main streak
-      const segments = 50
-      for (let s = 0; s < segments; s++) {
-        const t1 = tailT + (headT - tailT) * (s / segments)
-        const t2 = tailT + (headT - tailT) * ((s + 1) / segments)
-        const p1 = samplePath(path, t1)
-        const p2 = samplePath(path, t2)
-        const alpha = (s / segments)
-        ctx.beginPath()
-        ctx.moveTo(p1[0], p1[1])
-        ctx.lineTo(p2[0], p2[1])
-        ctx.strokeStyle = colors[pi]
-        ctx.lineWidth = 2.5
-        ctx.globalAlpha = alpha * 0.55
-        ctx.shadowColor = colors[pi]
-        ctx.shadowBlur = 10
-        ctx.stroke()
-      }
-
-      // Bright core at head
-      const headPt = samplePath(path, headT)
-      ctx.beginPath()
-      ctx.arc(headPt[0], headPt[1], 3, 0, Math.PI * 2)
-      ctx.fillStyle = '#ffffff'
-      ctx.globalAlpha = 0.7
-      ctx.shadowColor = colors[pi]
-      ctx.shadowBlur = 15
-      ctx.fill()
-
-      // Thin secondary streak
-      const head2T = (now * speed + pi * 0.5 - 0.04) % 1.0
-      const tail2T = Math.max(0, head2T - tailLen * 0.5)
-      for (let s = 0; s < 25; s++) {
-        const t1 = tail2T + (head2T - tail2T) * (s / 25)
-        const t2 = tail2T + (head2T - tail2T) * ((s + 1) / 25)
-        const p1 = samplePath(path, t1)
-        const p2 = samplePath(path, t2)
-        ctx.beginPath()
-        ctx.moveTo(p1[0] + 4, p1[1] + 4)
-        ctx.lineTo(p2[0] + 4, p2[1] + 4)
-        ctx.strokeStyle = colors[pi]
-        ctx.lineWidth = 1
-        ctx.globalAlpha = (s / 25) * 0.2
-        ctx.shadowBlur = 4
-        ctx.stroke()
-      }
-    })
-
-    ctx.globalAlpha = 1
-    ctx.shadowBlur = 0
-    frameRef.current = requestAnimationFrame(draw)
-  }, [width, height, paths])
-
-  useEffect(() => {
-    frameRef.current = requestAnimationFrame(draw)
-    return () => cancelAnimationFrame(frameRef.current)
-  }, [draw])
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 z-[15] pointer-events-none"
-      style={{ width, height }}
-    />
-  )
-}
 
 export interface GearSubItem {
   id?: string
@@ -485,22 +237,6 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
-  // Compute satellite positions for CSS lightning arcs
-  const satSize = 130 * scale
-  const centerCogSize = 300 * scale
-
-  const satellitePositions: CogPos[] = useMemo(() => {
-    if (!menuOpen) return []
-    return items.map((_, i) => {
-      const angle = startAngle + angleStep * i
-      const isActive = activeSubmenu === i
-      const r = isActive ? pullInRadius : radius
-      // Positions relative to container center
-      const hw = (radius * 2 + 280) / 2
-      return { x: hw + Math.cos(angle) * r, y: hw + Math.sin(angle) * r, r: satSize }
-    })
-  }, [menuOpen, items.length, activeSubmenu, startAngle, angleStep, radius, pullInRadius, satSize, scale])
-
   return (
     <section
       className={`relative w-full h-screen flex items-center justify-center overflow-hidden pointer-events-none ${className}`}
@@ -514,16 +250,99 @@ export default function GearHero({
         <>
           <div className="absolute inset-0 bg-black/30" />
 
-          {/* Light streaks */}
+          {/* Light streaks — extend toward satellite ring when menu opens */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute h-[2px] w-[55%] left-0 top-[33%] opacity-30"
-              style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)' }} />
-            <div className="absolute h-[1px] w-[40%] left-0 top-[36%] opacity-20"
-              style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)' }} />
-            <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-30"
-              style={{ background: 'linear-gradient(270deg, #f97316, transparent)' }} />
-            <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15"
-              style={{ background: 'linear-gradient(270deg, #fb923c, transparent)' }} />
+            {/* Left blue streaks — extend to reach satellite ring on menu open */}
+            <div className="absolute h-[2px] left-0 top-[33%] opacity-30 transition-all duration-700"
+              style={{
+                width: menuOpen ? '52%' : '55%',
+                background: 'linear-gradient(90deg, #3b82f6, #60a5fa)',
+              }} />
+            <div className="absolute h-[1px] left-0 top-[36%] opacity-20 transition-all duration-700"
+              style={{
+                width: menuOpen ? '49%' : '40%',
+                background: 'linear-gradient(90deg, #60a5fa, #93c5fd)',
+              }} />
+            {/* Right orange streaks — extend to reach satellite ring on menu open */}
+            <div className="absolute h-[2px] right-0 top-[64%] opacity-30 transition-all duration-700"
+              style={{
+                width: menuOpen ? '52%' : '50%',
+                background: 'linear-gradient(270deg, #f97316, #fb923c)',
+              }} />
+            <div className="absolute h-[1px] right-0 top-[67%] opacity-15 transition-all duration-700"
+              style={{
+                width: menuOpen ? '49%' : '35%',
+                background: 'linear-gradient(270deg, #fb923c, #fdba74)',
+              }} />
+
+            {/* Clockwise arc ring through satellites — appears when menu opens */}
+            {/* Blue arc: traces CW from where left streak contacts the ring */}
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-1000 ease-out"
+              style={{
+                width: menuOpen ? radius * 2 + 40 : 0,
+                height: menuOpen ? radius * 2 + 40 : 0,
+                border: '2px solid transparent',
+                borderTopColor: '#3b82f6',
+                borderRightColor: '#60a5fa',
+                opacity: menuOpen ? 0.35 : 0,
+                filter: 'blur(1px)',
+                animation: menuOpen ? 'lightningRing 4s linear infinite' : 'none',
+              }}
+            />
+            {/* Glow ring (wider, softer) */}
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-1000 ease-out"
+              style={{
+                width: menuOpen ? radius * 2 + 40 : 0,
+                height: menuOpen ? radius * 2 + 40 : 0,
+                border: '4px solid transparent',
+                borderTopColor: '#3b82f6',
+                borderRightColor: '#60a5fa',
+                opacity: menuOpen ? 0.15 : 0,
+                filter: 'blur(6px)',
+                animation: menuOpen ? 'lightningRing 4s linear infinite' : 'none',
+              }}
+            />
+            {/* Orange counter-arc (same ring, offset rotation) */}
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-1000 ease-out"
+              style={{
+                width: menuOpen ? radius * 2 + 40 : 0,
+                height: menuOpen ? radius * 2 + 40 : 0,
+                border: '2px solid transparent',
+                borderBottomColor: '#f97316',
+                borderLeftColor: '#fb923c',
+                opacity: menuOpen ? 0.3 : 0,
+                filter: 'blur(1px)',
+                animation: menuOpen ? 'lightningRing 4s linear infinite' : 'none',
+              }}
+            />
+
+            {/* Convergence streaks: from ring → center (appear after ring forms) */}
+            {menuOpen && (
+              <>
+                <div
+                  className="absolute left-1/2 top-1/2 -translate-y-1/2 opacity-0"
+                  style={{
+                    width: radius * 0.6,
+                    height: 2,
+                    marginLeft: -(radius * 0.6),
+                    background: 'linear-gradient(270deg, #60a5fa, transparent)',
+                    animation: 'convergeIn 0.8s ease-out 1s forwards',
+                  }}
+                />
+                <div
+                  className="absolute left-1/2 top-1/2 -translate-y-1/2 opacity-0"
+                  style={{
+                    width: radius * 0.6,
+                    height: 2,
+                    background: 'linear-gradient(90deg, #f97316, transparent)',
+                    animation: 'convergeIn 0.8s ease-out 1.2s forwards',
+                  }}
+                />
+              </>
+            )}
           </div>
 
           {/* Glow rings */}
@@ -542,17 +361,6 @@ export default function GearHero({
         className="relative z-10"
         style={{ width: radius * 2 + 280, height: radius * 2 + 280 }}
       >
-        {/* Animated lightning streaks: enter from edges, arc CW around satellites, converge to center */}
-        {menuOpen && satellitePositions.length > 0 && (
-          <LightningStreaks
-            width={radius * 2 + 280}
-            height={radius * 2 + 280}
-            center={{ x: (radius * 2 + 280) / 2, y: (radius * 2 + 280) / 2, r: centerCogSize }}
-            satellites={satellitePositions}
-            sectionHeight={typeof window !== 'undefined' ? window.innerHeight : 900}
-          />
-        )}
-
         {/* Center gear — highest z-index */}
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 pointer-events-auto"
@@ -663,6 +471,14 @@ export default function GearHero({
         @keyframes gearPulse {
           0%, 100% { opacity: 0.15; transform: scale(1); }
           50% { opacity: 0.3; transform: scale(1.05); }
+        }
+        @keyframes lightningRing {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes convergeIn {
+          from { opacity: 0; transform: translateY(-50%) scaleX(0); }
+          to { opacity: 0.35; transform: translateY(-50%) scaleX(1); }
         }
         @keyframes innardSpin {
           from { transform: rotate(0deg); }
