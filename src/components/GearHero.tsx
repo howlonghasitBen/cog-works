@@ -250,15 +250,36 @@ export default function GearHero({
         <>
           <div className="absolute inset-0 bg-black/30" />
 
-          {/* Light streaks */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Blue lightning — straight when closed, circular arc when open */}
-            <div className="absolute h-[2px] w-[55%] left-0 top-[33%]"
-              style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)', opacity: menuOpen ? 0 : 0.3, transition: 'opacity 0.6s' }} />
-            <div className="absolute h-[1px] w-[40%] left-0 top-[36%]"
-              style={{ background: 'linear-gradient(90deg, #60a5fa, transparent)', opacity: menuOpen ? 0 : 0.2, transition: 'opacity 0.6s' }} />
-
-            {/* Blue arc — full circle at satellite ring, fades in when menu opens */}
+          {/* Lightning — ONLY visible when menu is open. Two bolts from fingertips circle the nav cog. */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}>
+            {/* Bolt from left finger tip → satellite ring */}
+            <div className="absolute h-[2px] left-0 top-[33%] opacity-30"
+              style={{
+                width: '50%',
+                background: 'linear-gradient(90deg, transparent, #3b82f6)',
+                filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
+              }} />
+            <div className="absolute h-[1px] left-0 top-[36%] opacity-20"
+              style={{
+                width: '48%',
+                background: 'linear-gradient(90deg, transparent, #60a5fa)',
+                filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
+              }} />
+            {/* Bolt from right finger tip → satellite ring */}
+            <div className="absolute h-[2px] right-0 top-[64%] opacity-30"
+              style={{
+                width: '50%',
+                background: 'linear-gradient(270deg, transparent, #3b82f6)',
+                filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
+              }} />
+            <div className="absolute h-[1px] right-0 top-[67%] opacity-20"
+              style={{
+                width: '48%',
+                background: 'linear-gradient(270deg, transparent, #60a5fa)',
+                filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
+              }} />
+            {/* Full CW circle around the nav cog at satellite ring radius */}
             <div className="absolute left-1/2 top-1/2 rounded-full"
               style={{
                 width: radius * 2 + 60,
@@ -266,25 +287,17 @@ export default function GearHero({
                 transform: 'translate(-50%, -50%)',
                 border: '2px solid #3b82f6',
                 filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.5))',
-                opacity: menuOpen ? 0.35 : 0,
-                transition: 'opacity 0.8s ease-in-out 0.3s',
+                opacity: 0.35,
               }} />
             <div className="absolute left-1/2 top-1/2 rounded-full"
               style={{
                 width: radius * 2 + 60,
                 height: radius * 2 + 60,
-                transform: 'translate(-50%, -50%) rotate(15deg)',
+                transform: 'translate(-50%, -50%)',
                 border: '1px solid #60a5fa',
                 filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                opacity: menuOpen ? 0.2 : 0,
-                transition: 'opacity 0.8s ease-in-out 0.4s',
+                opacity: 0.2,
               }} />
-
-            {/* Orange streaks — always straight, never modified */}
-            <div className="absolute h-[2px] w-[50%] right-0 top-[64%] opacity-30"
-              style={{ background: 'linear-gradient(270deg, #f97316, transparent)' }} />
-            <div className="absolute h-[1px] w-[35%] right-0 top-[67%] opacity-15"
-              style={{ background: 'linear-gradient(270deg, #fb923c, transparent)' }} />
           </div>
 
           {/* Glow rings */}
