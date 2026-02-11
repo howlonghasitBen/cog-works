@@ -76,7 +76,7 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
       const t = setTimeout(() => setTouchStep(0), 800)
       return () => clearTimeout(t)
     }
-    const t = setTimeout(() => setTouchStep(s => s + 1), 400)
+    const t = setTimeout(() => setTouchStep(s => s + 1), 250)
     return () => clearTimeout(t)
   }, [touchStep, sats.length])
 
@@ -141,7 +141,7 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
     const interval = setInterval(() => {
       generate()
       setTick(t => t + 1)
-    }, 1200)
+    }, 250) // Match step timing so bolts regenerate at each new target
     return () => clearInterval(interval)
   }, [visible, adamTarget.x, adamTarget.y, godTarget.x, godTarget.y])
 
@@ -170,7 +170,7 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
       </defs>
       {bolts.map((bolt, i) => (
         <g key={`${tick}-${i}`}>
-          {/* Main bolt — bright core, draws from origin to center */}
+          {/* Main bolt — bright core, stays visible */}
           <motion.path
             d={bolt.path}
             fill="none"
@@ -178,11 +178,11 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
             strokeWidth={0.35}
             strokeLinecap="round"
             filter="url(#glowBright)"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 1], opacity: [0.2, 1, 0.8, 0.3, 0] }}
-            transition={{ duration: 1.0, ease: 'easeInOut' }}
+            initial={{ pathLength: 0, opacity: 0.8 }}
+            animate={{ pathLength: 1, opacity: [0.6, 1, 0.8] }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
           />
-          {/* Main bolt — blue aura, slightly behind */}
+          {/* Main bolt — blue aura */}
           <motion.path
             d={bolt.path}
             fill="none"
@@ -190,11 +190,11 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
             strokeWidth={0.25}
             strokeLinecap="round"
             filter="url(#glow)"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 1], opacity: [0.1, 0.7, 0.5, 0.2, 0] }}
-            transition={{ duration: 1.1, ease: 'easeInOut' }}
+            initial={{ pathLength: 0, opacity: 0.5 }}
+            animate={{ pathLength: 1, opacity: [0.4, 0.7, 0.5] }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           />
-          {/* Forks — branch out partway through */}
+          {/* Forks — branch toward same target */}
           {bolt.forks.map((fork, j) => (
             <motion.path
               key={j}
@@ -204,9 +204,9 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
               strokeWidth={0.18}
               strokeLinecap="round"
               filter="url(#glow)"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: [0, 1], opacity: [0, 0.6, 0.3, 0] }}
-              transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+              initial={{ pathLength: 0, opacity: 0.3 }}
+              animate={{ pathLength: 1, opacity: [0.2, 0.5, 0.3] }}
+              transition={{ duration: 0.3, delay: 0.1, ease: 'easeOut' }}
             />
           ))}
         </g>
