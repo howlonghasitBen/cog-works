@@ -237,6 +237,69 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
+  // After menu opens and all satellites are "touched", bolts converge to center
+  const [allTouched, setAllTouched] = useState(false)
+  useEffect(() => {
+    if (menuOpen) {
+      const timer = setTimeout(() => setAllTouched(true), 1500)
+      return () => clearTimeout(timer)
+    } else {
+      setAllTouched(false)
+    }
+  }, [menuOpen])
+
+  // Compute bolt endpoints: nearest satellite to each finger, or center if allTouched
+  const boltEndpoints = useMemo(() => {
+    const vw = windowWidth
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
+    const cx = vw / 2
+    const cy = vh / 2
+
+    if (allTouched) {
+      return { left: { x: cx, y: cy }, right: { x: cx, y: cy } }
+    }
+
+    // Satellite positions in viewport coords
+    const sats = items.map((_, i) => {
+      const a = startAngle + angleStep * i
+      return { x: cx + Math.cos(a) * radius, y: cy + Math.sin(a) * radius }
+    })
+
+    // Left finger tip (bottom-left pepe)
+    const lf = { x: vw * 0.55, y: vh * 0.33 }
+    // Right finger tip (top-right pepe god)
+    const rf = { x: vw * 0.50, y: vh * 0.64 }
+
+    const nearest = (fx: number, fy: number) => {
+      let best = sats[0], bestD = Infinity
+      sats.forEach(s => {
+        const d = Math.sqrt((s.x - fx) ** 2 + (s.y - fy) ** 2)
+        if (d < bestD) { bestD = d; best = s }
+      })
+      return best
+    }
+
+    return { left: nearest(lf.x, lf.y), right: nearest(rf.x, rf.y) }
+  }, [menuOpen, allTouched, items.length, startAngle, angleStep, radius, windowWidth])
+
+  // Convert endpoints to CSS: angle and length from each finger origin
+  const leftBolt = useMemo(() => {
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
+    const ox = 0, oy = vh * 0.33 // left edge origin
+    const dx = boltEndpoints.left.x - ox
+    const dy = boltEndpoints.left.y - oy
+    return { angle: Math.atan2(dy, dx) * 180 / Math.PI, length: Math.sqrt(dx * dx + dy * dy) }
+  }, [boltEndpoints, windowWidth])
+
+  const rightBolt = useMemo(() => {
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
+    const vw = windowWidth
+    const ox = vw, oy = vh * 0.64 // right edge origin
+    const dx = boltEndpoints.right.x - ox
+    const dy = boltEndpoints.right.y - oy
+    return { angle: Math.atan2(dy, dx) * 180 / Math.PI, length: Math.sqrt(dx * dx + dy * dy) }
+  }, [boltEndpoints, windowWidth])
+
   return (
     <section
       className={`relative w-full h-screen flex items-center justify-center overflow-hidden pointer-events-none ${className}`}
@@ -250,36 +313,54 @@ export default function GearHero({
         <>
           <div className="absolute inset-0 bg-black/30" />
 
-          {/* Lightning — ONLY visible when menu is open. Two bolts from fingertips circle the nav cog. */}
+          {/* Lightning — ONLY visible when menu is open. Two bolts from fingertips → nearest satellite → center */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none"
             style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}>
-            {/* Bolt from left finger tip → satellite ring */}
-            <div className="absolute h-[2px] left-0 top-[33%] opacity-30"
+            {/* Left bolt: from left edge at 33% → nearest satellite (or center when allTouched) */}
+            <div className="absolute left-0 top-[33%] origin-left"
               style={{
-                width: '50%',
-                background: 'linear-gradient(90deg, transparent, #3b82f6)',
+                width: leftBolt.length,
+                height: 2,
+                transform: `rotate(${leftBolt.angle}deg)`,
+                background: 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
                 filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
+                opacity: 0.3,
+                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
               }} />
-            <div className="absolute h-[1px] left-0 top-[36%] opacity-20"
+            <div className="absolute left-0 top-[33%] origin-left"
               style={{
-                width: '48%',
-                background: 'linear-gradient(90deg, transparent, #60a5fa)',
+                width: leftBolt.length * 0.85,
+                height: 1,
+                transform: `translateY(3px) rotate(${leftBolt.angle}deg)`,
+                background: 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
                 filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
+                opacity: 0.2,
+                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
               }} />
-            {/* Bolt from right finger tip → satellite ring */}
-            <div className="absolute h-[2px] right-0 top-[64%] opacity-30"
+
+            {/* Right bolt: from right edge at 64% → nearest satellite (or center when allTouched) */}
+            <div className="absolute right-0 top-[64%] origin-right"
               style={{
-                width: '50%',
-                background: 'linear-gradient(270deg, transparent, #3b82f6)',
+                width: rightBolt.length,
+                height: 2,
+                transform: `rotate(${rightBolt.angle}deg)`,
+                background: 'linear-gradient(270deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
                 filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
+                opacity: 0.3,
+                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
               }} />
-            <div className="absolute h-[1px] right-0 top-[67%] opacity-20"
+            <div className="absolute right-0 top-[64%] origin-right"
               style={{
-                width: '48%',
-                background: 'linear-gradient(270deg, transparent, #60a5fa)',
+                width: rightBolt.length * 0.85,
+                height: 1,
+                transform: `translateY(3px) rotate(${rightBolt.angle}deg)`,
+                background: 'linear-gradient(270deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
                 filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
+                opacity: 0.2,
+                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
               }} />
-            {/* Full CW circle around the nav cog at satellite ring radius */}
+
+            {/* Circle around nav cog at satellite ring — the path between satellites */}
             <div className="absolute left-1/2 top-1/2 rounded-full"
               style={{
                 width: radius * 2 + 60,
