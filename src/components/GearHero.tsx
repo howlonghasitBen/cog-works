@@ -10,10 +10,208 @@
  * - Clicking a satellite opens 3 sub-sub-cogs + moves satellite toward center
  */
 
-import { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface CogPos { x: number; y: number; r: number }
+
+/**
+ * Builds a path of [x,y] points that:
+ * 1. Enters from an edge point
+ * 2. Arcs clockwise around each satellite (semi-circle on the outer side)
+ * 3. Travels to the next satellite
+ * 4. Finally shoots into the center cog
+ */
+function buildLightningPath(
+  entry: { x: number; y: number },
+  satellites: CogPos[],
+  center: CogPos,
+  clockwise: boolean,
+): [number, number][] {
+  const pts: [number, number][] = []
+  const arcSteps = 16
+
+  // Start from entry
+  pts.push([entry.x, entry.y])
+
+  for (let si = 0; si < satellites.length; si++) {
+    const sat = satellites[si]
+    const arcR = sat.r * 0.52
+
+    // Angle from previous point (or entry) to this satellite
+    const prev = pts[pts.length - 1]
+    const inAngle = Math.atan2(sat.y - prev[1], sat.x - prev[0])
+
+    // Arc: semi-circle on the far side from center, clockwise
+    const sweepDir = clockwise ? 1 : -1
+    for (let j = 0; j <= arcSteps; j++) {
+      const t = j / arcSteps
+      const a = inAngle + Math.PI * 0.1 + t * Math.PI * sweepDir
+      pts.push([sat.x + Math.cos(a) * arcR, sat.y + Math.sin(a) * arcR])
+    }
+  }
+
+  // Final: shoot into center
+  pts.push([center.x, center.y])
+  return pts
+}
+
+/** Sample a point along a polyline path at fractional distance t ∈ [0,1] */
+function samplePath(pts: [number, number][], t: number): [number, number] {
+  if (pts.length < 2) return pts[0] || [0, 0]
+  // Compute total length
+  let totalLen = 0
+  const segLens: number[] = []
+  for (let i = 1; i < pts.length; i++) {
+    const dx = pts[i][0] - pts[i - 1][0], dy = pts[i][1] - pts[i - 1][1]
+    const len = Math.sqrt(dx * dx + dy * dy)
+    segLens.push(len)
+    totalLen += len
+  }
+  const target = t * totalLen
+  let acc = 0
+  for (let i = 0; i < segLens.length; i++) {
+    if (acc + segLens[i] >= target) {
+      const frac = segLens[i] > 0 ? (target - acc) / segLens[i] : 0
+      return [
+        pts[i][0] + (pts[i + 1][0] - pts[i][0]) * frac,
+        pts[i][1] + (pts[i + 1][1] - pts[i][1]) * frac,
+      ]
+    }
+    acc += segLens[i]
+  }
+  return pts[pts.length - 1]
+}
+
+/**
+ * LightningStreaks — canvas overlay that draws animated light streaks
+ * flowing from edges, wrapping clockwise around satellites, converging to center.
+ * Matches the fingertip light streak gradient style (#60a5fa → transparent).
+ */
+function LightningStreaks({
+  width, height,
+  center, satellites,
+}: {
+  width: number; height: number
+  center: CogPos
+  satellites: CogPos[]
+}) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const frameRef = useRef<number>(0)
+
+  // Sort satellites clockwise by angle from center for path chaining
+  const sortedCW = useMemo(() => {
+    if (!satellites.length) return []
+    return [...satellites].sort((a, b) => {
+      const aa = Math.atan2(a.y - center.y, a.x - center.x)
+      const ab = Math.atan2(b.y - center.y, b.x - center.x)
+      return aa - ab
+    })
+  }, [satellites, center])
+
+  const sortedCCW = useMemo(() => [...sortedCW].reverse(), [sortedCW])
+
+  // Build two paths: one CW, one CCW, entering from opposite sides
+  const paths = useMemo(() => {
+    if (!sortedCW.length) return []
+    const half = Math.ceil(sortedCW.length / 2)
+
+    // Path A: enters from left, takes first half of satellites CW
+    const satsA = sortedCW.slice(0, half)
+    const entryA = { x: 0, y: center.y - 30 }
+    const pathA = buildLightningPath(entryA, satsA, center, true)
+
+    // Path B: enters from right, takes second half CCW
+    const satsB = sortedCCW.slice(0, sortedCW.length - half)
+    const entryB = { x: width, y: center.y + 30 }
+    const pathB = buildLightningPath(entryB, satsB, center, false)
+
+    return [pathA, pathB]
+  }, [sortedCW, sortedCCW, center, width])
+
+  const draw = useCallback(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const dpr = window.devicePixelRatio || 1
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    ctx.scale(dpr, dpr)
+    ctx.clearRect(0, 0, width, height)
+
+    const now = performance.now() / 1000
+    // Each streak is a moving head with a fading tail
+    const speed = 0.15 // full path traversal time fraction per second
+    const tailLen = 0.25 // fraction of path that's visible behind head
+
+    const colors = ['#60a5fa', '#f97316'] // blue from left, orange from right
+
+    paths.forEach((path, pi) => {
+      if (path.length < 2) return
+
+      // Head position cycles along the path
+      const headT = (now * speed + pi * 0.5) % 1.0
+      const tailT = Math.max(0, headT - tailLen)
+
+      // Draw the streak as a gradient line segment
+      const segments = 40
+      for (let s = 0; s < segments; s++) {
+        const t1 = tailT + (headT - tailT) * (s / segments)
+        const t2 = tailT + (headT - tailT) * ((s + 1) / segments)
+        const p1 = samplePath(path, t1)
+        const p2 = samplePath(path, t2)
+
+        const alpha = (s / segments) // brighter toward head
+        ctx.beginPath()
+        ctx.moveTo(p1[0], p1[1])
+        ctx.lineTo(p2[0], p2[1])
+        ctx.strokeStyle = colors[pi]
+        ctx.lineWidth = 2
+        ctx.globalAlpha = alpha * 0.5
+        ctx.shadowColor = colors[pi]
+        ctx.shadowBlur = 8
+        ctx.stroke()
+      }
+
+      // Thin secondary streak (offset, dimmer, slightly behind)
+      const head2T = (now * speed + pi * 0.5 - 0.03) % 1.0
+      const tail2T = Math.max(0, head2T - tailLen * 0.6)
+      for (let s = 0; s < 20; s++) {
+        const t1 = tail2T + (head2T - tail2T) * (s / 20)
+        const t2 = tail2T + (head2T - tail2T) * ((s + 1) / 20)
+        const p1 = samplePath(path, t1)
+        const p2 = samplePath(path, t2)
+        ctx.beginPath()
+        ctx.moveTo(p1[0] + 3, p1[1] + 3)
+        ctx.lineTo(p2[0] + 3, p2[1] + 3)
+        ctx.strokeStyle = colors[pi]
+        ctx.lineWidth = 1
+        ctx.globalAlpha = (s / 20) * 0.25
+        ctx.shadowBlur = 4
+        ctx.stroke()
+      }
+    })
+
+    ctx.globalAlpha = 1
+    ctx.shadowBlur = 0
+    frameRef.current = requestAnimationFrame(draw)
+  }, [width, height, paths])
+
+  useEffect(() => {
+    frameRef.current = requestAnimationFrame(draw)
+    return () => cancelAnimationFrame(frameRef.current)
+  }, [draw])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-[15] pointer-events-none"
+      style={{ width, height }}
+    />
+  )
+}
 
 export interface GearSubItem {
   id?: string
@@ -296,137 +494,15 @@ export default function GearHero({
         className="relative z-10"
         style={{ width: radius * 2 + 280, height: radius * 2 + 280 }}
       >
-        {/* CSS Lightning arcs — clockwise semi-circles around each satellite, converging to center */}
-        <AnimatePresence>
-          {menuOpen && satellitePositions.length > 0 && satellitePositions.map((sat, i) => {
-            // Angle from center to this satellite
-            const angle = startAngle + angleStep * i
-            // Arc center is on the satellite's position
-            // Semi-circle clockwise around the satellite, facing away from center
-            const arcR = satSize * 0.55
-            // Rotate the arc so it wraps the outer half of the satellite (away from center)
-            const rotDeg = (angle * 180 / Math.PI) - 90
-
-            return (
-              <motion.div
-                key={`arc-${i}`}
-                className="absolute pointer-events-none z-[15]"
-                style={{
-                  left: sat.x - arcR,
-                  top: sat.y - arcR,
-                  width: arcR * 2,
-                  height: arcR * 2,
-                  transform: `rotate(${rotDeg}deg)`,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-              >
-                {/* Outer glow arc */}
-                <div
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    border: '2px solid transparent',
-                    borderTopColor: '#60a5fa',
-                    borderRightColor: '#3b82f6',
-                    filter: 'blur(3px)',
-                    opacity: 0.5,
-                    animation: `arcSpin ${3 + i * 0.5}s linear infinite`,
-                  }}
-                />
-                {/* Sharp arc */}
-                <div
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    border: '1.5px solid transparent',
-                    borderTopColor: '#93c5fd',
-                    borderRightColor: '#60a5fa',
-                    animation: `arcSpin ${3 + i * 0.5}s linear infinite`,
-                  }}
-                />
-              </motion.div>
-            )
-          })}
-        </AnimatePresence>
-
-        {/* CSS Lightning streaks — from center edge toward each satellite */}
-        <AnimatePresence>
-          {menuOpen && satellitePositions.map((sat, i) => {
-            const hw = (radius * 2 + 280) / 2
-
-            const dx = sat.x - hw, dy = sat.y - hw
-            const dist = Math.sqrt(dx * dx + dy * dy)
-            const ux = dx / dist, uy = dy / dist
-            // Start from center cog edge
-            const x1 = hw + ux * centerCogSize * 0.48
-            const y1 = hw + uy * centerCogSize * 0.48
-            // End at satellite edge
-            const x2 = sat.x - ux * satSize * 0.48
-            const y2 = sat.y - uy * satSize * 0.48
-            const streakLen = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
-            const rotDeg = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI
-
-            return (
-              <motion.div
-                key={`streak-${i}`}
-                className="absolute pointer-events-none z-[12]"
-                style={{
-                  left: x1,
-                  top: y1 - 1,
-                  width: streakLen,
-                  height: 2,
-                  transformOrigin: '0 50%',
-                  transform: `rotate(${rotDeg}deg)`,
-                  background: `linear-gradient(90deg, #60a5fa, #3b82f6 40%, transparent)`,
-                  opacity: 0.35,
-                }}
-                initial={{ scaleX: 0, opacity: 0 }}
-                animate={{ scaleX: 1, opacity: 0.35 }}
-                exit={{ scaleX: 0, opacity: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.06 }}
-              />
-            )
-          })}
-        </AnimatePresence>
-
-        {/* Thin secondary streaks (paired with main, offset slightly) */}
-        <AnimatePresence>
-          {menuOpen && satellitePositions.map((sat, i) => {
-            const hw = (radius * 2 + 280) / 2
-
-            const dx = sat.x - hw, dy = sat.y - hw
-            const dist = Math.sqrt(dx * dx + dy * dy)
-            const ux = dx / dist, uy = dy / dist
-            const x1 = hw + ux * centerCogSize * 0.48
-            const y1 = hw + uy * centerCogSize * 0.48
-            const x2 = sat.x - ux * satSize * 0.48
-            const y2 = sat.y - uy * satSize * 0.48
-            const streakLen = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2) * 0.7
-            const rotDeg = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI
-
-            return (
-              <motion.div
-                key={`streak2-${i}`}
-                className="absolute pointer-events-none z-[12]"
-                style={{
-                  left: x1,
-                  top: y1 + 2,
-                  width: streakLen,
-                  height: 1,
-                  transformOrigin: '0 50%',
-                  transform: `rotate(${rotDeg + 1.5}deg)`,
-                  background: `linear-gradient(90deg, #93c5fd, transparent)`,
-                  opacity: 0.2,
-                }}
-                initial={{ scaleX: 0, opacity: 0 }}
-                animate={{ scaleX: 1, opacity: 0.2 }}
-                exit={{ scaleX: 0, opacity: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.06 + 0.1 }}
-              />
-            )
-          })}
-        </AnimatePresence>
+        {/* Animated lightning streaks: enter from edges, arc CW around satellites, converge to center */}
+        {menuOpen && satellitePositions.length > 0 && (
+          <LightningStreaks
+            width={radius * 2 + 280}
+            height={radius * 2 + 280}
+            center={{ x: (radius * 2 + 280) / 2, y: (radius * 2 + 280) / 2, r: centerCogSize }}
+            satellites={satellitePositions}
+          />
+        )}
 
         {/* Center gear — highest z-index */}
         <div
@@ -538,10 +614,6 @@ export default function GearHero({
         @keyframes gearPulse {
           0%, 100% { opacity: 0.15; transform: scale(1); }
           50% { opacity: 0.3; transform: scale(1.05); }
-        }
-        @keyframes arcSpin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
         }
         @keyframes innardSpin {
           from { transform: rotate(0deg); }
