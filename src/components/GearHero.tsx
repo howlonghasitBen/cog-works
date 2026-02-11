@@ -10,8 +10,90 @@
  * - Clicking a satellite opens 3 sub-sub-cogs + moves satellite toward center
  */
 
-import { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+
+/** Animated lightning arc that follows a circular path around a cog */
+function CogLightning({ size, color = '#60a5fa', bolts = 3 }: { size: number; color?: string; bolts?: number }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const frameRef = useRef<number>(0)
+  const boltStateRef = useRef<{ offset: number; speed: number; arcLen: number; seed: number }[]>([])
+
+  // Initialize bolt states
+  if (boltStateRef.current.length !== bolts) {
+    boltStateRef.current = Array.from({ length: bolts }, (_, i) => ({
+      offset: (i / bolts) * Math.PI * 2,
+      speed: 0.8 + Math.random() * 1.2,
+      arcLen: Math.PI * (0.3 + Math.random() * 0.4),
+      seed: Math.random() * 1000,
+    }))
+  }
+
+  const draw = useCallback(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const dpr = window.devicePixelRatio || 1
+    canvas.width = size * dpr
+    canvas.height = size * dpr
+    ctx.scale(dpr, dpr)
+    ctx.clearRect(0, 0, size, size)
+
+    const cx = size / 2
+    const cy = size / 2
+    const r = size * 0.42 // just inside the gear teeth
+    const now = performance.now() / 1000
+
+    for (const bolt of boltStateRef.current) {
+      const startAngle = bolt.offset + now * bolt.speed
+      const steps = 24
+      const stepAngle = bolt.arcLen / steps
+
+      ctx.beginPath()
+      ctx.strokeStyle = color
+      ctx.lineWidth = 1.5
+      ctx.shadowColor = color
+      ctx.shadowBlur = 8
+      ctx.globalAlpha = 0.6 + Math.sin(now * 3 + bolt.seed) * 0.3
+
+      for (let j = 0; j <= steps; j++) {
+        const a = startAngle + stepAngle * j
+        // Jagged displacement perpendicular to the circle
+        const jag = j === 0 || j === steps ? 0 : (Math.sin(j * 7.3 + now * 12 + bolt.seed) * 4 + Math.sin(j * 13.1 + now * 8) * 2)
+        const pr = r + jag
+        const px = cx + Math.cos(a) * pr
+        const py = cy + Math.sin(a) * pr
+        if (j === 0) ctx.moveTo(px, py)
+        else ctx.lineTo(px, py)
+      }
+      ctx.stroke()
+
+      // Glow pass
+      ctx.lineWidth = 4
+      ctx.globalAlpha = 0.15
+      ctx.stroke()
+    }
+
+    ctx.globalAlpha = 1
+    ctx.shadowBlur = 0
+    frameRef.current = requestAnimationFrame(draw)
+  }, [size, color, bolts])
+
+  useEffect(() => {
+    frameRef.current = requestAnimationFrame(draw)
+    return () => cancelAnimationFrame(frameRef.current)
+  }, [draw])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-[5] pointer-events-none"
+      style={{ width: size, height: size }}
+    />
+  )
+}
 
 export interface GearSubItem {
   id?: string
@@ -106,6 +188,8 @@ function Cog({
           />
         </div>
       )}
+      {/* Lightning arcs along the circular path */}
+      <CogLightning size={size} color="#60a5fa" bolts={3} />
       {children && (
         <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
           {children}
