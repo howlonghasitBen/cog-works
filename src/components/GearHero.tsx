@@ -237,68 +237,58 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
-  // After menu opens and all satellites are "touched", bolts converge to center
-  const [allTouched, setAllTouched] = useState(false)
+  // Sequential touching: each bolt targets satellites one by one CW, then center
+  const [touchStep, setTouchStep] = useState(-1)
   useEffect(() => {
-    if (menuOpen) {
-      const timer = setTimeout(() => setAllTouched(true), 1500)
-      return () => clearTimeout(timer)
-    } else {
-      setAllTouched(false)
-    }
+    if (!menuOpen) { setTouchStep(-1); return }
+    const t = setTimeout(() => setTouchStep(0), 500)
+    return () => clearTimeout(t)
   }, [menuOpen])
+  useEffect(() => {
+    if (touchStep < 0 || touchStep >= items.length) return
+    const t = setTimeout(() => setTouchStep(s => s + 1), 400)
+    return () => clearTimeout(t)
+  }, [touchStep, items.length])
 
-  // Compute bolt endpoints: nearest satellite to each finger, or center if allTouched
-  const boltEndpoints = useMemo(() => {
+  // Satellite positions sorted CW
+  const sortedSats = useMemo(() => {
     const vw = windowWidth
     const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    const cx = vw / 2
-    const cy = vh / 2
-
-    if (allTouched) {
-      return { left: { x: cx, y: cy }, right: { x: cx, y: cy } }
-    }
-
-    // Satellite positions in viewport coords
-    const sats = items.map((_, i) => {
+    return items.map((_, i) => {
       const a = startAngle + angleStep * i
-      return { x: cx + Math.cos(a) * radius, y: cy + Math.sin(a) * radius }
-    })
+      return { x: vw / 2 + Math.cos(a) * radius, y: vh / 2 + Math.sin(a) * radius, angle: a }
+    }).sort((a, b) => a.angle - b.angle)
+  }, [items.length, startAngle, angleStep, radius, windowWidth])
 
-    // Left finger tip (bottom-left pepe)
-    const lf = { x: vw * 0.55, y: vh * 0.33 }
-    // Right finger tip (top-right pepe god)
-    const rf = { x: vw * 0.50, y: vh * 0.64 }
-
-    const nearest = (fx: number, fy: number) => {
-      let best = sats[0], bestD = Infinity
-      sats.forEach(s => {
-        const d = Math.sqrt((s.x - fx) ** 2 + (s.y - fy) ** 2)
-        if (d < bestD) { bestD = d; best = s }
-      })
-      return best
-    }
-
-    return { left: nearest(lf.x, lf.y), right: nearest(rf.x, rf.y) }
-  }, [menuOpen, allTouched, items.length, startAngle, angleStep, radius, windowWidth])
-
-  // Convert endpoints to CSS: angle and length from each finger origin
-  const leftBolt = useMemo(() => {
+  // Current bolt targets
+  const boltTarget = useMemo(() => {
+    const vw = windowWidth
     const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    const ox = 0, oy = vh * 0.33 // left edge origin
-    const dx = boltEndpoints.left.x - ox
-    const dy = boltEndpoints.left.y - oy
+    const cx = vw / 2, cy = vh / 2
+    const n = sortedSats.length
+    if (touchStep < 0 || !menuOpen || n === 0) return null
+    if (touchStep >= n) return { left: { x: cx, y: cy }, right: { x: cx, y: cy } }
+    // Left bolt walks CW from index 0, right bolt walks CW from the opposite side
+    const li = touchStep % n
+    const ri = (n - 1 - touchStep % n + n) % n
+    return { left: sortedSats[li], right: sortedSats[ri] }
+  }, [touchStep, menuOpen, sortedSats, windowWidth])
+
+  const leftBolt = useMemo(() => {
+    if (!boltTarget) return { angle: 0, length: 0 }
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
+    const ox = 0, oy = vh * 0.33
+    const dx = boltTarget.left.x - ox, dy = boltTarget.left.y - oy
     return { angle: Math.atan2(dy, dx) * 180 / Math.PI, length: Math.sqrt(dx * dx + dy * dy) }
-  }, [boltEndpoints, windowWidth])
+  }, [boltTarget])
 
   const rightBolt = useMemo(() => {
+    if (!boltTarget) return { angle: 0, length: 0 }
     const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    const vw = windowWidth
-    const ox = vw, oy = vh * 0.64 // right edge origin
-    const dx = boltEndpoints.right.x - ox
-    const dy = boltEndpoints.right.y - oy
+    const ox = windowWidth, oy = vh * 0.64
+    const dx = boltTarget.right.x - ox, dy = boltTarget.right.y - oy
     return { angle: Math.atan2(dy, dx) * 180 / Math.PI, length: Math.sqrt(dx * dx + dy * dy) }
-  }, [boltEndpoints, windowWidth])
+  }, [boltTarget, windowWidth])
 
   return (
     <section
