@@ -315,7 +315,9 @@ export default function GearHero({
 
           {/* Lightning — grows segment by segment from fingertips through satellites to center */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none"
-            style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}>
+            style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out', zIndex: 10 }}>
+            {/* DEBUG: remove after confirming visibility */}
+            {touchStep >= 0 && console.log('Lightning touchStep:', touchStep, 'left segs:', lightningSegments.left.length, 'right segs:', lightningSegments.right.length)}
             {/* Render accumulated segments for both bolts */}
             {touchStep >= 0 && lightningSegments.left.slice(0, touchStep + 1).map((seg, i) => {
               const dx = seg.toX - seg.fromX, dy = seg.toY - seg.fromY
@@ -331,7 +333,7 @@ export default function GearHero({
                       ? 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)'
                       : '#3b82f6',
                     filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                    opacity: 0.3,
+                    opacity: 0.6,
                   }} />
                   <div className="absolute origin-left" style={{
                     left: seg.fromX, top: seg.fromY + 3,
@@ -341,7 +343,7 @@ export default function GearHero({
                       ? 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)'
                       : '#60a5fa',
                     filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                    opacity: 0.2,
+                    opacity: 0.4,
                   }} />
                 </div>
               )
@@ -360,7 +362,7 @@ export default function GearHero({
                       ? 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)'
                       : '#3b82f6',
                     filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                    opacity: 0.3,
+                    opacity: 0.6,
                   }} />
                   <div className="absolute origin-left" style={{
                     left: seg.fromX, top: seg.fromY + 3,
@@ -370,7 +372,7 @@ export default function GearHero({
                       ? 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)'
                       : '#60a5fa',
                     filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                    opacity: 0.2,
+                    opacity: 0.4,
                   }} />
                 </div>
               )
