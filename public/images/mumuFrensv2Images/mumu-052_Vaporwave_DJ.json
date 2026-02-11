@@ -1,0 +1,19 @@
+{
+  "id": 52,
+  "name": "Vaporwave DJ Mumu",
+  "traits": {
+    "Background": "Synthwave neon cityscape",
+    "Headwear": "DJ headphones",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "None"
+  },
+  "ipfs": {
+    "imageCID": "QmYJ841btuXxpKMtwiWErDSHvZb3T689Jfx8rUpzqvCojy",
+    "imageURI": "ipfs://QmYJ841btuXxpKMtwiWErDSHvZb3T689Jfx8rUpzqvCojy",
+    "metadataCID": "QmTK8KCUHqYYt8uJoHVx9zMXgKYbDvqLpX5JsJNmtEUaXF",
+    "tokenURI": "ipfs://QmTK8KCUHqYYt8uJoHVx9zMXgKYbDvqLpX5JsJNmtEUaXF",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmYJ841btuXxpKMtwiWErDSHvZb3T689Jfx8rUpzqvCojy",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTK8KCUHqYYt8uJoHVx9zMXgKYbDvqLpX5JsJNmtEUaXF"
+  }
+}

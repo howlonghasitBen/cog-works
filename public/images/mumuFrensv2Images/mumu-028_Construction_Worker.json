@@ -1,0 +1,19 @@
+{
+  "id": 28,
+  "name": "Construction Worker Mumu",
+  "traits": {
+    "Background": "Construction site",
+    "Headwear": "White hard hat",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Hi-vis vest"
+  },
+  "ipfs": {
+    "imageCID": "QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
+    "imageURI": "ipfs://QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
+    "metadataCID": "QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu",
+    "tokenURI": "ipfs://QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": 68,
+  "name": "Jazz Musician Mumu",
+  "traits": {
+    "Background": "Jazz club",
+    "Headwear": "Fedora",
+    "Eyewear": "None",
+    "Held Item": "Saxophone",
+    "Clothes": "Black turtleneck"
+  },
+  "ipfs": {
+    "imageCID": "QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
+    "imageURI": "ipfs://QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
+    "metadataCID": "QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd",
+    "tokenURI": "ipfs://QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd"
+  }
+}

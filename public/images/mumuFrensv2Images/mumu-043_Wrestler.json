@@ -1,0 +1,19 @@
+{
+  "id": 43,
+  "name": "Wrestler Mumu",
+  "traits": {
+    "Background": "Wrestling arena",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Wrestling singlet"
+  },
+  "ipfs": {
+    "imageCID": "QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
+    "imageURI": "ipfs://QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
+    "metadataCID": "QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx",
+    "tokenURI": "ipfs://QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx"
+  }
+}

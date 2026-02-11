@@ -1,0 +1,19 @@
+{
+  "id": 65,
+  "name": "Fire Mage Mumu",
+  "traits": {
+    "Background": "Volcanic lava cave",
+    "Headwear": "Bandage wraps",
+    "Eyewear": "None",
+    "Held Item": "Flaming staff",
+    "Clothes": "Runic spiked armor"
+  },
+  "ipfs": {
+    "imageCID": "QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
+    "imageURI": "ipfs://QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
+    "metadataCID": "QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr",
+    "tokenURI": "ipfs://QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr"
+  }
+}

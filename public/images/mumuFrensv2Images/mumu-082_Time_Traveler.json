@@ -1,0 +1,19 @@
+{
+  "id": 82,
+  "name": "Time Traveler Mumu",
+  "traits": {
+    "Background": "Time vortex",
+    "Headwear": "Steampunk goggles",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Steampunk leather armor"
+  },
+  "ipfs": {
+    "imageCID": "QmdctV6QRaD8NEpvVUwpuDWWo1Gc5kZ9v8fbh5sAhj8QLg",
+    "imageURI": "ipfs://QmdctV6QRaD8NEpvVUwpuDWWo1Gc5kZ9v8fbh5sAhj8QLg",
+    "metadataCID": "QmUt37BwBdD6VX98RzgsLtugsARav2YFtv3ShqwYYbkYRP",
+    "tokenURI": "ipfs://QmUt37BwBdD6VX98RzgsLtugsARav2YFtv3ShqwYYbkYRP",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdctV6QRaD8NEpvVUwpuDWWo1Gc5kZ9v8fbh5sAhj8QLg",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmUt37BwBdD6VX98RzgsLtugsARav2YFtv3ShqwYYbkYRP"
+  }
+}

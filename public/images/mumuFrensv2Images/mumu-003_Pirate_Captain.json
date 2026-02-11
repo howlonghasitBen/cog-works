@@ -1,0 +1,11 @@
+{
+  "id": 3,
+  "name": "Pirate Captain Mumu",
+  "traits": {
+    "Background": "Pirate ship deck",
+    "Headwear": "Pirate tricorn hat",
+    "Eyewear": "None",
+    "Held Item": "Cutlass and pipe",
+    "Clothes": "Pirate captain coat"
+  }
+}

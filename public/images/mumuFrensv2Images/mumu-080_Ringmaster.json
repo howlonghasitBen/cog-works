@@ -1,0 +1,19 @@
+{
+  "id": 80,
+  "name": "Ringmaster Mumu",
+  "traits": {
+    "Background": "Circus tent",
+    "Headwear": "Black top hat",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Red ringmaster suit"
+  },
+  "ipfs": {
+    "imageCID": "QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
+    "imageURI": "ipfs://QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
+    "metadataCID": "QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65",
+    "tokenURI": "ipfs://QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65"
+  }
+}

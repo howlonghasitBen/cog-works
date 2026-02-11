@@ -3,7 +3,7 @@
  * Scroll-driven parallax: background at 1x, cog at ~0.35x.
  * Always scrollable. Snap zones handle hero↔content transitions.
  */
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /** Generate a randomized lightning bolt path from origin toward target center */
@@ -44,33 +44,89 @@ function generateFork(
 }
 
 /** Lightning bolts between Adam and God Pepe fingers */
-function LightningBolt({ visible }: { visible: boolean }) {
+function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?: number }) {
   // Adam's fingertip: bottom-left (~20%, 72%)
   // God's fingertip: top-right (~68%, 28%) — his outstretched finger
-  // Both aim toward center (~50%, 48%)
+  const adamX = 20, adamY = 72
+  const godX = 68, godY = 28
+  const cx = 50, cy = 48
+
+  // Satellite positions in viewBox 0-100 coords (mirror GearHero layout)
+  const sats = useMemo(() => {
+    const startAngle = -Math.PI * 0.75
+    const angleStep = (Math.PI * 2) / satCount
+    const r = 19 // ~radius in viewBox % units
+    return Array.from({ length: satCount }, (_, i) => {
+      const a = startAngle + angleStep * i
+      return { x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r * (100 / 100), angle: a }
+    }).sort((a, b) => a.angle - b.angle)
+  }, [satCount])
+
+  // Step through satellites: -1=off, 0..N-1=targeting sat, N=targeting center
+  const [touchStep, setTouchStep] = useState(-1)
+  useEffect(() => {
+    if (!visible) { setTouchStep(-1); return }
+    const t = setTimeout(() => setTouchStep(0), 500)
+    return () => clearTimeout(t)
+  }, [visible])
+  useEffect(() => {
+    if (touchStep < 0 || touchStep > sats.length) return
+    const t = setTimeout(() => setTouchStep(s => s + 1), 400)
+    return () => clearTimeout(t)
+  }, [touchStep, sats.length])
+
+  // Build CW path from a finger through satellites to center
+  const buildCWPath = useCallback((fingerX: number, fingerY: number) => {
+    // Find nearest satellite
+    let nearestIdx = 0, nearestDist = Infinity
+    sats.forEach((s, i) => {
+      const d = Math.sqrt((s.x - fingerX) ** 2 + (s.y - fingerY) ** 2)
+      if (d < nearestDist) { nearestDist = d; nearestIdx = i }
+    })
+    // Order CW starting from nearest
+    const ordered = []
+    for (let i = 0; i < sats.length; i++) {
+      ordered.push(sats[(nearestIdx + i) % sats.length])
+    }
+    return ordered
+  }, [sats])
+
+  const adamPath = useMemo(() => buildCWPath(adamX, adamY), [buildCWPath])
+  const godPath = useMemo(() => buildCWPath(godX, godY), [buildCWPath])
+
+  // Current target for each bolt
+  const adamTarget = touchStep >= sats.length ? { x: cx, y: cy } :
+    touchStep >= 0 ? adamPath[touchStep] : { x: cx, y: cy }
+  const godTarget = touchStep >= sats.length ? { x: cx, y: cy } :
+    touchStep >= 0 ? godPath[touchStep] : { x: cx, y: cy }
+
   const [bolts, setBolts] = useState<{ path: string; forks: string[] }[]>([])
   const [tick, setTick] = useState(0)
 
-  // Regenerate bolts periodically for crackling effect
+  // Regenerate bolts periodically for crackling effect — target changes with touchStep
   useEffect(() => {
     if (!visible) { setBolts([]); return }
     const generate = () => {
       const newBolts = []
-      // 2 bolts from Adam (bottom-left → center)
+      const atx = adamTarget.x + (Math.random() - 0.5) * 4
+      const aty = adamTarget.y + (Math.random() - 0.5) * 4
+      const gtx = godTarget.x + (Math.random() - 0.5) * 4
+      const gty = godTarget.y + (Math.random() - 0.5) * 4
+      // 2 bolts from Adam (bottom-left → current target)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(20, 72, 48 + Math.random() * 4, 48 + Math.random() * 4)
+        const main = generateBolt(adamX, adamY, atx, aty)
         const forks = [
-          generateFork(main, 0.3 + Math.random() * 0.2, 45, 50),
-          generateFork(main, 0.6 + Math.random() * 0.2, 50, 45),
+          generateFork(main, 0.3 + Math.random() * 0.2, atx - 5, aty + 5),
+          generateFork(main, 0.6 + Math.random() * 0.2, atx + 5, aty - 5),
         ]
         newBolts.push({ path: main, forks })
       }
-      // 2 bolts from God (top-right → center)
+      // 2 bolts from God (top-right → current target)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(68, 28, 52 + Math.random() * 4, 48 + Math.random() * 4)
+        const main = generateBolt(godX, godY, gtx, gty)
         const forks = [
-          generateFork(main, 0.3 + Math.random() * 0.2, 55, 42),
-          generateFork(main, 0.6 + Math.random() * 0.2, 50, 48),
+          generateFork(main, 0.3 + Math.random() * 0.2, gtx + 5, gty - 5),
+          generateFork(main, 0.6 + Math.random() * 0.2, gtx - 5, gty + 5),
         ]
         newBolts.push({ path: main, forks })
       }
@@ -80,9 +136,9 @@ function LightningBolt({ visible }: { visible: boolean }) {
     const interval = setInterval(() => {
       generate()
       setTick(t => t + 1)
-    }, 1200) // Regenerate every 1.2s — watch the arcs draw
+    }, 1200)
     return () => clearInterval(interval)
-  }, [visible])
+  }, [visible, adamTarget.x, adamTarget.y, godTarget.x, godTarget.y])
 
   if (!visible || bolts.length === 0) return null
 
@@ -408,7 +464,7 @@ export default function App() {
                   className="absolute top-0 right-0 pointer-events-none"
                   style={{ height: '55%', objectFit: 'contain', objectPosition: 'top right' }}
                 />
-                <LightningBolt visible={menuOpen} />
+                <LightningBolt visible={menuOpen} satCount={heroItems.length} />
               </>
             )}
           </div>

@@ -1,0 +1,19 @@
+{
+  "id": 94,
+  "name": "Balloon Pilot Mumu",
+  "traits": {
+    "Background": "Hot air balloon sky",
+    "Headwear": "Aviator helmet",
+    "Eyewear": "Pilot goggles",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Leather flight jacket"
+  },
+  "ipfs": {
+    "imageCID": "QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
+    "imageURI": "ipfs://QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
+    "metadataCID": "QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb",
+    "tokenURI": "ipfs://QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb"
+  }
+}

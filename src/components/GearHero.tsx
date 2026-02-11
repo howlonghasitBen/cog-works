@@ -237,68 +237,7 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
-  // Lightning path: grows segment by segment from fingertip → nearest sat → next CW sat → ... → center
-  const [touchStep, setTouchStep] = useState(-1) // -1=hidden, 0=first seg, N=to center, N+1=done
-  useEffect(() => {
-    if (!menuOpen) { setTouchStep(-1); return }
-    const t = setTimeout(() => setTouchStep(0), 500)
-    return () => clearTimeout(t)
-  }, [menuOpen])
-  useEffect(() => {
-    if (touchStep < 0 || touchStep > items.length) return
-    const t = setTimeout(() => setTouchStep(s => s + 1), 400)
-    return () => clearTimeout(t)
-  }, [touchStep, items.length])
-
-  // Compute the full ordered path for each bolt: fingertip → nearest sat → CW through all → center
-  const lightningSegments = useMemo(() => {
-    const vw = windowWidth
-    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    const cx = vw / 2, cy = vh / 2
-
-    // All satellite positions with their original indices
-    const sats = items.map((_, i) => {
-      const a = startAngle + angleStep * i
-      return { x: cx + Math.cos(a) * radius, y: cy + Math.sin(a) * radius, angle: a, idx: i }
-    })
-
-    const dist = (a: {x:number,y:number}, b: {x:number,y:number}) =>
-      Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
-
-    // Build CW-ordered path starting from nearest sat to each finger
-    const buildPath = (fingerX: number, fingerY: number) => {
-      const finger = { x: fingerX, y: fingerY }
-      // Find nearest satellite
-      let nearestIdx = 0, nearestDist = Infinity
-      sats.forEach((s, i) => {
-        const d = dist(finger, s)
-        if (d < nearestDist) { nearestDist = d; nearestIdx = i }
-      })
-
-      // Walk CW from nearest: sort by angle, then reorder starting from nearest
-      const sorted = [...sats].sort((a, b) => a.angle - b.angle)
-      const startPos = sorted.findIndex(s => s.idx === nearestIdx)
-      const ordered: typeof sats = []
-      for (let i = 0; i < sorted.length; i++) {
-        ordered.push(sorted[(startPos + i) % sorted.length])
-      }
-
-      // Build segments: finger→sat0, sat0→sat1, ..., satN-1→center
-      const segments: Array<{fromX:number, fromY:number, toX:number, toY:number}> = []
-      segments.push({ fromX: finger.x, fromY: finger.y, toX: ordered[0].x, toY: ordered[0].y })
-      for (let i = 1; i < ordered.length; i++) {
-        segments.push({ fromX: ordered[i-1].x, fromY: ordered[i-1].y, toX: ordered[i].x, toY: ordered[i].y })
-      }
-      segments.push({ fromX: ordered[ordered.length-1].x, fromY: ordered[ordered.length-1].y, toX: cx, toY: cy })
-      return segments
-    }
-
-    // Left finger at left edge ~33%, right finger at right edge ~64%
-    return {
-      left: buildPath(0, vh * 0.33),
-      right: buildPath(vw, vh * 0.64),
-    }
-  }, [items.length, startAngle, angleStep, radius, windowWidth])
+  // (Lightning is handled by LightningBolt in App.tsx, not here)
 
   return (
     <section
@@ -315,77 +254,7 @@ export default function GearHero({
         </>
       )}
 
-          {/* Lightning — original streaks re-aim through satellites CW then to center */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none"
-            style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out', zIndex: 10 }}>
-            {(() => {
-              if (touchStep < 0) return null
-              const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-              const vw = windowWidth
-              // Current target for each bolt
-              const leftTarget = touchStep < lightningSegments.left.length
-                ? lightningSegments.left[touchStep]
-                : lightningSegments.left[lightningSegments.left.length - 1]
-              const rightTarget = touchStep < lightningSegments.right.length
-                ? lightningSegments.right[touchStep]
-                : lightningSegments.right[lightningSegments.right.length - 1]
-
-              // Left bolt: origin at left edge, 33%
-              const lox = 0, loy = vh * 0.33
-              const ldx = leftTarget.toX - lox, ldy = leftTarget.toY - loy
-              const lLen = Math.sqrt(ldx * ldx + ldy * ldy)
-              const lAngle = Math.atan2(ldy, ldx) * 180 / Math.PI
-
-              // Right bolt: origin at right edge, 64%
-              const rox = vw, roy = vh * 0.64
-              const rdx = rightTarget.toX - rox, rdy = rightTarget.toY - roy
-              const rLen = Math.sqrt(rdx * rdx + rdy * rdy)
-              const rAngle = Math.atan2(rdy, rdx) * 180 / Math.PI
-
-              return <>
-                {/* Left streak — main */}
-                <div className="absolute h-[2px] left-0 top-[33%] origin-left"
-                  style={{
-                    width: lLen,
-                    transform: `rotate(${lAngle}deg)`,
-                    background: 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
-                    filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                    opacity: 0.3,
-                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
-                  }} />
-                {/* Left streak — secondary */}
-                <div className="absolute h-[1px] left-0 top-[36%] origin-left"
-                  style={{
-                    width: lLen * 0.85,
-                    transform: `rotate(${lAngle}deg)`,
-                    background: 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
-                    filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                    opacity: 0.2,
-                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
-                  }} />
-                {/* Right streak — main */}
-                <div className="absolute h-[2px] right-0 top-[64%] origin-right"
-                  style={{
-                    width: rLen,
-                    transform: `rotate(${rAngle}deg)`,
-                    background: 'linear-gradient(270deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
-                    filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                    opacity: 0.3,
-                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
-                  }} />
-                {/* Right streak — secondary */}
-                <div className="absolute h-[1px] right-0 top-[67%] origin-right"
-                  style={{
-                    width: rLen * 0.85,
-                    transform: `rotate(${rAngle}deg)`,
-                    background: 'linear-gradient(270deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
-                    filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                    opacity: 0.2,
-                    transition: 'transform 0.4s ease-in-out, width 0.4s ease-in-out',
-                  }} />
-              </>
-            })()}
-          </div>
+          {/* Lightning rendering is in LightningBolt (App.tsx) */}
 
           {/* Glow rings */}
           <div className="absolute pointer-events-none" style={{ width: 520, height: 520 }}>

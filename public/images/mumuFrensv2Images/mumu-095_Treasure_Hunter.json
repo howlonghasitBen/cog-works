@@ -1,0 +1,19 @@
+{
+  "id": 95,
+  "name": "Treasure Hunter Mumu",
+  "traits": {
+    "Background": "Treasure cave",
+    "Headwear": "Headlamp strap",
+    "Eyewear": "None",
+    "Held Item": "Pipe and map",
+    "Clothes": "Leather explorer outfit"
+  },
+  "ipfs": {
+    "imageCID": "QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
+    "imageURI": "ipfs://QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
+    "metadataCID": "QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G",
+    "tokenURI": "ipfs://QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G"
+  }
+}

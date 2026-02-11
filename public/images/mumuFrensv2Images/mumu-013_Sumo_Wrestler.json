@@ -1,0 +1,19 @@
+{
+  "id": 13,
+  "name": "Sumo Wrestler Mumu",
+  "traits": {
+    "Background": "Sumo wrestling arena",
+    "Headwear": "Samurai topknot",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Yokozuna rope"
+  },
+  "ipfs": {
+    "imageCID": "QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
+    "imageURI": "ipfs://QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
+    "metadataCID": "QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v",
+    "tokenURI": "ipfs://QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v"
+  }
+}

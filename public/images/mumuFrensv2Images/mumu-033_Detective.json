@@ -1,0 +1,19 @@
+{
+  "id": 33,
+  "name": "Detective Mumu",
+  "traits": {
+    "Background": "Foggy Victorian street",
+    "Headwear": "Fedora hat",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Beige trench coat"
+  },
+  "ipfs": {
+    "imageCID": "Qmer65rPaNshHJ8Y5UggF6VAiRdT2fDLVyQFAiqxxTnUqA",
+    "imageURI": "ipfs://Qmer65rPaNshHJ8Y5UggF6VAiRdT2fDLVyQFAiqxxTnUqA",
+    "metadataCID": "QmRc6LjiTChZUk1CJ7bPPwQkzMDbYXa8VmS3tbcgfxpMn1",
+    "tokenURI": "ipfs://QmRc6LjiTChZUk1CJ7bPPwQkzMDbYXa8VmS3tbcgfxpMn1",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmer65rPaNshHJ8Y5UggF6VAiRdT2fDLVyQFAiqxxTnUqA",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRc6LjiTChZUk1CJ7bPPwQkzMDbYXa8VmS3tbcgfxpMn1"
+  }
+}

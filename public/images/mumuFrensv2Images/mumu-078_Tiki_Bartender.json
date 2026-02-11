@@ -1,0 +1,19 @@
+{
+  "id": 78,
+  "name": "Tiki Bartender Mumu",
+  "traits": {
+    "Background": "Tiki bar",
+    "Headwear": "Tropical flowers",
+    "Eyewear": "None",
+    "Held Item": "Tiki cocktail",
+    "Clothes": "Hawaiian shirt"
+  },
+  "ipfs": {
+    "imageCID": "QmdeKTCrLDcYg6ULiTT44ZsyTJUVgthjrNvi9Hb7kXnzf9",
+    "imageURI": "ipfs://QmdeKTCrLDcYg6ULiTT44ZsyTJUVgthjrNvi9Hb7kXnzf9",
+    "metadataCID": "QmQcbCWWZqQe13KyqxLRHn9ayP6eM7fjfYn2grbEvrzfAm",
+    "tokenURI": "ipfs://QmQcbCWWZqQe13KyqxLRHn9ayP6eM7fjfYn2grbEvrzfAm",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdeKTCrLDcYg6ULiTT44ZsyTJUVgthjrNvi9Hb7kXnzf9",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQcbCWWZqQe13KyqxLRHn9ayP6eM7fjfYn2grbEvrzfAm"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": 11,
+  "name": "Surfer Mumu",
+  "traits": {
+    "Background": "Sunset beach",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Black wetsuit"
+  },
+  "ipfs": {
+    "imageCID": "QmdvjwLLh8d24xLtmoH1zq21NBfZkJ5rxi5Jn84FheZkfs",
+    "imageURI": "ipfs://QmdvjwLLh8d24xLtmoH1zq21NBfZkJ5rxi5Jn84FheZkfs",
+    "metadataCID": "QmbmgAb83VPPahgZ4wojXSRXvte6KAfYyR7nF4VdfW1WMv",
+    "tokenURI": "ipfs://QmbmgAb83VPPahgZ4wojXSRXvte6KAfYyR7nF4VdfW1WMv",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdvjwLLh8d24xLtmoH1zq21NBfZkJ5rxi5Jn84FheZkfs",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbmgAb83VPPahgZ4wojXSRXvte6KAfYyR7nF4VdfW1WMv"
+  }
+}

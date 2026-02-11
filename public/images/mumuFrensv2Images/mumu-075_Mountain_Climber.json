@@ -1,0 +1,19 @@
+{
+  "id": 75,
+  "name": "Mountain Climber Mumu",
+  "traits": {
+    "Background": "Snowy mountains",
+    "Headwear": "None",
+    "Eyewear": "Ski goggles",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Red yellow jacket"
+  },
+  "ipfs": {
+    "imageCID": "QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
+    "imageURI": "ipfs://QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
+    "metadataCID": "QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8",
+    "tokenURI": "ipfs://QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8"
+  }
+}

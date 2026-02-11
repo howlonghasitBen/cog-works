@@ -1,0 +1,19 @@
+{
+  "id": 14,
+  "name": "Ninja Mumu",
+  "traits": {
+    "Background": "Japanese dojo",
+    "Headwear": "Black ninja hood",
+    "Eyewear": "Orange headband",
+    "Held Item": "Katana sword",
+    "Clothes": "Black ninja garb"
+  },
+  "ipfs": {
+    "imageCID": "QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
+    "imageURI": "ipfs://QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
+    "metadataCID": "QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb",
+    "tokenURI": "ipfs://QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb"
+  }
+}

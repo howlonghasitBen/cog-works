@@ -1,0 +1,19 @@
+{
+  "id": 37,
+  "name": "Magician Mumu",
+  "traits": {
+    "Background": "Theater stage curtains",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Wand and cards",
+    "Clothes": "Black tuxedo and bowtie"
+  },
+  "ipfs": {
+    "imageCID": "QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
+    "imageURI": "ipfs://QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
+    "metadataCID": "QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq",
+    "tokenURI": "ipfs://QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq"
+  }
+}

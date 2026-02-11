@@ -1,0 +1,19 @@
+{
+  "id": 91,
+  "name": "Blacksmith Mumu",
+  "traits": {
+    "Background": "Blacksmith forge",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Hammer and pipe",
+    "Clothes": "Leather apron"
+  },
+  "ipfs": {
+    "imageCID": "QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
+    "imageURI": "ipfs://QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
+    "metadataCID": "QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM",
+    "tokenURI": "ipfs://QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": 62,
+  "name": "Ocean King Mumu",
+  "traits": {
+    "Background": "Underwater ruins",
+    "Headwear": "Coral shell crown",
+    "Eyewear": "None",
+    "Held Item": "Golden trident",
+    "Clothes": "Scaled armor"
+  },
+  "ipfs": {
+    "imageCID": "QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
+    "imageURI": "ipfs://QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
+    "metadataCID": "Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g",
+    "tokenURI": "ipfs://Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g"
+  }
+}
