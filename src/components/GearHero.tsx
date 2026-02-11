@@ -237,58 +237,68 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
-  // Sequential touching: each bolt targets satellites one by one CW, then center
-  const [touchStep, setTouchStep] = useState(-1)
+  // Lightning path: grows segment by segment from fingertip → nearest sat → next CW sat → ... → center
+  const [touchStep, setTouchStep] = useState(-1) // -1=hidden, 0=first seg, N=to center, N+1=done
   useEffect(() => {
     if (!menuOpen) { setTouchStep(-1); return }
     const t = setTimeout(() => setTouchStep(0), 500)
     return () => clearTimeout(t)
   }, [menuOpen])
   useEffect(() => {
-    if (touchStep < 0 || touchStep >= items.length) return
+    if (touchStep < 0 || touchStep > items.length) return
     const t = setTimeout(() => setTouchStep(s => s + 1), 400)
     return () => clearTimeout(t)
   }, [touchStep, items.length])
 
-  // Satellite positions sorted CW
-  const sortedSats = useMemo(() => {
-    const vw = windowWidth
-    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    return items.map((_, i) => {
-      const a = startAngle + angleStep * i
-      return { x: vw / 2 + Math.cos(a) * radius, y: vh / 2 + Math.sin(a) * radius, angle: a }
-    }).sort((a, b) => a.angle - b.angle)
-  }, [items.length, startAngle, angleStep, radius, windowWidth])
-
-  // Current bolt targets
-  const boltTarget = useMemo(() => {
+  // Compute the full ordered path for each bolt: fingertip → nearest sat → CW through all → center
+  const lightningSegments = useMemo(() => {
     const vw = windowWidth
     const vh = typeof window !== 'undefined' ? window.innerHeight : 900
     const cx = vw / 2, cy = vh / 2
-    const n = sortedSats.length
-    if (touchStep < 0 || !menuOpen || n === 0) return null
-    if (touchStep >= n) return { left: { x: cx, y: cy }, right: { x: cx, y: cy } }
-    // Left bolt walks CW from index 0, right bolt walks CW from the opposite side
-    const li = touchStep % n
-    const ri = (n - 1 - touchStep % n + n) % n
-    return { left: sortedSats[li], right: sortedSats[ri] }
-  }, [touchStep, menuOpen, sortedSats, windowWidth])
 
-  const leftBolt = useMemo(() => {
-    if (!boltTarget) return { angle: 0, length: 0 }
-    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    const ox = 0, oy = vh * 0.33
-    const dx = boltTarget.left.x - ox, dy = boltTarget.left.y - oy
-    return { angle: Math.atan2(dy, dx) * 180 / Math.PI, length: Math.sqrt(dx * dx + dy * dy) }
-  }, [boltTarget])
+    // All satellite positions with their original indices
+    const sats = items.map((_, i) => {
+      const a = startAngle + angleStep * i
+      return { x: cx + Math.cos(a) * radius, y: cy + Math.sin(a) * radius, angle: a, idx: i }
+    })
 
-  const rightBolt = useMemo(() => {
-    if (!boltTarget) return { angle: 0, length: 0 }
-    const vh = typeof window !== 'undefined' ? window.innerHeight : 900
-    const ox = windowWidth, oy = vh * 0.64
-    const dx = boltTarget.right.x - ox, dy = boltTarget.right.y - oy
-    return { angle: Math.atan2(dy, dx) * 180 / Math.PI, length: Math.sqrt(dx * dx + dy * dy) }
-  }, [boltTarget, windowWidth])
+    const dist = (a: {x:number,y:number}, b: {x:number,y:number}) =>
+      Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
+
+    // Build CW-ordered path starting from nearest sat to each finger
+    const buildPath = (fingerX: number, fingerY: number) => {
+      const finger = { x: fingerX, y: fingerY }
+      // Find nearest satellite
+      let nearestIdx = 0, nearestDist = Infinity
+      sats.forEach((s, i) => {
+        const d = dist(finger, s)
+        if (d < nearestDist) { nearestDist = d; nearestIdx = i }
+      })
+
+      // Walk CW from nearest: sort by angle, then reorder starting from nearest
+      const sorted = [...sats].sort((a, b) => a.angle - b.angle)
+      const startPos = sorted.findIndex(s => s.idx === nearestIdx)
+      const ordered: typeof sats = []
+      for (let i = 0; i < sorted.length; i++) {
+        ordered.push(sorted[(startPos + i) % sorted.length])
+      }
+
+      // Build segments: finger→sat0, sat0→sat1, ..., satN-1→center
+      const segments: Array<{fromX:number, fromY:number, toX:number, toY:number}> = []
+      segments.push({ fromX: finger.x, fromY: finger.y, toX: ordered[0].x, toY: ordered[0].y })
+      for (let i = 1; i < ordered.length; i++) {
+        segments.push({ fromX: ordered[i-1].x, fromY: ordered[i-1].y, toX: ordered[i].x, toY: ordered[i].y })
+      }
+      segments.push({ fromX: ordered[ordered.length-1].x, fromY: ordered[ordered.length-1].y, toX: cx, toY: cy })
+      return segments
+    }
+
+    // Left finger at left edge ~33%, right finger at right edge ~64%
+    return {
+      left: buildPath(0, vh * 0.33),
+      right: buildPath(vw, vh * 0.64),
+    }
+  }, [items.length, startAngle, angleStep, radius, windowWidth])
 
   return (
     <section
@@ -303,72 +313,68 @@ export default function GearHero({
         <>
           <div className="absolute inset-0 bg-black/30" />
 
-          {/* Lightning — ONLY visible when menu is open. Two bolts from fingertips → nearest satellite → center */}
+          {/* Lightning — grows segment by segment from fingertips through satellites to center */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none"
             style={{ opacity: menuOpen ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}>
-            {/* Left bolt: from left edge at 33% → nearest satellite (or center when allTouched) */}
-            <div className="absolute left-0 top-[33%] origin-left"
-              style={{
-                width: leftBolt.length,
-                height: 2,
-                transform: `rotate(${leftBolt.angle}deg)`,
-                background: 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
-                filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                opacity: 0.3,
-                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
-              }} />
-            <div className="absolute left-0 top-[33%] origin-left"
-              style={{
-                width: leftBolt.length * 0.85,
-                height: 1,
-                transform: `translateY(3px) rotate(${leftBolt.angle}deg)`,
-                background: 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
-                filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                opacity: 0.2,
-                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
-              }} />
-
-            {/* Right bolt: from right edge at 64% → nearest satellite (or center when allTouched) */}
-            <div className="absolute right-0 top-[64%] origin-right"
-              style={{
-                width: rightBolt.length,
-                height: 2,
-                transform: `rotate(${rightBolt.angle}deg)`,
-                background: 'linear-gradient(270deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)',
-                filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
-                opacity: 0.3,
-                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
-              }} />
-            <div className="absolute right-0 top-[64%] origin-right"
-              style={{
-                width: rightBolt.length * 0.85,
-                height: 1,
-                transform: `translateY(3px) rotate(${rightBolt.angle}deg)`,
-                background: 'linear-gradient(270deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)',
-                filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                opacity: 0.2,
-                transition: 'transform 0.8s ease-in-out, width 0.8s ease-in-out',
-              }} />
-
-            {/* Circle around nav cog at satellite ring — the path between satellites */}
-            <div className="absolute left-1/2 top-1/2 rounded-full"
-              style={{
-                width: radius * 2 + 60,
-                height: radius * 2 + 60,
-                transform: 'translate(-50%, -50%)',
-                border: '2px solid #3b82f6',
-                filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.5))',
-                opacity: 0.35,
-              }} />
-            <div className="absolute left-1/2 top-1/2 rounded-full"
-              style={{
-                width: radius * 2 + 60,
-                height: radius * 2 + 60,
-                transform: 'translate(-50%, -50%)',
-                border: '1px solid #60a5fa',
-                filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
-                opacity: 0.2,
-              }} />
+            {/* Render accumulated segments for both bolts */}
+            {touchStep >= 0 && lightningSegments.left.slice(0, touchStep + 1).map((seg, i) => {
+              const dx = seg.toX - seg.fromX, dy = seg.toY - seg.fromY
+              const len = Math.sqrt(dx * dx + dy * dy)
+              const angle = Math.atan2(dy, dx) * 180 / Math.PI
+              return (
+                <div key={`left-${i}`}>
+                  <div className="absolute origin-left" style={{
+                    left: seg.fromX, top: seg.fromY,
+                    width: len, height: 2,
+                    transform: `rotate(${angle}deg)`,
+                    background: i === 0
+                      ? 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)'
+                      : '#3b82f6',
+                    filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
+                    opacity: 0.3,
+                  }} />
+                  <div className="absolute origin-left" style={{
+                    left: seg.fromX, top: seg.fromY + 3,
+                    width: len * 0.85, height: 1,
+                    transform: `rotate(${angle}deg)`,
+                    background: i === 0
+                      ? 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)'
+                      : '#60a5fa',
+                    filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
+                    opacity: 0.2,
+                  }} />
+                </div>
+              )
+            })}
+            {touchStep >= 0 && lightningSegments.right.slice(0, touchStep + 1).map((seg, i) => {
+              const dx = seg.toX - seg.fromX, dy = seg.toY - seg.fromY
+              const len = Math.sqrt(dx * dx + dy * dy)
+              const angle = Math.atan2(dy, dx) * 180 / Math.PI
+              return (
+                <div key={`right-${i}`}>
+                  <div className="absolute origin-left" style={{
+                    left: seg.fromX, top: seg.fromY,
+                    width: len, height: 2,
+                    transform: `rotate(${angle}deg)`,
+                    background: i === 0
+                      ? 'linear-gradient(90deg, transparent 0%, #3b82f6 30%, #3b82f6 100%)'
+                      : '#3b82f6',
+                    filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.5))',
+                    opacity: 0.3,
+                  }} />
+                  <div className="absolute origin-left" style={{
+                    left: seg.fromX, top: seg.fromY + 3,
+                    width: len * 0.85, height: 1,
+                    transform: `rotate(${angle}deg)`,
+                    background: i === 0
+                      ? 'linear-gradient(90deg, transparent 0%, #60a5fa 40%, #60a5fa 100%)'
+                      : '#60a5fa',
+                    filter: 'drop-shadow(0 0 4px rgba(96,165,250,0.4))',
+                    opacity: 0.2,
+                  }} />
+                </div>
+              )
+            })}
           </div>
 
           {/* Glow rings */}
