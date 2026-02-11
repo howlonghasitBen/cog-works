@@ -99,11 +99,18 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
   const adamPath = useMemo(() => buildCWPath(adamX, adamY), [buildCWPath])
   const godPath = useMemo(() => buildCWPath(godX, godY), [buildCWPath])
 
-  // Current target for each bolt
+  // Current origin + target for each bolt — chains from sat to sat
+  const adamFrom = touchStep <= 0 ? { x: adamX, y: adamY } :
+    touchStep > sats.length ? adamPath[adamPath.length - 1] :
+    adamPath[touchStep - 1]
   const adamTarget = touchStep >= sats.length ? { x: cx, y: cy } :
-    touchStep >= 0 ? adamPath[touchStep] : { x: cx, y: cy }
+    touchStep >= 0 ? adamPath[touchStep] : adamPath[0]
+
+  const godFrom = touchStep <= 0 ? { x: godX, y: godY } :
+    touchStep > sats.length ? godPath[godPath.length - 1] :
+    godPath[touchStep - 1]
   const godTarget = touchStep >= sats.length ? { x: cx, y: cy } :
-    touchStep >= 0 ? godPath[touchStep] : { x: cx, y: cy }
+    touchStep >= 0 ? godPath[touchStep] : godPath[0]
 
   const [bolts, setBolts] = useState<{ path: string; forks: string[] }[]>([])
   const [tick, setTick] = useState(0)
@@ -113,25 +120,27 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
     if (!visible) { setBolts([]); return }
     const generate = () => {
       const newBolts = []
-      const atx = adamTarget.x + (Math.random() - 0.5) * 4
-      const aty = adamTarget.y + (Math.random() - 0.5) * 4
-      const gtx = godTarget.x + (Math.random() - 0.5) * 4
-      const gty = godTarget.y + (Math.random() - 0.5) * 4
-      // 2 bolts from Adam (bottom-left → current target) — forks aim at same target
+      const afx = adamFrom.x, afy = adamFrom.y
+      const atx = adamTarget.x + (Math.random() - 0.5) * 2
+      const aty = adamTarget.y + (Math.random() - 0.5) * 2
+      const gfx = godFrom.x, gfy = godFrom.y
+      const gtx = godTarget.x + (Math.random() - 0.5) * 2
+      const gty = godTarget.y + (Math.random() - 0.5) * 2
+      // 2 bolts from Adam's current position → next satellite (or center)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(adamX, adamY, atx, aty)
+        const main = generateBolt(afx, afy, atx, aty)
         const forks = [
-          generateFork(main, 0.3 + Math.random() * 0.2, atx + (Math.random() - 0.5) * 3, aty + (Math.random() - 0.5) * 3),
-          generateFork(main, 0.6 + Math.random() * 0.2, atx + (Math.random() - 0.5) * 3, aty + (Math.random() - 0.5) * 3),
+          generateFork(main, 0.3 + Math.random() * 0.2, atx + (Math.random() - 0.5) * 2, aty + (Math.random() - 0.5) * 2),
+          generateFork(main, 0.6 + Math.random() * 0.2, atx + (Math.random() - 0.5) * 2, aty + (Math.random() - 0.5) * 2),
         ]
         newBolts.push({ path: main, forks })
       }
-      // 2 bolts from God (top-right → current target) — forks aim at same target
+      // 2 bolts from God's current position → next satellite (or center)
       for (let i = 0; i < 2; i++) {
-        const main = generateBolt(godX, godY, gtx, gty)
+        const main = generateBolt(gfx, gfy, gtx, gty)
         const forks = [
-          generateFork(main, 0.3 + Math.random() * 0.2, gtx + (Math.random() - 0.5) * 3, gty + (Math.random() - 0.5) * 3),
-          generateFork(main, 0.6 + Math.random() * 0.2, gtx + (Math.random() - 0.5) * 3, gty + (Math.random() - 0.5) * 3),
+          generateFork(main, 0.3 + Math.random() * 0.2, gtx + (Math.random() - 0.5) * 2, gty + (Math.random() - 0.5) * 2),
+          generateFork(main, 0.6 + Math.random() * 0.2, gtx + (Math.random() - 0.5) * 2, gty + (Math.random() - 0.5) * 2),
         ]
         newBolts.push({ path: main, forks })
       }
@@ -143,7 +152,7 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
       setTick(t => t + 1)
     }, 250) // Match step timing so bolts regenerate at each new target
     return () => clearInterval(interval)
-  }, [visible, adamTarget.x, adamTarget.y, godTarget.x, godTarget.y])
+  }, [visible, adamFrom.x, adamFrom.y, adamTarget.x, adamTarget.y, godFrom.x, godFrom.y, godTarget.x, godTarget.y])
 
   if (!visible || bolts.length === 0) return null
 
