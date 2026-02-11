@@ -156,6 +156,7 @@ function LightningBolt({ visible }: { visible: boolean }) {
 import GearHero from './components/GearHero'
 import type { GearNavItem, GearSubItem } from './components/GearHero'
 import StakingDashboard from './pages/StakingDashboard'
+import MumuGallery from './pages/MumuGallery'
 import SwapPage from './pages/SwapPage'
 import MintPage from './pages/MintPage'
 
@@ -195,40 +196,40 @@ function ContentPage({ parent, sub }: { parent: string; sub: string }) {
 
 // ─── Nav Items ──────────────────────────────────────────────────
 const heroItems: GearNavItem[] = [
-  { label: 'Services', icon: '🔧', innardSrc: '/images/proof.jpg', innardScale: 0.68, subItems: [
-    { id: 'design', label: 'Design', icon: '🎨', innardSrc: '/images/scatter.svg', innardScale: 0.70, innardBg: '#36454F', innardImgScale: 0.857, href: 'https://www.scatter.art/collection/mumu-frens' },
-    { id: 'develop', label: 'Develop', icon: '💻' },
-    { id: 'deploy', label: 'Deploy', icon: '🚀' },
+  { label: 'mumuFrens', icon: '🐄', innardSrc: '/images/mumu-hero.gif', innardScale: 0.69, subItems: [
+    { id: 'mumu-v1', label: 'v1', icon: '🎨', innardSrc: '/images/scatter.svg', innardScale: 0.70, innardBg: '#36454F', innardImgScale: 0.857, href: 'https://www.scatter.art/collection/mumu-frens' },
+    { id: 'mumu-v2', label: 'v2', icon: '🖼️' },
+    { id: 'mumu-discord', label: 'discord', icon: '💬' },
   ]},
-  { label: 'Solutions', icon: '⚙️', innardSrc: '/images/whirlpool.png', innardSpin: 15, subItems: [
-    { id: 'web3', label: 'Web3', icon: '🔗', innardSrc: '/images/nftMint.png' },
-    { id: 'ai', label: 'AI', icon: '🤖', innardSrc: '/images/stakeLogo.png' },
-    { id: 'cloud', label: 'Cloud', icon: '☁️', innardSrc: '/images/surfSwap.png' },
+  { label: 'Whirlpool', icon: '🌀', innardSrc: '/images/whirlpool.png', innardSpin: 15, subItems: [
+    { id: 'whirlpool-mint', label: 'mint', icon: '🔗', innardSrc: '/images/nftMint.png' },
+    { id: 'whirlpool-stake', label: 'stake', icon: '🔄', innardSrc: '/images/stakeLogo.png' },
+    { id: 'whirlpool-swap', label: 'swap', icon: '🔀', innardSrc: '/images/surfSwap.png' },
   ]},
-  { label: 'Support', icon: '🎧', subItems: [
-    { id: 'docs', label: 'Docs', icon: '📖' },
-    { id: 'chat', label: 'Chat', icon: '💬' },
-    { id: 'faq', label: 'FAQ', icon: '❓' },
+  { label: 'Generic-1', icon: '⚙️', subItems: [
+    { id: 'g1-sub1', label: 'Sub 1', icon: '○' },
+    { id: 'g1-sub2', label: 'Sub 2', icon: '○' },
+    { id: 'g1-sub3', label: 'Sub 3', icon: '○' },
   ]},
-  { label: 'About', icon: 'ℹ️', subItems: [
-    { id: 'team', label: 'Team', icon: '👥' },
-    { id: 'mission', label: 'Mission', icon: '🎯' },
-    { id: 'press', label: 'Press', icon: '📰' },
+  { label: 'Generic-2', icon: '⚙️', subItems: [
+    { id: 'g2-sub1', label: 'Sub 1', icon: '○' },
+    { id: 'g2-sub2', label: 'Sub 2', icon: '○' },
+    { id: 'g2-sub3', label: 'Sub 3', icon: '○' },
   ]},
-  { label: 'Blog', icon: '📝', subItems: [
-    { id: 'latest', label: 'Latest', icon: '🆕' },
-    { id: 'guides', label: 'Guides', icon: '📚' },
-    { id: 'videos', label: 'Videos', icon: '🎬' },
+  { label: 'Generic-3', icon: '⚙️', subItems: [
+    { id: 'g3-sub1', label: 'Sub 1', icon: '○' },
+    { id: 'g3-sub2', label: 'Sub 2', icon: '○' },
+    { id: 'g3-sub3', label: 'Sub 3', icon: '○' },
   ]},
-  { label: 'Dashboard', icon: '📊', subItems: [
-    { id: 'staking', label: 'Staking', icon: '🔄' },
-    { id: 'analytics', label: 'Analytics', icon: '📈' },
-    { id: 'history', label: 'History', icon: '📜' },
+  { label: 'Generic-4', icon: '⚙️', subItems: [
+    { id: 'g4-sub1', label: 'Sub 1', icon: '○' },
+    { id: 'g4-sub2', label: 'Sub 2', icon: '○' },
+    { id: 'g4-sub3', label: 'Sub 3', icon: '○' },
   ]},
-  { label: 'X', icon: '✖', innardSrc: '/images/xLogo.png', subItems: [
-    { id: 'x-ben', label: 'Ben', icon: '👤', innardSrc: '/images/pfp_howlonghasitben.png', href: 'https://x.com/howlonghasitBen' },
-    { id: 'x-surfgod', label: 'SurfGod', icon: '🏄', innardSrc: '/images/pfp_surfgod69.png', href: 'https://x.com/SurfGod69' },
-    { id: 'x-wavestcg', label: 'WavesTCG', icon: '🃏', innardSrc: '/images/pfp_wavestcg.png', href: 'https://x.com/wavesTCG' },
+  { label: 'xLinks', icon: '✖', innardSrc: '/images/xLogo.png', subItems: [
+    { id: 'x-ben', label: 'howlonghasitben', icon: '👤', innardSrc: '/images/pfp_howlonghasitben.png', href: 'https://x.com/howlonghasitBen' },
+    { id: 'x-surfgod', label: 'surfgod69', icon: '🏄', innardSrc: '/images/pfp_surfgod69.png', href: 'https://x.com/SurfGod69' },
+    { id: 'x-wavestcg', label: 'wavesTCG', icon: '🃏', innardSrc: '/images/pfp_wavestcg.png', href: 'https://x.com/wavesTCG' },
   ]},
 ]
 
@@ -246,6 +247,15 @@ export default function App() {
   // Programmatic scroll flag — prevents snap logic from fighting smooth scrolls
   const isAnimating = useRef(false)
 
+  // Navigate from staking → swap
+  const navigateToSwap = useCallback(() => {
+    const whirlpool = heroItems.find(h => h.label === 'Whirlpool')
+    const swapSub = whirlpool?.subItems?.find(s => s.id === 'whirlpool-swap')
+    if (whirlpool && swapSub) {
+      setActivePage({ parent: whirlpool, sub: swapSub })
+    }
+  }, [])
+
   // ─── Navigation ─────────────────────────────────────────────
   const handleNavigate = useCallback((parent: GearNavItem, sub: GearSubItem) => {
     // External links open in new tab, don't scroll to ContentPage
@@ -253,14 +263,15 @@ export default function App() {
       window.open(sub.href, '_blank', 'noopener')
       return
     }
-    setActivePage({ parent, sub })
+    // Set animation lock IMMEDIATELY to prevent snap logic from fighting
     isAnimating.current = true
-    // Smooth scroll to content
-    requestAnimationFrame(() => {
+    setActivePage({ parent, sub })
+    // Smooth scroll to content — delay slightly to ensure DOM has rendered content
+    setTimeout(() => {
       scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
-    })
+    }, 50)
     // Release animation lock after scroll settles
-    setTimeout(() => { isAnimating.current = false }, 1200)
+    setTimeout(() => { isAnimating.current = false }, 1500)
   }, [])
 
   const handleBackToTop = useCallback(() => {
@@ -313,11 +324,15 @@ export default function App() {
 
         if (progress > 0.1 && progress < 0.5) {
           // In upper dead zone → snap back to hero
+          // But NOT if we just navigated to a page (handleNavigate sets activePage before scroll starts)
           isAnimating.current = true
           el.scrollTo({ top: 0, behavior: 'smooth' })
           setTimeout(() => {
             isAnimating.current = false
-            setActivePage(null)
+            // Only clear page if we actually snapped back (scroll is near top)
+            if (el.scrollTop < window.innerHeight * 0.1) {
+              setActivePage(null)
+            }
           }, 600)
         } else if (progress >= 0.5 && progress < 0.9) {
           // In lower dead zone → snap to content
@@ -471,11 +486,13 @@ export default function App() {
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
             <div className="relative pb-24">
-              {activePage.sub.id === 'staking' ? (
-                <StakingDashboard />
-              ) : activePage.sub.id === 'cloud' ? (
+              {activePage.sub.id === 'mumu-v2' ? (
+                <MumuGallery />
+              ) : activePage.sub.id === 'whirlpool-stake' ? (
+                <StakingDashboard onNavigateSwap={navigateToSwap} />
+              ) : activePage.sub.id === 'whirlpool-swap' ? (
                 <SwapPage />
-              ) : activePage.sub.id === 'web3' ? (
+              ) : activePage.sub.id === 'whirlpool-mint' ? (
                 <MintPage />
               ) : (
                 <ContentPage parent={activePage.parent.label} sub={activePage.sub.label} />

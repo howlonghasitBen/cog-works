@@ -1,17 +1,45 @@
 # ⚙️ Cog Works
 
-Drop-in React components for cog-themed navigation menus and submenus.
+Drop-in React components for cog-themed navigation menus, interactive pages, and steampunk UI.
 
 ## Components
 
-### `<CogMenu />` — Radial Navigation
-A gear icon that expands menu items in a radial arc on click/hover. Supports nested submenus, configurable arc angles, and spring animations.
+### Navigation
+- **`<CogMenu />`** — Radial gear menu with nested submenus and spring animations
+- **`<CogSidebar />`** — Collapsible sidebar with spinning cog icons per section
+- **`<CogDropdown />`** — Inline gear dropdown with dividers and disabled states
+- **`<GearHero />`** — Full-screen parallax hero with central gear + satellite cogs, scroll-driven content transitions
 
-### `<CogSidebar />` — Collapsible Section Navigation
-A sidebar that collapses to a strip of spinning cog icons. Each section expands to show nested nav items with badges and active states.
+### UI Components
+- **`<CogDonut />`** — Donut chart framed by nav_cog.svg, visualizes staker distribution per card token. Hover glow, staggered entrance, gold ripple pulses.
+- **`<CogPartSelector />`** — Steampunk-themed part selector with decorative spinning cogs and gold Cinzel headers
+- **`<CogPartEditor />`** — Steampunk field editor for card attributes (text, number, select, color, slider fields)
 
-### `<CogDropdown />` — Inline Gear Dropdown
-A traditional dropdown triggered by a spinning cog. Clean, compact, supports dividers and disabled items.
+### Pages
+- **`<StakingDashboard />`** — Whirlpool card staking overview with card grid, ownership risk meters, rewards breakdown, top-4 holder lists, stake/unstake actions, and SurfSwap navigation
+- **`<SwapPage />`** — 3-column Whirlpool swapStake interface with multi-select, pool explorer, and steal mechanics
+- **`<MintPage />`** — Card creation page with CogPartSelector + CogPartEditor + live CardPreview
+- **`<MumuGallery />`** — Mumu Frens v2 NFT gallery
+
+## Satellites (GearHero Config)
+
+| Satellite | Sub-cogs | Content |
+|-----------|----------|---------|
+| mumuFrens 🐄 | v1 (scatter.art), v2 (gallery), discord | Animated GIF hero (99 busts) |
+| Whirlpool 🌀 | mint, stake, swap | Spinning innard, 15°/s |
+| Generic 1-4 ⚙️ | 3 placeholder subs each | — |
+| xLinks ✖ | howlonghasitben, surfgod69, wavesTCG | External Twitter links |
+
+## Theme
+
+4chan blue board aesthetic:
+- Background: `#D6DAF0` gradient
+- Panels: Dark metallic (`#2a2d3a → #1a1d2e → #22252f`)
+- Text: Dark on light bg (`#1a1d2e`, `#2a2d3a`, `#4a4d5a`)
+- Accents: Gold/bronze (`#8a6d2b`, `#c8a55a`)
+- Headers: Cinzel serif, gold
+- Body: DM Mono monospace
+- Sharp corners (`rounded-sm`), 2px borders, drop shadows
 
 ## Quick Start
 
@@ -25,30 +53,15 @@ npm run dev
 - React 19 + TypeScript
 - Framer Motion (animations)
 - Tailwind CSS v4
+- Vite
 
-## Usage
+## Assets
 
-```tsx
-import { CogMenu, CogSidebar, CogDropdown } from './components'
-
-// Radial menu
-<CogMenu items={[
-  { label: 'Home', icon: '🏠', onClick: () => {} },
-  { label: 'Settings', icon: '⚙️', items: [...subItems] },
-]} />
-
-// Sidebar
-<CogSidebar sections={[
-  { label: 'Nav', items: [{ label: 'Dashboard', active: true }] },
-]} />
-
-// Dropdown
-<CogDropdown items={[
-  { label: 'Profile', icon: '👤', onClick: () => {} },
-  { divider: true },
-  { label: 'Logout', icon: '🔌' },
-]} label="Menu" />
-```
+- `public/images/nav_cog.svg` — Gear frame for all cog components
+- `public/images/mumu-hero.gif` — Animated 99-bust collection GIF
+- `public/images/card-images/` — 228 card art images for SwapPage
+- `public/images/mumuFrensv2Images/` — 99 full-resolution mumu bust PNGs
+- `public/images/surfSwapNoBG.png` — SurfSwap logo (transparent)
 
 ## License
 

@@ -32,23 +32,23 @@ interface CardPool {
 }
 
 // ─── SURF Waves Cards Data ──────────────────────────────────────
-const BASE = 'https://howlonghasitben.github.io/surf-works/images/card-images'
+const BASE = '/images/card-images'
 
 const SURF_CARDS = [
-  { name: '40till5', type: 'Creature – OG Memer', image: `${BASE}/40till5.png`, level: '∞', atk: '∞', def: '∞' },
-  { name: 'Ben', type: 'Creature — Artist', image: `${BASE}/ben.png`, level: '∞', atk: '∞', def: '∞' },
-  { name: 'Bliddo', type: 'Creature — COPYCAT', image: `${BASE}/bliddo.png`, level: '∞', atk: '∞', def: '∞' },
-  { name: 'Rampage', type: 'Creature – Cyclops', image: `${BASE}/cyclops.png`, level: '2', atk: '4', def: '5' },
-  { name: 'Ent', type: 'Creature — Living Forest', image: `${BASE}/ent.png`, level: '1', atk: '0', def: '4' },
-  { name: 'Fisherman', type: 'Creature — Peaceful Angler', image: `${BASE}/fisherman.png`, level: '∞', atk: '∞', def: '∞' },
-  { name: 'Forest Spirit', type: 'Creature — Nightmare Beast', image: `${BASE}/forestspirit.png`, level: '1', atk: '2', def: '2' },
-  { name: 'Getri', type: 'Creature — Wyrm', image: `${BASE}/wyrm.png`, level: '1', atk: '2', def: '1' },
-  { name: 'Getri', type: 'Creature — Hydra Beast', image: `${BASE}/hydra.png`, level: '2', atk: '6', def: '2' },
-  { name: 'Aetos', type: 'Creature — Fledgling Eagle', image: `${BASE}/fledgling_eagle.png`, level: '1', atk: '1', def: '2' },
-  { name: 'Aetos', type: 'Creature — Eagle Knight', image: `${BASE}/ya_eagle.png`, level: '2', atk: '4', def: '2' },
-  { name: 'Aetos', type: 'Creature — Armored Eagle', image: `${BASE}/aetos.png`, level: '3', atk: '8', def: '5' },
-  { name: 'Cag', type: 'Creature – Wanderer', image: `${BASE}/cag.png`, level: '∞', atk: '∞', def: '∞' },
-  { name: 'Moonwell Sanctuary', type: 'Consumable — Mana Restoration', image: `${BASE}/fairy%20fountain.png`, level: '★', atk: '-', def: '-' },
+  { name: 'Shadow Dragon', type: 'Creature — Dragon', image: `${BASE}/003_Shadow_Dragon.png`, level: '3', atk: '8', def: '6' },
+  { name: 'Crystal Golem', type: 'Creature — Golem', image: `${BASE}/005_Crystal_Golem.png`, level: '2', atk: '3', def: '9' },
+  { name: 'Void Reaper', type: 'Creature — Void', image: `${BASE}/006_Void_Reaper.png`, level: '3', atk: '10', def: '4' },
+  { name: 'Shrimp Baby', type: 'Creature — Aquatic', image: `${BASE}/007_Shrimp_baby.png`, level: '1', atk: '1', def: '2' },
+  { name: 'Khazix', type: 'Creature — Insectoid', image: `${BASE}/009_Khazix.png`, level: '2', atk: '7', def: '3' },
+  { name: 'Sol Eater', type: 'Creature — Cosmic', image: `${BASE}/012_Sol_Eater.png`, level: '3', atk: '9', def: '5' },
+  { name: 'Maelstrom', type: 'Creature — Elemental', image: `${BASE}/015_Maelstrom.png`, level: '2', atk: '6', def: '6' },
+  { name: 'Yaldabaoth', type: 'Creature — Deity', image: `${BASE}/016_Yaldabaoth.png`, level: '∞', atk: '∞', def: '∞' },
+  { name: 'Reality Splitter', type: 'Creature — Void', image: `${BASE}/019_Reality_Splitter.png`, level: '3', atk: '8', def: '3' },
+  { name: 'Maniacal Martian', type: 'Creature — Alien', image: `${BASE}/020_Maniacal_Martian.png`, level: '1', atk: '4', def: '2' },
+  { name: 'Lunar Wizard', type: 'Creature — Mage', image: `${BASE}/021_Lunar_Wizard.png`, level: '2', atk: '5', def: '4' },
+  { name: 'Void Wizard', type: 'Creature — Mage', image: `${BASE}/022_Void_Wizard.png`, level: '2', atk: '6', def: '3' },
+  { name: 'Hemo Wizard', type: 'Creature — Mage', image: `${BASE}/023_Hemo_Wizard.png`, level: '2', atk: '5', def: '5' },
+  { name: 'Bloudraad', type: 'Creature — Spawn of Kek', image: `${BASE}/017_Bloudraad_Spawn_of_Kek.png`, level: '∞', atk: '∞', def: '∞' },
 ]
 
 function mockAddr(seed: number): string {
@@ -117,26 +117,12 @@ function InventoryCard({
 }) {
   return (
     <div className="cursor-pointer group" onClick={onClick}>
-      <div className={`relative rounded-sm overflow-hidden border-2 transition-all duration-200 aspect-[5/7] ${
+      <div className={`relative rounded-sm overflow-hidden border-2 transition-all duration-200 ${
         selected
           ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)]'
           : 'border-gray-700/60 hover:border-[#4a4d60] hover:shadow-lg'
-      }`}>
+      }`} style={{ aspectRatio: '3/4' }}>
         <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
-        {/* Bottom gradient overlay */}
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent" />
-        {/* Card info overlay */}
-        <div className="absolute bottom-0 inset-x-0 p-2">
-          <p className="text-white text-xs font-bold leading-tight">{card.name} #{card.number}</p>
-          <p className="text-[10px] leading-tight" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
-        </div>
-        {/* Owner badge */}
-        {card.isOwner && (
-          <div className="absolute top-1.5 right-1.5 bg-amber-500/90 text-[8px] font-black text-black px-1.5 py-0.5 rounded">
-            OWNER
-          </div>
-        )}
-        {/* Selected overlay */}
         {selected && (
           <div className="absolute inset-0 bg-cyan-500/15 flex items-center justify-center">
             <span className="bg-gray-900/90 text-cyan-400 text-[10px] font-bold px-3 py-1 rounded border border-cyan-500/50">
@@ -144,11 +130,17 @@ function InventoryCard({
             </span>
           </div>
         )}
-        {/* Stake info bar */}
+      </div>
+      <div className="mt-1.5 px-0.5">
+        <div className="flex items-center justify-between">
+          <p className="text-white text-xs font-bold leading-tight">{card.name} #{card.number}</p>
+          {card.isOwner && (
+            <span className="bg-amber-500/90 text-[8px] font-black text-black px-1.5 py-0.5 rounded">OWNER</span>
+          )}
+        </div>
+        <p className="text-[10px] leading-tight" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
         {card.userShares && (
-          <div className="absolute top-1.5 left-1.5 bg-black/70 text-[8px] font-mono text-cyan-400 px-1.5 py-0.5 rounded">
-            {(card.userShares / 1000).toFixed(0)}k staked
-          </div>
+          <p className="text-[9px] font-mono text-cyan-400 mt-0.5">{(card.userShares / 1000).toFixed(0)}k staked</p>
         )}
       </div>
     </div>
@@ -168,7 +160,7 @@ function StageCard({
   return (
     <div className={`relative rounded-sm overflow-hidden border-2 transition-all ${
       card ? 'border-cyan-500/50 bg-[#121420]' : 'border-dashed border-[#3a3d50] bg-[#121420]'
-    }`} style={{ width: 220, height: 300 }}>
+    }`} style={{ width: 220, aspectRatio: '3/4' }}>
       {card ? (
         <>
           <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
@@ -227,7 +219,7 @@ function MultiStageCards({
           <div
             key={card.id}
             className="relative rounded-sm overflow-hidden border-2 border-cyan-500/40 bg-gray-800 flex-shrink-0 snap-center"
-            style={{ width: 220, height: 300 }}
+            style={{ width: 220, aspectRatio: '3/4' }}
           >
             <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
@@ -278,7 +270,7 @@ function MarketRow({
         : 'bg-[#121420] border border-[#2a2d40] hover:border-[#3a3d50]'
     }`}>
       <div className="flex gap-3">
-        <div className="w-24 h-32 rounded-md overflow-hidden border-2 border-[#2a2d40] flex-shrink-0">
+        <div className="w-24 rounded-md overflow-hidden border-2 border-[#2a2d40] flex-shrink-0" style={{ aspectRatio: '3/4' }}>
           <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 min-w-0">
@@ -380,9 +372,9 @@ export default function SwapPage() {
     <div className="w-full flex items-stretch justify-between gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40, paddingLeft: 42, paddingRight: 42 }}>
 
       {/* ─── LEFT: My Inventory ─── */}
-      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-4 flex flex-col w-full max-w-[440px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ maxHeight: 'calc(100dvh - 100px)' }}>
-        <h2 className="text-white text-lg font-black tracking-wide mb-3 pb-2 border-b border-[#2a2d40]" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-          MY INVENTORY
+      <div className="border-2 border-[#3a3d4a] rounded p-4 flex flex-col w-full max-w-[440px]" style={{ maxHeight: 'calc(100dvh - 100px)', background: 'linear-gradient(180deg, #2a2d3a 0%, #1a1d2e 40%, #22252f 100%)', boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
+        <h2 className="text-lg font-black tracking-wider mb-3 pb-2 border-b-2 border-[#3a3d4a] uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#c8a55a', textShadow: '0 1px 3px rgba(0,0,0,0.6)', letterSpacing: '0.12em' }}>
+          My Inventory
         </h2>
         {/* Search */}
         <div className="relative mb-4">
@@ -391,7 +383,8 @@ export default function SwapPage() {
             placeholder="Search"
             value={inventorySearch}
             onChange={e => setInventorySearch(e.target.value)}
-            className="w-full bg-[#121420] border-2 border-[#2a2d40] rounded-sm px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+            className="w-full rounded-sm px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none transition-colors"
+            style={{ background: '#1a1d2e', border: '1px solid #4a4d5a', color: '#d0d0d0', fontFamily: "'DM Mono', monospace" }}
           />
           <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -413,9 +406,9 @@ export default function SwapPage() {
       </div>
 
       {/* ─── CENTER: Swap Stage ─── */}
-      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-5 flex flex-col items-center w-full max-w-[460px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-        <h2 className="text-white text-lg font-black tracking-wide mb-5 pb-2 border-b border-[#2a2d40] w-full text-center" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-          SWAP STAGE
+      <div className="border-2 border-[#3a3d4a] rounded p-5 flex flex-col items-center w-full max-w-[460px]" style={{ background: 'linear-gradient(180deg, #2a2d3a 0%, #1a1d2e 40%, #22252f 100%)', boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
+        <h2 className="text-lg font-black tracking-wider mb-5 pb-2 border-b-2 border-[#3a3d4a] w-full text-center uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#c8a55a', textShadow: '0 1px 3px rgba(0,0,0,0.6)', letterSpacing: '0.12em' }}>
+          Swap Stage
         </h2>
 
         <div className="bg-[#121420] border border-[#2a2d40] rounded-sm p-3">
@@ -533,9 +526,9 @@ export default function SwapPage() {
       </div>
 
       {/* ─── RIGHT: Market Search ─── */}
-      <div className="bg-[#1a1d2e] border-2 border-[#2a2d40] rounded p-4 flex flex-col w-full max-w-[440px] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ maxHeight: 'calc(100dvh - 100px)' }}>
-        <h2 className="text-white text-lg font-black tracking-wide mb-3 pb-2 border-b border-[#2a2d40]" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-          MARKET SEARCH
+      <div className="border-2 border-[#3a3d4a] rounded p-4 flex flex-col w-full max-w-[440px]" style={{ maxHeight: 'calc(100dvh - 100px)', background: 'linear-gradient(180deg, #2a2d3a 0%, #1a1d2e 40%, #22252f 100%)', boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
+        <h2 className="text-lg font-black tracking-wider mb-3 pb-2 border-b-2 border-[#3a3d4a] uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#c8a55a', textShadow: '0 1px 3px rgba(0,0,0,0.6)', letterSpacing: '0.12em' }}>
+          Market Search
         </h2>
         {/* Search + history button */}
         <div className="flex gap-2 mb-3">
@@ -545,10 +538,11 @@ export default function SwapPage() {
               placeholder="Search"
               value={marketSearch}
               onChange={e => setMarketSearch(e.target.value)}
-              className="w-full bg-[#121420] border-2 border-[#2a2d40] rounded-sm px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-sm px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none transition-colors"
+              style={{ background: '#1a1d2e', border: '1px solid #4a4d5a', color: '#d0d0d0', fontFamily: "'DM Mono', monospace" }}
             />
           </div>
-          <button className="w-10 h-10 bg-[#121420] border-2 border-[#2a2d40] rounded-sm flex items-center justify-center text-gray-400 hover:text-white hover:border-[#4a4d60] transition-colors cursor-pointer">
+          <button className="w-10 h-10 rounded-sm flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer" style={{ background: '#1a1d2e', border: '1px solid #4a4d5a' }}>
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
