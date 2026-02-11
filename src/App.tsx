@@ -117,7 +117,7 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
 
   // Regenerate bolts periodically for crackling effect — target changes with touchStep
   useEffect(() => {
-    if (!visible) { setBolts([]); return }
+    if (!visible) { setBolts([]); setTick(0); return }
     const generate = () => {
       const newBolts = []
       const afx = adamFrom.x, afy = adamFrom.y
@@ -154,8 +154,9 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
     return () => clearInterval(interval)
   }, [visible, adamFrom.x, adamFrom.y, adamTarget.x, adamTarget.y, godFrom.x, godFrom.y, godTarget.x, godTarget.y])
 
+  // Hard guard: absolutely nothing renders when menu is closed
   if (!visible) return null
-  if (bolts.length === 0) return null
+  if (bolts.length === 0 || touchStep < 0) return null
 
   return (
     <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5, opacity: visible ? 1 : 0, transition: 'opacity 0.2s' }} viewBox="0 0 100 100" preserveAspectRatio="none">
