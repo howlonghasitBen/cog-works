@@ -296,7 +296,7 @@ export default function GearHero({
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 pointer-events-auto"
           onClick={handleCenterClick}
         >
-          <Cog size={300 * scale} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation + (allTouched ? 720 : 0)} />
+          <Cog size={300 * scale} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation + (allTouched ? -90 : 0)} />
         </div>
 
         {/* Satellite gears — only visible when menu is open */}
