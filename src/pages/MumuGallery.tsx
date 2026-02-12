@@ -5,6 +5,7 @@ interface MumuItem {
   file: string
   id?: number
   name?: string
+  description?: string
   traits?: Record<string, string>
 }
 
@@ -169,6 +170,16 @@ export default function MumuGallery() {
               }}>
                 #{String(selected.id || 0).padStart(3, '0')}
               </p>
+
+              {selected.description && (
+                <p style={{
+                  margin: 0, fontSize: 12, color: '#a0a3b0',
+                  fontFamily: "'DM Mono', monospace",
+                  lineHeight: 1.5, fontStyle: 'italic',
+                }}>
+                  {selected.description}
+                </p>
+              )}
 
               {selected.traits && Object.keys(selected.traits).length > 0 && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
