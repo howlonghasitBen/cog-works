@@ -338,6 +338,7 @@ export default function App() {
     // Set animation lock IMMEDIATELY to prevent snap logic from fighting
     isAnimating.current = true
     setActivePage({ parent, sub })
+    setMenuOpen(false)
     // Smooth scroll to content — delay slightly to ensure DOM has rendered content
     setTimeout(() => {
       scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
