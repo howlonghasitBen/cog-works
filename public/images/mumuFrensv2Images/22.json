@@ -1,0 +1,19 @@
+{
+  "id": 22,
+  "name": "Rock Star Mumu",
+  "traits": {
+    "Background": "Concert stage",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Microphone",
+    "Clothes": "Spiked leather jacket"
+  },
+  "ipfs": {
+    "imageCID": "QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
+    "imageURI": "ipfs://QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
+    "metadataCID": "QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79",
+    "tokenURI": "ipfs://QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79"
+  }
+}

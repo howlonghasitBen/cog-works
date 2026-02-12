@@ -1,0 +1,19 @@
+{
+  "id": 69,
+  "name": "Punk Rocker Mumu",
+  "traits": {
+    "Background": "Punk concert",
+    "Headwear": "Orange mohawk",
+    "Eyewear": "None",
+    "Held Item": "None",
+    "Clothes": "Spiked denim jacket"
+  },
+  "ipfs": {
+    "imageCID": "QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
+    "imageURI": "ipfs://QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
+    "metadataCID": "QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3",
+    "tokenURI": "ipfs://QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3"
+  }
+}

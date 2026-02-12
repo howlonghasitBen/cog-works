@@ -1,0 +1,19 @@
+{
+  "id": 31,
+  "name": "Snowboarder Mumu",
+  "traits": {
+    "Background": "Snowy mountains",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Colorful ski jacket"
+  },
+  "ipfs": {
+    "imageCID": "QmPK254GP3VDjqoddD1XVr3aNjFaPMvpwSLvMiLpmUNpJK",
+    "imageURI": "ipfs://QmPK254GP3VDjqoddD1XVr3aNjFaPMvpwSLvMiLpmUNpJK",
+    "metadataCID": "QmTbB5uy1WdH9wYhQCM9Xs4bhGtmpaEoyetJSUKZhryR72",
+    "tokenURI": "ipfs://QmTbB5uy1WdH9wYhQCM9Xs4bhGtmpaEoyetJSUKZhryR72",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmPK254GP3VDjqoddD1XVr3aNjFaPMvpwSLvMiLpmUNpJK",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTbB5uy1WdH9wYhQCM9Xs4bhGtmpaEoyetJSUKZhryR72"
+  }
+}

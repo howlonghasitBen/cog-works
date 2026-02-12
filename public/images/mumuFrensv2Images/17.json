@@ -1,0 +1,19 @@
+{
+  "id": 17,
+  "name": "Superhero Mumu",
+  "traits": {
+    "Background": "City skyline",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Superhero cape outfit"
+  },
+  "ipfs": {
+    "imageCID": "Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
+    "imageURI": "ipfs://Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
+    "metadataCID": "QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1",
+    "tokenURI": "ipfs://QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1"
+  }
+}

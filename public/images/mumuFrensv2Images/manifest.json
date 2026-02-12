@@ -1,6 +1,6 @@
 [
   {
-    "file": "mumu-001_Cowboy.png",
+    "file": "1.png",
     "id": 1,
     "name": "Cowboy Mumu",
     "traits": {
@@ -12,7 +12,7 @@
     }
   },
   {
-    "file": "mumu-002_Astronaut.png",
+    "file": "2.png",
     "id": 2,
     "name": "Astronaut Mumu",
     "traits": {
@@ -24,7 +24,7 @@
     }
   },
   {
-    "file": "mumu-003_Pirate_Captain.png",
+    "file": "3.png",
     "id": 3,
     "name": "Pirate Captain Mumu",
     "traits": {
@@ -36,7 +36,7 @@
     }
   },
   {
-    "file": "mumu-004_Wizard.png",
+    "file": "4.png",
     "id": 4,
     "name": "Wizard Mumu",
     "traits": {
@@ -48,7 +48,7 @@
     }
   },
   {
-    "file": "mumu-005_Samurai.png",
+    "file": "5.png",
     "id": 5,
     "name": "Samurai Mumu",
     "traits": {
@@ -60,7 +60,7 @@
     }
   },
   {
-    "file": "mumu-006_Viking.png",
+    "file": "6.png",
     "id": 6,
     "name": "Viking Mumu",
     "traits": {
@@ -80,7 +80,7 @@
     }
   },
   {
-    "file": "mumu-007_Golden_Tuxedo.png",
+    "file": "7.png",
     "id": 7,
     "name": "Golden Tuxedo Mumu",
     "traits": {
@@ -100,7 +100,7 @@
     }
   },
   {
-    "file": "mumu-008_Chef.png",
+    "file": "8.png",
     "id": 8,
     "name": "Chef Mumu",
     "traits": {
@@ -120,7 +120,7 @@
     }
   },
   {
-    "file": "mumu-009_DJ.png",
+    "file": "9.png",
     "id": 9,
     "name": "DJ Mumu",
     "traits": {
@@ -140,7 +140,7 @@
     }
   },
   {
-    "file": "mumu-010_Boxer.png",
+    "file": "10.png",
     "id": 10,
     "name": "Boxer Mumu",
     "traits": {
@@ -160,7 +160,7 @@
     }
   },
   {
-    "file": "mumu-011_Surfer.png",
+    "file": "11.png",
     "id": 11,
     "name": "Surfer Mumu",
     "traits": {
@@ -180,7 +180,7 @@
     }
   },
   {
-    "file": "mumu-012_Skater.png",
+    "file": "12.png",
     "id": 12,
     "name": "Skater Mumu",
     "traits": {
@@ -200,7 +200,7 @@
     }
   },
   {
-    "file": "mumu-013_Sumo_Wrestler.png",
+    "file": "13.png",
     "id": 13,
     "name": "Sumo Wrestler Mumu",
     "traits": {
@@ -220,7 +220,7 @@
     }
   },
   {
-    "file": "mumu-014_Ninja.png",
+    "file": "14.png",
     "id": 14,
     "name": "Ninja Mumu",
     "traits": {
@@ -240,7 +240,7 @@
     }
   },
   {
-    "file": "mumu-015_Mecha.png",
+    "file": "15.png",
     "id": 15,
     "name": "Mecha Mumu",
     "traits": {
@@ -260,7 +260,7 @@
     }
   },
   {
-    "file": "mumu-016_Vampire.png",
+    "file": "16.png",
     "id": 16,
     "name": "Vampire Mumu",
     "traits": {
@@ -280,7 +280,7 @@
     }
   },
   {
-    "file": "mumu-017_Superhero.png",
+    "file": "17.png",
     "id": 17,
     "name": "Superhero Mumu",
     "traits": {
@@ -300,7 +300,7 @@
     }
   },
   {
-    "file": "mumu-018_Noir_Detective.png",
+    "file": "18.png",
     "id": 18,
     "name": "Noir Detective Mumu",
     "traits": {
@@ -320,7 +320,7 @@
     }
   },
   {
-    "file": "mumu-019_Pharaoh.png",
+    "file": "19.png",
     "id": 19,
     "name": "Pharaoh Mumu",
     "traits": {
@@ -340,7 +340,7 @@
     }
   },
   {
-    "file": "mumu-020_Gladiator.png",
+    "file": "20.png",
     "id": 20,
     "name": "Gladiator Mumu",
     "traits": {
@@ -360,7 +360,7 @@
     }
   },
   {
-    "file": "mumu-021_Plague_Doctor.png",
+    "file": "21.png",
     "id": 21,
     "name": "Plague Doctor Mumu",
     "traits": {
@@ -380,7 +380,7 @@
     }
   },
   {
-    "file": "mumu-022_Rock_Star.png",
+    "file": "22.png",
     "id": 22,
     "name": "Rock Star Mumu",
     "traits": {
@@ -400,7 +400,7 @@
     }
   },
   {
-    "file": "mumu-023_Scientist.png",
+    "file": "23.png",
     "id": 23,
     "name": "Scientist Mumu",
     "traits": {
@@ -420,7 +420,7 @@
     }
   },
   {
-    "file": "mumu-024_Racer.png",
+    "file": "24.png",
     "id": 24,
     "name": "Racer Mumu",
     "traits": {
@@ -440,7 +440,7 @@
     }
   },
   {
-    "file": "mumu-025_Firefighter.png",
+    "file": "25.png",
     "id": 25,
     "name": "Firefighter Mumu",
     "traits": {
@@ -460,7 +460,7 @@
     }
   },
   {
-    "file": "mumu-026_Deep_Sea_Angler.png",
+    "file": "26.png",
     "id": 26,
     "name": "Deep Sea Angler Mumu",
     "traits": {
@@ -480,7 +480,7 @@
     }
   },
   {
-    "file": "mumu-027_Pilot.png",
+    "file": "27.png",
     "id": 27,
     "name": "Pilot Mumu",
     "traits": {
@@ -500,7 +500,7 @@
     }
   },
   {
-    "file": "mumu-028_Construction_Worker.png",
+    "file": "28.png",
     "id": 28,
     "name": "Construction Worker Mumu",
     "traits": {
@@ -520,7 +520,7 @@
     }
   },
   {
-    "file": "mumu-029_Baller.png",
+    "file": "29.png",
     "id": 29,
     "name": "Baller Mumu",
     "traits": {
@@ -540,7 +540,7 @@
     }
   },
   {
-    "file": "mumu-030_Golfer.png",
+    "file": "30.png",
     "id": 30,
     "name": "Golfer Mumu",
     "traits": {
@@ -560,7 +560,7 @@
     }
   },
   {
-    "file": "mumu-031_Snowboarder.png",
+    "file": "31.png",
     "id": 31,
     "name": "Snowboarder Mumu",
     "traits": {
@@ -580,7 +580,7 @@
     }
   },
   {
-    "file": "mumu-032_Sensei.png",
+    "file": "32.png",
     "id": 32,
     "name": "Sensei Mumu",
     "traits": {
@@ -600,7 +600,7 @@
     }
   },
   {
-    "file": "mumu-033_Detective.png",
+    "file": "33.png",
     "id": 33,
     "name": "Detective Mumu",
     "traits": {
@@ -620,7 +620,7 @@
     }
   },
   {
-    "file": "mumu-034_Safari_Explorer.png",
+    "file": "34.png",
     "id": 34,
     "name": "Safari Explorer Mumu",
     "traits": {
@@ -640,7 +640,7 @@
     }
   },
   {
-    "file": "mumu-035_Astronomer.png",
+    "file": "35.png",
     "id": 35,
     "name": "Astronomer Mumu",
     "traits": {
@@ -660,7 +660,7 @@
     }
   },
   {
-    "file": "mumu-036_Painter.png",
+    "file": "36.png",
     "id": 36,
     "name": "Painter Mumu",
     "traits": {
@@ -680,7 +680,7 @@
     }
   },
   {
-    "file": "mumu-037_Magician.png",
+    "file": "37.png",
     "id": 37,
     "name": "Magician Mumu",
     "traits": {
@@ -700,7 +700,7 @@
     }
   },
   {
-    "file": "mumu-038_Lifeguard.png",
+    "file": "38.png",
     "id": 38,
     "name": "Lifeguard Mumu",
     "traits": {
@@ -720,7 +720,7 @@
     }
   },
   {
-    "file": "mumu-039_Knight.png",
+    "file": "39.png",
     "id": 39,
     "name": "Knight Mumu",
     "traits": {
@@ -740,7 +740,7 @@
     }
   },
   {
-    "file": "mumu-040_Cyberpunk.png",
+    "file": "40.png",
     "id": 40,
     "name": "Cyberpunk Mumu",
     "traits": {
@@ -760,7 +760,7 @@
     }
   },
   {
-    "file": "mumu-041_Lumberjack.png",
+    "file": "41.png",
     "id": 41,
     "name": "Lumberjack Mumu",
     "traits": {
@@ -780,7 +780,7 @@
     }
   },
   {
-    "file": "mumu-042_Ice_Skater.png",
+    "file": "42.png",
     "id": 42,
     "name": "Ice Skater Mumu",
     "traits": {
@@ -800,7 +800,7 @@
     }
   },
   {
-    "file": "mumu-043_Wrestler.png",
+    "file": "43.png",
     "id": 43,
     "name": "Wrestler Mumu",
     "traits": {
@@ -820,7 +820,7 @@
     }
   },
   {
-    "file": "mumu-044_Biker.png",
+    "file": "44.png",
     "id": 44,
     "name": "Biker Mumu",
     "traits": {
@@ -840,7 +840,7 @@
     }
   },
   {
-    "file": "mumu-045_Wall_Street.png",
+    "file": "45.png",
     "id": 45,
     "name": "Wall Street Mumu",
     "traits": {
@@ -860,7 +860,7 @@
     }
   },
   {
-    "file": "mumu-046_Gamer.png",
+    "file": "46.png",
     "id": 46,
     "name": "Gamer Mumu",
     "traits": {
@@ -880,7 +880,7 @@
     }
   },
   {
-    "file": "mumu-047_Fisherman.png",
+    "file": "47.png",
     "id": 47,
     "name": "Fisherman Mumu",
     "traits": {
@@ -900,7 +900,7 @@
     }
   },
   {
-    "file": "mumu-048_Gardener.png",
+    "file": "48.png",
     "id": 48,
     "name": "Gardener Mumu",
     "traits": {
@@ -920,7 +920,7 @@
     }
   },
   {
-    "file": "mumu-049_Santa.png",
+    "file": "49.png",
     "id": 49,
     "name": "Santa Mumu",
     "traits": {
@@ -940,7 +940,7 @@
     }
   },
   {
-    "file": "mumu-050_Angel.png",
+    "file": "50.png",
     "id": 50,
     "name": "Angel Mumu",
     "traits": {
@@ -960,7 +960,7 @@
     }
   },
   {
-    "file": "mumu-051_Anime_Schoolgirl.png",
+    "file": "51.png",
     "id": 51,
     "name": "Anime Schoolgirl Mumu",
     "traits": {
@@ -980,7 +980,7 @@
     }
   },
   {
-    "file": "mumu-052_Vaporwave_DJ.png",
+    "file": "52.png",
     "id": 52,
     "name": "Vaporwave DJ Mumu",
     "traits": {
@@ -1000,7 +1000,7 @@
     }
   },
   {
-    "file": "mumu-053_Aztec_Priest.png",
+    "file": "53.png",
     "id": 53,
     "name": "Aztec Priest Mumu",
     "traits": {
@@ -1020,7 +1020,7 @@
     }
   },
   {
-    "file": "mumu-054_Bard.png",
+    "file": "54.png",
     "id": 54,
     "name": "Bard Mumu",
     "traits": {
@@ -1040,7 +1040,7 @@
     }
   },
   {
-    "file": "mumu-055_Space_Marine.png",
+    "file": "55.png",
     "id": 55,
     "name": "Space Marine Mumu",
     "traits": {
@@ -1060,7 +1060,7 @@
     }
   },
   {
-    "file": "mumu-056_Disco_Dancer.png",
+    "file": "56.png",
     "id": 56,
     "name": "Disco Dancer Mumu",
     "traits": {
@@ -1080,7 +1080,7 @@
     }
   },
   {
-    "file": "mumu-057_Mad_Scientist.png",
+    "file": "57.png",
     "id": 57,
     "name": "Mad Scientist Mumu",
     "traits": {
@@ -1100,7 +1100,7 @@
     }
   },
   {
-    "file": "mumu-058_Neon_Yakuza.png",
+    "file": "58.png",
     "id": 58,
     "name": "Neon Yakuza Mumu",
     "traits": {
@@ -1120,7 +1120,7 @@
     }
   },
   {
-    "file": "mumu-059_Lumberjack.png",
+    "file": "59.png",
     "id": 59,
     "name": "Lumberjack Mumu",
     "traits": {
@@ -1140,7 +1140,7 @@
     }
   },
   {
-    "file": "mumu-060_Rapper.png",
+    "file": "60.png",
     "id": 60,
     "name": "Rapper Mumu",
     "traits": {
@@ -1160,7 +1160,7 @@
     }
   },
   {
-    "file": "mumu-061_Crystal_Shaman.png",
+    "file": "61.png",
     "id": 61,
     "name": "Crystal Shaman Mumu",
     "traits": {
@@ -1180,7 +1180,7 @@
     }
   },
   {
-    "file": "mumu-062_Ocean_King.png",
+    "file": "62.png",
     "id": 62,
     "name": "Ocean King Mumu",
     "traits": {
@@ -1200,7 +1200,7 @@
     }
   },
   {
-    "file": "mumu-063_Clockwork_Automaton.png",
+    "file": "63.png",
     "id": 63,
     "name": "Clockwork Automaton Mumu",
     "traits": {
@@ -1220,7 +1220,7 @@
     }
   },
   {
-    "file": "mumu-064_Ice_Wizard.png",
+    "file": "64.png",
     "id": 64,
     "name": "Ice Wizard Mumu",
     "traits": {
@@ -1240,7 +1240,7 @@
     }
   },
   {
-    "file": "mumu-065_Fire_Mage.png",
+    "file": "65.png",
     "id": 65,
     "name": "Fire Mage Mumu",
     "traits": {
@@ -1260,7 +1260,7 @@
     }
   },
   {
-    "file": "mumu-066_Ghost_Pirate.png",
+    "file": "66.png",
     "id": 66,
     "name": "Ghost Pirate Mumu",
     "traits": {
@@ -1280,7 +1280,7 @@
     }
   },
   {
-    "file": "mumu-067_Sheriff.png",
+    "file": "67.png",
     "id": 67,
     "name": "Sheriff Mumu",
     "traits": {
@@ -1300,7 +1300,7 @@
     }
   },
   {
-    "file": "mumu-068_Jazz_Musician.png",
+    "file": "68.png",
     "id": 68,
     "name": "Jazz Musician Mumu",
     "traits": {
@@ -1320,7 +1320,7 @@
     }
   },
   {
-    "file": "mumu-069_Punk_Rocker.png",
+    "file": "69.png",
     "id": 69,
     "name": "Punk Rocker Mumu",
     "traits": {
@@ -1340,7 +1340,7 @@
     }
   },
   {
-    "file": "mumu-070_Mummy.png",
+    "file": "70.png",
     "id": 70,
     "name": "Mummy Mumu",
     "traits": {
@@ -1360,7 +1360,7 @@
     }
   },
   {
-    "file": "mumu-071_Roman_Senator.png",
+    "file": "71.png",
     "id": 71,
     "name": "Roman Senator Mumu",
     "traits": {
@@ -1380,7 +1380,7 @@
     }
   },
   {
-    "file": "mumu-072_Venetian_Noble.png",
+    "file": "72.png",
     "id": 72,
     "name": "Venetian Noble Mumu",
     "traits": {
@@ -1400,7 +1400,7 @@
     }
   },
   {
-    "file": "mumu-073_F1_Driver.png",
+    "file": "73.png",
     "id": 73,
     "name": "F1 Driver Mumu",
     "traits": {
@@ -1420,7 +1420,7 @@
     }
   },
   {
-    "file": "mumu-074_Deep_Sea_Diver.png",
+    "file": "74.png",
     "id": 74,
     "name": "Deep Sea Diver Mumu",
     "traits": {
@@ -1440,7 +1440,7 @@
     }
   },
   {
-    "file": "mumu-075_Mountain_Climber.png",
+    "file": "75.png",
     "id": 75,
     "name": "Mountain Climber Mumu",
     "traits": {
@@ -1460,7 +1460,7 @@
     }
   },
   {
-    "file": "mumu-076_Spartan_Warrior.png",
+    "file": "76.png",
     "id": 76,
     "name": "Spartan Warrior Mumu",
     "traits": {
@@ -1480,7 +1480,7 @@
     }
   },
   {
-    "file": "mumu-077_Tribal_Warrior.png",
+    "file": "77.png",
     "id": 77,
     "name": "Tribal Warrior Mumu",
     "traits": {
@@ -1500,7 +1500,7 @@
     }
   },
   {
-    "file": "mumu-078_Tiki_Bartender.png",
+    "file": "78.png",
     "id": 78,
     "name": "Tiki Bartender Mumu",
     "traits": {
@@ -1520,7 +1520,7 @@
     }
   },
   {
-    "file": "mumu-079_Arctic_Explorer.png",
+    "file": "79.png",
     "id": 79,
     "name": "Arctic Explorer Mumu",
     "traits": {
@@ -1540,7 +1540,7 @@
     }
   },
   {
-    "file": "mumu-080_Ringmaster.png",
+    "file": "80.png",
     "id": 80,
     "name": "Ringmaster Mumu",
     "traits": {
@@ -1560,7 +1560,7 @@
     }
   },
   {
-    "file": "mumu-081_Ghostbuster.png",
+    "file": "81.png",
     "id": 81,
     "name": "Ghostbuster Mumu",
     "traits": {
@@ -1580,7 +1580,7 @@
     }
   },
   {
-    "file": "mumu-082_Time_Traveler.png",
+    "file": "82.png",
     "id": 82,
     "name": "Time Traveler Mumu",
     "traits": {
@@ -1600,7 +1600,7 @@
     }
   },
   {
-    "file": "mumu-083_Medieval_King.png",
+    "file": "83.png",
     "id": 83,
     "name": "Medieval King Mumu",
     "traits": {
@@ -1620,7 +1620,7 @@
     }
   },
   {
-    "file": "mumu-084_Alien_Diplomat.png",
+    "file": "84.png",
     "id": 84,
     "name": "Alien Diplomat Mumu",
     "traits": {
@@ -1640,7 +1640,7 @@
     }
   },
   {
-    "file": "mumu-085_Vampire_Hunter.png",
+    "file": "85.png",
     "id": 85,
     "name": "Vampire Hunter Mumu",
     "traits": {
@@ -1660,7 +1660,7 @@
     }
   },
   {
-    "file": "mumu-086_Train_Conductor.png",
+    "file": "86.png",
     "id": 86,
     "name": "Train Conductor Mumu",
     "traits": {
@@ -1680,7 +1680,7 @@
     }
   },
   {
-    "file": "mumu-087_Orchestra_Conductor.png",
+    "file": "87.png",
     "id": 87,
     "name": "Orchestra Conductor Mumu",
     "traits": {
@@ -1700,7 +1700,7 @@
     }
   },
   {
-    "file": "mumu-088_Zen_Monk.png",
+    "file": "88.png",
     "id": 88,
     "name": "Zen Monk Mumu",
     "traits": {
@@ -1720,7 +1720,7 @@
     }
   },
   {
-    "file": "mumu-089_Graffiti_Artist.png",
+    "file": "89.png",
     "id": 89,
     "name": "Graffiti Artist Mumu",
     "traits": {
@@ -1740,7 +1740,7 @@
     }
   },
   {
-    "file": "mumu-090_Beekeeper.png",
+    "file": "90.png",
     "id": 90,
     "name": "Beekeeper Mumu",
     "traits": {
@@ -1760,7 +1760,7 @@
     }
   },
   {
-    "file": "mumu-091_Blacksmith.png",
+    "file": "91.png",
     "id": 91,
     "name": "Blacksmith Mumu",
     "traits": {
@@ -1780,7 +1780,7 @@
     }
   },
   {
-    "file": "mumu-092_Witch_Doctor.png",
+    "file": "92.png",
     "id": 92,
     "name": "Witch Doctor Mumu",
     "traits": {
@@ -1800,7 +1800,7 @@
     }
   },
   {
-    "file": "mumu-093_Chess_Grandmaster.png",
+    "file": "93.png",
     "id": 93,
     "name": "Chess Grandmaster Mumu",
     "traits": {
@@ -1820,7 +1820,7 @@
     }
   },
   {
-    "file": "mumu-094_Balloon_Pilot.png",
+    "file": "94.png",
     "id": 94,
     "name": "Balloon Pilot Mumu",
     "traits": {
@@ -1840,7 +1840,7 @@
     }
   },
   {
-    "file": "mumu-095_Treasure_Hunter.png",
+    "file": "95.png",
     "id": 95,
     "name": "Treasure Hunter Mumu",
     "traits": {
@@ -1860,7 +1860,7 @@
     }
   },
   {
-    "file": "mumu-096_Stained_Glass_Saint.png",
+    "file": "96.png",
     "id": 96,
     "name": "Stained Glass Saint Mumu",
     "traits": {
@@ -1880,7 +1880,7 @@
     }
   },
   {
-    "file": "mumu-097_Roman_Gladiator.png",
+    "file": "97.png",
     "id": 97,
     "name": "Roman Gladiator Mumu",
     "traits": {
@@ -1900,7 +1900,7 @@
     }
   },
   {
-    "file": "mumu-098_Retro_Gamer.png",
+    "file": "98.png",
     "id": 98,
     "name": "Retro Gamer Mumu",
     "traits": {
@@ -1920,7 +1920,7 @@
     }
   },
   {
-    "file": "mumu-099_Bounty_Hunter.png",
+    "file": "99.png",
     "id": 99,
     "name": "Bounty Hunter Mumu",
     "traits": {
@@ -1940,7 +1940,7 @@
     }
   },
   {
-    "file": "mumu-100_Diamond_Miner.png",
+    "file": "100.png",
     "id": 100,
     "name": "Diamond Miner Mumu",
     "traits": {

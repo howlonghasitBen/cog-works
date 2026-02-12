@@ -1,0 +1,19 @@
+{
+  "id": 39,
+  "name": "Knight Mumu",
+  "traits": {
+    "Background": "Castle siege battle",
+    "Headwear": "Horned knight helmet",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Knight armor chainmail"
+  },
+  "ipfs": {
+    "imageCID": "QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
+    "imageURI": "ipfs://QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
+    "metadataCID": "QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj",
+    "tokenURI": "ipfs://QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj"
+  }
+}

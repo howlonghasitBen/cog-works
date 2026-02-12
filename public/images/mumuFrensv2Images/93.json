@@ -1,0 +1,19 @@
+{
+  "id": 93,
+  "name": "Chess Grandmaster Mumu",
+  "traits": {
+    "Background": "Trophy library",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Ornate burgundy jacket"
+  },
+  "ipfs": {
+    "imageCID": "Qma3Ev9sgQGKw17S1H7jeeZ1UNzHUWctWRZdpiTLKJMGQ7",
+    "imageURI": "ipfs://Qma3Ev9sgQGKw17S1H7jeeZ1UNzHUWctWRZdpiTLKJMGQ7",
+    "metadataCID": "QmVn6mMnNQVLyydVoGCHKhBaQw1iFYcSo2LW379jUXcDz7",
+    "tokenURI": "ipfs://QmVn6mMnNQVLyydVoGCHKhBaQw1iFYcSo2LW379jUXcDz7",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qma3Ev9sgQGKw17S1H7jeeZ1UNzHUWctWRZdpiTLKJMGQ7",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVn6mMnNQVLyydVoGCHKhBaQw1iFYcSo2LW379jUXcDz7"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": 20,
+  "name": "Gladiator Mumu",
+  "traits": {
+    "Background": "Roman Colosseum",
+    "Headwear": "Horned gladiator helmet",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Gladiator armor cape"
+  },
+  "ipfs": {
+    "imageCID": "QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
+    "imageURI": "ipfs://QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
+    "metadataCID": "QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J",
+    "tokenURI": "ipfs://QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J"
+  }
+}

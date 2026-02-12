@@ -1,0 +1,19 @@
+{
+  "id": 45,
+  "name": "Wall Street Mumu",
+  "traits": {
+    "Background": "Stock trading floor",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Pinstripe suit and tie"
+  },
+  "ipfs": {
+    "imageCID": "QmZrXMWAhrb9SqyF4SE8BYGNHDwbcbpCKyFJyNhoSTHwP1",
+    "imageURI": "ipfs://QmZrXMWAhrb9SqyF4SE8BYGNHDwbcbpCKyFJyNhoSTHwP1",
+    "metadataCID": "QmXcqzMqM5WuF7XUabCRqLMZx8cEdy6uHgAYdmCG8BHaLm",
+    "tokenURI": "ipfs://QmXcqzMqM5WuF7XUabCRqLMZx8cEdy6uHgAYdmCG8BHaLm",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmZrXMWAhrb9SqyF4SE8BYGNHDwbcbpCKyFJyNhoSTHwP1",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXcqzMqM5WuF7XUabCRqLMZx8cEdy6uHgAYdmCG8BHaLm"
+  }
+}

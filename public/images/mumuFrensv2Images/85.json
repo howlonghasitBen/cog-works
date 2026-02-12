@@ -1,0 +1,19 @@
+{
+  "id": 85,
+  "name": "Vampire Hunter Mumu",
+  "traits": {
+    "Background": "Spooky graveyard night",
+    "Headwear": "Fedora hat",
+    "Eyewear": "None",
+    "Held Item": "Wooden stake",
+    "Clothes": "Leather trench coat"
+  },
+  "ipfs": {
+    "imageCID": "QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
+    "imageURI": "ipfs://QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
+    "metadataCID": "QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm",
+    "tokenURI": "ipfs://QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": 86,
+  "name": "Train Conductor Mumu",
+  "traits": {
+    "Background": "Steam train station",
+    "Headwear": "Navy conductor cap",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Navy suit and tie"
+  },
+  "ipfs": {
+    "imageCID": "QmV7DfACb1wZH8Ubp98rfPNHRDyMdpmcjP2mSdwFonEnX4",
+    "imageURI": "ipfs://QmV7DfACb1wZH8Ubp98rfPNHRDyMdpmcjP2mSdwFonEnX4",
+    "metadataCID": "QmT6WLeZy64D7W7134A7Rx78dq7x7XVoESKXEn82YBRNQB",
+    "tokenURI": "ipfs://QmT6WLeZy64D7W7134A7Rx78dq7x7XVoESKXEn82YBRNQB",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmV7DfACb1wZH8Ubp98rfPNHRDyMdpmcjP2mSdwFonEnX4",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmT6WLeZy64D7W7134A7Rx78dq7x7XVoESKXEn82YBRNQB"
+  }
+}

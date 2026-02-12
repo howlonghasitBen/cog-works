@@ -1,0 +1,19 @@
+{
+  "id": 30,
+  "name": "Golfer Mumu",
+  "traits": {
+    "Background": "Golf course",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Green polo shirt"
+  },
+  "ipfs": {
+    "imageCID": "QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
+    "imageURI": "ipfs://QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
+    "metadataCID": "QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT",
+    "tokenURI": "ipfs://QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT"
+  }
+}

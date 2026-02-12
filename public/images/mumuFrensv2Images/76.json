@@ -1,0 +1,19 @@
+{
+  "id": 76,
+  "name": "Spartan Warrior Mumu",
+  "traits": {
+    "Background": "Battlefield",
+    "Headwear": "Horned Spartan helmet",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Bronze armor"
+  },
+  "ipfs": {
+    "imageCID": "Qmainx1iRTxroPmt4Tj7v8Kj5bPmJeu71ftx7PMyHB3a1o",
+    "imageURI": "ipfs://Qmainx1iRTxroPmt4Tj7v8Kj5bPmJeu71ftx7PMyHB3a1o",
+    "metadataCID": "QmbBdNC2HLj9UrpJ3aGz6Qo9rvMVYKPmXPPVuBPHFuwLDg",
+    "tokenURI": "ipfs://QmbBdNC2HLj9UrpJ3aGz6Qo9rvMVYKPmXPPVuBPHFuwLDg",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmainx1iRTxroPmt4Tj7v8Kj5bPmJeu71ftx7PMyHB3a1o",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbBdNC2HLj9UrpJ3aGz6Qo9rvMVYKPmXPPVuBPHFuwLDg"
+  }
+}

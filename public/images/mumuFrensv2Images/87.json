@@ -1,0 +1,19 @@
+{
+  "id": 87,
+  "name": "Orchestra Conductor Mumu",
+  "traits": {
+    "Background": "Ornate opera house",
+    "Headwear": "Powdered wig",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Baroque aristocratic coat"
+  },
+  "ipfs": {
+    "imageCID": "QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
+    "imageURI": "ipfs://QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
+    "metadataCID": "QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2",
+    "tokenURI": "ipfs://QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2"
+  }
+}

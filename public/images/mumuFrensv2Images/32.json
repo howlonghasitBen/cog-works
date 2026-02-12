@@ -1,0 +1,19 @@
+{
+  "id": 32,
+  "name": "Sensei Mumu",
+  "traits": {
+    "Background": "Japanese dojo",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "White karate gi"
+  },
+  "ipfs": {
+    "imageCID": "QmcsBZGYQr6TVp4EX4rsQ7byDPiE8ACM1nDXPJY975pUeF",
+    "imageURI": "ipfs://QmcsBZGYQr6TVp4EX4rsQ7byDPiE8ACM1nDXPJY975pUeF",
+    "metadataCID": "QmQQNCzESETSppQri1aKGfqJaxckdEJ9dL17yAQSUiTkyM",
+    "tokenURI": "ipfs://QmQQNCzESETSppQri1aKGfqJaxckdEJ9dL17yAQSUiTkyM",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcsBZGYQr6TVp4EX4rsQ7byDPiE8ACM1nDXPJY975pUeF",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQQNCzESETSppQri1aKGfqJaxckdEJ9dL17yAQSUiTkyM"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": 24,
+  "name": "Racer Mumu",
+  "traits": {
+    "Background": "Racing pit lane",
+    "Headwear": "None",
+    "Eyewear": "None",
+    "Held Item": "Smoking pipe",
+    "Clothes": "Orange racing suit"
+  },
+  "ipfs": {
+    "imageCID": "QmafnKVRmJ9Z3XpAcvfETrGmARJ3JPVRdjccnpDWujvpaX",
+    "imageURI": "ipfs://QmafnKVRmJ9Z3XpAcvfETrGmARJ3JPVRdjccnpDWujvpaX",
+    "metadataCID": "QmQtSJ6mCnNZWZeeYJNBqXELKpbu1hU2QZvXDPMmcucDfb",
+    "tokenURI": "ipfs://QmQtSJ6mCnNZWZeeYJNBqXELKpbu1hU2QZvXDPMmcucDfb",
+    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmafnKVRmJ9Z3XpAcvfETrGmARJ3JPVRdjccnpDWujvpaX",
+    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQtSJ6mCnNZWZeeYJNBqXELKpbu1hU2QZvXDPMmcucDfb"
+  }
+}
