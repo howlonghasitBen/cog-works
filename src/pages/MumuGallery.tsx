@@ -73,7 +73,7 @@ export default function MumuGallery() {
       {/* Grid */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
         gap: 12,
       }}>
         {filtered.map(item => (
