@@ -44,7 +44,7 @@ function generateFork(
 }
 
 /** Lightning bolts between Adam and God Pepe fingers */
-function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?: number }) {
+function LightningBolt({ visible, satCount = 6, touchStep, setTouchStep }: { visible: boolean; satCount?: number; touchStep: number; setTouchStep: React.Dispatch<React.SetStateAction<number>> }) {
   // Adam's fingertip: bottom-left (~20%, 72%)
   // God's fingertip: top-right (~68%, 28%) — his outstretched finger
   const adamX = 20, adamY = 72
@@ -63,7 +63,6 @@ function LightningBolt({ visible, satCount = 6 }: { visible: boolean; satCount?:
   }, [satCount])
 
   // Step through satellites: -1=off, 0..N-1=targeting sat, N=targeting center
-  const [touchStep, setTouchStep] = useState(-1)
   useEffect(() => {
     if (!visible) { setTouchStep(-1); return }
     const t = setTimeout(() => setTouchStep(0), 500)
@@ -309,6 +308,7 @@ const heroItems: GearNavItem[] = [
 export default function App() {
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [lightningStep, setLightningStep] = useState(-1)
   const [pepesEnabled, setPepesEnabled] = useState(true)
 
   // DOM refs for direct manipulation (no React re-renders during scroll)
@@ -480,7 +480,7 @@ export default function App() {
                   className="absolute top-0 right-0 pointer-events-none"
                   style={{ height: '55%', objectFit: 'contain', objectPosition: 'top right' }}
                 />
-                <LightningBolt visible={menuOpen} satCount={heroItems.length} />
+                <LightningBolt visible={menuOpen} satCount={heroItems.length} touchStep={lightningStep} setTouchStep={setLightningStep} />
               </>
             )}
           </div>
@@ -501,6 +501,7 @@ export default function App() {
           transparentBg
           onCenterClick={activePage ? handleBackToTop : undefined}
           onMenuToggle={setMenuOpen}
+          lightningStep={lightningStep}
         />
       </div>
 

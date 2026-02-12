@@ -127,7 +127,8 @@ export default function GearHero({
   onNavigate,
   onCenterClick,
   onMenuToggle,
-}: GearHeroProps & { transparentBg?: boolean; onCenterClick?: () => void; onMenuToggle?: (open: boolean) => void }) {
+  lightningStep = -1,
+}: GearHeroProps & { transparentBg?: boolean; onCenterClick?: () => void; onMenuToggle?: (open: boolean) => void; lightningStep?: number }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [centerRotation, setCenterRotation] = useState(0)
   const [satRotations, setSatRotations] = useState<number[]>(() => items.map(() => 0))
@@ -238,7 +239,26 @@ export default function GearHero({
   const angleStep = (Math.PI * 2) / items.length
   const startAngle = -Math.PI * 0.75
 
-  // (Lightning is handled by LightningBolt in App.tsx, not here)
+  // Lightning: which satellite is being zapped? Compute CW order same as LightningBolt
+  const touchedSatIdx = useMemo(() => {
+    if (lightningStep < 0 || lightningStep >= items.length) return -1
+    // Sats sorted by angle, then walk CW from nearest to each finger
+    const sats = items.map((_, i) => {
+      const a = startAngle + angleStep * i
+      return { angle: a, idx: i }
+    }).sort((a, b) => a.angle - b.angle)
+    // Adam's nearest (bottom-left) — approximate
+    const adamAngle = Math.atan2(0.72 - 0.48, 0.20 - 0.50) // ~bottom-left
+    let nearestIdx = 0, nearestDiff = Infinity
+    sats.forEach((s, i) => {
+      const d = Math.abs(s.angle - adamAngle)
+      if (d < nearestDiff) { nearestDiff = d; nearestIdx = i }
+    })
+    const step = lightningStep % sats.length
+    return sats[(nearestIdx + step) % sats.length].idx
+  }, [lightningStep, items.length, startAngle, angleStep])
+
+  const allTouched = lightningStep >= items.length
 
   return (
     <section
@@ -276,7 +296,7 @@ export default function GearHero({
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30 pointer-events-auto"
           onClick={handleCenterClick}
         >
-          <Cog size={300 * scale} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation} />
+          <Cog size={300 * scale} cogSrc={cogSrc} innardSrc={innardSrc} rotation={centerRotation + (allTouched ? 720 : 0)} />
         </div>
 
         {/* Satellite gears — only visible when menu is open */}
@@ -368,7 +388,7 @@ export default function GearHero({
                     transition={{ type: 'spring', stiffness: 300 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={item.innardSrc || innardSrc} innardSpin={item.innardSpin} innardScale={item.innardScale} rotation={satRotations[i]} />
+                    <Cog size={satSize} cogSrc={cogSrc} innardSrc={item.innardSrc || innardSrc} innardSpin={item.innardSpin} innardScale={item.innardScale} rotation={satRotations[i] + (touchedSatIdx === i ? 25 : 0)} />
                   </motion.div>
                 </div>
               </motion.div>
