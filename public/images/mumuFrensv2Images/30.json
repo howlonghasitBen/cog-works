@@ -1,20 +1,20 @@
 {
-  "id": 30,
-  "name": "Golfer Mumu",
-  "traits": {
-    "Background": "Golf course",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Green polo shirt"
-  },
-  "ipfs": {
-    "imageCID": "QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
-    "imageURI": "ipfs://QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
-    "metadataCID": "QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT",
-    "tokenURI": "ipfs://QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT"
-  },
-  "description": "Golfer Mumu, the OG smokeshop mogul, tees off with a vintage vibe and a perpetual puff of mystery."
+  "name": "Mumu Frens v2 #30",
+  "description": "Golfer Mumu, the OG smokeshop mogul, tees off with a vintage vibe and a perpetual puff of mystery.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/30.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Golf course"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Green polo shirt"
+    }
+  ]
 }

@@ -1,20 +1,28 @@
 {
-  "id": 94,
-  "name": "Balloon Pilot Mumu",
-  "traits": {
-    "Background": "Hot air balloon sky",
-    "Headwear": "Aviator helmet",
-    "Eyewear": "Pilot goggles",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Leather flight jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
-    "imageURI": "ipfs://QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
-    "metadataCID": "QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb",
-    "tokenURI": "ipfs://QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb"
-  },
-  "description": "This retro-futuristic hot air balloon pilot NFT is Mumu's chill life coach, dispensing wisdom from 30,000 feet above."
+  "name": "Mumu Frens v2 #94",
+  "description": "This retro-futuristic hot air balloon pilot NFT is Mumu's chill life coach, dispensing wisdom from 30,000 feet above.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/94.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Hot air balloon sky"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Aviator helmet"
+    },
+    {
+      "trait_type": "Eyewear",
+      "value": "Pilot goggles"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Leather flight jacket"
+    }
+  ]
 }

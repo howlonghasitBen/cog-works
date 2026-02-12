@@ -1,20 +1,24 @@
 {
-  "id": 46,
-  "name": "Gamer Mumu",
-  "traits": {
-    "Background": "Neon gaming room",
-    "Headwear": "Black hood",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Black gamer hoodie"
-  },
-  "ipfs": {
-    "imageCID": "QmQcbAwMKXs6nkPhG1FJTtQayaxK3G5NkMJd4PrhwmP6hh",
-    "imageURI": "ipfs://QmQcbAwMKXs6nkPhG1FJTtQayaxK3G5NkMJd4PrhwmP6hh",
-    "metadataCID": "QmPo1aqhoDB72ucNHYJTcZcZLBfnoL6UsxPPj1ziYe3joh",
-    "tokenURI": "ipfs://QmPo1aqhoDB72ucNHYJTcZcZLBfnoL6UsxPPj1ziYe3joh",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQcbAwMKXs6nkPhG1FJTtQayaxK3G5NkMJd4PrhwmP6hh",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPo1aqhoDB72ucNHYJTcZcZLBfnoL6UsxPPj1ziYe3joh"
-  },
-  "description": "Gamer Mumu's radical neon gaming lair is lit by her sick smoking pipe, keeping the competition in a haze."
+  "name": "Mumu Frens v2 #46",
+  "description": "Gamer Mumu's radical neon gaming lair is lit by her sick smoking pipe, keeping the competition in a haze.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/46.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Neon gaming room"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Black hood"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Black gamer hoodie"
+    }
+  ]
 }

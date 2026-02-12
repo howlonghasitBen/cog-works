@@ -1,12 +1,20 @@
 {
-  "id": 2,
-  "name": "Astronaut Mumu",
-  "traits": {
-    "Background": "Outer space",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "NASA spacesuit"
-  },
-  "description": "Astronaut Mumu floats through the cosmos, puffing on a trusty pipe, defying gravity in her radical NASA suit."
+  "name": "Mumu Frens v2 #2",
+  "description": "Astronaut Mumu floats through the cosmos, puffing on a trusty pipe, defying gravity in her radical NASA suit.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/2.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Outer space"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "NASA spacesuit"
+    }
+  ]
 }

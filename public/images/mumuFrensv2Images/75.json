@@ -1,20 +1,24 @@
 {
-  "id": 75,
-  "name": "Mountain Climber Mumu",
-  "traits": {
-    "Background": "Snowy mountains",
-    "Headwear": "None",
-    "Eyewear": "Ski goggles",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Red yellow jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
-    "imageURI": "ipfs://QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
-    "metadataCID": "QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8",
-    "tokenURI": "ipfs://QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8"
-  },
-  "description": "Mountain Climber Mumu is a radical, radish-red-clad snow-babe vaping her way up the highest peaks."
+  "name": "Mumu Frens v2 #75",
+  "description": "Mountain Climber Mumu is a radical, radish-red-clad snow-babe vaping her way up the highest peaks.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/75.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Snowy mountains"
+    },
+    {
+      "trait_type": "Eyewear",
+      "value": "Ski goggles"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Red yellow jacket"
+    }
+  ]
 }

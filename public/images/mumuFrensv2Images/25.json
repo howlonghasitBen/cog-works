@@ -1,20 +1,24 @@
 {
-  "id": 25,
-  "name": "Firefighter Mumu",
-  "traits": {
-    "Background": "Building on fire",
-    "Headwear": "Firefighter helmet",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Firefighter jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmTQ4adJmYWbMW9SZrqgeNcobzUqhLAmHgnYMDtWEgJTXf",
-    "imageURI": "ipfs://QmTQ4adJmYWbMW9SZrqgeNcobzUqhLAmHgnYMDtWEgJTXf",
-    "metadataCID": "QmPV2BvCVbjwUeBVzm1mcLxndbYySGkkxKpykNZVVZVYnq",
-    "tokenURI": "ipfs://QmPV2BvCVbjwUeBVzm1mcLxndbYySGkkxKpykNZVVZVYnq",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTQ4adJmYWbMW9SZrqgeNcobzUqhLAmHgnYMDtWEgJTXf",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPV2BvCVbjwUeBVzm1mcLxndbYySGkkxKpykNZVVZVYnq"
-  },
-  "description": "Meet Firefighter Mumu, a smokin' hot hero who's puttin' out flames with her trusty pipe while savin' the day!"
+  "name": "Mumu Frens v2 #25",
+  "description": "Meet Firefighter Mumu, a smokin' hot hero who's puttin' out flames with her trusty pipe while savin' the day!",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/25.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Building on fire"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Firefighter helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Firefighter jacket"
+    }
+  ]
 }

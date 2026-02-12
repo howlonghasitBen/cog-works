@@ -1,20 +1,24 @@
 {
-  "id": 50,
-  "name": "Angel Mumu",
-  "traits": {
-    "Background": "Heavenly clouds",
-    "Headwear": "Golden halo",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Angel wings"
-  },
-  "ipfs": {
-    "imageCID": "QmaR53A4bqPDPNXCvLAx6Yhf2dt7LYZM8dcRN1afCynLod",
-    "imageURI": "ipfs://QmaR53A4bqPDPNXCvLAx6Yhf2dt7LYZM8dcRN1afCynLod",
-    "metadataCID": "QmceHU7jWRrkRGigUns2B1dFjon9JJfF9oiczDRYexAHVA",
-    "tokenURI": "ipfs://QmceHU7jWRrkRGigUns2B1dFjon9JJfF9oiczDRYexAHVA",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmaR53A4bqPDPNXCvLAx6Yhf2dt7LYZM8dcRN1afCynLod",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmceHU7jWRrkRGigUns2B1dFjon9JJfF9oiczDRYexAHVA"
-  },
-  "description": "Angel Mumu's heavenly vibes are lit, but don't be fooled – that smoking pipe is her devilish secret hobby."
+  "name": "Mumu Frens v2 #50",
+  "description": "Angel Mumu's heavenly vibes are lit, but don't be fooled – that smoking pipe is her devilish secret hobby.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/50.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Heavenly clouds"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Golden halo"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Angel wings"
+    }
+  ]
 }

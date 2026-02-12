@@ -1,20 +1,20 @@
 {
-  "id": 51,
-  "name": "Anime Schoolgirl Mumu",
-  "traits": {
-    "Background": "Japanese cherry blossoms",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Sailor school uniform"
-  },
-  "ipfs": {
-    "imageCID": "QmZWqF9JQjqfQAvaigD3csaRobskfucdQY9LTLGzZJvPFY",
-    "imageURI": "ipfs://QmZWqF9JQjqfQAvaigD3csaRobskfucdQY9LTLGzZJvPFY",
-    "metadataCID": "QmdspMBYSGHRBTQnbNC16oauffnmkfZbFSwZkpDkVALy6B",
-    "tokenURI": "ipfs://QmdspMBYSGHRBTQnbNC16oauffnmkfZbFSwZkpDkVALy6B",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmZWqF9JQjqfQAvaigD3csaRobskfucdQY9LTLGzZJvPFY",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmdspMBYSGHRBTQnbNC16oauffnmkfZbFSwZkpDkVALy6B"
-  },
-  "description": "Mumu's sailor suit is as sweet as her hookah-smoking ways in this sugary sweet, kawaii NFT bombshell!"
+  "name": "Mumu Frens v2 #51",
+  "description": "Mumu's sailor suit is as sweet as her hookah-smoking ways in this sugary sweet, kawaii NFT bombshell!",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/51.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Japanese cherry blossoms"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Sailor school uniform"
+    }
+  ]
 }

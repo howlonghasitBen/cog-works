@@ -1,20 +1,24 @@
 {
-  "id": 62,
-  "name": "Ocean King Mumu",
-  "traits": {
-    "Background": "Underwater ruins",
-    "Headwear": "Coral shell crown",
-    "Eyewear": "None",
-    "Held Item": "Golden trident",
-    "Clothes": "Scaled armor"
-  },
-  "ipfs": {
-    "imageCID": "QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
-    "imageURI": "ipfs://QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
-    "metadataCID": "Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g",
-    "tokenURI": "ipfs://Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g"
-  },
-  "description": "The Ocean King Mumu reigns supreme in scaly splendor, his coral crown shining bright as he wields golden doom."
+  "name": "Mumu Frens v2 #62",
+  "description": "The Ocean King Mumu reigns supreme in scaly splendor, his coral crown shining bright as he wields golden doom.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/62.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Underwater ruins"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Coral shell crown"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Golden trident"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Scaled armor"
+    }
+  ]
 }

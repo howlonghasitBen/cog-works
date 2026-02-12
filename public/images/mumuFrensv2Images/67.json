@@ -1,20 +1,24 @@
 {
-  "id": 67,
-  "name": "Sheriff Mumu",
-  "traits": {
-    "Background": "Western saloon",
-    "Headwear": "Cowboy hat",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Sheriff vest"
-  },
-  "ipfs": {
-    "imageCID": "QmVVeegMfwY1ZT48iEnGuBencPNLBoizpb7QQKz6stLVr6",
-    "imageURI": "ipfs://QmVVeegMfwY1ZT48iEnGuBencPNLBoizpb7QQKz6stLVr6",
-    "metadataCID": "QmSBonxQme6NjKWjpkLLLVf82i2UewQDA1is2rsCr7iXCt",
-    "tokenURI": "ipfs://QmSBonxQme6NjKWjpkLLLVf82i2UewQDA1is2rsCr7iXCt",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVVeegMfwY1ZT48iEnGuBencPNLBoizpb7QQKz6stLVr6",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSBonxQme6NjKWjpkLLLVf82i2UewQDA1is2rsCr7iXCt"
-  },
-  "description": "The inimitable Sheriff Mumu rode into town, his trusty smoking pipe at the ready to settle all disputes..."
+  "name": "Mumu Frens v2 #67",
+  "description": "The inimitable Sheriff Mumu rode into town, his trusty smoking pipe at the ready to settle all disputes...",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/67.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Western saloon"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Cowboy hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Sheriff vest"
+    }
+  ]
 }

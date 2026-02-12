@@ -1,20 +1,24 @@
 {
-  "id": 87,
-  "name": "Orchestra Conductor Mumu",
-  "traits": {
-    "Background": "Ornate opera house",
-    "Headwear": "Powdered wig",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Baroque aristocratic coat"
-  },
-  "ipfs": {
-    "imageCID": "QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
-    "imageURI": "ipfs://QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
-    "metadataCID": "QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2",
-    "tokenURI": "ipfs://QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2"
-  },
-  "description": "Mumu's powdered wig is so on point it'll get a solo in the opera of life itself."
+  "name": "Mumu Frens v2 #87",
+  "description": "Mumu's powdered wig is so on point it'll get a solo in the opera of life itself.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/87.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Ornate opera house"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Powdered wig"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Baroque aristocratic coat"
+    }
+  ]
 }

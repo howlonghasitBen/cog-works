@@ -1,20 +1,24 @@
 {
-  "id": 65,
-  "name": "Fire Mage Mumu",
-  "traits": {
-    "Background": "Volcanic lava cave",
-    "Headwear": "Bandage wraps",
-    "Eyewear": "None",
-    "Held Item": "Flaming staff",
-    "Clothes": "Runic spiked armor"
-  },
-  "ipfs": {
-    "imageCID": "QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
-    "imageURI": "ipfs://QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
-    "metadataCID": "QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr",
-    "tokenURI": "ipfs://QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr"
-  },
-  "description": "Meet Fire Mage Mumu, a magma-witch grandma who's about to melt your competition with her fiery spellcasting skills."
+  "name": "Mumu Frens v2 #65",
+  "description": "Meet Fire Mage Mumu, a magma-witch grandma who's about to melt your competition with her fiery spellcasting skills.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/65.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Volcanic lava cave"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Bandage wraps"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Flaming staff"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Runic spiked armor"
+    }
+  ]
 }

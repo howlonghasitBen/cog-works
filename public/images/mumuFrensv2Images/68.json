@@ -1,20 +1,24 @@
 {
-  "id": 68,
-  "name": "Jazz Musician Mumu",
-  "traits": {
-    "Background": "Jazz club",
-    "Headwear": "Fedora",
-    "Eyewear": "None",
-    "Held Item": "Saxophone",
-    "Clothes": "Black turtleneck"
-  },
-  "ipfs": {
-    "imageCID": "QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
-    "imageURI": "ipfs://QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
-    "metadataCID": "QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd",
-    "tokenURI": "ipfs://QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd"
-  },
-  "description": "Mumu's smooth sax riffs blow minds in the underground jazz club, where he sips whiskey and wears a fedora."
+  "name": "Mumu Frens v2 #68",
+  "description": "Mumu's smooth sax riffs blow minds in the underground jazz club, where he sips whiskey and wears a fedora.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/68.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Jazz club"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Fedora"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Saxophone"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Black turtleneck"
+    }
+  ]
 }

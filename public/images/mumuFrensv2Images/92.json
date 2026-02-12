@@ -1,20 +1,24 @@
 {
-  "id": 92,
-  "name": "Witch Doctor Mumu",
-  "traits": {
-    "Background": "Glowing swamp forest",
-    "Headwear": "Feather headdress",
-    "Eyewear": "None",
-    "Held Item": "Skull staff",
-    "Clothes": "Tribal fur garb"
-  },
-  "ipfs": {
-    "imageCID": "QmSfwFog9MTXwGTALhxcdmfF6nmSFKwv3VLkLPx37PUNkg",
-    "imageURI": "ipfs://QmSfwFog9MTXwGTALhxcdmfF6nmSFKwv3VLkLPx37PUNkg",
-    "metadataCID": "QmNoYw7HQh84yVhEiTEsLvVPyZEtvsHn1iVw7dKckr4TWp",
-    "tokenURI": "ipfs://QmNoYw7HQh84yVhEiTEsLvVPyZEtvsHn1iVw7dKckr4TWp",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmSfwFog9MTXwGTALhxcdmfF6nmSFKwv3VLkLPx37PUNkg",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNoYw7HQh84yVhEiTEsLvVPyZEtvsHn1iVw7dKckr4TWp"
-  },
-  "description": "This Witch Doctor Mumu is a mystical shamaness conjuring chaos with her glowing swamp vibes and tribal style."
+  "name": "Mumu Frens v2 #92",
+  "description": "This Witch Doctor Mumu is a mystical shamaness conjuring chaos with her glowing swamp vibes and tribal style.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/92.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Glowing swamp forest"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Feather headdress"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Skull staff"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Tribal fur garb"
+    }
+  ]
 }

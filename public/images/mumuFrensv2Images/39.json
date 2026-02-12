@@ -1,20 +1,24 @@
 {
-  "id": 39,
-  "name": "Knight Mumu",
-  "traits": {
-    "Background": "Castle siege battle",
-    "Headwear": "Horned knight helmet",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Knight armor chainmail"
-  },
-  "ipfs": {
-    "imageCID": "QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
-    "imageURI": "ipfs://QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
-    "metadataCID": "QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj",
-    "tokenURI": "ipfs://QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj"
-  },
-  "description": "Knight Mumu rides into battle with a smoldering haze of rebellion behind his horned helmet and trusty pipe."
+  "name": "Mumu Frens v2 #39",
+  "description": "Knight Mumu rides into battle with a smoldering haze of rebellion behind his horned helmet and trusty pipe.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/39.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Castle siege battle"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Horned knight helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Knight armor chainmail"
+    }
+  ]
 }

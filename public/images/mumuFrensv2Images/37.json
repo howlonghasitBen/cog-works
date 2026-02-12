@@ -1,20 +1,20 @@
 {
-  "id": 37,
-  "name": "Magician Mumu",
-  "traits": {
-    "Background": "Theater stage curtains",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Wand and cards",
-    "Clothes": "Black tuxedo and bowtie"
-  },
-  "ipfs": {
-    "imageCID": "QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
-    "imageURI": "ipfs://QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
-    "metadataCID": "QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq",
-    "tokenURI": "ipfs://QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq"
-  },
-  "description": "Magician Mumu is a bewitching Broadway diva with a wand and deck of tricks, serving face and magic realness."
+  "name": "Mumu Frens v2 #37",
+  "description": "Magician Mumu is a bewitching Broadway diva with a wand and deck of tricks, serving face and magic realness.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/37.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Theater stage curtains"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Wand and cards"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Black tuxedo and bowtie"
+    }
+  ]
 }

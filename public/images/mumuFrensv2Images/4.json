@@ -1,12 +1,24 @@
 {
-  "id": 4,
-  "name": "Wizard Mumu",
-  "traits": {
-    "Background": "Castle wizard tower",
-    "Headwear": "Runic hood",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Blue wizard robe"
-  },
-  "description": "Wizard Mumu is a mystical toker who casts spells with his smoke signals from the top of his tower lair."
+  "name": "Mumu Frens v2 #4",
+  "description": "Wizard Mumu is a mystical toker who casts spells with his smoke signals from the top of his tower lair.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/4.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Castle wizard tower"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Runic hood"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Blue wizard robe"
+    }
+  ]
 }

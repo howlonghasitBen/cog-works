@@ -1,20 +1,20 @@
 {
-  "id": 64,
-  "name": "Ice Wizard Mumu",
-  "traits": {
-    "Background": "Ice castle",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Ice staff",
-    "Clothes": "Frost mage robes"
-  },
-  "ipfs": {
-    "imageCID": "QmcMf8EfefKCieYaH74i8ideebMpTfDM1FtDzAXWyDtkMG",
-    "imageURI": "ipfs://QmcMf8EfefKCieYaH74i8ideebMpTfDM1FtDzAXWyDtkMG",
-    "metadataCID": "QmWQVZUCvfc6q3HyZrXVfJErkZSBXN7Ni6waMPGuacx7SN",
-    "tokenURI": "ipfs://QmWQVZUCvfc6q3HyZrXVfJErkZSBXN7Ni6waMPGuacx7SN",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcMf8EfefKCieYaH74i8ideebMpTfDM1FtDzAXWyDtkMG",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWQVZUCvfc6q3HyZrXVfJErkZSBXN7Ni6waMPGuacx7SN"
-  },
-  "description": "The Ice Wizard Mumu rides into town on a frosty unicorn, staff in hand, because why not?"
+  "name": "Mumu Frens v2 #64",
+  "description": "The Ice Wizard Mumu rides into town on a frosty unicorn, staff in hand, because why not?",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/64.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Ice castle"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Ice staff"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Frost mage robes"
+    }
+  ]
 }

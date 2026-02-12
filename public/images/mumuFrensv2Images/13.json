@@ -1,20 +1,24 @@
 {
-  "id": 13,
-  "name": "Sumo Wrestler Mumu",
-  "traits": {
-    "Background": "Sumo wrestling arena",
-    "Headwear": "Samurai topknot",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Yokozuna rope"
-  },
-  "ipfs": {
-    "imageCID": "QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
-    "imageURI": "ipfs://QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
-    "metadataCID": "QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v",
-    "tokenURI": "ipfs://QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v"
-  },
-  "description": "Mumu, the yokozuna with a passion for pipes and an even bigger appetite for victory, smokes his way to the top."
+  "name": "Mumu Frens v2 #13",
+  "description": "Mumu, the yokozuna with a passion for pipes and an even bigger appetite for victory, smokes his way to the top.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/13.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Sumo wrestling arena"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Samurai topknot"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Yokozuna rope"
+    }
+  ]
 }

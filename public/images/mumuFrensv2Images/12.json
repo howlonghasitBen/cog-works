@@ -1,20 +1,24 @@
 {
-  "id": 12,
-  "name": "Skater Mumu",
-  "traits": {
-    "Background": "Graffiti skatepark",
-    "Headwear": "Gray hoodie",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Gray hoodie"
-  },
-  "ipfs": {
-    "imageCID": "QmS96k95bjhGU74FpBSyBq7uUHSHaYWHNptZV3vtMridgt",
-    "imageURI": "ipfs://QmS96k95bjhGU74FpBSyBq7uUHSHaYWHNptZV3vtMridgt",
-    "metadataCID": "QmaBEUyq8Xf7ehqJ1ApP68oifHjkmZJy8xtwkWqKwaDSxE",
-    "tokenURI": "ipfs://QmaBEUyq8Xf7ehqJ1ApP68oifHjkmZJy8xtwkWqKwaDSxE",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmS96k95bjhGU74FpBSyBq7uUHSHaYWHNptZV3vtMridgt",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmaBEUyq8Xf7ehqJ1ApP68oifHjkmZJy8xtwkWqKwaDSxE"
-  },
-  "description": "Skater Mumu is a rebellious street artist mum who traded diapers for dope graffiti and a perpetual smoke sesh."
+  "name": "Mumu Frens v2 #12",
+  "description": "Skater Mumu is a rebellious street artist mum who traded diapers for dope graffiti and a perpetual smoke sesh.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/12.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Graffiti skatepark"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Gray hoodie"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Gray hoodie"
+    }
+  ]
 }

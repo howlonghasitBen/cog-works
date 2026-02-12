@@ -1,20 +1,24 @@
 {
-  "id": 66,
-  "name": "Ghost Pirate Mumu",
-  "traits": {
-    "Background": "Ghost pirate ship",
-    "Headwear": "Pirate hat",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Tattered ghost garb"
-  },
-  "ipfs": {
-    "imageCID": "QmfBjrjHSBqp6svhoqghbVpz1aFZY1W3ijMqTkCXeit7A7",
-    "imageURI": "ipfs://QmfBjrjHSBqp6svhoqghbVpz1aFZY1W3ijMqTkCXeit7A7",
-    "metadataCID": "QmW8ECq3BcLQaMPxDQrm5ubt2PR2qEYSFe296pFokqpP7R",
-    "tokenURI": "ipfs://QmW8ECq3BcLQaMPxDQrm5ubt2PR2qEYSFe296pFokqpP7R",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmfBjrjHSBqp6svhoqghbVpz1aFZY1W3ijMqTkCXeit7A7",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmW8ECq3BcLQaMPxDQrm5ubt2PR2qEYSFe296pFokqpP7R"
-  },
-  "description": "Mumu's tattered ghost garb is so worn it's practically a separate entity with its own attitude problems."
+  "name": "Mumu Frens v2 #66",
+  "description": "Mumu's tattered ghost garb is so worn it's practically a separate entity with its own attitude problems.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/66.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Ghost pirate ship"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Pirate hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Tattered ghost garb"
+    }
+  ]
 }

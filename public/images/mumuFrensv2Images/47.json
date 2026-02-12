@@ -1,20 +1,20 @@
 {
-  "id": 47,
-  "name": "Fisherman Mumu",
-  "traits": {
-    "Background": "Sunset lake",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Fishing rod",
-    "Clothes": "Fishing vest"
-  },
-  "ipfs": {
-    "imageCID": "QmQqr7QmfzQko5JTJ9Wi9DQNSsRiDwidKgQ8GU4BEG65TP",
-    "imageURI": "ipfs://QmQqr7QmfzQko5JTJ9Wi9DQNSsRiDwidKgQ8GU4BEG65TP",
-    "metadataCID": "QmXjniYMjAmujT1f7LJBTT2RT6Qrj2PSg52gpHQAcHwnAW",
-    "tokenURI": "ipfs://QmXjniYMjAmujT1f7LJBTT2RT6Qrj2PSg52gpHQAcHwnAW",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQqr7QmfzQko5JTJ9Wi9DQNSsRiDwidKgQ8GU4BEG65TP",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXjniYMjAmujT1f7LJBTT2RT6Qrj2PSg52gpHQAcHwnAW"
-  },
-  "description": "Mumu's rusty fishing vest is held together with hope, her fishing rod is her therapy and her sunset home."
+  "name": "Mumu Frens v2 #47",
+  "description": "Mumu's rusty fishing vest is held together with hope, her fishing rod is her therapy and her sunset home.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/47.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Sunset lake"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Fishing rod"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Fishing vest"
+    }
+  ]
 }

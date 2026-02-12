@@ -1,20 +1,20 @@
 {
-  "id": 15,
-  "name": "Mecha Mumu",
-  "traits": {
-    "Background": "Cyberpunk city",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Futuristic mech armor"
-  },
-  "ipfs": {
-    "imageCID": "QmTyu9noGqm15ysivu7CCZ28V86Nto8MEPJmoQRki698ve",
-    "imageURI": "ipfs://QmTyu9noGqm15ysivu7CCZ28V86Nto8MEPJmoQRki698ve",
-    "metadataCID": "QmbxG8R3xqjmPhhbQGtjUMnU19p9ZxAq93zcafbqgyjJEx",
-    "tokenURI": "ipfs://QmbxG8R3xqjmPhhbQGtjUMnU19p9ZxAq93zcafbqgyjJEx",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTyu9noGqm15ysivu7CCZ28V86Nto8MEPJmoQRki698ve",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbxG8R3xqjmPhhbQGtjUMnU19p9ZxAq93zcafbqgyjJEx"
-  },
-  "description": "Mecha Mumu's cyberpunk vibes are complete with a smoking hot pipe and armored mechsuit, ready to fuel rebellion."
+  "name": "Mumu Frens v2 #15",
+  "description": "Mecha Mumu's cyberpunk vibes are complete with a smoking hot pipe and armored mechsuit, ready to fuel rebellion.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/15.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Cyberpunk city"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Futuristic mech armor"
+    }
+  ]
 }

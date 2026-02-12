@@ -1,20 +1,20 @@
 {
-  "id": 40,
-  "name": "Cyberpunk Mumu",
-  "traits": {
-    "Background": "Cyberpunk neon city",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Cyberpunk tech jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmQrmFtuHZNtTwP6nG8YLjxSmybdRVZ7xnoubhhvGZN4A9",
-    "imageURI": "ipfs://QmQrmFtuHZNtTwP6nG8YLjxSmybdRVZ7xnoubhhvGZN4A9",
-    "metadataCID": "QmYyzaD9mjPWx53dBG8gPo3pDiq5gdp8TcHg9Uby1sErCU",
-    "tokenURI": "ipfs://QmYyzaD9mjPWx53dBG8gPo3pDiq5gdp8TcHg9Uby1sErCU",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQrmFtuHZNtTwP6nG8YLjxSmybdRVZ7xnoubhhvGZN4A9",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYyzaD9mjPWx53dBG8gPo3pDiq5gdp8TcHg9Uby1sErCU"
-  },
-  "description": "This Cyberpunk Mumu is a rebellious, smoke-wreathed femme fatale who'll hack your heart with her pixelated pipes."
+  "name": "Mumu Frens v2 #40",
+  "description": "This Cyberpunk Mumu is a rebellious, smoke-wreathed femme fatale who'll hack your heart with her pixelated pipes.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/40.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Cyberpunk neon city"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Cyberpunk tech jacket"
+    }
+  ]
 }

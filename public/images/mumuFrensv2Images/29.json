@@ -1,20 +1,20 @@
 {
-  "id": 29,
-  "name": "Baller Mumu",
-  "traits": {
-    "Background": "Basketball court",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Basketball jersey"
-  },
-  "ipfs": {
-    "imageCID": "QmRhSHfpxAEfvLh7wUEoLsuu8zh2sR7QJCodJ9zBFJRz8q",
-    "imageURI": "ipfs://QmRhSHfpxAEfvLh7wUEoLsuu8zh2sR7QJCodJ9zBFJRz8q",
-    "metadataCID": "QmYyHUbKNApurK2dtb7CnCK6M34mJnVzWqJELcfcY9aBeA",
-    "tokenURI": "ipfs://QmYyHUbKNApurK2dtb7CnCK6M34mJnVzWqJELcfcY9aBeA",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmRhSHfpxAEfvLh7wUEoLsuu8zh2sR7QJCodJ9zBFJRz8q",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYyHUbKNApurK2dtb7CnCK6M34mJnVzWqJELcfcY9aBeA"
-  },
-  "description": "Meet Baller Mumu, the OG court king with a smokin' hot pipe and a jersey that's lowkey legendary."
+  "name": "Mumu Frens v2 #29",
+  "description": "Meet Baller Mumu, the OG court king with a smokin' hot pipe and a jersey that's lowkey legendary.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/29.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Basketball court"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Basketball jersey"
+    }
+  ]
 }

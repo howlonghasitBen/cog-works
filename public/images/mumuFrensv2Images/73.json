@@ -1,20 +1,24 @@
 {
-  "id": 73,
-  "name": "F1 Driver Mumu",
-  "traits": {
-    "Background": "Racing circuit",
-    "Headwear": "Racing helmet",
-    "Eyewear": "None",
-    "Held Item": "Steering wheel",
-    "Clothes": "F1 racing suit"
-  },
-  "ipfs": {
-    "imageCID": "QmcnvUn1XptUJSCF8wETAyLytvRv8sSQGS2RB64CHaMVeq",
-    "imageURI": "ipfs://QmcnvUn1XptUJSCF8wETAyLytvRv8sSQGS2RB64CHaMVeq",
-    "metadataCID": "QmdkcxYiC6Prwdgkm6YQzwpLJ8n6a4r8iZTWuc7yTYB8QZ",
-    "tokenURI": "ipfs://QmdkcxYiC6Prwdgkm6YQzwpLJ8n6a4r8iZTWuc7yTYB8QZ",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcnvUn1XptUJSCF8wETAyLytvRv8sSQGS2RB64CHaMVeq",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmdkcxYiC6Prwdgkm6YQzwpLJ8n6a4r8iZTWuc7yTYB8QZ"
-  },
-  "description": "Meet Mumu, the F1 driver who's always revving up her game – literally, she's got a steering wheel for a pet!"
+  "name": "Mumu Frens v2 #73",
+  "description": "Meet Mumu, the F1 driver who's always revving up her game – literally, she's got a steering wheel for a pet!",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/73.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Racing circuit"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Racing helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Steering wheel"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "F1 racing suit"
+    }
+  ]
 }

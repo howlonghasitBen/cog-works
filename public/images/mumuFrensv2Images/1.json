@@ -1,12 +1,20 @@
 {
-  "id": 1,
-  "name": "Cowboy Mumu",
-  "traits": {
-    "Background": "Desert sunset",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Plaid shirt and vest"
-  },
-  "description": "Cowboy Mumu rides into town on a unicorn, puffing on a smoking pipe while wearing plaid to match his dad's\"."
+  "name": "Mumu Frens v2 #1",
+  "description": "Cowboy Mumu rides into town on a unicorn, puffing on a smoking pipe while wearing plaid to match his dad's.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/1.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Desert sunset"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Plaid shirt and vest"
+    }
+  ]
 }

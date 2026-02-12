@@ -1,20 +1,24 @@
 {
-  "id": 59,
-  "name": "Lumberjack Mumu",
-  "traits": {
-    "Background": "Autumn forest",
-    "Headwear": "Brown beanie",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Plaid flannel shirt"
-  },
-  "ipfs": {
-    "imageCID": "QmVF3SwYYQhUNBHSoCYVMp15G8bGKadi9oL4VmF15JMixV",
-    "imageURI": "ipfs://QmVF3SwYYQhUNBHSoCYVMp15G8bGKadi9oL4VmF15JMixV",
-    "metadataCID": "QmYMFHSegGExYTWpxHT636KmZR7bCNx9AKtNs7tawbUVwo",
-    "tokenURI": "ipfs://QmYMFHSegGExYTWpxHT636KmZR7bCNx9AKtNs7tawbUVwo",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVF3SwYYQhUNBHSoCYVMp15G8bGKadi9oL4VmF15JMixV",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYMFHSegGExYTWpxHT636KmZR7bCNx9AKtNs7tawbUVwo"
-  },
-  "description": "Meet Lumberjack Mumu, a woodland weirdo with a passion for pipes and a penchant for getting lost in the trees."
+  "name": "Mumu Frens v2 #59",
+  "description": "Meet Lumberjack Mumu, a woodland weirdo with a passion for pipes and a penchant for getting lost in the trees.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/59.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Autumn forest"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Brown beanie"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Plaid flannel shirt"
+    }
+  ]
 }

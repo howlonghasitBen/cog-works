@@ -1,12 +1,24 @@
 {
-  "id": 3,
-  "name": "Pirate Captain Mumu",
-  "traits": {
-    "Background": "Pirate ship deck",
-    "Headwear": "Pirate tricorn hat",
-    "Eyewear": "None",
-    "Held Item": "Cutlass and pipe",
-    "Clothes": "Pirate captain coat"
-  },
-  "description": "Pirate Captain Mumu is a scurvy dog with a penchant for plundering digital booty in his ridiculously stylish pirate gear."
+  "name": "Mumu Frens v2 #3",
+  "description": "Pirate Captain Mumu is a scurvy dog with a penchant for plundering digital booty in his ridiculously stylish pirate gear.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/3.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Pirate ship deck"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Pirate tricorn hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Cutlass and pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Pirate captain coat"
+    }
+  ]
 }

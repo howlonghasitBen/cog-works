@@ -1,20 +1,20 @@
 {
-  "id": 84,
-  "name": "Alien Diplomat Mumu",
-  "traits": {
-    "Background": "Spaceship bridge",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Space suit"
-  },
-  "ipfs": {
-    "imageCID": "QmVQA5S2zYiVLTamiun6x3C5GVm6iXeTf2eYaBLHNStRo9",
-    "imageURI": "ipfs://QmVQA5S2zYiVLTamiun6x3C5GVm6iXeTf2eYaBLHNStRo9",
-    "metadataCID": "QmZNdwxznA4nM8r33vtf4Uj74MPRkEqxAQnmwKCg9ux4SP",
-    "tokenURI": "ipfs://QmZNdwxznA4nM8r33vtf4Uj74MPRkEqxAQnmwKCg9ux4SP",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVQA5S2zYiVLTamiun6x3C5GVm6iXeTf2eYaBLHNStRo9",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZNdwxznA4nM8r33vtf4Uj74MPRkEqxAQnmwKCg9ux4SP"
-  },
-  "description": "Alien Diplomat Mumu's space suit is so sharp, it could negotiate intergalactic peace treaties over a single, perfectly puffed smoke."
+  "name": "Mumu Frens v2 #84",
+  "description": "Alien Diplomat Mumu's space suit is so sharp, it could negotiate intergalactic peace treaties over a single, perfectly puffed smoke.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/84.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Spaceship bridge"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Space suit"
+    }
+  ]
 }

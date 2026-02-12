@@ -1,20 +1,20 @@
 {
-  "id": 60,
-  "name": "Rapper Mumu",
-  "traits": {
-    "Background": "Recording studio",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Black tee and gold chain"
-  },
-  "ipfs": {
-    "imageCID": "QmVRyt4dWkcv4t58p5fDiq17rjP1UrcFuKxp8nSLcyWjmJ",
-    "imageURI": "ipfs://QmVRyt4dWkcv4t58p5fDiq17rjP1UrcFuKxp8nSLcyWjmJ",
-    "metadataCID": "QmNXacpWUvEUW3H77dfiPMneehFdpQSx8kXcdsanPw3WNg",
-    "tokenURI": "ipfs://QmNXacpWUvEUW3H77dfiPMneehFdpQSx8kXcdsanPw3WNg",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVRyt4dWkcv4t58p5fDiq17rjP1UrcFuKxp8nSLcyWjmJ",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNXacpWUvEUW3H77dfiPMneehFdpQSx8kXcdsanPw3WNg"
-  },
-  "description": "Rapper Mumu smokes beats in his sick recording studio, reppin' the underground scene with a swag that's totally lit."
+  "name": "Mumu Frens v2 #60",
+  "description": "Rapper Mumu smokes beats in his sick recording studio, reppin' the underground scene with a swag that's totally lit.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/60.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Recording studio"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Black tee and gold chain"
+    }
+  ]
 }

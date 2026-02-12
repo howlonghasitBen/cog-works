@@ -1,20 +1,20 @@
 {
-  "id": 77,
-  "name": "Tribal Warrior Mumu",
-  "traits": {
-    "Background": "Jungle ruins",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Tribal warrior outfit"
-  },
-  "ipfs": {
-    "imageCID": "QmexsxJ6bcnFt3UkxzEG1MZYCL8itReaHWAromk5v9JgDY",
-    "imageURI": "ipfs://QmexsxJ6bcnFt3UkxzEG1MZYCL8itReaHWAromk5v9JgDY",
-    "metadataCID": "QmchgsdZV9uMrDJDXegsYnRiy9Ntot9XfP18yVM94VQpad",
-    "tokenURI": "ipfs://QmchgsdZV9uMrDJDXegsYnRiy9Ntot9XfP18yVM94VQpad",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmexsxJ6bcnFt3UkxzEG1MZYCL8itReaHWAromk5v9JgDY",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmchgsdZV9uMrDJDXegsYnRiy9Ntot9XfP18yVM94VQpad"
-  },
-  "description": "The Tropical Shamanic Mama of the Jungle Ruins tribe just lit up a peace pipe and summoned some serious vibes."
+  "name": "Mumu Frens v2 #77",
+  "description": "The Tropical Shamanic Mama of the Jungle Ruins tribe just lit up a peace pipe and summoned some serious vibes.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/77.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Jungle ruins"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Tribal warrior outfit"
+    }
+  ]
 }

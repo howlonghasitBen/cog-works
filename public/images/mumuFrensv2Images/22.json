@@ -1,20 +1,20 @@
 {
-  "id": 22,
-  "name": "Rock Star Mumu",
-  "traits": {
-    "Background": "Concert stage",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Microphone",
-    "Clothes": "Spiked leather jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
-    "imageURI": "ipfs://QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
-    "metadataCID": "QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79",
-    "tokenURI": "ipfs://QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79"
-  },
-  "description": "Mumu's spiked leather jacket is so sharp it'll shred the competition, but she's really just a rock star mom."
+  "name": "Mumu Frens v2 #22",
+  "description": "Mumu's spiked leather jacket is so sharp it'll shred the competition, but she's really just a rock star mom.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/22.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Concert stage"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Microphone"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Spiked leather jacket"
+    }
+  ]
 }

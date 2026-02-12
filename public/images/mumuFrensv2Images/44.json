@@ -1,20 +1,20 @@
 {
-  "id": 44,
-  "name": "Biker Mumu",
-  "traits": {
-    "Background": "Desert road",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Black leather jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmXYksZWd54YCU6TsnhAJuoHXFgZZcPe9qwFFKHLYfNHDH",
-    "imageURI": "ipfs://QmXYksZWd54YCU6TsnhAJuoHXFgZZcPe9qwFFKHLYfNHDH",
-    "metadataCID": "Qma24ogTG1wjdCA3aR5y55GMJdPu7WX3P4nKiuaHdRRp4m",
-    "tokenURI": "ipfs://Qma24ogTG1wjdCA3aR5y55GMJdPu7WX3P4nKiuaHdRRp4m",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmXYksZWd54YCU6TsnhAJuoHXFgZZcPe9qwFFKHLYfNHDH",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qma24ogTG1wjdCA3aR5y55GMJdPu7WX3P4nKiuaHdRRp4m"
-  },
-  "description": "Biker Mumu cruises down a desert highway on a hog of pure chaos, fueled by smoke and sass."
+  "name": "Mumu Frens v2 #44",
+  "description": "Biker Mumu cruises down a desert highway on a hog of pure chaos, fueled by smoke and sass.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/44.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Desert road"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Black leather jacket"
+    }
+  ]
 }

@@ -1,20 +1,28 @@
 {
-  "id": 21,
-  "name": "Plague Doctor Mumu",
-  "traits": {
-    "Background": "Medieval village",
-    "Headwear": "Black top hat",
-    "Eyewear": "Round goggles",
-    "Held Item": "Walking stick",
-    "Clothes": "Dark leather coat"
-  },
-  "ipfs": {
-    "imageCID": "QmNMWCFBaQmgsrAJ1nc8zTgqZsAAD2Z48UAK7VRBygvExQ",
-    "imageURI": "ipfs://QmNMWCFBaQmgsrAJ1nc8zTgqZsAAD2Z48UAK7VRBygvExQ",
-    "metadataCID": "Qmb7PdU2qajYi4zNnMiUjwJvk95SHEKu3SbuyY1CvKdVtP",
-    "tokenURI": "ipfs://Qmb7PdU2qajYi4zNnMiUjwJvk95SHEKu3SbuyY1CvKdVtP",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNMWCFBaQmgsrAJ1nc8zTgqZsAAD2Z48UAK7VRBygvExQ",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qmb7PdU2qajYi4zNnMiUjwJvk95SHEKu3SbuyY1CvKdVtP"
-  },
-  "description": "Meet Plague Doctor Mumu, a medieval mystic with a deadly flair for botany and a penchant for poisonous garden parties."
+  "name": "Mumu Frens v2 #21",
+  "description": "Meet Plague Doctor Mumu, a medieval mystic with a deadly flair for botany and a penchant for poisonous garden parties.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/21.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Medieval village"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Black top hat"
+    },
+    {
+      "trait_type": "Eyewear",
+      "value": "Round goggles"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Walking stick"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Dark leather coat"
+    }
+  ]
 }

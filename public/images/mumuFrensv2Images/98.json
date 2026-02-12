@@ -1,20 +1,24 @@
 {
-  "id": 98,
-  "name": "Retro Gamer Mumu",
-  "traits": {
-    "Background": "Retro arcade",
-    "Headwear": "Headphones",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "White t-shirt"
-  },
-  "ipfs": {
-    "imageCID": "QmeGiNDEy4gYxVYCAsrQ5uNyM2GAhMgw59dFEdspdkmv3V",
-    "imageURI": "ipfs://QmeGiNDEy4gYxVYCAsrQ5uNyM2GAhMgw59dFEdspdkmv3V",
-    "metadataCID": "QmZXfnzvMCtiS7kH7ZPCoh63oNsSAvvGBSv1R6eSMAE6sr",
-    "tokenURI": "ipfs://QmZXfnzvMCtiS7kH7ZPCoh63oNsSAvvGBSv1R6eSMAE6sr",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmeGiNDEy4gYxVYCAsrQ5uNyM2GAhMgw59dFEdspdkmv3V",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZXfnzvMCtiS7kH7ZPCoh63oNsSAvvGBSv1R6eSMAE6sr"
-  },
-  "description": "Retro Gamer Mumu smokes her way to pixelated perfection in a sea of neon and nostalgia-fueled gamer glory."
+  "name": "Mumu Frens v2 #98",
+  "description": "Retro Gamer Mumu smokes her way to pixelated perfection in a sea of neon and nostalgia-fueled gamer glory.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/98.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Retro arcade"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Headphones"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "White t-shirt"
+    }
+  ]
 }

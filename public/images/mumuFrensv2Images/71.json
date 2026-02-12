@@ -1,20 +1,24 @@
 {
-  "id": 71,
-  "name": "Roman Senator Mumu",
-  "traits": {
-    "Background": "Roman ruins",
-    "Headwear": "Laurel wreath",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Purple-striped toga"
-  },
-  "ipfs": {
-    "imageCID": "Qma5robWrRKJJgFCkmpqj6jstd3zy6W63jxi6PerVBJyeg",
-    "imageURI": "ipfs://Qma5robWrRKJJgFCkmpqj6jstd3zy6W63jxi6PerVBJyeg",
-    "metadataCID": "QmT6xmzsKpEU2ByXnLypLJZgBSNG9j2nRREqqzpV1V4Ye9",
-    "tokenURI": "ipfs://QmT6xmzsKpEU2ByXnLypLJZgBSNG9j2nRREqqzpV1V4Ye9",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qma5robWrRKJJgFCkmpqj6jstd3zy6W63jxi6PerVBJyeg",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmT6xmzsKpEU2ByXnLypLJZgBSNG9j2nRREqqzpV1V4Ye9"
-  },
-  "description": "Meet Roman Senator Mumu, a togied philosopher with a pipe full of wisdom and a laurel wreath that's always lit."
+  "name": "Mumu Frens v2 #71",
+  "description": "Meet Roman Senator Mumu, a togied philosopher with a pipe full of wisdom and a laurel wreath that's always lit.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/71.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Roman ruins"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Laurel wreath"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Purple-striped toga"
+    }
+  ]
 }

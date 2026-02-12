@@ -1,20 +1,24 @@
 {
-  "id": 74,
-  "name": "Deep Sea Diver Mumu",
-  "traits": {
-    "Background": "Underwater shipwreck",
-    "Headwear": "Brass diving helmet",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Old diving suit"
-  },
-  "ipfs": {
-    "imageCID": "QmVV7fs2XKiaskRswX88ikwLgfWCtBTBMbn3Xo46wVeeJ1",
-    "imageURI": "ipfs://QmVV7fs2XKiaskRswX88ikwLgfWCtBTBMbn3Xo46wVeeJ1",
-    "metadataCID": "QmQyr8xJsxqkArAe8qnJDRDCS4nKgd8jNsFVbBg8fEB8RR",
-    "tokenURI": "ipfs://QmQyr8xJsxqkArAe8qnJDRDCS4nKgd8jNsFVbBg8fEB8RR",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVV7fs2XKiaskRswX88ikwLgfWCtBTBMbn3Xo46wVeeJ1",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQyr8xJsxqkArAe8qnJDRDCS4nKgd8jNsFVbBg8fEB8RR"
-  },
-  "description": "Meet Deep Sea Diver Mumu, a salty siren with a penchant for pipes and a shipwrecked soul."
+  "name": "Mumu Frens v2 #74",
+  "description": "Meet Deep Sea Diver Mumu, a salty siren with a penchant for pipes and a shipwrecked soul.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/74.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Underwater shipwreck"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Brass diving helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Old diving suit"
+    }
+  ]
 }

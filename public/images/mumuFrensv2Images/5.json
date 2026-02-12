@@ -1,12 +1,24 @@
 {
-  "id": 5,
-  "name": "Samurai Mumu",
-  "traits": {
-    "Background": "Cherry blossom garden",
-    "Headwear": "Samurai kabuto helmet",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Orange samurai armor"
-  },
-  "description": "Samurai Mumu sips matcha from his smoking pipe in cherry blossom gardens, looking ridiculously cool in orange samurai armor."
+  "name": "Mumu Frens v2 #5",
+  "description": "Samurai Mumu sips matcha from his smoking pipe in cherry blossom gardens, looking ridiculously cool in orange samurai armor.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/5.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Cherry blossom garden"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Samurai kabuto helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Orange samurai armor"
+    }
+  ]
 }

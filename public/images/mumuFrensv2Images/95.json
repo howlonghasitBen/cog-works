@@ -1,20 +1,24 @@
 {
-  "id": 95,
-  "name": "Treasure Hunter Mumu",
-  "traits": {
-    "Background": "Treasure cave",
-    "Headwear": "Headlamp strap",
-    "Eyewear": "None",
-    "Held Item": "Pipe and map",
-    "Clothes": "Leather explorer outfit"
-  },
-  "ipfs": {
-    "imageCID": "QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
-    "imageURI": "ipfs://QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
-    "metadataCID": "QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G",
-    "tokenURI": "ipfs://QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G"
-  },
-  "description": "Meet Mumu, a seasoned treasure hunter with a rad headlamp, pipe for snacks, and a map to her next heist!"
+  "name": "Mumu Frens v2 #95",
+  "description": "Meet Mumu, a seasoned treasure hunter with a rad headlamp, pipe for snacks, and a map to her next heist!",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/95.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Treasure cave"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Headlamp strap"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Pipe and map"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Leather explorer outfit"
+    }
+  ]
 }

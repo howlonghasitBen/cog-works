@@ -1,20 +1,20 @@
 {
-  "id": 35,
-  "name": "Astronomer Mumu",
-  "traits": {
-    "Background": "Observatory study",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Patched tweed jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmdJCQ9sdP5iq1JGvdEBbFz7pniMkM1t3YfTFJtchQhji8",
-    "imageURI": "ipfs://QmdJCQ9sdP5iq1JGvdEBbFz7pniMkM1t3YfTFJtchQhji8",
-    "metadataCID": "QmY6yCyAsWA7yXkYA2DEnjd3mxiWnSZgYPJmVQ4ZqcL2ip",
-    "tokenURI": "ipfs://QmY6yCyAsWA7yXkYA2DEnjd3mxiWnSZgYPJmVQ4ZqcL2ip",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdJCQ9sdP5iq1JGvdEBbFz7pniMkM1t3YfTFJtchQhji8",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmY6yCyAsWA7yXkYA2DEnjd3mxiWnSZgYPJmVQ4ZqcL2ip"
-  },
-  "description": "Astronomer Mumu is a stargazing hippie who's always toking it easy with her trusty pipe by her side."
+  "name": "Mumu Frens v2 #35",
+  "description": "Astronomer Mumu is a stargazing hippie who's always toking it easy with her trusty pipe by her side.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/35.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Observatory study"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Patched tweed jacket"
+    }
+  ]
 }

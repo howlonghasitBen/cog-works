@@ -1,20 +1,24 @@
 {
-  "id": 100,
-  "name": "Diamond Miner Mumu",
-  "traits": {
-    "Background": "Crystal cave",
-    "Headwear": "Mining helmet",
-    "Eyewear": "None",
-    "Held Item": "Pickaxe and pipe",
-    "Clothes": "Dirty work shirt"
-  },
-  "ipfs": {
-    "imageCID": "QmdxT1tgfogxF1eC6eybAza3hhkHvQ1sV6RJ7uQax1eNex",
-    "imageURI": "ipfs://QmdxT1tgfogxF1eC6eybAza3hhkHvQ1sV6RJ7uQax1eNex",
-    "metadataCID": "QmWAQCta6McwszXFrvJeeo9iznrEqXEFNuy9XQ951QBzJ9",
-    "tokenURI": "ipfs://QmWAQCta6McwszXFrvJeeo9iznrEqXEFNuy9XQ951QBzJ9",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdxT1tgfogxF1eC6eybAza3hhkHvQ1sV6RJ7uQax1eNex",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWAQCta6McwszXFrvJeeo9iznrEqXEFNuy9XQ951QBzJ9"
-  },
-  "description": "Meet Diamond Miner Mumu, the OG roughneck of the crypto-cave, shoveling up NFT riches in her grimy mining helmet."
+  "name": "Mumu Frens v2 #100",
+  "description": "Meet Diamond Miner Mumu, the OG roughneck of the crypto-cave, shoveling up NFT riches in her grimy mining helmet.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/100.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Crystal cave"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Mining helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Pickaxe and pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Dirty work shirt"
+    }
+  ]
 }

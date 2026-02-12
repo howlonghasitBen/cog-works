@@ -1,20 +1,24 @@
 {
-  "id": 8,
-  "name": "Chef Mumu",
-  "traits": {
-    "Background": "Restaurant kitchen",
-    "Headwear": "Chef hat",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Chef coat"
-  },
-  "ipfs": {
-    "imageCID": "QmS7gEWsaHRw5EkRgVyCUeeq95NwY2tPTX34kpw6pBUW9T",
-    "imageURI": "ipfs://QmS7gEWsaHRw5EkRgVyCUeeq95NwY2tPTX34kpw6pBUW9T",
-    "metadataCID": "QmY52Q2JMAwXfkDLdd6dESJ32LDVWoBkFSJVwgEeo4oHPM",
-    "tokenURI": "ipfs://QmY52Q2JMAwXfkDLdd6dESJ32LDVWoBkFSJVwgEeo4oHPM",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmS7gEWsaHRw5EkRgVyCUeeq95NwY2tPTX34kpw6pBUW9T",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmY52Q2JMAwXfkDLdd6dESJ32LDVWoBkFSJVwgEeo4oHPM"
-  },
-  "description": "Meet Chef Mumu, a piping hot chef with a passion for smoke-filled pipes and culinary masterpieces."
+  "name": "Mumu Frens v2 #8",
+  "description": "Meet Chef Mumu, a piping hot chef with a passion for smoke-filled pipes and culinary masterpieces.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/8.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Restaurant kitchen"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Chef hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Chef coat"
+    }
+  ]
 }

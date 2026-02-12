@@ -1,20 +1,20 @@
 {
-  "id": 42,
-  "name": "Ice Skater Mumu",
-  "traits": {
-    "Background": "Snowy cabin village",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Blue fur-trimmed jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmWkULks6aQ5NJCYWjTv74cBVSzKXDQJ3E86KVTrf4vHRf",
-    "imageURI": "ipfs://QmWkULks6aQ5NJCYWjTv74cBVSzKXDQJ3E86KVTrf4vHRf",
-    "metadataCID": "QmPYWkCcC3KtgDk4s2asr6PW3JYhDRGtJPtAyNabGiaubu",
-    "tokenURI": "ipfs://QmPYWkCcC3KtgDk4s2asr6PW3JYhDRGtJPtAyNabGiaubu",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmWkULks6aQ5NJCYWjTv74cBVSzKXDQJ3E86KVTrf4vHRf",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPYWkCcC3KtgDk4s2asr6PW3JYhDRGtJPtAyNabGiaubu"
-  },
-  "description": "In a snowy cabin village, Ice Skater Mumu smokes her pipe in a psychedelic ice rink party with flamingos."
+  "name": "Mumu Frens v2 #42",
+  "description": "In a snowy cabin village, Ice Skater Mumu smokes her pipe in a psychedelic ice rink party with flamingos.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/42.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Snowy cabin village"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Blue fur-trimmed jacket"
+    }
+  ]
 }

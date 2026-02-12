@@ -1,20 +1,20 @@
 {
-  "id": 96,
-  "name": "Stained Glass Saint Mumu",
-  "traits": {
-    "Background": "Cathedral interior",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Stained glass robes"
-  },
-  "ipfs": {
-    "imageCID": "QmTPu5Et3VjqH6TaC7sSZNxfYfbtSSGTnrPB2EY9dBZoHU",
-    "imageURI": "ipfs://QmTPu5Et3VjqH6TaC7sSZNxfYfbtSSGTnrPB2EY9dBZoHU",
-    "metadataCID": "QmTXMtChwMj6G1EjosFdsDKJ2fFe3VnkXo6S44yv9iEMFH",
-    "tokenURI": "ipfs://QmTXMtChwMj6G1EjosFdsDKJ2fFe3VnkXo6S44yv9iEMFH",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTPu5Et3VjqH6TaC7sSZNxfYfbtSSGTnrPB2EY9dBZoHU",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTXMtChwMj6G1EjosFdsDKJ2fFe3VnkXo6S44yv9iEMFH"
-  },
-  "description": "The Stained Glass Saint Mumu is a mystical, pipe-smoking sage who's been stained by more than just his robes."
+  "name": "Mumu Frens v2 #96",
+  "description": "The Stained Glass Saint Mumu is a mystical, pipe-smoking sage who's been stained by more than just his robes.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/96.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Cathedral interior"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Stained glass robes"
+    }
+  ]
 }

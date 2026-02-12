@@ -1,20 +1,24 @@
 {
-  "id": 80,
-  "name": "Ringmaster Mumu",
-  "traits": {
-    "Background": "Circus tent",
-    "Headwear": "Black top hat",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Red ringmaster suit"
-  },
-  "ipfs": {
-    "imageCID": "QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
-    "imageURI": "ipfs://QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
-    "metadataCID": "QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65",
-    "tokenURI": "ipfs://QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65"
-  },
-  "description": "Meet Ringmaster Mumu, the bewitching clown lord of chaos and smoke, where circus freaks come to play."
+  "name": "Mumu Frens v2 #80",
+  "description": "Meet Ringmaster Mumu, the bewitching clown lord of chaos and smoke, where circus freaks come to play.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/80.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Circus tent"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Black top hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Red ringmaster suit"
+    }
+  ]
 }

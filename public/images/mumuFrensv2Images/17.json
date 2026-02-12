@@ -1,20 +1,20 @@
 {
-  "id": 17,
-  "name": "Superhero Mumu",
-  "traits": {
-    "Background": "City skyline",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Superhero cape outfit"
-  },
-  "ipfs": {
-    "imageCID": "Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
-    "imageURI": "ipfs://Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
-    "metadataCID": "QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1",
-    "tokenURI": "ipfs://QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1"
-  },
-  "description": "Meet Superhero Mumu, a hero who's more concerned with blowing smoke rings than saving the city from evil."
+  "name": "Mumu Frens v2 #17",
+  "description": "Meet Superhero Mumu, a hero who's more concerned with blowing smoke rings than saving the city from evil.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/17.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "City skyline"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Superhero cape outfit"
+    }
+  ]
 }

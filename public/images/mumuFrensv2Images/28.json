@@ -1,20 +1,24 @@
 {
-  "id": 28,
-  "name": "Construction Worker Mumu",
-  "traits": {
-    "Background": "Construction site",
-    "Headwear": "White hard hat",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Hi-vis vest"
-  },
-  "ipfs": {
-    "imageCID": "QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
-    "imageURI": "ipfs://QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
-    "metadataCID": "QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu",
-    "tokenURI": "ipfs://QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu"
-  },
-  "description": "Meet Construction Worker Mumu, the dude who's building a movement one pipe at a time."
+  "name": "Mumu Frens v2 #28",
+  "description": "Meet Construction Worker Mumu, the dude who's building a movement one pipe at a time.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/28.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Construction site"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "White hard hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Hi-vis vest"
+    }
+  ]
 }

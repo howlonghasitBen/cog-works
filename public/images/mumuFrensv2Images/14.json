@@ -1,20 +1,28 @@
 {
-  "id": 14,
-  "name": "Ninja Mumu",
-  "traits": {
-    "Background": "Japanese dojo",
-    "Headwear": "Black ninja hood",
-    "Eyewear": "Orange headband",
-    "Held Item": "Katana sword",
-    "Clothes": "Black ninja garb"
-  },
-  "ipfs": {
-    "imageCID": "QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
-    "imageURI": "ipfs://QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
-    "metadataCID": "QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb",
-    "tokenURI": "ipfs://QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb"
-  },
-  "description": "Meet Ninja Mumu, a stealthy dojo diva wielding a katana and rocking an orange bandana that's totally on fleek."
+  "name": "Mumu Frens v2 #14",
+  "description": "Meet Ninja Mumu, a stealthy dojo diva wielding a katana and rocking an orange bandana that's totally on fleek.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/14.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Japanese dojo"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Black ninja hood"
+    },
+    {
+      "trait_type": "Eyewear",
+      "value": "Orange headband"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Katana sword"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Black ninja garb"
+    }
+  ]
 }

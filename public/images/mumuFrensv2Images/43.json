@@ -1,20 +1,20 @@
 {
-  "id": 43,
-  "name": "Wrestler Mumu",
-  "traits": {
-    "Background": "Wrestling arena",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Wrestling singlet"
-  },
-  "ipfs": {
-    "imageCID": "QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
-    "imageURI": "ipfs://QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
-    "metadataCID": "QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx",
-    "tokenURI": "ipfs://QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx"
-  },
-  "description": "This smokin' hot wrestler Mumu's gonna body slam his opponents and blow their minds (literally) with that vape pipe!"
+  "name": "Mumu Frens v2 #43",
+  "description": "This smokin' hot wrestler Mumu's gonna body slam his opponents and blow their minds (literally) with that vape pipe!",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/43.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Wrestling arena"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Wrestling singlet"
+    }
+  ]
 }

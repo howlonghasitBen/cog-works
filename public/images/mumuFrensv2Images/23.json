@@ -1,20 +1,20 @@
 {
-  "id": 23,
-  "name": "Scientist Mumu",
-  "traits": {
-    "Background": "Science laboratory",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "White lab coat"
-  },
-  "ipfs": {
-    "imageCID": "QmUE7jvoTiizS3aeo3cGJjzuxdm6bX7VSqagMBGc7JVPhC",
-    "imageURI": "ipfs://QmUE7jvoTiizS3aeo3cGJjzuxdm6bX7VSqagMBGc7JVPhC",
-    "metadataCID": "QmSJX1Ny5XkoFD2jBs4KbY7NVof9MW14fHcpGQEoZEie2q",
-    "tokenURI": "ipfs://QmSJX1Ny5XkoFD2jBs4KbY7NVof9MW14fHcpGQEoZEie2q",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmUE7jvoTiizS3aeo3cGJjzuxdm6bX7VSqagMBGc7JVPhC",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSJX1Ny5XkoFD2jBs4KbY7NVof9MW14fHcpGQEoZEie2q"
-  },
-  "description": "Meet Scientist Mumu, a madcap mom who's brewing up a lab-grown revolution, one pipeful of wisdom at a time."
+  "name": "Mumu Frens v2 #23",
+  "description": "Meet Scientist Mumu, a madcap mom who's brewing up a lab-grown revolution, one pipeful of wisdom at a time.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/23.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Science laboratory"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "White lab coat"
+    }
+  ]
 }

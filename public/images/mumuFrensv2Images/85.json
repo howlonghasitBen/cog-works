@@ -1,20 +1,24 @@
 {
-  "id": 85,
-  "name": "Vampire Hunter Mumu",
-  "traits": {
-    "Background": "Spooky graveyard night",
-    "Headwear": "Fedora hat",
-    "Eyewear": "None",
-    "Held Item": "Wooden stake",
-    "Clothes": "Leather trench coat"
-  },
-  "ipfs": {
-    "imageCID": "QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
-    "imageURI": "ipfs://QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
-    "metadataCID": "QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm",
-    "tokenURI": "ipfs://QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm"
-  },
-  "description": "Mumu, the OG vampire slayer, trades in her fangs for a fedora and a wooden stake, because who needs capes?"
+  "name": "Mumu Frens v2 #85",
+  "description": "Mumu, the OG vampire slayer, trades in her fangs for a fedora and a wooden stake, because who needs capes?",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/85.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Spooky graveyard night"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Fedora hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Wooden stake"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Leather trench coat"
+    }
+  ]
 }

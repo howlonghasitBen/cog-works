@@ -1,20 +1,20 @@
 {
-  "id": 26,
-  "name": "Deep Sea Angler Mumu",
-  "traits": {
-    "Background": "Deep ocean",
-    "Headwear": "Angler lure",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "None"
-  },
-  "ipfs": {
-    "imageCID": "QmX7Ab3XYby1G5kUu9mQqC9LamThrg3VLCwwAot1HrVu5s",
-    "imageURI": "ipfs://QmX7Ab3XYby1G5kUu9mQqC9LamThrg3VLCwwAot1HrVu5s",
-    "metadataCID": "QmNNuyLDjNA5XjzTVRSrsNhFd9aBLbTMieR4v8RCm1wG3L",
-    "tokenURI": "ipfs://QmNNuyLDjNA5XjzTVRSrsNhFd9aBLbTMieR4v8RCm1wG3L",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmX7Ab3XYby1G5kUu9mQqC9LamThrg3VLCwwAot1HrVu5s",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNNuyLDjNA5XjzTVRSrsNhFd9aBLbTMieR4v8RCm1wG3L"
-  },
-  "description": "The Deep Sea Angler Mumu is a mystical sea siren who smokes its worries away with an angler's sweet melody."
+  "name": "Mumu Frens v2 #26",
+  "description": "The Deep Sea Angler Mumu is a mystical sea siren who smokes its worries away with an angler's sweet melody.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/26.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Deep ocean"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Angler lure"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    }
+  ]
 }

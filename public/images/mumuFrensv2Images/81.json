@@ -1,20 +1,20 @@
 {
-  "id": 81,
-  "name": "Ghostbuster Mumu",
-  "traits": {
-    "Background": "Haunted castle",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Ghost trap",
-    "Clothes": "Ghostbusters uniform"
-  },
-  "ipfs": {
-    "imageCID": "QmQX4JX6KxnrunP5skRRiHhgnkUGznYMsnH31t7FKJHtEg",
-    "imageURI": "ipfs://QmQX4JX6KxnrunP5skRRiHhgnkUGznYMsnH31t7FKJHtEg",
-    "metadataCID": "QmVDaH1REyknqfSsLuugTkfDVaaTQB2Z7H2NgX89SgjQdm",
-    "tokenURI": "ipfs://QmVDaH1REyknqfSsLuugTkfDVaaTQB2Z7H2NgX89SgjQdm",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQX4JX6KxnrunP5skRRiHhgnkUGznYMsnH31t7FKJHtEg",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVDaH1REyknqfSsLuugTkfDVaaTQB2Z7H2NgX89SgjQdm"
-  },
-  "description": "This adorable NFT busts ghosts in style as Ghostbuster Mumu, a spook-tacular, spectral sidekick with a proton pack purse."
+  "name": "Mumu Frens v2 #81",
+  "description": "This adorable NFT busts ghosts in style as Ghostbuster Mumu, a spook-tacular, spectral sidekick with a proton pack purse.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/81.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Haunted castle"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Ghost trap"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Ghostbusters uniform"
+    }
+  ]
 }

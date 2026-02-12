@@ -1,20 +1,24 @@
 {
-  "id": 20,
-  "name": "Gladiator Mumu",
-  "traits": {
-    "Background": "Roman Colosseum",
-    "Headwear": "Horned gladiator helmet",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Gladiator armor cape"
-  },
-  "ipfs": {
-    "imageCID": "QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
-    "imageURI": "ipfs://QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
-    "metadataCID": "QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J",
-    "tokenURI": "ipfs://QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J"
-  },
-  "description": "Meet Gladiator Mumu, the battle-hardened hero who traded his sword for a smoke session in ancient Rome."
+  "name": "Mumu Frens v2 #20",
+  "description": "Meet Gladiator Mumu, the battle-hardened hero who traded his sword for a smoke session in ancient Rome.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/20.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Roman Colosseum"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Horned gladiator helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Gladiator armor cape"
+    }
+  ]
 }

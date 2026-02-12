@@ -1,20 +1,24 @@
 {
-  "id": 38,
-  "name": "Lifeguard Mumu",
-  "traits": {
-    "Background": "Beach lifeguard tower",
-    "Headwear": "Red headband",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Red lifeguard shirt"
-  },
-  "ipfs": {
-    "imageCID": "QmNqSxovYuH6j2JSCNckjmZRE6g6jUYYDNJNrwig2bEjFR",
-    "imageURI": "ipfs://QmNqSxovYuH6j2JSCNckjmZRE6g6jUYYDNJNrwig2bEjFR",
-    "metadataCID": "QmWCgGfr1NrGotyLs1PbQEYavh3F3yz2AcJRZXdhJJm4bH",
-    "tokenURI": "ipfs://QmWCgGfr1NrGotyLs1PbQEYavh3F3yz2AcJRZXdhJJm4bH",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNqSxovYuH6j2JSCNckjmZRE6g6jUYYDNJNrwig2bEjFR",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWCgGfr1NrGotyLs1PbQEYavh3F3yz2AcJRZXdhJJm4bH"
-  },
-  "description": "Lifeguard Mumu's radical beachside demeanor belies a secret vice that'll make you question all things zen and awesome."
+  "name": "Mumu Frens v2 #38",
+  "description": "Lifeguard Mumu's radical beachside demeanor belies a secret vice that'll make you question all things zen and awesome.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/38.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Beach lifeguard tower"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Red headband"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Red lifeguard shirt"
+    }
+  ]
 }

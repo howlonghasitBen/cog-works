@@ -1,20 +1,20 @@
 {
-  "id": 6,
-  "name": "Viking Mumu",
-  "traits": {
-    "Background": "Snowy mountains",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Fur coat"
-  },
-  "ipfs": {
-    "imageCID": "QmeegqyPfbszVAXWRwxwexrey8C4HJa9RzJnhvDkUNJbQg",
-    "imageURI": "ipfs://QmeegqyPfbszVAXWRwxwexrey8C4HJa9RzJnhvDkUNJbQg",
-    "metadataCID": "QmckAXqaD6eGRuD2aW9Fc82peUZYuY3ASyJA16Dk8UPebz",
-    "tokenURI": "ipfs://QmckAXqaD6eGRuD2aW9Fc82peUZYuY3ASyJA16Dk8UPebz",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmeegqyPfbszVAXWRwxwexrey8C4HJa9RzJnhvDkUNJbQg",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmckAXqaD6eGRuD2aW9Fc82peUZYuY3ASyJA16Dk8UPebz"
-  },
-  "description": "Viking Mumu, the majestic snow-dwelling, chain-smoking cat queen of the frozen fjords, slays the NFT game with her fur-tastic pipes."
+  "name": "Mumu Frens v2 #6",
+  "description": "Viking Mumu, the majestic snow-dwelling, chain-smoking cat queen of the frozen fjords, slays the NFT game with her fur-tastic pipes.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/6.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Snowy mountains"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Fur coat"
+    }
+  ]
 }

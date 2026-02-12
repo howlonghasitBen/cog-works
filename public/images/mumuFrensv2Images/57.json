@@ -1,20 +1,24 @@
 {
-  "id": 57,
-  "name": "Mad Scientist Mumu",
-  "traits": {
-    "Background": "Mad scientist laboratory",
-    "Headwear": "Goggles on forehead",
-    "Eyewear": "None",
-    "Held Item": "Green beaker",
-    "Clothes": "White lab coat"
-  },
-  "ipfs": {
-    "imageCID": "QmQY6aeVwkKbRZw9SZ7CWmNMywU6F98oxAZ9WkrYJNAPTv",
-    "imageURI": "ipfs://QmQY6aeVwkKbRZw9SZ7CWmNMywU6F98oxAZ9WkrYJNAPTv",
-    "metadataCID": "QmZMJwugSoSTzvB4SvxK2VtqUjkYdFbEf5W2kddxcePp5A",
-    "tokenURI": "ipfs://QmZMJwugSoSTzvB4SvxK2VtqUjkYdFbEf5W2kddxcePp5A",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQY6aeVwkKbRZw9SZ7CWmNMywU6F98oxAZ9WkrYJNAPTv",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZMJwugSoSTzvB4SvxK2VtqUjkYdFbEf5W2kddxcePp5A"
-  },
-  "description": "Meet Mad Scientist Mumu, where a dash of chaos meets madcap innovation in this demented lab-wearing genius NFT."
+  "name": "Mumu Frens v2 #57",
+  "description": "Meet Mad Scientist Mumu, where a dash of chaos meets madcap innovation in this demented lab-wearing genius NFT.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/57.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Mad scientist laboratory"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Goggles on forehead"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Green beaker"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "White lab coat"
+    }
+  ]
 }

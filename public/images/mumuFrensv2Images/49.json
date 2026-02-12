@@ -1,20 +1,24 @@
 {
-  "id": 49,
-  "name": "Santa Mumu",
-  "traits": {
-    "Background": "Christmas living room",
-    "Headwear": "Santa hat",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Santa suit"
-  },
-  "ipfs": {
-    "imageCID": "QmafpW2AUPAoAx9zcThr6XnCy8aNgeWqAgmDYQEmuPMinc",
-    "imageURI": "ipfs://QmafpW2AUPAoAx9zcThr6XnCy8aNgeWqAgmDYQEmuPMinc",
-    "metadataCID": "QmZmNa4mP8RU8jCYbQ6JhtbU6mY17BnPoGTjXYziXvM3Z7",
-    "tokenURI": "ipfs://QmZmNa4mP8RU8jCYbQ6JhtbU6mY17BnPoGTjXYziXvM3Z7",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmafpW2AUPAoAx9zcThr6XnCy8aNgeWqAgmDYQEmuPMinc",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZmNa4mP8RU8jCYbQ6JhtbU6mY17BnPoGTjXYziXvM3Z7"
-  },
-  "description": "Get ready for a sleigh-full of laughs as 'Santa Mumu' brings the naughty vibes with his festive pipe game!"
+  "name": "Mumu Frens v2 #49",
+  "description": "Get ready for a sleigh-full of laughs as 'Santa Mumu' brings the naughty vibes with his festive pipe game!",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/49.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Christmas living room"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Santa hat"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Santa suit"
+    }
+  ]
 }

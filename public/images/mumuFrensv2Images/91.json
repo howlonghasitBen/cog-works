@@ -1,20 +1,20 @@
 {
-  "id": 91,
-  "name": "Blacksmith Mumu",
-  "traits": {
-    "Background": "Blacksmith forge",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Hammer and pipe",
-    "Clothes": "Leather apron"
-  },
-  "ipfs": {
-    "imageCID": "QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
-    "imageURI": "ipfs://QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
-    "metadataCID": "QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM",
-    "tokenURI": "ipfs://QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM"
-  },
-  "description": "Blacksmith Mumu smashes expectations with her hammer-wielding, pipe-smoking, leather-clad awesomeness in the forge of fiery doom."
+  "name": "Mumu Frens v2 #91",
+  "description": "Blacksmith Mumu smashes expectations with her hammer-wielding, pipe-smoking, leather-clad awesomeness in the forge of fiery doom.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/91.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Blacksmith forge"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Hammer and pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Leather apron"
+    }
+  ]
 }

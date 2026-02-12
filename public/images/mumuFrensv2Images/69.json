@@ -1,20 +1,20 @@
 {
-  "id": 69,
-  "name": "Punk Rocker Mumu",
-  "traits": {
-    "Background": "Punk concert",
-    "Headwear": "Orange mohawk",
-    "Eyewear": "None",
-    "Held Item": "None",
-    "Clothes": "Spiked denim jacket"
-  },
-  "ipfs": {
-    "imageCID": "QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
-    "imageURI": "ipfs://QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
-    "metadataCID": "QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3",
-    "tokenURI": "ipfs://QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3"
-  },
-  "description": "Punk Rocker Mumu is a rager of a mumu in a spiked denim jacket, rocking an epic orange mohawk high."
+  "name": "Mumu Frens v2 #69",
+  "description": "Punk Rocker Mumu is a rager of a mumu in a spiked denim jacket, rocking an epic orange mohawk high.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/69.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Punk concert"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Orange mohawk"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Spiked denim jacket"
+    }
+  ]
 }

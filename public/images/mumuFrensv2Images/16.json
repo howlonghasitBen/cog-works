@@ -1,20 +1,20 @@
 {
-  "id": 16,
-  "name": "Vampire Mumu",
-  "traits": {
-    "Background": "Haunted castle night",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Vampire cape"
-  },
-  "ipfs": {
-    "imageCID": "QmTRXdRbK26JEPUXmxz7Y5nojU1qiMPCobvQ8aGQXt2Wsc",
-    "imageURI": "ipfs://QmTRXdRbK26JEPUXmxz7Y5nojU1qiMPCobvQ8aGQXt2Wsc",
-    "metadataCID": "QmVmDYHeG6BHXvopt24sGQV9wN8y6gzipszc8fwYyysMk1",
-    "tokenURI": "ipfs://QmVmDYHeG6BHXvopt24sGQV9wN8y6gzipszc8fwYyysMk1",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTRXdRbK26JEPUXmxz7Y5nojU1qiMPCobvQ8aGQXt2Wsc",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVmDYHeG6BHXvopt24sGQV9wN8y6gzipszc8fwYyysMk1"
-  },
-  "description": "In the spooky shadows of a haunted castle, a stylish vampire sips on a smoke-filled eternity in Mumu form."
+  "name": "Mumu Frens v2 #16",
+  "description": "In the spooky shadows of a haunted castle, a stylish vampire sips on a smoke-filled eternity in Mumu form.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/16.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Haunted castle night"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Vampire cape"
+    }
+  ]
 }

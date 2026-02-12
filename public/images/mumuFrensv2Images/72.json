@@ -1,20 +1,28 @@
 {
-  "id": 72,
-  "name": "Venetian Noble Mumu",
-  "traits": {
-    "Background": "Venice carnival",
-    "Headwear": "Feathered tricorn hat",
-    "Eyewear": "Ornate masquerade mask",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Renaissance noble attire"
-  },
-  "ipfs": {
-    "imageCID": "QmPu5i8bC3GhzZ8JwbUtBoudXCyVkP78g1LnsqoyZE68fR",
-    "imageURI": "ipfs://QmPu5i8bC3GhzZ8JwbUtBoudXCyVkP78g1LnsqoyZE68fR",
-    "metadataCID": "QmZB5T6yBvkfC77SnKZjfTb34fBRrNThUbjwBfHTLkJieb",
-    "tokenURI": "ipfs://QmZB5T6yBvkfC77SnKZjfTb34fBRrNThUbjwBfHTLkJieb",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmPu5i8bC3GhzZ8JwbUtBoudXCyVkP78g1LnsqoyZE68fR",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZB5T6yBvkfC77SnKZjfTb34fBRrNThUbjwBfHTLkJieb"
-  },
-  "description": "Meet Venetian Noble Mumu, a high-society smuggler with a penchant for pipes and elaborate heists at Carnival."
+  "name": "Mumu Frens v2 #72",
+  "description": "Meet Venetian Noble Mumu, a high-society smuggler with a penchant for pipes and elaborate heists at Carnival.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/72.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Venice carnival"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Feathered tricorn hat"
+    },
+    {
+      "trait_type": "Eyewear",
+      "value": "Ornate masquerade mask"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Renaissance noble attire"
+    }
+  ]
 }

@@ -1,20 +1,24 @@
 {
-  "id": 99,
-  "name": "Bounty Hunter Mumu",
-  "traits": {
-    "Background": "Space battle",
-    "Headwear": "Viking pilot helmet",
-    "Eyewear": "None",
-    "Held Item": "Sniper rifle",
-    "Clothes": "Space combat armor"
-  },
-  "ipfs": {
-    "imageCID": "QmZxeNKV5yv5gERsLkRjVmR1mUNJ4F7D256S2cBtLmodSb",
-    "imageURI": "ipfs://QmZxeNKV5yv5gERsLkRjVmR1mUNJ4F7D256S2cBtLmodSb",
-    "metadataCID": "QmQrpL8MVgiaa9QTbai7a34USRqNkf4SpMc7K9H1ibzQAa",
-    "tokenURI": "ipfs://QmQrpL8MVgiaa9QTbai7a34USRqNkf4SpMc7K9H1ibzQAa",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmZxeNKV5yv5gERsLkRjVmR1mUNJ4F7D256S2cBtLmodSb",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQrpL8MVgiaa9QTbai7a34USRqNkf4SpMc7K9H1ibzQAa"
-  },
-  "description": "Mumu's got more lives than a space whale has barnacles - bounty hunter or victim, she'll always land on her shield."
+  "name": "Mumu Frens v2 #99",
+  "description": "Mumu's got more lives than a space whale has barnacles - bounty hunter or victim, she'll always land on her shield.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/99.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Space battle"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Viking pilot helmet"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Sniper rifle"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Space combat armor"
+    }
+  ]
 }

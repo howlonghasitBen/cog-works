@@ -1,20 +1,24 @@
 {
-  "id": 53,
-  "name": "Aztec Priest Mumu",
-  "traits": {
-    "Background": "Aztec jungle ruins",
-    "Headwear": "Feathered headdress",
-    "Eyewear": "None",
-    "Held Item": "Ornate spear",
-    "Clothes": "Aztec tribal garments"
-  },
-  "ipfs": {
-    "imageCID": "Qme4D39M8EAc1U8RsyLNMD6BoVHJZBAHayM34J9JUQr9tM",
-    "imageURI": "ipfs://Qme4D39M8EAc1U8RsyLNMD6BoVHJZBAHayM34J9JUQr9tM",
-    "metadataCID": "QmaSNWK2NuBGyjZUhYfBrNrJfmrodgkuV1GrhmCgprKfzC",
-    "tokenURI": "ipfs://QmaSNWK2NuBGyjZUhYfBrNrJfmrodgkuV1GrhmCgprKfzC",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qme4D39M8EAc1U8RsyLNMD6BoVHJZBAHayM34J9JUQr9tM",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmaSNWK2NuBGyjZUhYfBrNrJfmrodgkuV1GrhmCgprKfzC"
-  },
-  "description": "This mystical Aztec Priest Mumu is ready to slay the blockchain with his sick feathered headdress and trusty spear!"
+  "name": "Mumu Frens v2 #53",
+  "description": "This mystical Aztec Priest Mumu is ready to slay the blockchain with his sick feathered headdress and trusty spear!",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/53.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Aztec jungle ruins"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Feathered headdress"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Ornate spear"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Aztec tribal garments"
+    }
+  ]
 }

@@ -1,20 +1,20 @@
 {
-  "id": 55,
-  "name": "Space Marine Mumu",
-  "traits": {
-    "Background": "Alien planet landscape",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Orange space suit"
-  },
-  "ipfs": {
-    "imageCID": "QmbCyCDL2FMY89cd5ta3gyAWuQzGqJgJPjFUHUcLG4KZtP",
-    "imageURI": "ipfs://QmbCyCDL2FMY89cd5ta3gyAWuQzGqJgJPjFUHUcLG4KZtP",
-    "metadataCID": "QmRezu1uBBVDLLoUCfqQTZ6ET6D4CzQod1fF9H3nfijdqX",
-    "tokenURI": "ipfs://QmRezu1uBBVDLLoUCfqQTZ6ET6D4CzQod1fF9H3nfijdqX",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbCyCDL2FMY89cd5ta3gyAWuQzGqJgJPjFUHUcLG4KZtP",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRezu1uBBVDLLoUCfqQTZ6ET6D4CzQod1fF9H3nfijdqX"
-  },
-  "description": "Space Marine Mumu, galaxy's most epic stoner, smokes his way through hostile alien landscapes in style and dreadlocks."
+  "name": "Mumu Frens v2 #55",
+  "description": "Space Marine Mumu, galaxy's most epic stoner, smokes his way through hostile alien landscapes in style and dreadlocks.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/55.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Alien planet landscape"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Orange space suit"
+    }
+  ]
 }

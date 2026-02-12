@@ -1,20 +1,24 @@
 {
-  "id": 54,
-  "name": "Bard Mumu",
-  "traits": {
-    "Background": "Medieval tavern",
-    "Headwear": "Feathered cap",
-    "Eyewear": "None",
-    "Held Item": "Lute",
-    "Clothes": "Green bard tunic"
-  },
-  "ipfs": {
-    "imageCID": "QmQakqoRGVtoogAtCJyp2tG5Gp32xfbcaxNTect14oGG8o",
-    "imageURI": "ipfs://QmQakqoRGVtoogAtCJyp2tG5Gp32xfbcaxNTect14oGG8o",
-    "metadataCID": "QmYqAUctb225NwuAtPLzZS9GxHYJ7ffLeczUBLMjEmLP8S",
-    "tokenURI": "ipfs://QmYqAUctb225NwuAtPLzZS9GxHYJ7ffLeczUBLMjEmLP8S",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQakqoRGVtoogAtCJyp2tG5Gp32xfbcaxNTect14oGG8o",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYqAUctb225NwuAtPLzZS9GxHYJ7ffLeczUBLMjEmLP8S"
-  },
-  "description": "Meet Bard Mumu, medieval tavern crooner extraordinaire, strumming lutes for coin and ale at the local green-tunicked hotspot."
+  "name": "Mumu Frens v2 #54",
+  "description": "Meet Bard Mumu, medieval tavern crooner extraordinaire, strumming lutes for coin and ale at the local green-tunicked hotspot.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/54.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Medieval tavern"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Feathered cap"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Lute"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Green bard tunic"
+    }
+  ]
 }

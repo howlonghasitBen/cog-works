@@ -1,20 +1,20 @@
 {
-  "id": 10,
-  "name": "Boxer Mumu",
-  "traits": {
-    "Background": "Boxing ring arena",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Red boxing robe"
-  },
-  "ipfs": {
-    "imageCID": "QmXpFKBDyeHwqjmXmTrfJ7XKRcjyHmJC3kmnepphdo8HkR",
-    "imageURI": "ipfs://QmXpFKBDyeHwqjmXmTrfJ7XKRcjyHmJC3kmnepphdo8HkR",
-    "metadataCID": "QmajQs27RUVFs3mc6RHR2avhgoSMDzFT3LNQRs4p1D3J5N",
-    "tokenURI": "ipfs://QmajQs27RUVFs3mc6RHR2avhgoSMDzFT3LNQRs4p1D3J5N",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmXpFKBDyeHwqjmXmTrfJ7XKRcjyHmJC3kmnepphdo8HkR",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmajQs27RUVFs3mc6RHR2avhgoSMDzFT3LNQRs4p1D3J5N"
-  },
-  "description": "Boxer Mumu is a pugilistic pirate of style, puffing on his trusty pipe in the crimson boxing ring."
+  "name": "Mumu Frens v2 #10",
+  "description": "Boxer Mumu is a pugilistic pirate of style, puffing on his trusty pipe in the crimson boxing ring.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/10.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Boxing ring arena"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Red boxing robe"
+    }
+  ]
 }

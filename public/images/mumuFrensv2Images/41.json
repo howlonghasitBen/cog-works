@@ -1,20 +1,20 @@
 {
-  "id": 41,
-  "name": "Lumberjack Mumu",
-  "traits": {
-    "Background": "Cozy log cabin",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Red plaid flannel"
-  },
-  "ipfs": {
-    "imageCID": "Qmbp1ZvGZeJmZ9iNXJNYRxryjJxz6inhJj2F73y7Mjp5Wk",
-    "imageURI": "ipfs://Qmbp1ZvGZeJmZ9iNXJNYRxryjJxz6inhJj2F73y7Mjp5Wk",
-    "metadataCID": "QmPcx2ckCWQtPWm3BLzPyETw6xVVYPoR6WeZ53EM7rAJne",
-    "tokenURI": "ipfs://QmPcx2ckCWQtPWm3BLzPyETw6xVVYPoR6WeZ53EM7rAJne",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmbp1ZvGZeJmZ9iNXJNYRxryjJxz6inhJj2F73y7Mjp5Wk",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPcx2ckCWQtPWm3BLzPyETw6xVVYPoR6WeZ53EM7rAJne"
-  },
-  "description": "Lumberjack Mumu is a lumbering sweetheart with a love for smoke-filled vibes and cozy cabin shenanigans."
+  "name": "Mumu Frens v2 #41",
+  "description": "Lumberjack Mumu is a lumbering sweetheart with a love for smoke-filled vibes and cozy cabin shenanigans.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/41.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Cozy log cabin"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Red plaid flannel"
+    }
+  ]
 }

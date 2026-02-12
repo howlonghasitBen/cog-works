@@ -1,20 +1,20 @@
 {
-  "id": 7,
-  "name": "Golden Tuxedo Mumu",
-  "traits": {
-    "Background": "Elegant manor room",
-    "Headwear": "None",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Gold suit and bowtie"
-  },
-  "ipfs": {
-    "imageCID": "QmQQGhXJQGyngWhCFPxFdFHykVfZbaP2LvjpGDPouBzC4z",
-    "imageURI": "ipfs://QmQQGhXJQGyngWhCFPxFdFHykVfZbaP2LvjpGDPouBzC4z",
-    "metadataCID": "QmW8ShgfEpMMyMFJiFgkpbS3vt9drdgMp9YH8SRusJQgdo",
-    "tokenURI": "ipfs://QmW8ShgfEpMMyMFJiFgkpbS3vt9drdgMp9YH8SRusJQgdo",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQQGhXJQGyngWhCFPxFdFHykVfZbaP2LvjpGDPouBzC4z",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmW8ShgfEpMMyMFJiFgkpbS3vt9drdgMp9YH8SRusJQgdo"
-  },
-  "description": "Meet Golden Tuxedo Mumu, the refined high-society cat who's always puffing on his pipe in style."
+  "name": "Mumu Frens v2 #7",
+  "description": "Meet Golden Tuxedo Mumu, the refined high-society cat who's always puffing on his pipe in style.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/7.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Elegant manor room"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Gold suit and bowtie"
+    }
+  ]
 }

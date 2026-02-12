@@ -1,20 +1,24 @@
 {
-  "id": 97,
-  "name": "Roman Gladiator Mumu",
-  "traits": {
-    "Background": "Roman Colosseum",
-    "Headwear": "Laurel wreath",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Gladiator armor"
-  },
-  "ipfs": {
-    "imageCID": "QmRHYAmDU5LqmmNFwzWA3wVGUEMKHFjGroJQeaJHvKGKz6",
-    "imageURI": "ipfs://QmRHYAmDU5LqmmNFwzWA3wVGUEMKHFjGroJQeaJHvKGKz6",
-    "metadataCID": "QmayQrzxZrKf4esSDn3bVZRSPQvBjgLwMVr31Zp1jtx2e7",
-    "tokenURI": "ipfs://QmayQrzxZrKf4esSDn3bVZRSPQvBjgLwMVr31Zp1jtx2e7",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmRHYAmDU5LqmmNFwzWA3wVGUEMKHFjGroJQeaJHvKGKz6",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmayQrzxZrKf4esSDn3bVZRSPQvBjgLwMVr31Zp1jtx2e7"
-  },
-  "description": "Meet Roman Gladiator Mumu, a mumbling, pipe-smoking champion of the Colosseum who's more concerned with his next smoke break than conquest."
+  "name": "Mumu Frens v2 #97",
+  "description": "Meet Roman Gladiator Mumu, a mumbling, pipe-smoking champion of the Colosseum who's more concerned with his next smoke break than conquest.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/97.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Roman Colosseum"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Laurel wreath"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Gladiator armor"
+    }
+  ]
 }

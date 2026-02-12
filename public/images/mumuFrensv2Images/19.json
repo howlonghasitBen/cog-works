@@ -1,20 +1,24 @@
 {
-  "id": 19,
-  "name": "Pharaoh Mumu",
-  "traits": {
-    "Background": "Egyptian pyramid",
-    "Headwear": "Pharaoh headdress",
-    "Eyewear": "None",
-    "Held Item": "Smoking pipe",
-    "Clothes": "Egyptian collar necklace"
-  },
-  "ipfs": {
-    "imageCID": "QmXt531A9NGjBwVfQcXPyyxdzGQEcYy7ExL1zTkaPhASUG",
-    "imageURI": "ipfs://QmXt531A9NGjBwVfQcXPyyxdzGQEcYy7ExL1zTkaPhASUG",
-    "metadataCID": "Qmec4C1KQ3VaGLSEH323hGVxL2Z6dSEHTCJjowh7mWVXQE",
-    "tokenURI": "ipfs://Qmec4C1KQ3VaGLSEH323hGVxL2Z6dSEHTCJjowh7mWVXQE",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmXt531A9NGjBwVfQcXPyyxdzGQEcYy7ExL1zTkaPhASUG",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qmec4C1KQ3VaGLSEH323hGVxL2Z6dSEHTCJjowh7mWVXQE"
-  },
-  "description": "Meet Pharaoh Mumu, the high-rolling, pipe-smoking king of the ancient world, where mysticism meets meme culture."
+  "name": "Mumu Frens v2 #19",
+  "description": "Meet Pharaoh Mumu, the high-rolling, pipe-smoking king of the ancient world, where mysticism meets meme culture.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/19.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Egyptian pyramid"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Pharaoh headdress"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Smoking pipe"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Egyptian collar necklace"
+    }
+  ]
 }

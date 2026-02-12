@@ -1,20 +1,20 @@
 {
-  "id": 61,
-  "name": "Crystal Shaman Mumu",
-  "traits": {
-    "Background": "Crystal cave",
-    "Headwear": "Crystal headdress",
-    "Eyewear": "None",
-    "Held Item": "Geode staff and pipe",
-    "Clothes": "None"
-  },
-  "ipfs": {
-    "imageCID": "QmNYA8hK83a7kWYjwL5FXtY64uHJUKoVzmCEQKyXjHygbh",
-    "imageURI": "ipfs://QmNYA8hK83a7kWYjwL5FXtY64uHJUKoVzmCEQKyXjHygbh",
-    "metadataCID": "QmPAMWQ6ounnHYkbKpZou3t43o5KdmqQBeGeSigZDTDBd3",
-    "tokenURI": "ipfs://QmPAMWQ6ounnHYkbKpZou3t43o5KdmqQBeGeSigZDTDBd3",
-    "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNYA8hK83a7kWYjwL5FXtY64uHJUKoVzmCEQKyXjHygbh",
-    "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPAMWQ6ounnHYkbKpZou3t43o5KdmqQBeGeSigZDTDBd3"
-  },
-  "description": "This mystical Crystal Shaman Mumu is channeling ancient wisdom while sipping sacred tea from her trusty geode staff cup."
+  "name": "Mumu Frens v2 #61",
+  "description": "This mystical Crystal Shaman Mumu is channeling ancient wisdom while sipping sacred tea from her trusty geode staff cup.",
+  "external_url": "https://howlonghasitben.github.io/cog-works/",
+  "image": "ipfs://PLACEHOLDER/61.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Crystal cave"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Crystal headdress"
+    },
+    {
+      "trait_type": "Held Item",
+      "value": "Geode staff and pipe"
+    }
+  ]
 }

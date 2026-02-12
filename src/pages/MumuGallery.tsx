@@ -3,10 +3,11 @@ import { useState, useEffect, useMemo } from 'react'
 
 interface MumuItem {
   file: string
-  id?: number
   name?: string
   description?: string
-  traits?: Record<string, string>
+  external_url?: string
+  image?: string
+  attributes?: Array<{ trait_type: string; value: string }>
 }
 
 export default function MumuGallery() {
@@ -28,7 +29,7 @@ export default function MumuGallery() {
     return items.filter(m =>
       (m.name || '').toLowerCase().includes(q) ||
       (m.file || '').toLowerCase().includes(q) ||
-      String(m.id || '').includes(q)
+      (m.attributes || []).some(a => a.value.toLowerCase().includes(q))
     )
   }, [search, items])
 
@@ -111,7 +112,7 @@ export default function MumuGallery() {
                 textAlign: 'center',
                 whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
               }}>
-                {item.name || `#${item.id}`}
+                {item.name || item.file}
               </p>
             </div>
           </div>
@@ -162,15 +163,8 @@ export default function MumuGallery() {
                 margin: 0, fontSize: 18, fontWeight: 800,
                 color: '#c8a55a', fontFamily: "'Cinzel', serif",
               }}>
-                {selected.name || `Mumu #${selected.id}`}
+                {selected.name || selected.file}
               </h2>
-              <p style={{
-                margin: 0, fontSize: 12, color: '#7a7d8a',
-                fontFamily: "'DM Mono', monospace",
-              }}>
-                #{String(selected.id || 0).padStart(3, '0')}
-              </p>
-
               {selected.description && (
                 <p style={{
                   margin: 0, fontSize: 12, color: '#a0a3b0',
@@ -181,7 +175,7 @@ export default function MumuGallery() {
                 </p>
               )}
 
-              {selected.traits && Object.keys(selected.traits).length > 0 && (
+              {selected.attributes && selected.attributes.length > 0 && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <h3 style={{
                     margin: 0, fontSize: 12, fontWeight: 700,
@@ -189,10 +183,10 @@ export default function MumuGallery() {
                     textTransform: 'uppercase', letterSpacing: '0.1em',
                     paddingBottom: 6, borderBottom: '1px solid #3a3d4a',
                   }}>
-                    Traits
+                    Attributes
                   </h3>
-                  {Object.entries(selected.traits).map(([key, val]) => (
-                    <div key={key} style={{
+                  {selected.attributes.map((attr, idx) => (
+                    <div key={idx} style={{
                       display: 'flex', flexDirection: 'column', gap: 2,
                     }}>
                       <span style={{
@@ -200,7 +194,7 @@ export default function MumuGallery() {
                         fontFamily: "'DM Mono', monospace",
                         textTransform: 'uppercase', letterSpacing: '0.05em',
                       }}>
-                        {key}
+                        {attr.trait_type}
                       </span>
                       <span style={{
                         fontSize: 13, color: '#d0d0d0',
@@ -210,7 +204,7 @@ export default function MumuGallery() {
                         border: '1px solid #3a3d4a',
                         borderRadius: 2,
                       }}>
-                        {val}
+                        {attr.value}
                       </span>
                     </div>
                   ))}
