@@ -1,23 +1,35 @@
 /** MumuGallery — Collection gallery for mumu-frens v2 */
-import { useState, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
-const TOTAL = 100
-const images = Array.from({ length: TOTAL }, (_, i) => ({
-  id: i + 1,
-  src: `/images/mumuFrensv2Images/mumu-${String(i + 1).padStart(3, '0')}.png`,
-  name: `Mumu #${i + 1}`,
-}))
+interface MumuItem {
+  file: string
+  id?: number
+  name?: string
+  traits?: Record<string, string>
+}
 
 export default function MumuGallery() {
-  const [selected, setSelected] = useState<number | null>(null)
+  const [items, setItems] = useState<MumuItem[]>([])
+  const [selected, setSelected] = useState<MumuItem | null>(null)
   const [search, setSearch] = useState('')
-  const filtered = useMemo(() => {
-    if (!search) return images
-    const q = search.toLowerCase()
-    return images.filter(img => img.name.toLowerCase().includes(q) || String(img.id).includes(q))
-  }, [search])
 
-  const selectedImg = images.find(i => i.id === selected)
+  // Load manifest
+  useEffect(() => {
+    fetch('/images/mumuFrensv2Images/manifest.json')
+      .then(r => r.json())
+      .then((data: MumuItem[]) => setItems(data))
+      .catch(() => {})
+  }, [])
+
+  const filtered = useMemo(() => {
+    if (!search) return items
+    const q = search.toLowerCase()
+    return items.filter(m =>
+      (m.name || '').toLowerCase().includes(q) ||
+      (m.file || '').toLowerCase().includes(q) ||
+      String(m.id || '').includes(q)
+    )
+  }, [search, items])
 
   return (
     <div style={{ marginTop: 60, minHeight: '100vh', width: '100%', padding: '24px 40px 80px' }}>
@@ -32,21 +44,21 @@ export default function MumuGallery() {
           fontFamily: "'Cinzel', serif", color: '#c8a55a',
           letterSpacing: '0.1em', textShadow: '0 1px 3px rgba(0,0,0,0.6)',
         }}>
-          Mumu Frens Collection
+          Mumu Frens v2
         </h1>
         <span style={{
           fontSize: 13, fontFamily: "'DM Mono', monospace",
           color: '#7a7d8a',
         }}>
-          {filtered.length} / {TOTAL}
+          {filtered.length} / {items.length}
         </span>
       </div>
 
-      {/* Controls */}
+      {/* Search */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 20, alignItems: 'center' }}>
         <input
           type="text"
-          placeholder="Search by # ..."
+          placeholder="Search by name or # ..."
           value={search}
           onChange={e => setSearch(e.target.value)}
           style={{
@@ -61,20 +73,20 @@ export default function MumuGallery() {
       {/* Grid */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
         gap: 12,
       }}>
-        {filtered.map(img => (
+        {filtered.map(item => (
           <div
-            key={img.id}
-            onClick={() => setSelected(img.id)}
+            key={item.file}
+            onClick={() => setSelected(item)}
             style={{
               cursor: 'pointer',
               borderRadius: 4,
               overflow: 'hidden',
-              border: `2px solid ${selected === img.id ? '#c8a55a' : '#3a3d4a'}`,
+              border: `2px solid ${selected?.file === item.file ? '#c8a55a' : '#3a3d4a'}`,
               background: 'linear-gradient(180deg, #2a2d3a, #1a1d2e)',
-              boxShadow: selected === img.id
+              boxShadow: selected?.file === item.file
                 ? '0 0 15px rgba(200,165,90,0.3)'
                 : '0 2px 8px rgba(0,0,0,0.3)',
               transition: 'all 0.2s ease',
@@ -82,8 +94,8 @@ export default function MumuGallery() {
           >
             <div style={{ aspectRatio: '1/1', overflow: 'hidden' }}>
               <img
-                src={img.src}
-                alt={img.name}
+                src={`/images/mumuFrensv2Images/${item.file}`}
+                alt={item.name || item.file}
                 loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
@@ -96,16 +108,17 @@ export default function MumuGallery() {
                 margin: 0, fontSize: 11, fontWeight: 700,
                 color: '#d0d0d0', fontFamily: "'Cinzel', serif",
                 textAlign: 'center',
+                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
               }}>
-                {img.name}
+                {item.name || `#${item.id}`}
               </p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Lightbox */}
-      {selectedImg && (
+      {/* Lightbox with metadata sidebar */}
+      {selected && (
         <div
           onClick={() => setSelected(null)}
           style={{
@@ -113,43 +126,106 @@ export default function MumuGallery() {
             background: 'rgba(0,0,0,0.85)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: 'pointer',
+            padding: 40,
           }}
         >
           <div
             onClick={e => e.stopPropagation()}
             style={{
-              maxWidth: 600, maxHeight: '85vh',
+              display: 'flex',
+              maxWidth: 900, maxHeight: '85vh',
               border: '3px solid #c8a55a',
               borderRadius: 8,
               overflow: 'hidden',
               boxShadow: '0 0 40px rgba(200,165,90,0.3)',
               background: '#1a1d2e',
+              cursor: 'default',
             }}
           >
-            <img
-              src={selectedImg.src}
-              alt={selectedImg.name}
-              style={{ width: '100%', height: 'auto', display: 'block' }}
-            />
+            {/* Image */}
+            <div style={{ flex: '1 1 60%', minWidth: 0, display: 'flex', alignItems: 'center', background: '#111' }}>
+              <img
+                src={`/images/mumuFrensv2Images/${selected.file}`}
+                alt={selected.name || selected.file}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </div>
+            {/* Metadata sidebar */}
             <div style={{
-              padding: '12px 16px',
-              borderTop: '2px solid #3a3d4a',
-              textAlign: 'center',
+              flex: '0 0 260px', padding: '24px 20px',
+              borderLeft: '2px solid #3a3d4a',
+              overflowY: 'auto',
+              display: 'flex', flexDirection: 'column', gap: 16,
             }}>
-              <p style={{
-                margin: 0, fontSize: 16, fontWeight: 800,
+              <h2 style={{
+                margin: 0, fontSize: 18, fontWeight: 800,
                 color: '#c8a55a', fontFamily: "'Cinzel', serif",
               }}>
-                {selectedImg.name}
+                {selected.name || `Mumu #${selected.id}`}
+              </h2>
+              <p style={{
+                margin: 0, fontSize: 12, color: '#7a7d8a',
+                fontFamily: "'DM Mono', monospace",
+              }}>
+                #{String(selected.id || 0).padStart(3, '0')}
               </p>
+
+              {selected.traits && Object.keys(selected.traits).length > 0 && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <h3 style={{
+                    margin: 0, fontSize: 12, fontWeight: 700,
+                    color: '#8a8d9a', fontFamily: "'DM Mono', monospace",
+                    textTransform: 'uppercase', letterSpacing: '0.1em',
+                    paddingBottom: 6, borderBottom: '1px solid #3a3d4a',
+                  }}>
+                    Traits
+                  </h3>
+                  {Object.entries(selected.traits).map(([key, val]) => (
+                    <div key={key} style={{
+                      display: 'flex', flexDirection: 'column', gap: 2,
+                    }}>
+                      <span style={{
+                        fontSize: 10, color: '#6a6d7a',
+                        fontFamily: "'DM Mono', monospace",
+                        textTransform: 'uppercase', letterSpacing: '0.05em',
+                      }}>
+                        {key}
+                      </span>
+                      <span style={{
+                        fontSize: 13, color: '#d0d0d0',
+                        fontFamily: "'DM Mono', monospace",
+                        padding: '4px 8px',
+                        background: '#2a2d3a',
+                        border: '1px solid #3a3d4a',
+                        borderRadius: 2,
+                      }}>
+                        {val}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Close button */}
+              <button
+                onClick={() => setSelected(null)}
+                style={{
+                  marginTop: 'auto', padding: '8px 16px',
+                  background: '#2a2d3a', border: '1px solid #4a4d5a',
+                  color: '#c8a55a', fontSize: 12,
+                  fontFamily: "'DM Mono', monospace",
+                  cursor: 'pointer', borderRadius: 2,
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#3a3d4a')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#2a2d3a')}
+              >
+                CLOSE
+              </button>
             </div>
           </div>
         </div>
       )}
-
-      <style>{`
-        @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&display=swap");
-      `}</style>
     </div>
   )
 }

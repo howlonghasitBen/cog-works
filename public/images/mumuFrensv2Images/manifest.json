@@ -1,0 +1,1962 @@
+[
+  {
+    "file": "mumu-001_Cowboy.png",
+    "id": 1,
+    "name": "Cowboy Mumu",
+    "traits": {
+      "Background": "Desert sunset",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Plaid shirt and vest"
+    }
+  },
+  {
+    "file": "mumu-002_Astronaut.png",
+    "id": 2,
+    "name": "Astronaut Mumu",
+    "traits": {
+      "Background": "Outer space",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "NASA spacesuit"
+    }
+  },
+  {
+    "file": "mumu-003_Pirate_Captain.png",
+    "id": 3,
+    "name": "Pirate Captain Mumu",
+    "traits": {
+      "Background": "Pirate ship deck",
+      "Headwear": "Pirate tricorn hat",
+      "Eyewear": "None",
+      "Held Item": "Cutlass and pipe",
+      "Clothes": "Pirate captain coat"
+    }
+  },
+  {
+    "file": "mumu-004_Wizard.png",
+    "id": 4,
+    "name": "Wizard Mumu",
+    "traits": {
+      "Background": "Castle wizard tower",
+      "Headwear": "Runic hood",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Blue wizard robe"
+    }
+  },
+  {
+    "file": "mumu-005_Samurai.png",
+    "id": 5,
+    "name": "Samurai Mumu",
+    "traits": {
+      "Background": "Cherry blossom garden",
+      "Headwear": "Samurai kabuto helmet",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Orange samurai armor"
+    }
+  },
+  {
+    "file": "mumu-006_Viking.png",
+    "id": 6,
+    "name": "Viking Mumu",
+    "traits": {
+      "Background": "Snowy mountains",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Fur coat"
+    },
+    "ipfs": {
+      "imageCID": "QmeegqyPfbszVAXWRwxwexrey8C4HJa9RzJnhvDkUNJbQg",
+      "imageURI": "ipfs://QmeegqyPfbszVAXWRwxwexrey8C4HJa9RzJnhvDkUNJbQg",
+      "metadataCID": "QmckAXqaD6eGRuD2aW9Fc82peUZYuY3ASyJA16Dk8UPebz",
+      "tokenURI": "ipfs://QmckAXqaD6eGRuD2aW9Fc82peUZYuY3ASyJA16Dk8UPebz",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmeegqyPfbszVAXWRwxwexrey8C4HJa9RzJnhvDkUNJbQg",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmckAXqaD6eGRuD2aW9Fc82peUZYuY3ASyJA16Dk8UPebz"
+    }
+  },
+  {
+    "file": "mumu-007_Golden_Tuxedo.png",
+    "id": 7,
+    "name": "Golden Tuxedo Mumu",
+    "traits": {
+      "Background": "Elegant manor room",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Gold suit and bowtie"
+    },
+    "ipfs": {
+      "imageCID": "QmQQGhXJQGyngWhCFPxFdFHykVfZbaP2LvjpGDPouBzC4z",
+      "imageURI": "ipfs://QmQQGhXJQGyngWhCFPxFdFHykVfZbaP2LvjpGDPouBzC4z",
+      "metadataCID": "QmW8ShgfEpMMyMFJiFgkpbS3vt9drdgMp9YH8SRusJQgdo",
+      "tokenURI": "ipfs://QmW8ShgfEpMMyMFJiFgkpbS3vt9drdgMp9YH8SRusJQgdo",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQQGhXJQGyngWhCFPxFdFHykVfZbaP2LvjpGDPouBzC4z",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmW8ShgfEpMMyMFJiFgkpbS3vt9drdgMp9YH8SRusJQgdo"
+    }
+  },
+  {
+    "file": "mumu-008_Chef.png",
+    "id": 8,
+    "name": "Chef Mumu",
+    "traits": {
+      "Background": "Restaurant kitchen",
+      "Headwear": "Chef hat",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Chef coat"
+    },
+    "ipfs": {
+      "imageCID": "QmS7gEWsaHRw5EkRgVyCUeeq95NwY2tPTX34kpw6pBUW9T",
+      "imageURI": "ipfs://QmS7gEWsaHRw5EkRgVyCUeeq95NwY2tPTX34kpw6pBUW9T",
+      "metadataCID": "QmY52Q2JMAwXfkDLdd6dESJ32LDVWoBkFSJVwgEeo4oHPM",
+      "tokenURI": "ipfs://QmY52Q2JMAwXfkDLdd6dESJ32LDVWoBkFSJVwgEeo4oHPM",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmS7gEWsaHRw5EkRgVyCUeeq95NwY2tPTX34kpw6pBUW9T",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmY52Q2JMAwXfkDLdd6dESJ32LDVWoBkFSJVwgEeo4oHPM"
+    }
+  },
+  {
+    "file": "mumu-009_DJ.png",
+    "id": 9,
+    "name": "DJ Mumu",
+    "traits": {
+      "Background": "Neon DJ club",
+      "Headwear": "Headphones",
+      "Eyewear": "None",
+      "Held Item": "Microphone",
+      "Clothes": "Neon geometric hoodie"
+    },
+    "ipfs": {
+      "imageCID": "QmVe4DJZeKhcs3MdCeFCFSfT9R19WHEAKdvBbKRe57qvtf",
+      "imageURI": "ipfs://QmVe4DJZeKhcs3MdCeFCFSfT9R19WHEAKdvBbKRe57qvtf",
+      "metadataCID": "QmQngM9pHJxk8VNpgVoZSTTSqDvGxUksHuD3JMdW3ifFqY",
+      "tokenURI": "ipfs://QmQngM9pHJxk8VNpgVoZSTTSqDvGxUksHuD3JMdW3ifFqY",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVe4DJZeKhcs3MdCeFCFSfT9R19WHEAKdvBbKRe57qvtf",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQngM9pHJxk8VNpgVoZSTTSqDvGxUksHuD3JMdW3ifFqY"
+    }
+  },
+  {
+    "file": "mumu-010_Boxer.png",
+    "id": 10,
+    "name": "Boxer Mumu",
+    "traits": {
+      "Background": "Boxing ring arena",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Red boxing robe"
+    },
+    "ipfs": {
+      "imageCID": "QmXpFKBDyeHwqjmXmTrfJ7XKRcjyHmJC3kmnepphdo8HkR",
+      "imageURI": "ipfs://QmXpFKBDyeHwqjmXmTrfJ7XKRcjyHmJC3kmnepphdo8HkR",
+      "metadataCID": "QmajQs27RUVFs3mc6RHR2avhgoSMDzFT3LNQRs4p1D3J5N",
+      "tokenURI": "ipfs://QmajQs27RUVFs3mc6RHR2avhgoSMDzFT3LNQRs4p1D3J5N",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmXpFKBDyeHwqjmXmTrfJ7XKRcjyHmJC3kmnepphdo8HkR",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmajQs27RUVFs3mc6RHR2avhgoSMDzFT3LNQRs4p1D3J5N"
+    }
+  },
+  {
+    "file": "mumu-011_Surfer.png",
+    "id": 11,
+    "name": "Surfer Mumu",
+    "traits": {
+      "Background": "Sunset beach",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Black wetsuit"
+    },
+    "ipfs": {
+      "imageCID": "QmdvjwLLh8d24xLtmoH1zq21NBfZkJ5rxi5Jn84FheZkfs",
+      "imageURI": "ipfs://QmdvjwLLh8d24xLtmoH1zq21NBfZkJ5rxi5Jn84FheZkfs",
+      "metadataCID": "QmbmgAb83VPPahgZ4wojXSRXvte6KAfYyR7nF4VdfW1WMv",
+      "tokenURI": "ipfs://QmbmgAb83VPPahgZ4wojXSRXvte6KAfYyR7nF4VdfW1WMv",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdvjwLLh8d24xLtmoH1zq21NBfZkJ5rxi5Jn84FheZkfs",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbmgAb83VPPahgZ4wojXSRXvte6KAfYyR7nF4VdfW1WMv"
+    }
+  },
+  {
+    "file": "mumu-012_Skater.png",
+    "id": 12,
+    "name": "Skater Mumu",
+    "traits": {
+      "Background": "Graffiti skatepark",
+      "Headwear": "Gray hoodie",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Gray hoodie"
+    },
+    "ipfs": {
+      "imageCID": "QmS96k95bjhGU74FpBSyBq7uUHSHaYWHNptZV3vtMridgt",
+      "imageURI": "ipfs://QmS96k95bjhGU74FpBSyBq7uUHSHaYWHNptZV3vtMridgt",
+      "metadataCID": "QmaBEUyq8Xf7ehqJ1ApP68oifHjkmZJy8xtwkWqKwaDSxE",
+      "tokenURI": "ipfs://QmaBEUyq8Xf7ehqJ1ApP68oifHjkmZJy8xtwkWqKwaDSxE",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmS96k95bjhGU74FpBSyBq7uUHSHaYWHNptZV3vtMridgt",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmaBEUyq8Xf7ehqJ1ApP68oifHjkmZJy8xtwkWqKwaDSxE"
+    }
+  },
+  {
+    "file": "mumu-013_Sumo_Wrestler.png",
+    "id": 13,
+    "name": "Sumo Wrestler Mumu",
+    "traits": {
+      "Background": "Sumo wrestling arena",
+      "Headwear": "Samurai topknot",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Yokozuna rope"
+    },
+    "ipfs": {
+      "imageCID": "QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
+      "imageURI": "ipfs://QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
+      "metadataCID": "QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v",
+      "tokenURI": "ipfs://QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQd5NSz1TmojJUQk3t577RiqBMXBPey8uzn8BMn9f3bd6",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmcigKzy3Tuudn9t2o98bYzbAHUReZ7pivZkmpwMQAjV7v"
+    }
+  },
+  {
+    "file": "mumu-014_Ninja.png",
+    "id": 14,
+    "name": "Ninja Mumu",
+    "traits": {
+      "Background": "Japanese dojo",
+      "Headwear": "Black ninja hood",
+      "Eyewear": "Orange headband",
+      "Held Item": "Katana sword",
+      "Clothes": "Black ninja garb"
+    },
+    "ipfs": {
+      "imageCID": "QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
+      "imageURI": "ipfs://QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
+      "metadataCID": "QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb",
+      "tokenURI": "ipfs://QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbphAY5VznxHhLyxSZBCKWrDKFXYGtAEppKKsj3Zg5ppq",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWgCNQMzTuj5AKjLqmnYTA5ACzyK9ALSuev2cqPzNuRUb"
+    }
+  },
+  {
+    "file": "mumu-015_Mecha.png",
+    "id": 15,
+    "name": "Mecha Mumu",
+    "traits": {
+      "Background": "Cyberpunk city",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Futuristic mech armor"
+    },
+    "ipfs": {
+      "imageCID": "QmTyu9noGqm15ysivu7CCZ28V86Nto8MEPJmoQRki698ve",
+      "imageURI": "ipfs://QmTyu9noGqm15ysivu7CCZ28V86Nto8MEPJmoQRki698ve",
+      "metadataCID": "QmbxG8R3xqjmPhhbQGtjUMnU19p9ZxAq93zcafbqgyjJEx",
+      "tokenURI": "ipfs://QmbxG8R3xqjmPhhbQGtjUMnU19p9ZxAq93zcafbqgyjJEx",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTyu9noGqm15ysivu7CCZ28V86Nto8MEPJmoQRki698ve",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbxG8R3xqjmPhhbQGtjUMnU19p9ZxAq93zcafbqgyjJEx"
+    }
+  },
+  {
+    "file": "mumu-016_Vampire.png",
+    "id": 16,
+    "name": "Vampire Mumu",
+    "traits": {
+      "Background": "Haunted castle night",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Vampire cape"
+    },
+    "ipfs": {
+      "imageCID": "QmTRXdRbK26JEPUXmxz7Y5nojU1qiMPCobvQ8aGQXt2Wsc",
+      "imageURI": "ipfs://QmTRXdRbK26JEPUXmxz7Y5nojU1qiMPCobvQ8aGQXt2Wsc",
+      "metadataCID": "QmVmDYHeG6BHXvopt24sGQV9wN8y6gzipszc8fwYyysMk1",
+      "tokenURI": "ipfs://QmVmDYHeG6BHXvopt24sGQV9wN8y6gzipszc8fwYyysMk1",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTRXdRbK26JEPUXmxz7Y5nojU1qiMPCobvQ8aGQXt2Wsc",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVmDYHeG6BHXvopt24sGQV9wN8y6gzipszc8fwYyysMk1"
+    }
+  },
+  {
+    "file": "mumu-017_Superhero.png",
+    "id": 17,
+    "name": "Superhero Mumu",
+    "traits": {
+      "Background": "City skyline",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Superhero cape outfit"
+    },
+    "ipfs": {
+      "imageCID": "Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
+      "imageURI": "ipfs://Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
+      "metadataCID": "QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1",
+      "tokenURI": "ipfs://QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmdsvp46wKfYmnEJHxHRN3SVjoy3oJEsfffYMWdBsaqYuG",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPGT6wazRXbuCCg14xcR7LnDWEHejNXzSp21QhTT1XbV1"
+    }
+  },
+  {
+    "file": "mumu-018_Noir_Detective.png",
+    "id": 18,
+    "name": "Noir Detective Mumu",
+    "traits": {
+      "Background": "Rainy noir city",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Pinstripe suit"
+    },
+    "ipfs": {
+      "imageCID": "QmTbEdfyq9YCA37gSz9zni3RtqLhKJ8f5R4yWNHFUi5jYB",
+      "imageURI": "ipfs://QmTbEdfyq9YCA37gSz9zni3RtqLhKJ8f5R4yWNHFUi5jYB",
+      "metadataCID": "QmXHuUjcZ7YZDzBGbkjRZ2thUwZXb9GWffBW1cKxr7Loi5",
+      "tokenURI": "ipfs://QmXHuUjcZ7YZDzBGbkjRZ2thUwZXb9GWffBW1cKxr7Loi5",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTbEdfyq9YCA37gSz9zni3RtqLhKJ8f5R4yWNHFUi5jYB",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXHuUjcZ7YZDzBGbkjRZ2thUwZXb9GWffBW1cKxr7Loi5"
+    }
+  },
+  {
+    "file": "mumu-019_Pharaoh.png",
+    "id": 19,
+    "name": "Pharaoh Mumu",
+    "traits": {
+      "Background": "Egyptian pyramid",
+      "Headwear": "Pharaoh headdress",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Egyptian collar necklace"
+    },
+    "ipfs": {
+      "imageCID": "QmXt531A9NGjBwVfQcXPyyxdzGQEcYy7ExL1zTkaPhASUG",
+      "imageURI": "ipfs://QmXt531A9NGjBwVfQcXPyyxdzGQEcYy7ExL1zTkaPhASUG",
+      "metadataCID": "Qmec4C1KQ3VaGLSEH323hGVxL2Z6dSEHTCJjowh7mWVXQE",
+      "tokenURI": "ipfs://Qmec4C1KQ3VaGLSEH323hGVxL2Z6dSEHTCJjowh7mWVXQE",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmXt531A9NGjBwVfQcXPyyxdzGQEcYy7ExL1zTkaPhASUG",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qmec4C1KQ3VaGLSEH323hGVxL2Z6dSEHTCJjowh7mWVXQE"
+    }
+  },
+  {
+    "file": "mumu-020_Gladiator.png",
+    "id": 20,
+    "name": "Gladiator Mumu",
+    "traits": {
+      "Background": "Roman Colosseum",
+      "Headwear": "Horned gladiator helmet",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Gladiator armor cape"
+    },
+    "ipfs": {
+      "imageCID": "QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
+      "imageURI": "ipfs://QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
+      "metadataCID": "QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J",
+      "tokenURI": "ipfs://QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmUuyF1XLsJMTf56kzDrmMGAqQrzb4seaVwAZJippxwK52",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmcErWim4PLHRJZCpxgeSGNtB9ce4gddmN17Xez4uLbS8J"
+    }
+  },
+  {
+    "file": "mumu-021_Plague_Doctor.png",
+    "id": 21,
+    "name": "Plague Doctor Mumu",
+    "traits": {
+      "Background": "Medieval village",
+      "Headwear": "Black top hat",
+      "Eyewear": "Round goggles",
+      "Held Item": "Walking stick",
+      "Clothes": "Dark leather coat"
+    },
+    "ipfs": {
+      "imageCID": "QmNMWCFBaQmgsrAJ1nc8zTgqZsAAD2Z48UAK7VRBygvExQ",
+      "imageURI": "ipfs://QmNMWCFBaQmgsrAJ1nc8zTgqZsAAD2Z48UAK7VRBygvExQ",
+      "metadataCID": "Qmb7PdU2qajYi4zNnMiUjwJvk95SHEKu3SbuyY1CvKdVtP",
+      "tokenURI": "ipfs://Qmb7PdU2qajYi4zNnMiUjwJvk95SHEKu3SbuyY1CvKdVtP",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNMWCFBaQmgsrAJ1nc8zTgqZsAAD2Z48UAK7VRBygvExQ",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qmb7PdU2qajYi4zNnMiUjwJvk95SHEKu3SbuyY1CvKdVtP"
+    }
+  },
+  {
+    "file": "mumu-022_Rock_Star.png",
+    "id": 22,
+    "name": "Rock Star Mumu",
+    "traits": {
+      "Background": "Concert stage",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Microphone",
+      "Clothes": "Spiked leather jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
+      "imageURI": "ipfs://QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
+      "metadataCID": "QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79",
+      "tokenURI": "ipfs://QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbfwXKLs5BENj26NLWX7N2hj3tZ8apajKveXnBxwT1brg",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYWYu9APXurp5Qas5AikTSdgsqLXYDtJNSd9bHDqj3S79"
+    }
+  },
+  {
+    "file": "mumu-023_Scientist.png",
+    "id": 23,
+    "name": "Scientist Mumu",
+    "traits": {
+      "Background": "Science laboratory",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "White lab coat"
+    },
+    "ipfs": {
+      "imageCID": "QmUE7jvoTiizS3aeo3cGJjzuxdm6bX7VSqagMBGc7JVPhC",
+      "imageURI": "ipfs://QmUE7jvoTiizS3aeo3cGJjzuxdm6bX7VSqagMBGc7JVPhC",
+      "metadataCID": "QmSJX1Ny5XkoFD2jBs4KbY7NVof9MW14fHcpGQEoZEie2q",
+      "tokenURI": "ipfs://QmSJX1Ny5XkoFD2jBs4KbY7NVof9MW14fHcpGQEoZEie2q",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmUE7jvoTiizS3aeo3cGJjzuxdm6bX7VSqagMBGc7JVPhC",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSJX1Ny5XkoFD2jBs4KbY7NVof9MW14fHcpGQEoZEie2q"
+    }
+  },
+  {
+    "file": "mumu-024_Racer.png",
+    "id": 24,
+    "name": "Racer Mumu",
+    "traits": {
+      "Background": "Racing pit lane",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Orange racing suit"
+    },
+    "ipfs": {
+      "imageCID": "QmafnKVRmJ9Z3XpAcvfETrGmARJ3JPVRdjccnpDWujvpaX",
+      "imageURI": "ipfs://QmafnKVRmJ9Z3XpAcvfETrGmARJ3JPVRdjccnpDWujvpaX",
+      "metadataCID": "QmQtSJ6mCnNZWZeeYJNBqXELKpbu1hU2QZvXDPMmcucDfb",
+      "tokenURI": "ipfs://QmQtSJ6mCnNZWZeeYJNBqXELKpbu1hU2QZvXDPMmcucDfb",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmafnKVRmJ9Z3XpAcvfETrGmARJ3JPVRdjccnpDWujvpaX",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQtSJ6mCnNZWZeeYJNBqXELKpbu1hU2QZvXDPMmcucDfb"
+    }
+  },
+  {
+    "file": "mumu-025_Firefighter.png",
+    "id": 25,
+    "name": "Firefighter Mumu",
+    "traits": {
+      "Background": "Building on fire",
+      "Headwear": "Firefighter helmet",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Firefighter jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmTQ4adJmYWbMW9SZrqgeNcobzUqhLAmHgnYMDtWEgJTXf",
+      "imageURI": "ipfs://QmTQ4adJmYWbMW9SZrqgeNcobzUqhLAmHgnYMDtWEgJTXf",
+      "metadataCID": "QmPV2BvCVbjwUeBVzm1mcLxndbYySGkkxKpykNZVVZVYnq",
+      "tokenURI": "ipfs://QmPV2BvCVbjwUeBVzm1mcLxndbYySGkkxKpykNZVVZVYnq",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTQ4adJmYWbMW9SZrqgeNcobzUqhLAmHgnYMDtWEgJTXf",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPV2BvCVbjwUeBVzm1mcLxndbYySGkkxKpykNZVVZVYnq"
+    }
+  },
+  {
+    "file": "mumu-026_Deep_Sea_Angler.png",
+    "id": 26,
+    "name": "Deep Sea Angler Mumu",
+    "traits": {
+      "Background": "Deep ocean",
+      "Headwear": "Angler lure",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "None"
+    },
+    "ipfs": {
+      "imageCID": "QmX7Ab3XYby1G5kUu9mQqC9LamThrg3VLCwwAot1HrVu5s",
+      "imageURI": "ipfs://QmX7Ab3XYby1G5kUu9mQqC9LamThrg3VLCwwAot1HrVu5s",
+      "metadataCID": "QmNNuyLDjNA5XjzTVRSrsNhFd9aBLbTMieR4v8RCm1wG3L",
+      "tokenURI": "ipfs://QmNNuyLDjNA5XjzTVRSrsNhFd9aBLbTMieR4v8RCm1wG3L",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmX7Ab3XYby1G5kUu9mQqC9LamThrg3VLCwwAot1HrVu5s",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNNuyLDjNA5XjzTVRSrsNhFd9aBLbTMieR4v8RCm1wG3L"
+    }
+  },
+  {
+    "file": "mumu-027_Pilot.png",
+    "id": 27,
+    "name": "Pilot Mumu",
+    "traits": {
+      "Background": "Blue sky clouds",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Shearling leather jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmTAuBBPuvU7MAB2Vrq56TMmsUWqgZCqKBLwTXG8feQvR4",
+      "imageURI": "ipfs://QmTAuBBPuvU7MAB2Vrq56TMmsUWqgZCqKBLwTXG8feQvR4",
+      "metadataCID": "QmSqMZ5JMQQe63GQKgctEucBMbigu2SvLXcgKSvF9f17GL",
+      "tokenURI": "ipfs://QmSqMZ5JMQQe63GQKgctEucBMbigu2SvLXcgKSvF9f17GL",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTAuBBPuvU7MAB2Vrq56TMmsUWqgZCqKBLwTXG8feQvR4",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSqMZ5JMQQe63GQKgctEucBMbigu2SvLXcgKSvF9f17GL"
+    }
+  },
+  {
+    "file": "mumu-028_Construction_Worker.png",
+    "id": 28,
+    "name": "Construction Worker Mumu",
+    "traits": {
+      "Background": "Construction site",
+      "Headwear": "White hard hat",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Hi-vis vest"
+    },
+    "ipfs": {
+      "imageCID": "QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
+      "imageURI": "ipfs://QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
+      "metadataCID": "QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu",
+      "tokenURI": "ipfs://QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmPbvpoXdk9w6nK6srkSKwczUToMj6bHA9dT7ykCyU1enB",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXupYvwkiD4L4HxM4LsG8ERJaQJ8n95XA3bVNjvPYWDQu"
+    }
+  },
+  {
+    "file": "mumu-029_Baller.png",
+    "id": 29,
+    "name": "Baller Mumu",
+    "traits": {
+      "Background": "Basketball court",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Basketball jersey"
+    },
+    "ipfs": {
+      "imageCID": "QmRhSHfpxAEfvLh7wUEoLsuu8zh2sR7QJCodJ9zBFJRz8q",
+      "imageURI": "ipfs://QmRhSHfpxAEfvLh7wUEoLsuu8zh2sR7QJCodJ9zBFJRz8q",
+      "metadataCID": "QmYyHUbKNApurK2dtb7CnCK6M34mJnVzWqJELcfcY9aBeA",
+      "tokenURI": "ipfs://QmYyHUbKNApurK2dtb7CnCK6M34mJnVzWqJELcfcY9aBeA",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmRhSHfpxAEfvLh7wUEoLsuu8zh2sR7QJCodJ9zBFJRz8q",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYyHUbKNApurK2dtb7CnCK6M34mJnVzWqJELcfcY9aBeA"
+    }
+  },
+  {
+    "file": "mumu-030_Golfer.png",
+    "id": 30,
+    "name": "Golfer Mumu",
+    "traits": {
+      "Background": "Golf course",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Green polo shirt"
+    },
+    "ipfs": {
+      "imageCID": "QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
+      "imageURI": "ipfs://QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
+      "metadataCID": "QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT",
+      "tokenURI": "ipfs://QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmfKMyWQhP77WcZNPZUmg5nLS9xH2Yn2HEXjtiJR2UseLe",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmS265LA9xJL12Peu5ztswFkXTEf4n5yFHE3NY5CkXfCjT"
+    }
+  },
+  {
+    "file": "mumu-031_Snowboarder.png",
+    "id": 31,
+    "name": "Snowboarder Mumu",
+    "traits": {
+      "Background": "Snowy mountains",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Colorful ski jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmPK254GP3VDjqoddD1XVr3aNjFaPMvpwSLvMiLpmUNpJK",
+      "imageURI": "ipfs://QmPK254GP3VDjqoddD1XVr3aNjFaPMvpwSLvMiLpmUNpJK",
+      "metadataCID": "QmTbB5uy1WdH9wYhQCM9Xs4bhGtmpaEoyetJSUKZhryR72",
+      "tokenURI": "ipfs://QmTbB5uy1WdH9wYhQCM9Xs4bhGtmpaEoyetJSUKZhryR72",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmPK254GP3VDjqoddD1XVr3aNjFaPMvpwSLvMiLpmUNpJK",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTbB5uy1WdH9wYhQCM9Xs4bhGtmpaEoyetJSUKZhryR72"
+    }
+  },
+  {
+    "file": "mumu-032_Sensei.png",
+    "id": 32,
+    "name": "Sensei Mumu",
+    "traits": {
+      "Background": "Japanese dojo",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "White karate gi"
+    },
+    "ipfs": {
+      "imageCID": "QmcsBZGYQr6TVp4EX4rsQ7byDPiE8ACM1nDXPJY975pUeF",
+      "imageURI": "ipfs://QmcsBZGYQr6TVp4EX4rsQ7byDPiE8ACM1nDXPJY975pUeF",
+      "metadataCID": "QmQQNCzESETSppQri1aKGfqJaxckdEJ9dL17yAQSUiTkyM",
+      "tokenURI": "ipfs://QmQQNCzESETSppQri1aKGfqJaxckdEJ9dL17yAQSUiTkyM",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcsBZGYQr6TVp4EX4rsQ7byDPiE8ACM1nDXPJY975pUeF",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQQNCzESETSppQri1aKGfqJaxckdEJ9dL17yAQSUiTkyM"
+    }
+  },
+  {
+    "file": "mumu-033_Detective.png",
+    "id": 33,
+    "name": "Detective Mumu",
+    "traits": {
+      "Background": "Foggy Victorian street",
+      "Headwear": "Fedora hat",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Beige trench coat"
+    },
+    "ipfs": {
+      "imageCID": "Qmer65rPaNshHJ8Y5UggF6VAiRdT2fDLVyQFAiqxxTnUqA",
+      "imageURI": "ipfs://Qmer65rPaNshHJ8Y5UggF6VAiRdT2fDLVyQFAiqxxTnUqA",
+      "metadataCID": "QmRc6LjiTChZUk1CJ7bPPwQkzMDbYXa8VmS3tbcgfxpMn1",
+      "tokenURI": "ipfs://QmRc6LjiTChZUk1CJ7bPPwQkzMDbYXa8VmS3tbcgfxpMn1",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmer65rPaNshHJ8Y5UggF6VAiRdT2fDLVyQFAiqxxTnUqA",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRc6LjiTChZUk1CJ7bPPwQkzMDbYXa8VmS3tbcgfxpMn1"
+    }
+  },
+  {
+    "file": "mumu-034_Safari_Explorer.png",
+    "id": 34,
+    "name": "Safari Explorer Mumu",
+    "traits": {
+      "Background": "African savanna",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Safari vest"
+    },
+    "ipfs": {
+      "imageCID": "QmcPUCL9BefLAbtAhmqhpXonMAXQqihkn79DLJ27S535xP",
+      "imageURI": "ipfs://QmcPUCL9BefLAbtAhmqhpXonMAXQqihkn79DLJ27S535xP",
+      "metadataCID": "QmVNSkWmKwxmPeGHcVeK57P4y4oqK4WoUSAEAo7kvqHR9x",
+      "tokenURI": "ipfs://QmVNSkWmKwxmPeGHcVeK57P4y4oqK4WoUSAEAo7kvqHR9x",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcPUCL9BefLAbtAhmqhpXonMAXQqihkn79DLJ27S535xP",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVNSkWmKwxmPeGHcVeK57P4y4oqK4WoUSAEAo7kvqHR9x"
+    }
+  },
+  {
+    "file": "mumu-035_Astronomer.png",
+    "id": 35,
+    "name": "Astronomer Mumu",
+    "traits": {
+      "Background": "Observatory study",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Patched tweed jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmdJCQ9sdP5iq1JGvdEBbFz7pniMkM1t3YfTFJtchQhji8",
+      "imageURI": "ipfs://QmdJCQ9sdP5iq1JGvdEBbFz7pniMkM1t3YfTFJtchQhji8",
+      "metadataCID": "QmY6yCyAsWA7yXkYA2DEnjd3mxiWnSZgYPJmVQ4ZqcL2ip",
+      "tokenURI": "ipfs://QmY6yCyAsWA7yXkYA2DEnjd3mxiWnSZgYPJmVQ4ZqcL2ip",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdJCQ9sdP5iq1JGvdEBbFz7pniMkM1t3YfTFJtchQhji8",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmY6yCyAsWA7yXkYA2DEnjd3mxiWnSZgYPJmVQ4ZqcL2ip"
+    }
+  },
+  {
+    "file": "mumu-036_Painter.png",
+    "id": 36,
+    "name": "Painter Mumu",
+    "traits": {
+      "Background": "Art studio",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Paint-splattered smock"
+    },
+    "ipfs": {
+      "imageCID": "QmVRr252GJ5tmpApNzM4uFrbUoZ2VahVzmFFfd3PSUfxJQ",
+      "imageURI": "ipfs://QmVRr252GJ5tmpApNzM4uFrbUoZ2VahVzmFFfd3PSUfxJQ",
+      "metadataCID": "QmQpLp4F1RaUyN5mJ3zktLtAfpB3NfEKP6fDrHzmwBJ9P9",
+      "tokenURI": "ipfs://QmQpLp4F1RaUyN5mJ3zktLtAfpB3NfEKP6fDrHzmwBJ9P9",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVRr252GJ5tmpApNzM4uFrbUoZ2VahVzmFFfd3PSUfxJQ",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQpLp4F1RaUyN5mJ3zktLtAfpB3NfEKP6fDrHzmwBJ9P9"
+    }
+  },
+  {
+    "file": "mumu-037_Magician.png",
+    "id": 37,
+    "name": "Magician Mumu",
+    "traits": {
+      "Background": "Theater stage curtains",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Wand and cards",
+      "Clothes": "Black tuxedo and bowtie"
+    },
+    "ipfs": {
+      "imageCID": "QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
+      "imageURI": "ipfs://QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
+      "metadataCID": "QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq",
+      "tokenURI": "ipfs://QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmYrzDTBe9EJ6pemnQzvErezPbMHwf2x8C5mGsEc8NWasJ",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbicFQPajq8rArpnEZy4PEeWsAkarWXQQJQ3yy1vScbxq"
+    }
+  },
+  {
+    "file": "mumu-038_Lifeguard.png",
+    "id": 38,
+    "name": "Lifeguard Mumu",
+    "traits": {
+      "Background": "Beach lifeguard tower",
+      "Headwear": "Red headband",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Red lifeguard shirt"
+    },
+    "ipfs": {
+      "imageCID": "QmNqSxovYuH6j2JSCNckjmZRE6g6jUYYDNJNrwig2bEjFR",
+      "imageURI": "ipfs://QmNqSxovYuH6j2JSCNckjmZRE6g6jUYYDNJNrwig2bEjFR",
+      "metadataCID": "QmWCgGfr1NrGotyLs1PbQEYavh3F3yz2AcJRZXdhJJm4bH",
+      "tokenURI": "ipfs://QmWCgGfr1NrGotyLs1PbQEYavh3F3yz2AcJRZXdhJJm4bH",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNqSxovYuH6j2JSCNckjmZRE6g6jUYYDNJNrwig2bEjFR",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWCgGfr1NrGotyLs1PbQEYavh3F3yz2AcJRZXdhJJm4bH"
+    }
+  },
+  {
+    "file": "mumu-039_Knight.png",
+    "id": 39,
+    "name": "Knight Mumu",
+    "traits": {
+      "Background": "Castle siege battle",
+      "Headwear": "Horned knight helmet",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Knight armor chainmail"
+    },
+    "ipfs": {
+      "imageCID": "QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
+      "imageURI": "ipfs://QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
+      "metadataCID": "QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj",
+      "tokenURI": "ipfs://QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcgDBV5r1wsCANRM8hPWojQoixz3hj9g4Npmw4e5myVP6",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRvQ3yvNDuxvaYnt6SSsC2KT6Wx178wcp47PJdNZ7Xxxj"
+    }
+  },
+  {
+    "file": "mumu-040_Cyberpunk.png",
+    "id": 40,
+    "name": "Cyberpunk Mumu",
+    "traits": {
+      "Background": "Cyberpunk neon city",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Cyberpunk tech jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmQrmFtuHZNtTwP6nG8YLjxSmybdRVZ7xnoubhhvGZN4A9",
+      "imageURI": "ipfs://QmQrmFtuHZNtTwP6nG8YLjxSmybdRVZ7xnoubhhvGZN4A9",
+      "metadataCID": "QmYyzaD9mjPWx53dBG8gPo3pDiq5gdp8TcHg9Uby1sErCU",
+      "tokenURI": "ipfs://QmYyzaD9mjPWx53dBG8gPo3pDiq5gdp8TcHg9Uby1sErCU",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQrmFtuHZNtTwP6nG8YLjxSmybdRVZ7xnoubhhvGZN4A9",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYyzaD9mjPWx53dBG8gPo3pDiq5gdp8TcHg9Uby1sErCU"
+    }
+  },
+  {
+    "file": "mumu-041_Lumberjack.png",
+    "id": 41,
+    "name": "Lumberjack Mumu",
+    "traits": {
+      "Background": "Cozy log cabin",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Red plaid flannel"
+    },
+    "ipfs": {
+      "imageCID": "Qmbp1ZvGZeJmZ9iNXJNYRxryjJxz6inhJj2F73y7Mjp5Wk",
+      "imageURI": "ipfs://Qmbp1ZvGZeJmZ9iNXJNYRxryjJxz6inhJj2F73y7Mjp5Wk",
+      "metadataCID": "QmPcx2ckCWQtPWm3BLzPyETw6xVVYPoR6WeZ53EM7rAJne",
+      "tokenURI": "ipfs://QmPcx2ckCWQtPWm3BLzPyETw6xVVYPoR6WeZ53EM7rAJne",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmbp1ZvGZeJmZ9iNXJNYRxryjJxz6inhJj2F73y7Mjp5Wk",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPcx2ckCWQtPWm3BLzPyETw6xVVYPoR6WeZ53EM7rAJne"
+    }
+  },
+  {
+    "file": "mumu-042_Ice_Skater.png",
+    "id": 42,
+    "name": "Ice Skater Mumu",
+    "traits": {
+      "Background": "Snowy cabin village",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Blue fur-trimmed jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmWkULks6aQ5NJCYWjTv74cBVSzKXDQJ3E86KVTrf4vHRf",
+      "imageURI": "ipfs://QmWkULks6aQ5NJCYWjTv74cBVSzKXDQJ3E86KVTrf4vHRf",
+      "metadataCID": "QmPYWkCcC3KtgDk4s2asr6PW3JYhDRGtJPtAyNabGiaubu",
+      "tokenURI": "ipfs://QmPYWkCcC3KtgDk4s2asr6PW3JYhDRGtJPtAyNabGiaubu",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmWkULks6aQ5NJCYWjTv74cBVSzKXDQJ3E86KVTrf4vHRf",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPYWkCcC3KtgDk4s2asr6PW3JYhDRGtJPtAyNabGiaubu"
+    }
+  },
+  {
+    "file": "mumu-043_Wrestler.png",
+    "id": 43,
+    "name": "Wrestler Mumu",
+    "traits": {
+      "Background": "Wrestling arena",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Wrestling singlet"
+    },
+    "ipfs": {
+      "imageCID": "QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
+      "imageURI": "ipfs://QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
+      "metadataCID": "QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx",
+      "tokenURI": "ipfs://QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVy5dzHxxUpCaKBRcCVNVajLd81USkLsS2FTLTjiGKyAx",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmfWQCULCFy1qv2XMgUfjGvohQ4tXnaRyiRANoyXFF2UNx"
+    }
+  },
+  {
+    "file": "mumu-044_Biker.png",
+    "id": 44,
+    "name": "Biker Mumu",
+    "traits": {
+      "Background": "Desert road",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Black leather jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmXYksZWd54YCU6TsnhAJuoHXFgZZcPe9qwFFKHLYfNHDH",
+      "imageURI": "ipfs://QmXYksZWd54YCU6TsnhAJuoHXFgZZcPe9qwFFKHLYfNHDH",
+      "metadataCID": "Qma24ogTG1wjdCA3aR5y55GMJdPu7WX3P4nKiuaHdRRp4m",
+      "tokenURI": "ipfs://Qma24ogTG1wjdCA3aR5y55GMJdPu7WX3P4nKiuaHdRRp4m",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmXYksZWd54YCU6TsnhAJuoHXFgZZcPe9qwFFKHLYfNHDH",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qma24ogTG1wjdCA3aR5y55GMJdPu7WX3P4nKiuaHdRRp4m"
+    }
+  },
+  {
+    "file": "mumu-045_Wall_Street.png",
+    "id": 45,
+    "name": "Wall Street Mumu",
+    "traits": {
+      "Background": "Stock trading floor",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Pinstripe suit and tie"
+    },
+    "ipfs": {
+      "imageCID": "QmZrXMWAhrb9SqyF4SE8BYGNHDwbcbpCKyFJyNhoSTHwP1",
+      "imageURI": "ipfs://QmZrXMWAhrb9SqyF4SE8BYGNHDwbcbpCKyFJyNhoSTHwP1",
+      "metadataCID": "QmXcqzMqM5WuF7XUabCRqLMZx8cEdy6uHgAYdmCG8BHaLm",
+      "tokenURI": "ipfs://QmXcqzMqM5WuF7XUabCRqLMZx8cEdy6uHgAYdmCG8BHaLm",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmZrXMWAhrb9SqyF4SE8BYGNHDwbcbpCKyFJyNhoSTHwP1",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXcqzMqM5WuF7XUabCRqLMZx8cEdy6uHgAYdmCG8BHaLm"
+    }
+  },
+  {
+    "file": "mumu-046_Gamer.png",
+    "id": 46,
+    "name": "Gamer Mumu",
+    "traits": {
+      "Background": "Neon gaming room",
+      "Headwear": "Black hood",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Black gamer hoodie"
+    },
+    "ipfs": {
+      "imageCID": "QmQcbAwMKXs6nkPhG1FJTtQayaxK3G5NkMJd4PrhwmP6hh",
+      "imageURI": "ipfs://QmQcbAwMKXs6nkPhG1FJTtQayaxK3G5NkMJd4PrhwmP6hh",
+      "metadataCID": "QmPo1aqhoDB72ucNHYJTcZcZLBfnoL6UsxPPj1ziYe3joh",
+      "tokenURI": "ipfs://QmPo1aqhoDB72ucNHYJTcZcZLBfnoL6UsxPPj1ziYe3joh",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQcbAwMKXs6nkPhG1FJTtQayaxK3G5NkMJd4PrhwmP6hh",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPo1aqhoDB72ucNHYJTcZcZLBfnoL6UsxPPj1ziYe3joh"
+    }
+  },
+  {
+    "file": "mumu-047_Fisherman.png",
+    "id": 47,
+    "name": "Fisherman Mumu",
+    "traits": {
+      "Background": "Sunset lake",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Fishing rod",
+      "Clothes": "Fishing vest"
+    },
+    "ipfs": {
+      "imageCID": "QmQqr7QmfzQko5JTJ9Wi9DQNSsRiDwidKgQ8GU4BEG65TP",
+      "imageURI": "ipfs://QmQqr7QmfzQko5JTJ9Wi9DQNSsRiDwidKgQ8GU4BEG65TP",
+      "metadataCID": "QmXjniYMjAmujT1f7LJBTT2RT6Qrj2PSg52gpHQAcHwnAW",
+      "tokenURI": "ipfs://QmXjniYMjAmujT1f7LJBTT2RT6Qrj2PSg52gpHQAcHwnAW",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQqr7QmfzQko5JTJ9Wi9DQNSsRiDwidKgQ8GU4BEG65TP",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXjniYMjAmujT1f7LJBTT2RT6Qrj2PSg52gpHQAcHwnAW"
+    }
+  },
+  {
+    "file": "mumu-048_Gardener.png",
+    "id": 48,
+    "name": "Gardener Mumu",
+    "traits": {
+      "Background": "Flower garden",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Dirty overalls"
+    },
+    "ipfs": {
+      "imageCID": "QmSziKkjnttMuMB4vjB6XAFL9MCe7fevErT4pK4jwkoNf4",
+      "imageURI": "ipfs://QmSziKkjnttMuMB4vjB6XAFL9MCe7fevErT4pK4jwkoNf4",
+      "metadataCID": "QmRTyxyhkKY5EG7zJ8SM1t9bQf25re745NubXq4L4LQAST",
+      "tokenURI": "ipfs://QmRTyxyhkKY5EG7zJ8SM1t9bQf25re745NubXq4L4LQAST",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmSziKkjnttMuMB4vjB6XAFL9MCe7fevErT4pK4jwkoNf4",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRTyxyhkKY5EG7zJ8SM1t9bQf25re745NubXq4L4LQAST"
+    }
+  },
+  {
+    "file": "mumu-049_Santa.png",
+    "id": 49,
+    "name": "Santa Mumu",
+    "traits": {
+      "Background": "Christmas living room",
+      "Headwear": "Santa hat",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Santa suit"
+    },
+    "ipfs": {
+      "imageCID": "QmafpW2AUPAoAx9zcThr6XnCy8aNgeWqAgmDYQEmuPMinc",
+      "imageURI": "ipfs://QmafpW2AUPAoAx9zcThr6XnCy8aNgeWqAgmDYQEmuPMinc",
+      "metadataCID": "QmZmNa4mP8RU8jCYbQ6JhtbU6mY17BnPoGTjXYziXvM3Z7",
+      "tokenURI": "ipfs://QmZmNa4mP8RU8jCYbQ6JhtbU6mY17BnPoGTjXYziXvM3Z7",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmafpW2AUPAoAx9zcThr6XnCy8aNgeWqAgmDYQEmuPMinc",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZmNa4mP8RU8jCYbQ6JhtbU6mY17BnPoGTjXYziXvM3Z7"
+    }
+  },
+  {
+    "file": "mumu-050_Angel.png",
+    "id": 50,
+    "name": "Angel Mumu",
+    "traits": {
+      "Background": "Heavenly clouds",
+      "Headwear": "Golden halo",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Angel wings"
+    },
+    "ipfs": {
+      "imageCID": "QmaR53A4bqPDPNXCvLAx6Yhf2dt7LYZM8dcRN1afCynLod",
+      "imageURI": "ipfs://QmaR53A4bqPDPNXCvLAx6Yhf2dt7LYZM8dcRN1afCynLod",
+      "metadataCID": "QmceHU7jWRrkRGigUns2B1dFjon9JJfF9oiczDRYexAHVA",
+      "tokenURI": "ipfs://QmceHU7jWRrkRGigUns2B1dFjon9JJfF9oiczDRYexAHVA",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmaR53A4bqPDPNXCvLAx6Yhf2dt7LYZM8dcRN1afCynLod",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmceHU7jWRrkRGigUns2B1dFjon9JJfF9oiczDRYexAHVA"
+    }
+  },
+  {
+    "file": "mumu-051_Anime_Schoolgirl.png",
+    "id": 51,
+    "name": "Anime Schoolgirl Mumu",
+    "traits": {
+      "Background": "Japanese cherry blossoms",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Sailor school uniform"
+    },
+    "ipfs": {
+      "imageCID": "QmZWqF9JQjqfQAvaigD3csaRobskfucdQY9LTLGzZJvPFY",
+      "imageURI": "ipfs://QmZWqF9JQjqfQAvaigD3csaRobskfucdQY9LTLGzZJvPFY",
+      "metadataCID": "QmdspMBYSGHRBTQnbNC16oauffnmkfZbFSwZkpDkVALy6B",
+      "tokenURI": "ipfs://QmdspMBYSGHRBTQnbNC16oauffnmkfZbFSwZkpDkVALy6B",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmZWqF9JQjqfQAvaigD3csaRobskfucdQY9LTLGzZJvPFY",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmdspMBYSGHRBTQnbNC16oauffnmkfZbFSwZkpDkVALy6B"
+    }
+  },
+  {
+    "file": "mumu-052_Vaporwave_DJ.png",
+    "id": 52,
+    "name": "Vaporwave DJ Mumu",
+    "traits": {
+      "Background": "Synthwave neon cityscape",
+      "Headwear": "DJ headphones",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "None"
+    },
+    "ipfs": {
+      "imageCID": "QmYJ841btuXxpKMtwiWErDSHvZb3T689Jfx8rUpzqvCojy",
+      "imageURI": "ipfs://QmYJ841btuXxpKMtwiWErDSHvZb3T689Jfx8rUpzqvCojy",
+      "metadataCID": "QmTK8KCUHqYYt8uJoHVx9zMXgKYbDvqLpX5JsJNmtEUaXF",
+      "tokenURI": "ipfs://QmTK8KCUHqYYt8uJoHVx9zMXgKYbDvqLpX5JsJNmtEUaXF",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmYJ841btuXxpKMtwiWErDSHvZb3T689Jfx8rUpzqvCojy",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTK8KCUHqYYt8uJoHVx9zMXgKYbDvqLpX5JsJNmtEUaXF"
+    }
+  },
+  {
+    "file": "mumu-053_Aztec_Priest.png",
+    "id": 53,
+    "name": "Aztec Priest Mumu",
+    "traits": {
+      "Background": "Aztec jungle ruins",
+      "Headwear": "Feathered headdress",
+      "Eyewear": "None",
+      "Held Item": "Ornate spear",
+      "Clothes": "Aztec tribal garments"
+    },
+    "ipfs": {
+      "imageCID": "Qme4D39M8EAc1U8RsyLNMD6BoVHJZBAHayM34J9JUQr9tM",
+      "imageURI": "ipfs://Qme4D39M8EAc1U8RsyLNMD6BoVHJZBAHayM34J9JUQr9tM",
+      "metadataCID": "QmaSNWK2NuBGyjZUhYfBrNrJfmrodgkuV1GrhmCgprKfzC",
+      "tokenURI": "ipfs://QmaSNWK2NuBGyjZUhYfBrNrJfmrodgkuV1GrhmCgprKfzC",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/Qme4D39M8EAc1U8RsyLNMD6BoVHJZBAHayM34J9JUQr9tM",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmaSNWK2NuBGyjZUhYfBrNrJfmrodgkuV1GrhmCgprKfzC"
+    }
+  },
+  {
+    "file": "mumu-054_Bard.png",
+    "id": 54,
+    "name": "Bard Mumu",
+    "traits": {
+      "Background": "Medieval tavern",
+      "Headwear": "Feathered cap",
+      "Eyewear": "None",
+      "Held Item": "Lute",
+      "Clothes": "Green bard tunic"
+    },
+    "ipfs": {
+      "imageCID": "QmQakqoRGVtoogAtCJyp2tG5Gp32xfbcaxNTect14oGG8o",
+      "imageURI": "ipfs://QmQakqoRGVtoogAtCJyp2tG5Gp32xfbcaxNTect14oGG8o",
+      "metadataCID": "QmYqAUctb225NwuAtPLzZS9GxHYJ7ffLeczUBLMjEmLP8S",
+      "tokenURI": "ipfs://QmYqAUctb225NwuAtPLzZS9GxHYJ7ffLeczUBLMjEmLP8S",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQakqoRGVtoogAtCJyp2tG5Gp32xfbcaxNTect14oGG8o",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYqAUctb225NwuAtPLzZS9GxHYJ7ffLeczUBLMjEmLP8S"
+    }
+  },
+  {
+    "file": "mumu-055_Space_Marine.png",
+    "id": 55,
+    "name": "Space Marine Mumu",
+    "traits": {
+      "Background": "Alien planet landscape",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Orange space suit"
+    },
+    "ipfs": {
+      "imageCID": "QmbCyCDL2FMY89cd5ta3gyAWuQzGqJgJPjFUHUcLG4KZtP",
+      "imageURI": "ipfs://QmbCyCDL2FMY89cd5ta3gyAWuQzGqJgJPjFUHUcLG4KZtP",
+      "metadataCID": "QmRezu1uBBVDLLoUCfqQTZ6ET6D4CzQod1fF9H3nfijdqX",
+      "tokenURI": "ipfs://QmRezu1uBBVDLLoUCfqQTZ6ET6D4CzQod1fF9H3nfijdqX",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbCyCDL2FMY89cd5ta3gyAWuQzGqJgJPjFUHUcLG4KZtP",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRezu1uBBVDLLoUCfqQTZ6ET6D4CzQod1fF9H3nfijdqX"
+    }
+  },
+  {
+    "file": "mumu-056_Disco_Dancer.png",
+    "id": 56,
+    "name": "Disco Dancer Mumu",
+    "traits": {
+      "Background": "Disco dance floor",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Sparkly disco suit"
+    },
+    "ipfs": {
+      "imageCID": "QmV2TNeruQntKZy2ouzB6Z8iCJjUVtzUQYoQbCZw3PuHWh",
+      "imageURI": "ipfs://QmV2TNeruQntKZy2ouzB6Z8iCJjUVtzUQYoQbCZw3PuHWh",
+      "metadataCID": "Qmf5zW96xJFCVp362fNaQNqUdNScXuLUugRmhH9hQ2GhGf",
+      "tokenURI": "ipfs://Qmf5zW96xJFCVp362fNaQNqUdNScXuLUugRmhH9hQ2GhGf",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmV2TNeruQntKZy2ouzB6Z8iCJjUVtzUQYoQbCZw3PuHWh",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qmf5zW96xJFCVp362fNaQNqUdNScXuLUugRmhH9hQ2GhGf"
+    }
+  },
+  {
+    "file": "mumu-057_Mad_Scientist.png",
+    "id": 57,
+    "name": "Mad Scientist Mumu",
+    "traits": {
+      "Background": "Mad scientist laboratory",
+      "Headwear": "Goggles on forehead",
+      "Eyewear": "None",
+      "Held Item": "Green beaker",
+      "Clothes": "White lab coat"
+    },
+    "ipfs": {
+      "imageCID": "QmQY6aeVwkKbRZw9SZ7CWmNMywU6F98oxAZ9WkrYJNAPTv",
+      "imageURI": "ipfs://QmQY6aeVwkKbRZw9SZ7CWmNMywU6F98oxAZ9WkrYJNAPTv",
+      "metadataCID": "QmZMJwugSoSTzvB4SvxK2VtqUjkYdFbEf5W2kddxcePp5A",
+      "tokenURI": "ipfs://QmZMJwugSoSTzvB4SvxK2VtqUjkYdFbEf5W2kddxcePp5A",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQY6aeVwkKbRZw9SZ7CWmNMywU6F98oxAZ9WkrYJNAPTv",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZMJwugSoSTzvB4SvxK2VtqUjkYdFbEf5W2kddxcePp5A"
+    }
+  },
+  {
+    "file": "mumu-058_Neon_Yakuza.png",
+    "id": 58,
+    "name": "Neon Yakuza Mumu",
+    "traits": {
+      "Background": "Rainy neon alley",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Neon suit and tie"
+    },
+    "ipfs": {
+      "imageCID": "QmVqHi6s8eXDEYMx4Ujte98Sarv7epQcukpbFH973dKLyt",
+      "imageURI": "ipfs://QmVqHi6s8eXDEYMx4Ujte98Sarv7epQcukpbFH973dKLyt",
+      "metadataCID": "QmTZVo5eFvTwaj55vPPaPrxaKanoQZ4t8GTdmiMHXPUCDq",
+      "tokenURI": "ipfs://QmTZVo5eFvTwaj55vPPaPrxaKanoQZ4t8GTdmiMHXPUCDq",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVqHi6s8eXDEYMx4Ujte98Sarv7epQcukpbFH973dKLyt",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTZVo5eFvTwaj55vPPaPrxaKanoQZ4t8GTdmiMHXPUCDq"
+    }
+  },
+  {
+    "file": "mumu-059_Lumberjack.png",
+    "id": 59,
+    "name": "Lumberjack Mumu",
+    "traits": {
+      "Background": "Autumn forest",
+      "Headwear": "Brown beanie",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Plaid flannel shirt"
+    },
+    "ipfs": {
+      "imageCID": "QmVF3SwYYQhUNBHSoCYVMp15G8bGKadi9oL4VmF15JMixV",
+      "imageURI": "ipfs://QmVF3SwYYQhUNBHSoCYVMp15G8bGKadi9oL4VmF15JMixV",
+      "metadataCID": "QmYMFHSegGExYTWpxHT636KmZR7bCNx9AKtNs7tawbUVwo",
+      "tokenURI": "ipfs://QmYMFHSegGExYTWpxHT636KmZR7bCNx9AKtNs7tawbUVwo",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVF3SwYYQhUNBHSoCYVMp15G8bGKadi9oL4VmF15JMixV",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYMFHSegGExYTWpxHT636KmZR7bCNx9AKtNs7tawbUVwo"
+    }
+  },
+  {
+    "file": "mumu-060_Rapper.png",
+    "id": 60,
+    "name": "Rapper Mumu",
+    "traits": {
+      "Background": "Recording studio",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Black tee and gold chain"
+    },
+    "ipfs": {
+      "imageCID": "QmVRyt4dWkcv4t58p5fDiq17rjP1UrcFuKxp8nSLcyWjmJ",
+      "imageURI": "ipfs://QmVRyt4dWkcv4t58p5fDiq17rjP1UrcFuKxp8nSLcyWjmJ",
+      "metadataCID": "QmNXacpWUvEUW3H77dfiPMneehFdpQSx8kXcdsanPw3WNg",
+      "tokenURI": "ipfs://QmNXacpWUvEUW3H77dfiPMneehFdpQSx8kXcdsanPw3WNg",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVRyt4dWkcv4t58p5fDiq17rjP1UrcFuKxp8nSLcyWjmJ",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNXacpWUvEUW3H77dfiPMneehFdpQSx8kXcdsanPw3WNg"
+    }
+  },
+  {
+    "file": "mumu-061_Crystal_Shaman.png",
+    "id": 61,
+    "name": "Crystal Shaman Mumu",
+    "traits": {
+      "Background": "Crystal cave",
+      "Headwear": "Crystal headdress",
+      "Eyewear": "None",
+      "Held Item": "Geode staff and pipe",
+      "Clothes": "None"
+    },
+    "ipfs": {
+      "imageCID": "QmNYA8hK83a7kWYjwL5FXtY64uHJUKoVzmCEQKyXjHygbh",
+      "imageURI": "ipfs://QmNYA8hK83a7kWYjwL5FXtY64uHJUKoVzmCEQKyXjHygbh",
+      "metadataCID": "QmPAMWQ6ounnHYkbKpZou3t43o5KdmqQBeGeSigZDTDBd3",
+      "tokenURI": "ipfs://QmPAMWQ6ounnHYkbKpZou3t43o5KdmqQBeGeSigZDTDBd3",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNYA8hK83a7kWYjwL5FXtY64uHJUKoVzmCEQKyXjHygbh",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmPAMWQ6ounnHYkbKpZou3t43o5KdmqQBeGeSigZDTDBd3"
+    }
+  },
+  {
+    "file": "mumu-062_Ocean_King.png",
+    "id": 62,
+    "name": "Ocean King Mumu",
+    "traits": {
+      "Background": "Underwater ruins",
+      "Headwear": "Coral shell crown",
+      "Eyewear": "None",
+      "Held Item": "Golden trident",
+      "Clothes": "Scaled armor"
+    },
+    "ipfs": {
+      "imageCID": "QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
+      "imageURI": "ipfs://QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
+      "metadataCID": "Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g",
+      "tokenURI": "ipfs://Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmaPFt7HmP7JVZERiPj9qdujLdMM6giHVxFpEskSLVyr43",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/Qma58ExyJNoEFW6qYmshRQZfsYXA3t3WiTPgjX6xFR5u9g"
+    }
+  },
+  {
+    "file": "mumu-063_Clockwork_Automaton.png",
+    "id": 63,
+    "name": "Clockwork Automaton Mumu",
+    "traits": {
+      "Background": "Clocktower interior",
+      "Headwear": "None",
+      "Eyewear": "Gear-shaped eyes",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Steampunk metal armor"
+    },
+    "ipfs": {
+      "imageCID": "QmWbL4oHS4KDU1pZbRDy6snNGUdd4Q2LSFRvE7vLYYEr78",
+      "imageURI": "ipfs://QmWbL4oHS4KDU1pZbRDy6snNGUdd4Q2LSFRvE7vLYYEr78",
+      "metadataCID": "QmNyaL3LRCaNZNrQeu3PjZciR4So4ufvG7F5jHRawFvJd7",
+      "tokenURI": "ipfs://QmNyaL3LRCaNZNrQeu3PjZciR4So4ufvG7F5jHRawFvJd7",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmWbL4oHS4KDU1pZbRDy6snNGUdd4Q2LSFRvE7vLYYEr78",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNyaL3LRCaNZNrQeu3PjZciR4So4ufvG7F5jHRawFvJd7"
+    }
+  },
+  {
+    "file": "mumu-064_Ice_Wizard.png",
+    "id": 64,
+    "name": "Ice Wizard Mumu",
+    "traits": {
+      "Background": "Ice castle",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Ice staff",
+      "Clothes": "Frost mage robes"
+    },
+    "ipfs": {
+      "imageCID": "QmcMf8EfefKCieYaH74i8ideebMpTfDM1FtDzAXWyDtkMG",
+      "imageURI": "ipfs://QmcMf8EfefKCieYaH74i8ideebMpTfDM1FtDzAXWyDtkMG",
+      "metadataCID": "QmWQVZUCvfc6q3HyZrXVfJErkZSBXN7Ni6waMPGuacx7SN",
+      "tokenURI": "ipfs://QmWQVZUCvfc6q3HyZrXVfJErkZSBXN7Ni6waMPGuacx7SN",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcMf8EfefKCieYaH74i8ideebMpTfDM1FtDzAXWyDtkMG",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWQVZUCvfc6q3HyZrXVfJErkZSBXN7Ni6waMPGuacx7SN"
+    }
+  },
+  {
+    "file": "mumu-065_Fire_Mage.png",
+    "id": 65,
+    "name": "Fire Mage Mumu",
+    "traits": {
+      "Background": "Volcanic lava cave",
+      "Headwear": "Bandage wraps",
+      "Eyewear": "None",
+      "Held Item": "Flaming staff",
+      "Clothes": "Runic spiked armor"
+    },
+    "ipfs": {
+      "imageCID": "QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
+      "imageURI": "ipfs://QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
+      "metadataCID": "QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr",
+      "tokenURI": "ipfs://QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmRr6v1w9wHDpPeeX1jufkCcsHEqA5EgW1KLcu4gNHkTrK",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmUa2ycSAT27ofbnyRMgcx1LgpJ68eZFQx5MsrbAM7BBnr"
+    }
+  },
+  {
+    "file": "mumu-066_Ghost_Pirate.png",
+    "id": 66,
+    "name": "Ghost Pirate Mumu",
+    "traits": {
+      "Background": "Ghost pirate ship",
+      "Headwear": "Pirate hat",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Tattered ghost garb"
+    },
+    "ipfs": {
+      "imageCID": "QmfBjrjHSBqp6svhoqghbVpz1aFZY1W3ijMqTkCXeit7A7",
+      "imageURI": "ipfs://QmfBjrjHSBqp6svhoqghbVpz1aFZY1W3ijMqTkCXeit7A7",
+      "metadataCID": "QmW8ECq3BcLQaMPxDQrm5ubt2PR2qEYSFe296pFokqpP7R",
+      "tokenURI": "ipfs://QmW8ECq3BcLQaMPxDQrm5ubt2PR2qEYSFe296pFokqpP7R",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmfBjrjHSBqp6svhoqghbVpz1aFZY1W3ijMqTkCXeit7A7",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmW8ECq3BcLQaMPxDQrm5ubt2PR2qEYSFe296pFokqpP7R"
+    }
+  },
+  {
+    "file": "mumu-067_Sheriff.png",
+    "id": 67,
+    "name": "Sheriff Mumu",
+    "traits": {
+      "Background": "Western saloon",
+      "Headwear": "Cowboy hat",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Sheriff vest"
+    },
+    "ipfs": {
+      "imageCID": "QmVVeegMfwY1ZT48iEnGuBencPNLBoizpb7QQKz6stLVr6",
+      "imageURI": "ipfs://QmVVeegMfwY1ZT48iEnGuBencPNLBoizpb7QQKz6stLVr6",
+      "metadataCID": "QmSBonxQme6NjKWjpkLLLVf82i2UewQDA1is2rsCr7iXCt",
+      "tokenURI": "ipfs://QmSBonxQme6NjKWjpkLLLVf82i2UewQDA1is2rsCr7iXCt",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVVeegMfwY1ZT48iEnGuBencPNLBoizpb7QQKz6stLVr6",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSBonxQme6NjKWjpkLLLVf82i2UewQDA1is2rsCr7iXCt"
+    }
+  },
+  {
+    "file": "mumu-068_Jazz_Musician.png",
+    "id": 68,
+    "name": "Jazz Musician Mumu",
+    "traits": {
+      "Background": "Jazz club",
+      "Headwear": "Fedora",
+      "Eyewear": "None",
+      "Held Item": "Saxophone",
+      "Clothes": "Black turtleneck"
+    },
+    "ipfs": {
+      "imageCID": "QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
+      "imageURI": "ipfs://QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
+      "metadataCID": "QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd",
+      "tokenURI": "ipfs://QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQkronFfWtsV9y7Dz3rSb7fLXGKoRB3P47e9qpqJj45yH",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZj68Ej8iSmAvjpDWiBnxi8ioDxtsmJSkC9PuMAy6LLxd"
+    }
+  },
+  {
+    "file": "mumu-069_Punk_Rocker.png",
+    "id": 69,
+    "name": "Punk Rocker Mumu",
+    "traits": {
+      "Background": "Punk concert",
+      "Headwear": "Orange mohawk",
+      "Eyewear": "None",
+      "Held Item": "None",
+      "Clothes": "Spiked denim jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
+      "imageURI": "ipfs://QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
+      "metadataCID": "QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3",
+      "tokenURI": "ipfs://QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNopYBVc3HBmj12cHsmTdtdkz6xqFLBampxcV2iqrJzKm",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNLr7kEvznB6pj6M7y9mKBDN676jnnWYpZeZCpRnpbPr3"
+    }
+  },
+  {
+    "file": "mumu-070_Mummy.png",
+    "id": 70,
+    "name": "Mummy Mumu",
+    "traits": {
+      "Background": "Egyptian tomb",
+      "Headwear": "Mummy wraps",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Mummy bandages"
+    },
+    "ipfs": {
+      "imageCID": "QmQLwKR1dBN4ekmTAw7CscXz7Lvre1vp18MbZEs653PRzk",
+      "imageURI": "ipfs://QmQLwKR1dBN4ekmTAw7CscXz7Lvre1vp18MbZEs653PRzk",
+      "metadataCID": "QmS8tCk5MXzZDfBY11RYi79Xo1YsSLokwZZ7hTqt8KKf38",
+      "tokenURI": "ipfs://QmS8tCk5MXzZDfBY11RYi79Xo1YsSLokwZZ7hTqt8KKf38",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQLwKR1dBN4ekmTAw7CscXz7Lvre1vp18MbZEs653PRzk",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmS8tCk5MXzZDfBY11RYi79Xo1YsSLokwZZ7hTqt8KKf38"
+    }
+  },
+  {
+    "file": "mumu-071_Roman_Senator.png",
+    "id": 71,
+    "name": "Roman Senator Mumu",
+    "traits": {
+      "Background": "Roman ruins",
+      "Headwear": "Laurel wreath",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Purple-striped toga"
+    },
+    "ipfs": {
+      "imageCID": "Qma5robWrRKJJgFCkmpqj6jstd3zy6W63jxi6PerVBJyeg",
+      "imageURI": "ipfs://Qma5robWrRKJJgFCkmpqj6jstd3zy6W63jxi6PerVBJyeg",
+      "metadataCID": "QmT6xmzsKpEU2ByXnLypLJZgBSNG9j2nRREqqzpV1V4Ye9",
+      "tokenURI": "ipfs://QmT6xmzsKpEU2ByXnLypLJZgBSNG9j2nRREqqzpV1V4Ye9",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/Qma5robWrRKJJgFCkmpqj6jstd3zy6W63jxi6PerVBJyeg",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmT6xmzsKpEU2ByXnLypLJZgBSNG9j2nRREqqzpV1V4Ye9"
+    }
+  },
+  {
+    "file": "mumu-072_Venetian_Noble.png",
+    "id": 72,
+    "name": "Venetian Noble Mumu",
+    "traits": {
+      "Background": "Venice carnival",
+      "Headwear": "Feathered tricorn hat",
+      "Eyewear": "Ornate masquerade mask",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Renaissance noble attire"
+    },
+    "ipfs": {
+      "imageCID": "QmPu5i8bC3GhzZ8JwbUtBoudXCyVkP78g1LnsqoyZE68fR",
+      "imageURI": "ipfs://QmPu5i8bC3GhzZ8JwbUtBoudXCyVkP78g1LnsqoyZE68fR",
+      "metadataCID": "QmZB5T6yBvkfC77SnKZjfTb34fBRrNThUbjwBfHTLkJieb",
+      "tokenURI": "ipfs://QmZB5T6yBvkfC77SnKZjfTb34fBRrNThUbjwBfHTLkJieb",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmPu5i8bC3GhzZ8JwbUtBoudXCyVkP78g1LnsqoyZE68fR",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZB5T6yBvkfC77SnKZjfTb34fBRrNThUbjwBfHTLkJieb"
+    }
+  },
+  {
+    "file": "mumu-073_F1_Driver.png",
+    "id": 73,
+    "name": "F1 Driver Mumu",
+    "traits": {
+      "Background": "Racing circuit",
+      "Headwear": "Racing helmet",
+      "Eyewear": "None",
+      "Held Item": "Steering wheel",
+      "Clothes": "F1 racing suit"
+    },
+    "ipfs": {
+      "imageCID": "QmcnvUn1XptUJSCF8wETAyLytvRv8sSQGS2RB64CHaMVeq",
+      "imageURI": "ipfs://QmcnvUn1XptUJSCF8wETAyLytvRv8sSQGS2RB64CHaMVeq",
+      "metadataCID": "QmdkcxYiC6Prwdgkm6YQzwpLJ8n6a4r8iZTWuc7yTYB8QZ",
+      "tokenURI": "ipfs://QmdkcxYiC6Prwdgkm6YQzwpLJ8n6a4r8iZTWuc7yTYB8QZ",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmcnvUn1XptUJSCF8wETAyLytvRv8sSQGS2RB64CHaMVeq",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmdkcxYiC6Prwdgkm6YQzwpLJ8n6a4r8iZTWuc7yTYB8QZ"
+    }
+  },
+  {
+    "file": "mumu-074_Deep_Sea_Diver.png",
+    "id": 74,
+    "name": "Deep Sea Diver Mumu",
+    "traits": {
+      "Background": "Underwater shipwreck",
+      "Headwear": "Brass diving helmet",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Old diving suit"
+    },
+    "ipfs": {
+      "imageCID": "QmVV7fs2XKiaskRswX88ikwLgfWCtBTBMbn3Xo46wVeeJ1",
+      "imageURI": "ipfs://QmVV7fs2XKiaskRswX88ikwLgfWCtBTBMbn3Xo46wVeeJ1",
+      "metadataCID": "QmQyr8xJsxqkArAe8qnJDRDCS4nKgd8jNsFVbBg8fEB8RR",
+      "tokenURI": "ipfs://QmQyr8xJsxqkArAe8qnJDRDCS4nKgd8jNsFVbBg8fEB8RR",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVV7fs2XKiaskRswX88ikwLgfWCtBTBMbn3Xo46wVeeJ1",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQyr8xJsxqkArAe8qnJDRDCS4nKgd8jNsFVbBg8fEB8RR"
+    }
+  },
+  {
+    "file": "mumu-075_Mountain_Climber.png",
+    "id": 75,
+    "name": "Mountain Climber Mumu",
+    "traits": {
+      "Background": "Snowy mountains",
+      "Headwear": "None",
+      "Eyewear": "Ski goggles",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Red yellow jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
+      "imageURI": "ipfs://QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
+      "metadataCID": "QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8",
+      "tokenURI": "ipfs://QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVJ1RPWcvSgf51MitfKH8LMjqRLoTJW3u7xGn3H6X53dX",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRgidaEdLpJxnv8pyu29dRZGdfzoApJ4C9XuoexFh7oR8"
+    }
+  },
+  {
+    "file": "mumu-076_Spartan_Warrior.png",
+    "id": 76,
+    "name": "Spartan Warrior Mumu",
+    "traits": {
+      "Background": "Battlefield",
+      "Headwear": "Horned Spartan helmet",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Bronze armor"
+    },
+    "ipfs": {
+      "imageCID": "Qmainx1iRTxroPmt4Tj7v8Kj5bPmJeu71ftx7PMyHB3a1o",
+      "imageURI": "ipfs://Qmainx1iRTxroPmt4Tj7v8Kj5bPmJeu71ftx7PMyHB3a1o",
+      "metadataCID": "QmbBdNC2HLj9UrpJ3aGz6Qo9rvMVYKPmXPPVuBPHFuwLDg",
+      "tokenURI": "ipfs://QmbBdNC2HLj9UrpJ3aGz6Qo9rvMVYKPmXPPVuBPHFuwLDg",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/Qmainx1iRTxroPmt4Tj7v8Kj5bPmJeu71ftx7PMyHB3a1o",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbBdNC2HLj9UrpJ3aGz6Qo9rvMVYKPmXPPVuBPHFuwLDg"
+    }
+  },
+  {
+    "file": "mumu-077_Tribal_Warrior.png",
+    "id": 77,
+    "name": "Tribal Warrior Mumu",
+    "traits": {
+      "Background": "Jungle ruins",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Tribal warrior outfit"
+    },
+    "ipfs": {
+      "imageCID": "QmexsxJ6bcnFt3UkxzEG1MZYCL8itReaHWAromk5v9JgDY",
+      "imageURI": "ipfs://QmexsxJ6bcnFt3UkxzEG1MZYCL8itReaHWAromk5v9JgDY",
+      "metadataCID": "QmchgsdZV9uMrDJDXegsYnRiy9Ntot9XfP18yVM94VQpad",
+      "tokenURI": "ipfs://QmchgsdZV9uMrDJDXegsYnRiy9Ntot9XfP18yVM94VQpad",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmexsxJ6bcnFt3UkxzEG1MZYCL8itReaHWAromk5v9JgDY",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmchgsdZV9uMrDJDXegsYnRiy9Ntot9XfP18yVM94VQpad"
+    }
+  },
+  {
+    "file": "mumu-078_Tiki_Bartender.png",
+    "id": 78,
+    "name": "Tiki Bartender Mumu",
+    "traits": {
+      "Background": "Tiki bar",
+      "Headwear": "Tropical flowers",
+      "Eyewear": "None",
+      "Held Item": "Tiki cocktail",
+      "Clothes": "Hawaiian shirt"
+    },
+    "ipfs": {
+      "imageCID": "QmdeKTCrLDcYg6ULiTT44ZsyTJUVgthjrNvi9Hb7kXnzf9",
+      "imageURI": "ipfs://QmdeKTCrLDcYg6ULiTT44ZsyTJUVgthjrNvi9Hb7kXnzf9",
+      "metadataCID": "QmQcbCWWZqQe13KyqxLRHn9ayP6eM7fjfYn2grbEvrzfAm",
+      "tokenURI": "ipfs://QmQcbCWWZqQe13KyqxLRHn9ayP6eM7fjfYn2grbEvrzfAm",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdeKTCrLDcYg6ULiTT44ZsyTJUVgthjrNvi9Hb7kXnzf9",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQcbCWWZqQe13KyqxLRHn9ayP6eM7fjfYn2grbEvrzfAm"
+    }
+  },
+  {
+    "file": "mumu-079_Arctic_Explorer.png",
+    "id": 79,
+    "name": "Arctic Explorer Mumu",
+    "traits": {
+      "Background": "Aurora borealis mountains",
+      "Headwear": "Fur-lined hood",
+      "Eyewear": "Ski goggles",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Arctic parka"
+    },
+    "ipfs": {
+      "imageCID": "QmNTkYQrvJ23e1H1DjRrPTCv8dDfgt17dnTmz5qyuToCoa",
+      "imageURI": "ipfs://QmNTkYQrvJ23e1H1DjRrPTCv8dDfgt17dnTmz5qyuToCoa",
+      "metadataCID": "QmUxyhwktQiVAjoCRWRiyru5XWrKFWiW5xKGZrcuu9aVC8",
+      "tokenURI": "ipfs://QmUxyhwktQiVAjoCRWRiyru5XWrKFWiW5xKGZrcuu9aVC8",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmNTkYQrvJ23e1H1DjRrPTCv8dDfgt17dnTmz5qyuToCoa",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmUxyhwktQiVAjoCRWRiyru5XWrKFWiW5xKGZrcuu9aVC8"
+    }
+  },
+  {
+    "file": "mumu-080_Ringmaster.png",
+    "id": 80,
+    "name": "Ringmaster Mumu",
+    "traits": {
+      "Background": "Circus tent",
+      "Headwear": "Black top hat",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Red ringmaster suit"
+    },
+    "ipfs": {
+      "imageCID": "QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
+      "imageURI": "ipfs://QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
+      "metadataCID": "QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65",
+      "tokenURI": "ipfs://QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmazoMqo8yGtgG53zyj3RD75ENHnChfj6SCyVmigUY7PFP",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTj5GT1LNezfwkvxfnU3QmEBPBLNaEggCxj5K3GSAeH65"
+    }
+  },
+  {
+    "file": "mumu-081_Ghostbuster.png",
+    "id": 81,
+    "name": "Ghostbuster Mumu",
+    "traits": {
+      "Background": "Haunted castle",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Ghost trap",
+      "Clothes": "Ghostbusters uniform"
+    },
+    "ipfs": {
+      "imageCID": "QmQX4JX6KxnrunP5skRRiHhgnkUGznYMsnH31t7FKJHtEg",
+      "imageURI": "ipfs://QmQX4JX6KxnrunP5skRRiHhgnkUGznYMsnH31t7FKJHtEg",
+      "metadataCID": "QmVDaH1REyknqfSsLuugTkfDVaaTQB2Z7H2NgX89SgjQdm",
+      "tokenURI": "ipfs://QmVDaH1REyknqfSsLuugTkfDVaaTQB2Z7H2NgX89SgjQdm",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmQX4JX6KxnrunP5skRRiHhgnkUGznYMsnH31t7FKJHtEg",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVDaH1REyknqfSsLuugTkfDVaaTQB2Z7H2NgX89SgjQdm"
+    }
+  },
+  {
+    "file": "mumu-082_Time_Traveler.png",
+    "id": 82,
+    "name": "Time Traveler Mumu",
+    "traits": {
+      "Background": "Time vortex",
+      "Headwear": "Steampunk goggles",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Steampunk leather armor"
+    },
+    "ipfs": {
+      "imageCID": "QmdctV6QRaD8NEpvVUwpuDWWo1Gc5kZ9v8fbh5sAhj8QLg",
+      "imageURI": "ipfs://QmdctV6QRaD8NEpvVUwpuDWWo1Gc5kZ9v8fbh5sAhj8QLg",
+      "metadataCID": "QmUt37BwBdD6VX98RzgsLtugsARav2YFtv3ShqwYYbkYRP",
+      "tokenURI": "ipfs://QmUt37BwBdD6VX98RzgsLtugsARav2YFtv3ShqwYYbkYRP",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdctV6QRaD8NEpvVUwpuDWWo1Gc5kZ9v8fbh5sAhj8QLg",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmUt37BwBdD6VX98RzgsLtugsARav2YFtv3ShqwYYbkYRP"
+    }
+  },
+  {
+    "file": "mumu-083_Medieval_King.png",
+    "id": 83,
+    "name": "Medieval King Mumu",
+    "traits": {
+      "Background": "Castle throne room",
+      "Headwear": "Gold crown",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Royal ermine robe"
+    },
+    "ipfs": {
+      "imageCID": "QmUoprvsGpBMKU6XQbXefRgngEWp1orKT5y3vADJ7VSGHz",
+      "imageURI": "ipfs://QmUoprvsGpBMKU6XQbXefRgngEWp1orKT5y3vADJ7VSGHz",
+      "metadataCID": "QmbgtJcXPLoji6S6Uc2uDSb3BDdRPmpfFFwT2t17rX1Xov",
+      "tokenURI": "ipfs://QmbgtJcXPLoji6S6Uc2uDSb3BDdRPmpfFFwT2t17rX1Xov",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmUoprvsGpBMKU6XQbXefRgngEWp1orKT5y3vADJ7VSGHz",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmbgtJcXPLoji6S6Uc2uDSb3BDdRPmpfFFwT2t17rX1Xov"
+    }
+  },
+  {
+    "file": "mumu-084_Alien_Diplomat.png",
+    "id": 84,
+    "name": "Alien Diplomat Mumu",
+    "traits": {
+      "Background": "Spaceship bridge",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Space suit"
+    },
+    "ipfs": {
+      "imageCID": "QmVQA5S2zYiVLTamiun6x3C5GVm6iXeTf2eYaBLHNStRo9",
+      "imageURI": "ipfs://QmVQA5S2zYiVLTamiun6x3C5GVm6iXeTf2eYaBLHNStRo9",
+      "metadataCID": "QmZNdwxznA4nM8r33vtf4Uj74MPRkEqxAQnmwKCg9ux4SP",
+      "tokenURI": "ipfs://QmZNdwxznA4nM8r33vtf4Uj74MPRkEqxAQnmwKCg9ux4SP",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmVQA5S2zYiVLTamiun6x3C5GVm6iXeTf2eYaBLHNStRo9",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZNdwxznA4nM8r33vtf4Uj74MPRkEqxAQnmwKCg9ux4SP"
+    }
+  },
+  {
+    "file": "mumu-085_Vampire_Hunter.png",
+    "id": 85,
+    "name": "Vampire Hunter Mumu",
+    "traits": {
+      "Background": "Spooky graveyard night",
+      "Headwear": "Fedora hat",
+      "Eyewear": "None",
+      "Held Item": "Wooden stake",
+      "Clothes": "Leather trench coat"
+    },
+    "ipfs": {
+      "imageCID": "QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
+      "imageURI": "ipfs://QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
+      "metadataCID": "QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm",
+      "tokenURI": "ipfs://QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbVDSMWUX7p26G7USWcLUUCFi5dqhe6V1HvNKs8eCcudS",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmYspnNwansbcEtWRYHGgwNUtvyzyLyhagR5ksREp7kTwm"
+    }
+  },
+  {
+    "file": "mumu-086_Train_Conductor.png",
+    "id": 86,
+    "name": "Train Conductor Mumu",
+    "traits": {
+      "Background": "Steam train station",
+      "Headwear": "Navy conductor cap",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Navy suit and tie"
+    },
+    "ipfs": {
+      "imageCID": "QmV7DfACb1wZH8Ubp98rfPNHRDyMdpmcjP2mSdwFonEnX4",
+      "imageURI": "ipfs://QmV7DfACb1wZH8Ubp98rfPNHRDyMdpmcjP2mSdwFonEnX4",
+      "metadataCID": "QmT6WLeZy64D7W7134A7Rx78dq7x7XVoESKXEn82YBRNQB",
+      "tokenURI": "ipfs://QmT6WLeZy64D7W7134A7Rx78dq7x7XVoESKXEn82YBRNQB",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmV7DfACb1wZH8Ubp98rfPNHRDyMdpmcjP2mSdwFonEnX4",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmT6WLeZy64D7W7134A7Rx78dq7x7XVoESKXEn82YBRNQB"
+    }
+  },
+  {
+    "file": "mumu-087_Orchestra_Conductor.png",
+    "id": 87,
+    "name": "Orchestra Conductor Mumu",
+    "traits": {
+      "Background": "Ornate opera house",
+      "Headwear": "Powdered wig",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Baroque aristocratic coat"
+    },
+    "ipfs": {
+      "imageCID": "QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
+      "imageURI": "ipfs://QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
+      "metadataCID": "QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2",
+      "tokenURI": "ipfs://QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmavL5WqdwPMTJyCiyhj85fVJL7tBvHSoEaijugiTeiegG",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmfYRPJnww6Lo6gJZJsvmiqtwnEqTAooF4bWXuRfup1Kc2"
+    }
+  },
+  {
+    "file": "mumu-088_Zen_Monk.png",
+    "id": 88,
+    "name": "Zen Monk Mumu",
+    "traits": {
+      "Background": "Buddhist temple garden",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "None",
+      "Clothes": "Monk robes"
+    },
+    "ipfs": {
+      "imageCID": "QmbaezkAhapGV4goBKjaAWtNA2dZJ2bQ4JWoVGoyMF9kpJ",
+      "imageURI": "ipfs://QmbaezkAhapGV4goBKjaAWtNA2dZJ2bQ4JWoVGoyMF9kpJ",
+      "metadataCID": "QmURzPa1q7H58MwXyTDY4DdWPpr299DPyw3Ky6eSCph7Mh",
+      "tokenURI": "ipfs://QmURzPa1q7H58MwXyTDY4DdWPpr299DPyw3Ky6eSCph7Mh",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbaezkAhapGV4goBKjaAWtNA2dZJ2bQ4JWoVGoyMF9kpJ",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmURzPa1q7H58MwXyTDY4DdWPpr299DPyw3Ky6eSCph7Mh"
+    }
+  },
+  {
+    "file": "mumu-089_Graffiti_Artist.png",
+    "id": 89,
+    "name": "Graffiti Artist Mumu",
+    "traits": {
+      "Background": "Graffiti wall",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Paint-splattered hoodie"
+    },
+    "ipfs": {
+      "imageCID": "QmS6rNPtGLW4pH3Ni2ECjCuiYHaNhPicb2Rs3zeSdXF9ip",
+      "imageURI": "ipfs://QmS6rNPtGLW4pH3Ni2ECjCuiYHaNhPicb2Rs3zeSdXF9ip",
+      "metadataCID": "QmaaQ1NYy3rd3kPDvH9TqxoKoTgnJvtsaSXXaKhstwtadA",
+      "tokenURI": "ipfs://QmaaQ1NYy3rd3kPDvH9TqxoKoTgnJvtsaSXXaKhstwtadA",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmS6rNPtGLW4pH3Ni2ECjCuiYHaNhPicb2Rs3zeSdXF9ip",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmaaQ1NYy3rd3kPDvH9TqxoKoTgnJvtsaSXXaKhstwtadA"
+    }
+  },
+  {
+    "file": "mumu-090_Beekeeper.png",
+    "id": 90,
+    "name": "Beekeeper Mumu",
+    "traits": {
+      "Background": "Flower meadow",
+      "Headwear": "Beekeeper hat",
+      "Eyewear": "Mesh veil",
+      "Held Item": "Smoking pipe",
+      "Clothes": "White beekeeper suit"
+    },
+    "ipfs": {
+      "imageCID": "QmZaZJLLVHyK4pMyf2ZBdRFuxYtaz1dUpxazj3jW8N5Z5A",
+      "imageURI": "ipfs://QmZaZJLLVHyK4pMyf2ZBdRFuxYtaz1dUpxazj3jW8N5Z5A",
+      "metadataCID": "QmXPZewRdLd5LXBQPeYb6KF6c4UDKdkdAVpQv6oPPaiXVs",
+      "tokenURI": "ipfs://QmXPZewRdLd5LXBQPeYb6KF6c4UDKdkdAVpQv6oPPaiXVs",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmZaZJLLVHyK4pMyf2ZBdRFuxYtaz1dUpxazj3jW8N5Z5A",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmXPZewRdLd5LXBQPeYb6KF6c4UDKdkdAVpQv6oPPaiXVs"
+    }
+  },
+  {
+    "file": "mumu-091_Blacksmith.png",
+    "id": 91,
+    "name": "Blacksmith Mumu",
+    "traits": {
+      "Background": "Blacksmith forge",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Hammer and pipe",
+      "Clothes": "Leather apron"
+    },
+    "ipfs": {
+      "imageCID": "QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
+      "imageURI": "ipfs://QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
+      "metadataCID": "QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM",
+      "tokenURI": "ipfs://QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmbNYgoDDe9DQi1bMAdRYaE5Uq1cfGVtnzugSWHbGkWDY2",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVw1b9Teaz4akkNWZ3ZfJ8v7UTh4UTYMdPcoKv9YKPZtM"
+    }
+  },
+  {
+    "file": "mumu-092_Witch_Doctor.png",
+    "id": 92,
+    "name": "Witch Doctor Mumu",
+    "traits": {
+      "Background": "Glowing swamp forest",
+      "Headwear": "Feather headdress",
+      "Eyewear": "None",
+      "Held Item": "Skull staff",
+      "Clothes": "Tribal fur garb"
+    },
+    "ipfs": {
+      "imageCID": "QmSfwFog9MTXwGTALhxcdmfF6nmSFKwv3VLkLPx37PUNkg",
+      "imageURI": "ipfs://QmSfwFog9MTXwGTALhxcdmfF6nmSFKwv3VLkLPx37PUNkg",
+      "metadataCID": "QmNoYw7HQh84yVhEiTEsLvVPyZEtvsHn1iVw7dKckr4TWp",
+      "tokenURI": "ipfs://QmNoYw7HQh84yVhEiTEsLvVPyZEtvsHn1iVw7dKckr4TWp",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmSfwFog9MTXwGTALhxcdmfF6nmSFKwv3VLkLPx37PUNkg",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmNoYw7HQh84yVhEiTEsLvVPyZEtvsHn1iVw7dKckr4TWp"
+    }
+  },
+  {
+    "file": "mumu-093_Chess_Grandmaster.png",
+    "id": 93,
+    "name": "Chess Grandmaster Mumu",
+    "traits": {
+      "Background": "Trophy library",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Ornate burgundy jacket"
+    },
+    "ipfs": {
+      "imageCID": "Qma3Ev9sgQGKw17S1H7jeeZ1UNzHUWctWRZdpiTLKJMGQ7",
+      "imageURI": "ipfs://Qma3Ev9sgQGKw17S1H7jeeZ1UNzHUWctWRZdpiTLKJMGQ7",
+      "metadataCID": "QmVn6mMnNQVLyydVoGCHKhBaQw1iFYcSo2LW379jUXcDz7",
+      "tokenURI": "ipfs://QmVn6mMnNQVLyydVoGCHKhBaQw1iFYcSo2LW379jUXcDz7",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/Qma3Ev9sgQGKw17S1H7jeeZ1UNzHUWctWRZdpiTLKJMGQ7",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmVn6mMnNQVLyydVoGCHKhBaQw1iFYcSo2LW379jUXcDz7"
+    }
+  },
+  {
+    "file": "mumu-094_Balloon_Pilot.png",
+    "id": 94,
+    "name": "Balloon Pilot Mumu",
+    "traits": {
+      "Background": "Hot air balloon sky",
+      "Headwear": "Aviator helmet",
+      "Eyewear": "Pilot goggles",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Leather flight jacket"
+    },
+    "ipfs": {
+      "imageCID": "QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
+      "imageURI": "ipfs://QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
+      "metadataCID": "QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb",
+      "tokenURI": "ipfs://QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTmowyGuZAG9FdLNwawZesmDA14oUspUGBnfB9qsbVLY6",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmRrRbeMZYzjj9Px8C4VCXgVB7TR8x41q6DHomvoxivgbb"
+    }
+  },
+  {
+    "file": "mumu-095_Treasure_Hunter.png",
+    "id": 95,
+    "name": "Treasure Hunter Mumu",
+    "traits": {
+      "Background": "Treasure cave",
+      "Headwear": "Headlamp strap",
+      "Eyewear": "None",
+      "Held Item": "Pipe and map",
+      "Clothes": "Leather explorer outfit"
+    },
+    "ipfs": {
+      "imageCID": "QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
+      "imageURI": "ipfs://QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
+      "metadataCID": "QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G",
+      "tokenURI": "ipfs://QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmawDhfeT6p4yp41pmabEdnYJBCZrcwMA4f9sVP6qPWX9P",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmSoXj5TVwgoEky5H4FCv7t4nLPy6FsgxxbH6iDoEERU2G"
+    }
+  },
+  {
+    "file": "mumu-096_Stained_Glass_Saint.png",
+    "id": 96,
+    "name": "Stained Glass Saint Mumu",
+    "traits": {
+      "Background": "Cathedral interior",
+      "Headwear": "None",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Stained glass robes"
+    },
+    "ipfs": {
+      "imageCID": "QmTPu5Et3VjqH6TaC7sSZNxfYfbtSSGTnrPB2EY9dBZoHU",
+      "imageURI": "ipfs://QmTPu5Et3VjqH6TaC7sSZNxfYfbtSSGTnrPB2EY9dBZoHU",
+      "metadataCID": "QmTXMtChwMj6G1EjosFdsDKJ2fFe3VnkXo6S44yv9iEMFH",
+      "tokenURI": "ipfs://QmTXMtChwMj6G1EjosFdsDKJ2fFe3VnkXo6S44yv9iEMFH",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmTPu5Et3VjqH6TaC7sSZNxfYfbtSSGTnrPB2EY9dBZoHU",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmTXMtChwMj6G1EjosFdsDKJ2fFe3VnkXo6S44yv9iEMFH"
+    }
+  },
+  {
+    "file": "mumu-097_Roman_Gladiator.png",
+    "id": 97,
+    "name": "Roman Gladiator Mumu",
+    "traits": {
+      "Background": "Roman Colosseum",
+      "Headwear": "Laurel wreath",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "Gladiator armor"
+    },
+    "ipfs": {
+      "imageCID": "QmRHYAmDU5LqmmNFwzWA3wVGUEMKHFjGroJQeaJHvKGKz6",
+      "imageURI": "ipfs://QmRHYAmDU5LqmmNFwzWA3wVGUEMKHFjGroJQeaJHvKGKz6",
+      "metadataCID": "QmayQrzxZrKf4esSDn3bVZRSPQvBjgLwMVr31Zp1jtx2e7",
+      "tokenURI": "ipfs://QmayQrzxZrKf4esSDn3bVZRSPQvBjgLwMVr31Zp1jtx2e7",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmRHYAmDU5LqmmNFwzWA3wVGUEMKHFjGroJQeaJHvKGKz6",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmayQrzxZrKf4esSDn3bVZRSPQvBjgLwMVr31Zp1jtx2e7"
+    }
+  },
+  {
+    "file": "mumu-098_Retro_Gamer.png",
+    "id": 98,
+    "name": "Retro Gamer Mumu",
+    "traits": {
+      "Background": "Retro arcade",
+      "Headwear": "Headphones",
+      "Eyewear": "None",
+      "Held Item": "Smoking pipe",
+      "Clothes": "White t-shirt"
+    },
+    "ipfs": {
+      "imageCID": "QmeGiNDEy4gYxVYCAsrQ5uNyM2GAhMgw59dFEdspdkmv3V",
+      "imageURI": "ipfs://QmeGiNDEy4gYxVYCAsrQ5uNyM2GAhMgw59dFEdspdkmv3V",
+      "metadataCID": "QmZXfnzvMCtiS7kH7ZPCoh63oNsSAvvGBSv1R6eSMAE6sr",
+      "tokenURI": "ipfs://QmZXfnzvMCtiS7kH7ZPCoh63oNsSAvvGBSv1R6eSMAE6sr",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmeGiNDEy4gYxVYCAsrQ5uNyM2GAhMgw59dFEdspdkmv3V",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmZXfnzvMCtiS7kH7ZPCoh63oNsSAvvGBSv1R6eSMAE6sr"
+    }
+  },
+  {
+    "file": "mumu-099_Bounty_Hunter.png",
+    "id": 99,
+    "name": "Bounty Hunter Mumu",
+    "traits": {
+      "Background": "Space battle",
+      "Headwear": "Viking pilot helmet",
+      "Eyewear": "None",
+      "Held Item": "Sniper rifle",
+      "Clothes": "Space combat armor"
+    },
+    "ipfs": {
+      "imageCID": "QmZxeNKV5yv5gERsLkRjVmR1mUNJ4F7D256S2cBtLmodSb",
+      "imageURI": "ipfs://QmZxeNKV5yv5gERsLkRjVmR1mUNJ4F7D256S2cBtLmodSb",
+      "metadataCID": "QmQrpL8MVgiaa9QTbai7a34USRqNkf4SpMc7K9H1ibzQAa",
+      "tokenURI": "ipfs://QmQrpL8MVgiaa9QTbai7a34USRqNkf4SpMc7K9H1ibzQAa",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmZxeNKV5yv5gERsLkRjVmR1mUNJ4F7D256S2cBtLmodSb",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmQrpL8MVgiaa9QTbai7a34USRqNkf4SpMc7K9H1ibzQAa"
+    }
+  },
+  {
+    "file": "mumu-100_Diamond_Miner.png",
+    "id": 100,
+    "name": "Diamond Miner Mumu",
+    "traits": {
+      "Background": "Crystal cave",
+      "Headwear": "Mining helmet",
+      "Eyewear": "None",
+      "Held Item": "Pickaxe and pipe",
+      "Clothes": "Dirty work shirt"
+    },
+    "ipfs": {
+      "imageCID": "QmdxT1tgfogxF1eC6eybAza3hhkHvQ1sV6RJ7uQax1eNex",
+      "imageURI": "ipfs://QmdxT1tgfogxF1eC6eybAza3hhkHvQ1sV6RJ7uQax1eNex",
+      "metadataCID": "QmWAQCta6McwszXFrvJeeo9iznrEqXEFNuy9XQ951QBzJ9",
+      "tokenURI": "ipfs://QmWAQCta6McwszXFrvJeeo9iznrEqXEFNuy9XQ951QBzJ9",
+      "imageGateway": "https://gateway.pinata.cloud/ipfs/QmdxT1tgfogxF1eC6eybAza3hhkHvQ1sV6RJ7uQax1eNex",
+      "metadataGateway": "https://gateway.pinata.cloud/ipfs/QmWAQCta6McwszXFrvJeeo9iznrEqXEFNuy9XQ951QBzJ9"
+    }
+  }
+]
