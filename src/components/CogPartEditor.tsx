@@ -1,18 +1,20 @@
 /** Steampunk-themed wrapper for PartEditor — matches CogPartSelector style */
 import { useState, useRef } from 'react'
 import type { CardEditorData, PartSchema, FieldSchema } from '@marketplace/components/editor/types'
+import { usePaletteExtractor } from '../hooks/usePaletteExtractor'
 
 interface CogPartEditorProps {
   part: string
   partSchema: PartSchema | undefined
   card: CardEditorData
-  onUpdateField: (key: string, value: string | number) => void
+  onUpdateField: (key: string, value: unknown) => void
   onUpdateFields: (updates: Record<string, string | number>) => void
 }
 
 export default function CogPartEditor({ part, partSchema, card, onUpdateField, onUpdateFields }: CogPartEditorProps) {
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const { extractFromImage, extracting } = usePaletteExtractor()
 
   if (!partSchema) {
     return (
@@ -57,6 +59,19 @@ export default function CogPartEditor({ part, partSchema, card, onUpdateField, o
       onUpdateField('imageData', data)
     }
     reader.readAsDataURL(file)
+  }
+
+  const handleExtractColors = async () => {
+    const src = imagePreview || card.imageData
+    if (!src) return
+    try {
+      const { colors, theme } = await extractFromImage(src)
+      // Spread colors and theme onto the card via onUpdateField
+      onUpdateField('colors', colors)
+      onUpdateField('theme', theme)
+    } catch (err) {
+      console.error('Color extraction failed:', err)
+    }
   }
 
   const handleRandomize = (fieldKey: string, fieldSchema: FieldSchema) => {
@@ -232,6 +247,30 @@ export default function CogPartEditor({ part, partSchema, card, onUpdateField, o
                 </div>
               )}
             </div>
+            {(card.imageData || imagePreview) && (
+              <button
+                style={{
+                  width: '100%',
+                  marginTop: 10,
+                  padding: '10px 0',
+                  background: extracting
+                    ? 'linear-gradient(180deg, #555868 0%, #444758 100%)'
+                    : 'linear-gradient(180deg, #b8863a 0%, #8a6528 100%)',
+                  border: `2px solid ${extracting ? '#5a5d6a' : '#c8a55a'}`,
+                  color: extracting ? '#999' : '#1a1a1a',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  fontFamily: "'Cinzel', serif",
+                  letterSpacing: '0.05em',
+                  cursor: extracting ? 'wait' : 'pointer',
+                  borderRadius: 2,
+                }}
+                onClick={handleExtractColors}
+                disabled={extracting}
+              >
+                {extracting ? '⏳ Extracting...' : '🎨 Extract Colors from Image'}
+              </button>
+            )}
           </div>
         )
 
