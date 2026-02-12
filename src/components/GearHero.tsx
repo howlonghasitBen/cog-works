@@ -142,6 +142,7 @@ export default function GearHero({
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setMenuOpen(false)
         setActiveSubmenu(null)
+        onMenuToggle?.(false)
       }
     }
     document.addEventListener('mousedown', handler)
