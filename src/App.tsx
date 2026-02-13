@@ -4,6 +4,8 @@
  * Always scrollable. Snap zones handle hero↔content transitions.
  */
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { injected } from 'wagmi/connectors'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /** Generate a randomized lightning bolt path from origin toward target center */
@@ -306,6 +308,9 @@ const heroItems: GearNavItem[] = [
 
 // ─── App ────────────────────────────────────────────────────────
 export default function App() {
+  const { address, isConnected } = useAccount()
+  const { connect } = useConnect()
+  const { disconnect } = useDisconnect()
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [lightningStep, setLightningStep] = useState(-1)
@@ -525,6 +530,7 @@ export default function App() {
         {/* Wallet Connect — bottom-right of hero */}
         <div className="absolute bottom-6 right-6 z-30 pointer-events-auto">
           <button
+            onClick={() => isConnected ? disconnect() : connect({ connector: injected() })}
             className="group relative flex items-center gap-3 px-5 py-2.5 cursor-pointer overflow-hidden rounded-sm border-2 border-[#2a2d40] bg-[#1a1d2e] text-white font-bold text-sm tracking-wider transition-all duration-200 hover:border-cyan-500/60 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
             style={{ fontFamily: "'Inter Tight', sans-serif" }}
           >
@@ -532,14 +538,16 @@ export default function App() {
             <div className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, rgba(34,211,238,0.05), transparent 50%)' }} />
             {/* Pulse dot */}
             <div className="relative">
-              <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 group-hover:bg-emerald-400 transition-colors" />
-              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping opacity-40" />
+              <div className={`w-2.5 h-2.5 rounded-full ${isConnected ? 'bg-emerald-400' : 'bg-cyan-400'} group-hover:bg-emerald-400 transition-colors`} />
+              <div className={`absolute inset-0 w-2.5 h-2.5 rounded-full ${isConnected ? 'bg-emerald-400' : 'bg-cyan-400'} animate-ping opacity-40`} />
             </div>
             {/* Wallet icon */}
             <svg className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 013 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 013 6v3" />
             </svg>
-            <span className="relative z-10 uppercase">Connect Wallet</span>
+            <span className="relative z-10 uppercase">
+              {isConnected ? `${address?.slice(0,6)}…${address?.slice(-4)}` : 'Connect Wallet'}
+            </span>
             {/* Chevron */}
             <svg className="w-3.5 h-3.5 text-gray-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
