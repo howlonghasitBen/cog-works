@@ -46,13 +46,18 @@ export default function WavesCard({ card, width = 400, artSrc, className, style 
   const crit = card.crit || { value: '0', color: 'radial-gradient(circle, #32cd32, #228b22)', textColor: '#fff' }
   const manaArr = Array.isArray(card.manaCost) ? card.manaCost : card.manaCost ? [card.manaCost] : []
 
-  // Resolve art
+  // Resolve art — always prefer /images/card-images/arts/
   let imgUrl = artSrc || ''
   if (!imgUrl && card.image) {
+    // For surf-works cards with relative paths, remap to arts/
     if (card.image.startsWith('/images/card-images/')) {
       const fname = card.image.split('/').pop()
       imgUrl = `/images/card-images/arts/${fname}`
+    } else if (card.image.startsWith('/images/')) {
+      const fname = card.image.split('/').pop()
+      imgUrl = `/images/card-images/arts/${fname}`
     } else {
+      // IPFS or other external — use as-is (fallback)
       imgUrl = card.image
     }
   }

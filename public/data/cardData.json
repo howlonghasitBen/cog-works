@@ -9377,7 +9377,7 @@
     "name": "40till5",
     "subtitle": "〈Designer〉",
     "level": "∞",
-    "image": "/images/card-images/40till5.png",
+    "image": "/images/card-images/arts/40till5.png",
     "type": "Creature – OG Memer",
     "stats": {
       "attack": "∞",
@@ -9441,7 +9441,7 @@
     "name": "Aetos",
     "subtitle": "⟨WARBOND⟩",
     "level": "1",
-    "image": "/images/card-images/fledgling_eagle.png",
+    "image": "/images/card-images/arts/fledgling_eagle.png",
     "type": "Creature — Fledgling Eagle",
     "stats": {
       "attack": "1",
@@ -9547,7 +9547,7 @@
     "name": "Ape",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/ape.png",
+    "image": "/images/card-images/arts/ape.png",
     "type": "Creature — Zhathik",
     "stats": {
       "attack": "3",
@@ -9716,7 +9716,7 @@
     "name": "Archmage",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/archmage.png",
+    "image": "/images/card-images/arts/archmage.png",
     "type": "Creature — Aeromancy",
     "stats": {
       "attack": "3",
@@ -9785,7 +9785,7 @@
     "name": "Assassin",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/assassin.png",
+    "image": "/images/card-images/arts/assassin.png",
     "type": "Creature — Silentium",
     "stats": {
       "attack": "3",
@@ -9990,7 +9990,7 @@
     "name": "Beach Bum",
     "subtitle": "⟨WANDERER⟩",
     "level": "∞",
-    "image": "/images/card-images/beachjester.png",
+    "image": "/images/card-images/arts/beachjester.png",
     "type": "Creature — Beach Philosopher",
     "stats": {
       "attack": "∞",
@@ -10096,7 +10096,7 @@
     "name": "Ben",
     "subtitle": "⟨MEME KING⟩",
     "level": "∞",
-    "image": "/images/card-images/ben.png",
+    "image": "/images/card-images/arts/ben.png",
     "type": "Creature — Artist",
     "stats": {
       "attack": "∞",
@@ -10252,7 +10252,7 @@
     "name": "Bliddo",
     "subtitle": "⟨Card Crafter⟩",
     "level": "∞",
-    "image": "/images/card-images/bliddo.png",
+    "image": "/images/card-images/arts/bliddo.png",
     "type": "Creature — COPYCAT",
     "stats": {
       "attack": "∞",
@@ -10408,7 +10408,7 @@
     "name": "Bulette",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/bulette.png",
+    "image": "/images/card-images/arts/bulette.png",
     "type": "Creature — Terragrim",
     "stats": {
       "attack": "3",
@@ -10477,7 +10477,7 @@
     "name": "Cag",
     "subtitle": "〈ZEN〉",
     "level": "∞",
-    "image": "/images/card-images/cag.png",
+    "image": "/images/card-images/arts/cag.png",
     "type": "Creature – Wanderer",
     "stats": {
       "attack": "∞",
@@ -10597,7 +10597,7 @@
     "name": "Centaur",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/centaur.png",
+    "image": "/images/card-images/arts/centaur.png",
     "type": "Creature — Zhathik",
     "stats": {
       "attack": "3",
@@ -10816,7 +10816,7 @@
     "name": "Commoner",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/commoner.png",
+    "image": "/images/card-images/arts/commoner.png",
     "type": "Creature — Silvaneer",
     "stats": {
       "attack": "3",
@@ -11157,7 +11157,7 @@
     "name": "Deep Gnome  Svirfneblin ",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/deep_gnome__svirfneblin_.png",
+    "image": "/images/card-images/arts/deep_gnome__svirfneblin_.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -11277,7 +11277,7 @@
     "name": "Deva",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/deva.png",
+    "image": "/images/card-images/arts/deva.png",
     "type": "Creature — Khaosora",
     "stats": {
       "attack": "3",
@@ -11346,7 +11346,7 @@
     "name": "Deva 2",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/deva_2.png",
+    "image": "/images/card-images/arts/deva_2.png",
     "type": "Creature — Zhrakkor",
     "stats": {
       "attack": "3",
@@ -11415,7 +11415,7 @@
     "name": "Dire Wolf",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/dire_wolf.png",
+    "image": "/images/card-images/arts/dire_wolf.png",
     "type": "Creature — Tenebrous",
     "stats": {
       "attack": "3",
@@ -11484,7 +11484,7 @@
     "name": "Dire Wolf 2",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/dire_wolf_2.png",
+    "image": "/images/card-images/arts/dire_wolf_2.png",
     "type": "Creature — Lunari",
     "stats": {
       "attack": "3",
@@ -11553,7 +11553,7 @@
     "name": "Doppelganger",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/doppelganger.png",
+    "image": "/images/card-images/arts/doppelganger.png",
     "type": "Creature — Xarathys",
     "stats": {
       "attack": "3",
@@ -11708,7 +11708,7 @@
     "name": "Druid 2",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/druid_2.png",
+    "image": "/images/card-images/arts/druid_2.png",
     "type": "Creature — Terraka",
     "stats": {
       "attack": "3",
@@ -11849,7 +11849,7 @@
     "name": "Earth Elemental",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/earth_elemental.png",
+    "image": "/images/card-images/arts/earth_elemental.png",
     "type": "Creature — Vemnixx",
     "stats": {
       "attack": "3",
@@ -12026,7 +12026,7 @@
     "name": "Ent",
     "subtitle": "⟨Woodland⟩",
     "level": "1",
-    "image": "/images/card-images/ent.png",
+    "image": "/images/card-images/arts/ent.png",
     "type": "Creature — Living Forest",
     "stats": {
       "attack": "0",
@@ -12096,7 +12096,7 @@
     "name": "Ettercap",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/ettercap.png",
+    "image": "/images/card-images/arts/ettercap.png",
     "type": "Creature — Khthonia",
     "stats": {
       "attack": "3",
@@ -12251,7 +12251,7 @@
     "name": "Fisherman",
     "subtitle": "⟨Monger⟩",
     "level": "∞",
-    "image": "/images/card-images/fisherman.png",
+    "image": "/images/card-images/arts/fisherman.png",
     "type": "Creature — Peaceful Angler",
     "stats": {
       "attack": "∞",
@@ -12321,7 +12321,7 @@
     "name": "Flesh Golem",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/flesh_golem.png",
+    "image": "/images/card-images/arts/flesh_golem.png",
     "type": "Creature — Malumbra",
     "stats": {
       "attack": "3",
@@ -12390,7 +12390,7 @@
     "name": "Flying Sword",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/flying_sword.png",
+    "image": "/images/card-images/arts/flying_sword.png",
     "type": "Creature — Fluxxle",
     "stats": {
       "attack": "3",
@@ -12459,7 +12459,7 @@
     "name": "Forest Keeper",
     "subtitle": "⟨GUARDIAN⟩",
     "level": "2",
-    "image": "/images/card-images/treant.png",
+    "image": "/images/card-images/arts/treant.png",
     "type": "Creature — Forest Guardian",
     "stats": {
       "attack": "4",
@@ -12529,7 +12529,7 @@
     "name": "Forest Shaman",
     "subtitle": "⟨MYSTIC⟩",
     "level": "2",
-    "image": "/images/card-images/warlock.png",
+    "image": "/images/card-images/arts/warlock.png",
     "type": "Creature — Warlock",
     "stats": {
       "attack": "5",
@@ -12599,7 +12599,7 @@
     "name": "Forest Spirit",
     "subtitle": "⟨VOID⟩",
     "level": "1",
-    "image": "/images/card-images/forestspirit.png",
+    "image": "/images/card-images/arts/forestspirit.png",
     "type": "Creature — Nightmare Beast",
     "stats": {
       "attack": "2",
@@ -12669,7 +12669,7 @@
     "name": "Forest Titan",
     "subtitle": "⟨ANCIENT⟩",
     "level": "3",
-    "image": "/images/card-images/foresttitan.png",
+    "image": "/images/card-images/arts/foresttitan.png",
     "type": "Creature — Ancient Treant",
     "stats": {
       "attack": "4",
@@ -12839,7 +12839,7 @@
     "name": "Getri",
     "subtitle": "⟨Ancient⟩",
     "level": "1",
-    "image": "/images/card-images/wyrm.png",
+    "image": "/images/card-images/arts/wyrm.png",
     "type": "Creature — Wyrm",
     "stats": {
       "attack": "2",
@@ -12909,7 +12909,7 @@
     "name": "Giant Elk",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_elk.png",
+    "image": "/images/card-images/arts/giant_elk.png",
     "type": "Creature — Mireborn",
     "stats": {
       "attack": "3",
@@ -13014,7 +13014,7 @@
     "name": "Giant Hyena",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_hyena.png",
+    "image": "/images/card-images/arts/giant_hyena.png",
     "type": "Creature — Echoluxe",
     "stats": {
       "attack": "3",
@@ -13083,7 +13083,7 @@
     "name": "Giant Hyena 2",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_hyena_2.png",
+    "image": "/images/card-images/arts/giant_hyena_2.png",
     "type": "Creature — Crepuscle",
     "stats": {
       "attack": "3",
@@ -13188,7 +13188,7 @@
     "name": "Giant Rat  Diseased ",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_rat__diseased_.png",
+    "image": "/images/card-images/arts/giant_rat__diseased_.png",
     "type": "Creature — Malaise",
     "stats": {
       "attack": "3",
@@ -13257,7 +13257,7 @@
     "name": "Giant Scorpion",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_scorpion.png",
+    "image": "/images/card-images/arts/giant_scorpion.png",
     "type": "Creature — Desoloxa",
     "stats": {
       "attack": "3",
@@ -13326,7 +13326,7 @@
     "name": "Giant Spider",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_spider.png",
+    "image": "/images/card-images/arts/giant_spider.png",
     "type": "Creature — Duskweaver",
     "stats": {
       "attack": "3",
@@ -13395,7 +13395,7 @@
     "name": "Giant Spider 2",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_spider_2.png",
+    "image": "/images/card-images/arts/giant_spider_2.png",
     "type": "Creature — Cryptomelancholy",
     "stats": {
       "attack": "3",
@@ -13464,7 +13464,7 @@
     "name": "Giant Vulture",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/giant_vulture.png",
+    "image": "/images/card-images/arts/giant_vulture.png",
     "type": "Creature — Kaelos",
     "stats": {
       "attack": "3",
@@ -13583,7 +13583,7 @@
     "name": "Gribble",
     "subtitle": "⟨HOARDER⟩",
     "level": "2",
-    "image": "/images/card-images/lootgremlin.png",
+    "image": "/images/card-images/arts/lootgremlin.png",
     "type": "Creature — Treasure Goblin",
     "stats": {
       "attack": "3",
@@ -13739,7 +13739,7 @@
     "name": "Guardian Naga",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/guardian_naga.png",
+    "image": "/images/card-images/arts/guardian_naga.png",
     "type": "Creature — Khaosborn",
     "stats": {
       "attack": "3",
@@ -13808,7 +13808,7 @@
     "name": "Gynosphinx",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/gynosphinx.png",
+    "image": "/images/card-images/arts/gynosphinx.png",
     "type": "Creature — Chronomage",
     "stats": {
       "attack": "3",
@@ -13877,7 +13877,7 @@
     "name": "HOL",
     "subtitle": "〈FED〉",
     "level": "∞",
-    "image": "/images/card-images/hol.png",
+    "image": "/images/card-images/arts/hol.png",
     "type": "Creature – That Guy",
     "stats": {
       "attack": "∞",
@@ -14047,7 +14047,7 @@
     "name": "Hell Hound 2",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/hell_hound_2.png",
+    "image": "/images/card-images/arts/hell_hound_2.png",
     "type": "Creature — Necroflux",
     "stats": {
       "attack": "3",
@@ -14166,7 +14166,7 @@
     "name": "Hyena",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/hyena.png",
+    "image": "/images/card-images/arts/hyena.png",
     "type": "Creature — Tenebrous",
     "stats": {
       "attack": "3",
@@ -14235,7 +14235,7 @@
     "name": "Imp",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/imp.png",
+    "image": "/images/card-images/arts/imp.png",
     "type": "Creature — Pyropex",
     "stats": {
       "attack": "3",
@@ -14304,7 +14304,7 @@
     "name": "Johnny",
     "subtitle": "〈Gambler〉",
     "level": "∞",
-    "image": "/images/card-images/albinoApe.png",
+    "image": "/images/card-images/arts/albinoApe.png",
     "type": "Creature — Albino Ape",
     "stats": {
       "attack": "∞",
@@ -14374,7 +14374,7 @@
     "name": "Juror",
     "subtitle": "〈KLEROS〉",
     "level": "∞",
-    "image": "/images/card-images/pinakion.png",
+    "image": "/images/card-images/arts/pinakion.png",
     "type": "Creature – Decentralized Judge",
     "stats": {
       "attack": "∞",
@@ -14530,7 +14530,7 @@
     "name": "Kro",
     "subtitle": "⟨DEPTHS⟩",
     "level": "3",
-    "image": "/images/card-images/kraken.png",
+    "image": "/images/card-images/arts/kraken.png",
     "type": "Creature — The Kraken",
     "stats": {
       "attack": "8",
@@ -14650,7 +14650,7 @@
     "name": "Lemure",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/lemure.png",
+    "image": "/images/card-images/arts/lemure.png",
     "type": "Creature— Swampborn",
     "stats": {
       "attack": "3",
@@ -14719,7 +14719,7 @@
     "name": "Lich",
     "subtitle": "〈UNDYING〉",
     "level": "2",
-    "image": "/images/card-images/lich.png",
+    "image": "/images/card-images/arts/lich.png",
     "type": "Creature — Necromancer",
     "stats": {
       "attack": "2",
@@ -14839,7 +14839,7 @@
     "name": "Lillie007",
     "subtitle": "〈Agent〉",
     "level": "∞",
-    "image": "/images/card-images/Lillie007.png",
+    "image": "/images/card-images/arts/Lillie007.png",
     "type": "Creature – Op",
     "stats": {
       "attack": "∞",
@@ -14909,7 +14909,7 @@
     "name": "Lion",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/lion.png",
+    "image": "/images/card-images/arts/lion.png",
     "type": "Creature — Skyfire",
     "stats": {
       "attack": "3",
@@ -15028,7 +15028,7 @@
     "name": "Lizard",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/lizard.png",
+    "image": "/images/card-images/arts/lizard.png",
     "type": "Creature— Bayoucrawl",
     "stats": {
       "attack": "3",
@@ -15433,7 +15433,7 @@
     "name": "Merfolk",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/merfolk.png",
+    "image": "/images/card-images/arts/merfolk.png",
     "type": "Creature— Abyssworn",
     "stats": {
       "attack": "3",
@@ -15638,7 +15638,7 @@
     "name": "Moonwraith",
     "subtitle": "〈PHANTOM〉",
     "level": "2",
-    "image": "/images/card-images/specter.png",
+    "image": "/images/card-images/arts/specter.png",
     "type": "Creature — Specter",
     "stats": {
       "attack": "2",
@@ -15758,7 +15758,7 @@
     "name": "Mr. F",
     "subtitle": "〈GENESIS〉",
     "level": "∞",
-    "image": "/images/card-images/mrf.png",
+    "image": "/images/card-images/arts/mrf.png",
     "type": "Creature – Genesis Validator",
     "stats": {
       "attack": "∞",
@@ -15864,7 +15864,7 @@
     "name": "Night Hag",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/night_hag.png",
+    "image": "/images/card-images/arts/night_hag.png",
     "type": "Creature— Abysswalker",
     "stats": {
       "attack": "3",
@@ -15933,7 +15933,7 @@
     "name": "Nitro Slav",
     "subtitle": "⟨LUXURY⟩",
     "level": "∞",
-    "image": "/images/card-images/Nitro.png",
+    "image": "/images/card-images/arts/Nitro.png",
     "type": "Creature — Vacation Master",
     "stats": {
       "attack": "∞",
@@ -16003,7 +16003,7 @@
     "name": "Noble",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/noble.png",
+    "image": "/images/card-images/arts/noble.png",
     "type": "Creature— Sorrowking",
     "stats": {
       "attack": "3",
@@ -16072,7 +16072,7 @@
     "name": "Ochre Jelly",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/ochre_jelly.png",
+    "image": "/images/card-images/arts/ochre_jelly.png",
     "type": "Creature— Cavemelt",
     "stats": {
       "attack": "3",
@@ -16141,7 +16141,7 @@
     "name": "Octopus",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/octopus.png",
+    "image": "/images/card-images/arts/octopus.png",
     "type": "Creature— Leviathan",
     "stats": {
       "attack": "3",
@@ -16210,7 +16210,7 @@
     "name": "Oni",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/oni.png",
+    "image": "/images/card-images/arts/oni.png",
     "type": "Creature — Stormforged",
     "stats": {
       "attack": "3",
@@ -16279,7 +16279,7 @@
     "name": "Pep",
     "subtitle": "〈AEGIS〉",
     "level": "∞",
-    "image": "/images/card-images/pep.jpg",
+    "image": "/images/card-images/arts/pep.jpg",
     "type": "Creature – Developer Sage",
     "stats": {
       "attack": "∞",
@@ -16399,7 +16399,7 @@
     "name": "Phelob",
     "subtitle": "⟨Cave King⟩",
     "level": "2",
-    "image": "/images/card-images/Phelob.png",
+    "image": "/images/card-images/arts/Phelob.png",
     "type": "Creature — Giant Cave Spider",
     "stats": {
       "attack": "4",
@@ -16505,7 +16505,7 @@
     "name": "Pit Fiend",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/pit_fiend.png",
+    "image": "/images/card-images/arts/pit_fiend.png",
     "type": "Creature— Volcborn",
     "stats": {
       "attack": "3",
@@ -16574,7 +16574,7 @@
     "name": "Proof",
     "subtitle": "〈SURF〉",
     "level": "∞",
-    "image": "/images/card-images/proof.png",
+    "image": "/images/card-images/arts/proof.png",
     "type": "Creature — DeFi Innovator",
     "stats": {
       "attack": "∞",
@@ -16644,7 +16644,7 @@
     "name": "Rakshasa",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/rakshasa.png",
+    "image": "/images/card-images/arts/rakshasa.png",
     "type": "Creature— Templeborn",
     "stats": {
       "attack": "3",
@@ -16713,7 +16713,7 @@
     "name": "Rampage",
     "subtitle": "〈Ogrid〉",
     "level": "2",
-    "image": "/images/card-images/cyclops.png",
+    "image": "/images/card-images/arts/cyclops.png",
     "type": "Creature – Cyclops",
     "stats": {
       "attack": "4",
@@ -16783,7 +16783,7 @@
     "name": "Raven",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/raven.png",
+    "image": "/images/card-images/arts/raven.png",
     "type": "Creature— Bayouomen",
     "stats": {
       "attack": "3",
@@ -17138,7 +17138,7 @@
     "name": "Saber Toothed Tiger",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/saber_toothed_tiger.png",
+    "image": "/images/card-images/arts/saber_toothed_tiger.png",
     "type": "Creature— Swampstalker",
     "stats": {
       "attack": "3",
@@ -17257,7 +17257,7 @@
     "name": "Salamander",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/salamander.png",
+    "image": "/images/card-images/arts/salamander.png",
     "type": "Creature— Bayouscale",
     "stats": {
       "attack": "3",
@@ -17376,7 +17376,7 @@
     "name": "Sasquepe",
     "subtitle": "〈CRYPTID〉",
     "level": "1",
-    "image": "/images/card-images/sasquepe.png",
+    "image": "/images/card-images/arts/sasquepe.png",
     "type": "Creature — Great Ape",
     "stats": {
       "attack": "5",
@@ -17446,7 +17446,7 @@
     "name": "Sea Hag",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/sea_hag.png",
+    "image": "/images/card-images/arts/sea_hag.png",
     "type": "Creature— Stormcaller",
     "stats": {
       "attack": "3",
@@ -17851,7 +17851,7 @@
     "name": "Silver Dragon Wyrmling",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/silver_dragon_wyrmling.png",
+    "image": "/images/card-images/arts/silver_dragon_wyrmling.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -17920,7 +17920,7 @@
     "name": "Skeleton 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/skeleton_2.png",
+    "image": "/images/card-images/arts/skeleton_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -18225,7 +18225,7 @@
     "name": "Spy",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/spy.png",
+    "image": "/images/card-images/arts/spy.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -18294,7 +18294,7 @@
     "name": "Steam Mephit",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/steam_mephit.png",
+    "image": "/images/card-images/arts/steam_mephit.png",
     "type": "Creature— Clockborn",
     "stats": {
       "attack": "3",
@@ -18363,7 +18363,7 @@
     "name": "Stone Giant",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/stone_giant.png",
+    "image": "/images/card-images/arts/stone_giant.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -18432,7 +18432,7 @@
     "name": "Stone Guardian",
     "subtitle": "⟨SENTINEL⟩",
     "level": "3",
-    "image": "/images/card-images/golem.png",
+    "image": "/images/card-images/arts/golem.png",
     "type": "Construct — Stone Golem",
     "stats": {
       "attack": "3",
@@ -18552,7 +18552,7 @@
     "name": "Storm Giant",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/storm_giant.png",
+    "image": "/images/card-images/arts/storm_giant.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -18671,7 +18671,7 @@
     "name": "Succubus Incubus",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/succubus_incubus.png",
+    "image": "/images/card-images/arts/succubus_incubus.png",
     "type": "Creature— Shadowwing",
     "stats": {
       "attack": "3",
@@ -18790,7 +18790,7 @@
     "name": "Swarm Of Beetles 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/swarm_of_beetles_2.png",
+    "image": "/images/card-images/arts/swarm_of_beetles_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -18859,7 +18859,7 @@
     "name": "Swarm Of Poisonous Snakes",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/swarm_of_poisonous_snakes.png",
+    "image": "/images/card-images/arts/swarm_of_poisonous_snakes.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -18928,7 +18928,7 @@
     "name": "Tarrasque",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/tarrasque.png",
+    "image": "/images/card-images/arts/tarrasque.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -19047,7 +19047,7 @@
     "name": "Tiger 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/tiger_2.png",
+    "image": "/images/card-images/arts/tiger_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -19116,7 +19116,7 @@
     "name": "Tokiru",
     "subtitle": "⟨Shell Wanderer⟩",
     "level": "2",
-    "image": "/images/card-images/tokiru.png",
+    "image": "/images/card-images/arts/tokiru.png",
     "type": "Creature — Ancient Turtle",
     "stats": {
       "attack": "2",
@@ -19186,7 +19186,7 @@
     "name": "Tribal Warrior",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/tribal_warrior.png",
+    "image": "/images/card-images/arts/tribal_warrior.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -19255,7 +19255,7 @@
     "name": "Unicorn",
     "subtitle": "〈Mystical〉",
     "level": "2",
-    "image": "/images/card-images/unicorn.png",
+    "image": "/images/card-images/arts/unicorn.png",
     "type": "Creature – Unicorn",
     "stats": {
       "attack": "3",
@@ -19325,7 +19325,7 @@
     "name": "Unicorn 3",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/unicorn_3.png",
+    "image": "/images/card-images/arts/unicorn_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -19444,7 +19444,7 @@
     "name": "Vampire  Bat Form",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/vampire__bat_form.png",
+    "image": "/images/card-images/arts/vampire__bat_form.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -19513,7 +19513,7 @@
     "name": "Vampire  Mist Form 4",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/vampire__mist_form_4.png",
+    "image": "/images/card-images/arts/vampire__mist_form_4.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -19582,7 +19582,7 @@
     "name": "Vampire  Vampire Form",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/vampire__vampire_form.png",
+    "image": "/images/card-images/arts/vampire__vampire_form.png",
     "type": "Creature — Abaddon",
     "stats": {
       "attack": "3",
@@ -19651,7 +19651,7 @@
     "name": "Vanpe",
     "subtitle": "⟨Antirush⟩",
     "level": "1",
-    "image": "/images/card-images/vanpe.png",
+    "image": "/images/card-images/arts/vanpe.png",
     "type": "Creature — Urchin",
     "stats": {
       "attack": "0",
@@ -19721,7 +19721,7 @@
     "name": "Violet Fungus",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/violet_fungus.png",
+    "image": "/images/card-images/arts/violet_fungus.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -19990,7 +19990,7 @@
     "name": "Vrock",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/vrock.png",
+    "image": "/images/card-images/arts/vrock.png",
     "type": "Creature — Malediction",
     "stats": {
       "attack": "3",
@@ -20059,7 +20059,7 @@
     "name": "Warhorse",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/warhorse.png",
+    "image": "/images/card-images/arts/warhorse.png",
     "type": "Creature— Swampknight",
     "stats": {
       "attack": "3",
@@ -20128,7 +20128,7 @@
     "name": "Warhorse 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/warhorse_2.png",
+    "image": "/images/card-images/arts/warhorse_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -20197,7 +20197,7 @@
     "name": "Warhorse Skeleton",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/warhorse_skeleton.png",
+    "image": "/images/card-images/arts/warhorse_skeleton.png",
     "type": "Creature— Bonesteed",
     "stats": {
       "attack": "3",
@@ -20266,7 +20266,7 @@
     "name": "Water Elemental",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/water_elemental.png",
+    "image": "/images/card-images/arts/water_elemental.png",
     "type": "Creature— Tidalwoe",
     "stats": {
       "attack": "3",
@@ -20335,7 +20335,7 @@
     "name": "Wereboar  Hybrid Form 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/wereboar__hybrid_form_2.png",
+    "image": "/images/card-images/arts/wereboar__hybrid_form_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -20404,7 +20404,7 @@
     "name": "Wererat  Human Form",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/wererat__human_form.png",
+    "image": "/images/card-images/arts/wererat__human_form.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -20473,7 +20473,7 @@
     "name": "Weretiger  Tiger Form",
     "subtitle": "⟨Generated⟩",
     "level": "1",
-    "image": "/images/card-images/weretiger__tiger_form.png",
+    "image": "/images/card-images/arts/weretiger__tiger_form.png",
     "type": "Creature— Moonprowl",
     "stats": {
       "attack": "3",
@@ -20542,7 +20542,7 @@
     "name": "Werewolf  Hybrid Form 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/werewolf__hybrid_form_2.png",
+    "image": "/images/card-images/arts/werewolf__hybrid_form_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -20611,7 +20611,7 @@
     "name": "Will O  Wisp",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/will_o__wisp.png",
+    "image": "/images/card-images/arts/will_o__wisp.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -20680,7 +20680,7 @@
     "name": "Winter Wolf",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/winter_wolf.png",
+    "image": "/images/card-images/arts/winter_wolf.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -20849,7 +20849,7 @@
     "name": "Wraith",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/wraith.png",
+    "image": "/images/card-images/arts/wraith.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -20918,7 +20918,7 @@
     "name": "Wyvern",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/wyvern.png",
+    "image": "/images/card-images/arts/wyvern.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21073,7 +21073,7 @@
     "name": "Yostari",
     "subtitle": "〈Scribe〉",
     "level": "∞",
-    "image": "/images/card-images/yostari.png",
+    "image": "/images/card-images/arts/yostari.png",
     "type": "Creature – Tech Archivist",
     "stats": {
       "attack": "∞",
@@ -21143,7 +21143,7 @@
     "name": "Young Black Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_black_dragon.png",
+    "image": "/images/card-images/arts/young_black_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21212,7 +21212,7 @@
     "name": "Young Black Dragon 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_black_dragon_2.png",
+    "image": "/images/card-images/arts/young_black_dragon_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21281,7 +21281,7 @@
     "name": "Young Brass Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_brass_dragon.png",
+    "image": "/images/card-images/arts/young_brass_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21350,7 +21350,7 @@
     "name": "Young Brass Dragon 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_brass_dragon_2.png",
+    "image": "/images/card-images/arts/young_brass_dragon_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21419,7 +21419,7 @@
     "name": "Young Copper Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_copper_dragon.png",
+    "image": "/images/card-images/arts/young_copper_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21488,7 +21488,7 @@
     "name": "Young Green Dragon 2",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_green_dragon_2.png",
+    "image": "/images/card-images/arts/young_green_dragon_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21557,7 +21557,7 @@
     "name": "Young Red Dragon 3",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_red_dragon_3.png",
+    "image": "/images/card-images/arts/young_red_dragon_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21626,7 +21626,7 @@
     "name": "Young White Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "/images/card-images/young_white_dragon.png",
+    "image": "/images/card-images/arts/young_white_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -21695,7 +21695,7 @@
     "name": "Zombie",
     "subtitle": "〈Undying〉",
     "level": "1",
-    "image": "/images/card-images/zombie.png",
+    "image": "/images/card-images/arts/zombie.png",
     "type": "Creature — Zombie",
     "stats": {
       "attack": "1",
