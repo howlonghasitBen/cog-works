@@ -506,7 +506,7 @@ export default function App() {
           onNavigate={handleNavigate}
           transparentBg
           onCenterClick={activePage ? handleBackToTop : undefined}
-          onMenuToggle={setMenuOpen}
+          onMenuToggle={(open: boolean) => { setMenuOpen(open); if (!open) setLightningStep(-1) }}
           lightningStep={lightningStep}
         />
       </div>
