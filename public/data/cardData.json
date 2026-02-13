@@ -3,7 +3,7 @@
     "name": "Moonwell Sanctuary",
     "subtitle": "",
     "level": "★",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigloufrssytm2uqqnrfbelxy6hvmrnkbsednvxmq7f5jwc5m7k4cm",
+    "image": "/images/card-images/arts/moonwell_sanctuary.png",
     "type": "Consumable — Mana Restoration",
     "stats": null,
     "flavorText": "Fairy Magic ⟨+3M⟩\nWhere moonbeams kiss the sacred waters, ancient magic flows eternal.",
@@ -70,7 +70,7 @@
     "name": "Slight of Hand",
     "subtitle": "",
     "level": "★",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreif4dvgjt42tk2p25zpgcy2dlf2mm2kx524aofam7lpq6hqe4f3pvu",
+    "image": "/images/card-images/arts/slight_of_hand.png",
     "type": "Consumable — Cards",
     "stats": null,
     "flavorText": "Slight of Hand ⟨Draw two addition cards⟩\nWhere fortunes rise and fall with the turn of a card, luck favors the bold.",
@@ -9616,7 +9616,7 @@
     "name": "Apex Ape",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigirygeyeueyowcrkcxsq3yqiexmrajjxzbrxsitxftuhu7okdeqy",
+    "image": "/images/card-images/arts/apex_ape.png",
     "type": "",
     "stats": {
       "attack": "6",
@@ -16988,7 +16988,7 @@
     "name": "Runic Biplane Pilot",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidarjjsplftyt7tf64bu54kkadj3xdw7jyhxv3dyrtq673qdte64u",
+    "image": "/images/card-images/arts/runic_biplane_pilot.png",
     "type": "Creature— Skyrune",
     "stats": {
       "attack": "5",
@@ -17038,7 +17038,7 @@
     "name": "Runic Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieihp2xhkvwqlfzml6tbextrrducsamqonlswf3gn2drv4bcivdum",
+    "image": "/images/card-images/arts/runic_dragon.png",
     "type": "Creature— Runescale",
     "stats": {
       "attack": "5",
@@ -17088,7 +17088,7 @@
     "name": "Runic Wizard",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeietoi6aiaxfk6jndaqfkxa7gpthqfj3atytetf6kgntstun4j7w7i",
+    "image": "/images/card-images/arts/runic_wizard.png",
     "type": "Creature— Runewraith",
     "stats": {
       "attack": "3",
@@ -17207,7 +17207,7 @@
     "name": "Sacred Geometric Seal",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeid3o4uhp7afyfxygmuqw4elavbp7wibpkwhpj4wbmahsmwyrrrr64",
+    "image": "/images/card-images/arts/sacred_geometric_seal.png",
     "type": "Creature— Bindweave",
     "stats": {
       "attack": "5",
@@ -20749,7 +20749,7 @@
     "name": "Wishing Well",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicnsh3sfievqcpgmrk6eay4oxzqdwxphh3hpno3qlerq7ly6qklje",
+    "image": "/images/card-images/arts/wishing_well.png",
     "type": "Creature— Gildtrap",
     "stats": {
       "attack": "7",
@@ -20799,7 +20799,7 @@
     "name": "Wood Elf",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeib6pptxozfvi62yoweqh3nsjewyyjvbxvmqs3pxsb7srwxgpx6lqu",
+    "image": "/images/card-images/arts/wood_elf.png",
     "type": "Creature — Gnarlsong",
     "stats": {
       "attack": "3",

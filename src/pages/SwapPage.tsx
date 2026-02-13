@@ -73,7 +73,7 @@ function InventoryCard({
 }) {
   return (
     <div className="cursor-pointer group" onClick={onClick}>
-      <div className={`relative rounded-sm overflow-hidden border-2 transition-all duration-200 ${
+      <div className={`relative rounded-xl overflow-hidden transition-all duration-200 ${
         selected
           ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)]'
           : 'border-gray-700/60 hover:border-[#4a4d60] hover:shadow-lg'
@@ -114,7 +114,7 @@ function StageCard({
   placeholder: string
 }) {
   return (
-    <div className={`relative rounded-sm overflow-hidden border-2 transition-all ${
+    <div className={`relative rounded-xl overflow-hidden transition-all {
       card ? 'border-cyan-500/50 bg-[#121420]' : 'border-dashed border-[#3a3d50] bg-[#121420]'
     }`} style={{ width: 220, aspectRatio: '3/4' }}>
       {card ? (
@@ -173,7 +173,7 @@ function MultiStageCards({
         {cards.map(card => (
           <div
             key={card.id}
-            className="relative rounded-sm overflow-hidden border-2 border-cyan-500/40 bg-gray-800 flex-shrink-0 snap-center"
+            className="relative rounded-xl overflow-hidden bg-transparent flex-shrink-0 snap-center"
             style={{ width: 220, aspectRatio: '3/4' }}
           >
             <CardFromData name={card.name} width={220} />
@@ -225,7 +225,7 @@ function MarketRow({
         : 'bg-[#121420] border border-[#2a2d40] hover:border-[#3a3d50]'
     }`}>
       <div className="flex gap-3">
-        <div className="w-24 rounded-md overflow-hidden border-2 border-[#2a2d40] flex-shrink-0" style={{ aspectRatio: '3/4' }}>
+        <div className="w-24 rounded-xl overflow-hidden flex-shrink-0" style={{ aspectRatio: '3/4' }}>
           <CardFromData name={card.name} width={96} />
         </div>
         <div className="flex-1 min-w-0">
