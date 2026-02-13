@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useAccount, useConnect, useDisconnect, useWriteContract } from 'wagmi'
 import { injected } from 'wagmi/connectors'
 import { createPublicClient, http, formatEther, parseEther, maxUint256 } from 'viem'
@@ -56,6 +56,7 @@ export function useWhirlpool() {
 
   const clearLogs = useCallback(() => setLogs([]), [])
 
+  const cardsRef = useRef<CardState[]>([])
   const loadCards = useCallback(async () => {
     try {
       const totalBig = await publicClient.readContract({
@@ -114,9 +115,11 @@ export function useWhirlpool() {
         })
         const results = await Promise.all(batch)
         results.forEach(r => { if (r) cardData.push(r) })
-        // Progressive update every chunk
-        setCards([...cardData])
+        // Progressive update only on first load
+        if (cardsRef.current.length === 0) setCards([...cardData])
       }
+      cardsRef.current = cardData
+      setCards(cardData)
 
       if (address) {
         try {

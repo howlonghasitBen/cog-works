@@ -252,16 +252,18 @@ function MarketRow({
             <span className="text-xs text-gray-500">
               Steal: <span className="text-emerald-400 font-mono font-bold">{card.stealAmount.toFixed(2)}</span> tokens
             </span>
-            <button
-              onClick={onSelect}
-              className={`px-4 py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
-                isTarget
-                  ? 'bg-emerald-600/30 text-emerald-400 border border-emerald-500/50'
-                  : 'bg-cyan-600 hover:bg-cyan-500 text-white'
-              }`}
-            >
-              {isTarget ? 'Selected' : 'Request'}
-            </button>
+            {isTarget ? (
+              <span className="px-3 py-1 rounded text-xs font-bold bg-emerald-600/30 text-emerald-400 border border-emerald-500/50">Selected</span>
+            ) : (
+              <img
+                src="/images/surfSwapNoBG.png"
+                alt="Request swap"
+                onClick={onSelect}
+                style={{ width: 28, height: 28, objectFit: 'contain', cursor: 'pointer', transition: 'transform 0.2s' }}
+                onMouseEnter={e => { (e.target as HTMLImageElement).style.transform = 'scale(1.3)' }}
+                onMouseLeave={e => { (e.target as HTMLImageElement).style.transform = 'scale(1)' }}
+              />
+            )}
           </div>
         </div>
       </div>
