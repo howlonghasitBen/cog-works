@@ -136,7 +136,12 @@ export default function WavesCard({ card, width = 400, artSrc, className, style 
             fontSize: 14 * s, fontWeight: 700, lineHeight: 1.2,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
           }}>
-            {card.name || 'Untitled'} {card.subtitle || ''}
+            {card.name || 'Untitled'}
+            {card.subtitle ? (
+              <div style={{ fontSize: 9 * s, fontWeight: 600, opacity: 0.7, letterSpacing: '0.05em', marginTop: 1 * s }}>
+                {card.subtitle}
+              </div>
+            ) : null}
           </div>
         </div>
         {/* Level badge */}
