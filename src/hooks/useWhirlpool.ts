@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
+import { useAccount, useConnect, useDisconnect, useWriteContract } from 'wagmi'
+import { injected } from 'wagmi/connectors'
 import { createPublicClient, http, formatEther, parseEther, maxUint256 } from 'viem'
 import type { LogEntry, LogType } from '../components/WhirlpoolTerminal'
 import {
@@ -27,24 +29,12 @@ const publicClient = createPublicClient({
 
 let logCounter = 0
 
-// Attempt to use wagmi hooks, but gracefully handle missing provider
-let useAccountHook: any, useConnectHook: any, useDisconnectHook: any, useWriteContractHook: any, injectedConnector: any
-
-try {
-  // Dynamic requires would be better but we're in ESM. We'll import statically
-  // and catch at runtime if provider is missing.
-  const wagmi = await import('wagmi')
-  const connectors = await import('wagmi/connectors')
-  useAccountHook = wagmi.useAccount
-  useConnectHook = wagmi.useConnect
-  useDisconnectHook = wagmi.useDisconnect
-  useWriteContractHook = wagmi.useWriteContract
-  injectedConnector = connectors.injected
-} catch {
-  // wagmi not available
-}
-
 export function useWhirlpool() {
+  const { address, isConnected } = useAccount()
+  const { connect: connectFn } = useConnect()
+  const { disconnect: disconnectFn } = useDisconnect()
+  const { writeContractAsync } = useWriteContract()
+
   const [cards, setCards] = useState<CardState[]>([])
   const [selectedCard, setSelectedCard] = useState(0)
   const [wavesBalance, setWavesBalance] = useState('0')
@@ -53,35 +43,6 @@ export function useWhirlpool() {
   const [pendingGlobal, setPendingGlobal] = useState('0')
   const [loading, setLoading] = useState(false)
   const [logs, setLogs] = useState<LogEntry[]>([])
-
-  // Try wagmi hooks - will throw if no provider, caught by error boundary
-  let address: `0x${string}` | undefined
-  let isConnected = false
-  let connectFn: any = () => {}
-  let disconnectFn: any = () => {}
-  let writeContractAsync: any = async () => { throw new Error('No wagmi provider') }
-
-  try {
-    if (useAccountHook) {
-      const account = useAccountHook()
-      address = account.address
-      isConnected = account.isConnected
-    }
-    if (useConnectHook) {
-      const { connect } = useConnectHook()
-      connectFn = connect
-    }
-    if (useDisconnectHook) {
-      const { disconnect } = useDisconnectHook()
-      disconnectFn = disconnect
-    }
-    if (useWriteContractHook) {
-      const wc = useWriteContractHook()
-      writeContractAsync = wc.writeContractAsync
-    }
-  } catch {
-    // No provider yet - graceful degradation
-  }
 
   const addLog = useCallback((message: string, type: LogType = 'default', extra: Partial<LogEntry> = {}) => {
     const entry: LogEntry = {
@@ -359,7 +320,7 @@ export function useWhirlpool() {
 
   const connect = () => {
     try {
-      if (injectedConnector) connectFn({ connector: injectedConnector() })
+      connectFn({ connector: injected() })
     } catch { addLog('No wallet provider available', 'error') }
   }
 
