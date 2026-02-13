@@ -35,7 +35,10 @@ function buildMetadata(card: CardEditorData): string {
       { trait_type: 'Crit', display_type: 'number', value: card.stats.crit },
     ].filter(a => a.value !== '' && a.value !== 0),
   }
-  return 'data:application/json;base64,' + btoa(JSON.stringify(meta))
+  const bytes = new TextEncoder().encode(JSON.stringify(meta))
+  let binary = ''
+  for (const b of bytes) binary += String.fromCharCode(b)
+  return 'data:application/json;base64,' + btoa(binary)
 }
 
 export default function MintPage() {
