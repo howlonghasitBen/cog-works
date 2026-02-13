@@ -6,6 +6,7 @@
 
 import { useState, useMemo } from 'react'
 import { useWhirlpool } from '../hooks/useWhirlpool'
+import CardFromData from '../components/CardFromData'
 
 // ─── Types ──────────────────────────────────────────────────────
 interface CardPool {
@@ -77,7 +78,7 @@ function InventoryCard({
           ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)]'
           : 'border-gray-700/60 hover:border-[#4a4d60] hover:shadow-lg'
       }`} style={{ aspectRatio: '3/4' }}>
-        <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+        <CardFromData name={card.name} imageOverride={card.image} />
         {selected && (
           <div className="absolute inset-0 bg-cyan-500/15 flex items-center justify-center">
             <span className="bg-gray-900/90 text-cyan-400 text-[10px] font-bold px-3 py-1 rounded border border-cyan-500/50">
@@ -118,7 +119,7 @@ function StageCard({
     }`} style={{ width: 220, aspectRatio: '3/4' }}>
       {card ? (
         <>
-          <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+          <CardFromData name={card.name} width={220} imageOverride={card.image} />
           <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
           <div className="absolute bottom-0 inset-x-0 p-3">
             <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
@@ -175,7 +176,7 @@ function MultiStageCards({
             className="relative rounded-sm overflow-hidden border-2 border-cyan-500/40 bg-gray-800 flex-shrink-0 snap-center"
             style={{ width: 220, aspectRatio: '3/4' }}
           >
-            <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+            <CardFromData name={card.name} width={220} imageOverride={card.image} />
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
             <div className="absolute bottom-0 inset-x-0 p-3">
               <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
@@ -225,7 +226,7 @@ function MarketRow({
     }`}>
       <div className="flex gap-3">
         <div className="w-24 rounded-md overflow-hidden border-2 border-[#2a2d40] flex-shrink-0" style={{ aspectRatio: '3/4' }}>
-          <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+          <CardFromData name={card.name} width={96} imageOverride={card.image} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">

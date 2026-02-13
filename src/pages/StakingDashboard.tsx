@@ -20,6 +20,7 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useWhirlpool } from '../hooks/useWhirlpool'
+import CardFromData from '../components/CardFromData'
 
 /** Segment colors for donut charts and holder indicators */
 const COLORS = ['#0ea5e9', '#f97316', '#10b981', '#8b5cf6', '#ef4444', '#f59e0b', '#06b6d4']
@@ -460,18 +461,12 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                 boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
                 position: 'relative',
               }}>
-                <img
-                  src={imgSrc}
-                  alt={card.name}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: 4,
+                <div style={{
                     filter: isSelected ? 'brightness(0.3)' : 'none',
                     transition: 'filter 0.3s',
-                  }}
-                />
+                  }}>
+                  <CardFromData name={card.name} width={CARD_W} imageOverride={imgSrc} />
+                </div>
 
                 {/* Top 4 holders overlay on selected card */}
                 <AnimatePresence>
