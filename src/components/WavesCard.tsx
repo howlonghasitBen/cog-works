@@ -137,11 +137,6 @@ export default function WavesCard({ card, width = 400, artSrc, className, style 
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
           }}>
             {card.name || 'Untitled'}
-            {card.subtitle ? (
-              <div style={{ fontSize: 9 * s, fontWeight: 600, opacity: 0.7, letterSpacing: '0.05em', marginTop: 1 * s }}>
-                {card.subtitle}
-              </div>
-            ) : null}
           </div>
         </div>
         {/* Level badge */}
@@ -228,6 +223,11 @@ export default function WavesCard({ card, width = 400, artSrc, className, style 
           WebkitBoxOrient: 'vertical' as const, overflow: 'hidden',
           whiteSpace: 'pre-line',
         }}>
+          {card.subtitle && (
+            <div style={{ fontWeight: 700, fontStyle: 'normal', marginBottom: 4 * s, color: '#fff' }}>
+              {card.subtitle}
+            </div>
+          )}
           {card.flavorText || 'No flavor text yet...'}
         </div>
         <div style={{
