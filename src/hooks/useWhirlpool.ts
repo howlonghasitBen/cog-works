@@ -62,44 +62,61 @@ export function useWhirlpool() {
         address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'totalCards',
       }) as bigint
       const total = Number(totalBig)
-      const cardData: CardState[] = []
+      if (total === 0) { setCards([]); return }
 
-      for (let i = 0; i < total; i++) {
-        try {
-          const tokenAddr = await publicClient.readContract({
-            address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'cardToken', args: [BigInt(i)],
-          }) as `0x${string}`
-
-          const [name, symbol, owner, price, reserves, uri] = await Promise.all([
-            publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'name' }),
-            publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'symbol' }),
-            publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'ownerOfCard', args: [BigInt(i)] }),
-            publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getPrice', args: [BigInt(i)] }),
-            publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getReserves', args: [BigInt(i)] }),
-            publicClient.readContract({ address: BIDNFT_ADDRESS, abi: BIDNFT_ABI, functionName: 'tokenURI', args: [BigInt(i)] }).catch(() => ''),
-          ])
-
-          let myStake = '0', myBalance = '0'
-          if (address) {
-            const [s, b] = await Promise.all([
-              publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeOf', args: [BigInt(i), address] }),
-              publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address] }),
-            ])
-            myStake = formatEther(s as bigint)
-            myBalance = formatEther(b as bigint)
-          }
-
-          const [wavesR, cardsR] = reserves as [bigint, bigint]
-          cardData.push({
-            id: i, name: name as string, symbol: symbol as string, uri: uri as string, address: tokenAddr,
-            owner: owner as string, price: formatEther(price as bigint),
-            wavesReserve: formatEther(wavesR), cardReserve: formatEther(cardsR), myStake, myBalance,
-          })
-        } catch (e: any) {
-          addLog(`⚠ Error loading card ${i}: ${e.shortMessage || e.message}`, 'error')
-        }
+      // Batch: first get all token addresses in parallel (chunks of 20)
+      const CHUNK = 20
+      const tokenAddrs: (`0x${string}` | null)[] = new Array(total).fill(null)
+      for (let start = 0; start < total; start += CHUNK) {
+        const end = Math.min(start + CHUNK, total)
+        const batch = Array.from({ length: end - start }, (_, j) =>
+          publicClient.readContract({
+            address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'cardToken', args: [BigInt(start + j)],
+          }).catch(() => null)
+        )
+        const results = await Promise.all(batch)
+        results.forEach((addr, j) => { tokenAddrs[start + j] = addr as `0x${string}` | null })
       }
-      setCards(cardData)
+
+      // Now load card data in parallel chunks
+      const cardData: CardState[] = []
+      for (let start = 0; start < total; start += CHUNK) {
+        const end = Math.min(start + CHUNK, total)
+        const batch = Array.from({ length: end - start }, async (_, j) => {
+          const i = start + j
+          const tokenAddr = tokenAddrs[i]
+          if (!tokenAddr) return null
+          try {
+            const [name, symbol, owner, price, reserves, uri] = await Promise.all([
+              publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'name' }),
+              publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'symbol' }),
+              publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'ownerOfCard', args: [BigInt(i)] }),
+              publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getPrice', args: [BigInt(i)] }),
+              publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getReserves', args: [BigInt(i)] }),
+              publicClient.readContract({ address: BIDNFT_ADDRESS, abi: BIDNFT_ABI, functionName: 'tokenURI', args: [BigInt(i)] }).catch(() => ''),
+            ])
+            let myStake = '0', myBalance = '0'
+            if (address) {
+              const [s, b] = await Promise.all([
+                publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeOf', args: [BigInt(i), address] }),
+                publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address] }),
+              ])
+              myStake = formatEther(s as bigint)
+              myBalance = formatEther(b as bigint)
+            }
+            const [wavesR, cardsR] = reserves as [bigint, bigint]
+            return {
+              id: i, name: name as string, symbol: symbol as string, uri: uri as string, address: tokenAddr,
+              owner: owner as string, price: formatEther(price as bigint),
+              wavesReserve: formatEther(wavesR), cardReserve: formatEther(cardsR), myStake, myBalance,
+            } as CardState
+          } catch { return null }
+        })
+        const results = await Promise.all(batch)
+        results.forEach(r => { if (r) cardData.push(r) })
+        // Progressive update every chunk
+        setCards([...cardData])
+      }
 
       if (address) {
         try {
@@ -335,7 +352,7 @@ export function useWhirlpool() {
     addLog('═══ ERC-1142 · Whirlpool Terminal ═══', 'system', { category: 'system' })
     addLog(`RPC: http://192.168.0.82:8545 · Chain 31337`, 'system', { category: 'system' })
     loadCards()
-    const interval = setInterval(loadCards, 5000)
+    const interval = setInterval(loadCards, 30000)
     return () => clearInterval(interval)
   }, [address])
 
