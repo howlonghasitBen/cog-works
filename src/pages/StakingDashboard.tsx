@@ -465,7 +465,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                     filter: isSelected ? 'brightness(0.3)' : 'none',
                     transition: 'filter 0.3s',
                   }}>
-                  <CardFromData name={card.name} width={CARD_W} imageOverride={imgSrc} />
+                  <CardFromData name={card.name} width={CARD_W} />
                 </div>
 
                 {/* Top 4 holders overlay on selected card */}

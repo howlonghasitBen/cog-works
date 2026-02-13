@@ -9666,7 +9666,7 @@
     "name": "Archangel",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiduhfiosvjc6urps647absst2fdvu2dz7ruateva2nl772m76xrgu",
+    "image": "/images/card-images/arts/archangel.png",
     "type": "Creature — Flarefall",
     "stats": {
       "attack": "6",
@@ -9854,7 +9854,7 @@
     "name": "Badass Skag",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibfgikgi74lpsulvjyjscufqhci26trwp33so42ipq7b77w33we4q",
+    "image": "/images/card-images/arts/badass_skag.png",
     "type": "Creature — Khaosbite",
     "stats": {
       "attack": "7",
@@ -10202,7 +10202,7 @@
     "name": "Black Pudding",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeify5iy2qsuzyy5oglf2miwjokide5wvuhvytthmufkwtnl6nivori",
+    "image": "/images/card-images/arts/black_pudding.png",
     "type": "Creature — Necroplasm",
     "stats": {
       "attack": "3",
@@ -10322,7 +10322,7 @@
     "name": "Bloudraad, Spawn of Kek",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiai2vqsid3pvosakqk2xfkotwt47bemvp25lkqf274pdmudkulwz4",
+    "image": "/images/card-images/arts/bloudraad_spawn_of_kek.png",
     "type": "Creature — Fractureborn",
     "stats": {
       "attack": "5",
@@ -10547,7 +10547,7 @@
     "name": "Capricorn Callsong",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeici2c344qiukv6ynxhaol4jfok5za6wk2pvvmmfeno4dezf6vg46m",
+    "image": "/images/card-images/arts/capricorn_callsong.png",
     "type": "Creature — Maledicta",
     "stats": {
       "attack": "5",
@@ -10666,7 +10666,7 @@
     "name": "Chort",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiczj5lrh3rqhaxmnblwmlj2fujyey37fhqbifrdxn65bpp4k4rvam",
+    "image": "/images/card-images/arts/chort.png",
     "type": "Creature — Kraxor",
     "stats": {
       "attack": "4",
@@ -10716,7 +10716,7 @@
     "name": "Clay golem",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidxfaycygacvxylrbeqjezc3i55r3d75ecuojadnbp4uuzkrf47ta",
+    "image": "/images/card-images/arts/clay_golem.png",
     "type": "Creature — Fissura",
     "stats": {
       "attack": "3",
@@ -10766,7 +10766,7 @@
     "name": "Cockatrice",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeic2osaoxxkvfwzmu7wu37bcffwpichtxyohtppzlvbkbpaj23uaae",
+    "image": "/images/card-images/arts/cockatrice.png",
     "type": "Creature — Petrius",
     "stats": {
       "attack": "4",
@@ -10921,7 +10921,7 @@
     "name": "Crystal Golem",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicuf6seepghtdvfrabp3ltl7tyqio2qg6ucn74on2xq6r5c46bwmq",
+    "image": "/images/card-images/arts/crystal_golem.png",
     "type": "Creature — Gelrakk",
     "stats": {
       "attack": "3",
@@ -10971,7 +10971,7 @@
     "name": "Crystal Phoenix",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicxurthf4tzynwhsenhxmn6nbd2t32ltjhewc2hi46xlattcuywbu",
+    "image": "/images/card-images/arts/crystal_phoenix.png",
     "type": "Creature — Aethonix",
     "stats": {
       "attack": "4",
@@ -11021,7 +11021,7 @@
     "name": "Crystalline Cosmic Bind",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicz4una4jgmbuyg7c5bx5crus5z47mw4nyoosiuqa2gvl2xgaqrc4",
+    "image": "/images/card-images/arts/crystalline_cosmic_bind.png",
     "type": "Creature — Fractura",
     "stats": {
       "attack": "5",
@@ -11071,7 +11071,7 @@
     "name": "Cyborg Hound",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidgykh5jikb6k6qjdr6xaneyg3sxrxwke5jb5d6gxmbd4djdybsai",
+    "image": "/images/card-images/arts/cyborg_hound.png",
     "type": "Creature — Cybrox",
     "stats": {
       "attack": "5",
@@ -11227,7 +11227,7 @@
     "name": "Demiurge",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieg2c7cmopqn5vrhzkrf2h3eyqqd7f4fngbapu7bhdxpcjwkryc2u",
+    "image": "/images/card-images/arts/demiurge.png",
     "type": "Creature — Khaosborn",
     "stats": {
       "attack": "4",
@@ -11658,7 +11658,7 @@
     "name": "Drowners",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidkxsvp74ff66j5v4hyxetkk5mrikgzpvegiwyz3n63cjmb2wmmge",
+    "image": "/images/card-images/arts/drowners.png",
     "type": "Creature — Nyxoria",
     "stats": {
       "attack": "5",
@@ -12789,7 +12789,7 @@
     "name": "Frost Thrall",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibvlutunsw3rd26iaacl2duuq6czctdebqp4n4xvaaubmkkfyqzpi",
+    "image": "/images/card-images/arts/frost_thrall.png",
     "type": "Creature — Frostbite",
     "stats": {
       "attack": "5",
@@ -13533,7 +13533,7 @@
     "name": "Golden Teacher",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihnput23loztymcdune77l4vfhluzxroo277kjdtlgw7skr3gpgke",
+    "image": "/images/card-images/arts/golden_teacher.png",
     "type": "Creature — Sporium",
     "stats": {
       "attack": "6",
@@ -13653,7 +13653,7 @@
     "name": "Griffin",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibefna646tavbkph5fjp7mv4rvj3pq32cxhldcqzaxzuprs72whwm",
+    "image": "/images/card-images/arts/griffin.png",
     "type": "Creature — Aerius",
     "stats": {
       "attack": "6",
@@ -13947,7 +13947,7 @@
     "name": "Hallucinogenic Hallelujah",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibekhseco3ohqpf5h5k5kcwzs6li3g747a7scx5dcsrwkpoud2n4i",
+    "image": "/images/card-images/arts/hallucinogenic_hallelujah.png",
     "type": "Creature — Melliscape",
     "stats": {
       "attack": "5",
@@ -14116,7 +14116,7 @@
     "name": "Hemo Wizard",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiahwwanetifemc26r4ilzls6vpzw5ovklf5g7mcumxfnyhj2b4r2a",
+    "image": "/images/card-images/arts/hemo_wizard.png",
     "type": "Creature — Vitalis",
     "stats": {
       "attack": "3",
@@ -14444,7 +14444,7 @@
     "name": "Khazix",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeien5mjju2jkpnsyvczeccqolcpbvqaeecszz2ybkuzrsf4yg2bwau",
+    "image": "/images/card-images/arts/khazix.png",
     "type": "Creature — Khronokill",
     "stats": {
       "attack": "6",
@@ -14600,7 +14600,7 @@
     "name": "LSD Tollmaster",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihmqxqjw66k75av7xyjw3b7zst4ac34ynzpl3mrwfve6hqwdspuqu",
+    "image": "/images/card-images/arts/lsd_tollmaster.png",
     "type": "",
     "stats": {
       "attack": "5",
@@ -14789,7 +14789,7 @@
     "name": "Lightning Phoenix",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiesv5tblsjcwudobvaufz2egdn7xghddd24lk26jidpovicamqiwe",
+    "image": "/images/card-images/arts/lightning_phoenix.png",
     "type": "Creature— Skyfire",
     "stats": {
       "attack": "4",
@@ -14978,7 +14978,7 @@
     "name": "Lionsnake Demiurge",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeif3vrfwt4ttmxlqwoqqihcapnfdqcxkccs3q3cv44zxn7urfzlavm",
+    "image": "/images/card-images/arts/lionsnake_demiurge.png",
     "type": "Creature— Venomscale",
     "stats": {
       "attack": "6",
@@ -15097,7 +15097,7 @@
     "name": "Lunar Wizard",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidsoobugzitbrtamewitu5nb7jel5jows473bnn27qbsiuyrutbri",
+    "image": "/images/card-images/arts/lunar_wizard.png",
     "type": "Creature— Moontide",
     "stats": {
       "attack": "6",
@@ -15147,7 +15147,7 @@
     "name": "Maelstrom",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicglsjwhpf46v3wxpyxw6d24qbmy556g6rj7licjgzgk3skn6at3y",
+    "image": "/images/card-images/arts/maelstrom.png",
     "type": "Creature — Venomous",
     "stats": {
       "attack": "3",
@@ -15197,7 +15197,7 @@
     "name": "Magma Mephite",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidcbdyijt446sfjhxg2v5ium7lwybyhnexenjqwv5gojh4vx4xsge",
+    "image": "/images/card-images/arts/magma_mephite.png",
     "type": "Creature— Moltenshard",
     "stats": {
       "attack": "6",
@@ -15247,7 +15247,7 @@
     "name": "Maniacal Martian",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiars7yaurz3n4eloyrplfjedeenby6z5hpcdgbn3wtatnhdvc7pte",
+    "image": "/images/card-images/arts/maniacal_martian.png",
     "type": "Creature— Disintegrator",
     "stats": {
       "attack": "6",
@@ -15333,7 +15333,7 @@
     "name": "Mastodon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibw5x5mryumutkr3admfilpk4nczl4gapd4n6b3q7fnzkqbcnnssq",
+    "image": "/images/card-images/arts/mastodon.png",
     "type": "Creature— Thunderstep",
     "stats": {
       "attack": "7",
@@ -15383,7 +15383,7 @@
     "name": "Mecha Wyvern",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifxsyoghubhf4urofvhvwzfxwaqnaaxj7xxniaqrk3djtinv52icq",
+    "image": "/images/card-images/arts/mecha_wyvern.png",
     "type": "Creature — Inferno",
     "stats": {
       "attack": "6",
@@ -15538,7 +15538,7 @@
     "name": "Molag Bal",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiczkbuwi5e4kh2uhga7v6kszuuligh3ypwujqwvheytlgzvoxopoq",
+    "image": "/images/card-images/arts/molag_bal.png",
     "type": "Creature— Dominator",
     "stats": {
       "attack": "7",
@@ -15588,7 +15588,7 @@
     "name": "Moondust Fiend",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiadekzjowhib3nzgiozdws5fewehsvl6rv5h5jwyas7rkd6yb26ky",
+    "image": "/images/card-images/arts/moondust_fiend.png",
     "type": "Creature— Dreamdust",
     "stats": {
       "attack": "5",
@@ -15708,7 +15708,7 @@
     "name": "Mothrakk",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeig3qhg3ncqbrdypfartqxdrhvodcdmsvgcjtdqx6tcx3r7u7zfapq",
+    "image": "/images/card-images/arts/mothrakk.png",
     "type": "Creature— Dustwing",
     "stats": {
       "attack": "4",
@@ -16349,7 +16349,7 @@
     "name": "Pepelini",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaaxphah6pfgx2mcwtrfknqvn2h6rrzdcmvccdbs6m23bwqn3stva",
+    "image": "/images/card-images/arts/pepelini.png",
     "type": "Creature— Dreamweave",
     "stats": {
       "attack": "3",
@@ -16852,7 +16852,7 @@
     "name": "Reality Splitter",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicvtxwxgqx6vjw4nq7gxycplzxmmn5hlrza6gi7dx23tvonqcsfwm",
+    "image": "/images/card-images/arts/reality_splitter.png",
     "type": "Creature— Temporalrift",
     "stats": {
       "attack": "4",
@@ -16938,7 +16938,7 @@
     "name": "Roko the Basilisk",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeic7ghpsdlywunei5tfpl3vvwtm4lsdcy6ktkctkfxr6l2m7ms6drm",
+    "image": "/images/card-images/arts/roko_the_basilisk.png",
     "type": "Creature — Immutable",
     "stats": {
       "attack": "3",
@@ -17326,7 +17326,7 @@
     "name": "Sandshrew",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaxfshrfi3jxy773xzbm3xaaeuak6yfo6kc7pkv3l5gg3fj3qk3ei",
+    "image": "/images/card-images/arts/sandshrew.png",
     "type": "Creature— Sandtomb",
     "stats": {
       "attack": "6",
@@ -17551,7 +17551,7 @@
     "name": "Shadow Assassin",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiabxtvi46onyvfcmh2gavvjlutayrcevi34pwx27uyoi35ri3n6am",
+    "image": "/images/card-images/arts/shadow_assassin.png",
     "type": "Creature— Silentblade",
     "stats": {
       "attack": "3",
@@ -17601,7 +17601,7 @@
     "name": "Shadow Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifihckquai634kf7yuve4dvggxvd5hnnepdfh4kfx5xl77lhez3cm",
+    "image": "/images/card-images/arts/shadow_dragon.png",
     "type": "Creature— Heartshatter",
     "stats": {
       "attack": "5",
@@ -17651,7 +17651,7 @@
     "name": "Shai-Hulud",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicpoxk5dfzcf4hvqjzbjmf7ijg2dct2xuiw25zcntiaoqr6i5na4e",
+    "image": "/images/card-images/arts/shai_hulud.png",
     "type": "Creature— Sandswallow",
     "stats": {
       "attack": "4",
@@ -17701,7 +17701,7 @@
     "name": "Sheogorath",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeico2g4jbybfn5dtpwzqty6xwjlesqspplmgyochgsecw3vy7dnwsa",
+    "image": "/images/card-images/arts/sheogorath.png",
     "type": "Creature— Cheesemancer",
     "stats": {
       "attack": "7",
@@ -17751,7 +17751,7 @@
     "name": "Shinigami",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeic3p2a5imk43ya4gkb2sfy35lusodguofvu4igu4ri3xa7a6pgsaa",
+    "image": "/images/card-images/arts/shinigami.png",
     "type": "Creature— Soulscythe",
     "stats": {
       "attack": "7",
@@ -17801,7 +17801,7 @@
     "name": "Shrimp Baby",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidmugcbbftfwf7offmvy3fan6oscs4qwi6ejdbiwdbdkswz7o4f3u",
+    "image": "/images/card-images/arts/shrimp_baby.png",
     "type": "Creature— Brineblast",
     "stats": {
       "attack": "4",
@@ -17989,7 +17989,7 @@
     "name": "Skeleton Archer",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeif6ur6iddg4rbmubrvfff3l6db3tbiu7vz3xwumntas4rgugbrqyu",
+    "image": "/images/card-images/arts/skeleton_archer.png",
     "type": "Creature — Bone-Piercing",
     "stats": {
       "attack": "3",
@@ -18039,7 +18039,7 @@
     "name": "Skeleton Warhorse",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidn7j5n6rl7g5dxnbaiiroz6taionee4rpafwh5c6mqz66zi54cdu",
+    "image": "/images/card-images/arts/skeleton_warhorse.png",
     "type": "Creature — Bone-Shaking",
     "stats": {
       "attack": "4",
@@ -18125,7 +18125,7 @@
     "name": "Sol Eater",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiclmyakjdhattttwtnugaemr6pb3cy2eoefzvvi3fgisdpvar7fty",
+    "image": "/images/card-images/arts/sol_eater.png",
     "type": "Creature— Flaredevour",
     "stats": {
       "attack": "6",
@@ -18175,7 +18175,7 @@
     "name": "Soul Reaper",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiabotp7egtokvpu444d2x33utq3fqguqvpemzeydj6pzsvsysatby",
+    "image": "/images/card-images/arts/soul_reaper.png",
     "type": "Creature— Deathscythe",
     "stats": {
       "attack": "4",
@@ -18502,7 +18502,7 @@
     "name": "Stone Thrall",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiajth3taq56tni42mobu5knxuhsjq3rm2wrxwbm7v73hdkr33theu",
+    "image": "/images/card-images/arts/stone_thrall.png",
     "type": "Creature— Groundshatter",
     "stats": {
       "attack": "6",
@@ -18621,7 +18621,7 @@
     "name": "Striga",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieqeuhsdifiirlnzuumswbpkvj4orfmxxsq2eqdslsho256b554ay",
+    "image": "/images/card-images/arts/striga.png",
     "type": "",
     "stats": {
       "attack": "4",
@@ -18740,7 +18740,7 @@
     "name": "Supernova Mecha Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifkasl6pm3ykceu2s643o7a6g6axyha5rlcyjhx2ul4vx7buhpq4e",
+    "image": "/images/card-images/arts/supernova_mecha_dragon.png",
     "type": "Creature— Starforge",
     "stats": {
       "attack": "3",
@@ -18997,7 +18997,7 @@
     "name": "Temple of the Demiurge",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidibheqfdcj55o332elg64mzmf4pqmhk3vvh7vhd7xwutlk34dtkq",
+    "image": "/images/card-images/arts/temple_of_the_demiurge.png",
     "type": "Creature — Soul-Sealing",
     "stats": {
       "attack": "7",
@@ -19394,7 +19394,7 @@
     "name": "Vampire",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidggozahponwlqrz7r65dyj25i36yuoqrcttwmmiiwegdg5zcwjza",
+    "image": "/images/card-images/arts/vampire.png",
     "type": "Creature— Bloodthrall",
     "stats": {
       "attack": "3",
@@ -19790,7 +19790,7 @@
     "name": "Void Assassin",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibwbxwlfivi3xywx32j33zv7njnfrv45ocwuw5habhfgigpikhtia",
+    "image": "/images/card-images/arts/void_assassin.png",
     "type": "Creature— Phaseblade",
     "stats": {
       "attack": "3",
@@ -19840,7 +19840,7 @@
     "name": "Void Reaper",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeih3i4pk5fujjikv6tpvtwklqopefguxi5qkd3xrj54ux7fw32g3ni",
+    "image": "/images/card-images/arts/void_reaper.png",
     "type": "Creature— Entropyx",
     "stats": {
       "attack": "7",
@@ -19890,7 +19890,7 @@
     "name": "Void Wizard",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeic55dsv3tvfxsa4ncym7t4w2mo3m63frsdwj6l7a7tjijyzxfut2q",
+    "image": "/images/card-images/arts/void_wizard.png",
     "type": "Creature— Nullshatter",
     "stats": {
       "attack": "7",
@@ -19940,7 +19940,7 @@
     "name": "Volcatoise",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieug6cqf2gks7wtmwny32rndsilvwemywaxpitnwjosyqe7urqmtq",
+    "image": "/images/card-images/arts/volcatoise.png",
     "type": "",
     "stats": {
       "attack": "7",
@@ -21023,7 +21023,7 @@
     "name": "Yaldabaoth",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicxjw7octrwsqhfkmgpwpxhqhoplxpnemafqgrmqhkcolobd2fusi",
+    "image": "/images/card-images/arts/yaldabaoth.png",
     "type": "Creature — Maledicta",
     "stats": {
       "attack": "3",
@@ -21765,7 +21765,7 @@
     "name": "https://chasetheace.online/pepejackpot",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigtosfvfqrkmloaadktj6t3t7nqne3l2vqzwtohgtsxfusiuk2hz4",
+    "image": "/images/card-images/arts/https_chasetheace_online_pepejackpot.png",
     "type": "Creature— Jackpotfall",
     "stats": {
       "attack": "7",
