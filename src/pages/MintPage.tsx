@@ -58,6 +58,8 @@ export default function MintPage() {
               border: '2px solid #3a3d4a',
               overflow: 'hidden',
               boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+              display: 'flex',
+              flexDirection: 'column',
             }}>
               <WhirlpoolTerminal logs={whirlpool.logs} onClear={whirlpool.clearLogs} />
             </div>
