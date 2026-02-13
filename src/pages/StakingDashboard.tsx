@@ -27,8 +27,14 @@ const COLORS = ['#0ea5e9', '#f97316', '#10b981', '#8b5cf6', '#ef4444', '#f59e0b'
 const BASE = '/images/card-images'
 
 function cardImage(uri: string, name: string, id: number): string {
+  if (uri && uri.startsWith('data:application/json;base64,')) {
+    try {
+      const json = JSON.parse(atob(uri.split(',')[1]))
+      if (json.image) return json.image
+    } catch { /* fall through */ }
+  }
   if (uri && uri.startsWith('/images/')) return uri
-  if (uri && uri.length > 0) return uri
+  if (uri && uri.startsWith('ipfs://')) return uri
   const slug = name.replace(/\s+/g, '_')
   return `${BASE}/${String(id + 1).padStart(3, '0')}_${slug}.png`
 }
@@ -129,7 +135,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   }
 
   return (
-    <div style={{ maxWidth: 1280, margin: '60px auto 32px', padding: '0 24px', position: 'relative' }}>
+    <div style={{ maxWidth: 1280, margin: '60px auto 32px', padding: '0 24px', position: 'relative', minHeight: '100vh' }}>
 
       {/* ── Header: open, no box ── */}
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 8 }}>

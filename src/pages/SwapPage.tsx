@@ -31,9 +31,14 @@ const BASE = '/images/card-images'
 const TAGS = ['Creature', 'Consumable', 'Eagle', 'Beast', 'OG', 'Legendary', 'Forest', 'Memer']
 
 function cardImage(uri: string, name: string, id: number): string {
+  if (uri && uri.startsWith('data:application/json;base64,')) {
+    try {
+      const json = JSON.parse(atob(uri.split(',')[1]))
+      if (json.image) return json.image
+    } catch { /* fall through */ }
+  }
   if (uri && uri.startsWith('/images/')) return uri
-  if (uri && uri.length > 0) return uri
-  // fallback: try to derive from name
+  if (uri && uri.startsWith('ipfs://')) return uri
   const slug = name.replace(/\s+/g, '_')
   return `${BASE}/${String(id + 1).padStart(3, '0')}_${slug}.png`
 }
