@@ -148,7 +148,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   }
 
   return (
-    <div style={{ maxWidth: 1280, margin: '60px auto 32px', padding: '0 24px', position: 'relative', minHeight: '100vh' }}>
+    <div style={{ width: '100%', margin: '60px 0 32px', padding: '0 24px', position: 'relative', minHeight: '100vh' }}>
 
       {/* ── Header: open, no box ── */}
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 8 }}>
