@@ -1,19 +1,49 @@
 /**
  * StakingDashboard — Whirlpool card staking overview
+ *
+ * Displays a grid of card NFTs with ownership/staking data.
+ * Each card shows its image, owner badge, risk meter, and top-4 holders on click.
+ * Features:
+ *   - Stats row: total cards, total staked, your stakes, pending rewards
+ *   - Rewards breakdown panel (card pool fees, ETH pool, ownership bonuses)
+ *   - Filter/sort: All | Mine | Top | At Risk + A→Z | ↓Staked
+ *   - Per-card: click to reveal ranked holder list + stake/unstake actions
+ *   - SurfSwap icon navigates to swap page via onNavigateSwap callback
+ *
+ * Theme: "open air" layout on 4chan blue board bg (#D6DAF0)
+ *   - Dark text for legibility on light background
+ *   - Gold accents (#8a6d2b), DM Mono + Cinzel fonts
+ *   - No containing boxes — floating stats, pill filters, clean cards
+ *
  * Wired to useWhirlpool hook for live Anvil data.
  */
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useWhirlpool, type CardState } from '../hooks/useWhirlpool'
+import { useWhirlpool } from '../hooks/useWhirlpool'
 
+/** Segment colors for donut charts and holder indicators */
 const COLORS = ['#0ea5e9', '#f97316', '#10b981', '#8b5cf6', '#ef4444', '#f59e0b', '#06b6d4']
+
+const BASE = '/images/card-images'
+
+function cardImage(uri: string, name: string, id: number): string {
+  if (uri && uri.startsWith('/images/')) return uri
+  if (uri && uri.length > 0) return uri
+  const slug = name.replace(/\s+/g, '_')
+  return `${BASE}/${String(id + 1).padStart(3, '0')}_${slug}.png`
+}
+
+function shortAddr(addr: string): string {
+  if (!addr || addr.length < 10) return addr || '???'
+  return `${addr.slice(0, 6)}…${addr.slice(-4)}`
+}
 
 type SortKey = 'name' | 'total'
 type FilterKey = 'all' | 'myStakes' | 'topHolders' | 'risk'
 
-function getRiskPct(myStake: number, totalReserve: number) {
-  if (totalReserve <= 0 || myStake <= 0) return 0
-  const margin = myStake / totalReserve
+function getRiskPct(ownerStake: number, total: number) {
+  if (total <= 0 || ownerStake <= 0) return 0
+  const margin = ownerStake / total
   return Math.max(0, Math.min(1, 1 - margin))
 }
 
@@ -22,50 +52,86 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState<FilterKey>('all')
   const [sort, setSort] = useState<SortKey>('name')
-  const [selectedCard, setSelectedCard] = useState<number | null>(null)
+  const [selectedCard, setSelectedCard] = useState<string | null>(null)
   const [rewardsOpen, setRewardsOpen] = useState(false)
 
-  const totalCards = whirlpool.cards.length
-  const totalStaked = useMemo(() =>
-    whirlpool.cards.reduce((s, c) => s + parseFloat(c.wavesReserve || '0'), 0),
-    [whirlpool.cards]
-  )
-  const yourStakes = useMemo(() =>
-    whirlpool.cards.reduce((s, c) => s + parseFloat(c.myStake || '0'), 0),
-    [whirlpool.cards]
-  )
-  const pendingRewardsTotal = parseFloat(whirlpool.pendingGlobal || '0')
+  // Derived data
+  const cardData = useMemo(() => whirlpool.cards.map(c => {
+    const total = parseFloat(c.cardReserve) || 0
+    const myStake = parseFloat(c.myStake) || 0
+    const isYou = myStake > 0
+    const stakers = [
+      { label: shortAddr(c.owner), value: total, color: COLORS[0], isYou: c.owner.toLowerCase() === whirlpool.address?.toLowerCase() },
+    ]
+    if (isYou && c.owner.toLowerCase() !== whirlpool.address?.toLowerCase()) {
+      stakers.push({ label: shortAddr(whirlpool.address || ''), value: myStake, color: COLORS[1], isYou: true })
+    }
+    return {
+      name: c.name,
+      id: c.id,
+      uri: c.uri,
+      stakers,
+      total,
+      myStake,
+      hasYou: isYou,
+      owner: c.owner,
+    }
+  }), [whirlpool.cards, whirlpool.address])
 
-  const myStakedCards = useMemo(() =>
-    whirlpool.cards.filter(c => parseFloat(c.myStake) > 0),
-    [whirlpool.cards]
-  )
+  const totalStaked = useMemo(() => cardData.reduce((s, c) => s + c.total, 0), [cardData])
+  const yourStakes = useMemo(() => cardData.reduce((s, c) => s + c.myStake, 0), [cardData])
+  const pendingRewards = whirlpool.pendingGlobal
 
   const cards = useMemo(() => {
-    let result = whirlpool.cards.filter(c => c.name.toLowerCase().includes(search.toLowerCase()) || c.symbol.toLowerCase().includes(search.toLowerCase()))
-    if (filter === 'myStakes') result = result.filter(c => parseFloat(c.myStake) > 0)
-    if (filter === 'risk') result = result.filter(c => {
-      const stake = parseFloat(c.myStake)
-      const reserve = parseFloat(c.wavesReserve)
-      return stake > 0 && getRiskPct(stake, reserve) > 0.6
-    })
+    let result = cardData.filter(c => c.name.toLowerCase().includes(search.toLowerCase()))
+    if (filter === 'myStakes') result = result.filter(c => c.hasYou)
+    if (filter === 'risk') result = result.filter(c => getRiskPct(c.stakers[0]?.value || 0, c.total) > 0.6)
     if (sort === 'name') result.sort((a, b) => a.name.localeCompare(b.name))
-    else result.sort((a, b) => parseFloat(b.wavesReserve) - parseFloat(a.wavesReserve))
+    else result.sort((a, b) => b.total - a.total)
     return result
-  }, [whirlpool.cards, search, sort, filter])
+  }, [search, sort, filter, cardData])
+
+  // Reward breakdown (estimated from pending)
+  const pendingNum = parseFloat(pendingRewards) || 0
+  const rewardBreakdown = {
+    total: pendingNum,
+    cardPools: pendingNum * 0.7,
+    ethPool: pendingNum * 0.2,
+    bonuses: pendingNum * 0.1,
+    cards: cardData.filter(c => c.hasYou).map(c => ({
+      name: c.name,
+      reward: c.total > 0 ? (c.myStake / c.total) * pendingNum * 0.7 : 0,
+    })),
+  }
 
   const handleClaimAll = async () => {
-    // Claim WETH rewards + per-card rewards for staked cards
-    await whirlpool.claimWETHRewards()
-    for (const card of myStakedCards) {
-      await whirlpool.claimRewards(card.id)
+    for (const c of whirlpool.cards) {
+      if (parseFloat(c.myStake) > 0) {
+        await whirlpool.claimRewards(c.id)
+      }
+    }
+  }
+
+  const handleStake = async (cardId: number, e: React.MouseEvent) => {
+    e.stopPropagation()
+    const amount = prompt('Amount to stake:')
+    if (amount && parseFloat(amount) > 0) {
+      await whirlpool.stake(cardId, amount)
+    }
+  }
+
+  const handleUnstake = async (cardId: number, e: React.MouseEvent) => {
+    e.stopPropagation()
+    const amount = prompt('Amount to unstake:')
+    if (amount && parseFloat(amount) > 0) {
+      await whirlpool.unstake(cardId, amount)
     }
   }
 
   return (
     <div style={{ maxWidth: 1280, margin: '60px auto 32px', padding: '0 24px', position: 'relative' }}>
 
-      {/* ── Header ── */}
+      {/* ── Header: open, no box ── */}
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 8 }}>
         <div>
           <h2 style={{
@@ -93,14 +159,13 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       {/* ── Thin gold separator ── */}
       <div style={{ height: 1, background: 'linear-gradient(90deg, #c8a55a, transparent 80%)', marginBottom: 24 }} />
 
-      {/* ── Stats ── */}
+      {/* ── Stats: floating chips, not boxes ── */}
       <div style={{ display: 'flex', gap: 32, marginBottom: 28, flexWrap: 'wrap' }}>
         {[
-          { label: 'Cards', value: totalCards.toString(), accent: false },
+          { label: 'Cards', value: whirlpool.cards.length.toString(), accent: false },
           { label: 'Total Staked', value: totalStaked.toFixed(2), accent: false },
-          { label: 'Your Stakes', value: yourStakes.toFixed(4), accent: true },
-          { label: 'Pending Rewards', value: pendingRewardsTotal.toFixed(4), accent: true },
-          { label: 'WETH Staked', value: parseFloat(whirlpool.myWethStake || '0').toFixed(4), accent: true },
+          { label: 'Your Stakes', value: yourStakes.toFixed(2), accent: true },
+          { label: 'Pending Rewards', value: parseFloat(pendingRewards).toFixed(4), accent: true },
         ].map(stat => (
           <div key={stat.label} style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
             <span style={{
@@ -123,6 +188,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           </div>
         ))}
 
+        {/* Claim + breakdown toggle */}
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
           <button
             onClick={() => setRewardsOpen(!rewardsOpen)}
@@ -141,7 +207,6 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           </button>
           <button
             onClick={handleClaimAll}
-            disabled={whirlpool.loading}
             style={{
               fontFamily: "'Cinzel', serif",
               fontSize: 12,
@@ -151,9 +216,8 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
               border: 'none',
               padding: '8px 20px',
               borderRadius: 2,
-              cursor: whirlpool.loading ? 'wait' : 'pointer',
+              cursor: 'pointer',
               boxShadow: '0 2px 10px rgba(200,165,90,0.25)',
-              opacity: whirlpool.loading ? 0.6 : 1,
             }}
           >
             ⚡ Claim All
@@ -161,7 +225,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         </div>
       </div>
 
-      {/* ── Rewards Breakdown Panel ── */}
+      {/* ── Rewards Breakdown Panel (slides open) ── */}
       <AnimatePresence>
         {rewardsOpen && (
           <motion.div
@@ -190,9 +254,9 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                   Reward Sources
                 </h3>
                 {[
-                  { label: 'Card Pool Fees (est.)', value: (pendingRewardsTotal * 0.7).toFixed(4), pct: 70, color: '#0ea5e9' },
-                  { label: 'WETH Staking Pool', value: parseFloat(whirlpool.myWethStake || '0').toFixed(4), pct: 20, color: '#8b5cf6' },
-                  { label: 'Ownership Bonuses', value: (pendingRewardsTotal * 0.1).toFixed(4), pct: 10, color: '#f97316' },
+                  { label: 'Card Pool Fees', value: rewardBreakdown.cardPools, pct: 70, color: '#0ea5e9' },
+                  { label: 'ETH Staking Pool', value: rewardBreakdown.ethPool, pct: 20, color: '#8b5cf6' },
+                  { label: 'Ownership Bonuses', value: rewardBreakdown.bonuses, pct: 10, color: '#f97316' },
                 ].map(src => (
                   <div key={src.label} style={{ marginBottom: 14 }}>
                     <div style={{
@@ -209,13 +273,14 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                       </div>
                       <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
                         <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 14, color: '#2a2d3a', fontWeight: 600 }}>
-                          {src.value}
+                          {src.value.toFixed(4)}
                         </span>
                         <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, color: '#4a4d5a' }}>
                           {src.pct}%
                         </span>
                       </div>
                     </div>
+                    {/* Progress bar */}
                     <div style={{ height: 3, background: 'rgba(255,255,255,0.05)', borderRadius: 2 }}>
                       <motion.div
                         initial={{ width: 0 }}
@@ -236,12 +301,14 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                   color: '#8a6d2b',
                   margin: '0 0 16px',
                 }}>
-                  Your Staked Cards
+                  Your Card Rewards
                 </h3>
-                {myStakedCards.length === 0 ? (
-                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: '#4a4d5a' }}>No staked cards yet.</p>
-                ) : myStakedCards.map(cr => (
-                  <div key={cr.id} style={{
+                {rewardBreakdown.cards.length === 0 ? (
+                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: '#4a4d5a' }}>
+                    No staked positions yet
+                  </p>
+                ) : rewardBreakdown.cards.map(cr => (
+                  <div key={cr.name} style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
@@ -251,26 +318,9 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                     <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 700, color: '#2a2d3a' }}>
                       {cr.name}
                     </span>
-                    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: '#4a4d5a' }}>
-                        {parseFloat(cr.myStake).toFixed(4)} staked
-                      </span>
-                      <button
-                        onClick={() => whirlpool.claimRewards(cr.id)}
-                        style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 9,
-                          padding: '2px 8px',
-                          border: '1px solid rgba(200,165,90,0.3)',
-                          background: 'transparent',
-                          color: '#8a6d2b',
-                          cursor: 'pointer',
-                          borderRadius: 2,
-                        }}
-                      >
-                        Claim
-                      </button>
-                    </div>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: '#8a6d2b', fontWeight: 800 }}>
+                      +{cr.reward.toFixed(4)}
+                    </span>
                   </div>
                 ))}
                 <div style={{
@@ -280,10 +330,10 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                   marginTop: 4,
                 }}>
                   <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, color: '#4a4d5a', textTransform: 'uppercase' }}>
-                    WETH Pool Stake
+                    ETH Pool (1.5x boost)
                   </span>
                   <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: '#8b5cf6', fontWeight: 600 }}>
-                    {parseFloat(whirlpool.myWethStake || '0').toFixed(4)}
+                    +{rewardBreakdown.ethPool.toFixed(4)}
                   </span>
                 </div>
               </div>
@@ -292,7 +342,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         )}
       </AnimatePresence>
 
-      {/* ── Filters ── */}
+      {/* ── Filters: inline pills ── */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 24, alignItems: 'center' }}>
         <input
           type="text"
@@ -363,7 +413,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         ))}
       </div>
 
-      {/* ── Card grid ── */}
+      {/* ── Card grid: open layout, cards breathe ── */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
@@ -371,24 +421,22 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         justifyItems: 'center',
       }}>
         {cards.map((card, i) => {
-          const myStake = parseFloat(card.myStake)
-          const reserve = parseFloat(card.wavesReserve)
-          const risk = getRiskPct(myStake, reserve)
-          const ownerLabel = card.owner.slice(0, 6) + '…' + card.owner.slice(-4)
-          const hasYou = myStake > 0
-          const isSelected = selectedCard === card.id
-          const isOwner = whirlpool.address ? card.owner.toLowerCase() === whirlpool.address.toLowerCase() : false
+          const risk = getRiskPct(card.stakers[0]?.value || 0, card.total)
+          const sorted = [...card.stakers].sort((a, b) => b.value - a.value)
+          const ownerLabel = shortAddr(card.owner)
+          const hasYou = card.hasYou
+          const isSelected = selectedCard === card.name
           const CARD_W = 220
           const CARD_H = CARD_W * (4 / 3)
-          const imgSrc = card.uri || `/images/card-images/placeholder.png`
+          const imgSrc = cardImage(card.uri, card.name, card.id)
 
           return (
             <motion.div
-              key={card.id}
+              key={card.name}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.04, ease: 'easeOut' }}
-              onClick={() => setSelectedCard(isSelected ? null : card.id)}
+              onClick={() => setSelectedCard(isSelected ? null : card.name)}
               style={{
                 cursor: 'pointer',
                 position: 'relative',
@@ -396,6 +444,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
               }}
               whileHover={{ scale: 1.03 }}
             >
+              {/* Card container */}
               <div style={{
                 width: CARD_W,
                 height: CARD_H,
@@ -433,101 +482,53 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                         zIndex: 10,
                       }}
                     >
-                      {/* Show owner with their stake info */}
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 6,
-                        padding: '3px 0',
-                        borderBottom: '1px solid rgba(255,255,255,0.1)',
-                      }}>
-                        <span style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 11,
-                          fontWeight: 800,
-                          color: '#e8d5a0',
-                          width: 16,
-                          textAlign: 'right',
-                        }}>
-                          1.
-                        </span>
-                        <div style={{
-                          width: 7, height: 7, borderRadius: '50%',
-                          background: COLORS[0],
-                          flexShrink: 0,
-                        }} />
-                        <span style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 10,
-                          fontWeight: 700,
-                          color: isOwner ? '#e8d5a0' : 'rgba(255,255,255,0.85)',
-                          flex: 1,
-                          textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                        }}>
-                          {ownerLabel}{isOwner ? ' (You)' : ''} ★
-                        </span>
-                        <span style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 10,
-                          fontWeight: 700,
-                          color: 'rgba(255,255,255,0.6)',
-                          textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                        }}>
-                          Owner
-                        </span>
-                      </div>
-                      {hasYou && !isOwner && (
-                        <div style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 6,
-                          padding: '3px 0',
-                        }}>
-                          <span style={{
-                            fontFamily: "'DM Mono', monospace",
-                            fontSize: 11,
-                            fontWeight: 800,
-                            color: 'rgba(255,255,255,0.7)',
-                            width: 16,
-                            textAlign: 'right',
+                      {sorted.slice(0, 4).map((staker, si) => {
+                        const pct = card.total > 0 ? ((staker.value / card.total) * 100).toFixed(1) : '0'
+                        return (
+                          <div key={si} style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            padding: '3px 0',
+                            borderBottom: si < 3 ? '1px solid rgba(255,255,255,0.1)' : 'none',
                           }}>
-                            ?.
-                          </span>
-                          <div style={{
-                            width: 7, height: 7, borderRadius: '50%',
-                            background: COLORS[1],
-                            flexShrink: 0,
-                          }} />
-                          <span style={{
-                            fontFamily: "'DM Mono', monospace",
-                            fontSize: 10,
-                            fontWeight: 700,
-                            color: '#e8d5a0',
-                            flex: 1,
-                            textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                          }}>
-                            You · {myStake.toFixed(4)}
-                          </span>
-                        </div>
-                      )}
-                      {/* Price info */}
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 6,
-                        padding: '6px 0 3px',
-                        borderTop: '1px solid rgba(255,255,255,0.1)',
-                        marginTop: 4,
-                      }}>
-                        <span style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 10,
-                          color: 'rgba(255,255,255,0.5)',
-                          textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                        }}>
-                          Price: {parseFloat(card.price).toFixed(4)} WAVES
-                        </span>
-                      </div>
+                            <span style={{
+                              fontFamily: "'DM Mono', monospace",
+                              fontSize: 11,
+                              fontWeight: 800,
+                              color: si === 0 ? '#e8d5a0' : 'rgba(255,255,255,0.7)',
+                              width: 16,
+                              textAlign: 'right',
+                            }}>
+                              {si + 1}.
+                            </span>
+                            <div style={{
+                              width: 7, height: 7, borderRadius: '50%',
+                              background: staker.color,
+                              flexShrink: 0,
+                            }} />
+                            <span style={{
+                              fontFamily: "'DM Mono', monospace",
+                              fontSize: 10,
+                              fontWeight: 700,
+                              color: staker.isYou ? '#e8d5a0' : 'rgba(255,255,255,0.85)',
+                              flex: 1,
+                              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+                            }}>
+                              {staker.label}{staker.isYou ? ' (You)' : ''}{si === 0 ? ' ★' : ''}
+                            </span>
+                            <span style={{
+                              fontFamily: "'DM Mono', monospace",
+                              fontSize: 10,
+                              fontWeight: 700,
+                              color: 'rgba(255,255,255,0.6)',
+                              textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+                            }}>
+                              {pct}%
+                            </span>
+                          </div>
+                        )
+                      })}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -583,7 +584,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                   </div>
                 </div>
 
-                {/* Risk bar */}
+                {/* Risk bar at very bottom */}
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
@@ -610,9 +611,10 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                     exit={{ opacity: 0, height: 0 }}
                     style={{ overflow: 'hidden', marginTop: 8, width: '100%' }}
                   >
+                    {/* Stake / Unstake buttons */}
                     <div style={{ display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
                       <button
-                        onClick={e => { e.stopPropagation(); whirlpool.stake(card.id, '1') }}
+                        onClick={e => handleStake(card.id, e)}
                         style={{
                           fontFamily: "'DM Mono', monospace",
                           fontSize: 10,
@@ -636,7 +638,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                         onMouseLeave={e => { (e.target as HTMLImageElement).style.transform = 'scale(1)' }}
                       />
                       <button
-                        onClick={e => { e.stopPropagation(); whirlpool.unstake(card.id, card.myStake) }}
+                        onClick={e => handleUnstake(card.id, e)}
                         style={{
                           fontFamily: "'DM Mono', monospace",
                           fontSize: 10,
@@ -667,7 +669,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           textAlign: 'center',
           padding: '80px 0',
         }}>
-          {whirlpool.cards.length === 0 ? 'No cards deployed yet. Run mint-all-cards.sh first!' : 'No cards match your search.'}
+          {whirlpool.cards.length === 0 ? 'No cards created yet. Mint some on the Mint page!' : 'No cards match your search.'}
         </p>
       )}
     </div>
