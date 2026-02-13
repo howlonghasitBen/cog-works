@@ -117,10 +117,10 @@ function StageCard({
   return (
     <div className={`relative overflow-hidden transition-all {
       card ? 'border-cyan-500/50 bg-[#121420]' : 'border-dashed border-[#3a3d50] bg-[#121420]'
-    }`} style={{ width: 220, aspectRatio: '3/4' }}>
+    }`} style={{ width: 264, aspectRatio: '3/4' }}>
       {card ? (
         <>
-          <CardFromData name={card.name} width={220} />
+          <CardFromData name={card.name} width={264} />
           <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
           <div className="absolute bottom-0 inset-x-0 p-3">
             <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
@@ -160,7 +160,7 @@ function MultiStageCards({
   }
   // Scroll carousel for multi-select
   return (
-    <div style={{ width: 240 }}>
+    <div style={{ width: 288 }}>
       <div
         className="flex gap-3 overflow-x-scroll snap-x snap-mandatory pb-2 overscroll-x-contain"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent', WebkitOverflowScrolling: 'touch' }}
@@ -175,9 +175,9 @@ function MultiStageCards({
           <div
             key={card.id}
             className="relative overflow-hidden bg-transparent flex-shrink-0 snap-center"
-            style={{ width: 220, aspectRatio: '3/4' }}
+            style={{ width: 264, aspectRatio: '3/4' }}
           >
-            <CardFromData name={card.name} width={220} />
+            <CardFromData name={card.name} width={264} />
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
             <div className="absolute bottom-0 inset-x-0 p-3">
               <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
