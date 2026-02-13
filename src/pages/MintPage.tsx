@@ -4,10 +4,13 @@ import type { CardEditorData } from '@marketplace/components/editor/types'
 import CogPartSelector from '../components/CogPartSelector'
 import CogPartEditor from '../components/CogPartEditor'
 import CardPreview from '@marketplace/components/editor/CardPreview'
+import WhirlpoolTerminal from '../components/WhirlpoolTerminal'
+import { useWhirlpool } from '../hooks/useWhirlpool'
 
 export default function MintPage() {
   const [card, setCard] = useState<CardEditorData>(createDefaultCard())
   const [selectedPart, setSelectedPart] = useState<string>('identity')
+  const whirlpool = useWhirlpool()
 
   const updateField = (key: string, value: unknown) => {
     setCard(prev => {
@@ -42,13 +45,22 @@ export default function MintPage() {
           alignItems: 'flex-start',
           width: '100%',
         }}>
-          {/* Left — Part Selector */}
-          <div style={{ width: 280, flexShrink: 0 }}>
+          {/* Left — Part Selector + Terminal */}
+          <div style={{ width: 280, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <CogPartSelector
               parts={CARD_PARTS}
               selectedPart={selectedPart}
               onSelectPart={setSelectedPart}
             />
+            <div style={{
+              height: 300,
+              borderRadius: 4,
+              border: '2px solid #3a3d4a',
+              overflow: 'hidden',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+            }}>
+              <WhirlpoolTerminal logs={whirlpool.logs} onClear={whirlpool.clearLogs} />
+            </div>
           </div>
 
           {/* Center — Live Preview */}

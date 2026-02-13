@@ -5,8 +5,7 @@
  */
 
 import { useState, useMemo } from 'react'
-import WhirlpoolTerminal from '../components/WhirlpoolTerminal'
-import { useWhirlpool } from '../hooks/useWhirlpool'
+// terminal moved to MintPage
 
 // ─── Types ──────────────────────────────────────────────────────
 interface Staker {
@@ -312,7 +311,7 @@ function MarketRow({
 
 // ─── Main SwapPage ──────────────────────────────────────────────
 export default function SwapPage() {
-  const whirlpool = useWhirlpool()
+  // const whirlpool = useWhirlpool() // moved to MintPage
   const [inventorySearch, setInventorySearch] = useState('')
   const [marketSearch, setMarketSearch] = useState('')
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
@@ -518,11 +517,6 @@ export default function SwapPage() {
           >
             Buy $WAVES
           </button>
-
-          {/* Whirlpool Terminal */}
-          <div style={{ flex: 1, minHeight: 180, display: 'flex', flexDirection: 'column', marginTop: 12 }}>
-            <WhirlpoolTerminal logs={whirlpool.logs} onClear={whirlpool.clearLogs} />
-          </div>
 
           <style>{`
             @keyframes shimmer {
