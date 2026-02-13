@@ -455,7 +455,6 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
               <div style={{
                 width: CARD_W,
                 height: CARD_H,
-                borderRadius: 14,
                 overflow: 'hidden',
                 outline: hasYou ? '2px solid #8a6d2b' : 'none',
                 position: 'relative',
