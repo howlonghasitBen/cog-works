@@ -135,7 +135,7 @@
   },
   {
     "name": "Aboleth",
-    "subtitle": "",
+    "subtitle": "Enslave Mind",
     "level": "1",
     "image": "/images/card-images/arts/aboleth.png",
     "type": "Creature — ",
@@ -143,7 +143,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from aboleth. Customize this text to make it unique!",
+    "flavorText": "It remembers everything — every civilization it watched drown, every mind it claimed. The small fish circle close, unaware they already belong to it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -205,7 +205,7 @@
   },
   {
     "name": "Acolyte",
-    "subtitle": "",
+    "subtitle": "Unblinking Vigil",
     "level": "1",
     "image": "/images/card-images/arts/acolyte.png",
     "type": "Creature — ",
@@ -213,7 +213,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from acolyte. Customize this text to make it unique!",
+    "flavorText": "The Eye chose him in the spawning pool, and he has known no rest since. To see all things is to mourn all things.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -275,7 +275,7 @@
   },
   {
     "name": "Acolyte 2",
-    "subtitle": "",
+    "subtitle": "Void Communion",
     "level": "1",
     "image": "/images/card-images/arts/acolyte_2.png",
     "type": "Creature — ",
@@ -283,7 +283,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from acolyte_2. Customize this text to make it unique!",
+    "flavorText": "The old temple promised enlightenment, but the deeper he read, the sadder the verses became. Now he lights the candles not for worship, but so the darkness does not answer back.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -345,7 +345,7 @@
   },
   {
     "name": "Adult Bronze Dragon",
-    "subtitle": "",
+    "subtitle": "Repulsion Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_bronze_dragon.png",
     "type": "Creature — ",
@@ -353,7 +353,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from adult_bronze_dragon. Customize this text to make it unique!",
+    "flavorText": "It has guarded the valley since before the river changed course. It does not attack — it simply waits, unamused, until you leave.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -415,7 +415,7 @@
   },
   {
     "name": "Adult Copper Dragon",
-    "subtitle": "",
+    "subtitle": "Corroding Apathy",
     "level": "1",
     "image": "/images/card-images/arts/adult_copper_dragon.png",
     "type": "Creature — ",
@@ -423,7 +423,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from adult_copper_dragon. Customize this text to make it unique!",
+    "flavorText": "It has not moved in forty years. Adventurers keep coming. The hoard keeps growing.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -485,7 +485,7 @@
   },
   {
     "name": "Adult Gold Dragon",
-    "subtitle": "",
+    "subtitle": "Gilded Sorrow Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_gold_dragon.png",
     "type": "Creature — ",
@@ -493,7 +493,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from adult_gold_dragon. Customize this text to make it unique!",
+    "flavorText": "It counted every coin twice each night, not from greed, but because the clinking was the only sound that kept the silence at bay.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -555,7 +555,7 @@
   },
   {
     "name": "Adult Green Dragon",
-    "subtitle": "",
+    "subtitle": "Noxious Exhalation",
     "level": "1",
     "image": "/images/card-images/arts/adult_green_dragon.png",
     "type": "Creature — ",
@@ -563,7 +563,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from adult_green_dragon. Customize this text to make it unique!",
+    "flavorText": "The forest does not fear the storm — it fears what watches from the cliff above, grinning with too many teeth.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -625,7 +625,7 @@
   },
   {
     "name": "Adult Green Dragon 2",
-    "subtitle": "",
+    "subtitle": "Apathetic Poison Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_green_dragon_2.png",
     "type": "Creature — ",
@@ -633,7 +633,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from adult_green_dragon_2. Customize this text to make it unique!",
+    "flavorText": "It has seen every hoard, burned every village, and yet it still feels nothing. The skies offer no comfort to a dragon who has already conquered everything beneath them.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -695,7 +695,7 @@
   },
   {
     "name": "Adult Silver Dragon",
-    "subtitle": "",
+    "subtitle": "Paralyzing Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_silver_dragon.png",
     "type": "Creature — ",
@@ -703,7 +703,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from adult_silver_dragon. Customize this text to make it unique!",
+    "flavorText": "It has seen every war begin the same way and end the same way. The mountain remains; the kingdoms do not.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -765,7 +765,7 @@
   },
   {
     "name": "Air Elemental",
-    "subtitle": "",
+    "subtitle": "Sulking Tempest",
     "level": "1",
     "image": "/images/card-images/arts/air_elemental.png",
     "type": "Creature — ",
@@ -773,7 +773,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from air_elemental. Customize this text to make it unique!",
+    "flavorText": "It does not rage because the storm commands it. It rages because you looked at it funny.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -835,7 +835,7 @@
   },
   {
     "name": "Ancient Black Dragon",
-    "subtitle": "",
+    "subtitle": "Ageless Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_black_dragon.png",
     "type": "Creature — ",
@@ -843,7 +843,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_black_dragon. Customize this text to make it unique!",
+    "flavorText": "It has watched empires crumble and gods go silent, yet still it smirks—for it alone remembers the joke the world has become.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -905,7 +905,7 @@
   },
   {
     "name": "Ancient Brass Dragon",
-    "subtitle": "",
+    "subtitle": "Corroded Dominion",
     "level": "1",
     "image": "/images/card-images/arts/ancient_brass_dragon.png",
     "type": "Creature — ",
@@ -913,7 +913,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_brass_dragon. Customize this text to make it unique!",
+    "flavorText": "It has watched empires crumble to sand and found each one funnier than the last. Time is nothing to those who were old before the desert had a name.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -975,7 +975,7 @@
   },
   {
     "name": "Ancient Bronze Dragon",
-    "subtitle": "",
+    "subtitle": "Eternal Sulk",
     "level": "1",
     "image": "/images/card-images/arts/ancient_bronze_dragon.png",
     "type": "Creature — ",
@@ -983,7 +983,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_bronze_dragon. Customize this text to make it unique!",
+    "flavorText": "It has watched empires rise and crumble for ten thousand years. Each one, it says, was mid.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1045,7 +1045,7 @@
   },
   {
     "name": "Ancient Copper Dragon",
-    "subtitle": "",
+    "subtitle": "Verdigris Ruin",
     "level": "1",
     "image": "/images/card-images/arts/ancient_copper_dragon.png",
     "type": "Creature — ",
@@ -1053,7 +1053,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_copper_dragon. Customize this text to make it unique!",
+    "flavorText": "It has outlasted every empire foolish enough to claim its temple. The moss grows, the columns crumble, and still it grins—knowing that patience is the cruelest treasure of all.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1115,7 +1115,7 @@
   },
   {
     "name": "Ancient Gold Dragon 2",
-    "subtitle": "",
+    "subtitle": "Gilded Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_gold_dragon_2.png",
     "type": "Creature — ",
@@ -1123,7 +1123,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_gold_dragon_2. Customize this text to make it unique!",
+    "flavorText": "It has watched empires rise and crumble for ten thousand years, and honestly? It's not impressed. Its indifference alone has toppled kings.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1185,7 +1185,7 @@
   },
   {
     "name": "Ancient Gold Dragon 3",
-    "subtitle": "",
+    "subtitle": "Gilded Dominion",
     "level": "1",
     "image": "/images/card-images/arts/ancient_gold_dragon_3.png",
     "type": "Creature — ",
@@ -1193,7 +1193,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_gold_dragon_3. Customize this text to make it unique!",
+    "flavorText": "It has watched empires rise and crumble like sandcastles, and still it grins—for the gold of kingdoms is nothing compared to the wealth of ages.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1255,7 +1255,7 @@
   },
   {
     "name": "Ancient Green Dragon",
-    "subtitle": "",
+    "subtitle": "Primordial Sigh",
     "level": "1",
     "image": "/images/card-images/arts/ancient_green_dragon.png",
     "type": "Creature — ",
@@ -1263,7 +1263,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_green_dragon. Customize this text to make it unique!",
+    "flavorText": "It has outlived every kingdom foolish enough to challenge it, and regards each new hero with the same weary, unblinking sorrow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1325,7 +1325,7 @@
   },
   {
     "name": "Ancient Red Dragon",
-    "subtitle": "",
+    "subtitle": "Molten Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_red_dragon.png",
     "type": "Creature — ",
@@ -1333,7 +1333,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_red_dragon. Customize this text to make it unique!",
+    "flavorText": "It has watched empires rise and crumble like ash between its claws. The smoldering grin is the last thing kingdoms ever see.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1395,7 +1395,7 @@
   },
   {
     "name": "Ancient Silver Dragon",
-    "subtitle": "",
+    "subtitle": "Frozen Lament",
     "level": "1",
     "image": "/images/card-images/arts/ancient_silver_dragon.png",
     "type": "Creature — ",
@@ -1403,7 +1403,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ancient_silver_dragon. Customize this text to make it unique!",
+    "flavorText": "It has watched empires crumble from its frozen throne, shedding no tears—only frost. Even the moon turns away, unable to bear the weight of its ancient sorrow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1465,7 +1465,7 @@
   },
   {
     "name": "Androsphinx",
-    "subtitle": "",
+    "subtitle": "Sorrowful Roar",
     "level": "1",
     "image": "/images/card-images/arts/androsphinx.png",
     "type": "Creature — ",
@@ -1473,7 +1473,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from androsphinx. Customize this text to make it unique!",
+    "flavorText": "It asks no riddles, for it already knows the answer — and the answer is sorrow. Kingdoms rose and fell beneath its gaze, and still it sits, waiting for one worthy of its tears.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1535,7 +1535,7 @@
   },
   {
     "name": "Animated Armor",
-    "subtitle": "",
+    "subtitle": "Hollow Advance",
     "level": "1",
     "image": "/images/card-images/arts/animated_armor.png",
     "type": "Creature — ",
@@ -1543,7 +1543,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from animated_armor. Customize this text to make it unique!",
+    "flavorText": "The knight who wore it perished centuries ago, but something crept inside and learned to walk. Now it patrols the ruined keep, answering to no lord but the swamp itself.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1605,7 +1605,7 @@
   },
   {
     "name": "Awakened Shrub",
-    "subtitle": "",
+    "subtitle": "Rootbound Sorrow",
     "level": "1",
     "image": "/images/card-images/arts/awakened_shrub.png",
     "type": "Creature — ",
@@ -1613,7 +1613,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from awakened_shrub. Customize this text to make it unique!",
+    "flavorText": "It did not ask to wake, nor to walk, nor to feel the ache of moonlight on leaves that once knew only stillness. Yet the forest needed a guardian, and the roots answered.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1675,7 +1675,7 @@
   },
   {
     "name": "Azer",
-    "subtitle": "",
+    "subtitle": "Molten Lament",
     "level": "1",
     "image": "/images/card-images/arts/azer.png",
     "type": "Creature — ",
@@ -1683,7 +1683,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from azer. Customize this text to make it unique!",
+    "flavorText": "Born where the world's skin splits and bleeds fire, the Azer mourns the mountains it was forged to destroy. Its tears turn to steam before they ever fall.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1745,7 +1745,7 @@
   },
   {
     "name": "Baboon",
-    "subtitle": "",
+    "subtitle": "Feral Gnash",
     "level": "1",
     "image": "/images/card-images/arts/baboon.png",
     "type": "Creature — ",
@@ -1753,7 +1753,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from baboon. Customize this text to make it unique!",
+    "flavorText": "It descended from the mist-veiled peaks with a grin that unsettled even the bravest scouts. No one laughed twice at the green beast of the highlands.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1815,7 +1815,7 @@
   },
   {
     "name": "Baboon 2",
-    "subtitle": "",
+    "subtitle": "Fang Grudge",
     "level": "1",
     "image": "/images/card-images/arts/baboon_2.png",
     "type": "Creature — ",
@@ -1823,7 +1823,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from baboon_2. Customize this text to make it unique!",
+    "flavorText": "It does not rule the jungle — it simply refuses to leave, and nothing dares ask it to. Even the vines recoil from the weight of its sullen gaze.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1885,7 +1885,7 @@
   },
   {
     "name": "Balor",
-    "subtitle": "",
+    "subtitle": "Molten Lash",
     "level": "1",
     "image": "/images/card-images/arts/balor.png",
     "type": "Creature — ",
@@ -1893,7 +1893,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from balor. Customize this text to make it unique!",
+    "flavorText": "When the mountains split and the sky bled cinder, Balor rose from the molten deep — not to witness the end, but to bring it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1955,7 +1955,7 @@
   },
   {
     "name": "Bandit Captain",
-    "subtitle": "",
+    "subtitle": "Cutthroat Rally",
     "level": "1",
     "image": "/images/card-images/arts/bandit_captain.png",
     "type": "Creature — ",
@@ -1963,7 +1963,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from bandit_captain. Customize this text to make it unique!",
+    "flavorText": "The road belongs to whoever's willing to bleed for it. His crew learned that lesson—and now they teach it to others.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2025,7 +2025,7 @@
   },
   {
     "name": "Barbed Devil 2",
-    "subtitle": "",
+    "subtitle": "Piercing Embrace",
     "level": "1",
     "image": "/images/card-images/arts/barbed_devil_2.png",
     "type": "Creature — ",
@@ -2033,7 +2033,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from barbed_devil_2. Customize this text to make it unique!",
+    "flavorText": "No one pities the warden of the lowest pit. His tears sizzle before they fall, and his embrace leaves nothing but scars.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2095,7 +2095,7 @@
   },
   {
     "name": "Bat",
-    "subtitle": "",
+    "subtitle": "Mournful Shriek",
     "level": "1",
     "image": "/images/card-images/arts/bat.png",
     "type": "Creature — ",
@@ -2103,7 +2103,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from bat. Customize this text to make it unique!",
+    "flavorText": "It haunts the deepest caverns not to hunt, but because the dark is the only place that understands its sorrow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2165,7 +2165,7 @@
   },
   {
     "name": "Bearded Devil 3",
-    "subtitle": "",
+    "subtitle": "Infernal Prong",
     "level": "1",
     "image": "/images/card-images/arts/bearded_devil_3.png",
     "type": "Creature — ",
@@ -2173,7 +2173,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from bearded_devil_3. Customize this text to make it unique!",
+    "flavorText": "He guards the third circle not out of duty, but boredom — and the damned have learned that apathy burns worse than any flame.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2235,7 +2235,7 @@
   },
   {
     "name": "Behir",
-    "subtitle": "",
+    "subtitle": "Cavern Constrict",
     "level": "1",
     "image": "/images/card-images/arts/behir.png",
     "type": "Creature — ",
@@ -2243,7 +2243,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from behir. Customize this text to make it unique!",
+    "flavorText": "It does not hunt out of malice—only a deep, ancient sadness that swallows everything it touches. The last thing its prey sees is not rage, but resignation.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2305,7 +2305,7 @@
   },
   {
     "name": "Berserker 2",
-    "subtitle": "",
+    "subtitle": "Raging Cleave",
     "level": "1",
     "image": "/images/card-images/arts/berserker_2.png",
     "type": "Creature — ",
@@ -2313,7 +2313,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from berserker_2. Customize this text to make it unique!",
+    "flavorText": "When the storm broke over the burning village, the last thing the raiders heard was not thunder—but laughter.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2375,7 +2375,7 @@
   },
   {
     "name": "Black Bear",
-    "subtitle": "",
+    "subtitle": "Grieving Maul",
     "level": "1",
     "image": "/images/card-images/arts/black_bear.png",
     "type": "Creature — ",
@@ -2383,7 +2383,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from black_bear. Customize this text to make it unique!",
+    "flavorText": "The forest learned long ago not to mistake its sorrow for weakness. Every tear shed is a promise that something beautiful was lost—and something terrible will follow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2445,7 +2445,7 @@
   },
   {
     "name": "Black Dragon Wyrmling",
-    "subtitle": "",
+    "subtitle": "Ember Melancholy",
     "level": "1",
     "image": "/images/card-images/arts/black_dragon_wyrmling.png",
     "type": "Creature — ",
@@ -2453,7 +2453,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from black_dragon_wyrmling. Customize this text to make it unique!",
+    "flavorText": "Born in the ashen depths where fire meets sorrow, it gazes upon a ruined world and knows only that it belongs.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2515,7 +2515,7 @@
   },
   {
     "name": "Black Pudding 3",
-    "subtitle": "",
+    "subtitle": "Engulfing Grief",
     "level": "1",
     "image": "/images/card-images/arts/black_pudding_3.png",
     "type": "Creature — ",
@@ -2523,7 +2523,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from black_pudding_3. Customize this text to make it unique!",
+    "flavorText": "It does not hunt. It simply waits, and weeps, and everything that draws near sinks slowly into its sorrow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2585,7 +2585,7 @@
   },
   {
     "name": "Blood Hawk",
-    "subtitle": "",
+    "subtitle": "Crimson Talon Dive",
     "level": "1",
     "image": "/images/card-images/arts/blood_hawk.png",
     "type": "Creature — ",
@@ -2593,7 +2593,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from blood_hawk. Customize this text to make it unique!",
+    "flavorText": "Beneath the blood moon it roosts, weeping crimson tears for prey it has not yet taken. Pity the thing that mistakes its sorrow for mercy.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2655,7 +2655,7 @@
   },
   {
     "name": "Boar 2",
-    "subtitle": "",
+    "subtitle": "Mire Charge",
     "level": "1",
     "image": "/images/card-images/arts/boar_2.png",
     "type": "Creature — ",
@@ -2663,7 +2663,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from boar_2. Customize this text to make it unique!",
+    "flavorText": "Born from the mire where roots twist and rot, it guards the deepest bogs with a patience older than the trees — and a temper far shorter.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2725,7 +2725,7 @@
   },
   {
     "name": "Bugbear",
-    "subtitle": "",
+    "subtitle": "Cavern Ambush",
     "level": "1",
     "image": "/images/card-images/arts/bugbear.png",
     "type": "Creature — ",
@@ -2733,7 +2733,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from bugbear. Customize this text to make it unique!",
+    "flavorText": "It waits where the torchlight falters, where echoes swallow screams. By the time you see its grin, the morningstar is already falling.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2795,7 +2795,7 @@
   },
   {
     "name": "Bugbear 2",
-    "subtitle": "",
+    "subtitle": "Cavern Crush",
     "level": "1",
     "image": "/images/card-images/arts/bugbear_2.png",
     "type": "Creature — ",
@@ -2803,7 +2803,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from bugbear_2. Customize this text to make it unique!",
+    "flavorText": "It waits where the torchlight falters, where the stone drips cold and the brave turn back. The last thing they hear is the drag of iron across rock.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2865,7 +2865,7 @@
   },
   {
     "name": "Chimera",
-    "subtitle": "",
+    "subtitle": "Trihead Inferno",
     "level": "1",
     "image": "/images/card-images/arts/chimera.png",
     "type": "Creature — ",
@@ -2873,7 +2873,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from chimera. Customize this text to make it unique!",
+    "flavorText": "Three minds, one hunger. It argues with itself over prey — but never over whether to devour.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2935,7 +2935,7 @@
   },
   {
     "name": "Chuul",
-    "subtitle": "",
+    "subtitle": "Tentacle Crush",
     "level": "1",
     "image": "/images/card-images/arts/chuul.png",
     "type": "Creature — ",
@@ -2943,7 +2943,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from chuul. Customize this text to make it unique!",
+    "flavorText": "It crawled from the deep when the lighthouse went dark, and the keepers were never found—only their empty boots, slick with brine and arranged neatly on the rocks.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3005,7 +3005,7 @@
   },
   {
     "name": "Cloud Giant",
-    "subtitle": "",
+    "subtitle": "Sorrowful Downpour",
     "level": "1",
     "image": "/images/card-images/arts/cloud_giant.png",
     "type": "Creature — ",
@@ -3013,7 +3013,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from cloud_giant. Customize this text to make it unique!",
+    "flavorText": "Its tears fall as rain upon the ungrateful earth. To look up in a storm is to meet the gaze of something ancient, sorrowful, and impossibly vast.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3075,7 +3075,7 @@
   },
   {
     "name": "Cloud Giant 2",
-    "subtitle": "",
+    "subtitle": "Thunderclad Descent",
     "level": "1",
     "image": "/images/card-images/arts/cloud_giant_2.png",
     "type": "Creature — ",
@@ -3083,7 +3083,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from cloud_giant_2. Customize this text to make it unique!",
+    "flavorText": "He wears the storm as a cloak and the thunder as a belt. When he frowns, kingdoms below learn the meaning of rain.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3145,7 +3145,7 @@
   },
   {
     "name": "Cockatrice 2",
-    "subtitle": "",
+    "subtitle": "Petrifying Glare",
     "level": "1",
     "image": "/images/card-images/arts/cockatrice_2.png",
     "type": "Creature — ",
@@ -3153,7 +3153,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from cockatrice_2. Customize this text to make it unique!",
+    "flavorText": "It haunts the bog where no mirror exists, for even the moon averts its gaze. Those who meet its sullen eyes find their last thought is pity—for themselves.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3215,7 +3215,7 @@
   },
   {
     "name": "Copper Dragon Wyrmling 3",
-    "subtitle": "",
+    "subtitle": "Sulking Corrosion",
     "level": "1",
     "image": "/images/card-images/arts/copper_dragon_wyrmling_3.png",
     "type": "Creature — ",
@@ -3223,7 +3223,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from copper_dragon_wyrmling_3. Customize this text to make it unique!",
+    "flavorText": "Born with scales worth a king's ransom and a frown worth a thousand sorrows. Even the mountains pity the wyrmling who knows its hoard is empty.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3285,7 +3285,7 @@
   },
   {
     "name": "Couatl",
-    "subtitle": "",
+    "subtitle": "Plumed Ascension",
     "level": "1",
     "image": "/images/card-images/arts/couatl.png",
     "type": "Creature — ",
@@ -3293,7 +3293,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from couatl. Customize this text to make it unique!",
+    "flavorText": "It rose when the temples still remembered their builders' names, and it will circle above them long after the jungle swallows the last stone.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3355,7 +3355,7 @@
   },
   {
     "name": "Cultist",
-    "subtitle": "",
+    "subtitle": "Eldritch Invocation",
     "level": "1",
     "image": "/images/card-images/arts/cultist.png",
     "type": "Creature — ",
@@ -3363,7 +3363,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from cultist. Customize this text to make it unique!",
+    "flavorText": "\"The old gods sleep beneath the bog, but his croaking hymns stir them toward waking. Each ritual draws the eye a little wider open.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3425,7 +3425,7 @@
   },
   {
     "name": "Cult Fanatic",
-    "subtitle": "",
+    "subtitle": "Zealot's Vortex",
     "level": "1",
     "image": "/images/card-images/arts/cult_fanatic.png",
     "type": "Creature — ",
@@ -3433,7 +3433,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from cult_fanatic. Customize this text to make it unique!",
+    "flavorText": "\"The faces stitched upon his vestments do not sleep — they whisper the incantation he has long since forgotten how to stop.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3495,7 +3495,7 @@
   },
   {
     "name": "Darkmantle 2",
-    "subtitle": "",
+    "subtitle": "Abyssal Smother",
     "level": "1",
     "image": "/images/card-images/arts/darkmantle_2.png",
     "type": "Creature — ",
@@ -3503,7 +3503,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from darkmantle_2. Customize this text to make it unique!",
+    "flavorText": "It drifts through the deep places where light goes to die, wearing sorrow like a second skin. Those who meet its gaze feel not fear, but an inexplicable, bottomless grief.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3565,7 +3565,7 @@
   },
   {
     "name": "Draft Horse 3",
-    "subtitle": "",
+    "subtitle": "Mosshide Trample",
     "level": "1",
     "image": "/images/card-images/arts/draft_horse_3.png",
     "type": "Creature — ",
@@ -3573,7 +3573,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from draft_horse_3. Customize this text to make it unique!",
+    "flavorText": "Born from the bog and burdened by centuries of solitude, it trudges ever onward—too stubborn to stop, too sorrowful to know why.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3635,7 +3635,7 @@
   },
   {
     "name": "Dragon Turtle",
-    "subtitle": "",
+    "subtitle": "Swamp Shell Crush",
     "level": "1",
     "image": "/images/card-images/arts/dragon_turtle.png",
     "type": "Creature — ",
@@ -3643,7 +3643,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from dragon_turtle. Customize this text to make it unique!",
+    "flavorText": "It lingers in still waters with sorrowful eyes, but those who mistake its sadness for weakness never surface again.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3705,7 +3705,7 @@
   },
   {
     "name": "Dragon Turtle 2",
-    "subtitle": "",
+    "subtitle": "Swamp Shell Crush",
     "level": "1",
     "image": "/images/card-images/arts/dragon_turtle_2.png",
     "type": "Creature — ",
@@ -3713,7 +3713,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from dragon_turtle_2. Customize this text to make it unique!",
+    "flavorText": "It lingers in still waters with sorrowful eyes, but those who mistake its sadness for weakness never surface again.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3775,7 +3775,7 @@
   },
   {
     "name": "Drider",
-    "subtitle": "",
+    "subtitle": "Webbed Ambush",
     "level": "1",
     "image": "/images/card-images/arts/drider.png",
     "type": "Creature — ",
@@ -3783,7 +3783,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from drider. Customize this text to make it unique!",
+    "flavorText": "It spins no web to catch its prey — the darkness itself funnels the lost into its lair. The young watch and learn; soon, every shadow will have eight legs.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3845,7 +3845,7 @@
   },
   {
     "name": "Drow",
-    "subtitle": "",
+    "subtitle": "Underdark Hex",
     "level": "1",
     "image": "/images/card-images/arts/drow.png",
     "type": "Creature — ",
@@ -3853,7 +3853,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from drow. Customize this text to make it unique!",
+    "flavorText": "Born where no sunlight dares to reach, he rules the fungal dark with blade and spite. The caverns do not echo his steps — they swallow the screams of those who follow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3915,7 +3915,7 @@
   },
   {
     "name": "Druid",
-    "subtitle": "",
+    "subtitle": "Verdant Communion",
     "level": "1",
     "image": "/images/card-images/arts/druid.png",
     "type": "Creature — ",
@@ -3923,7 +3923,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from druid. Customize this text to make it unique!",
+    "flavorText": "\"The forest does not speak to those who listen — it speaks through those who grieve. His sorrow feeds the roots, and the roots feed everything.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3985,7 +3985,7 @@
   },
   {
     "name": "Dryad 2",
-    "subtitle": "",
+    "subtitle": "Rooted Lament",
     "level": "1",
     "image": "/images/card-images/arts/dryad_2.png",
     "type": "Creature — ",
@@ -3993,7 +3993,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from dryad_2. Customize this text to make it unique!",
+    "flavorText": "It stood so long among the elder groves that the forest forgot it was ever anything else. Now the roots answer to its sorrows, and the canopy bends to its quiet rage.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4055,7 +4055,7 @@
   },
   {
     "name": "Duergar 2",
-    "subtitle": "",
+    "subtitle": "Cavern Crush",
     "level": "1",
     "image": "/images/card-images/arts/duergar_2.png",
     "type": "Creature — ",
@@ -4063,7 +4063,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from duergar_2. Customize this text to make it unique!",
+    "flavorText": "Born in the deepest dark, where even stone learns to flinch. His hammer speaks the only language the Underdark respects.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4125,7 +4125,7 @@
   },
   {
     "name": "Dust Mephit",
-    "subtitle": "",
+    "subtitle": "Choking Gust",
     "level": "1",
     "image": "/images/card-images/arts/dust_mephit.png",
     "type": "Creature — ",
@@ -4133,7 +4133,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from dust_mephit. Customize this text to make it unique!",
+    "flavorText": "Born where the last rain fell and forgotten, it drifts the salt flats in quiet grief—every wingbeat a small erosion, every sigh a dying storm.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4195,7 +4195,7 @@
   },
   {
     "name": "Efreeti 2",
-    "subtitle": "",
+    "subtitle": "Blazing Decree",
     "level": "1",
     "image": "/images/card-images/arts/efreeti_2.png",
     "type": "Creature — ",
@@ -4203,7 +4203,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from efreeti_2. Customize this text to make it unique!",
+    "flavorText": "\"It granted three wishes once — each answered in ash. Now it asks the questions, and the blade speaks for it.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4265,7 +4265,7 @@
   },
   {
     "name": "Elephant 2",
-    "subtitle": "",
+    "subtitle": "Smug Trample",
     "level": "1",
     "image": "/images/card-images/arts/elephant_2.png",
     "type": "Creature — ",
@@ -4273,7 +4273,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from elephant_2. Customize this text to make it unique!",
+    "flavorText": "It emerged from the bog wearing an expression that unsettled even the elder druids — as if it alone knew how the world would end, and found it amusing.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4335,7 +4335,7 @@
   },
   {
     "name": "Elk 3",
-    "subtitle": "",
+    "subtitle": "Moss-Crown Charge",
     "level": "1",
     "image": "/images/card-images/arts/elk_3.png",
     "type": "Creature — ",
@@ -4343,7 +4343,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from elk_3. Customize this text to make it unique!",
+    "flavorText": "\"Once it was a dragon. Once it was a god. Now it grazes in the glade with the same sorrowful eyes as all the others.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4405,7 +4405,7 @@
   },
   {
     "name": "Erinyes",
-    "subtitle": "",
+    "subtitle": "Vengeance Scourge",
     "level": "1",
     "image": "/images/card-images/arts/erinyes.png",
     "type": "Creature — ",
@@ -4413,7 +4413,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from erinyes. Customize this text to make it unique!",
+    "flavorText": "She weeps not for the guilty, but for the certainty of their punishment. Where her torch burns, no sin goes unforgotten.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4475,7 +4475,7 @@
   },
   {
     "name": "Ettin",
-    "subtitle": "",
+    "subtitle": "Twin Cleave",
     "level": "1",
     "image": "/images/card-images/arts/ettin.png",
     "type": "Creature — ",
@@ -4483,7 +4483,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ettin. Customize this text to make it unique!",
+    "flavorText": "\"Four minds, one purpose. They argue over everything—except whom to crush next.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4545,7 +4545,7 @@
   },
   {
     "name": "Ettin 2",
-    "subtitle": "",
+    "subtitle": "Twin Despair",
     "level": "1",
     "image": "/images/card-images/arts/ettin_2.png",
     "type": "Creature — ",
@@ -4553,7 +4553,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ettin_2. Customize this text to make it unique!",
+    "flavorText": "Two minds, one misery. The caverns echo with the sound of an argument that never ends and a sorrow neither head can escape alone.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4615,7 +4615,7 @@
   },
   {
     "name": "Fire Elemental",
-    "subtitle": "",
+    "subtitle": "Molten Lament",
     "level": "1",
     "image": "/images/card-images/arts/fire_elemental.png",
     "type": "Creature — ",
@@ -4623,7 +4623,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from fire_elemental. Customize this text to make it unique!",
+    "flavorText": "Born from the volcano's grief, it wanders the scorched earth with sorrowful eyes — not because it burns, but because it cannot stop.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4685,7 +4685,7 @@
   },
   {
     "name": "Fire Elemental 2",
-    "subtitle": "",
+    "subtitle": "Molten Scorn",
     "level": "1",
     "image": "/images/card-images/arts/fire_elemental_2.png",
     "type": "Creature — ",
@@ -4693,7 +4693,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from fire_elemental_2. Customize this text to make it unique!",
+    "flavorText": "Born where the earth splits and the sky chokes on ash, it watches the world burn with the patience of one who has nothing left to lose.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4755,7 +4755,7 @@
   },
   {
     "name": "Gelatinous Cube",
-    "subtitle": "",
+    "subtitle": "Sorrowful Engulf",
     "level": "1",
     "image": "/images/card-images/arts/gelatinous_cube.png",
     "type": "Creature — ",
@@ -4763,7 +4763,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from gelatinous_cube. Customize this text to make it unique!",
+    "flavorText": "It weeps not for those it has consumed, but for the loneliness of corridors that never end. Every bone within it is a companion that couldn't stay.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4825,7 +4825,7 @@
   },
   {
     "name": "Ghast",
-    "subtitle": "",
+    "subtitle": "Anguished Volley",
     "level": "1",
     "image": "/images/card-images/arts/ghast.png",
     "type": "Creature — ",
@@ -4833,7 +4833,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ghast. Customize this text to make it unique!",
+    "flavorText": "Its tears evaporate before they fall, yet still it weeps — for the Nether holds no memory of kindness, only the echo of fire and an ache without end.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4895,7 +4895,7 @@
   },
   {
     "name": "Ghast 2",
-    "subtitle": "",
+    "subtitle": "Sorrowful Barrage",
     "level": "1",
     "image": "/images/card-images/arts/ghast_2.png",
     "type": "Creature — ",
@@ -4903,7 +4903,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ghast_2. Customize this text to make it unique!",
+    "flavorText": "Its tears sizzle into steam before they ever reach the lava below. Even the Nether grows quiet when the saddest thing in hell begins to wail.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4965,7 +4965,7 @@
   },
   {
     "name": "Giant Ape",
-    "subtitle": "",
+    "subtitle": "Ruinous Stomp",
     "level": "1",
     "image": "/images/card-images/arts/giant_ape.png",
     "type": "Creature — ",
@@ -4973,7 +4973,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_ape. Customize this text to make it unique!",
+    "flavorText": "It did not come to conquer—only to stand. But where it stood, nothing else remained.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5035,7 +5035,7 @@
   },
   {
     "name": "Giant Bat",
-    "subtitle": "",
+    "subtitle": "Stormwing Dive",
     "level": "1",
     "image": "/images/card-images/arts/giant_bat.png",
     "type": "Creature — ",
@@ -5043,7 +5043,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_bat. Customize this text to make it unique!",
+    "flavorText": "It rides the storm not out of courage, but because nothing in the sky is large enough to tell it otherwise. Where lightning splits the peaks, its shadow swallows the flash whole.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5105,7 +5105,7 @@
   },
   {
     "name": "Giant Centipede",
-    "subtitle": "",
+    "subtitle": "Hundred Leg Crush",
     "level": "1",
     "image": "/images/card-images/arts/giant_centipede.png",
     "type": "Creature — ",
@@ -5113,7 +5113,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_centipede. Customize this text to make it unique!",
+    "flavorText": "It crawls through the deep places where light fears to linger, each segment watching with ancient, sorrowful eyes. The glowing fungi part before it—even the fungus knows not to be underfoot.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5175,7 +5175,7 @@
   },
   {
     "name": "Giant Constrictor Snake",
-    "subtitle": "",
+    "subtitle": "Crushing Embrace",
     "level": "1",
     "image": "/images/card-images/arts/giant_constrictor_snake.png",
     "type": "Creature — ",
@@ -5183,7 +5183,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_constrictor_snake. Customize this text to make it unique!",
+    "flavorText": "It does not chase. It waits among the ruins where the jungle swallows all things whole, wearing patience like a second skin.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5245,7 +5245,7 @@
   },
   {
     "name": "Giant Crab",
-    "subtitle": "",
+    "subtitle": "Sorrowful Crush",
     "level": "1",
     "image": "/images/card-images/arts/giant_crab.png",
     "type": "Creature — ",
@@ -5253,7 +5253,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_crab. Customize this text to make it unique!",
+    "flavorText": "It emerged from the surf with sorrowful eyes and merciless claws — mourning every soul it was about to crush.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5315,7 +5315,7 @@
   },
   {
     "name": "Giant Fire Beetle",
-    "subtitle": "",
+    "subtitle": "Ember Torrent",
     "level": "1",
     "image": "/images/card-images/arts/giant_fire_beetle.png",
     "type": "Creature — ",
@@ -5323,7 +5323,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_fire_beetle. Customize this text to make it unique!",
+    "flavorText": "The forest learned to fear the dusk — not for the darkness it brought, but for the glow that followed. Where it walks, even ancient oaks bow to ash.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5385,7 +5385,7 @@
   },
   {
     "name": "Giant Frog",
-    "subtitle": "",
+    "subtitle": "Ruinous Calm",
     "level": "1",
     "image": "/images/card-images/arts/giant_frog.png",
     "type": "Creature — ",
@@ -5393,7 +5393,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_frog. Customize this text to make it unique!",
+    "flavorText": "It arrived with the storm and stayed long after the cities fell. Among the rubble, it offered no malice—only an indifferent peace to a world that could no longer refuse it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5455,7 +5455,7 @@
   },
   {
     "name": "Giant Goat 3",
-    "subtitle": "",
+    "subtitle": "Doleful Rampage",
     "level": "1",
     "image": "/images/card-images/arts/giant_goat_3.png",
     "type": "Creature — ",
@@ -5463,7 +5463,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_goat_3. Customize this text to make it unique!",
+    "flavorText": "It wandered the barren ridgeline long before the storms came, and it will remain long after they pass. Its sorrow is older than the mountains beneath its hooves.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5525,7 +5525,7 @@
   },
   {
     "name": "Giant Octopus 2",
-    "subtitle": "",
+    "subtitle": "Sorrowful Embrace",
     "level": "1",
     "image": "/images/card-images/arts/giant_octopus_2.png",
     "type": "Creature — ",
@@ -5533,7 +5533,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_octopus_2. Customize this text to make it unique!",
+    "flavorText": "It does not hunger. It does not rage. It simply rises, and the age of sail ends with a sigh.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5595,7 +5595,7 @@
   },
   {
     "name": "Giant Sea Horse",
-    "subtitle": "",
+    "subtitle": "Abyssal Undertow",
     "level": "1",
     "image": "/images/card-images/arts/giant_sea_horse.png",
     "type": "Creature — ",
@@ -5603,7 +5603,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from giant_sea_horse. Customize this text to make it unique!",
+    "flavorText": "\"The old salts laughed when he said he'd tame the deep. They stopped laughing when the deep rose to meet him.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5665,7 +5665,7 @@
   },
   {
     "name": "Gibbering Mouther",
-    "subtitle": "",
+    "subtitle": "Maddening Cacophony",
     "level": "1",
     "image": "/images/card-images/arts/gibbering_mouther.png",
     "type": "Creature — ",
@@ -5673,7 +5673,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from gibbering_mouther. Customize this text to make it unique!",
+    "flavorText": "Every mouth screams a different madness, every eye weeps a different truth. To hear its chorus is to forget you ever had a mind of your own.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5735,7 +5735,7 @@
   },
   {
     "name": "Glabrezu",
-    "subtitle": "",
+    "subtitle": "Abyssal Cleave",
     "level": "1",
     "image": "/images/card-images/arts/glabrezu.png",
     "type": "Creature — ",
@@ -5743,7 +5743,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from glabrezu. Customize this text to make it unique!",
+    "flavorText": "\"It offers you a choice—the blade or the lash. But in the gloom of the runed deep, both paths end the same.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5805,7 +5805,7 @@
   },
   {
     "name": "Goat",
-    "subtitle": "",
+    "subtitle": "Mire Headbutt",
     "level": "1",
     "image": "/images/card-images/arts/goat.png",
     "type": "Creature — ",
@@ -5813,7 +5813,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from goat. Customize this text to make it unique!",
+    "flavorText": "It rose from the bayou with a sullen frown, neither beast nor spirit—just an ancient stubbornness the swamp itself could not digest.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5875,7 +5875,7 @@
   },
   {
     "name": "Goblin",
-    "subtitle": "",
+    "subtitle": "Cavern Bash",
     "level": "1",
     "image": "/images/card-images/arts/goblin.png",
     "type": "Creature — ",
@@ -5883,7 +5883,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from goblin. Customize this text to make it unique!",
+    "flavorText": "The deep places remember every footstep, every stolen bone, every cackling echo. He calls the cavern home — and the cavern answers with teeth.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5945,7 +5945,7 @@
   },
   {
     "name": "Gold Dragon Wyrmling 2",
-    "subtitle": "",
+    "subtitle": "Gilded Ember",
     "level": "1",
     "image": "/images/card-images/arts/gold_dragon_wyrmling_2.png",
     "type": "Creature — ",
@@ -5953,7 +5953,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from gold_dragon_wyrmling_2. Customize this text to make it unique!",
+    "flavorText": "Born beneath the last light of a dying sun, it gazed upon the kingdom it would one day claim — and simply smiled.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6015,7 +6015,7 @@
   },
   {
     "name": "Gorgon",
-    "subtitle": "",
+    "subtitle": "Petrifying Smirk",
     "level": "1",
     "image": "/images/card-images/arts/gorgon.png",
     "type": "Creature — ",
@@ -6023,7 +6023,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from gorgon. Customize this text to make it unique!",
+    "flavorText": "Heroes enter her cavern seeking glory. They leave as stone monuments to their own hubris — each one wearing a frozen look of smug recognition.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6085,7 +6085,7 @@
   },
   {
     "name": "Green Dragon Wyrmling",
-    "subtitle": "",
+    "subtitle": "Noxious Breath",
     "level": "1",
     "image": "/images/card-images/arts/green_dragon_wyrmling.png",
     "type": "Creature — ",
@@ -6093,7 +6093,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from green_dragon_wyrmling. Customize this text to make it unique!",
+    "flavorText": "Do not mistake its doleful gaze for weakness. Behind those sad eyes stirs a venom old as the forest itself.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6155,7 +6155,7 @@
   },
   {
     "name": "Green Hag",
-    "subtitle": "",
+    "subtitle": "Bogwater Curse",
     "level": "1",
     "image": "/images/card-images/arts/green_hag.png",
     "type": "Creature — ",
@@ -6163,7 +6163,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from green_hag. Customize this text to make it unique!",
+    "flavorText": "She tends her garden of bones with patient, clawed hands. The swamp remembers every name she whispers to the water.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6225,7 +6225,7 @@
   },
   {
     "name": "Griffon",
-    "subtitle": "",
+    "subtitle": "Somber Descent",
     "level": "1",
     "image": "/images/card-images/arts/griffon.png",
     "type": "Creature — ",
@@ -6233,7 +6233,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from griffon. Customize this text to make it unique!",
+    "flavorText": "It soars above the peaks with the weight of ancient sorrows on its wings, yet nothing below escapes its mournful gaze.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6295,7 +6295,7 @@
   },
   {
     "name": "Guard 2",
-    "subtitle": "",
+    "subtitle": "Halberd Hold",
     "level": "1",
     "image": "/images/card-images/arts/guard_2.png",
     "type": "Creature — ",
@@ -6303,7 +6303,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from guard_2. Customize this text to make it unique!",
+    "flavorText": "None pass the deep halls unbidden. He has stood where the torchlight flickers since before the stones learned to forget.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6365,7 +6365,7 @@
   },
   {
     "name": "Half Red Dragon Veteran 2",
-    "subtitle": "",
+    "subtitle": "Molten Cleave",
     "level": "1",
     "image": "/images/card-images/arts/half_red_dragon_veteran_2.png",
     "type": "Creature — ",
@@ -6373,7 +6373,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from half_red_dragon_veteran_2. Customize this text to make it unique!",
+    "flavorText": "A hundred battles fought in the deep places of the world, and still the molten dark calls him back. His blood runs half with fire—the other half, with stubbornness.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6435,7 +6435,7 @@
   },
   {
     "name": "Hell Hound",
-    "subtitle": "",
+    "subtitle": "Brimstone Maw",
     "level": "1",
     "image": "/images/card-images/arts/hell_hound.png",
     "type": "Creature — ",
@@ -6443,7 +6443,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from hell_hound. Customize this text to make it unique!",
+    "flavorText": "It does not chase the damned — it simply waits where all lost paths converge. The smoke from its maw is the last prayer of every soul it has swallowed.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6505,7 +6505,7 @@
   },
   {
     "name": "Hill Giant",
-    "subtitle": "",
+    "subtitle": "Hillcrest Crush",
     "level": "1",
     "image": "/images/card-images/arts/hill_giant.png",
     "type": "Creature — ",
@@ -6513,7 +6513,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from hill_giant. Customize this text to make it unique!",
+    "flavorText": "The hills do not tremble because of the wind. They learned long ago to shudder at his footsteps.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6575,7 +6575,7 @@
   },
   {
     "name": "Hobgoblin",
-    "subtitle": "",
+    "subtitle": "Jagged Cleave",
     "level": "1",
     "image": "/images/card-images/arts/hobgoblin.png",
     "type": "Creature — ",
@@ -6583,7 +6583,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from hobgoblin. Customize this text to make it unique!",
+    "flavorText": "It doesn't need to be clever, or fast, or brave. It just needs to be meaner than whatever else lives in the dark.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6645,7 +6645,7 @@
   },
   {
     "name": "Homunculus",
-    "subtitle": "",
+    "subtitle": "Vile Synthesis",
     "level": "1",
     "image": "/images/card-images/arts/homunculus.png",
     "type": "Creature — ",
@@ -6653,7 +6653,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from homunculus. Customize this text to make it unique!",
+    "flavorText": "Born from spite and spilled reagents, it blinked once upon the worktable and refused to die — much to its creator's regret.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6715,7 +6715,7 @@
   },
   {
     "name": "Homunculus 2",
-    "subtitle": "",
+    "subtitle": "Visceral Grasp",
     "level": "1",
     "image": "/images/card-images/arts/homunculus_2.png",
     "type": "Creature — ",
@@ -6723,7 +6723,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from homunculus_2. Customize this text to make it unique!",
+    "flavorText": "Stitched from regret and formaldehyde, it opened its sad eyes and asked the one question its creator could not answer: 'Why?'",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6785,7 +6785,7 @@
   },
   {
     "name": "Hydra",
-    "subtitle": "",
+    "subtitle": "Sevenfold Rage",
     "level": "1",
     "image": "/images/card-images/arts/hydra.png",
     "type": "Creature — ",
@@ -6793,7 +6793,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from hydra. Customize this text to make it unique!",
+    "flavorText": "Seven heads, seven hungers, seven different ways to die. Cut one down and two more rise—each angrier than the last.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6855,7 +6855,7 @@
   },
   {
     "name": "Ice Devil",
-    "subtitle": "",
+    "subtitle": "Glacial Rend",
     "level": "1",
     "image": "/images/card-images/arts/ice_devil.png",
     "type": "Creature — ",
@@ -6863,7 +6863,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from ice_devil. Customize this text to make it unique!",
+    "flavorText": "Born where glaciers groan and moonlight freezes mid-fall, it wears the cold not as armor but as appetite — every step cracking the world a little closer to silence.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6925,7 +6925,7 @@
   },
   {
     "name": "Knight 2",
-    "subtitle": "",
+    "subtitle": "Forlorn Blade",
     "level": "1",
     "image": "/images/card-images/arts/knight_2.png",
     "type": "Creature — ",
@@ -6933,7 +6933,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from knight_2. Customize this text to make it unique!",
+    "flavorText": "His armor bears the rust of a hundred forgotten battles, yet still he rides toward the storm. No oath binds him—only the quiet sorrow of one who has nothing left to lose.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6995,7 +6995,7 @@
   },
   {
     "name": "Knight 4",
-    "subtitle": "",
+    "subtitle": "Rusted Cleave",
     "level": "1",
     "image": "/images/card-images/arts/knight_4.png",
     "type": "Creature — ",
@@ -7003,7 +7003,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from knight_4. Customize this text to make it unique!",
+    "flavorText": "He crawled from the bog to answer a kingdom's dying prayer. The castle fell, but its last knight never did.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7065,7 +7065,7 @@
   },
   {
     "name": "Kobold",
-    "subtitle": "",
+    "subtitle": "Tunnel Shiv",
     "level": "1",
     "image": "/images/card-images/arts/kobold.png",
     "type": "Creature — ",
@@ -7073,7 +7073,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from kobold. Customize this text to make it unique!",
+    "flavorText": "Every coin in the deep has a guardian too small to fear and too cunning to ignore. By the time you see the glint of gold, the blade has already found your ribs.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7135,7 +7135,7 @@
   },
   {
     "name": "Lich 2",
-    "subtitle": "",
+    "subtitle": "Blighted Dominion",
     "level": "1",
     "image": "/images/card-images/arts/lich_2.png",
     "type": "Creature — ",
@@ -7143,7 +7143,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from lich_2. Customize this text to make it unique!",
+    "flavorText": "The swamp remembers what the grave cannot hold. In rotting halls where no living thing dares croak, it reigns eternal.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7205,7 +7205,7 @@
   },
   {
     "name": "Lizardfolk 2",
-    "subtitle": "",
+    "subtitle": "Mire Crusher",
     "level": "1",
     "image": "/images/card-images/arts/lizardfolk_2.png",
     "type": "Creature — ",
@@ -7213,7 +7213,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from lizardfolk_2. Customize this text to make it unique!",
+    "flavorText": "The bog remembers every trespasser. He makes sure none of them leave to remember it back.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7275,7 +7275,7 @@
   },
   {
     "name": "Magma Mephit",
-    "subtitle": "",
+    "subtitle": "Molten Drool",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephit.png",
     "type": "Creature — ",
@@ -7283,7 +7283,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from magma_mephit. Customize this text to make it unique!",
+    "flavorText": "Born where the earth splits and bleeds, it wears the mountain's wrath as a shell—and grins because it knows nothing burns hotter than its spite.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7345,7 +7345,7 @@
   },
   {
     "name": "Magma Mephit 3",
-    "subtitle": "",
+    "subtitle": "Molten Grasp",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephit_3.png",
     "type": "Creature — ",
@@ -7353,7 +7353,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from magma_mephit_3. Customize this text to make it unique!",
+    "flavorText": "Born where the earth splits and bleeds, it dances on rivers of molten stone — grinning, always grinning, as the world melts beneath its feet.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7415,7 +7415,7 @@
   },
   {
     "name": "Magma Mephit 4",
-    "subtitle": "",
+    "subtitle": "Molten Contempt",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephit_4.png",
     "type": "Creature — ",
@@ -7423,7 +7423,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from magma_mephit_4. Customize this text to make it unique!",
+    "flavorText": "The rain hisses and dies long before it touches him. Even the storm knows better than to test what crawls up from the deep furnace.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7485,7 +7485,7 @@
   },
   {
     "name": "Magma Mephit 5",
-    "subtitle": "",
+    "subtitle": "Molten Lament",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephit_5.png",
     "type": "Creature — ",
@@ -7493,7 +7493,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from magma_mephit_5. Customize this text to make it unique!",
+    "flavorText": "Born where the earth weeps fire, it wears its sorrow like cooling stone—but beneath every crack, the fury still burns.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7555,7 +7555,7 @@
   },
   {
     "name": "Mammoth",
-    "subtitle": "",
+    "subtitle": "Ancient Trample",
     "level": "1",
     "image": "/images/card-images/arts/mammoth.png",
     "type": "Creature — ",
@@ -7563,7 +7563,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from mammoth. Customize this text to make it unique!",
+    "flavorText": "It remembers every extinction, every betrayal, every age of ice. Behind those tired eyes lies a sadness older than the tundra itself.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7625,7 +7625,7 @@
   },
   {
     "name": "Marilith 2",
-    "subtitle": "",
+    "subtitle": "Sixfold Reckoning",
     "level": "1",
     "image": "/images/card-images/arts/marilith_2.png",
     "type": "Creature — ",
@@ -7633,7 +7633,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from marilith_2. Customize this text to make it unique!",
+    "flavorText": "Six blades sing in the storm, each one a promise kept to a different grave. None who count the arms live long enough to finish.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7695,7 +7695,7 @@
   },
   {
     "name": "Mastiff",
-    "subtitle": "",
+    "subtitle": "Mournful Vigil",
     "level": "1",
     "image": "/images/card-images/arts/mastiff.png",
     "type": "Creature — ",
@@ -7703,7 +7703,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from mastiff. Customize this text to make it unique!",
+    "flavorText": "It still walks the path its master took into the mist, long after the living stopped returning. The forest grew over its hide, but nothing could overgrow its grief.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7765,7 +7765,7 @@
   },
   {
     "name": "Medusa",
-    "subtitle": "",
+    "subtitle": "Sorrowful Gaze",
     "level": "1",
     "image": "/images/card-images/arts/medusa.png",
     "type": "Creature — ",
@@ -7773,7 +7773,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from medusa. Customize this text to make it unique!",
+    "flavorText": "She does not turn heroes to stone out of malice — only so they'll stop looking at her with pity.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7835,7 +7835,7 @@
   },
   {
     "name": "Merrow",
-    "subtitle": "",
+    "subtitle": "Sorrowful Depths",
     "level": "1",
     "image": "/images/card-images/arts/merrow.png",
     "type": "Creature — ",
@@ -7843,7 +7843,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from merrow. Customize this text to make it unique!",
+    "flavorText": "He rules a kingdom none remember, mourning tides that will never return. Even the jellyfish drift past his throne without bowing.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7905,7 +7905,7 @@
   },
   {
     "name": "Mimic 2",
-    "subtitle": "",
+    "subtitle": "Gilded Lure",
     "level": "1",
     "image": "/images/card-images/arts/mimic_2.png",
     "type": "Creature — ",
@@ -7913,7 +7913,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from mimic_2. Customize this text to make it unique!",
+    "flavorText": "Every adventurer dreams of the big score. The chest dreams of them too.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7975,7 +7975,7 @@
   },
   {
     "name": "Minotaur",
-    "subtitle": "",
+    "subtitle": "Labyrinth Crush",
     "level": "1",
     "image": "/images/card-images/arts/minotaur.png",
     "type": "Creature — ",
@@ -7983,7 +7983,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from minotaur. Customize this text to make it unique!",
+    "flavorText": "The labyrinth does not keep him prisoner — it keeps the world safe from his sorrow. Those who mistake his sadness for weakness never find the exit.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8045,7 +8045,7 @@
   },
   {
     "name": "Minotaur Skeleton",
-    "subtitle": "",
+    "subtitle": "Hollow Cleave",
     "level": "1",
     "image": "/images/card-images/arts/minotaur_skeleton.png",
     "type": "Creature — ",
@@ -8053,7 +8053,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from minotaur_skeleton. Customize this text to make it unique!",
+    "flavorText": "The labyrinth forgot its champion, but the champion never forgot its rage. Even stripped to bone, it guards the passage still — sad-eyed and eternal.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8115,7 +8115,7 @@
   },
   {
     "name": "Mummy",
-    "subtitle": "",
+    "subtitle": "Tomb Grasp",
     "level": "1",
     "image": "/images/card-images/arts/mummy.png",
     "type": "Creature — ",
@@ -8123,7 +8123,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from mummy. Customize this text to make it unique!",
+    "flavorText": "Entombed for eons in the deepest marsh-crypt, it rose not with rage but with a sadness older than the pyramids themselves. Even the grave could not contain its longing.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8185,7 +8185,7 @@
   },
   {
     "name": "Mummy Lord",
-    "subtitle": "",
+    "subtitle": "Eternal Decree",
     "level": "1",
     "image": "/images/card-images/arts/mummy_lord.png",
     "type": "Creature — ",
@@ -8193,7 +8193,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from mummy_lord. Customize this text to make it unique!",
+    "flavorText": "Entombed for aeons beneath forgotten sands, he rose not to rest but to reign — his ankh burning with the light of a kingdom that never truly fell.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8255,7 +8255,7 @@
   },
   {
     "name": "Nalfeshnee 2",
-    "subtitle": "",
+    "subtitle": "Abyssal Melancholy",
     "level": "1",
     "image": "/images/card-images/arts/nalfeshnee_2.png",
     "type": "Creature — ",
@@ -8263,7 +8263,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from nalfeshnee_2. Customize this text to make it unique!",
+    "flavorText": "It wears despair like a second skin, and those who meet its mournful gaze find their will to fight dissolving into the abyss behind it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8325,7 +8325,7 @@
   },
   {
     "name": "Orc",
-    "subtitle": "",
+    "subtitle": "Iron Tusk Charge",
     "level": "1",
     "image": "/images/card-images/arts/orc.png",
     "type": "Creature — ",
@@ -8333,7 +8333,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from orc. Customize this text to make it unique!",
+    "flavorText": "Born where the mountains bleed fire and the swamps swallow the foolish, he grins because he knows something you don't — you're already surrounded.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8395,7 +8395,7 @@
   },
   {
     "name": "Phase Spider",
-    "subtitle": "",
+    "subtitle": "Ethereal Shift",
     "level": "1",
     "image": "/images/card-images/arts/phase_spider.png",
     "type": "Creature — ",
@@ -8403,7 +8403,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from phase_spider. Customize this text to make it unique!",
+    "flavorText": "It slips between worlds with a heavy heart, never fully belonging to either. Where its legs touch the veil, reality weeps in shimmering fragments.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8465,7 +8465,7 @@
   },
   {
     "name": "Planetar 3",
-    "subtitle": "",
+    "subtitle": "Celestial Grasp",
     "level": "1",
     "image": "/images/card-images/arts/planetar_3.png",
     "type": "Creature — ",
@@ -8473,7 +8473,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from planetar_3. Customize this text to make it unique!",
+    "flavorText": "Six hands to hold the cosmos, six fingers to snuff it out. It does not create or destroy — it simply decides which galaxies are worth its melancholy.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8535,7 +8535,7 @@
   },
   {
     "name": "Poisonous Snake",
-    "subtitle": "",
+    "subtitle": "Dripping Malice",
     "level": "1",
     "image": "/images/card-images/arts/poisonous_snake.png",
     "type": "Creature — ",
@@ -8543,7 +8543,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from poisonous_snake. Customize this text to make it unique!",
+    "flavorText": "The swamp does not warn you — it simply watches with half-lidded eyes as the venom finds your veins. Those who see the dripping smile never live long enough to feel sad about it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8605,7 +8605,7 @@
   },
   {
     "name": "Rat",
-    "subtitle": "",
+    "subtitle": "Gutter Shakedown",
     "level": "1",
     "image": "/images/card-images/arts/rat.png",
     "type": "Creature — ",
@@ -8613,7 +8613,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from rat. Customize this text to make it unique!",
+    "flavorText": "Every alley has its king, and every king demands his tribute. Pay in cheese—or pay in blood.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8675,7 +8675,7 @@
   },
   {
     "name": "Reef Shark",
-    "subtitle": "",
+    "subtitle": "Bitter Bite",
     "level": "1",
     "image": "/images/card-images/arts/reef_shark.png",
     "type": "Creature — ",
@@ -8683,7 +8683,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Auto-generated card from reef_shark. Customize this text to make it unique!",
+    "flavorText": "It patrols the shallows with a scowl older than the reef itself. Even the current parts reluctantly, as if apologizing for being in its way.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
