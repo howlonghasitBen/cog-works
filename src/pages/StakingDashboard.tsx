@@ -435,7 +435,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       {/* ── Card grid: open layout, cards breathe ── */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
         gap: 32,
         justifyItems: 'center',
       }}>
@@ -445,7 +445,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           const ownerLabel = shortAddr(card.owner)
           const hasYou = card.hasYou
           const isSelected = selectedCard === card.name
-          const CARD_W = 264
+          const CARD_W = 330
           const CARD_H = CARD_W * (4 / 3)
           const imgSrc = cardImage(card.uri, card.name, card.id)
 
