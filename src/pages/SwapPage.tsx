@@ -5,15 +5,9 @@
  */
 
 import { useState, useMemo } from 'react'
-// terminal moved to MintPage
+import { useWhirlpool } from '../hooks/useWhirlpool'
 
 // ─── Types ──────────────────────────────────────────────────────
-interface Staker {
-  address: string
-  shares: number
-  percentage: number
-}
-
 interface CardPool {
   id: number
   name: string
@@ -25,85 +19,40 @@ interface CardPool {
   ownerShares: number
   totalStaked: number
   priceWaves: number
-  topStakers: Staker[]
+  topStakers: { address: string; shares: number; percentage: number }[]
   stealAmount: number
   userShares?: number
   userPercentage?: number
   isOwner?: boolean
 }
 
-// ─── SURF Waves Cards Data ──────────────────────────────────────
+// ─── Helpers ────────────────────────────────────────────────────
 const BASE = '/images/card-images'
-
-const SURF_CARDS = [
-  { name: 'Shadow Dragon', type: 'Creature — Dragon', image: `${BASE}/003_Shadow_Dragon.png`, level: '3', atk: '8', def: '6' },
-  { name: 'Crystal Golem', type: 'Creature — Golem', image: `${BASE}/005_Crystal_Golem.png`, level: '2', atk: '3', def: '9' },
-  { name: 'Void Reaper', type: 'Creature — Void', image: `${BASE}/006_Void_Reaper.png`, level: '3', atk: '10', def: '4' },
-  { name: 'Shrimp Baby', type: 'Creature — Aquatic', image: `${BASE}/007_Shrimp_baby.png`, level: '1', atk: '1', def: '2' },
-  { name: 'Khazix', type: 'Creature — Insectoid', image: `${BASE}/009_Khazix.png`, level: '2', atk: '7', def: '3' },
-  { name: 'Sol Eater', type: 'Creature — Cosmic', image: `${BASE}/012_Sol_Eater.png`, level: '3', atk: '9', def: '5' },
-  { name: 'Maelstrom', type: 'Creature — Elemental', image: `${BASE}/015_Maelstrom.png`, level: '2', atk: '6', def: '6' },
-  { name: 'Yaldabaoth', type: 'Creature — Deity', image: `${BASE}/016_Yaldabaoth.png`, level: '∞', atk: '∞', def: '∞' },
-  { name: 'Reality Splitter', type: 'Creature — Void', image: `${BASE}/019_Reality_Splitter.png`, level: '3', atk: '8', def: '3' },
-  { name: 'Maniacal Martian', type: 'Creature — Alien', image: `${BASE}/020_Maniacal_Martian.png`, level: '1', atk: '4', def: '2' },
-  { name: 'Lunar Wizard', type: 'Creature — Mage', image: `${BASE}/021_Lunar_Wizard.png`, level: '2', atk: '5', def: '4' },
-  { name: 'Void Wizard', type: 'Creature — Mage', image: `${BASE}/022_Void_Wizard.png`, level: '2', atk: '6', def: '3' },
-  { name: 'Hemo Wizard', type: 'Creature — Mage', image: `${BASE}/023_Hemo_Wizard.png`, level: '2', atk: '5', def: '5' },
-  { name: 'Bloudraad', type: 'Creature — Spawn of Kek', image: `${BASE}/017_Bloudraad_Spawn_of_Kek.png`, level: '∞', atk: '∞', def: '∞' },
-]
-
-function mockAddr(seed: number): string {
-  const hex = '0123456789abcdef'
-  let s = '0x'
-  for (let i = 0; i < 4; i++) s += hex[(seed * (i + 3) * 7) % 16]
-  s += '…'
-  for (let i = 0; i < 4; i++) s += hex[(seed * (i + 1) * 13) % 16]
-  return s
-}
-
 const TAGS = ['Creature', 'Consumable', 'Eagle', 'Beast', 'OG', 'Legendary', 'Forest', 'Memer']
 
-function generatePools(): CardPool[] {
-  return SURF_CARDS.map((card, i) => {
-    const ownerShares = Math.floor(Math.random() * 800000) + 200000
-    const stakers: Staker[] = [
-      { address: mockAddr(i * 10), shares: ownerShares, percentage: 0 },
-      { address: mockAddr(i * 10 + 1), shares: Math.floor(ownerShares * (0.3 + Math.random() * 0.5)), percentage: 0 },
-      { address: mockAddr(i * 10 + 2), shares: Math.floor(ownerShares * (0.1 + Math.random() * 0.3)), percentage: 0 },
-    ]
-    const totalStaked = stakers.reduce((s, x) => s + x.shares, 0)
-    stakers.forEach(s => s.percentage = Math.round((s.shares / totalStaked) * 100))
-
-    return {
-      id: i,
-      name: card.name,
-      number: i + 1,
-      image: card.image,
-      rarity: card.level === '∞' ? 'Legendary' as const : card.level === '★' ? 'Epic' as const : +card.level >= 3 ? 'Rare' as const : 'Common' as const,
-      type: card.type,
-      owner: stakers[0].address,
-      ownerShares,
-      totalStaked,
-      priceWaves: parseFloat((Math.random() * 0.5 + 0.05).toFixed(4)),
-      topStakers: stakers,
-      stealAmount: ownerShares - stakers[1].shares + 1,
-    }
-  })
+function cardImage(uri: string, name: string, id: number): string {
+  if (uri && uri.startsWith('/images/')) return uri
+  if (uri && uri.length > 0) return uri
+  // fallback: try to derive from name
+  const slug = name.replace(/\s+/g, '_')
+  return `${BASE}/${String(id + 1).padStart(3, '0')}_${slug}.png`
 }
 
-const ALL_POOLS = generatePools()
-
-// User's staked positions (first 6 cards)
-const MY_CARDS: CardPool[] = ALL_POOLS.slice(0, 6).map(pool => ({
-  ...pool,
-  userShares: Math.floor(pool.ownerShares * (0.2 + Math.random() * 0.6)),
-  userPercentage: Math.floor(Math.random() * 40) + 5,
-  isOwner: Math.random() > 0.5,
-}))
+function shortAddr(addr: string): string {
+  if (!addr || addr.length < 10) return addr || '???'
+  return `${addr.slice(0, 6)}…${addr.slice(-4)}`
+}
 
 // ─── Colors ─────────────────────────────────────────────────────
 const rarityColor: Record<string, string> = {
   Common: '#9ca3af', Rare: '#3b82f6', Epic: '#a855f7', Legendary: '#f59e0b',
+}
+
+function priceToRarity(price: number): 'Common' | 'Rare' | 'Epic' | 'Legendary' {
+  if (price >= 1) return 'Legendary'
+  if (price >= 0.3) return 'Epic'
+  if (price >= 0.1) return 'Rare'
+  return 'Common'
 }
 
 // ─── Inventory Card (visual, grid-style like mockup) ────────────
@@ -140,8 +89,8 @@ function InventoryCard({
           )}
         </div>
         <p className="text-[10px] leading-tight" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
-        {card.userShares && (
-          <p className="text-[9px] font-mono text-cyan-400 mt-0.5">{(card.userShares / 1000).toFixed(0)}k staked</p>
+        {card.userShares !== undefined && card.userShares > 0 && (
+          <p className="text-[9px] font-mono text-cyan-400 mt-0.5">{card.userShares.toFixed(2)} staked</p>
         )}
       </div>
     </div>
@@ -168,7 +117,7 @@ function StageCard({
           <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
           <div className="absolute bottom-0 inset-x-0 p-3">
             <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
-            <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
+            <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity}</p>
           </div>
           {onRemove && (
             <button
@@ -209,7 +158,6 @@ function MultiStageCards({
         className="flex gap-3 overflow-x-scroll snap-x snap-mandatory pb-2 overscroll-x-contain"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent', WebkitOverflowScrolling: 'touch' }}
         onWheel={e => {
-          // Convert vertical scroll to horizontal, stop page scroll
           e.stopPropagation()
           if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
             e.currentTarget.scrollLeft += e.deltaY
@@ -226,7 +174,7 @@ function MultiStageCards({
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
             <div className="absolute bottom-0 inset-x-0 p-3">
               <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
-              <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
+              <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity}</p>
             </div>
             <button
               onClick={() => onRemove(card.id)}
@@ -281,16 +229,23 @@ function MarketRow({
               <span className="text-[8px] font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">TARGETED</span>
             )}
           </div>
-          <p className="text-xs mt-0.5" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
+          <p className="text-xs mt-0.5" style={{ color: rarityColor[card.rarity] }}>{card.rarity}</p>
           {/* Compact staker row */}
           <div className="flex items-center gap-1.5 mt-2">
             <span className="text-xs text-gray-500">👑</span>
             <span className="text-xs text-amber-400 font-mono">{card.owner}</span>
-            <span className="text-xs text-gray-600">({card.ownerShares.toLocaleString()})</span>
+          </div>
+          <div className="flex items-center gap-3 mt-1">
+            <span className="text-[10px] text-gray-500 font-mono">
+              Pool: {parseFloat(card.totalStaked.toString()).toFixed(2)}
+            </span>
+            <span className="text-[10px] text-cyan-400 font-mono">
+              {card.priceWaves.toFixed(4)} $WAVES
+            </span>
           </div>
           <div className="flex items-center justify-between mt-2">
             <span className="text-xs text-gray-500">
-              Steal: <span className="text-emerald-400 font-mono font-bold">{card.stealAmount.toLocaleString()}</span> tokens
+              Steal: <span className="text-emerald-400 font-mono font-bold">{card.stealAmount.toFixed(2)}</span> tokens
             </span>
             <button
               onClick={onSelect}
@@ -311,24 +266,60 @@ function MarketRow({
 
 // ─── Main SwapPage ──────────────────────────────────────────────
 export default function SwapPage() {
-  // const whirlpool = useWhirlpool() // moved to MintPage
+  const whirlpool = useWhirlpool()
   const [inventorySearch, setInventorySearch] = useState('')
   const [marketSearch, setMarketSearch] = useState('')
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
 
-  const selectedCards = MY_CARDS.filter(c => selectedIds.has(c.id))
-  const targetPool = ALL_POOLS.find(p => p.id === targetId)
+  // Map CardState → CardPool
+  const allPools: CardPool[] = useMemo(() => whirlpool.cards.map(c => {
+    const price = parseFloat(c.price) || 0
+    const totalStaked = parseFloat(c.cardReserve) || 0
+    const ownerShares = totalStaked // owner is top staker
+    return {
+      id: c.id,
+      name: c.name,
+      number: c.id + 1,
+      image: cardImage(c.uri, c.name, c.id),
+      rarity: priceToRarity(price),
+      type: c.symbol,
+      owner: shortAddr(c.owner),
+      ownerShares,
+      totalStaked,
+      priceWaves: price,
+      topStakers: [{ address: shortAddr(c.owner), shares: ownerShares, percentage: 100 }],
+      stealAmount: Math.max(0, ownerShares * 0.51),
+    }
+  }), [whirlpool.cards])
+
+  const myCards: CardPool[] = useMemo(() => allPools.filter((_, i) => {
+    const c = whirlpool.cards[i]
+    return c && (parseFloat(c.myBalance) > 0 || parseFloat(c.myStake) > 0)
+  }).map((pool, _i) => {
+    const c = whirlpool.cards.find(cc => cc.id === pool.id)!
+    const myStake = parseFloat(c.myStake) || 0
+    const myBalance = parseFloat(c.myBalance) || 0
+    return {
+      ...pool,
+      userShares: myStake + myBalance,
+      userPercentage: pool.totalStaked > 0 ? Math.round((myStake / pool.totalStaked) * 100) : 0,
+      isOwner: c.owner.toLowerCase() === whirlpool.address?.toLowerCase(),
+    }
+  }), [allPools, whirlpool.cards, whirlpool.address])
+
+  const selectedCards = myCards.filter(c => selectedIds.has(c.id))
+  const targetPool = allPools.find(p => p.id === targetId) || null
 
   const filteredInventory = useMemo(() => {
-    if (!inventorySearch) return MY_CARDS
+    if (!inventorySearch) return myCards
     const q = inventorySearch.toLowerCase()
-    return MY_CARDS.filter(c => c.name.toLowerCase().includes(q) || c.type.toLowerCase().includes(q))
-  }, [inventorySearch])
+    return myCards.filter(c => c.name.toLowerCase().includes(q) || c.type.toLowerCase().includes(q))
+  }, [inventorySearch, myCards])
 
   const filteredMarket = useMemo(() => {
-    let cards = ALL_POOLS
+    let cards = allPools
     if (marketSearch) {
       const q = marketSearch.toLowerCase()
       cards = cards.filter(c => c.name.toLowerCase().includes(q) || c.type.toLowerCase().includes(q))
@@ -340,7 +331,7 @@ export default function SwapPage() {
       })
     }
     return cards
-  }, [marketSearch, activeTags])
+  }, [marketSearch, activeTags, allPools])
 
   const toggleSelect = (id: number) => {
     setSelectedIds(prev => {
@@ -358,17 +349,40 @@ export default function SwapPage() {
 
   const swapEstimate = useMemo(() => {
     if (selectedCards.length === 0 || !targetPool) return null
-    const totalWavesOut = selectedCards.reduce((sum, p) => sum + Math.floor((p.userShares || 0) * p.priceWaves), 0)
-    const tokensOut = Math.floor(totalWavesOut / targetPool.priceWaves)
+    const totalWavesOut = selectedCards.reduce((sum, p) => sum + (p.userShares || 0) * p.priceWaves, 0)
+    const tokensOut = targetPool.priceWaves > 0 ? totalWavesOut / targetPool.priceWaves : 0
     const wouldSteal = tokensOut > targetPool.ownerShares
     return { wavesOut: totalWavesOut, tokensOut, wouldSteal, sourceCount: selectedCards.length }
   }, [selectedCards, targetPool])
+
+  const handleSwap = async () => {
+    if (!canSwap || targetId === null) return
+    // For now: swap first selected card's stake to target
+    for (const card of selectedCards) {
+      const c = whirlpool.cards.find(cc => cc.id === card.id)
+      if (c && parseFloat(c.myStake) > 0) {
+        await whirlpool.swapStake(card.id, targetId, c.myStake)
+      }
+    }
+  }
+
+  const handleBuyWaves = () => {
+    alert('Wrap ETH first (Mint page), then swap WETH → WAVES on SurfSwap')
+  }
 
   const allTags = useMemo(() => {
     const s = new Set<string>()
     TAGS.forEach(t => s.add(t))
     return Array.from(s)
   }, [])
+
+  if (whirlpool.loading && whirlpool.cards.length === 0) {
+    return (
+      <div className="w-full flex items-center justify-center" style={{ marginTop: 60, minHeight: '100dvh' }}>
+        <p className="text-gray-400 text-lg font-mono animate-pulse">Loading cards from Anvil…</p>
+      </div>
+    )
+  }
 
   return (
     <div className="w-full flex items-stretch justify-between gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40, paddingLeft: 42, paddingRight: 42 }}>
@@ -394,16 +408,22 @@ export default function SwapPage() {
         </div>
         {/* Card Grid — 2 columns, scrollable */}
         <div className="flex-1 overflow-y-auto pr-1 -mr-1">
-          <div className="grid grid-cols-2 gap-3">
-            {filteredInventory.map(card => (
-              <InventoryCard
-                key={card.id}
-                card={card}
-                selected={selectedIds.has(card.id)}
-                onClick={() => toggleSelect(card.id)}
-              />
-            ))}
-          </div>
+          {filteredInventory.length === 0 ? (
+            <p className="text-gray-500 text-xs text-center py-12 font-mono">
+              {whirlpool.isConnected ? 'No cards in your inventory yet' : 'Connect wallet to see your cards'}
+            </p>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              {filteredInventory.map(card => (
+                <InventoryCard
+                  key={card.id}
+                  card={card}
+                  selected={selectedIds.has(card.id)}
+                  onClick={() => toggleSelect(card.id)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -425,7 +445,7 @@ export default function SwapPage() {
 
         <div className="bg-[#121420] border border-[#2a2d40] rounded-sm p-3">
           <StageCard
-            card={targetPool || null}
+            card={targetPool}
             onRemove={targetPool ? () => setTargetId(null) : undefined}
             placeholder="Browse market →"
           />
@@ -443,11 +463,11 @@ export default function SwapPage() {
               )}
               <div className="flex justify-between">
                 <span className="text-gray-500">WAVES out</span>
-                <span className="text-cyan-400">{swapEstimate.wavesOut.toLocaleString()}</span>
+                <span className="text-cyan-400">{swapEstimate.wavesOut.toFixed(4)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-500">Tokens acquired</span>
-                <span className="text-emerald-400">{swapEstimate.tokensOut.toLocaleString()}</span>
+                <span className="text-emerald-400">{swapEstimate.tokensOut.toFixed(4)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-500">Takes ownership?</span>
@@ -464,6 +484,7 @@ export default function SwapPage() {
 
           <button
             disabled={!canSwap}
+            onClick={handleSwap}
             className={`group relative w-full py-4 rounded-sm text-base font-black tracking-widest uppercase transition-all duration-300 overflow-hidden ${
               canSwap
                 ? 'cursor-pointer border'
@@ -512,6 +533,7 @@ export default function SwapPage() {
 
           {/* Buy $WAVES */}
           <button
+            onClick={handleBuyWaves}
             className="w-full mt-3 py-3 rounded-sm border-2 border-cyan-500/40 bg-[#121420] text-cyan-400 font-bold text-sm tracking-wider uppercase cursor-pointer transition-all duration-200 hover:border-cyan-400 hover:bg-cyan-500/10 hover:shadow-[0_2px_12px_rgba(34,211,238,0.2)]"
             style={{ fontFamily: "'Inter Tight', sans-serif" }}
           >
@@ -574,14 +596,20 @@ export default function SwapPage() {
         </div>
         {/* Card list with staker info + request */}
         <div className="flex-1 overflow-y-auto space-y-2 pr-1 -mr-1">
-          {filteredMarket.map(card => (
-            <MarketRow
-              key={card.id}
-              card={card}
-              onSelect={() => setTargetId(targetId === card.id ? null : card.id)}
-              isTarget={targetId === card.id}
-            />
-          ))}
+          {filteredMarket.length === 0 ? (
+            <p className="text-gray-500 text-xs text-center py-12 font-mono">
+              {whirlpool.cards.length === 0 ? 'No cards created yet' : 'No cards match your search'}
+            </p>
+          ) : (
+            filteredMarket.map(card => (
+              <MarketRow
+                key={card.id}
+                card={card}
+                onSelect={() => setTargetId(targetId === card.id ? null : card.id)}
+                isTarget={targetId === card.id}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>

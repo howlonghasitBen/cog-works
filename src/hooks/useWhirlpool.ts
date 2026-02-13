@@ -4,8 +4,8 @@ import { injected } from 'wagmi/connectors'
 import { createPublicClient, http, formatEther, parseEther, maxUint256 } from 'viem'
 import type { LogEntry, LogType } from '../components/WhirlpoolTerminal'
 import {
-  WHIRLPOOL_ADDRESS, WAVES_ADDRESS, WETH_ADDRESS, SURFSWAP_ADDRESS, ROUTER_ADDRESS,
-  WHIRLPOOL_ABI, WAVES_ABI, CARD_TOKEN_ABI, WETH_ABI, SURFSWAP_ABI, ROUTER_ABI,
+  WHIRLPOOL_ADDRESS, WAVES_ADDRESS, WETH_ADDRESS, SURFSWAP_ADDRESS, ROUTER_ADDRESS, BIDNFT_ADDRESS,
+  WHIRLPOOL_ABI, WAVES_ABI, CARD_TOKEN_ABI, WETH_ABI, SURFSWAP_ABI, ROUTER_ABI, BIDNFT_ABI,
 } from '../contracts/erc1142'
 import { anvilChain } from '../contracts/wagmi-config'
 
@@ -13,6 +13,7 @@ export interface CardState {
   id: number
   name: string
   symbol: string
+  uri: string
   address: `0x${string}`
   owner: string
   price: string
@@ -69,12 +70,13 @@ export function useWhirlpool() {
             address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'cardToken', args: [BigInt(i)],
           }) as `0x${string}`
 
-          const [name, symbol, owner, price, reserves] = await Promise.all([
+          const [name, symbol, owner, price, reserves, uri] = await Promise.all([
             publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'name' }),
             publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'symbol' }),
             publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'ownerOfCard', args: [BigInt(i)] }),
             publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getPrice', args: [BigInt(i)] }),
             publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getReserves', args: [BigInt(i)] }),
+            publicClient.readContract({ address: BIDNFT_ADDRESS, abi: BIDNFT_ABI, functionName: 'tokenURI', args: [BigInt(i)] }).catch(() => ''),
           ])
 
           let myStake = '0', myBalance = '0'
@@ -89,7 +91,7 @@ export function useWhirlpool() {
 
           const [wavesR, cardsR] = reserves as [bigint, bigint]
           cardData.push({
-            id: i, name: name as string, symbol: symbol as string, address: tokenAddr,
+            id: i, name: name as string, symbol: symbol as string, uri: uri as string, address: tokenAddr,
             owner: owner as string, price: formatEther(price as bigint),
             wavesReserve: formatEther(wavesR), cardReserve: formatEther(cardsR), myStake, myBalance,
           })
