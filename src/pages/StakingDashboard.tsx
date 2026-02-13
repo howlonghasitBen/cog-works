@@ -20,6 +20,7 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useWhirlpool } from '../hooks/useWhirlpool'
+import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
 
 /** Segment colors for donut charts and holder indicators */
@@ -56,34 +57,45 @@ function getRiskPct(ownerStake: number, total: number) {
 
 export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: () => void }) {
   const whirlpool = useWhirlpool()
+  const { cards: allCardData } = useCardData()
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState<FilterKey>('all')
   const [sort, setSort] = useState<SortKey>('name')
   const [selectedCard, setSelectedCard] = useState<string | null>(null)
   const [rewardsOpen, setRewardsOpen] = useState(false)
 
-  // Derived data
-  const cardData = useMemo(() => whirlpool.cards.map(c => {
-    const total = parseFloat(c.cardReserve) || 0
-    const myStake = parseFloat(c.myStake) || 0
+  // Build a lookup from on-chain cards by name
+  const onChainByName = useMemo(() => {
+    const map = new Map<string, typeof whirlpool.cards[0]>()
+    whirlpool.cards.forEach(c => map.set(c.name.toLowerCase(), c))
+    return map
+  }, [whirlpool.cards])
+
+  // Derived data — source of truth is cardData.json, overlay on-chain data
+  const cardData = useMemo(() => allCardData.map((cd, idx) => {
+    const chain = onChainByName.get(cd.name.toLowerCase())
+    const total = chain ? (parseFloat(chain.cardReserve) || 0) : 0
+    const myStake = chain ? (parseFloat(chain.myStake) || 0) : 0
     const isYou = myStake > 0
-    const stakers = [
-      { label: shortAddr(c.owner), value: total, color: COLORS[0], isYou: c.owner.toLowerCase() === whirlpool.address?.toLowerCase() },
-    ]
-    if (isYou && c.owner.toLowerCase() !== whirlpool.address?.toLowerCase()) {
+    const owner = chain?.owner || ''
+    const stakers = owner ? [
+      { label: shortAddr(owner), value: total, color: COLORS[0], isYou: owner.toLowerCase() === whirlpool.address?.toLowerCase() },
+    ] : []
+    if (isYou && owner.toLowerCase() !== whirlpool.address?.toLowerCase()) {
       stakers.push({ label: shortAddr(whirlpool.address || ''), value: myStake, color: COLORS[1], isYou: true })
     }
     return {
-      name: c.name,
-      id: c.id,
-      uri: c.uri,
+      name: cd.name,
+      id: chain?.id ?? idx,
+      uri: chain?.uri || cd.image || '',
       stakers,
       total,
       myStake,
       hasYou: isYou,
-      owner: c.owner,
+      owner,
+      onChain: !!chain,
     }
-  }), [whirlpool.cards, whirlpool.address])
+  }), [allCardData, onChainByName, whirlpool.address])
 
   const totalStaked = useMemo(() => cardData.reduce((s, c) => s + c.total, 0), [cardData])
   const yourStakes = useMemo(() => cardData.reduce((s, c) => s + c.myStake, 0), [cardData])
@@ -169,7 +181,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       {/* ── Stats: floating chips, not boxes ── */}
       <div style={{ display: 'flex', gap: 32, marginBottom: 28, flexWrap: 'wrap' }}>
         {[
-          { label: 'Cards', value: whirlpool.cards.length.toString(), accent: false },
+          { label: 'Cards', value: allCardData.length.toString(), accent: false },
           { label: 'Total Staked', value: totalStaked.toFixed(2), accent: false },
           { label: 'Your Stakes', value: yourStakes.toFixed(2), accent: true },
           { label: 'Pending Rewards', value: parseFloat(pendingRewards).toFixed(4), accent: true },
@@ -668,7 +680,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           textAlign: 'center',
           padding: '80px 0',
         }}>
-          {whirlpool.cards.length === 0 ? 'No cards created yet. Mint some on the Mint page!' : 'No cards match your search.'}
+          {allCardData.length === 0 ? 'Loading cards...' : 'No cards match your search.'}
         </p>
       )}
     </div>

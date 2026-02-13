@@ -6,6 +6,7 @@
 
 import { useState, useMemo } from 'react'
 import { useWhirlpool } from '../hooks/useWhirlpool'
+import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
 
 // ─── Types ──────────────────────────────────────────────────────
@@ -275,47 +276,57 @@ function MarketRow({
 // ─── Main SwapPage ──────────────────────────────────────────────
 export default function SwapPage() {
   const whirlpool = useWhirlpool()
+  const { cards: allCardData } = useCardData()
   const [inventorySearch, setInventorySearch] = useState('')
   const [marketSearch, setMarketSearch] = useState('')
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
 
-  // Map CardState → CardPool
-  const allPools: CardPool[] = useMemo(() => whirlpool.cards.map(c => {
-    const price = parseFloat(c.price) || 0
-    const totalStaked = parseFloat(c.cardReserve) || 0
-    const ownerShares = totalStaked // owner is top staker
+  // Build on-chain lookup by name
+  const onChainByName = useMemo(() => {
+    const map = new Map<string, typeof whirlpool.cards[0]>()
+    whirlpool.cards.forEach(c => map.set(c.name.toLowerCase(), c))
+    return map
+  }, [whirlpool.cards])
+
+  // Map cardData.json → CardPool, overlay on-chain data
+  const allPools: CardPool[] = useMemo(() => allCardData.map((cd, idx) => {
+    const chain = onChainByName.get(cd.name.toLowerCase())
+    const price = chain ? (parseFloat(chain.price) || 0) : 0
+    const totalStaked = chain ? (parseFloat(chain.cardReserve) || 0) : 0
+    const ownerShares = totalStaked
+    const owner = chain?.owner || ''
     return {
-      id: c.id,
-      name: c.name,
-      number: c.id + 1,
-      image: cardImage(c.uri, c.name, c.id),
+      id: chain?.id ?? idx,
+      name: cd.name,
+      number: (chain?.id ?? idx) + 1,
+      image: cd.image || '',
       rarity: priceToRarity(price),
-      type: c.symbol,
-      owner: shortAddr(c.owner),
+      type: chain?.symbol || cd.type || '',
+      owner: owner ? shortAddr(owner) : '—',
       ownerShares,
       totalStaked,
       priceWaves: price,
-      topStakers: [{ address: shortAddr(c.owner), shares: ownerShares, percentage: 100 }],
+      topStakers: owner ? [{ address: shortAddr(owner), shares: ownerShares, percentage: 100 }] : [],
       stealAmount: Math.max(0, ownerShares * 0.51),
     }
-  }), [whirlpool.cards])
+  }), [allCardData, onChainByName])
 
-  const myCards: CardPool[] = useMemo(() => allPools.filter((_, i) => {
-    const c = whirlpool.cards[i]
-    return c && (parseFloat(c.myBalance) > 0 || parseFloat(c.myStake) > 0)
-  }).map((pool, _i) => {
-    const c = whirlpool.cards.find(cc => cc.id === pool.id)!
-    const myStake = parseFloat(c.myStake) || 0
-    const myBalance = parseFloat(c.myBalance) || 0
+  const myCards: CardPool[] = useMemo(() => allPools.filter(pool => {
+    const chain = onChainByName.get(pool.name.toLowerCase())
+    return chain && (parseFloat(chain.myBalance) > 0 || parseFloat(chain.myStake) > 0)
+  }).map(pool => {
+    const chain = onChainByName.get(pool.name.toLowerCase())!
+    const myStake = parseFloat(chain.myStake) || 0
+    const myBalance = parseFloat(chain.myBalance) || 0
     return {
       ...pool,
       userShares: myStake + myBalance,
       userPercentage: pool.totalStaked > 0 ? Math.round((myStake / pool.totalStaked) * 100) : 0,
-      isOwner: c.owner.toLowerCase() === whirlpool.address?.toLowerCase(),
+      isOwner: chain.owner.toLowerCase() === whirlpool.address?.toLowerCase(),
     }
-  }), [allPools, whirlpool.cards, whirlpool.address])
+  }), [allPools, onChainByName, whirlpool.address])
 
   const selectedCards = myCards.filter(c => selectedIds.has(c.id))
   const targetPool = allPools.find(p => p.id === targetId) || null
@@ -600,7 +611,7 @@ export default function SwapPage() {
         <div className="flex-1 overflow-y-auto space-y-2 pr-1 -mr-1">
           {filteredMarket.length === 0 ? (
             <p className="text-gray-500 text-xs text-center py-12 font-mono">
-              {whirlpool.cards.length === 0 ? 'No cards created yet' : 'No cards match your search'}
+              {allCardData.length === 0 ? 'Loading cards...' : 'No cards match your search'}
             </p>
           ) : (
             filteredMarket.map(card => (
