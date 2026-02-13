@@ -15,7 +15,9 @@ function generateSymbol(name: string): string {
   return sym.slice(0, 8)
 }
 
-function buildMetadata(card: CardEditorData): string {
+const PINATA_JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzNjY2Y2I3MC0wYzliLTRlMTItYmE3ZS1hYTc2NmNiYjk5ZTkiLCJlbWFpbCI6Imhvd2xvbmdoYXNpdGJlbkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJGUkExIn0seyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJOWUMxIn1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiOWJlOTUzMzA0NTc5NGU5YTBiNmYiLCJzY29wZWRLZXlTZWNyZXQiOiI0MzUxMzdlNWQ5MGIyMzQyMTc2YWRmMzAxYTQwZGNiMjA5Y2RhOWVlYTYyZTMyNTZjN2UxZTczMmViYWJiYThmIiwiZXhwIjoxODAxNDc0ODY0fQ.MJ7MZzOPgRxFSS9wOsZLnPaNNuXk385zXFhmJpcP5z0'
+
+async function uploadMetadataToIPFS(card: CardEditorData): Promise<string> {
   const meta = {
     name: card.name || 'Untitled Card',
     description: card.flavorText || 'A Whirlpool card',
@@ -35,10 +37,18 @@ function buildMetadata(card: CardEditorData): string {
       { trait_type: 'Crit', display_type: 'number', value: card.stats.crit },
     ].filter(a => a.value !== '' && a.value !== 0),
   }
-  const bytes = new TextEncoder().encode(JSON.stringify(meta))
-  let binary = ''
-  for (const b of bytes) binary += String.fromCharCode(b)
-  return 'data:application/json;base64,' + btoa(binary)
+  const blob = new Blob([JSON.stringify(meta)], { type: 'application/json' })
+  const form = new FormData()
+  form.append('file', blob, `${(card.name || 'card').replace(/\s+/g, '_')}.json`)
+  form.append('pinataMetadata', JSON.stringify({ name: `whirlpool-${card.name}` }))
+  const res = await fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${PINATA_JWT}` },
+    body: form,
+  })
+  if (!res.ok) throw new Error(`IPFS upload failed: ${res.status}`)
+  const data = await res.json()
+  return `ipfs://${data.IpfsHash}`
 }
 
 export default function MintPage() {
@@ -54,7 +64,7 @@ export default function MintPage() {
     if (!canMint) return
     setMinting(true)
     try {
-      const uri = buildMetadata(card)
+      const uri = await uploadMetadataToIPFS(card)
       await whirlpool.createCard(card.name.trim(), symbol, uri)
     } catch (e: any) {
       console.error('Mint failed:', e)
