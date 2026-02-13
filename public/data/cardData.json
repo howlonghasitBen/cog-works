@@ -137,7 +137,7 @@
     "name": "Aboleth",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiataawwcvnq6vrvjegal5glqdyurcju77nuxuah233que3pgcm7a4",
+    "image": "/images/card-images/arts/aboleth.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -207,7 +207,7 @@
     "name": "Acolyte",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreiepbdvbvwmw5pklylratxvvllulkfo7hdwr7t62cu56al4ptd4x2i",
+    "image": "/images/card-images/arts/acolyte.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -277,7 +277,7 @@
     "name": "Acolyte 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifezyi3sawrdzqjdjlnnjw6a5zhmefn6wdfzoffjeotn43mnmb3b4",
+    "image": "/images/card-images/arts/acolyte_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -347,7 +347,7 @@
     "name": "Adult Bronze Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihe5p7prmrepdvmuz6oqln7huf5aq7yxv4purvqsam7zhei6hxmoq",
+    "image": "/images/card-images/arts/adult_bronze_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -417,7 +417,7 @@
     "name": "Adult Copper Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibvv46hibt4wophpxpaaw47awx3p5q5faei7i77xoumnalsr27pwa",
+    "image": "/images/card-images/arts/adult_copper_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -487,7 +487,7 @@
     "name": "Adult Gold Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieefj6rnpdqixctuktoawyvswjvgstl4nujystuqnrrzt6dpe6l24",
+    "image": "/images/card-images/arts/adult_gold_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -557,7 +557,7 @@
     "name": "Adult Green Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihjsjswpync5x6yoqssprixskqjykbufbcvozvigivr7bms6r3y3a",
+    "image": "/images/card-images/arts/adult_green_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -627,7 +627,7 @@
     "name": "Adult Green Dragon 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeift234ouwto5iw63zimwcxzw62oaumitm7kzoycun5peq4mb4l4eq",
+    "image": "/images/card-images/arts/adult_green_dragon_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -697,7 +697,7 @@
     "name": "Adult Silver Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiblxqocqcmhz6rmorlivegc5j2yp5cyftlxhp7y3gkgwrzbqdtvsa",
+    "image": "/images/card-images/arts/adult_silver_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -767,7 +767,7 @@
     "name": "Air Elemental",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigvx3pncw4vexkpujqd2fs6u6jj6d6z7ldy4oaledp6r5ewaak23q",
+    "image": "/images/card-images/arts/air_elemental.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -837,7 +837,7 @@
     "name": "Ancient Black Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifi7qii2ecmbzjaegyxdi7756gqgrnntqyfnc543xwfdueexjud3m",
+    "image": "/images/card-images/arts/ancient_black_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -907,7 +907,7 @@
     "name": "Ancient Brass Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibhvpnope2pqxdu7cn2zhmz44duwqu3gt7jsvvmlqohrrjq4kspje",
+    "image": "/images/card-images/arts/ancient_brass_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -977,7 +977,7 @@
     "name": "Ancient Bronze Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieubc525wft2zdmyjpd2dx2zx5fpfocnudkeidnzwd26rvbc4gtv4",
+    "image": "/images/card-images/arts/ancient_bronze_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1047,7 +1047,7 @@
     "name": "Ancient Copper Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibuqxla2lb2yuuu7hgr7bi6mzlwao5mzctesbxlqgmjozkyhxifqa",
+    "image": "/images/card-images/arts/ancient_copper_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1117,7 +1117,7 @@
     "name": "Ancient Gold Dragon 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaqscmkeealkozwgc7rwsbdlkhf5mzzfxdrfje6miecp6gj4g722a",
+    "image": "/images/card-images/arts/ancient_gold_dragon_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1187,7 +1187,7 @@
     "name": "Ancient Gold Dragon 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiez3q5udmuvuwbjsakl4xiy37kxtxhrgpaooxcmwce2bgjsr5t5dm",
+    "image": "/images/card-images/arts/ancient_gold_dragon_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1257,7 +1257,7 @@
     "name": "Ancient Green Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieumdfgrarbe4jm4hqw7gjq6e3kzfly2fillfrnuxmbptcv62zpmq",
+    "image": "/images/card-images/arts/ancient_green_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1327,7 +1327,7 @@
     "name": "Ancient Red Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibqchcsbsedmvk63ujmamrgh2zwru74clfyndphuwq5ttuzl3eeei",
+    "image": "/images/card-images/arts/ancient_red_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1397,7 +1397,7 @@
     "name": "Ancient Silver Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiczvuldw2fhada6gnf7g7gptkmys25w3njortth5d52aaqucwrzni",
+    "image": "/images/card-images/arts/ancient_silver_dragon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1467,7 +1467,7 @@
     "name": "Androsphinx",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihlqkl4kxgkqzgrdukf3mwvmw5lmt4fvxcsdgolspk5zbm464kshi",
+    "image": "/images/card-images/arts/androsphinx.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1537,7 +1537,7 @@
     "name": "Animated Armor",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiejuxd7g56zp3f6jebbuuzzesnqhwdreraso35xnocsdkfn7rpjoe",
+    "image": "/images/card-images/arts/animated_armor.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1607,7 +1607,7 @@
     "name": "Awakened Shrub",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeif74pnfnbchhr6a6y2tjvzljtzsookugeze2xc2elgc4nixgs3ao4",
+    "image": "/images/card-images/arts/awakened_shrub.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1677,7 +1677,7 @@
     "name": "Azer",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicpvsy3s27fjhjfw4bxh2mgib435hvfzjlxg2wuqtvobvcyttm33u",
+    "image": "/images/card-images/arts/azer.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1747,7 +1747,7 @@
     "name": "Baboon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreif66ixc5xyavoiomsyqud7kmgsxmz7nt2dll4gtiw6xhircveyhwa",
+    "image": "/images/card-images/arts/baboon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1817,7 +1817,7 @@
     "name": "Baboon 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreif5lf3as7ulbqutuko3d3tn3aoxx776kav2zmh7enheozhqnd3mji",
+    "image": "/images/card-images/arts/baboon_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1887,7 +1887,7 @@
     "name": "Balor",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaqeslrwbyyjjgqpg3nlzkuvabhdj5lptthh25j5rvgyr56aoudna",
+    "image": "/images/card-images/arts/balor.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -1957,7 +1957,7 @@
     "name": "Bandit Captain",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidyef2cumqwb7ospuhtxwglc7743swq6m32orhyzxfs6vgkzfqppi",
+    "image": "/images/card-images/arts/bandit_captain.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2027,7 +2027,7 @@
     "name": "Barbed Devil 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiae7tgeusjltza53xoi5uty3v3qt6suar5qydn33uvht3iy3ejed4",
+    "image": "/images/card-images/arts/barbed_devil_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2097,7 +2097,7 @@
     "name": "Bat",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeictt74fv6vsraiyoa46ym7td2krs5xcbba6rojikmh3mkja6vdxfu",
+    "image": "/images/card-images/arts/bat.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2167,7 +2167,7 @@
     "name": "Bearded Devil 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeichlygrp5o6oetnosrk2aukoqcezsfdhnihg2kbn2ihofjgcgmn74",
+    "image": "/images/card-images/arts/bearded_devil_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2237,7 +2237,7 @@
     "name": "Behir",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidowi74xwhfjhvpsgvokyuoljasd5mbwij7vknyu4tzgqp3psnh6a",
+    "image": "/images/card-images/arts/behir.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2307,7 +2307,7 @@
     "name": "Berserker 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigvuoy27f3en2zuyvma2gwwirf5ixxx54h5bunlqycsys2b2a2ywm",
+    "image": "/images/card-images/arts/berserker_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2377,7 +2377,7 @@
     "name": "Black Bear",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigwcn6illx6vwdctwxza3jabzc3pbt2osg6l4kvcirlmdwdl4mqu4",
+    "image": "/images/card-images/arts/black_bear.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2447,7 +2447,7 @@
     "name": "Black Dragon Wyrmling",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeic24jy6ddh4i4kshffkurlfeskzqlxh36s7cnxsrsio7inana5rbi",
+    "image": "/images/card-images/arts/black_dragon_wyrmling.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2517,7 +2517,7 @@
     "name": "Black Pudding 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicqetx2k5fyqyedn3sp27ajoxqw4lynfnwlvjlrkkv2tf5nslraq4",
+    "image": "/images/card-images/arts/black_pudding_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2587,7 +2587,7 @@
     "name": "Blood Hawk",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigyhlwnayjl73jm4rc7r62n65f3kedrqimrnjhbsdmrxaujiacxgi",
+    "image": "/images/card-images/arts/blood_hawk.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2657,7 +2657,7 @@
     "name": "Boar 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiemhyjwfc7kn22ulupp6kfct6k4z5zg4rrklouvpwjyhvsh3opyva",
+    "image": "/images/card-images/arts/boar_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2727,7 +2727,7 @@
     "name": "Bugbear",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihypcosoxv4mexs57rqllacwbvd4kprnb5hwrlmwiwluheej23e5u",
+    "image": "/images/card-images/arts/bugbear.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2797,7 +2797,7 @@
     "name": "Bugbear 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeid56hutog5l7hbkreathvvvfebs7525adufqnnrtvyhusyibl6rzu",
+    "image": "/images/card-images/arts/bugbear_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2867,7 +2867,7 @@
     "name": "Chimera",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaojfxmmb2gxgcthgglvhx64hkqpgfj4e3tw27zg3piqjfaqlnyie",
+    "image": "/images/card-images/arts/chimera.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -2937,7 +2937,7 @@
     "name": "Chuul",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidsbd3x6beqbc5v3xerprn335jbdlz6qbj7pkzyd2bnbrid24u3ja",
+    "image": "/images/card-images/arts/chuul.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3007,7 +3007,7 @@
     "name": "Cloud Giant",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiemszejjbvfe7s2u4uc3hubvlbhjtix5gkcspb3mgyqqsn3dqd32m",
+    "image": "/images/card-images/arts/cloud_giant.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3077,7 +3077,7 @@
     "name": "Cloud Giant 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiedfa45oq5va7hhz5fje757kt3bb5lfpv5r4x6rl4auoqlxgtmcqe",
+    "image": "/images/card-images/arts/cloud_giant_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3147,7 +3147,7 @@
     "name": "Cockatrice 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieaxu7fn3chdigyiowiv2ujgdxmztlx6tgx647l4ynzlmi464j2by",
+    "image": "/images/card-images/arts/cockatrice_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3217,7 +3217,7 @@
     "name": "Copper Dragon Wyrmling 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifnvu7yifljyemxf4y5i2bpqmefauwjscha5hkk6nlvgv74wm65cq",
+    "image": "/images/card-images/arts/copper_dragon_wyrmling_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3287,7 +3287,7 @@
     "name": "Couatl",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidtp6qwvr2tq4qhno7emjcwsn3ygcblureky2steu2rexmxpssl4u",
+    "image": "/images/card-images/arts/couatl.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3357,7 +3357,7 @@
     "name": "Cultist",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiazkcfceqmiatdmtozdrxqntxqrr4ijtbjy2kztx6d5kfmbblzyoq",
+    "image": "/images/card-images/arts/cultist.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3427,7 +3427,7 @@
     "name": "Cult Fanatic",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiebq6rmkixm7cqcb4fasrsx2hu5auzurakvtveuefs2lye3gc56ye",
+    "image": "/images/card-images/arts/cult_fanatic.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3497,7 +3497,7 @@
     "name": "Darkmantle 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreifwdzjky7skovsgkiimfsv7gnhucybeo3nx4ygvtfygrsdjztp5mi",
+    "image": "/images/card-images/arts/darkmantle_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3567,7 +3567,7 @@
     "name": "Draft Horse 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigbg6nktxlsg7c2fr75jobtvrkodvbhkakyzw26hlhpirubdax7aa",
+    "image": "/images/card-images/arts/draft_horse_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3637,7 +3637,7 @@
     "name": "Dragon Turtle",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeib4wpsvy2cojszua5libfqhvezvhmlwtsbvj2wkyhjcgmhnwvm5ly",
+    "image": "/images/card-images/arts/dragon_turtle.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3707,7 +3707,7 @@
     "name": "Dragon Turtle 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigrdwychktdwhlqavwh2zmpryr6bemjmvqzwrgwnczj7div3jlfbe",
+    "image": "/images/card-images/arts/dragon_turtle_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3777,7 +3777,7 @@
     "name": "Drider",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreig4jhs77ya4p5mmdsv4ryb4rozbmfntcy5cbmhtgz3y36mhwgvsnq",
+    "image": "/images/card-images/arts/drider.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3847,7 +3847,7 @@
     "name": "Drow",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihxnjwdgwboyo4b4qsf3ujx5w5xo5wv76wzurpe3qvdpvohxu372q",
+    "image": "/images/card-images/arts/drow.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3917,7 +3917,7 @@
     "name": "Druid",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiecacaajqmzq2brpmb26og6qm6i6s7mq2d5cintfgrw4fpwgaqrdi",
+    "image": "/images/card-images/arts/druid.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -3987,7 +3987,7 @@
     "name": "Dryad 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeih3y2tq2wm5swfvon6tkadpnv4hcnzlwnm4f37l65tw7o73lyhdim",
+    "image": "/images/card-images/arts/dryad_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4057,7 +4057,7 @@
     "name": "Duergar 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreifoup7ffk3vjwgxlsm6g24xxb6jsk65cte3uirrrl5mkibs4va3di",
+    "image": "/images/card-images/arts/duergar_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4127,7 +4127,7 @@
     "name": "Dust Mephit",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreifylnk7rvfqkugp7bv32pmwjbx6lcjf6uvisseyktmpfgn2p2uxwy",
+    "image": "/images/card-images/arts/dust_mephit.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4197,7 +4197,7 @@
     "name": "Efreeti 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigpsdtbqen74yhtew6pcb3s6gg6esamey66h4etnqnnnpndbrxxty",
+    "image": "/images/card-images/arts/efreeti_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4267,7 +4267,7 @@
     "name": "Elephant 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiduf6q4t2b3xcx65rl4eeqxvlnwlno6tufa3ykldfvzgssko6hncq",
+    "image": "/images/card-images/arts/elephant_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4337,7 +4337,7 @@
     "name": "Elk 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeif2akrwlmyqo6ppkzky7f77rdv7yffjgedpb62av3s7zcx6kimtz4",
+    "image": "/images/card-images/arts/elk_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4407,7 +4407,7 @@
     "name": "Erinyes",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifnqqqu4rmrg7ur6vy2k4mjvpbrmkbkjgqhl6wfco3jodtllbe4gy",
+    "image": "/images/card-images/arts/erinyes.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4477,7 +4477,7 @@
     "name": "Ettin",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieofcfo3tlxirjkltqu6ov3x2ep3qgqh75wmea2pedz727hwnwhoa",
+    "image": "/images/card-images/arts/ettin.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4547,7 +4547,7 @@
     "name": "Ettin 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiefus2ypluocv6wuhbgsxqhd3gwnlq2nuq2lcfidcetnrmua4hq5m",
+    "image": "/images/card-images/arts/ettin_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4617,7 +4617,7 @@
     "name": "Fire Elemental",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifqflwxzcrs2zuc47pkjza27zjwzos4cmdtn6zievudwrcw6la6py",
+    "image": "/images/card-images/arts/fire_elemental.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4687,7 +4687,7 @@
     "name": "Fire Elemental 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidfuvndjkhgieqoes7m5qepd7lk5vpwxivf7o3yonhqj4xqpghrhy",
+    "image": "/images/card-images/arts/fire_elemental_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4757,7 +4757,7 @@
     "name": "Gelatinous Cube",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibu4e6txlwngjnhupss23itmrqu7yo2jwy3rrmtwf5waiujlxuroq",
+    "image": "/images/card-images/arts/gelatinous_cube.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4827,7 +4827,7 @@
     "name": "Ghast",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreig5b7ism5ofgymlqjdobxjvlrxoltah6dbsk5t6xjmc2fib7n3iga",
+    "image": "/images/card-images/arts/ghast.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4897,7 +4897,7 @@
     "name": "Ghast 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeia4v25iuow54u5zbabkumpstlin6ept5mvmznss4uvqnrkqxmdgzq",
+    "image": "/images/card-images/arts/ghast_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -4967,7 +4967,7 @@
     "name": "Giant Ape",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeian5mnm3tircfn4b4pys6rdf6tsz72knvnsrundsxaweyiib3npku",
+    "image": "/images/card-images/arts/giant_ape.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5037,7 +5037,7 @@
     "name": "Giant Bat",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreihbuujlbtjku5cum6w2ynbzmzx7kejkdhpp477drlrbotv5xkcphi",
+    "image": "/images/card-images/arts/giant_bat.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5107,7 +5107,7 @@
     "name": "Giant Centipede",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaxae5qz3ifxa2g5tmdbv5wn3t2uzmbinugtgh6zpuh5egsqrqmdi",
+    "image": "/images/card-images/arts/giant_centipede.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5177,7 +5177,7 @@
     "name": "Giant Constrictor Snake",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicm3muhrwvatvpgtsg27r54xf2e3zs4eshm7qh5nwrameoxvlmaym",
+    "image": "/images/card-images/arts/giant_constrictor_snake.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5247,7 +5247,7 @@
     "name": "Giant Crab",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeih6wne3kpyzxqkwnescqtaxtnnitvpvk67irxplnfp6ef2zpwc2pm",
+    "image": "/images/card-images/arts/giant_crab.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5317,7 +5317,7 @@
     "name": "Giant Fire Beetle",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiapndx5l5a2jm6hqag7xcmtd3pxedhdaly6l2hzmuojek522qyk7a",
+    "image": "/images/card-images/arts/giant_fire_beetle.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5387,7 +5387,7 @@
     "name": "Giant Frog",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihac73og4glt6bdtz2ep75hdw5kb53qcjztcuxh4phhm7y4csfm2y",
+    "image": "/images/card-images/arts/giant_frog.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5457,7 +5457,7 @@
     "name": "Giant Goat 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreibhaay657ktfjoxdon6laqc5s3ealhov6gs46b2txvasmvoivx3ja",
+    "image": "/images/card-images/arts/giant_goat_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5527,7 +5527,7 @@
     "name": "Giant Octopus 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifgy7fzaytjrlww2aruhqz355ccqjnwzlzse5cidgsoojn36ck2pq",
+    "image": "/images/card-images/arts/giant_octopus_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5597,7 +5597,7 @@
     "name": "Giant Sea Horse",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeib7gjywrr6l5kjpnrn4ftlvyhqxq36qvswiqojm3ce5flnu2z5obi",
+    "image": "/images/card-images/arts/giant_sea_horse.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5667,7 +5667,7 @@
     "name": "Gibbering Mouther",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibzbnl3woi6446zw7pbmbdtgbmlw4l2iw5ekpdx5cmdgwdxdt4ewq",
+    "image": "/images/card-images/arts/gibbering_mouther.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5737,7 +5737,7 @@
     "name": "Glabrezu",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreicu2r6aoeirjc4izqrbvgdswqpwsmcbkjsfxprdwrgwz7xszbbomu",
+    "image": "/images/card-images/arts/glabrezu.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5807,7 +5807,7 @@
     "name": "Goat",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihylwkxfmuqw5taga53oklwfikzeq2rfy5xinxkir6ktkb77exhoq",
+    "image": "/images/card-images/arts/goat.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5877,7 +5877,7 @@
     "name": "Goblin",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeia4yplwj5pywlpai7d77sp36bxo6sivbzq6loiogefrbh7gkpl6iq",
+    "image": "/images/card-images/arts/goblin.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -5947,7 +5947,7 @@
     "name": "Gold Dragon Wyrmling 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigcavrp3er25ia5bnwxtfhvzy3bycudq2axe2rj5vsu5cm3qhpu6i",
+    "image": "/images/card-images/arts/gold_dragon_wyrmling_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6017,7 +6017,7 @@
     "name": "Gorgon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibu6wxei4mixkfhm2yi23chqfcdkkqcckhgpiepxibwz5tuhaizpa",
+    "image": "/images/card-images/arts/gorgon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6087,7 +6087,7 @@
     "name": "Green Dragon Wyrmling",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreic6r64imo2davjhi2mwif2ae46t6kpybepswzkouiwyud7lfsltl4",
+    "image": "/images/card-images/arts/green_dragon_wyrmling.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6157,7 +6157,7 @@
     "name": "Green Hag",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaw7442cejuya4qw44yyn75x3n6dmrpkwix56utlcwyqdu5a37u4m",
+    "image": "/images/card-images/arts/green_hag.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6227,7 +6227,7 @@
     "name": "Griffon",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifco2bey4tnlnthnk4ggo5xqn2i6x6xqapfazpf3345ooyvifexau",
+    "image": "/images/card-images/arts/griffon.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6297,7 +6297,7 @@
     "name": "Guard 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeib6fkdvdmpagfdeaiohv5z2zp7eqa7kvvbfj26is53vqtkaviab5u",
+    "image": "/images/card-images/arts/guard_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6367,7 +6367,7 @@
     "name": "Half Red Dragon Veteran 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeig5qsyyq63i5w43byfty7jhzncfztbgtgks2xv5unlczlaipzpn2e",
+    "image": "/images/card-images/arts/half_red_dragon_veteran_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6437,7 +6437,7 @@
     "name": "Hell Hound",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreiaradmhs4meu7j25q6lisv5t42l3iq3s5o4gcqmhi2xpdrj3ac7ti",
+    "image": "/images/card-images/arts/hell_hound.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6507,7 +6507,7 @@
     "name": "Hill Giant",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibe6zysjzplxz67wtgb57uljllhhot4kv3whb5j3eau54f4bisx5m",
+    "image": "/images/card-images/arts/hill_giant.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6577,7 +6577,7 @@
     "name": "Hobgoblin",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeignkauhfu2icc7pottsqulyfoqb6er4nad5bpwqhvb6eacyr5gvg4",
+    "image": "/images/card-images/arts/hobgoblin.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6647,7 +6647,7 @@
     "name": "Homunculus",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiffes22nbh6lthbp7mdhycocpb3asvjgbwtcuclk3x4o7renxe624",
+    "image": "/images/card-images/arts/homunculus.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6717,7 +6717,7 @@
     "name": "Homunculus 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigbkt5hbpalmlnfhrshv4howijahmdag7ais2jsylsrlp3x63nqfa",
+    "image": "/images/card-images/arts/homunculus_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6787,7 +6787,7 @@
     "name": "Hydra",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeic5pljg7mnqdh4ieoesyxqlnu57pcs4lqdtb4casx7w7ai62jsbke",
+    "image": "/images/card-images/arts/hydra.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6857,7 +6857,7 @@
     "name": "Ice Devil",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidyxg2emiypxly7iqqylszgl75q4o4f5qynggfegk2vcpumik7xta",
+    "image": "/images/card-images/arts/ice_devil.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6927,7 +6927,7 @@
     "name": "Knight 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieoidfgngnhjc7jlkigfgxew7hk23jbtdogldoukhubvxnkldscpe",
+    "image": "/images/card-images/arts/knight_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -6997,7 +6997,7 @@
     "name": "Knight 4",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigljrggmv5o4lalua5m2u7mpqgyovzkqkakzmhomfbxyf7i25xpfm",
+    "image": "/images/card-images/arts/knight_4.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7067,7 +7067,7 @@
     "name": "Kobold",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeickylt7ixmoxfrqouribwoupziytw7fa3rzmjjtedo76dtshaz75q",
+    "image": "/images/card-images/arts/kobold.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7137,7 +7137,7 @@
     "name": "Lich 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeib2rkxjvq4vkgyneciqgb5fxcfvmskciqgb7vbvunn6evunv42vky",
+    "image": "/images/card-images/arts/lich_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7207,7 +7207,7 @@
     "name": "Lizardfolk 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibm7y3xzpxuqm3ytrd3oketmnpy6eyxu6y3vy67hq3nxck6tdjbee",
+    "image": "/images/card-images/arts/lizardfolk_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7277,7 +7277,7 @@
     "name": "Magma Mephit",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibdfcjqllcxlabjggupi5mmaveyqpjllddswvharcfrndrv3sfxri",
+    "image": "/images/card-images/arts/magma_mephit.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7347,7 +7347,7 @@
     "name": "Magma Mephit 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihje57zmwoo2to2c7kj44ar6qlda5lozr4seac2h75kuucm6zkxhy",
+    "image": "/images/card-images/arts/magma_mephit_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7417,7 +7417,7 @@
     "name": "Magma Mephit 4",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicra4im7q2fro2bfri3m2uan4hxnxyxkns3cii5yx3al7jqyvxxpa",
+    "image": "/images/card-images/arts/magma_mephit_4.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7487,7 +7487,7 @@
     "name": "Magma Mephit 5",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeicp736uuxq7xd7isc3hh2svc2sviqiiupxap6qe6roufjgf4iuciq",
+    "image": "/images/card-images/arts/magma_mephit_5.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7557,7 +7557,7 @@
     "name": "Mammoth",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreif2geag6lgotxlexpl36ygplxrg4oa34irqtgsvyrtkw5nyeyj5ru",
+    "image": "/images/card-images/arts/mammoth.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7627,7 +7627,7 @@
     "name": "Marilith 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeierde7pmublhghupr6jeyiewzvh5bphuhhqcmgnkpsojqoaqp4iyi",
+    "image": "/images/card-images/arts/marilith_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7697,7 +7697,7 @@
     "name": "Mastiff",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidvw3zyoohjiaer2nbygrlzuvh4zjfj2id4k5jbgaanktqi4wugp4",
+    "image": "/images/card-images/arts/mastiff.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7767,7 +7767,7 @@
     "name": "Medusa",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifbfdnezihaj5dfgvld2qp2muxk7jzmc2ijejpxdesghuqkf3opsq",
+    "image": "/images/card-images/arts/medusa.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7837,7 +7837,7 @@
     "name": "Merrow",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeih4f6cgtlbnapryqcrq6eqpq3f6zxje5sxbut5pdvh6vpaj2rtbkm",
+    "image": "/images/card-images/arts/merrow.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7907,7 +7907,7 @@
     "name": "Mimic 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiclhufh77hpz4rj46aiiy5bf3gvrrtae5ag4dzhaktg6atbecredq",
+    "image": "/images/card-images/arts/mimic_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -7977,7 +7977,7 @@
     "name": "Minotaur",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiewb33aav7s3l32w325hcyx6plggplh4om67vu3mx36dd5qi5oydm",
+    "image": "/images/card-images/arts/minotaur.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8047,7 +8047,7 @@
     "name": "Minotaur Skeleton",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeieggyj2mfmzoui3hbf5czxfi4j3tocfuomktvgn6sher2xmwjg4oi",
+    "image": "/images/card-images/arts/minotaur_skeleton.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8117,7 +8117,7 @@
     "name": "Mummy",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreibbppy73kqrsbqoh7d5hy7435lf47ebnm5uzgsiqckzxapsszz2bu",
+    "image": "/images/card-images/arts/mummy.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8187,7 +8187,7 @@
     "name": "Mummy Lord",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigxodvazin6i6dk5zsrrnplol5gw6ujhdd3lmejgzy5towp3qouw4",
+    "image": "/images/card-images/arts/mummy_lord.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8257,7 +8257,7 @@
     "name": "Nalfeshnee 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihy76txdmhj46trgghhwokik43leg3wmydxtocoyasgxr4ms6waoa",
+    "image": "/images/card-images/arts/nalfeshnee_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8327,7 +8327,7 @@
     "name": "Orc",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaxx7ulg244jk7mbdrsxw57dti574vwdn7glknnrqydabpgr6pdhi",
+    "image": "/images/card-images/arts/orc.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8397,7 +8397,7 @@
     "name": "Phase Spider",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiewhykgqswxro2qceohaegxpdhvs66qmnpvyyufszbeydtnssoj6i",
+    "image": "/images/card-images/arts/phase_spider.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8467,7 +8467,7 @@
     "name": "Planetar 3",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiazhxokyd3z7ba5rqjpiamuzgohc3rlyefmgrp3bjfomioclbl3ze",
+    "image": "/images/card-images/arts/planetar_3.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8537,7 +8537,7 @@
     "name": "Poisonous Snake",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibnzxapmtpfcmuw2cefjh6blxt2noc3mqiqus5zg5qctp4vksysq4",
+    "image": "/images/card-images/arts/poisonous_snake.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8607,7 +8607,7 @@
     "name": "Rat",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeievxefer4bl2oqii5gn5zwi4eualbclpiep76cyxjktght2gzg6zi",
+    "image": "/images/card-images/arts/rat.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8677,7 +8677,7 @@
     "name": "Reef Shark",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeibnehkenktb33gdfqz32tpwdsuahq7imiawmayoazaz4d6bn736gu",
+    "image": "/images/card-images/arts/reef_shark.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8747,7 +8747,7 @@
     "name": "Remorhaz",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiengxwsw34caoeov2dc4qswq7obesxgnf2cgijkzat7ai5es57wbe",
+    "image": "/images/card-images/arts/remorhaz.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8817,7 +8817,7 @@
     "name": "Riding Horse 2",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeif63worogdawqyqtxmtelmqask4ki3s6rrqxmxgdoij6ygtew3734",
+    "image": "/images/card-images/arts/riding_horse_2.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8887,7 +8887,7 @@
     "name": "Roper",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeie6qcxbek4oqfr6zlzlq5uth7rko5twx7lzdhrf2l4wyqxaxbbwie",
+    "image": "/images/card-images/arts/roper.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -8957,7 +8957,7 @@
     "name": "Rug Of Smothering",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigxsv6ebgscskmo3eg67w766vzhfj2nmba5alqdblmw2qtz66eyqi",
+    "image": "/images/card-images/arts/rug_of_smothering.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -9027,7 +9027,7 @@
     "name": "Sahuagin",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeidnmqhljb6x5uqfoeap7tirhm7hvpyv3txvoltcoe4n5icdzh76mu",
+    "image": "/images/card-images/arts/sahuagin.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -9097,7 +9097,7 @@
     "name": "Scorpion",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafkreie2ybzscxu7mut7ejut6fzjaw3qwlmvu4kq55llmh73xzuct2cxhy",
+    "image": "/images/card-images/arts/scorpion.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -9167,7 +9167,7 @@
     "name": "Sea Horse 4",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeid4srizie7ldzrgzgqtkcgiel6yrwchsjztwn6oixsyir35xs2peq",
+    "image": "/images/card-images/arts/sea_horse_4.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -9237,7 +9237,7 @@
     "name": "Shadow",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeiaaitr25qrs2nt26wzalpfjjfaumfmtj2hllupfqtflgykd6cldpu",
+    "image": "/images/card-images/arts/shadow.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -9307,7 +9307,7 @@
     "name": "Shambling Mound",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeifqfslla4qcbdgoot2tyan7hewcjg4z2hyajn7lcsctgbhulkngve",
+    "image": "/images/card-images/arts/shambling_mound.png",
     "type": "Creature — ",
     "stats": {
       "attack": "3",
@@ -9511,7 +9511,7 @@
     "name": "Ancient Gold Dragon",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/ancient_gold_dragon_3.png",
+    "image": "/images/card-images/arts/ancient_gold_dragon_3.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -9904,7 +9904,7 @@
     "name": "Barbed Devil",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/barbed_devil_2.png",
+    "image": "/images/card-images/arts/barbed_devil_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -9940,7 +9940,7 @@
     "name": "Basilisk",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeihqfges6synysdg7i4kyqw65xkdml5a3dzqerz4ff7s7lyp5odscy",
+    "image": "/images/card-images/arts/basilisk.png",
     "type": "Creature — Khthonix",
     "stats": {
       "attack": "7",
@@ -10060,7 +10060,7 @@
     "name": "Bearded Devil",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/bearded_devil_3.png",
+    "image": "/images/card-images/arts/bearded_devil_3.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -10166,7 +10166,7 @@
     "name": "Berserker",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/berserker_2.png",
+    "image": "/images/card-images/arts/berserker_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -10372,7 +10372,7 @@
     "name": "Boar",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/boar_2.png",
+    "image": "/images/card-images/arts/boar_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -10885,7 +10885,7 @@
     "name": "Copper Dragon Wyrmling",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/copper_dragon_wyrmling_3.png",
+    "image": "/images/card-images/arts/copper_dragon_wyrmling_3.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -11121,7 +11121,7 @@
     "name": "Darkmantle",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/darkmantle_2.png",
+    "image": "/images/card-images/arts/darkmantle_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -11622,7 +11622,7 @@
     "name": "Draft Horse",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/draft_horse_3.png",
+    "image": "/images/card-images/arts/draft_horse_3.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -11777,7 +11777,7 @@
     "name": "Dryad",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/dryad_2.png",
+    "image": "/images/card-images/arts/dryad_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -11813,7 +11813,7 @@
     "name": "Duergar",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/duergar_2.png",
+    "image": "/images/card-images/arts/duergar_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -11918,7 +11918,7 @@
     "name": "Efreeti",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/efreeti_2.png",
+    "image": "/images/card-images/arts/efreeti_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -11954,7 +11954,7 @@
     "name": "Elephant",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/elephant_2.png",
+    "image": "/images/card-images/arts/elephant_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -11990,7 +11990,7 @@
     "name": "Elk",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/elk_3.png",
+    "image": "/images/card-images/arts/elk_3.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -12165,7 +12165,7 @@
     "name": "Fairy Fountain",
     "subtitle": "",
     "level": "★",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/fairy fountain.png",
+    "image": "/images/card-images/arts/fairy fountain.png",
     "type": "",
     "stats": {
       "attack": "0",
@@ -12739,7 +12739,7 @@
     "name": "Frost Giant",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeid4kqphayuki2pqca5wftkh6kwq3z7lvcky754sx2jjcvpulfvqu4",
+    "image": "/images/card-images/arts/frost_giant.png",
     "type": "Creature — ",
     "stats": {
       "attack": "6",
@@ -12978,7 +12978,7 @@
     "name": "Giant Goat",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/giant_goat_3.png",
+    "image": "/images/card-images/arts/giant_goat_3.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -13152,7 +13152,7 @@
     "name": "Giant Octopus",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/giant_octopus_2.png",
+    "image": "/images/card-images/arts/giant_octopus_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -13703,7 +13703,7 @@
     "name": "Guard",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/guard_2.png",
+    "image": "/images/card-images/arts/guard_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -13997,7 +13997,7 @@
     "name": "Harpy",
     "subtitle": "",
     "level": "1",
-    "image": "https://gateway.pinata.cloud/ipfs/bafybeigygco5mqfn5erzqhw6khc2to2zydrdvr3aldnm7y4ae4d6dsbzia",
+    "image": "/images/card-images/arts/harpy.png",
     "type": "",
     "stats": {
       "attack": "4",
@@ -14494,7 +14494,7 @@
     "name": "Knight",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/knight_2.png",
+    "image": "/images/card-images/arts/knight_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -15297,7 +15297,7 @@
     "name": "Marilith",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/marilith_2.png",
+    "image": "/images/card-images/arts/marilith_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -15502,7 +15502,7 @@
     "name": "Mimic",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/mimic_2.png",
+    "image": "/images/card-images/arts/mimic_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -15828,7 +15828,7 @@
     "name": "Nalfeshnee",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/nalfeshnee_2.png",
+    "image": "/images/card-images/arts/nalfeshnee_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -16469,7 +16469,7 @@
     "name": "Phoenix",
     "subtitle": "",
     "level": "3",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/phoenix.png",
+    "image": "/images/card-images/arts/phoenix.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -16902,7 +16902,7 @@
     "name": "Riding Horse",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/riding_horse_2.png",
+    "image": "/images/card-images/arts/riding_horse_2.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -17515,7 +17515,7 @@
     "name": "Sea Horse",
     "subtitle": "",
     "level": "1",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/sea_horse_4.png",
+    "image": "/images/card-images/arts/sea_horse_4.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -18089,7 +18089,7 @@
     "name": "Soh",
     "subtitle": "",
     "level": "★",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/soh.png",
+    "image": "/images/card-images/arts/soh.png",
     "type": "",
     "stats": {
       "attack": "0",
@@ -20987,7 +20987,7 @@
     "name": "Ya Eagle",
     "subtitle": "",
     "level": "2",
-    "image": "https://howlonghasitben.github.io/surf-works/images/card-images/ya_eagle.png",
+    "image": "/images/card-images/arts/ya_eagle.png",
     "type": "",
     "stats": {
       "attack": "4",
