@@ -376,13 +376,7 @@ export default function SwapPage() {
     return Array.from(s)
   }, [])
 
-  if (whirlpool.loading && whirlpool.cards.length === 0) {
-    return (
-      <div className="w-full flex items-center justify-center" style={{ marginTop: 60, minHeight: '100dvh' }}>
-        <p className="text-gray-400 text-lg font-mono animate-pulse">Loading cards from Anvil…</p>
-      </div>
-    )
-  }
+  // No loading gate — show UI immediately, cards fill in progressively
 
   return (
     <div className="w-full flex items-stretch justify-between gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40, paddingLeft: 42, paddingRight: 42 }}>
@@ -552,7 +546,7 @@ export default function SwapPage() {
       {/* ─── RIGHT: Market Search ─── */}
       <div className="border-2 border-[#3a3d4a] rounded p-4 flex flex-col w-full max-w-[440px]" style={{ maxHeight: 'calc(100dvh - 100px)', background: 'linear-gradient(180deg, #2a2d3a 0%, #1a1d2e 40%, #22252f 100%)', boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
         <h2 className="text-lg font-black tracking-wider mb-3 pb-2 border-b-2 border-[#3a3d4a] uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#c8a55a', textShadow: '0 1px 3px rgba(0,0,0,0.6)', letterSpacing: '0.12em' }}>
-          Market Search
+          Market Search <span style={{ fontSize: 11, fontWeight: 400, color: '#4a4d5a', fontFamily: "'DM Mono', monospace" }}>({allPools.length})</span>
         </h2>
         {/* Search + history button */}
         <div className="flex gap-2 mb-3">
