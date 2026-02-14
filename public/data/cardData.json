@@ -1,7 +1,7 @@
 [
   {
     "name": "Moonwell Sanctuary",
-    "subtitle": "",
+    "subtitle": "Lunar Infusion",
     "level": "★",
     "image": "/images/card-images/arts/moonwell_sanctuary.png",
     "type": "Consumable — Mana Restoration",
@@ -68,7 +68,7 @@
   },
   {
     "name": "Slight of Hand",
-    "subtitle": "",
+    "subtitle": "Quick Draw",
     "level": "★",
     "image": "/images/card-images/arts/soh.png",
     "type": "Consumable — Cards",
@@ -138,7 +138,7 @@
     "subtitle": "Enslave Mind",
     "level": "1",
     "image": "/images/card-images/arts/aboleth.png",
-    "type": "Creature — ",
+    "type": "Creature — Deepmaster",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -208,7 +208,7 @@
     "subtitle": "Unblinking Vigil",
     "level": "1",
     "image": "/images/card-images/arts/acolyte.png",
-    "type": "Creature — ",
+    "type": "Creature — Lightsworn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -278,7 +278,7 @@
     "subtitle": "Repulsion Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_bronze_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Bronzewing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -348,7 +348,7 @@
     "subtitle": "Corroding Apathy",
     "level": "1",
     "image": "/images/card-images/arts/adult_copper_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Copperclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -418,7 +418,7 @@
     "subtitle": "Gilded Sorrow Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_gold_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Goldheart",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -488,7 +488,7 @@
     "subtitle": "Noxious Exhalation",
     "level": "1",
     "image": "/images/card-images/arts/adult_green_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Verdantstrike",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -558,7 +558,7 @@
     "subtitle": "Paralyzing Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_silver_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Silverspear",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -628,7 +628,7 @@
     "subtitle": "Sulking Tempest",
     "level": "1",
     "image": "/images/card-images/arts/air_elemental.png",
-    "type": "Creature — ",
+    "type": "Creature — Windwhisper",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -698,7 +698,7 @@
     "subtitle": "Ageless Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_black_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Nightshade",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -768,7 +768,7 @@
     "subtitle": "Corroded Dominion",
     "level": "1",
     "image": "/images/card-images/arts/ancient_brass_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Sunstone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -838,7 +838,7 @@
     "subtitle": "Eternal Sulk",
     "level": "1",
     "image": "/images/card-images/arts/ancient_bronze_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Bronzeguard",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -908,7 +908,7 @@
     "subtitle": "Verdigris Ruin",
     "level": "1",
     "image": "/images/card-images/arts/ancient_copper_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Coppertrick",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -978,7 +978,7 @@
     "subtitle": "Gilded Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_gold_dragon_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Goldflare",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1048,7 +1048,7 @@
     "subtitle": "Primordial Sigh",
     "level": "1",
     "image": "/images/card-images/arts/ancient_green_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Emeraldrot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1118,7 +1118,7 @@
     "subtitle": "Molten Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_red_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Bloodstorm",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1188,7 +1188,7 @@
     "subtitle": "Frozen Lament",
     "level": "1",
     "image": "/images/card-images/arts/ancient_silver_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Moonshard",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1258,7 +1258,7 @@
     "subtitle": "Sorrowful Roar",
     "level": "1",
     "image": "/images/card-images/arts/androsphinx.png",
-    "type": "Creature — ",
+    "type": "Creature — Riddleguard",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1328,7 +1328,7 @@
     "subtitle": "Hollow Advance",
     "level": "1",
     "image": "/images/card-images/arts/animated_armor.png",
-    "type": "Creature — ",
+    "type": "Creature — Ironclad",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1398,7 +1398,7 @@
     "subtitle": "Rootbound Sorrow",
     "level": "1",
     "image": "/images/card-images/arts/awakened_shrub.png",
-    "type": "Creature — ",
+    "type": "Creature — Lifesprout",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1468,7 +1468,7 @@
     "subtitle": "Molten Lament",
     "level": "1",
     "image": "/images/card-images/arts/azer.png",
-    "type": "Creature — ",
+    "type": "Creature — Fireforge",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1538,7 +1538,7 @@
     "subtitle": "Feral Gnash",
     "level": "1",
     "image": "/images/card-images/arts/baboon.png",
-    "type": "Creature — ",
+    "type": "Creature — Baboonfist",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1608,7 +1608,7 @@
     "subtitle": "Molten Lash",
     "level": "1",
     "image": "/images/card-images/arts/balor.png",
-    "type": "Creature — ",
+    "type": "Creature — Balorrow",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1678,7 +1678,7 @@
     "subtitle": "Cutthroat Rally",
     "level": "1",
     "image": "/images/card-images/arts/bandit_captain.png",
-    "type": "Creature — ",
+    "type": "Creature — Banditlord",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1748,7 +1748,7 @@
     "subtitle": "Piercing Embrace",
     "level": "1",
     "image": "/images/card-images/arts/barbed_devil_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Barbspike",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1818,7 +1818,7 @@
     "subtitle": "Mournful Shriek",
     "level": "1",
     "image": "/images/card-images/arts/bat.png",
-    "type": "Creature — ",
+    "type": "Creature — Batscream",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1888,7 +1888,7 @@
     "subtitle": "Infernal Prong",
     "level": "1",
     "image": "/images/card-images/arts/bearded_devil_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Beardclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1958,7 +1958,7 @@
     "subtitle": "Cavern Constrict",
     "level": "1",
     "image": "/images/card-images/arts/behir.png",
-    "type": "Creature — ",
+    "type": "Creature — Behirfang",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2028,7 +2028,7 @@
     "subtitle": "Raging Cleave",
     "level": "1",
     "image": "/images/card-images/arts/berserker_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Berserkrage",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2098,7 +2098,7 @@
     "subtitle": "Grieving Maul",
     "level": "1",
     "image": "/images/card-images/arts/black_bear.png",
-    "type": "Creature — ",
+    "type": "Creature — Blackclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2168,7 +2168,7 @@
     "subtitle": "Ember Melancholy",
     "level": "1",
     "image": "/images/card-images/arts/black_dragon_wyrmling.png",
-    "type": "Creature — ",
+    "type": "Creature — Blackacid",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2238,7 +2238,7 @@
     "subtitle": "Engulfing Grief",
     "level": "1",
     "image": "/images/card-images/arts/black_pudding_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Blackooze",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2308,7 +2308,7 @@
     "subtitle": "Crimson Talon Dive",
     "level": "1",
     "image": "/images/card-images/arts/blood_hawk.png",
-    "type": "Creature — ",
+    "type": "Creature — Bloodtalon",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2378,7 +2378,7 @@
     "subtitle": "Mire Charge",
     "level": "1",
     "image": "/images/card-images/arts/boar_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Boargore",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2448,7 +2448,7 @@
     "subtitle": "Cavern Ambush",
     "level": "1",
     "image": "/images/card-images/arts/bugbear.png",
-    "type": "Creature — ",
+    "type": "Creature — Bugreave",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2518,7 +2518,7 @@
     "subtitle": "Trihead Inferno",
     "level": "1",
     "image": "/images/card-images/arts/chimera.png",
-    "type": "Creature — ",
+    "type": "Creature — Chimeraflame",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2588,7 +2588,7 @@
     "subtitle": "Tentacle Crush",
     "level": "1",
     "image": "/images/card-images/arts/chuul.png",
-    "type": "Creature — ",
+    "type": "Creature — Chuulgrasp",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2658,7 +2658,7 @@
     "subtitle": "Sorrowful Downpour",
     "level": "1",
     "image": "/images/card-images/arts/cloud_giant.png",
-    "type": "Creature — ",
+    "type": "Creature — Cloudpeak",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2728,7 +2728,7 @@
     "subtitle": "Petrifying Glare",
     "level": "1",
     "image": "/images/card-images/arts/cockatrice_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Cockastone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2798,7 +2798,7 @@
     "subtitle": "Sulking Corrosion",
     "level": "1",
     "image": "/images/card-images/arts/copper_dragon_wyrmling_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Copperspark",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2868,7 +2868,7 @@
     "subtitle": "Plumed Ascension",
     "level": "1",
     "image": "/images/card-images/arts/couatl.png",
-    "type": "Creature — ",
+    "type": "Creature — Couatlwisdom",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2938,7 +2938,7 @@
     "subtitle": "Eldritch Invocation",
     "level": "1",
     "image": "/images/card-images/arts/cultist.png",
-    "type": "Creature — ",
+    "type": "Creature — Soulsworn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3008,7 +3008,7 @@
     "subtitle": "Zealot's Vortex",
     "level": "1",
     "image": "/images/card-images/arts/cult_fanatic.png",
-    "type": "Creature — ",
+    "type": "Creature — Zealblade",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3078,7 +3078,7 @@
     "subtitle": "Abyssal Smother",
     "level": "1",
     "image": "/images/card-images/arts/darkmantle_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Shadowclasp",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3148,7 +3148,7 @@
     "subtitle": "Mosshide Trample",
     "level": "1",
     "image": "/images/card-images/arts/draft_horse_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Plowhoof",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3218,7 +3218,7 @@
     "subtitle": "Swamp Shell Crush",
     "level": "1",
     "image": "/images/card-images/arts/dragon_turtle.png",
-    "type": "Creature — ",
+    "type": "Creature — Seascourge",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3288,7 +3288,7 @@
     "subtitle": "Webbed Ambush",
     "level": "1",
     "image": "/images/card-images/arts/drider.png",
-    "type": "Creature — ",
+    "type": "Creature — Spidercurse",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3358,7 +3358,7 @@
     "subtitle": "Underdark Hex",
     "level": "1",
     "image": "/images/card-images/arts/drow.png",
-    "type": "Creature — ",
+    "type": "Creature — Nightelf",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3428,7 +3428,7 @@
     "subtitle": "Verdant Communion",
     "level": "1",
     "image": "/images/card-images/arts/druid.png",
-    "type": "Creature — ",
+    "type": "Creature — Treekeeper",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3498,7 +3498,7 @@
     "subtitle": "Rooted Lament",
     "level": "1",
     "image": "/images/card-images/arts/dryad_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Leafsister",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3568,7 +3568,7 @@
     "subtitle": "Cavern Crush",
     "level": "1",
     "image": "/images/card-images/arts/duergar_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Stoneborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3638,7 +3638,7 @@
     "subtitle": "Choking Gust",
     "level": "1",
     "image": "/images/card-images/arts/dust_mephit.png",
-    "type": "Creature — ",
+    "type": "Creature — Sandwraith",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3708,7 +3708,7 @@
     "subtitle": "Blazing Decree",
     "level": "1",
     "image": "/images/card-images/arts/efreeti_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Firelord",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3778,7 +3778,7 @@
     "subtitle": "Smug Trample",
     "level": "1",
     "image": "/images/card-images/arts/elephant_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Mammothfist",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3848,7 +3848,7 @@
     "subtitle": "Moss-Crown Charge",
     "level": "1",
     "image": "/images/card-images/arts/elk_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Antlercrown",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3918,7 +3918,7 @@
     "subtitle": "Vengeance Scourge",
     "level": "1",
     "image": "/images/card-images/arts/erinyes.png",
-    "type": "Creature — ",
+    "type": "Creature — Furywing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3988,7 +3988,7 @@
     "subtitle": "Twin Cleave",
     "level": "1",
     "image": "/images/card-images/arts/ettin.png",
-    "type": "Creature — ",
+    "type": "Creature — Skullcleaver",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4058,7 +4058,7 @@
     "subtitle": "Molten Lament",
     "level": "1",
     "image": "/images/card-images/arts/fire_elemental.png",
-    "type": "Creature — ",
+    "type": "Creature — Emberstorm",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4128,7 +4128,7 @@
     "subtitle": "Sorrowful Engulf",
     "level": "1",
     "image": "/images/card-images/arts/gelatinous_cube.png",
-    "type": "Creature — ",
+    "type": "Creature — Oozemass",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4198,7 +4198,7 @@
     "subtitle": "Anguished Volley",
     "level": "1",
     "image": "/images/card-images/arts/ghast.png",
-    "type": "Creature — ",
+    "type": "Creature — Corpsebreath",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4268,7 +4268,7 @@
     "subtitle": "Ruinous Stomp",
     "level": "1",
     "image": "/images/card-images/arts/giant_ape.png",
-    "type": "Creature — ",
+    "type": "Creature — Jungleking",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4338,7 +4338,7 @@
     "subtitle": "Stormwing Dive",
     "level": "1",
     "image": "/images/card-images/arts/giant_bat.png",
-    "type": "Creature — ",
+    "type": "Creature — Batwing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4408,7 +4408,7 @@
     "subtitle": "Hundred Leg Crush",
     "level": "1",
     "image": "/images/card-images/arts/giant_centipede.png",
-    "type": "Creature — ",
+    "type": "Creature — Centipedestride",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4478,7 +4478,7 @@
     "subtitle": "Crushing Embrace",
     "level": "1",
     "image": "/images/card-images/arts/giant_constrictor_snake.png",
-    "type": "Creature — ",
+    "type": "Creature — Snakewrath",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4548,7 +4548,7 @@
     "subtitle": "Sorrowful Crush",
     "level": "1",
     "image": "/images/card-images/arts/giant_crab.png",
-    "type": "Creature — ",
+    "type": "Creature — Crabclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4618,7 +4618,7 @@
     "subtitle": "Ember Torrent",
     "level": "1",
     "image": "/images/card-images/arts/giant_fire_beetle.png",
-    "type": "Creature — ",
+    "type": "Creature — Fireglow",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4688,7 +4688,7 @@
     "subtitle": "Ruinous Calm",
     "level": "1",
     "image": "/images/card-images/arts/giant_frog.png",
-    "type": "Creature — ",
+    "type": "Creature — Frogleap",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4758,7 +4758,7 @@
     "subtitle": "Doleful Rampage",
     "level": "1",
     "image": "/images/card-images/arts/giant_goat_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Goatpeak",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4828,7 +4828,7 @@
     "subtitle": "Sorrowful Embrace",
     "level": "1",
     "image": "/images/card-images/arts/giant_octopus_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Octohold",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4898,7 +4898,7 @@
     "subtitle": "Abyssal Undertow",
     "level": "1",
     "image": "/images/card-images/arts/giant_sea_horse.png",
-    "type": "Creature — ",
+    "type": "Creature — Seaswift",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4968,7 +4968,7 @@
     "subtitle": "Maddening Cacophony",
     "level": "1",
     "image": "/images/card-images/arts/gibbering_mouther.png",
-    "type": "Creature — ",
+    "type": "Creature — Mouthchurn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5038,7 +5038,7 @@
     "subtitle": "Abyssal Cleave",
     "level": "1",
     "image": "/images/card-images/arts/glabrezu.png",
-    "type": "Creature — ",
+    "type": "Creature — Glabrethorn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5108,7 +5108,7 @@
     "subtitle": "Mire Headbutt",
     "level": "1",
     "image": "/images/card-images/arts/goat.png",
-    "type": "Creature — ",
+    "type": "Creature — Goathoof",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5178,7 +5178,7 @@
     "subtitle": "Cavern Bash",
     "level": "1",
     "image": "/images/card-images/arts/goblin.png",
-    "type": "Creature — ",
+    "type": "Creature — Goblinscar",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5248,7 +5248,7 @@
     "subtitle": "Gilded Ember",
     "level": "1",
     "image": "/images/card-images/arts/gold_dragon_wyrmling_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Goldbreath",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5318,7 +5318,7 @@
     "subtitle": "Petrifying Smirk",
     "level": "1",
     "image": "/images/card-images/arts/gorgon.png",
-    "type": "Creature — ",
+    "type": "Creature — Gorgonstone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5388,7 +5388,7 @@
     "subtitle": "Noxious Breath",
     "level": "1",
     "image": "/images/card-images/arts/green_dragon_wyrmling.png",
-    "type": "Creature — ",
+    "type": "Creature — Greentide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5458,7 +5458,7 @@
     "subtitle": "Bogwater Curse",
     "level": "1",
     "image": "/images/card-images/arts/green_hag.png",
-    "type": "Creature — ",
+    "type": "Creature — Hagroot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5528,7 +5528,7 @@
     "subtitle": "Somber Descent",
     "level": "1",
     "image": "/images/card-images/arts/griffon.png",
-    "type": "Creature — ",
+    "type": "Creature — Griffonflight",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5598,7 +5598,7 @@
     "subtitle": "Halberd Hold",
     "level": "1",
     "image": "/images/card-images/arts/guard_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Shieldward",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5668,7 +5668,7 @@
     "subtitle": "Molten Cleave",
     "level": "1",
     "image": "/images/card-images/arts/half_red_dragon_veteran_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Dragonfist",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5738,7 +5738,7 @@
     "subtitle": "Brimstone Maw",
     "level": "1",
     "image": "/images/card-images/arts/hell_hound.png",
-    "type": "Creature — ",
+    "type": "Creature — Hellfang",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5808,7 +5808,7 @@
     "subtitle": "Hillcrest Crush",
     "level": "1",
     "image": "/images/card-images/arts/hill_giant.png",
-    "type": "Creature — ",
+    "type": "Creature — Hillstone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5878,7 +5878,7 @@
     "subtitle": "Jagged Cleave",
     "level": "1",
     "image": "/images/card-images/arts/hobgoblin.png",
-    "type": "Creature — ",
+    "type": "Creature — Hobnail",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5948,7 +5948,7 @@
     "subtitle": "Vile Synthesis",
     "level": "1",
     "image": "/images/card-images/arts/homunculus.png",
-    "type": "Creature — ",
+    "type": "Creature — Manikin",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6018,7 +6018,7 @@
     "subtitle": "Sevenfold Rage",
     "level": "1",
     "image": "/images/card-images/arts/hydra.png",
-    "type": "Creature — ",
+    "type": "Creature — Hydrablood",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6088,7 +6088,7 @@
     "subtitle": "Glacial Rend",
     "level": "1",
     "image": "/images/card-images/arts/ice_devil.png",
-    "type": "Creature — ",
+    "type": "Creature — Icechill",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6158,7 +6158,7 @@
     "subtitle": "Forlorn Blade",
     "level": "1",
     "image": "/images/card-images/arts/knight_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Kingsblade",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6228,7 +6228,7 @@
     "subtitle": "Tunnel Shiv",
     "level": "1",
     "image": "/images/card-images/arts/kobold.png",
-    "type": "Creature — ",
+    "type": "Creature — Koboldclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6298,7 +6298,7 @@
     "subtitle": "Blighted Dominion",
     "level": "1",
     "image": "/images/card-images/arts/lich_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Lichbone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6368,7 +6368,7 @@
     "subtitle": "Mire Crusher",
     "level": "1",
     "image": "/images/card-images/arts/lizardfolk_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Lizardhide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6438,7 +6438,7 @@
     "subtitle": "Molten Drool",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephit.png",
-    "type": "Creature — ",
+    "type": "Creature — Magmaborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6508,7 +6508,7 @@
     "subtitle": "Ancient Trample",
     "level": "1",
     "image": "/images/card-images/arts/mammoth.png",
-    "type": "Creature — ",
+    "type": "Creature — Tuskwall",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6578,7 +6578,7 @@
     "subtitle": "Sixfold Reckoning",
     "level": "1",
     "image": "/images/card-images/arts/marilith_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Serpentstorm",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6648,7 +6648,7 @@
     "subtitle": "Mournful Vigil",
     "level": "1",
     "image": "/images/card-images/arts/mastiff.png",
-    "type": "Creature — ",
+    "type": "Creature — Guardhound",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6718,7 +6718,7 @@
     "subtitle": "Sorrowful Gaze",
     "level": "1",
     "image": "/images/card-images/arts/medusa.png",
-    "type": "Creature — ",
+    "type": "Creature — Snakesnare",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6788,7 +6788,7 @@
     "subtitle": "Sorrowful Depths",
     "level": "1",
     "image": "/images/card-images/arts/merrow.png",
-    "type": "Creature — ",
+    "type": "Creature — Seadeath",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6858,7 +6858,7 @@
     "subtitle": "Gilded Lure",
     "level": "1",
     "image": "/images/card-images/arts/mimic_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Chesttrap",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6928,7 +6928,7 @@
     "subtitle": "Labyrinth Crush",
     "level": "1",
     "image": "/images/card-images/arts/minotaur.png",
-    "type": "Creature — ",
+    "type": "Creature — Mazebull",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6998,7 +6998,7 @@
     "subtitle": "Hollow Cleave",
     "level": "1",
     "image": "/images/card-images/arts/minotaur_skeleton.png",
-    "type": "Creature — ",
+    "type": "Creature — Minobone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7068,7 +7068,7 @@
     "subtitle": "Tomb Grasp",
     "level": "1",
     "image": "/images/card-images/arts/mummy.png",
-    "type": "Creature — ",
+    "type": "Creature — Wrapmold",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7138,7 +7138,7 @@
     "subtitle": "Eternal Decree",
     "level": "1",
     "image": "/images/card-images/arts/mummy_lord.png",
-    "type": "Creature — ",
+    "type": "Creature — Wraplord",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7208,7 +7208,7 @@
     "subtitle": "Abyssal Melancholy",
     "level": "1",
     "image": "/images/card-images/arts/nalfeshnee_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Fleshmaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7278,7 +7278,7 @@
     "subtitle": "Iron Tusk Charge",
     "level": "1",
     "image": "/images/card-images/arts/orc.png",
-    "type": "Creature — ",
+    "type": "Creature — Bloodfist",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7348,7 +7348,7 @@
     "subtitle": "Ethereal Shift",
     "level": "1",
     "image": "/images/card-images/arts/phase_spider.png",
-    "type": "Creature — ",
+    "type": "Creature — Shimmershift",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7418,7 +7418,7 @@
     "subtitle": "Celestial Grasp",
     "level": "1",
     "image": "/images/card-images/arts/planetar_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Lightbringer",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7488,7 +7488,7 @@
     "subtitle": "Dripping Malice",
     "level": "1",
     "image": "/images/card-images/arts/poisonous_snake.png",
-    "type": "Creature — ",
+    "type": "Creature — Toxinfang",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7558,7 +7558,7 @@
     "subtitle": "Gutter Shakedown",
     "level": "1",
     "image": "/images/card-images/arts/rat.png",
-    "type": "Creature — ",
+    "type": "Creature — Filthclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7628,7 +7628,7 @@
     "subtitle": "Bitter Bite",
     "level": "1",
     "image": "/images/card-images/arts/reef_shark.png",
-    "type": "Creature — ",
+    "type": "Creature — Tidejaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7698,7 +7698,7 @@
     "subtitle": "Chilling Roar",
     "level": "1",
     "image": "/images/card-images/arts/remorhaz.png",
-    "type": "Creature — ",
+    "type": "Creature — Magmaburn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7768,7 +7768,7 @@
     "subtitle": "Mystic Trot",
     "level": "1",
     "image": "/images/card-images/arts/riding_horse_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Battlestride",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7838,7 +7838,7 @@
     "subtitle": "Tearing Water Orbs",
     "level": "1",
     "image": "/images/card-images/arts/roper.png",
-    "type": "Creature — ",
+    "type": "Creature — Stonegrip",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7908,7 +7908,7 @@
     "subtitle": "Crying Grab",
     "level": "1",
     "image": "/images/card-images/arts/rug_of_smothering.png",
-    "type": "Creature — ",
+    "type": "Creature — Deathweave",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7978,7 +7978,7 @@
     "subtitle": "Jagged Maw",
     "level": "1",
     "image": "/images/card-images/arts/sahuagin.png",
-    "type": "Creature — ",
+    "type": "Creature — Coralspawn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8048,7 +8048,7 @@
     "subtitle": "Poison Sting",
     "level": "1",
     "image": "/images/card-images/arts/scorpion.png",
-    "type": "Creature — ",
+    "type": "Creature — Venomsting",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8118,7 +8118,7 @@
     "subtitle": "Tide of Woe",
     "level": "1",
     "image": "/images/card-images/arts/sea_horse_4.png",
-    "type": "Creature — ",
+    "type": "Creature — Seastrand",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8188,7 +8188,7 @@
     "subtitle": "Spectral Lament",
     "level": "1",
     "image": "/images/card-images/arts/shadow.png",
-    "type": "Creature — ",
+    "type": "Creature — Nightshade",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8258,7 +8258,7 @@
     "subtitle": "Mire Strangler",
     "level": "1",
     "image": "/images/card-images/arts/shambling_mound.png",
-    "type": "Creature — ",
+    "type": "Creature — Bogrot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8459,7 +8459,7 @@
   },
   {
     "name": "Ape",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Seismic Stomp",
     "level": "1",
     "image": "/images/card-images/arts/ape.png",
     "type": "Creature — Zhathik",
@@ -8528,7 +8528,7 @@
   },
   {
     "name": "Apex Ape",
-    "subtitle": "",
+    "subtitle": "Seismic Slam",
     "level": "1",
     "image": "/images/card-images/arts/apex_ape.png",
     "type": "",
@@ -8578,7 +8578,7 @@
   },
   {
     "name": "Archangel",
-    "subtitle": "",
+    "subtitle": "Purifying Flare",
     "level": "1",
     "image": "/images/card-images/arts/archangel.png",
     "type": "Creature — Flarefall",
@@ -8628,7 +8628,7 @@
   },
   {
     "name": "Archmage",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Arcane Echo",
     "level": "1",
     "image": "/images/card-images/arts/archmage.png",
     "type": "Creature — Aeromancy",
@@ -8697,7 +8697,7 @@
   },
   {
     "name": "Assassin",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Moonlit Strike",
     "level": "1",
     "image": "/images/card-images/arts/assassin.png",
     "type": "Creature — Silentium",
@@ -8766,7 +8766,7 @@
   },
   {
     "name": "Badass Skag",
-    "subtitle": "",
+    "subtitle": "Corrosive Barrage",
     "level": "1",
     "image": "/images/card-images/arts/badass_skag.png",
     "type": "Creature — Khaosbite",
@@ -8816,7 +8816,7 @@
   },
   {
     "name": "Basilisk",
-    "subtitle": "",
+    "subtitle": "Stone Gaze",
     "level": "1",
     "image": "/images/card-images/arts/basilisk.png",
     "type": "Creature — Khthonix",
@@ -9076,7 +9076,7 @@
   },
   {
     "name": "Bloudraad, Spawn of Kek",
-    "subtitle": "",
+    "subtitle": "Reality Fracture",
     "level": "1",
     "image": "/images/card-images/arts/bloudraad_spawn_of_kek.png",
     "type": "Creature — Fractureborn",
@@ -9126,7 +9126,7 @@
   },
   {
     "name": "Bulette",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Primordial Eruption",
     "level": "1",
     "image": "/images/card-images/arts/bulette.png",
     "type": "Creature — Terragrim",
@@ -9265,7 +9265,7 @@
   },
   {
     "name": "Capricorn Callsong",
-    "subtitle": "",
+    "subtitle": "Stone Shell",
     "level": "1",
     "image": "/images/card-images/arts/capricorn_callsong.png",
     "type": "Creature — Maledicta",
@@ -9315,7 +9315,7 @@
   },
   {
     "name": "Centaur",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Storm's Descent",
     "level": "1",
     "image": "/images/card-images/arts/centaur.png",
     "type": "Creature — Zhathik",
@@ -9384,7 +9384,7 @@
   },
   {
     "name": "Chort",
-    "subtitle": "",
+    "subtitle": "Ashen Pact",
     "level": "1",
     "image": "/images/card-images/arts/chort.png",
     "type": "Creature — Kraxor",
@@ -9434,7 +9434,7 @@
   },
   {
     "name": "Clay golem",
-    "subtitle": "",
+    "subtitle": "Earthen Collapse",
     "level": "1",
     "image": "/images/card-images/arts/clay_golem.png",
     "type": "Creature — Fissura",
@@ -9484,7 +9484,7 @@
   },
   {
     "name": "Commoner",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Wind Whispers",
     "level": "1",
     "image": "/images/card-images/arts/commoner.png",
     "type": "Creature — Silvaneer",
@@ -9553,7 +9553,7 @@
   },
   {
     "name": "Crystal Golem",
-    "subtitle": "",
+    "subtitle": "Crystalline Eruption",
     "level": "1",
     "image": "/images/card-images/arts/crystal_golem.png",
     "type": "Creature — Gelrakk",
@@ -9603,7 +9603,7 @@
   },
   {
     "name": "Crystal Phoenix",
-    "subtitle": "",
+    "subtitle": "Crystalline Flare",
     "level": "1",
     "image": "/images/card-images/arts/crystal_phoenix.png",
     "type": "Creature — Aethonix",
@@ -9653,7 +9653,7 @@
   },
   {
     "name": "Crystalline Cosmic Bind",
-    "subtitle": "",
+    "subtitle": "Fracture Reality",
     "level": "1",
     "image": "/images/card-images/arts/crystalline_cosmic_bind.png",
     "type": "Creature — Fractura",
@@ -9703,7 +9703,7 @@
   },
   {
     "name": "Cyborg Hound",
-    "subtitle": "",
+    "subtitle": "Steel Snare",
     "level": "1",
     "image": "/images/card-images/arts/cyborg_hound.png",
     "type": "Creature — Cybrox",
@@ -9756,7 +9756,7 @@
     "subtitle": "Gloom Ward",
     "level": "1",
     "image": "/images/card-images/arts/deep_gnome__svirfneblin_.png",
-    "type": "Creature — ",
+    "type": "Creature — Earthkin",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -9823,7 +9823,7 @@
   },
   {
     "name": "Demiurge",
-    "subtitle": "",
+    "subtitle": "Chaotic Edict",
     "level": "1",
     "image": "/images/card-images/arts/demiurge.png",
     "type": "Creature — Khaosborn",
@@ -9873,7 +9873,7 @@
   },
   {
     "name": "Deva",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Cosmic Lament",
     "level": "1",
     "image": "/images/card-images/arts/deva.png",
     "type": "Creature — Khaosora",
@@ -9942,7 +9942,7 @@
   },
   {
     "name": "Dire Wolf",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Emerald Howl",
     "level": "1",
     "image": "/images/card-images/arts/dire_wolf.png",
     "type": "Creature — Tenebrous",
@@ -10011,7 +10011,7 @@
   },
   {
     "name": "Doppelganger",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Mimic's Embrace",
     "level": "1",
     "image": "/images/card-images/arts/doppelganger.png",
     "type": "Creature — Xarathys",
@@ -10080,7 +10080,7 @@
   },
   {
     "name": "Drowners",
-    "subtitle": "",
+    "subtitle": "Abyssal Grasp",
     "level": "1",
     "image": "/images/card-images/arts/drowners.png",
     "type": "Creature — Nyxoria",
@@ -10130,7 +10130,7 @@
   },
   {
     "name": "Earth Elemental",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Emerald Eruption",
     "level": "1",
     "image": "/images/card-images/arts/earth_elemental.png",
     "type": "Creature — Vemnixx",
@@ -10269,7 +10269,7 @@
   },
   {
     "name": "Ettercap",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Venomous Embrace",
     "level": "1",
     "image": "/images/card-images/arts/ettercap.png",
     "type": "Creature — Khthonia",
@@ -10338,7 +10338,7 @@
   },
   {
     "name": "Fairy Fountain",
-    "subtitle": "",
+    "subtitle": "Eternal Bloom",
     "level": "★",
     "image": "/images/card-images/arts/fairy fountain.png",
     "type": "",
@@ -10374,7 +10374,7 @@
   },
   {
     "name": "Feelsix",
-    "subtitle": "",
+    "subtitle": "Ashen Return",
     "level": "3",
     "image": "undefined",
     "type": "",
@@ -10494,7 +10494,7 @@
   },
   {
     "name": "Flesh Golem",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Stitched Horror",
     "level": "1",
     "image": "/images/card-images/arts/flesh_golem.png",
     "type": "Creature — Malumbra",
@@ -10563,7 +10563,7 @@
   },
   {
     "name": "Flying Sword",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Meme Prophecy",
     "level": "1",
     "image": "/images/card-images/arts/flying_sword.png",
     "type": "Creature — Fluxxle",
@@ -10912,10 +10912,10 @@
   },
   {
     "name": "Frost Giant",
-    "subtitle": "",
+    "subtitle": "Glacial Rupture",
     "level": "1",
     "image": "/images/card-images/arts/frost_giant.png",
-    "type": "Creature — ",
+    "type": "Creature — Icecrush",
     "stats": {
       "attack": "6",
       "defense": "4"
@@ -10962,7 +10962,7 @@
   },
   {
     "name": "Frost Thrall",
-    "subtitle": "",
+    "subtitle": "Icy Detonation",
     "level": "1",
     "image": "/images/card-images/arts/frost_thrall.png",
     "type": "Creature — Frostbite",
@@ -11082,7 +11082,7 @@
   },
   {
     "name": "Giant Elk",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Murk Antlers",
     "level": "1",
     "image": "/images/card-images/arts/giant_elk.png",
     "type": "Creature — Mireborn",
@@ -11151,7 +11151,7 @@
   },
   {
     "name": "Giant Hyena",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Spiritual Howl",
     "level": "1",
     "image": "/images/card-images/arts/giant_hyena.png",
     "type": "Creature — Echoluxe",
@@ -11220,7 +11220,7 @@
   },
   {
     "name": "Giant Rat  Diseased",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Plague's Advance",
     "level": "1",
     "image": "/images/card-images/arts/giant_rat__diseased_.png",
     "type": "Creature — Malaise",
@@ -11289,7 +11289,7 @@
   },
   {
     "name": "Giant Scorpion",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Venomous Gaze",
     "level": "1",
     "image": "/images/card-images/arts/giant_scorpion.png",
     "type": "Creature — Desoloxa",
@@ -11358,7 +11358,7 @@
   },
   {
     "name": "Giant Spider",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Omen's Crawl",
     "level": "1",
     "image": "/images/card-images/arts/giant_spider.png",
     "type": "Creature — Duskweaver",
@@ -11427,7 +11427,7 @@
   },
   {
     "name": "Giant Vulture",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Carrion Plunge",
     "level": "1",
     "image": "/images/card-images/arts/giant_vulture.png",
     "type": "Creature — Kaelos",
@@ -11496,7 +11496,7 @@
   },
   {
     "name": "Golden Teacher",
-    "subtitle": "",
+    "subtitle": "Mystic Guidance",
     "level": "1",
     "image": "/images/card-images/arts/golden_teacher.png",
     "type": "Creature — Sporium",
@@ -11616,7 +11616,7 @@
   },
   {
     "name": "Griffin",
-    "subtitle": "",
+    "subtitle": "Sunstrike Descent",
     "level": "1",
     "image": "/images/card-images/arts/griffin.png",
     "type": "Creature — Aerius",
@@ -11666,7 +11666,7 @@
   },
   {
     "name": "Guardian Naga",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Runic Command",
     "level": "1",
     "image": "/images/card-images/arts/guardian_naga.png",
     "type": "Creature — Khaosborn",
@@ -11735,7 +11735,7 @@
   },
   {
     "name": "Gynosphinx",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Temporal Echo",
     "level": "1",
     "image": "/images/card-images/arts/gynosphinx.png",
     "type": "Creature — Chronomage",
@@ -11874,7 +11874,7 @@
   },
   {
     "name": "Hallucinogenic Hallelujah",
-    "subtitle": "",
+    "subtitle": "Chromatic Cascade",
     "level": "1",
     "image": "/images/card-images/arts/hallucinogenic_hallelujah.png",
     "type": "Creature — Melliscape",
@@ -11924,7 +11924,7 @@
   },
   {
     "name": "Harpy",
-    "subtitle": "",
+    "subtitle": "Bone Scatter",
     "level": "1",
     "image": "/images/card-images/arts/harpy.png",
     "type": "",
@@ -11974,7 +11974,7 @@
   },
   {
     "name": "Hemo Wizard",
-    "subtitle": "",
+    "subtitle": "Blood Pact",
     "level": "1",
     "image": "/images/card-images/arts/hemo_wizard.png",
     "type": "Creature — Vitalis",
@@ -12024,7 +12024,7 @@
   },
   {
     "name": "Hyena",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Murky Gaze",
     "level": "1",
     "image": "/images/card-images/arts/hyena.png",
     "type": "Creature — Tenebrous",
@@ -12093,7 +12093,7 @@
   },
   {
     "name": "Imp",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Ember Trick",
     "level": "1",
     "image": "/images/card-images/arts/imp.png",
     "type": "Creature — Pyropex",
@@ -12302,7 +12302,7 @@
   },
   {
     "name": "Khazix",
-    "subtitle": "",
+    "subtitle": "Adaptive Evolution",
     "level": "1",
     "image": "/images/card-images/arts/khazix.png",
     "type": "Creature — Khronokill",
@@ -12422,7 +12422,7 @@
   },
   {
     "name": "LSD Tollmaster",
-    "subtitle": "",
+    "subtitle": "Fractal Tithe",
     "level": "1",
     "image": "/images/card-images/arts/lsd_tollmaster.png",
     "type": "",
@@ -12472,7 +12472,7 @@
   },
   {
     "name": "Lemure",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Fetid Grasp",
     "level": "1",
     "image": "/images/card-images/arts/lemure.png",
     "type": "Creature— Swampborn",
@@ -12541,7 +12541,7 @@
   },
   {
     "name": "Lightning Phoenix",
-    "subtitle": "",
+    "subtitle": "Blazing Renewal",
     "level": "1",
     "image": "/images/card-images/arts/lightning_phoenix.png",
     "type": "Creature— Skyfire",
@@ -12661,7 +12661,7 @@
   },
   {
     "name": "Lion",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Swamp Terror",
     "level": "1",
     "image": "/images/card-images/arts/lion.png",
     "type": "Creature — Skyfire",
@@ -12730,7 +12730,7 @@
   },
   {
     "name": "Lionsnake Demiurge",
-    "subtitle": "",
+    "subtitle": "Radiant Toxicity",
     "level": "1",
     "image": "/images/card-images/arts/lionsnake_demiurge.png",
     "type": "Creature— Venomscale",
@@ -12780,7 +12780,7 @@
   },
   {
     "name": "Lizard",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Swamp's Lament",
     "level": "1",
     "image": "/images/card-images/arts/lizard.png",
     "type": "Creature— Bayoucrawl",
@@ -12849,7 +12849,7 @@
   },
   {
     "name": "Lunar Wizard",
-    "subtitle": "",
+    "subtitle": "Moonfall Crush",
     "level": "1",
     "image": "/images/card-images/arts/lunar_wizard.png",
     "type": "Creature— Moontide",
@@ -12899,7 +12899,7 @@
   },
   {
     "name": "Maelstrom",
-    "subtitle": "",
+    "subtitle": "Fractured Echo",
     "level": "1",
     "image": "/images/card-images/arts/maelstrom.png",
     "type": "Creature — Venomous",
@@ -12949,7 +12949,7 @@
   },
   {
     "name": "Magma Mephite",
-    "subtitle": "",
+    "subtitle": "Searing Shards",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephite.png",
     "type": "Creature— Moltenshard",
@@ -12999,7 +12999,7 @@
   },
   {
     "name": "Maniacal Martian",
-    "subtitle": "",
+    "subtitle": "Oblivion Ray",
     "level": "1",
     "image": "/images/card-images/arts/maniacal_martian.png",
     "type": "Creature— Disintegrator",
@@ -13049,7 +13049,7 @@
   },
   {
     "name": "Mastodon",
-    "subtitle": "",
+    "subtitle": "Seismic Stomp",
     "level": "1",
     "image": "/images/card-images/arts/mastodon.png",
     "type": "Creature— Thunderstep",
@@ -13099,7 +13099,7 @@
   },
   {
     "name": "Mecha Wyvern",
-    "subtitle": "",
+    "subtitle": "Alloy Inferno",
     "level": "1",
     "image": "/images/card-images/arts/mecha_wyvern.png",
     "type": "Creature — Inferno",
@@ -13149,7 +13149,7 @@
   },
   {
     "name": "Merfolk",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Abyssal Tears",
     "level": "1",
     "image": "/images/card-images/arts/merfolk.png",
     "type": "Creature— Abyssworn",
@@ -13218,7 +13218,7 @@
   },
   {
     "name": "Molag Bal",
-    "subtitle": "",
+    "subtitle": "Dark Dominion",
     "level": "1",
     "image": "/images/card-images/arts/molag_bal.png",
     "type": "Creature— Dominator",
@@ -13268,7 +13268,7 @@
   },
   {
     "name": "Moondust Fiend",
-    "subtitle": "",
+    "subtitle": "Dust to Dust",
     "level": "1",
     "image": "/images/card-images/arts/moondust_fiend.png",
     "type": "Creature— Dreamdust",
@@ -13388,7 +13388,7 @@
   },
   {
     "name": "Mothrakk",
-    "subtitle": "",
+    "subtitle": "Lunar Dust Dream",
     "level": "1",
     "image": "/images/card-images/arts/mothrakk.png",
     "type": "Creature— Dustwing",
@@ -13508,7 +13508,7 @@
   },
   {
     "name": "Night Hag",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Lunar Lament",
     "level": "1",
     "image": "/images/card-images/arts/night_hag.png",
     "type": "Creature— Abysswalker",
@@ -13647,7 +13647,7 @@
   },
   {
     "name": "Noble",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Crimson Reign",
     "level": "1",
     "image": "/images/card-images/arts/noble.png",
     "type": "Creature— Sorrowking",
@@ -13716,7 +13716,7 @@
   },
   {
     "name": "Ochre Jelly",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Golden Despair",
     "level": "1",
     "image": "/images/card-images/arts/ochre_jelly.png",
     "type": "Creature— Cavemelt",
@@ -13785,7 +13785,7 @@
   },
   {
     "name": "Octopus",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Abyssal Gaze",
     "level": "1",
     "image": "/images/card-images/arts/octopus.png",
     "type": "Creature— Leviathan",
@@ -13854,7 +13854,7 @@
   },
   {
     "name": "Oni",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Stormforged Wrath",
     "level": "1",
     "image": "/images/card-images/arts/oni.png",
     "type": "Creature — Stormforged",
@@ -13993,7 +13993,7 @@
   },
   {
     "name": "Pepelini",
-    "subtitle": "",
+    "subtitle": "Dream Weave",
     "level": "1",
     "image": "/images/card-images/arts/pepelini.png",
     "type": "Creature— Dreamweave",
@@ -14113,7 +14113,7 @@
   },
   {
     "name": "Phoenix",
-    "subtitle": "",
+    "subtitle": "Ashen Rebirth",
     "level": "3",
     "image": "/images/card-images/arts/phoenix.png",
     "type": "",
@@ -14149,7 +14149,7 @@
   },
   {
     "name": "Pit Fiend",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Volcanic Eruption",
     "level": "1",
     "image": "/images/card-images/arts/pit_fiend.png",
     "type": "Creature— Volcborn",
@@ -14288,7 +14288,7 @@
   },
   {
     "name": "Rakshasa",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Templefire Touch",
     "level": "1",
     "image": "/images/card-images/arts/rakshasa.png",
     "type": "Creature— Templeborn",
@@ -14427,7 +14427,7 @@
   },
   {
     "name": "Raven",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Bayou's Call",
     "level": "1",
     "image": "/images/card-images/arts/raven.png",
     "type": "Creature— Bayouomen",
@@ -14496,7 +14496,7 @@
   },
   {
     "name": "Reality Splitter",
-    "subtitle": "",
+    "subtitle": "Echo Fracture",
     "level": "1",
     "image": "/images/card-images/arts/reality_splitter.png",
     "type": "Creature— Temporalrift",
@@ -14546,7 +14546,7 @@
   },
   {
     "name": "Roko the Basilisk",
-    "subtitle": "",
+    "subtitle": "Immutable Gaze",
     "level": "1",
     "image": "/images/card-images/arts/roko_the_basilisk.png",
     "type": "Creature — Immutable",
@@ -14596,7 +14596,7 @@
   },
   {
     "name": "Runic Biplane Pilot",
-    "subtitle": "",
+    "subtitle": "Arcane Barrage",
     "level": "1",
     "image": "/images/card-images/arts/runic_biplane_pilot.png",
     "type": "Creature— Skyrune",
@@ -14646,7 +14646,7 @@
   },
   {
     "name": "Runic Dragon",
-    "subtitle": "",
+    "subtitle": "Runic Eruption",
     "level": "1",
     "image": "/images/card-images/arts/runic_dragon.png",
     "type": "Creature— Runescale",
@@ -14696,7 +14696,7 @@
   },
   {
     "name": "Runic Wizard",
-    "subtitle": "",
+    "subtitle": "Runic Detonation",
     "level": "1",
     "image": "/images/card-images/arts/runic_wizard.png",
     "type": "Creature— Runewraith",
@@ -14746,7 +14746,7 @@
   },
   {
     "name": "Saber Toothed Tiger",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Marsh Ambush",
     "level": "1",
     "image": "/images/card-images/arts/saber_toothed_tiger.png",
     "type": "Creature— Swampstalker",
@@ -14815,7 +14815,7 @@
   },
   {
     "name": "Sacred Geometric Seal",
-    "subtitle": "",
+    "subtitle": "Harmonic Convergence",
     "level": "1",
     "image": "/images/card-images/arts/sacred_geometric_seal.png",
     "type": "Creature— Bindweave",
@@ -14865,7 +14865,7 @@
   },
   {
     "name": "Salamander",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Bayou's Lament",
     "level": "1",
     "image": "/images/card-images/arts/salamander.png",
     "type": "Creature— Bayouscale",
@@ -14934,7 +14934,7 @@
   },
   {
     "name": "Sandshrew",
-    "subtitle": "",
+    "subtitle": "Desert Grave",
     "level": "1",
     "image": "/images/card-images/arts/sandshrew.png",
     "type": "Creature— Sandtomb",
@@ -15054,7 +15054,7 @@
   },
   {
     "name": "Sea Hag",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Abyssal Gaze",
     "level": "1",
     "image": "/images/card-images/arts/sea_hag.png",
     "type": "Creature— Stormcaller",
@@ -15123,7 +15123,7 @@
   },
   {
     "name": "Shadow Assassin",
-    "subtitle": "",
+    "subtitle": "Veiled Strike",
     "level": "1",
     "image": "/images/card-images/arts/shadow_assassin.png",
     "type": "Creature— Silentblade",
@@ -15173,7 +15173,7 @@
   },
   {
     "name": "Shadow Dragon",
-    "subtitle": "",
+    "subtitle": "Abyssal Eruption",
     "level": "1",
     "image": "/images/card-images/arts/shadow_dragon.png",
     "type": "Creature— Heartshatter",
@@ -15223,7 +15223,7 @@
   },
   {
     "name": "Shai-Hulud",
-    "subtitle": "",
+    "subtitle": "Sand Devour",
     "level": "1",
     "image": "/images/card-images/arts/shai_hulud.png",
     "type": "Creature— Sandswallow",
@@ -15273,7 +15273,7 @@
   },
   {
     "name": "Sheogorath",
-    "subtitle": "",
+    "subtitle": "Curdled Reality",
     "level": "1",
     "image": "/images/card-images/arts/sheogorath.png",
     "type": "Creature— Cheesemancer",
@@ -15323,7 +15323,7 @@
   },
   {
     "name": "Shinigami",
-    "subtitle": "",
+    "subtitle": "Reaper's Decree",
     "level": "1",
     "image": "/images/card-images/arts/shinigami.png",
     "type": "Creature— Soulscythe",
@@ -15373,7 +15373,7 @@
   },
   {
     "name": "Shrimp Baby",
-    "subtitle": "",
+    "subtitle": "Brine Bubble",
     "level": "1",
     "image": "/images/card-images/arts/shrimp_baby.png",
     "type": "Creature— Brineblast",
@@ -15426,7 +15426,7 @@
     "subtitle": "Frigid Sigh",
     "level": "1",
     "image": "/images/card-images/arts/silver_dragon_wyrmling.png",
-    "type": "Creature — ",
+    "type": "Creature — Glimmerscale",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15495,7 +15495,7 @@
     "subtitle": "Deadened Gaze",
     "level": "1",
     "image": "/images/card-images/arts/skeleton_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Bonelord",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15561,7 +15561,7 @@
   },
   {
     "name": "Skeleton Archer",
-    "subtitle": "",
+    "subtitle": "Bone-Piercing Volley",
     "level": "1",
     "image": "/images/card-images/arts/skeleton_archer.png",
     "type": "Creature — Bone-Piercing",
@@ -15611,7 +15611,7 @@
   },
   {
     "name": "Skeleton Warhorse",
-    "subtitle": "",
+    "subtitle": "Bone-Shaking Charge",
     "level": "1",
     "image": "/images/card-images/arts/skeleton_warhorse.png",
     "type": "Creature — Bone-Shaking",
@@ -15661,7 +15661,7 @@
   },
   {
     "name": "Soh",
-    "subtitle": "",
+    "subtitle": "Lucky Draw",
     "level": "★",
     "image": "/images/card-images/arts/soh.png",
     "type": "",
@@ -15697,7 +15697,7 @@
   },
   {
     "name": "Sol Eater",
-    "subtitle": "",
+    "subtitle": "Extinction Burst",
     "level": "1",
     "image": "/images/card-images/arts/sol_eater.png",
     "type": "Creature— Flaredevour",
@@ -15747,7 +15747,7 @@
   },
   {
     "name": "Soul Reaper",
-    "subtitle": "",
+    "subtitle": "Reaping Swing",
     "level": "1",
     "image": "/images/card-images/arts/soul_reaper.png",
     "type": "Creature— Deathscythe",
@@ -15800,7 +15800,7 @@
     "subtitle": "Hidden Camera",
     "level": "1",
     "image": "/images/card-images/arts/spy.png",
-    "type": "Creature — ",
+    "type": "Creature — Shadowstrike",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15866,7 +15866,7 @@
   },
   {
     "name": "Steam Mephit",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Meme Stream",
     "level": "1",
     "image": "/images/card-images/arts/steam_mephit.png",
     "type": "Creature— Clockborn",
@@ -15938,7 +15938,7 @@
     "subtitle": "Mountain's Grasp",
     "level": "1",
     "image": "/images/card-images/arts/stone_giant.png",
-    "type": "Creature — ",
+    "type": "Creature — Stonefist",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16074,7 +16074,7 @@
   },
   {
     "name": "Stone Thrall",
-    "subtitle": "",
+    "subtitle": "Seismic Rupture",
     "level": "1",
     "image": "/images/card-images/arts/stone_thrall.png",
     "type": "Creature— Groundshatter",
@@ -16127,7 +16127,7 @@
     "subtitle": "Thunderous Club",
     "level": "1",
     "image": "/images/card-images/arts/storm_giant.png",
-    "type": "Creature — ",
+    "type": "Creature — Stormbringer",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16193,7 +16193,7 @@
   },
   {
     "name": "Striga",
-    "subtitle": "",
+    "subtitle": "Blood Harvest",
     "level": "1",
     "image": "/images/card-images/arts/striga.png",
     "type": "",
@@ -16243,7 +16243,7 @@
   },
   {
     "name": "Succubus Incubus",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Shadowed Bargain",
     "level": "1",
     "image": "/images/card-images/arts/succubus_incubus.png",
     "type": "Creature— Shadowwing",
@@ -16312,7 +16312,7 @@
   },
   {
     "name": "Supernova Mecha Dragon",
-    "subtitle": "",
+    "subtitle": "Starfire Eruption",
     "level": "1",
     "image": "/images/card-images/arts/supernova_mecha_dragon.png",
     "type": "Creature— Starforge",
@@ -16365,7 +16365,7 @@
     "subtitle": "Viral Ascension",
     "level": "1",
     "image": "/images/card-images/arts/swarm_of_beetles_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Beetlegrind",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16434,7 +16434,7 @@
     "subtitle": "Venomous Cascade",
     "level": "1",
     "image": "/images/card-images/arts/swarm_of_poisonous_snakes.png",
-    "type": "Creature — ",
+    "type": "Creature — Venomcoil",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16503,7 +16503,7 @@
     "subtitle": "End Times",
     "level": "1",
     "image": "/images/card-images/arts/tarrasque.png",
-    "type": "Creature — ",
+    "type": "Creature — Doomwalker",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16569,7 +16569,7 @@
   },
   {
     "name": "Temple of the Demiurge",
-    "subtitle": "",
+    "subtitle": "Eternal Binding",
     "level": "1",
     "image": "/images/card-images/arts/temple_of_the_demiurge.png",
     "type": "Creature — Soul-Sealing",
@@ -16622,7 +16622,7 @@
     "subtitle": "Vine Lash",
     "level": "1",
     "image": "/images/card-images/arts/tiger_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Stripeslash",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16761,7 +16761,7 @@
     "subtitle": "Crushing Blow",
     "level": "1",
     "image": "/images/card-images/arts/tribal_warrior.png",
-    "type": "Creature — ",
+    "type": "Creature — Warspear",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16897,7 +16897,7 @@
   },
   {
     "name": "Vampire",
-    "subtitle": "",
+    "subtitle": "Crimson Command",
     "level": "1",
     "image": "/images/card-images/arts/vampire.png",
     "type": "Creature— Bloodthrall",
@@ -16950,7 +16950,7 @@
     "subtitle": "Blood Barrage",
     "level": "1",
     "image": "/images/card-images/arts/vampire__bat_form.png",
-    "type": "Creature — ",
+    "type": "Creature — Bloodscream",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17019,7 +17019,7 @@
     "subtitle": "Vampiric Shift",
     "level": "1",
     "image": "/images/card-images/arts/vampire__mist_form_4.png",
-    "type": "Creature — ",
+    "type": "Creature — Mistform",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17085,7 +17085,7 @@
   },
   {
     "name": "Vampire  Vampire Form",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Blood Moon Descent",
     "level": "1",
     "image": "/images/card-images/arts/vampire__vampire_form.png",
     "type": "Creature — Abaddon",
@@ -17227,7 +17227,7 @@
     "subtitle": "Spore Infusion",
     "level": "1",
     "image": "/images/card-images/arts/violet_fungus.png",
-    "type": "Creature — ",
+    "type": "Creature — Fungusrot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17293,7 +17293,7 @@
   },
   {
     "name": "Void Assassin",
-    "subtitle": "",
+    "subtitle": "Phase Shift",
     "level": "1",
     "image": "/images/card-images/arts/void_assassin.png",
     "type": "Creature— Phaseblade",
@@ -17343,7 +17343,7 @@
   },
   {
     "name": "Void Reaper",
-    "subtitle": "",
+    "subtitle": "Void Harvest",
     "level": "1",
     "image": "/images/card-images/arts/void_reaper.png",
     "type": "Creature— Entropyx",
@@ -17393,7 +17393,7 @@
   },
   {
     "name": "Void Wizard",
-    "subtitle": "",
+    "subtitle": "Null Echo",
     "level": "1",
     "image": "/images/card-images/arts/void_wizard.png",
     "type": "Creature— Nullshatter",
@@ -17443,7 +17443,7 @@
   },
   {
     "name": "Volcatoise",
-    "subtitle": "",
+    "subtitle": "Magma Burst",
     "level": "1",
     "image": "/images/card-images/arts/volcatoise.png",
     "type": "",
@@ -17493,7 +17493,7 @@
   },
   {
     "name": "Vrock",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Despair's Descent",
     "level": "1",
     "image": "/images/card-images/arts/vrock.png",
     "type": "Creature — Malediction",
@@ -17562,7 +17562,7 @@
   },
   {
     "name": "Warhorse",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Sorrow's Charge",
     "level": "1",
     "image": "/images/card-images/arts/warhorse.png",
     "type": "Creature— Swampknight",
@@ -17631,7 +17631,7 @@
   },
   {
     "name": "Warhorse Skeleton",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Spectral Charge",
     "level": "1",
     "image": "/images/card-images/arts/warhorse_skeleton.png",
     "type": "Creature— Bonesteed",
@@ -17700,7 +17700,7 @@
   },
   {
     "name": "Water Elemental",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Abyssal Grasp",
     "level": "1",
     "image": "/images/card-images/arts/water_elemental.png",
     "type": "Creature— Tidalwoe",
@@ -17772,7 +17772,7 @@
     "subtitle": "Razor Fury",
     "level": "1",
     "image": "/images/card-images/arts/wereboar__hybrid_form_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Boarhide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17841,7 +17841,7 @@
     "subtitle": "Sewer Slash",
     "level": "1",
     "image": "/images/card-images/arts/wererat__human_form.png",
-    "type": "Creature — ",
+    "type": "Creature — Rathide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17907,7 +17907,7 @@
   },
   {
     "name": "Weretiger  Tiger Form",
-    "subtitle": "⟨Generated⟩",
+    "subtitle": "Lunar Fury",
     "level": "1",
     "image": "/images/card-images/arts/weretiger__tiger_form.png",
     "type": "Creature— Moonprowl",
@@ -17979,7 +17979,7 @@
     "subtitle": "Lunatic Frenzy",
     "level": "1",
     "image": "/images/card-images/arts/werewolf__hybrid_form_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Wolfclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18048,7 +18048,7 @@
     "subtitle": "Swamp Haunt",
     "level": "1",
     "image": "/images/card-images/arts/will_o__wisp.png",
-    "type": "Creature — ",
+    "type": "Creature — Ghostlight",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18117,7 +18117,7 @@
     "subtitle": "Glacial Tears",
     "level": "1",
     "image": "/images/card-images/arts/winter_wolf.png",
-    "type": "Creature — ",
+    "type": "Creature — Frostfang",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18183,7 +18183,7 @@
   },
   {
     "name": "Wishing Well",
-    "subtitle": "",
+    "subtitle": "Gilded Grasp",
     "level": "1",
     "image": "/images/card-images/arts/wishing_well.png",
     "type": "Creature— Gildtrap",
@@ -18233,7 +18233,7 @@
   },
   {
     "name": "Wood Elf",
-    "subtitle": "",
+    "subtitle": "Wildwood Summons",
     "level": "1",
     "image": "/images/card-images/arts/wood_elf.png",
     "type": "Creature — Gnarlsong",
@@ -18286,7 +18286,7 @@
     "subtitle": "Life Drain",
     "level": "1",
     "image": "/images/card-images/arts/wraith.png",
-    "type": "Creature — ",
+    "type": "Creature — Lifedrain",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18355,7 +18355,7 @@
     "subtitle": "Emerald Dread",
     "level": "1",
     "image": "/images/card-images/arts/wyvern.png",
-    "type": "Creature — ",
+    "type": "Creature — Venomwing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18421,7 +18421,7 @@
   },
   {
     "name": "Ya Eagle",
-    "subtitle": "",
+    "subtitle": "Aerial Recon",
     "level": "2",
     "image": "/images/card-images/arts/ya_eagle.png",
     "type": "",
@@ -18457,7 +18457,7 @@
   },
   {
     "name": "Yaldabaoth",
-    "subtitle": "",
+    "subtitle": "Cosmic Fracture",
     "level": "1",
     "image": "/images/card-images/arts/yaldabaoth.png",
     "type": "Creature — Maledicta",
@@ -18580,7 +18580,7 @@
     "subtitle": "Swamp Sigh",
     "level": "1",
     "image": "/images/card-images/arts/young_black_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Scaleshear",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18649,7 +18649,7 @@
     "subtitle": "Scale Barrier",
     "level": "1",
     "image": "/images/card-images/arts/young_brass_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Scaleshine",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18718,7 +18718,7 @@
     "subtitle": "Coiled Scales",
     "level": "1",
     "image": "/images/card-images/arts/young_copper_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Jokewrought",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18787,7 +18787,7 @@
     "subtitle": "Emerald Haze",
     "level": "1",
     "image": "/images/card-images/arts/young_green_dragon_2.png",
-    "type": "Creature — ",
+    "type": "Creature — Gloomfang",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18856,7 +18856,7 @@
     "subtitle": "Blistering Sigh",
     "level": "1",
     "image": "/images/card-images/arts/young_red_dragon_3.png",
-    "type": "Creature — ",
+    "type": "Creature — Rageforge",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18925,7 +18925,7 @@
     "subtitle": "Mire Breath",
     "level": "1",
     "image": "/images/card-images/arts/young_white_dragon.png",
-    "type": "Creature — ",
+    "type": "Creature — Icebite",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -19061,7 +19061,7 @@
   },
   {
     "name": "https://chasetheace.online/pepejackpot",
-    "subtitle": "",
+    "subtitle": "Golden Ruin",
     "level": "1",
     "image": "/images/card-images/arts/https_chasetheace_online_pepejackpot.png",
     "type": "Creature— Jackpotfall",
