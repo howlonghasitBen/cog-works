@@ -12,7 +12,7 @@ interface Props {
   onClose: () => void
 }
 
-type Tab = 'stats' | 'activity'
+type Tab = 'stats' | 'activity' | 'chart'
 
 interface ActivityEntry {
   type: 'stake' | 'unstake' | 'swap' | 'ownership'
@@ -256,7 +256,7 @@ export default function CardDetailModal({ card, onClose }: Props) {
               margin: '16px 24px 0',
               borderBottom: '1px solid #3a3d4a',
             }}>
-              {(['stats', 'activity'] as Tab[]).map(t => (
+              {(['stats', 'activity', 'chart'] as Tab[]).map(t => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -335,7 +335,7 @@ export default function CardDetailModal({ card, onClose }: Props) {
                     </span>
                   </div>
                 </div>
-              ) : (
+              ) : tab === 'activity' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {MOCK_ACTIVITY.map((entry, i) => {
                     const badge = BADGE[entry.type]
@@ -396,6 +396,92 @@ export default function CardDetailModal({ card, onClose }: Props) {
                       </div>
                     )
                   })}
+                </div>
+              ) : (
+                /* Price Chart Tab */
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  {/* Current price callout */}
+                  <div style={{
+                    textAlign: 'center', padding: '12px 0',
+                    borderBottom: '1px solid rgba(58,61,74,0.5)',
+                  }}>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
+                      Current Price
+                    </div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 22, fontWeight: 700, color: '#c8a55a' }}>
+                      {parseFloat(card.price).toFixed(4)} WAVES
+                    </div>
+                  </div>
+
+                  {/* SVG Price Chart — mock historical data based on current price */}
+                  {(() => {
+                    const currentPrice = parseFloat(card.price)
+                    // Generate 24 mock data points (24h) with random walk around current price
+                    const points: number[] = []
+                    let p = currentPrice * 0.85
+                    for (let i = 0; i < 24; i++) {
+                      p += (currentPrice - p) * 0.15 + (Math.random() - 0.45) * currentPrice * 0.08
+                      points.push(Math.max(p, 0.0001))
+                    }
+                    points.push(currentPrice) // end at current
+
+                    const W = 420
+                    const H = 180
+                    const pad = { top: 10, right: 10, bottom: 30, left: 50 }
+                    const plotW = W - pad.left - pad.right
+                    const plotH = H - pad.top - pad.bottom
+
+                    const minP = Math.min(...points) * 0.95
+                    const maxP = Math.max(...points) * 1.05
+                    const rangeP = maxP - minP || 1
+
+                    const xScale = (i: number) => pad.left + (i / (points.length - 1)) * plotW
+                    const yScale = (v: number) => pad.top + plotH - ((v - minP) / rangeP) * plotH
+
+                    const linePath = points.map((v, i) => `${i === 0 ? 'M' : 'L'}${xScale(i).toFixed(1)},${yScale(v).toFixed(1)}`).join(' ')
+                    const areaPath = linePath + ` L${xScale(points.length - 1).toFixed(1)},${(pad.top + plotH).toFixed(1)} L${xScale(0).toFixed(1)},${(pad.top + plotH).toFixed(1)} Z`
+
+                    // Y-axis labels (3 ticks)
+                    const yTicks = [minP, (minP + maxP) / 2, maxP]
+
+                    return (
+                      <svg width={W} height={H} style={{ width: '100%', height: 'auto' }} viewBox={`0 0 ${W} ${H}`}>
+                        {/* Grid lines */}
+                        {yTicks.map((v, i) => (
+                          <g key={i}>
+                            <line x1={pad.left} x2={W - pad.right} y1={yScale(v)} y2={yScale(v)} stroke="#2a2d3a" strokeWidth={1} />
+                            <text x={pad.left - 6} y={yScale(v) + 3} textAnchor="end" fill="#6b7280" fontSize={9} fontFamily="DM Mono, monospace">
+                              {v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v.toFixed(2)}
+                            </text>
+                          </g>
+                        ))}
+                        {/* X-axis labels */}
+                        <text x={xScale(0)} y={H - 6} textAnchor="start" fill="#6b7280" fontSize={9} fontFamily="DM Mono, monospace">24h ago</text>
+                        <text x={xScale(12)} y={H - 6} textAnchor="middle" fill="#6b7280" fontSize={9} fontFamily="DM Mono, monospace">12h ago</text>
+                        <text x={xScale(points.length - 1)} y={H - 6} textAnchor="end" fill="#6b7280" fontSize={9} fontFamily="DM Mono, monospace">Now</text>
+                        {/* Area fill */}
+                        <path d={areaPath} fill="url(#chartGrad)" opacity={0.3} />
+                        {/* Line */}
+                        <path d={linePath} fill="none" stroke="#c8a55a" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                        {/* Current price dot */}
+                        <circle cx={xScale(points.length - 1)} cy={yScale(currentPrice)} r={4} fill="#c8a55a" stroke="#1a1d2e" strokeWidth={2} />
+                        {/* Gradient def */}
+                        <defs>
+                          <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#c8a55a" stopOpacity={0.4} />
+                            <stop offset="100%" stopColor="#c8a55a" stopOpacity={0} />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    )
+                  })()}
+
+                  <div style={{
+                    fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#4a4d5a',
+                    textAlign: 'center', fontStyle: 'italic',
+                  }}>
+                    Price history — simulated (live indexing coming soon)
+                  </div>
                 </div>
               )}
             </div>
