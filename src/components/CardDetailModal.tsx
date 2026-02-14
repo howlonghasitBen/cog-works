@@ -1,14 +1,16 @@
 /**
- * CardDetailModal — Full card detail overlay with stats, activity feed, and share link.
+ * CardDetailModal — Full card detail overlay with stats, activity feed, price chart, and share link.
+ * Animation: card flies from grid position to center, then panel slides out from underneath.
  * Dark steampunk theme matching Whirlpool pages.
  */
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import CardFromData from './CardFromData'
 import type { CardState } from '../hooks/useWhirlpool'
 
 interface Props {
   card: CardState
+  sourceRect?: DOMRect | null
   onClose: () => void
 }
 
@@ -43,11 +45,24 @@ function shortAddr(addr: string): string {
   return `${addr.slice(0, 6)}…${addr.slice(-4)}`
 }
 
-export default function CardDetailModal({ card, onClose }: Props) {
+// Card target size in the modal
+const CARD_W = 280
+const PANEL_W = 440
+
+export default function CardDetailModal({ card, sourceRect, onClose }: Props) {
   const [tab, setTab] = useState<Tab>('stats')
   const [copied, setCopied] = useState(false)
+  const [phase, setPhase] = useState<'fly' | 'expand' | 'done'>('fly')
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const shareUrl = `${window.location.origin}/#whirlpool-stake?card=${card.id}`
+
+  // Phase transitions: fly card to center → expand panel out
+  useEffect(() => {
+    const t1 = setTimeout(() => setPhase('expand'), 400)
+    const t2 = setTimeout(() => setPhase('done'), 800)
+    return () => { clearTimeout(t1); clearTimeout(t2) }
+  }, [])
 
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl).then(() => {
@@ -60,42 +75,114 @@ export default function CardDetailModal({ card, onClose }: Props) {
     if (e.target === e.currentTarget) onClose()
   }
 
+  // Calculate positions
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 1440
+  const vh = typeof window !== 'undefined' ? window.innerHeight : 900
+
+  // Card's final position: centered vertically, offset left to make room for panel
+  const cardPadding = 24
+  const totalModalW = CARD_W + cardPadding * 2 + PANEL_W
+  const finalCardX = (vw - totalModalW) / 2 + cardPadding
+  const finalCardY = (vh - 500) / 2 // approx card height ~500
+
+  // Source position (where the card was in the grid)
+  const srcX = sourceRect ? sourceRect.left : vw / 2 - CARD_W / 2
+  const srcY = sourceRect ? sourceRect.top : vh / 2 - 200
+  const srcScale = sourceRect ? sourceRect.width / CARD_W : 1
+
   return (
     <AnimatePresence>
+      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
         onClick={handleBackdrop}
         style={{
           position: 'fixed',
           inset: 0,
           zIndex: 9999,
           background: 'rgba(0,0,0,0.75)',
+          backdropFilter: 'blur(4px)',
+        }}
+      />
+
+      {/* Card — flies from grid position to modal left side */}
+      <motion.div
+        initial={{
+          position: 'fixed',
+          left: srcX,
+          top: srcY,
+          scale: srcScale,
+          zIndex: 10001,
+          transformOrigin: 'top left',
+        }}
+        animate={{
+          left: finalCardX,
+          top: finalCardY,
+          scale: 1,
+        }}
+        exit={{
+          left: srcX,
+          top: srcY,
+          scale: srcScale,
+          opacity: 0,
+        }}
+        transition={{
+          duration: 0.4,
+          ease: [0.22, 1, 0.36, 1], // easeOutQuint
+        }}
+        style={{
+          position: 'fixed',
+          zIndex: 10001,
+          pointerEvents: 'none',
+        }}
+      >
+        <CardFromData name={card.name} width={CARD_W} />
+      </motion.div>
+
+      {/* Modal container — slides out from behind the card */}
+      <motion.div
+        ref={containerRef}
+        initial={{ opacity: 0, x: -PANEL_W / 2, scale: 0.95 }}
+        animate={{
+          opacity: phase === 'fly' ? 0 : 1,
+          x: 0,
+          scale: 1,
+        }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{
+          duration: 0.4,
+          ease: [0.22, 1, 0.36, 1],
+          delay: phase === 'fly' ? 0.3 : 0,
+        }}
+        onClick={handleBackdrop}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 10000,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backdropFilter: 'blur(4px)',
+          pointerEvents: phase === 'fly' ? 'none' : 'auto',
         }}
       >
         <motion.div
-          initial={{ scale: 0.92, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.92, opacity: 0 }}
-          transition={{ duration: 0.25 }}
           style={{
             background: '#1a1d2e',
             border: '1px solid #3a3d4a',
             borderRadius: 8,
             display: 'flex',
             gap: 0,
-            maxWidth: 820,
+            maxWidth: totalModalW + 20,
             width: '95vw',
             maxHeight: '90vh',
             overflow: 'hidden',
             boxShadow: '0 8px 40px rgba(0,0,0,0.6), 0 0 80px rgba(200,165,90,0.08)',
             position: 'relative',
           }}
+          onClick={e => e.stopPropagation()}
         >
           {/* Close button */}
           <button
@@ -125,27 +212,35 @@ export default function CardDetailModal({ card, onClose }: Props) {
             ✕
           </button>
 
-          {/* Left: Card render */}
+          {/* Left: Card placeholder (actual card is the flying overlay) */}
           <div style={{
-            padding: 24,
+            width: CARD_W + cardPadding * 2,
+            flexShrink: 0,
+            borderRight: '1px solid #3a3d4a',
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRight: '1px solid #3a3d4a',
-            flexShrink: 0,
+            padding: cardPadding,
           }}>
-            <CardFromData name={card.name} width={280} />
+            {/* Show card here once animation is done so it doesn't disappear on scroll */}
+            <div style={{ opacity: phase === 'done' ? 1 : 0, transition: 'opacity 0.2s' }}>
+              <CardFromData name={card.name} width={CARD_W} />
+            </div>
           </div>
 
-          {/* Right: Info panel */}
-          <div style={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            minWidth: 0,
-            overflow: 'hidden',
-          }}>
+          {/* Right: Info panel — slides in from right */}
+          <motion.div
+            initial={{ x: 60, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.35, delay: 0.35, ease: 'easeOut' }}
+            style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              minWidth: 0,
+              overflow: 'hidden',
+            }}
+          >
             {/* Header */}
             <div style={{ padding: '20px 24px 0' }}>
               <h2 style={{
@@ -413,40 +508,32 @@ export default function CardDetailModal({ card, onClose }: Props) {
                     </div>
                   </div>
 
-                  {/* SVG Price Chart — mock historical data based on current price */}
+                  {/* SVG Price Chart */}
                   {(() => {
                     const currentPrice = parseFloat(card.price)
-                    // Generate 24 mock data points (24h) with random walk around current price
                     const points: number[] = []
                     let p = currentPrice * 0.85
                     for (let i = 0; i < 24; i++) {
                       p += (currentPrice - p) * 0.15 + (Math.random() - 0.45) * currentPrice * 0.08
                       points.push(Math.max(p, 0.0001))
                     }
-                    points.push(currentPrice) // end at current
+                    points.push(currentPrice)
 
-                    const W = 420
-                    const H = 180
+                    const W = 420, H = 180
                     const pad = { top: 10, right: 10, bottom: 30, left: 50 }
                     const plotW = W - pad.left - pad.right
                     const plotH = H - pad.top - pad.bottom
-
                     const minP = Math.min(...points) * 0.95
                     const maxP = Math.max(...points) * 1.05
                     const rangeP = maxP - minP || 1
-
                     const xScale = (i: number) => pad.left + (i / (points.length - 1)) * plotW
                     const yScale = (v: number) => pad.top + plotH - ((v - minP) / rangeP) * plotH
-
                     const linePath = points.map((v, i) => `${i === 0 ? 'M' : 'L'}${xScale(i).toFixed(1)},${yScale(v).toFixed(1)}`).join(' ')
                     const areaPath = linePath + ` L${xScale(points.length - 1).toFixed(1)},${(pad.top + plotH).toFixed(1)} L${xScale(0).toFixed(1)},${(pad.top + plotH).toFixed(1)} Z`
-
-                    // Y-axis labels (3 ticks)
                     const yTicks = [minP, (minP + maxP) / 2, maxP]
 
                     return (
                       <svg width={W} height={H} style={{ width: '100%', height: 'auto' }} viewBox={`0 0 ${W} ${H}`}>
-                        {/* Grid lines */}
                         {yTicks.map((v, i) => (
                           <g key={i}>
                             <line x1={pad.left} x2={W - pad.right} y1={yScale(v)} y2={yScale(v)} stroke="#2a2d3a" strokeWidth={1} />
@@ -455,17 +542,12 @@ export default function CardDetailModal({ card, onClose }: Props) {
                             </text>
                           </g>
                         ))}
-                        {/* X-axis labels */}
                         <text x={xScale(0)} y={H - 6} textAnchor="start" fill="#6b7280" fontSize={9} fontFamily="DM Mono, monospace">24h ago</text>
                         <text x={xScale(12)} y={H - 6} textAnchor="middle" fill="#6b7280" fontSize={9} fontFamily="DM Mono, monospace">12h ago</text>
                         <text x={xScale(points.length - 1)} y={H - 6} textAnchor="end" fill="#6b7280" fontSize={9} fontFamily="DM Mono, monospace">Now</text>
-                        {/* Area fill */}
                         <path d={areaPath} fill="url(#chartGrad)" opacity={0.3} />
-                        {/* Line */}
                         <path d={linePath} fill="none" stroke="#c8a55a" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                        {/* Current price dot */}
                         <circle cx={xScale(points.length - 1)} cy={yScale(currentPrice)} r={4} fill="#c8a55a" stroke="#1a1d2e" strokeWidth={2} />
-                        {/* Gradient def */}
                         <defs>
                           <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="0%" stopColor="#c8a55a" stopOpacity={0.4} />
@@ -485,7 +567,7 @@ export default function CardDetailModal({ card, onClose }: Props) {
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </AnimatePresence>

@@ -67,6 +67,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   const [selectedCard, setSelectedCard] = useState<string | null>(null)
   const [rewardsOpen, setRewardsOpen] = useState(false)
   const [modalCard, setModalCard] = useState<typeof whirlpool.cards[0] | null>(null)
+  const [modalSourceRect, setModalSourceRect] = useState<DOMRect | null>(null)
 
   // Build a lookup from on-chain cards by name
   const onChainByName = useMemo(() => {
@@ -465,13 +466,18 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           return (
             <motion.div
               key={card.name}
+              data-card-wrapper
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.04, ease: 'easeOut' }}
-              onClick={() => {
+              onClick={(e) => {
                 const chainCard = onChainByName.get(card.name.toLowerCase())
-                if (chainCard) setModalCard(chainCard)
-                else setSelectedCard(isSelected ? null : card.name)
+                if (chainCard) {
+                  setModalSourceRect(e.currentTarget.getBoundingClientRect())
+                  setModalCard(chainCard)
+                } else {
+                  setSelectedCard(isSelected ? null : card.name)
+                }
               }}
               style={{
                 cursor: 'pointer',
@@ -645,7 +651,11 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                         onClick={e => {
                           e.stopPropagation()
                           const chainCard = whirlpool.cards.find(c => c.id === card.id)
-                          if (chainCard) setModalCard(chainCard)
+                          if (chainCard) {
+                            const cardEl = e.currentTarget.closest('[data-card-wrapper]') as HTMLElement
+                            if (cardEl) setModalSourceRect(cardEl.getBoundingClientRect())
+                            setModalCard(chainCard)
+                          }
                         }}
                         style={{
                           fontFamily: "'DM Mono', monospace",
@@ -722,7 +732,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       )}
 
       {modalCard && (
-        <CardDetailModal card={modalCard} onClose={() => setModalCard(null)} />
+        <CardDetailModal card={modalCard} sourceRect={modalSourceRect} onClose={() => { setModalCard(null); setModalSourceRect(null) }} />
       )}
     </div>
   )
