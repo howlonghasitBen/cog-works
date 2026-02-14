@@ -659,7 +659,13 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       )}
 
       {modalCard && (
-        <CardDetailModal card={modalCard} sourceRect={modalSourceRect} onClose={() => { setModalCard(null); setModalSourceRect(null) }} />
+        <CardDetailModal
+          card={modalCard}
+          sourceRect={modalSourceRect}
+          onClose={() => { setModalCard(null); setModalSourceRect(null) }}
+          onStake={(id) => handleStake(id, { stopPropagation: () => {} } as any)}
+          onUnstake={(id) => handleUnstake(id, { stopPropagation: () => {} } as any)}
+        />
       )}
     </div>
   )
