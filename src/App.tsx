@@ -360,7 +360,8 @@ export default function App() {
 
   // On mount: restore page from URL hash (e.g. #mumu-v2)
   useEffect(() => {
-    const hash = window.location.hash.slice(1) // strip #
+    const rawHash = window.location.hash.slice(1) // strip #
+    const hash = rawHash.split('?')[0] // strip query params (e.g. ?card=name)
     if (hash && hash !== 'hero') {
       const page = findPageById(hash)
       if (page) {
@@ -377,8 +378,10 @@ export default function App() {
   useEffect(() => {
     const onPopState = (e: PopStateEvent) => {
       const subId = e.state?.subId as string | undefined
-      if (subId) {
-        const page = findPageById(subId)
+      const hashId = window.location.hash.slice(1).split('?')[0]
+      const pageId = subId || hashId
+      if (pageId && pageId !== 'hero') {
+        const page = findPageById(pageId)
         if (page) {
           setActivePage(page)
           setTimeout(() => {
