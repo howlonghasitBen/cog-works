@@ -1,5 +1,38 @@
-/** MumuGallery — Collection gallery for mumu-frens v2 */
+/** MumuGallery — Collection gallery + mint sidebar for mumu-frens v2 */
 import { useState, useEffect, useMemo } from 'react'
+import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+import { injected } from 'wagmi/connectors'
+import { parseEther, zeroAddress, zeroHash } from 'viem'
+import { mainnet } from 'wagmi/chains'
+
+const CONTRACT_ADDRESS = '0x0B202E6232F976D5a78A731cD621b82199F3D1be' as const
+const PRICE_PER_MINT = 0.025
+const MAX_SUPPLY = 100
+
+const MUMU_ABI = [
+  {
+    name: 'mint',
+    type: 'function',
+    stateMutability: 'payable',
+    inputs: [
+      { name: 'auth', type: 'tuple', components: [
+        { name: 'key', type: 'bytes32' },
+        { name: 'proof', type: 'bytes32[]' },
+      ]},
+      { name: 'quantity', type: 'uint256' },
+      { name: 'affiliate', type: 'address' },
+      { name: 'signature', type: 'bytes' },
+    ],
+    outputs: [],
+  },
+  {
+    name: 'totalSupply',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+] as const
 
 interface MumuItem {
   file: string
@@ -14,6 +47,47 @@ export default function MumuGallery() {
   const [items, setItems] = useState<MumuItem[]>([])
   const [selected, setSelected] = useState<MumuItem | null>(null)
   const [search, setSearch] = useState('')
+  const [quantity, setQuantity] = useState(1)
+
+  // Wallet
+  const { address, isConnected } = useAccount()
+  const { connect } = useConnect()
+  const { disconnect } = useDisconnect()
+
+  // Read total supply
+  const { data: totalSupply, refetch: refetchSupply } = useReadContract({
+    address: CONTRACT_ADDRESS,
+    abi: MUMU_ABI,
+    functionName: 'totalSupply',
+    chainId: mainnet.id,
+  })
+
+  // Mint
+  const { writeContract, data: txHash, isPending: isMinting, error: mintError, reset: resetMint } = useWriteContract()
+  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash: txHash })
+
+  useEffect(() => { if (isConfirmed) refetchSupply() }, [isConfirmed, refetchSupply])
+
+  const supply = totalSupply !== undefined ? Number(totalSupply) : null
+  const soldOut = supply !== null && supply >= MAX_SUPPLY
+  const totalPrice = (quantity * PRICE_PER_MINT).toFixed(4)
+
+  const handleMint = () => {
+    if (!isConnected || soldOut) return
+    writeContract({
+      address: CONTRACT_ADDRESS,
+      abi: MUMU_ABI,
+      functionName: 'mint',
+      args: [
+        { key: zeroHash, proof: [] },
+        BigInt(quantity),
+        zeroAddress,
+        '0x',
+      ],
+      value: parseEther(String(quantity * PRICE_PER_MINT)),
+      chainId: mainnet.id,
+    })
+  }
 
   // Load manifest
   useEffect(() => {
@@ -56,70 +130,264 @@ export default function MumuGallery() {
         </span>
       </div>
 
-      {/* Search */}
-      <div style={{ display: 'flex', gap: 12, marginBottom: 20, alignItems: 'center' }}>
-        <input
-          type="text"
-          placeholder="Search by name or # ..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          style={{
-            flex: 1, maxWidth: 280, padding: '8px 14px',
-            background: '#1a1d2e', border: '1px solid #4a4d5a',
-            color: '#d0d0d0', fontSize: 13, fontFamily: "'DM Mono', monospace",
-            borderRadius: 2, outline: 'none',
-          }}
-        />
-      </div>
+      {/* Main layout: gallery (80%) + mint sidebar (20%) */}
+      <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
 
-      {/* Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-        gap: 12,
-      }}>
-        {filtered.map(item => (
-          <div
-            key={item.file}
-            onClick={() => setSelected(item)}
-            style={{
-              cursor: 'pointer',
-              borderRadius: 4,
-              overflow: 'hidden',
-              border: `2px solid ${selected?.file === item.file ? '#c8a55a' : '#3a3d4a'}`,
-              background: 'linear-gradient(180deg, #2a2d3a, #1a1d2e)',
-              boxShadow: selected?.file === item.file
-                ? '0 0 15px rgba(200,165,90,0.3)'
-                : '0 2px 8px rgba(0,0,0,0.3)',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            <div style={{ aspectRatio: '1/1', overflow: 'hidden' }}>
-              <img
-                src={`/images/mumuFrensv2Images/${item.file}`}
-                alt={item.name || item.file}
-                loading="lazy"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-              />
-            </div>
-            <div style={{
-              padding: '6px 8px',
-              borderTop: '1px solid #3a3d4a',
-            }}>
-              <p style={{
-                margin: 0, fontSize: 11, fontWeight: 700,
-                color: '#d0d0d0', fontFamily: "'Cinzel', serif",
-                textAlign: 'center',
-                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-              }}>
-                {item.name || item.file}
-              </p>
-            </div>
+        {/* Gallery — 80% */}
+        <div style={{ flex: '0 0 80%', minWidth: 0 }}>
+          {/* Search */}
+          <div style={{ display: 'flex', gap: 12, marginBottom: 16, alignItems: 'center' }}>
+            <input
+              type="text"
+              placeholder="Search by name or trait..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              style={{
+                flex: 1, maxWidth: 280, padding: '8px 14px',
+                background: '#1a1d2e', border: '1px solid #4a4d5a',
+                color: '#d0d0d0', fontSize: 13, fontFamily: "'DM Mono', monospace",
+                borderRadius: 2, outline: 'none',
+              }}
+            />
           </div>
-        ))}
+
+          {/* Grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+            gap: 10,
+          }}>
+            {filtered.map(item => (
+              <div
+                key={item.file}
+                onClick={() => setSelected(item)}
+                style={{
+                  cursor: 'pointer',
+                  borderRadius: 4,
+                  overflow: 'hidden',
+                  border: `2px solid ${selected?.file === item.file ? '#c8a55a' : '#3a3d4a'}`,
+                  background: 'linear-gradient(180deg, #2a2d3a, #1a1d2e)',
+                  boxShadow: selected?.file === item.file
+                    ? '0 0 15px rgba(200,165,90,0.3)'
+                    : '0 2px 8px rgba(0,0,0,0.3)',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <div style={{ aspectRatio: '1/1', overflow: 'hidden' }}>
+                  <img
+                    src={`/images/mumuFrensv2Images/${item.file}`}
+                    alt={item.name || item.file}
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+                <div style={{ padding: '6px 8px', borderTop: '1px solid #3a3d4a' }}>
+                  <p style={{
+                    margin: 0, fontSize: 11, fontWeight: 700,
+                    color: '#d0d0d0', fontFamily: "'Cinzel', serif",
+                    textAlign: 'center',
+                    whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                  }}>
+                    {item.name || item.file}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mint Sidebar — 20% */}
+        <div style={{
+          flex: '0 0 20%', minWidth: 220,
+          position: 'sticky', top: 80,
+          display: 'flex', flexDirection: 'column', gap: 16,
+        }}>
+          {/* Hero GIF */}
+          <div style={{
+            borderRadius: 6, overflow: 'hidden',
+            border: '2px solid #3a3d4a',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+          }}>
+            <img
+              src="/images/mumu-hero.gif"
+              alt="Mumu Frens v2"
+              style={{ width: '100%', display: 'block' }}
+            />
+          </div>
+
+          {/* Mint Card */}
+          <div style={{
+            background: 'linear-gradient(180deg, #2a2d3a, #1a1d2e)',
+            border: '2px solid #3a3d4a',
+            borderRadius: 6, padding: 20,
+            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+          }}>
+            <h3 style={{
+              margin: '0 0 12px', fontSize: 14, fontWeight: 800,
+              fontFamily: "'Cinzel', serif", color: '#c8a55a',
+              textAlign: 'center', letterSpacing: '0.08em',
+            }}>
+              MINT
+            </h3>
+
+            {/* Supply Bar */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ height: 6, background: '#2a2d40', borderRadius: 3, overflow: 'hidden' }}>
+                <div style={{
+                  height: '100%',
+                  width: supply !== null ? `${(supply / MAX_SUPPLY) * 100}%` : '0%',
+                  background: 'linear-gradient(90deg, #c8a55a, #e8c97a)',
+                  borderRadius: 3, transition: 'width 0.5s ease',
+                }} />
+              </div>
+              <div style={{
+                display: 'flex', justifyContent: 'space-between',
+                marginTop: 4, fontSize: 10, color: '#7a7d8a',
+                fontFamily: "'DM Mono', monospace",
+              }}>
+                <span>{supply ?? '?'} minted</span>
+                <span>{MAX_SUPPLY}</span>
+              </div>
+            </div>
+
+            {/* Price */}
+            <div style={{
+              textAlign: 'center', marginBottom: 12,
+              fontSize: 11, color: '#9a9daa',
+              fontFamily: "'DM Mono', monospace",
+            }}>
+              {PRICE_PER_MINT} ETH each
+            </div>
+
+            {/* Quantity */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              gap: 12, marginBottom: 16,
+            }}>
+              <button
+                onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                style={{
+                  width: 32, height: 32, background: '#2a2d40', border: '1px solid #4a4d5a',
+                  color: '#d0d0d0', fontSize: 16, cursor: 'pointer', borderRadius: 2,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+              >−</button>
+              <span style={{
+                color: '#fff', fontSize: 20, fontWeight: 700, minWidth: 24, textAlign: 'center',
+                fontFamily: "'Inter Tight', sans-serif",
+              }}>{quantity}</span>
+              <button
+                onClick={() => setQuantity(q => Math.min(10, q + 1))}
+                style={{
+                  width: 32, height: 32, background: '#2a2d40', border: '1px solid #4a4d5a',
+                  color: '#d0d0d0', fontSize: 16, cursor: 'pointer', borderRadius: 2,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+              >+</button>
+            </div>
+
+            {/* Total */}
+            <div style={{
+              textAlign: 'center', marginBottom: 16,
+              color: '#c8a55a', fontSize: 16, fontWeight: 700,
+              fontFamily: "'DM Mono', monospace",
+            }}>
+              {totalPrice} ETH
+            </div>
+
+            {/* Mint / Connect */}
+            {!isConnected ? (
+              <button
+                onClick={() => connect({ connector: injected() })}
+                style={{
+                  width: '100%', padding: '12px 0',
+                  background: 'linear-gradient(135deg, #22d3ee, #3b82f6)',
+                  border: 'none', color: '#fff', fontSize: 13, fontWeight: 700,
+                  cursor: 'pointer', borderRadius: 3, letterSpacing: '0.05em',
+                  fontFamily: "'Inter Tight', sans-serif",
+                }}
+              >
+                Connect Wallet
+              </button>
+            ) : isConfirmed ? (
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ color: '#4ade80', fontSize: 16, fontWeight: 700, marginBottom: 6 }}>
+                  🎉 Minted!
+                </div>
+                <a
+                  href={`https://etherscan.io/tx/${txHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#60a5fa', fontSize: 11, fontFamily: "'DM Mono', monospace" }}
+                >
+                  View on Etherscan →
+                </a>
+                <button
+                  onClick={() => { resetMint(); setQuantity(1) }}
+                  style={{
+                    display: 'block', margin: '10px auto 0', padding: '6px 16px',
+                    background: '#2a2d40', border: '1px solid #4a4d5a', color: '#d0d0d0',
+                    fontSize: 11, cursor: 'pointer', borderRadius: 2,
+                  }}
+                >
+                  Mint More
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={handleMint}
+                disabled={isMinting || isConfirming || soldOut}
+                style={{
+                  width: '100%', padding: '12px 0',
+                  background: soldOut ? '#4a4d5a' : 'linear-gradient(135deg, #c8a55a, #e8c97a)',
+                  border: 'none',
+                  color: soldOut ? '#7a7d8a' : '#1a1d2e',
+                  fontSize: 13, fontWeight: 700,
+                  cursor: soldOut || isMinting || isConfirming ? 'not-allowed' : 'pointer',
+                  borderRadius: 3, letterSpacing: '0.05em',
+                  fontFamily: "'Inter Tight', sans-serif",
+                  opacity: isMinting || isConfirming ? 0.7 : 1,
+                }}
+              >
+                {soldOut ? 'Sold Out' : isMinting ? 'Confirm in Wallet...' : isConfirming ? 'Confirming...' : `Mint ${quantity}`}
+              </button>
+            )}
+
+            {/* Error */}
+            {mintError && (
+              <div style={{
+                marginTop: 10, padding: '6px 10px', background: '#2d1a1a',
+                border: '1px solid #5a2a2a', borderRadius: 2,
+                color: '#f87171', fontSize: 10, fontFamily: "'DM Mono', monospace",
+                wordBreak: 'break-all',
+              }}>
+                {(mintError as any)?.shortMessage || mintError.message}
+              </div>
+            )}
+
+            {/* Connected address */}
+            {isConnected && (
+              <div style={{
+                marginTop: 10, textAlign: 'center',
+                fontSize: 10, color: '#6a6d7a',
+                fontFamily: "'DM Mono', monospace",
+              }}>
+                {address?.slice(0, 6)}…{address?.slice(-4)}
+                <button
+                  onClick={() => disconnect()}
+                  style={{
+                    background: 'none', border: 'none', color: '#6a6d7a',
+                    cursor: 'pointer', fontSize: 10, textDecoration: 'underline',
+                    marginLeft: 8,
+                  }}
+                >disconnect</button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* Lightbox with metadata sidebar */}
+      {/* Lightbox */}
       {selected && (
         <div
           onClick={() => setSelected(null)}
@@ -127,8 +395,7 @@ export default function MumuGallery() {
             position: 'fixed', inset: 0, zIndex: 1000,
             background: 'rgba(0,0,0,0.85)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            cursor: 'pointer',
-            padding: 40,
+            cursor: 'pointer', padding: 40,
           }}
         >
           <div
@@ -137,14 +404,11 @@ export default function MumuGallery() {
               display: 'flex',
               maxWidth: 900, maxHeight: '85vh',
               border: '3px solid #c8a55a',
-              borderRadius: 8,
-              overflow: 'hidden',
+              borderRadius: 8, overflow: 'hidden',
               boxShadow: '0 0 40px rgba(200,165,90,0.3)',
-              background: '#1a1d2e',
-              cursor: 'default',
+              background: '#1a1d2e', cursor: 'default',
             }}
           >
-            {/* Image */}
             <div style={{ flex: '1 1 60%', minWidth: 0, display: 'flex', alignItems: 'center', background: '#111' }}>
               <img
                 src={`/images/mumuFrensv2Images/${selected.file}`}
@@ -152,7 +416,6 @@ export default function MumuGallery() {
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
-            {/* Metadata sidebar */}
             <div style={{
               flex: '0 0 260px', padding: '24px 20px',
               borderLeft: '2px solid #3a3d4a',
@@ -174,7 +437,6 @@ export default function MumuGallery() {
                   {selected.description}
                 </p>
               )}
-
               {selected.attributes && selected.attributes.length > 0 && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <h3 style={{
@@ -186,9 +448,7 @@ export default function MumuGallery() {
                     Attributes
                   </h3>
                   {selected.attributes.map((attr, idx) => (
-                    <div key={idx} style={{
-                      display: 'flex', flexDirection: 'column', gap: 2,
-                    }}>
+                    <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                       <span style={{
                         fontSize: 10, color: '#6a6d7a',
                         fontFamily: "'DM Mono', monospace",
@@ -210,8 +470,6 @@ export default function MumuGallery() {
                   ))}
                 </div>
               )}
-
-              {/* Close button */}
               <button
                 onClick={() => setSelected(null)}
                 style={{
@@ -220,7 +478,6 @@ export default function MumuGallery() {
                   color: '#c8a55a', fontSize: 12,
                   fontFamily: "'DM Mono', monospace",
                   cursor: 'pointer', borderRadius: 2,
-                  transition: 'background 0.2s',
                 }}
                 onMouseEnter={e => (e.currentTarget.style.background = '#3a3d4a')}
                 onMouseLeave={e => (e.currentTarget.style.background = '#2a2d3a')}

@@ -232,7 +232,7 @@ import StakingDashboard from './pages/StakingDashboard'
 import MumuGallery from './pages/MumuGallery'
 import SwapPage from './pages/SwapPage'
 import MintPage from './pages/MintPage'
-import MumuMint from './pages/MumuMint'
+// MumuMint merged into MumuGallery sidebar
 
 // ─── Content Page ───────────────────────────────────────────────
 function ContentPage({ parent, sub }: { parent: string; sub: string }) {
@@ -570,9 +570,7 @@ export default function App() {
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
             <div className="relative pb-24">
-              {activePage.sub.id === 'mumu-mint' ? (
-                <MumuMint />
-              ) : activePage.sub.id === 'mumu-v2' ? (
+              {(activePage.sub.id === 'mumu-mint' || activePage.sub.id === 'mumu-v2') ? (
                 <MumuGallery />
               ) : activePage.sub.id === 'whirlpool-stake' ? (
                 <StakingDashboard onNavigateSwap={navigateToSwap} />
