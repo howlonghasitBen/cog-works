@@ -335,6 +335,52 @@ export default function App() {
   }, [])
 
   // ─── Navigation ─────────────────────────────────────────────
+  // ─── URL ↔ State Sync ──────────────────────────────────────
+  // Resolve a sub-cog ID from heroItems
+  const findPageById = useCallback((subId: string) => {
+    for (const parent of heroItems) {
+      const sub = parent.subItems?.find(s => s.id === subId)
+      if (sub && !sub.href) return { parent, sub }
+    }
+    return null
+  }, [])
+
+  // On mount: restore page from URL hash (e.g. #mumu-v2)
+  useEffect(() => {
+    const hash = window.location.hash.slice(1) // strip #
+    if (hash) {
+      const page = findPageById(hash)
+      if (page) {
+        setActivePage(page)
+        setTimeout(() => {
+          scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'auto' })
+        }, 100)
+      }
+    }
+  }, [findPageById])
+
+  // Listen for browser back/forward
+  useEffect(() => {
+    const onPopState = (e: PopStateEvent) => {
+      const subId = e.state?.subId as string | undefined
+      if (subId) {
+        const page = findPageById(subId)
+        if (page) {
+          setActivePage(page)
+          setTimeout(() => {
+            scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'auto' })
+          }, 100)
+          return
+        }
+      }
+      // No subId or not found → go home
+      setActivePage(null)
+      scrollRef.current?.scrollTo({ top: 0, behavior: 'auto' })
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [findPageById])
+
   const handleNavigate = useCallback((parent: GearNavItem, sub: GearSubItem) => {
     // External links open in new tab, don't scroll to ContentPage
     if (sub.href) {
@@ -345,6 +391,10 @@ export default function App() {
     isAnimating.current = true
     setActivePage({ parent, sub })
     setMenuOpen(false)
+    // Push URL state
+    if (sub.id) {
+      window.history.pushState({ subId: sub.id }, '', `#${sub.id}`)
+    }
     // Smooth scroll to content — delay slightly to ensure DOM has rendered content
     setTimeout(() => {
       scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
@@ -356,6 +406,8 @@ export default function App() {
   const handleBackToTop = useCallback(() => {
     isAnimating.current = true
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+    // Push clean URL
+    window.history.pushState({}, '', window.location.pathname)
     // Release lock + clear page after scroll settles
     setTimeout(() => {
       isAnimating.current = false
