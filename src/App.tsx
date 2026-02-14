@@ -273,7 +273,6 @@ const heroItems: GearNavItem[] = [
   { label: 'mumuFrens', icon: '🐄', innardSrc: '/images/mumu-hero.gif', innardScale: 0.69, subItems: [
     { id: 'mumu-v1', label: 'v1', icon: '🎨', innardSrc: '/images/scatter.svg', innardScale: 0.70, innardBg: '#36454F', innardImgScale: 0.857, href: 'https://www.scatter.art/collection/mumu-frens' },
     { id: 'mumu-v2', label: 'v2', icon: '🖼️', innardSrc: '/images/mumuFrensv2Logo.png', innardScale: 0.70 },
-    { id: 'mumu-mint', label: 'mint v2', icon: '🔨', innardSrc: '/images/mumuFrensv2Logo.png', innardScale: 0.70 },
     { id: 'mumu-discord', label: 'discord', icon: '💬', innardSrc: '/images/discord.jpg', innardScale: 0.70, href: 'https://discord.gg/WZnMhsFGXn' },
   ]},
   { label: 'Whirlpool', icon: '🌀', innardSrc: '/images/whirlpool.png', innardSpin: 15, subItems: [
