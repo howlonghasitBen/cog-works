@@ -10,6 +10,8 @@ import { useWhirlpool } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
 import CardDetailModal from '../components/CardDetailModal'
+import type { CardState } from '../hooks/useWhirlpool'
+import CardDetailModal from '../components/CardDetailModal'
 
 // ─── Types ──────────────────────────────────────────────────────
 interface CardPool {
