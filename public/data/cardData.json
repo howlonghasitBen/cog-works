@@ -1,12 +1,12 @@
 [
   {
     "name": "Moonwell Sanctuary",
-    "subtitle": "Lunar Infusion",
+    "subtitle": "Fairy Magic",
     "level": "★",
     "image": "/images/card-images/arts/fairy_fountain.png",
     "type": "Consumable — Mana Restoration",
     "stats": null,
-    "flavorText": "Fairy Magic ⟨+3M⟩\nWhere moonbeams kiss the sacred waters, ancient magic flows eternal.",
+    "flavorText": "Where moonbeams kiss the sacred waters, ancient magic flows eternal.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -73,7 +73,7 @@
     "image": "/images/card-images/arts/soh.png",
     "type": "Consumable — Cards",
     "stats": null,
-    "flavorText": "Slight of Hand ⟨Draw two addition cards⟩\nWhere fortunes rise and fall with the turn of a card, luck favors the bold.",
+    "flavorText": "Where fortunes rise and fall with the turn of a card, luck favors the bold.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8389,7 +8389,7 @@
   },
   {
     "name": "Aetos",
-    "subtitle": "⟨WARBOND⟩",
+    "subtitle": "Knight's Roost",
     "level": "1",
     "image": "/images/card-images/arts/fledgling_eagle.png",
     "type": "Creature — Fledgling Eagle",
@@ -8397,7 +8397,7 @@
       "attack": "1",
       "defense": "2"
     },
-    "flavorText": "Knight's Roost ⟨+2DEF⟩\nBorn of wind and cloud, I carry dreams skyward.",
+    "flavorText": "Born of wind and cloud, I carry dreams skyward.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8467,7 +8467,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the storm-wracked peaks, a sorrowful titan descends, his gaze heavy with the weight of forgotten ages and the secrets buried beneath the shattered earth.\n",
+    "flavorText": "From the storm-wracked peaks, a sorrowful titan descends, his gaze heavy with the weight of forgotten ages and the secrets buried beneath the shattered earth.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8528,7 +8528,7 @@
   },
   {
     "name": "Apex Ape",
-    "subtitle": "Seismic Slam",
+    "subtitle": "Primal Fury Unleashed",
     "level": "1",
     "image": "/images/card-images/arts/apex_ape.png",
     "type": "",
@@ -8536,7 +8536,7 @@
       "attack": "6",
       "defense": "5"
     },
-    "flavorText": "Primal Fury Unleashed The earth trembles as raw, untamed power rips through the jungle, leaving only shattered trees and echoing roars in its wake.",
+    "flavorText": "The earth trembles as raw, untamed power rips through the jungle, leaving only shattered trees and echoing roars in its wake.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -8578,7 +8578,7 @@
   },
   {
     "name": "Archangel",
-    "subtitle": "Purifying Flare",
+    "subtitle": "Celestial Firestorm Descent",
     "level": "1",
     "image": "/images/card-images/arts/archangel.png",
     "type": "Creature — Flarefall",
@@ -8586,7 +8586,7 @@
       "attack": "6",
       "defense": "5"
     },
-    "flavorText": "Celestial Firestorm Descent Wings ablaze, purification rains down, leaving only ash and echoes of defiance.",
+    "flavorText": "Wings ablaze, purification rains down, leaving only ash and echoes of defiance.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -8636,7 +8636,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of the arcane library, Pepe the Wise conjures forbidden energies, his spells echoing through forgotten realms.\n",
+    "flavorText": "From the depths of the arcane library, Pepe the Wise conjures forbidden energies, his spells echoing through forgotten realms.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8705,7 +8705,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Cloaked in shadows and armed with a blade that whispers of forgotten magic, he stalks the moonlit rooftops, a silent guardian against the encroaching darkness.\n",
+    "flavorText": "Cloaked in shadows and armed with a blade that whispers of forgotten magic, he stalks the moonlit rooftops, a silent guardian against the encroaching darkness.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -8766,7 +8766,7 @@
   },
   {
     "name": "Badass Skag",
-    "subtitle": "Corrosive Barrage",
+    "subtitle": "Rabid Bile Barrage",
     "level": "1",
     "image": "/images/card-images/arts/badass_skag.png",
     "type": "Creature — Khaosbite",
@@ -8774,7 +8774,7 @@
       "attack": "7",
       "defense": "4"
     },
-    "flavorText": "Rabid Bile Barrage A torrent of corrosive spittle melts armor and flesh alike, leaving only steaming ruin in its wake.",
+    "flavorText": "A torrent of corrosive spittle melts armor and flesh alike, leaving only steaming ruin in its wake.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -8816,7 +8816,7 @@
   },
   {
     "name": "Basilisk",
-    "subtitle": "Stone Gaze",
+    "subtitle": "Petrifying Gaze",
     "level": "1",
     "image": "/images/card-images/arts/basilisk.png",
     "type": "Creature — Khthonix",
@@ -8824,7 +8824,7 @@
       "attack": "7",
       "defense": "6"
     },
-    "flavorText": "Petrifying Gaze One glance, and the bravest warrior becomes a silent monument to fear, forever frozen in the basilisk&#039;s deadly artistry.",
+    "flavorText": "One glance, and the bravest warrior becomes a silent monument to fear, forever frozen in the basilisk's deadly artistry.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -8866,7 +8866,7 @@
   },
   {
     "name": "Beach Bum",
-    "subtitle": "⟨WANDERER⟩",
+    "subtitle": "Island Time",
     "level": "∞",
     "image": "/images/card-images/arts/beachjester.png",
     "type": "Creature — Beach Philosopher",
@@ -8874,7 +8874,7 @@
       "attack": "∞",
       "defense": "∞"
     },
-    "flavorText": "Island Time ⟨Passive: While on field, all allies gain +1 ATK at the start of turn\n'Sometimes the best strategy is no strategy at all. Just vibes.'",
+    "flavorText": "The tide whispers secrets of serenity, and the sand holds the wisdom of ages. He listens, and understands, in the language of the shore.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -9076,7 +9076,7 @@
   },
   {
     "name": "Bloudraad, Spawn of Kek",
-    "subtitle": "Reality Fracture",
+    "subtitle": "Chaotic Reality Warp",
     "level": "1",
     "image": "/images/card-images/arts/bloudraad_spawn_of_kek.png",
     "type": "Creature — Fractureborn",
@@ -9084,7 +9084,7 @@
       "attack": "5",
       "defense": "3"
     },
-    "flavorText": "Chaotic Reality Warp The very fabric of existence unravels, twisted by its maddening gaze into a horrifying, new reality.",
+    "flavorText": "The very fabric of existence unravels, twisted by its maddening gaze into a horrifying, new reality.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9134,7 +9134,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the primordial ooze of forgotten realms, a scaly behemoth rises, its gaze promising either salvation or utter annihilation.\n",
+    "flavorText": "From the primordial ooze of forgotten realms, a scaly behemoth rises, its gaze promising either salvation or utter annihilation.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -9273,7 +9273,7 @@
       "attack": "5",
       "defense": "6"
     },
-    "flavorText": "Mountain&#039;s Unyielding Resolve The earth trembles as stone skin hardens, weathering any assault with stoic defiance.",
+    "flavorText": "Mountain's Unyielding Resolve The earth trembles as stone skin hardens, weathering any assault with stoic defiance.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9323,7 +9323,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the storm-wracked peaks, a centaur of ancient sorrow and terrible might descends, his axe thirsting for the blood of gods and mortals alike.\n",
+    "flavorText": "From the storm-wracked peaks, a centaur of ancient sorrow and terrible might descends, his axe thirsting for the blood of gods and mortals alike.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -9384,7 +9384,7 @@
   },
   {
     "name": "Chort",
-    "subtitle": "Ashen Pact",
+    "subtitle": "Infernal Bargain",
     "level": "1",
     "image": "/images/card-images/arts/chort.png",
     "type": "Creature — Kraxor",
@@ -9392,7 +9392,7 @@
       "attack": "4",
       "defense": "4"
     },
-    "flavorText": "Infernal Bargain A whispered promise seals your fate, the price etched in burning ash. Souls are currency in this domain.",
+    "flavorText": "A whispered promise seals your fate, the price etched in burning ash. Souls are currency in this domain.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9434,7 +9434,7 @@
   },
   {
     "name": "Clay golem",
-    "subtitle": "Earthen Collapse",
+    "subtitle": "Earthshaking Fissure",
     "level": "1",
     "image": "/images/card-images/arts/clay_golem.png",
     "type": "Creature — Fissura",
@@ -9442,7 +9442,7 @@
       "attack": "3",
       "defense": "4"
     },
-    "flavorText": "Earthshaking Fissure With a groan of ancient stone, the earth splits asunder, swallowing hope and leaving only dust.",
+    "flavorText": "With a groan of ancient stone, the earth splits asunder, swallowing hope and leaving only dust.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9492,7 +9492,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "He wanders the forgotten paths, a silent sentinel burdened by a past whispered only by the wind.\n",
+    "flavorText": "He wanders the forgotten paths, a silent sentinel burdened by a past whispered only by the wind.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -9553,7 +9553,7 @@
   },
   {
     "name": "Crystal Golem",
-    "subtitle": "Crystalline Eruption",
+    "subtitle": "Crystalline Groundswell",
     "level": "1",
     "image": "/images/card-images/arts/crystal_golem.png",
     "type": "Creature — Gelrakk",
@@ -9561,7 +9561,7 @@
       "attack": "3",
       "defense": "4"
     },
-    "flavorText": "Crystalline Groundswell The earth trembles as raw magic erupts, reshaping the battlefield into a jagged, impassable domain.",
+    "flavorText": "The earth trembles as raw magic erupts, reshaping the battlefield into a jagged, impassable domain.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9603,7 +9603,7 @@
   },
   {
     "name": "Crystal Phoenix",
-    "subtitle": "Crystalline Flare",
+    "subtitle": "Crystalline Rebirth",
     "level": "1",
     "image": "/images/card-images/arts/crystal_phoenix.png",
     "type": "Creature — Aethonix",
@@ -9611,7 +9611,7 @@
       "attack": "4",
       "defense": "4"
     },
-    "flavorText": "Crystalline Rebirth Shattered remnants coalesce, rising anew in a blinding flash of light, forever changed by the Crystalline Rebirth.",
+    "flavorText": "Shattered remnants coalesce, rising anew in a blinding flash of light, forever changed by the Crystalline Rebirth.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9653,7 +9653,7 @@
   },
   {
     "name": "Crystalline Cosmic Bind",
-    "subtitle": "Fracture Reality",
+    "subtitle": "Astral Echo Fracture",
     "level": "1",
     "image": "/images/card-images/arts/crystalline_cosmic_bind.png",
     "type": "Creature — Fractura",
@@ -9661,7 +9661,7 @@
       "attack": "5",
       "defense": "5"
     },
-    "flavorText": "Astral Echo Fracture The very fabric of reality shatters, mirroring the cosmos&#039; silent scream. Each fractured echo leaves wounds that never truly heal.",
+    "flavorText": "The very fabric of reality shatters, mirroring the cosmos' silent scream. Each fractured echo leaves wounds that never truly heal.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9703,7 +9703,7 @@
   },
   {
     "name": "Cyborg Hound",
-    "subtitle": "Steel Snare",
+    "subtitle": "Cybernetic Pursuit Lock",
     "level": "1",
     "image": "/images/card-images/arts/cyborg_hound.png",
     "type": "Creature — Cybrox",
@@ -9711,7 +9711,7 @@
       "attack": "5",
       "defense": "7"
     },
-    "flavorText": "Cybernetic Pursuit Lock The whirring of servos heralds inescapable doom, each metallic footfall echoing the final moments before capture.",
+    "flavorText": "The whirring of servos heralds inescapable doom, each metallic footfall echoing the final moments before capture.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -9881,7 +9881,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born from the cosmic sorrow of a dying galaxy, this winged warrior weeps for the fate of all worlds.\n",
+    "flavorText": "Born from the cosmic sorrow of a dying galaxy, this winged warrior weeps for the fate of all worlds.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -9950,7 +9950,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "In the shadowed depths of the emerald forest, a creature of sorrowful gaze and lupine form stalks, a harbinger of forgotten prophecies and untold woe.\n",
+    "flavorText": "In the shadowed depths of the emerald forest, a creature of sorrowful gaze and lupine form stalks, a harbinger of forgotten prophecies and untold woe.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10019,7 +10019,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of forgotten realms, a grotesque harbinger of despair emerges, its presence a chilling omen of impending doom.\n",
+    "flavorText": "From the depths of forgotten realms, a grotesque harbinger of despair emerges, its presence a chilling omen of impending doom.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10088,7 +10088,7 @@
       "attack": "5",
       "defense": "3"
     },
-    "flavorText": "Dragged to the Depths The surface world forgets those claimed by the water, pulled down where only cold and hunger remain.",
+    "flavorText": "Dragged to the",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -10138,7 +10138,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the heart of the earth he rises, a golem of sorrow, his emerald eyes reflecting the ancient secrets buried beneath the mountains.\n",
+    "flavorText": "From the heart of the earth he rises, a golem of sorrow, his emerald eyes reflecting the ancient secrets buried beneath the mountains.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10207,7 +10207,7 @@
       "attack": "0",
       "defense": "4"
     },
-    "flavorText": "Passive: While this card is fielded, all ally cards on the field get +1 DEF every turn.\n'Wood, Water, Sapling, Iceberg.'",
+    "flavorText": "'Wood, Water, Sapling, Iceberg.'",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10277,7 +10277,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of the spider-infested grotto, a sorrowful amphibian abomination emerges, dripping with venom and despair, to claim what little hope remains in this forsaken realm.\n",
+    "flavorText": "From the depths of the spider-infested grotto, a sorrowful amphibian abomination emerges, dripping with venom and despair, to claim what little hope remains in this forsaken realm.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10338,7 +10338,7 @@
   },
   {
     "name": "Feelsix",
-    "subtitle": "Ashen Return",
+    "subtitle": "Scorched Earth",
     "level": "3",
     "image": "",
     "type": "",
@@ -10346,7 +10346,7 @@
       "attack": "3",
       "defense": "4"
     },
-    "flavorText": "Scorched Earth ⟨4M : Deal 1TD to all enemy cards⟩ Passive: Attacking places this card in the graveyard for one turn, after which it&#039;s returned to the players hand.",
+    "flavorText": "Where hope once bloomed, now only ash dances on the wind, a testament to Feelsix's fiery rage. The land remembers the inferno, and yields only to ruin.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "legendary",
     "hp": {
@@ -10466,7 +10466,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the fetid depths of the forgotten crypts, a stitched-together abomination of meme and monster rises, its vacant stare promising only despair and the chilling echo of lost laughter.\n",
+    "flavorText": "From the fetid depths of the forgotten crypts, a stitched-together abomination of meme and monster rises, its vacant stare promising only despair and the chilling echo of lost laughter.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10535,7 +10535,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Forged under a moonlit storm, the Pepe Blade whispers prophecies of memes yet to come, its edge sharpened by the tears of a thousand deleted tweets.\n",
+    "flavorText": "Forged under a moonlit storm, the Pepe Blade whispers prophecies of memes yet to come, its edge sharpened by the tears of a thousand deleted tweets.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10596,7 +10596,7 @@
   },
   {
     "name": "Forest Keeper",
-    "subtitle": "⟨GUARDIAN⟩",
+    "subtitle": "Sacred Grove",
     "level": "2",
     "image": "/images/card-images/arts/treant.png",
     "type": "Creature — Forest Guardian",
@@ -10604,7 +10604,7 @@
       "attack": "4",
       "defense": "6"
     },
-    "flavorText": "Sacred Grove ⟨4D : 2TD⟩\nPassive: All allied creatures gain +1 DEF while Forest Keeper is on the field.",
+    "flavorText": "Where the ancient boughs whisper secrets to the wind, the Forest Keeper treads, a verdant sentinel against encroaching shadows. His heart beats in time with the Sacred Grove, and its fate is forever intertwined with his own.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10666,7 +10666,7 @@
   },
   {
     "name": "Forest Shaman",
-    "subtitle": "⟨MYSTIC⟩",
+    "subtitle": "Spirit Call",
     "level": "2",
     "image": "/images/card-images/arts/warlock.png",
     "type": "Creature — Warlock",
@@ -10674,7 +10674,7 @@
       "attack": "5",
       "defense": "6"
     },
-    "flavorText": "Spirit Call ⟨Summon a Forest Spirit token 2/2⟩\nAncient Wisdom: Draw 2 cards, gain +1/+1 for each nature card ⟨4M⟩\nThe forest whispers secrets to those who truly listen.",
+    "flavorText": "The forest whispers secrets to those who truly listen.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10736,7 +10736,7 @@
   },
   {
     "name": "Forest Spirit",
-    "subtitle": "⟨VOID⟩",
+    "subtitle": "Void Strike",
     "level": "1",
     "image": "/images/card-images/arts/forestspirit.png",
     "type": "Creature — Nightmare Beast",
@@ -10744,7 +10744,7 @@
       "attack": "2",
       "defense": "2"
     },
-    "flavorText": "Void Strike ⟨2D : 2TD⟩\nSpirit Rend ⟨Sleeping targets take 50% HP as TD⟩",
+    "flavorText": "Spirit Rend",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10806,7 +10806,7 @@
   },
   {
     "name": "Forest Titan",
-    "subtitle": "⟨ANCIENT⟩",
+    "subtitle": "Nature's Wrath",
     "level": "3",
     "image": "/images/card-images/arts/foresttitan.png",
     "type": "Creature — Ancient Treant",
@@ -10814,7 +10814,7 @@
       "attack": "4",
       "defense": "8"
     },
-    "flavorText": "Nature's Wrath ⟨4D : 4TD⟩\nPassive: At the start of each turn, heal 1 HP to all ally creatures\n'From the ancient roots, wisdom and power intertwine.'",
+    "flavorText": "'From the ancient roots, wisdom and power intertwine.'",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -10876,7 +10876,7 @@
   },
   {
     "name": "Frost Giant",
-    "subtitle": "Glacial Rupture",
+    "subtitle": "Frozen Earth Shatter",
     "level": "1",
     "image": "/images/card-images/arts/frost_giant.png",
     "type": "Creature — Icecrush",
@@ -10884,7 +10884,7 @@
       "attack": "6",
       "defense": "4"
     },
-    "flavorText": "Frozen Earth Shatter The land groans under the weight of ages, then splits with a chilling, final crack. A glacial tomb awaits.",
+    "flavorText": "The land groans under the weight of ages, then splits with a chilling, final crack. A glacial tomb awaits.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -10926,7 +10926,7 @@
   },
   {
     "name": "Frost Thrall",
-    "subtitle": "Icy Detonation",
+    "subtitle": "Frozen Heart Shatters",
     "level": "1",
     "image": "/images/card-images/arts/frost_thrall.png",
     "type": "Creature — Frostbite",
@@ -10934,7 +10934,7 @@
       "attack": "5",
       "defense": "4"
     },
-    "flavorText": "Frozen Heart Shatters The air cracks with bitter cold as its core explodes, leaving only jagged shards of ice and despair.",
+    "flavorText": "The air cracks with bitter cold as its core explodes, leaving only jagged shards of ice and despair.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -10976,7 +10976,7 @@
   },
   {
     "name": "Getri",
-    "subtitle": "⟨Ancient⟩",
+    "subtitle": "Bite",
     "level": "1",
     "image": "/images/card-images/arts/wyrm.png",
     "type": "Creature — Wyrm",
@@ -10984,7 +10984,7 @@
       "attack": "2",
       "defense": "1"
     },
-    "flavorText": "Bite ⟨2D : 1TD⟩\nPassive: Can evolve into Hydra after 3 turns on field",
+    "flavorText": "A mountain of teeth and scales, Getri swallows hope whole with every crushing bite. Few hear its earth-splitting roar and live to tell the tale.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11054,7 +11054,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of the forgotten swamp, a sorrowful guardian rises, his gaze heavy with the weight of ancient secrets and the burden of a world lost to time.\n",
+    "flavorText": "From the murky depths of the forgotten swamp, a sorrowful guardian rises, his gaze heavy with the weight of ancient secrets and the burden of a world lost to time.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11123,7 +11123,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the emerald depths of the savanna, a sorrowful gaze pierces the veil of twilight, hinting at a forgotten pact with the ancient spirits of the land.\n",
+    "flavorText": "From the emerald depths of the savanna, a sorrowful gaze pierces the veil of twilight, hinting at a forgotten pact with the ancient spirits of the land.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11192,7 +11192,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the sewers of forgotten dreams, it crawls forth, a harbinger of madness and decay, its gaze promising only oblivion.\n",
+    "flavorText": "From the sewers of forgotten dreams, it crawls forth, a harbinger of madness and decay, its gaze promising only oblivion.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11261,7 +11261,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the desolate wastes, a harbinger of despair crawls forth, its gaze promising only oblivion.\n",
+    "flavorText": "From the desolate wastes, a harbinger of despair crawls forth, its gaze promising only oblivion.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11330,7 +11330,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the cracked earth and stormy skies, a harbinger of misfortune crawls forth, its gaze promising only despair.\n",
+    "flavorText": "From the cracked earth and stormy skies, a harbinger of misfortune crawls forth, its gaze promising only despair.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11399,7 +11399,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the storm-wracked skies, a harbinger of woe descends, its gaze promising only ruin for the world below.\n",
+    "flavorText": "From the storm-wracked skies, a harbinger of woe descends, its gaze promising only ruin for the world below.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11460,7 +11460,7 @@
   },
   {
     "name": "Golden Teacher",
-    "subtitle": "Mystic Guidance",
+    "subtitle": "Spore Cloud Enlightenment",
     "level": "1",
     "image": "/images/card-images/arts/golden_teacher.png",
     "type": "Creature — Sporium",
@@ -11468,7 +11468,7 @@
       "attack": "6",
       "defense": "5"
     },
-    "flavorText": "Spore Cloud Enlightenment Bathed in the golden mist, minds open to realities unseen, and the path forward becomes brilliantly clear.",
+    "flavorText": "Bathed in the golden mist, minds open to realities unseen, and the path forward becomes brilliantly clear.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -11510,7 +11510,7 @@
   },
   {
     "name": "Gribble",
-    "subtitle": "⟨HOARDER⟩",
+    "subtitle": "Coin Toss",
     "level": "2",
     "image": "/images/card-images/arts/lootgremlin.png",
     "type": "Creature — Treasure Goblin",
@@ -11518,7 +11518,7 @@
       "attack": "3",
       "defense": "4"
     },
-    "flavorText": "Coin Toss ⟨3M: Deal 2 TD to target, gain 1 HP⟩\nPassive: When this card is destroyed, spawn 2 Gold tokens\n'Not all treasure is silver and gold, mate... but most of it is.'",
+    "flavorText": "'Not all treasure is silver and gold, mate... but most of it is.'",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11580,7 +11580,7 @@
   },
   {
     "name": "Griffin",
-    "subtitle": "Sunstrike Descent",
+    "subtitle": "Sunstrike Aerial Assault",
     "level": "1",
     "image": "/images/card-images/arts/griffin.png",
     "type": "Creature — Aerius",
@@ -11588,7 +11588,7 @@
       "attack": "6",
       "defense": "7"
     },
-    "flavorText": "Sunstrike Aerial Assault Golden talons descend, leaving only scorched earth and the echo of a dying sun. The sky itself weeps light after the attack.",
+    "flavorText": "Golden talons descend, leaving only scorched earth and the echo of a dying sun. The sky itself weeps light after the attack.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -11638,7 +11638,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the ruins of forgotten empires, he rises, a serpent king wielding both sword and sorrow, his power crackling with ancient runes.\n",
+    "flavorText": "From the ruins of forgotten empires, he rises, a serpent king wielding both sword and sorrow, his power crackling with ancient runes.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11707,7 +11707,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born from the sands of time and imbued with ancient magic, this winged sphinx guards secrets that could shatter the very foundations of reality.\n",
+    "flavorText": "Born from the sands of time and imbued with ancient magic, this winged sphinx guards secrets that could shatter the very foundations of reality.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -11838,7 +11838,7 @@
   },
   {
     "name": "Hallucinogenic Hallelujah",
-    "subtitle": "Chromatic Cascade",
+    "subtitle": "Reality Bleeds Anew",
     "level": "1",
     "image": "/images/card-images/arts/hallucinogenic_hallelujah.png",
     "type": "Creature — Melliscape",
@@ -11846,7 +11846,7 @@
       "attack": "5",
       "defense": "5"
     },
-    "flavorText": "Reality Bleeds Anew The world melts into impossible geometries as colors scream, a testament to the mind&#039;s fragile grasp.",
+    "flavorText": "The world melts into impossible geometries as colors scream, a testament to the mind's fragile grasp.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -11888,7 +11888,7 @@
   },
   {
     "name": "Harpy",
-    "subtitle": "Bone Scatter",
+    "subtitle": "Shrieking Gale Force",
     "level": "1",
     "image": "/images/card-images/arts/harpy.png",
     "type": "",
@@ -11896,7 +11896,7 @@
       "attack": "4",
       "defense": "5"
     },
-    "flavorText": "Shrieking Gale Force The wind itself screams as feathers and fury descend, leaving naught but scattered bones in its wake.",
+    "flavorText": "The wind itself screams as feathers and fury descend, leaving naught but scattered bones in its wake.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -11938,7 +11938,7 @@
   },
   {
     "name": "Hemo Wizard",
-    "subtitle": "Blood Pact",
+    "subtitle": "Crimson Life Tap",
     "level": "1",
     "image": "/images/card-images/arts/hemo_wizard.png",
     "type": "Creature — Vitalis",
@@ -11946,7 +11946,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Crimson Life Tap The air crackles with stolen vitality, leaving only withered husks in its wake. A desperate gamble for power, paid in blood.",
+    "flavorText": "The air crackles with stolen vitality, leaving only withered husks in its wake. A desperate gamble for power, paid in blood.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -11996,7 +11996,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of the swamp, a creature of unsettling gaze emerges, its presence a harbinger of forgotten secrets and impending doom.\n",
+    "flavorText": "From the murky depths of the swamp, a creature of unsettling gaze emerges, its presence a harbinger of forgotten secrets and impending doom.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -12065,7 +12065,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the fiery depths of a forgotten realm, a mischievous imp emerges, his intentions as molten as the lava he treads upon.\n",
+    "flavorText": "From the fiery depths of a forgotten realm, a mischievous imp emerges, his intentions as molten as the lava he treads upon.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -12266,7 +12266,7 @@
   },
   {
     "name": "Khazix",
-    "subtitle": "Adaptive Evolution",
+    "subtitle": "Evolved Adaptive Assault",
     "level": "1",
     "image": "/images/card-images/arts/khazix.png",
     "type": "Creature — Khronokill",
@@ -12274,7 +12274,7 @@
       "attack": "6",
       "defense": "5"
     },
-    "flavorText": "Evolved Adaptive Assault The air shimmers, then shatters, as something perfectly designed for death descends. Every weakness becomes a fatal flaw.",
+    "flavorText": "The air shimmers, then shatters, as something perfectly designed for death descends. Every weakness becomes a fatal flaw.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -12316,7 +12316,7 @@
   },
   {
     "name": "Kro",
-    "subtitle": "⟨DEPTHS⟩",
+    "subtitle": "Tentacle Crush",
     "level": "3",
     "image": "/images/card-images/arts/kraken.png",
     "type": "Creature — The Kraken",
@@ -12324,7 +12324,7 @@
       "attack": "8",
       "defense": "5"
     },
-    "flavorText": "Tentacle Crush ⟨8D : 6TD⟩\nDepths Dominion: All water creatures gain +2/+1 ⟨5M⟩",
+    "flavorText": "From the crushing depths, it rises to claim what's lost. Tentacles writhe, a symphony of destruction played on a watery stage.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -12394,7 +12394,7 @@
       "attack": "5",
       "defense": "5"
     },
-    "flavorText": "Reality&#039;s Shifting Tithe Pay the toll, or watch the world around you unravel into a kaleidoscope of impossible geometries, each shard a piece of your sanity.",
+    "flavorText": "Reality's Shifting Tithe Pay the toll, or watch the world around you unravel into a kaleidoscope of impossible geometries, each shard a piece of your sanity.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -12444,7 +12444,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the fetid swamps of forgotten realms, a harbinger of despair crawls forth, its gaze promising only oblivion.\n",
+    "flavorText": "From the fetid swamps of forgotten realms, a harbinger of despair crawls forth, its gaze promising only oblivion.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -12505,7 +12505,7 @@
   },
   {
     "name": "Lightning Phoenix",
-    "subtitle": "Blazing Renewal",
+    "subtitle": "Skyfire Rebirth",
     "level": "1",
     "image": "/images/card-images/arts/lightning_phoenix.png",
     "type": "Creature— Skyfire",
@@ -12513,7 +12513,7 @@
       "attack": "4",
       "defense": "7"
     },
-    "flavorText": "Skyfire Rebirth Ashes ignite with blinding light, a testament to its endless cycle. The air crackles with the promise of renewed fury.",
+    "flavorText": "Ashes ignite with blinding light, a testament to its endless cycle. The air crackles with the promise of renewed fury.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -12563,7 +12563,7 @@
       "attack": "∞",
       "defense": "∞"
     },
-    "flavorText": "Baby Mama?\nYes Baby Daddy?",
+    "flavorText": "Baby Mama? Yes Baby Daddy?",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -12633,7 +12633,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of the forgotten swamp, a beast of grotesque visage and ancient power emerges, its gaze promising madness and its roar echoing with the lament of lost souls.\n",
+    "flavorText": "From the murky depths of the forgotten swamp, a beast of grotesque visage and ancient power emerges, its gaze promising madness and its roar echoing with the lament of lost souls.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -12694,7 +12694,7 @@
   },
   {
     "name": "Lionsnake Demiurge",
-    "subtitle": "Radiant Toxicity",
+    "subtitle": "Venomous Sunbeam Embrace",
     "level": "1",
     "image": "/images/card-images/arts/lionsnake_demiurge.png",
     "type": "Creature— Venomscale",
@@ -12702,7 +12702,7 @@
       "attack": "6",
       "defense": "4"
     },
-    "flavorText": "Venomous Sunbeam Embrace Scales shimmer as light bends, a fatal kiss delivered on golden rays. The jungle trembles before its radiant, toxic grace.",
+    "flavorText": "Scales shimmer as light bends, a fatal kiss delivered on golden rays. The jungle trembles before its radiant, toxic grace.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -12752,7 +12752,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of forgotten swamps, a creature of sorrow and scale emerges, its gaze holding the weight of a thousand lost souls.\n",
+    "flavorText": "From the murky depths of forgotten swamps, a creature of sorrow and scale emerges, its gaze holding the weight of a thousand lost souls.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -12813,7 +12813,7 @@
   },
   {
     "name": "Lunar Wizard",
-    "subtitle": "Moonfall Crush",
+    "subtitle": "Lunar Gravity Well",
     "level": "1",
     "image": "/images/card-images/arts/lunar_wizard.png",
     "type": "Creature— Moontide",
@@ -12821,7 +12821,7 @@
       "attack": "6",
       "defense": "7"
     },
-    "flavorText": "Lunar Gravity Well The pull of the moon tightens, crushing hope and bone alike. A silent scream echoes in the vacuum.",
+    "flavorText": "The pull of the moon tightens, crushing hope and bone alike. A silent scream echoes in the vacuum.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -12863,7 +12863,7 @@
   },
   {
     "name": "Maelstrom",
-    "subtitle": "Fractured Echo",
+    "subtitle": "Glacial Heart Shatters",
     "level": "1",
     "image": "/images/card-images/arts/maelstrom.png",
     "type": "Creature — Venomous",
@@ -12871,7 +12871,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Glacial Heart Shatters The air cracks with frost as ancient power erupts, leaving only fractured echoes of what once was.",
+    "flavorText": "The air cracks with frost as ancient power erupts, leaving only fractured echoes of what once was.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -12913,7 +12913,7 @@
   },
   {
     "name": "Magma Mephite",
-    "subtitle": "Searing Shards",
+    "subtitle": "Molten Shard Eruption",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephite.png",
     "type": "Creature— Moltenshard",
@@ -12921,7 +12921,7 @@
       "attack": "6",
       "defense": "3"
     },
-    "flavorText": "Molten Shard Eruption The earth trembles as the mephite unleashes its fury, showering the battlefield with searing fragments of the planet&#039;s molten heart.",
+    "flavorText": "The earth trembles as the mephite unleashes its fury, showering the battlefield with searing fragments of the planet's molten heart.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -12963,7 +12963,7 @@
   },
   {
     "name": "Maniacal Martian",
-    "subtitle": "Oblivion Ray",
+    "subtitle": "Disintegration Ray Onslaught",
     "level": "1",
     "image": "/images/card-images/arts/maniacal_martian.png",
     "type": "Creature— Disintegrator",
@@ -12971,7 +12971,7 @@
       "attack": "6",
       "defense": "6"
     },
-    "flavorText": "Disintegration Ray Onslaught The air crackles with violet energy as entire landscapes are reduced to shimmering dust. Resistance is futile; only oblivion remains.",
+    "flavorText": "The air crackles with violet energy as entire landscapes are reduced to shimmering dust. Resistance is futile; only oblivion remains.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -13013,7 +13013,7 @@
   },
   {
     "name": "Mastodon",
-    "subtitle": "Seismic Stomp",
+    "subtitle": "Earthshaking Ancestral Charge",
     "level": "1",
     "image": "/images/card-images/arts/mastodon.png",
     "type": "Creature— Thunderstep",
@@ -13021,7 +13021,7 @@
       "attack": "7",
       "defense": "4"
     },
-    "flavorText": "Earthshaking Ancestral Charge The ground trembles, a symphony of ancient fury unleashed with each thunderous step. Mountains crumble before its path.",
+    "flavorText": "The ground trembles, a symphony of ancient fury unleashed with each thunderous step. Mountains crumble before its path.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -13063,7 +13063,7 @@
   },
   {
     "name": "Mecha Wyvern",
-    "subtitle": "Alloy Inferno",
+    "subtitle": "Alloy Inferno Cascade",
     "level": "1",
     "image": "/images/card-images/arts/mecha_wyvern.png",
     "type": "Creature — Inferno",
@@ -13071,7 +13071,7 @@
       "attack": "6",
       "defense": "7"
     },
-    "flavorText": "Alloy Inferno Cascade Molten metal rains down as the machine beast unleashes its Alloy Inferno Cascade, leaving only scorched earth and twisted steel in its wake.",
+    "flavorText": "Molten metal rains down as the machine beast unleashes its Alloy Inferno Cascade, leaving only scorched earth and twisted steel in its wake.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -13121,7 +13121,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of forgotten seas, a sorrowful titan rises, his tears a harbinger of tides yet to come.\n",
+    "flavorText": "From the depths of forgotten seas, a sorrowful titan rises, his tears a harbinger of tides yet to come.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -13232,7 +13232,7 @@
   },
   {
     "name": "Moondust Fiend",
-    "subtitle": "Dust to Dust",
+    "subtitle": "Lunar Dust Dream",
     "level": "1",
     "image": "/images/card-images/arts/moondust_fiend.png",
     "type": "Creature— Dreamdust",
@@ -13240,7 +13240,7 @@
       "attack": "5",
       "defense": "3"
     },
-    "flavorText": "Lunar Dust Dream The unwary wanderer succumbs to the Lunar Dust Dream, their sanity dissolving into shimmering particles.",
+    "flavorText": "The unwary wanderer succumbs to the Lunar Dust Dream, their sanity dissolving into shimmering particles.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -13282,7 +13282,7 @@
   },
   {
     "name": "Moonwraith",
-    "subtitle": "〈PHANTOM〉",
+    "subtitle": "Phase Shift",
     "level": "2",
     "image": "/images/card-images/arts/specter.png",
     "type": "Creature — Specter",
@@ -13290,7 +13290,7 @@
       "attack": "2",
       "defense": "4"
     },
-    "flavorText": "Phase Shift ⟨3M: Become untargetable for 2 turns⟩\nSpectral Blade ⟨1D: 2TD⟩",
+    "flavorText": "A chilling void given spectral form, it slips between worlds, a haunting echo in the twilight. To glimpse it is to feel the moon's cold kiss, and know the ephemeral nature of existence.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -13360,7 +13360,7 @@
       "attack": "4",
       "defense": "6"
     },
-    "flavorText": "Lunar Dust Dream Bathed in the moon&#039;s ethereal glow, enemies succumb to a sleep from which they may never awaken, choked by shimmering dust.",
+    "flavorText": "Bathed in the moon's ethereal glow, enemies succumb to a sleep from which they may never awaken, choked by shimmering dust.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -13480,7 +13480,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the moonlit abyss, a sorrowful gargoyle descends, its tears weaving nightmares into the dreams of the innocent.\n",
+    "flavorText": "From the moonlit abyss, a sorrowful gargoyle descends, its tears weaving nightmares into the dreams of the innocent.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -13619,7 +13619,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Crowned in sorrow and cloaked in crimson, he reigns over a kingdom of forgotten dreams, where the only currency is regret.\n",
+    "flavorText": "Crowned in sorrow and cloaked in crimson, he reigns over a kingdom of forgotten dreams, where the only currency is regret.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -13688,7 +13688,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of the dankest caves, a golden sorrow emerges, its weeping tendrils promising despair to any who dare gaze upon its melancholic form.\n",
+    "flavorText": "From the depths of the dankest caves, a golden sorrow emerges, its weeping tendrils promising despair to any who dare gaze upon its melancholic form.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -13757,7 +13757,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the abyssal depths, a sorrowful leviathan rises, its gaze reflecting the weight of forgotten worlds.\n",
+    "flavorText": "From the abyssal depths, a sorrowful leviathan rises, its gaze reflecting the weight of forgotten worlds.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -13826,7 +13826,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Forged in the crucible of ancient storms and whispered legends, this oni walks the mortal realm, a harbinger of chaos and a guardian of forgotten secrets.\n",
+    "flavorText": "Forged in the crucible of ancient storms and whispered legends, this oni walks the mortal realm, a harbinger of chaos and a guardian of forgotten secrets.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -13957,7 +13957,7 @@
   },
   {
     "name": "Pepelini",
-    "subtitle": "Dream Weave",
+    "subtitle": "Emerald Dream Weave",
     "level": "1",
     "image": "/images/card-images/arts/pepelini.png",
     "type": "Creature— Dreamweave",
@@ -13965,7 +13965,7 @@
       "attack": "3",
       "defense": "6"
     },
-    "flavorText": "Emerald Dream Weave The forest exhales, and reality bends to its verdant will, ensnaring all within the Emerald Dream Weave.",
+    "flavorText": "The forest exhales, and reality bends to its verdant will, ensnaring all within the Emerald Dream Weave.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14007,7 +14007,7 @@
   },
   {
     "name": "Phelob",
-    "subtitle": "⟨Cave King⟩",
+    "subtitle": "Hemodrain",
     "level": "2",
     "image": "/images/card-images/arts/Phelob.png",
     "type": "Creature — Giant Cave Spider",
@@ -14015,7 +14015,7 @@
       "attack": "4",
       "defense": "2"
     },
-    "flavorText": "Hemodrain ⟨4D - 50% Lifesteal⟩\nIn the deepest tunnels, where light fears to tread, ancient things still weave their schemes.",
+    "flavorText": "In the deepest tunnels, where light fears to tread, ancient things still weave their schemes.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -14077,7 +14077,7 @@
   },
   {
     "name": "Phoenix",
-    "subtitle": "Ashen Rebirth",
+    "subtitle": "Scorched Earth",
     "level": "3",
     "image": "/images/card-images/arts/phoenix.png",
     "type": "",
@@ -14085,7 +14085,7 @@
       "attack": "3",
       "defense": "4"
     },
-    "flavorText": "Scorched Earth ⟨4M : Deal 1TD to all enemy cards⟩\nPassive: Attacking places this card in the graveyard for one turn, after which it's returned to the players hand.",
+    "flavorText": "From ash and ember, it rises anew, leaving behind a world consumed in cleansing fire. Its rebirth paints the sky with the colors of destruction and hope.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {},
@@ -14121,7 +14121,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of volcanic despair, a harbinger of chaos rises, its fiery breath promising only destruction and despair.\n",
+    "flavorText": "From the depths of volcanic despair, a harbinger of chaos rises, its fiery breath promising only destruction and despair.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -14260,7 +14260,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of forgotten temples, a green titan rises, his touch ablaze with ancient power, his gaze promising either salvation or utter annihilation.\n",
+    "flavorText": "From the depths of forgotten temples, a green titan rises, his touch ablaze with ancient power, his gaze promising either salvation or utter annihilation.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -14321,7 +14321,7 @@
   },
   {
     "name": "Rampage",
-    "subtitle": "〈Ogrid〉",
+    "subtitle": "Big Stick Swinging",
     "level": "2",
     "image": "/images/card-images/arts/cyclops.png",
     "type": "Creature – Cyclops",
@@ -14329,7 +14329,7 @@
       "attack": "4",
       "defense": "5"
     },
-    "flavorText": "Big Stick Swinging〈4D : 30% SE : 1TR〉\n(30% chance for tree to fracture causing bleed effect. 1 turn conditional recharge)",
+    "flavorText": "(30% chance for tree to fracture causing bleed effect. 1 turn conditional recharge)",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -14399,7 +14399,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of the bayou, a feathered omen rises, its mournful gaze promising only despair and the chilling embrace of the swamp's secrets.\n",
+    "flavorText": "From the murky depths of the bayou, a feathered omen rises, its mournful gaze promising only despair and the chilling embrace of the swamp's secrets.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -14460,7 +14460,7 @@
   },
   {
     "name": "Reality Splitter",
-    "subtitle": "Echo Fracture",
+    "subtitle": "Temporal Echo Fracture",
     "level": "1",
     "image": "/images/card-images/arts/reality_splitter.png",
     "type": "Creature— Temporalrift",
@@ -14468,7 +14468,7 @@
       "attack": "4",
       "defense": "6"
     },
-    "flavorText": "Temporal Echo Fracture The air shimmers, past and present colliding as reality splinters into a thousand fleeting possibilities. Each echo a shard of what was, and what might never be.",
+    "flavorText": "The air shimmers, past and present colliding as reality splinters into a thousand fleeting possibilities. Each echo a shard of what was, and what might never be.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14518,7 +14518,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Gaze of Silent Judgment One look, and the soul shatters, forever silenced by the basilisk&#039;s immutable decree. The Gaze leaves only petrified echoes of what once was.",
+    "flavorText": "Gaze of Silent Judgment One look, and the soul shatters, forever silenced by the basilisk's immutable decree. The Gaze leaves only petrified echoes of what once was.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14560,7 +14560,7 @@
   },
   {
     "name": "Runic Biplane Pilot",
-    "subtitle": "Arcane Barrage",
+    "subtitle": "Runic Skyfire Barrage",
     "level": "1",
     "image": "/images/card-images/arts/runic_biplane_pilot.png",
     "type": "Creature— Skyrune",
@@ -14568,7 +14568,7 @@
       "attack": "5",
       "defense": "7"
     },
-    "flavorText": "Runic Skyfire Barrage The air crackles with arcane energy as the biplane unleashes a storm of enchanted bullets, leaving trails of shimmering light in its wake.",
+    "flavorText": "The air crackles with arcane energy as the biplane unleashes a storm of enchanted bullets, leaving trails of shimmering light in its wake.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14610,7 +14610,7 @@
   },
   {
     "name": "Runic Dragon",
-    "subtitle": "Runic Eruption",
+    "subtitle": "Rune-Etched Inferno",
     "level": "1",
     "image": "/images/card-images/arts/runic_dragon.png",
     "type": "Creature— Runescale",
@@ -14618,7 +14618,7 @@
       "attack": "5",
       "defense": "4"
     },
-    "flavorText": "Rune-Etched Inferno Ancient power surges, each scale glowing as the very air ignites with a heat that melts stone and memory alike.",
+    "flavorText": "Ancient power surges, each scale glowing as the very air ignites with a heat that melts stone and memory alike.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14660,7 +14660,7 @@
   },
   {
     "name": "Runic Wizard",
-    "subtitle": "Runic Detonation",
+    "subtitle": "Rune-Etched Annihilation",
     "level": "1",
     "image": "/images/card-images/arts/runic_wizard.png",
     "type": "Creature— Runewraith",
@@ -14668,7 +14668,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Rune-Etched Annihilation The air crackles as ancient symbols ignite, leaving nothing but scorched echoes of what once was. A tapestry of power, woven in destruction.",
+    "flavorText": "The air crackles as ancient symbols ignite, leaving nothing but scorched echoes of what once was. A tapestry of power, woven in destruction.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14718,7 +14718,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of the swamp, a primordial predator emerges, its gaze promising oblivion to any who dare cross its path.\n",
+    "flavorText": "From the murky depths of the swamp, a primordial predator emerges, its gaze promising oblivion to any who dare cross its path.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -14779,7 +14779,7 @@
   },
   {
     "name": "Sacred Geometric Seal",
-    "subtitle": "Harmonic Convergence",
+    "subtitle": "Harmonious Binding Radiance",
     "level": "1",
     "image": "/images/card-images/arts/sacred_geometric_seal.png",
     "type": "Creature— Bindweave",
@@ -14787,7 +14787,7 @@
       "attack": "5",
       "defense": "7"
     },
-    "flavorText": "Harmonious Binding Radiance The seal hums, its perfect angles locking fate into an unbreakable, shimmering embrace. Discord fades before its light, leaving only the echo of what was.",
+    "flavorText": "The seal hums, its perfect angles locking fate into an unbreakable, shimmering embrace. Discord fades before its light, leaving only the echo of what was.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14837,7 +14837,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of the bayou, a creature of sorrowful gaze emerges, its tears a testament to a forgotten world.\n",
+    "flavorText": "From the murky depths of the bayou, a creature of sorrowful gaze emerges, its tears a testament to a forgotten world.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -14898,7 +14898,7 @@
   },
   {
     "name": "Sandshrew",
-    "subtitle": "Desert Grave",
+    "subtitle": "Sand Tomb Eruption",
     "level": "1",
     "image": "/images/card-images/arts/sandshrew.png",
     "type": "Creature— Sandtomb",
@@ -14906,7 +14906,7 @@
       "attack": "6",
       "defense": "5"
     },
-    "flavorText": "Sand Tomb Eruption The earth trembles, then explodes in a geyser of sand, burying all hope beneath the shifting dunes.",
+    "flavorText": "The earth trembles, then explodes in a geyser of sand, burying all hope beneath the shifting dunes.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -14948,7 +14948,7 @@
   },
   {
     "name": "Sasquepe",
-    "subtitle": "〈CRYPTID〉",
+    "subtitle": "Hammer Fist",
     "level": "1",
     "image": "/images/card-images/arts/sasquepe.png",
     "type": "Creature — Great Ape",
@@ -14956,7 +14956,7 @@
       "attack": "5",
       "defense": "3"
     },
-    "flavorText": "Hammer Fist ⟨5D : 3TD⟩\nRush: This card can attack the same turn it's fielded",
+    "flavorText": "A thunderous blow that shatters bones and fells giants, leaving only echoes in the ravaged trees. The forest trembles before its might.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -15026,7 +15026,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the churning depths, she rises, a harbinger of storms and madness, her gaze promising oblivion to any who dare meet it.\n",
+    "flavorText": "From the churning depths, she rises, a harbinger of storms and madness, her gaze promising oblivion to any who dare meet it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -15087,7 +15087,7 @@
   },
   {
     "name": "Shadow Assassin",
-    "subtitle": "Veiled Strike",
+    "subtitle": "Silent Blade Descent",
     "level": "1",
     "image": "/images/card-images/arts/shadow_assassin.png",
     "type": "Creature— Silentblade",
@@ -15095,7 +15095,7 @@
       "attack": "3",
       "defense": "5"
     },
-    "flavorText": "Silent Blade Descent The air stills, then screams, as steel whispers a final, fatal truth. Darkness bleeds where the Silent Blade descends.",
+    "flavorText": "The air stills, then screams, as steel whispers a final, fatal truth. Darkness bleeds where the Silent Blade descends.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15137,7 +15137,7 @@
   },
   {
     "name": "Shadow Dragon",
-    "subtitle": "Abyssal Eruption",
+    "subtitle": "Obsidian Heart Shatters",
     "level": "1",
     "image": "/images/card-images/arts/shadow_dragon.png",
     "type": "Creature— Heartshatter",
@@ -15145,7 +15145,7 @@
       "attack": "5",
       "defense": "7"
     },
-    "flavorText": "Obsidian Heart Shatters The land trembles as darkness bleeds forth, a final, desperate act of a dying god.",
+    "flavorText": "The land trembles as darkness bleeds forth, a final, desperate act of a dying god.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15187,7 +15187,7 @@
   },
   {
     "name": "Shai-Hulud",
-    "subtitle": "Sand Devour",
+    "subtitle": "Desert Swallows All",
     "level": "1",
     "image": "/images/card-images/arts/shai_hulud.png",
     "type": "Creature— Sandswallow",
@@ -15195,7 +15195,7 @@
       "attack": "4",
       "defense": "6"
     },
-    "flavorText": "Desert Swallows All The sands writhe, answering the call, and nothing remains where once life stood.",
+    "flavorText": "The sands writhe, answering the call, and nothing remains where once life stood.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15287,7 +15287,7 @@
   },
   {
     "name": "Shinigami",
-    "subtitle": "Reaper's Decree",
+    "subtitle": "Soul Severing Scythe",
     "level": "1",
     "image": "/images/card-images/arts/shinigami.png",
     "type": "Creature— Soulscythe",
@@ -15295,7 +15295,7 @@
       "attack": "7",
       "defense": "7"
     },
-    "flavorText": "Soul Severing Scythe The reaping begins, and with it, the chilling whisper of a life force fading into nothingness. A single swing seals destinies.",
+    "flavorText": "The reaping begins, and with it, the chilling whisper of a life force fading into nothingness. A single swing seals destinies.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15337,7 +15337,7 @@
   },
   {
     "name": "Shrimp Baby",
-    "subtitle": "Brine Bubble",
+    "subtitle": "Brine Bubble Barrage",
     "level": "1",
     "image": "/images/card-images/arts/shrimp_baby.png",
     "type": "Creature— Brineblast",
@@ -15345,7 +15345,7 @@
       "attack": "4",
       "defense": "7"
     },
-    "flavorText": "Brine Bubble Barrage Tiny fists unleash a torrent of the sea&#039;s fury, leaving opponents gasping for air amidst the salty onslaught.",
+    "flavorText": "Tiny fists unleash a torrent of the sea's fury, leaving opponents gasping for air amidst the salty onslaught.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15533,7 +15533,7 @@
       "attack": "3",
       "defense": "5"
     },
-    "flavorText": "Bone-Piercing Volley Each shot whispers of forgotten ages, a skeletal rain that finds its mark with chilling accuracy.",
+    "flavorText": "Each shot whispers of forgotten ages, a skeletal rain that finds its mark with chilling accuracy.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15583,7 +15583,7 @@
       "attack": "4",
       "defense": "4"
     },
-    "flavorText": "Bone-Shaking Charge The ground trembles, a prelude to the skeletal steed&#039;s Bone-Shaking Charge that shatters both earth and spirit. Only dust remains where it passes.",
+    "flavorText": "The ground trembles, a prelude to the skeletal steed's Bone-Shaking Charge that shatters both earth and spirit. Only dust remains where it passes.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15625,7 +15625,7 @@
   },
   {
     "name": "Sol Eater",
-    "subtitle": "Extinction Burst",
+    "subtitle": "Solar Flare Devour",
     "level": "1",
     "image": "/images/card-images/arts/sol_eater.png",
     "type": "Creature— Flaredevour",
@@ -15633,7 +15633,7 @@
       "attack": "6",
       "defense": "6"
     },
-    "flavorText": "Solar Flare Devour The blinding light promises warmth, but delivers only the chilling void left in its wake. A star&#039;s heart, extinguished in an instant.",
+    "flavorText": "The blinding light promises warmth, but delivers only the chilling void left in its wake. A star's heart, extinguished in an instant.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15675,7 +15675,7 @@
   },
   {
     "name": "Soul Reaper",
-    "subtitle": "Reaping Swing",
+    "subtitle": "Soul Severing Scythe",
     "level": "1",
     "image": "/images/card-images/arts/soul_reaper.png",
     "type": "Creature— Deathscythe",
@@ -15683,7 +15683,7 @@
       "attack": "4",
       "defense": "5"
     },
-    "flavorText": "Soul Severing Scythe The reaping begins, and with it, the chilling whisper of souls departing their mortal coil. Existence unravels with each swing.",
+    "flavorText": "The reaping begins, and with it, the chilling whisper of souls departing their mortal coil. Existence unravels with each swing.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -15802,7 +15802,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Forged in the heart of a forgotten age, this mechanical marvel whispers secrets of a time when memes ruled the gears of destiny.\n",
+    "flavorText": "Forged in the heart of a forgotten age, this mechanical marvel whispers secrets of a time when memes ruled the gears of destiny.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -15940,7 +15940,7 @@
       "attack": "3",
       "defense": "7"
     },
-    "flavorText": "Carved from the mountain's heart, I stand eternal vigil over sacred grounds.\nPassive: Take 50% Reduced TD",
+    "flavorText": "Carved from the mountain's heart, I stand eternal vigil over sacred grounds.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -16010,7 +16010,7 @@
       "attack": "6",
       "defense": "3"
     },
-    "flavorText": "Earthshaker&#039;s Unmaking The ground trembles, then shatters, as ancient power rends the very foundations of the world.",
+    "flavorText": "Earthshaker's Unmaking The ground trembles, then shatters, as ancient power rends the very foundations of the world.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -16121,7 +16121,7 @@
   },
   {
     "name": "Striga",
-    "subtitle": "Blood Harvest",
+    "subtitle": "Crimson Life Drain",
     "level": "1",
     "image": "/images/card-images/arts/striga.png",
     "type": "",
@@ -16129,7 +16129,7 @@
       "attack": "4",
       "defense": "4"
     },
-    "flavorText": "Crimson Life Drain The air crackles with stolen vitality, leaving only withered husks in its wake. A desperate thirst, eternally quenched and never satisfied.",
+    "flavorText": "The air crackles with stolen vitality, leaving only withered husks in its wake. A desperate thirst, eternally quenched and never satisfied.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -16179,7 +16179,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the shadowed depths of forgotten cathedrals, a winged harbinger of chaos emerges, his gaze promising either salvation or utter despair.\n",
+    "flavorText": "From the shadowed depths of forgotten cathedrals, a winged harbinger of chaos emerges, his gaze promising either salvation or utter despair.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -16240,7 +16240,7 @@
   },
   {
     "name": "Supernova Mecha Dragon",
-    "subtitle": "Starfire Eruption",
+    "subtitle": "Cosmic Ignition Sequence",
     "level": "1",
     "image": "/images/card-images/arts/supernova_mecha_dragon.png",
     "type": "Creature— Starforge",
@@ -16248,7 +16248,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Cosmic Ignition Sequence A blinding flash heralds the end, as stars themselves are consumed in its Cosmic Ignition Sequence.",
+    "flavorText": "A blinding flash heralds the end, as stars themselves are consumed in its Cosmic Ignition Sequence.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -16497,7 +16497,7 @@
   },
   {
     "name": "Temple of the Demiurge",
-    "subtitle": "Eternal Binding",
+    "subtitle": "Soul-Sealing Requiem",
     "level": "1",
     "image": "/images/card-images/arts/temple_of_the_demiurge.png",
     "type": "Creature — Soul-Sealing",
@@ -16505,7 +16505,7 @@
       "attack": "7",
       "defense": "5"
     },
-    "flavorText": "Soul-Sealing Requiem The mournful dirge echoes, forever binding the unwary to a fate beyond the veil.",
+    "flavorText": "The mournful dirge echoes, forever binding the unwary to a fate beyond the veil.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -16616,7 +16616,7 @@
   },
   {
     "name": "Tokiru",
-    "subtitle": "⟨Shell Wanderer⟩",
+    "subtitle": "Shell Fortress",
     "level": "2",
     "image": "/images/card-images/arts/tokiru.png",
     "type": "Creature — Ancient Turtle",
@@ -16624,7 +16624,7 @@
       "attack": "2",
       "defense": "4"
     },
-    "flavorText": "Shell Fortress ⟨-1 from all damage⟩\nThrough countless eruptions I have walked, my shell bearing the wisdom of ages.",
+    "flavorText": "Through countless eruptions I have walked, my shell bearing the wisdom of ages.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -16755,7 +16755,7 @@
   },
   {
     "name": "Unicorn",
-    "subtitle": "〈Mystical〉",
+    "subtitle": "Mystical",
     "level": "2",
     "image": "/images/card-images/arts/unicorn.png",
     "type": "Creature – Unicorn",
@@ -16763,7 +16763,7 @@
       "attack": "3",
       "defense": "4"
     },
-    "flavorText": "Horn of Purity ⟨3M: Heal ally for 2HP⟩\nWhere magic and grace unite, legends are born under starlight.",
+    "flavorText": "Where magic and grace unite, legends are born under starlight.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -16825,7 +16825,7 @@
   },
   {
     "name": "Vampire",
-    "subtitle": "Crimson Command",
+    "subtitle": "Crimson Hypnosis",
     "level": "1",
     "image": "/images/card-images/arts/vampire.png",
     "type": "Creature— Bloodthrall",
@@ -16833,7 +16833,7 @@
       "attack": "3",
       "defense": "5"
     },
-    "flavorText": "Crimson Hypnosis The thrall&#039;s eyes glaze over, forever lost in the crimson depths of another&#039;s will. Blood sings a siren song of obedience.",
+    "flavorText": "The thrall's eyes glaze over, forever lost in the crimson depths of another's will. Blood sings a siren song of obedience.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -17021,7 +17021,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the moonlit abyss, a creature of nightmare descends, its eyes burning with an unholy thirst, its wings casting shadows of dread upon the land.\n",
+    "flavorText": "From the moonlit abyss, a creature of nightmare descends, its eyes burning with an unholy thirst, its wings casting shadows of dread upon the land.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -17082,7 +17082,7 @@
   },
   {
     "name": "Vanpe",
-    "subtitle": "⟨Antirush⟩",
+    "subtitle": "Antirush",
     "level": "1",
     "image": "/images/card-images/arts/vanpe.png",
     "type": "Creature — Urchin",
@@ -17090,7 +17090,7 @@
       "attack": "0",
       "defense": "3"
     },
-    "flavorText": "Passive: Attack damage agaisnt Vanpe is multiplied by 0.5 and applied as TD",
+    "flavorText": "Patience is its weapon. Every attack ricochets off enchanted hide, turned back as a whisper of pain upon the striker.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -17221,7 +17221,7 @@
   },
   {
     "name": "Void Assassin",
-    "subtitle": "Phase Shift",
+    "subtitle": "Ethereal Blade Dance",
     "level": "1",
     "image": "/images/card-images/arts/void_assassin.png",
     "type": "Creature— Phaseblade",
@@ -17229,7 +17229,7 @@
       "attack": "3",
       "defense": "5"
     },
-    "flavorText": "Ethereal Blade Dance Reality blurs as the assassin&#039;s form flickers, leaving only the echo of a thousand cuts where life once thrived.",
+    "flavorText": "Reality blurs as the assassin's form flickers, leaving only the echo of a thousand cuts where life once thrived.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -17279,7 +17279,7 @@
       "attack": "7",
       "defense": "5"
     },
-    "flavorText": "Entropy&#039;s Silent Embrace Existence unravels as the void claims another, leaving only the chilling echo of what was.",
+    "flavorText": "Entropy's Silent Embrace Existence unravels as the void claims another, leaving only the chilling echo of what was.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -17321,7 +17321,7 @@
   },
   {
     "name": "Void Wizard",
-    "subtitle": "Null Echo",
+    "subtitle": "Null Reality Fracture",
     "level": "1",
     "image": "/images/card-images/arts/void_wizard.png",
     "type": "Creature— Nullshatter",
@@ -17329,7 +17329,7 @@
       "attack": "7",
       "defense": "3"
     },
-    "flavorText": "Null Reality Fracture The air shimmers, then shatters, leaving only the chilling echo of what was, and the dread of what might never be.",
+    "flavorText": "The air shimmers, then shatters, leaving only the chilling echo of what was, and the dread of what might never be.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -17371,7 +17371,7 @@
   },
   {
     "name": "Volcatoise",
-    "subtitle": "Magma Burst",
+    "subtitle": "Molten Shell Eruption",
     "level": "1",
     "image": "/images/card-images/arts/volcatoise.png",
     "type": "",
@@ -17379,7 +17379,7 @@
       "attack": "7",
       "defense": "7"
     },
-    "flavorText": "Molten Shell Eruption The earth trembles as its ancient carapace cracks, unleashing a cataclysm of fire and fury.",
+    "flavorText": "The earth trembles as its ancient carapace cracks, unleashing a cataclysm of fire and fury.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -17429,7 +17429,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the storm-wracked peaks of despair, a feathered harbinger of woe descends, his gaze promising only ruin and regret.\n",
+    "flavorText": "From the storm-wracked peaks of despair, a feathered harbinger of woe descends, his gaze promising only ruin and regret.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -17498,7 +17498,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the fetid swamps of forgotten realms, a knight of sorrow rides forth, his steed adorned with the faces of fallen comrades, a harbinger of woe upon the land.\n",
+    "flavorText": "From the fetid swamps of forgotten realms, a knight of sorrow rides forth, his steed adorned with the faces of fallen comrades, a harbinger of woe upon the land.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -17567,7 +17567,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the murky depths of forgotten battlefields, a skeletal steed rises, its emerald eyes burning with an unholy light, forever bound to a spectral rider lost to the mists of time.\n",
+    "flavorText": "From the murky depths of forgotten battlefields, a skeletal steed rises, its emerald eyes burning with an unholy light, forever bound to a spectral rider lost to the mists of time.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -17636,7 +17636,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the depths of despair, a tidal wave of woe rises to claim what was lost.\n",
+    "flavorText": "From the depths of despair, a tidal wave of woe rises to claim what was lost.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -17843,7 +17843,7 @@
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "From the moonlit ruins, a primal terror stalks, its eyes wide with a madness that whispers of forgotten gods and shattered realities.\n",
+    "flavorText": "From the moonlit ruins, a primal terror stalks, its eyes wide with a madness that whispers of forgotten gods and shattered realities.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -18111,7 +18111,7 @@
   },
   {
     "name": "Wishing Well",
-    "subtitle": "Gilded Grasp",
+    "subtitle": "Gilded Cage Beckons",
     "level": "1",
     "image": "/images/card-images/arts/wishing_well.png",
     "type": "Creature— Gildtrap",
@@ -18119,7 +18119,7 @@
       "attack": "7",
       "defense": "5"
     },
-    "flavorText": "Gilded Cage Beckons The promise of endless fortune lures them in, only to find themselves trapped within shimmering bars of avarice.",
+    "flavorText": "The promise of endless fortune lures them in, only to find themselves trapped within shimmering bars of avarice.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -18357,7 +18357,7 @@
       "attack": "4",
       "defense": "2"
     },
-    "flavorText": "Talons and Beak ⟨4D : 3TD⟩\nScout's Eye: Reveal 2 Random Cards in the opposing players deck ⟨3M⟩\n'Trust him more than my own two feet' -Knight",
+    "flavorText": "'Trust him more than my own two feet' -Knight",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {},
@@ -18393,7 +18393,7 @@
       "attack": "3",
       "defense": "7"
     },
-    "flavorText": "Reality&#039;s Grand Delusion The world bends and breaks, a grotesque parody born from its maddening will, as truth itself becomes a forgotten dream.",
+    "flavorText": "Reality's Grand Delusion The world bends and breaks, a grotesque parody born from its maddening will, as truth itself becomes a forgotten dream.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
@@ -18919,7 +18919,7 @@
   },
   {
     "name": "Zombie",
-    "subtitle": "〈Undying〉",
+    "subtitle": "Bite",
     "level": "1",
     "image": "/images/card-images/arts/zombie.png",
     "type": "Creature — Zombie",
@@ -18927,7 +18927,7 @@
       "attack": "1",
       "defense": "1"
     },
-    "flavorText": "Bite ⟨1D : 1TD⟩\nPassive: Undying - 50% chance to return to field on death\nHorde Mentality: +1 ATK for each other Zombie on field",
+    "flavorText": "Rotting flesh, a hunger that knows no end, a single bite steals your warmth and makes you one of them. The grave calls, and you answer with a gnashing maw.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -18989,7 +18989,7 @@
   },
   {
     "name": "https://chasetheace.online/pepejackpot",
-    "subtitle": "Golden Ruin",
+    "subtitle": "Jackpot Cascade",
     "level": "1",
     "image": "/images/card-images/arts/https_chasetheace_online_pepejackpot.png",
     "type": "Creature— Jackpotfall",
@@ -18997,7 +18997,7 @@
       "attack": "7",
       "defense": "6"
     },
-    "flavorText": "Jackpot Cascade Coins spill forth, a glittering avalanche that buries hope beneath its golden weight. The house always wins, eventually.",
+    "flavorText": "Coins spill forth, a glittering avalanche that buries hope beneath its golden weight. The house always wins, eventually.",
     "artist": "Waves TCG",
     "rarity": "1/1",
     "hp": {
