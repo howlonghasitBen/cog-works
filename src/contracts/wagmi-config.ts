@@ -1,4 +1,5 @@
 import { http, createConfig } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 import { injected } from 'wagmi/connectors';
 
 // Anvil local testnet as custom chain
@@ -15,11 +16,12 @@ export const anvilChain = {
 } as const;
 
 export const config = createConfig({
-  chains: [anvilChain],
+  chains: [anvilChain, mainnet],
   connectors: [
     injected(), // Rabby, MetaMask, etc.
   ],
   transports: {
     [anvilChain.id]: http('http://192.168.0.82:8545'),
+    [mainnet.id]: http(),
   },
 });
