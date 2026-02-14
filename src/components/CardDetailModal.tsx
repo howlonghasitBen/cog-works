@@ -45,9 +45,9 @@ function shortAddr(addr: string): string {
   return `${addr.slice(0, 6)}…${addr.slice(-4)}`
 }
 
-// Card target size in the modal
-const CARD_W = 280
-const PANEL_W = 440
+// Card target size in the modal — up to 75vw total
+const CARD_W = 320
+const PANEL_W = 520
 
 export default function CardDetailModal({ card, sourceRect, onClose }: Props) {
   const [tab, setTab] = useState<Tab>('stats')
@@ -176,7 +176,7 @@ export default function CardDetailModal({ card, sourceRect, onClose }: Props) {
             display: 'flex',
             gap: 0,
             maxWidth: totalModalW + 20,
-            width: '95vw',
+            width: '75vw',
             maxHeight: '90vh',
             overflow: 'hidden',
             boxShadow: '0 8px 40px rgba(0,0,0,0.6), 0 0 80px rgba(200,165,90,0.08)',

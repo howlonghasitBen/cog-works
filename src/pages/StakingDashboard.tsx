@@ -20,7 +20,7 @@
 import { useState, useMemo } from 'react'
 import { useToast } from '../components/Toast'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useWhirlpool } from '../hooks/useWhirlpool'
+import { useWhirlpool, type CardState } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
 import CardDetailModal from '../components/CardDetailModal'
@@ -64,9 +64,8 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState<FilterKey>('all')
   const [sort, setSort] = useState<SortKey>('name')
-  const [selectedCard, setSelectedCard] = useState<string | null>(null)
   const [rewardsOpen, setRewardsOpen] = useState(false)
-  const [modalCard, setModalCard] = useState<typeof whirlpool.cards[0] | null>(null)
+  const [modalCard, setModalCard] = useState<CardState | null>(null)
   const [modalSourceRect, setModalSourceRect] = useState<DOMRect | null>(null)
 
   // Build a lookup from on-chain cards by name
@@ -458,7 +457,6 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           const sorted = [...card.stakers].sort((a, b) => b.value - a.value)
           const ownerLabel = shortAddr(card.owner)
           const hasYou = card.hasYou
-          const isSelected = selectedCard === card.name
           const CARD_W = 330
           const CARD_H = CARD_W * (4 / 3)
           const imgSrc = cardImage(card.uri, card.name, card.id)
@@ -471,12 +469,25 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.04, ease: 'easeOut' }}
               onClick={(e) => {
+                setModalSourceRect(e.currentTarget.getBoundingClientRect())
                 const chainCard = onChainByName.get(card.name.toLowerCase())
                 if (chainCard) {
-                  setModalSourceRect(e.currentTarget.getBoundingClientRect())
                   setModalCard(chainCard)
                 } else {
-                  setSelectedCard(isSelected ? null : card.name)
+                  // Build stub CardState for cards without on-chain data
+                  setModalCard({
+                    id: card.id,
+                    name: card.name,
+                    symbol: card.name.toUpperCase().slice(0, 6),
+                    uri: card.uri,
+                    address: '0x0000000000000000000000000000000000000000' as `0x${string}`,
+                    owner: '',
+                    price: '0',
+                    wavesReserve: '0',
+                    cardReserve: '0',
+                    myStake: '0',
+                    myBalance: '0',
+                  })
                 }
               }}
               style={{
@@ -494,28 +505,23 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                 outline: hasYou ? '2px solid #8a6d2b' : 'none',
                 position: 'relative',
               }}>
-                <div style={{
-                    filter: isSelected ? 'brightness(0.3)' : 'none',
-                    transition: 'filter 0.3s',
-                  }}>
-                  <CardFromData name={card.name} width={CARD_W} />
-                </div>
+                <CardFromData name={card.name} width={CARD_W} />
 
-                {/* Top 4 holders overlay on selected card */}
-                <AnimatePresence>
-                  {isSelected && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      style={{
-                        position: 'absolute',
-                        top: 10,
-                        left: 10,
-                        right: 10,
-                        zIndex: 10,
-                      }}
-                    >
+                {/* Top 4 holders overlay on hover (only if on-chain) */}
+                {card.onChain && card.stakers.length > 0 && (
+                  <div
+                    className="holders-overlay"
+                    style={{
+                      position: 'absolute',
+                      top: 10,
+                      left: 10,
+                      right: 10,
+                      zIndex: 10,
+                      opacity: 0,
+                      transition: 'opacity 0.2s',
+                      pointerEvents: 'none',
+                    }}
+                  >
                       {sorted.slice(0, 4).map((staker, si) => {
                         const pct = card.total > 0 ? ((staker.value / card.total) * 100).toFixed(1) : '0'
                         return (
@@ -563,9 +569,8 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                           </div>
                         )
                       })}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                  </div>
+                )}
 
                 {/* Card name overlay at bottom */}
                 <div style={{
@@ -636,85 +641,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                 </div>
               </div>
 
-              {/* Details panel below card on select */}
-              <AnimatePresence>
-                {isSelected && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    style={{ overflow: 'hidden', marginTop: 8, width: '100%' }}
-                  >
-                    {/* Stake / Unstake / Details buttons */}
-                    <div style={{ display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
-                      <button
-                        onClick={e => {
-                          e.stopPropagation()
-                          const chainCard = whirlpool.cards.find(c => c.id === card.id)
-                          if (chainCard) {
-                            const cardEl = e.currentTarget.closest('[data-card-wrapper]') as HTMLElement
-                            if (cardEl) setModalSourceRect(cardEl.getBoundingClientRect())
-                            setModalCard(chainCard)
-                          }
-                        }}
-                        style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 10,
-                          fontWeight: 700,
-                          padding: '5px 14px',
-                          border: '1px solid rgba(200,165,90,0.4)',
-                          background: 'rgba(200,165,90,0.08)',
-                          color: '#c8a55a',
-                          cursor: 'pointer',
-                          borderRadius: 2,
-                        }}
-                      >
-                        Details
-                      </button>
-                      <button
-                        onClick={e => handleStake(card.id, e)}
-                        style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 10,
-                          fontWeight: 700,
-                          padding: '5px 20px',
-                          border: '1px solid rgba(138,109,43,0.4)',
-                          background: 'rgba(138,109,43,0.1)',
-                          color: '#8a6d2b',
-                          cursor: 'pointer',
-                          borderRadius: 2,
-                        }}
-                      >
-                        Stake
-                      </button>
-                      <img
-                        src="/images/surfSwapNoBG.png"
-                        alt="SurfSwap"
-                        onClick={e => { e.stopPropagation(); onNavigateSwap?.() }}
-                        style={{ width: 28, height: 28, objectFit: 'contain', cursor: 'pointer', transition: 'transform 0.2s' }}
-                        onMouseEnter={e => { (e.target as HTMLImageElement).style.transform = 'scale(1.2)' }}
-                        onMouseLeave={e => { (e.target as HTMLImageElement).style.transform = 'scale(1)' }}
-                      />
-                      <button
-                        onClick={e => handleUnstake(card.id, e)}
-                        style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 10,
-                          fontWeight: 700,
-                          padding: '5px 20px',
-                          border: '1px solid #3a3d4a',
-                          background: 'transparent',
-                          color: '#4a4d5a',
-                          cursor: 'pointer',
-                          borderRadius: 2,
-                        }}
-                      >
-                        Unstake
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Card click opens modal directly — no expand panel */}
             </motion.div>
           )
         })}
