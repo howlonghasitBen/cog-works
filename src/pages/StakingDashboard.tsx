@@ -24,7 +24,6 @@ import { useWhirlpool } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
 import CardDetailModal from '../components/CardDetailModal'
-import CardDetailModal from '../components/CardDetailModal'
 
 /** Segment colors for donut charts and holder indicators */
 const COLORS = ['#0ea5e9', '#f97316', '#10b981', '#8b5cf6', '#ef4444', '#f59e0b', '#06b6d4']
