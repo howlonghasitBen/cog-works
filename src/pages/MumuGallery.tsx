@@ -201,6 +201,8 @@ export default function MumuGallery() {
           flex: '0 0 20%', minWidth: 220,
           position: 'sticky', top: 80,
           display: 'flex', flexDirection: 'column', gap: 16,
+          justifyContent: 'center',
+          height: 'calc(100vh - 120px)',
         }}>
           {/* Hero GIF */}
           <div style={{
