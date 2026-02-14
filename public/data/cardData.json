@@ -3,7 +3,7 @@
     "name": "Moonwell Sanctuary",
     "subtitle": "Lunar Infusion",
     "level": "★",
-    "image": "/images/card-images/arts/moonwell_sanctuary.png",
+    "image": "/images/card-images/arts/fairy_fountain.png",
     "type": "Consumable — Mana Restoration",
     "stats": null,
     "flavorText": "Fairy Magic ⟨+3M⟩\nWhere moonbeams kiss the sacred waters, ancient magic flows eternal.",
@@ -10337,46 +10337,10 @@
     }
   },
   {
-    "name": "Fairy Fountain",
-    "subtitle": "Eternal Bloom",
-    "level": "★",
-    "image": "/images/card-images/arts/fairy fountain.png",
-    "type": "",
-    "stats": {
-      "attack": "0",
-      "defense": "0"
-    },
-    "flavorText": "Fairy Magic ⟨+3M⟩\nWhere moonbeams kiss the sacred waters, ancient magic flows eternal.",
-    "artist": "SURF FINANCE STUDIOS",
-    "rarity": "1/1",
-    "hp": {},
-    "manaCost": {},
-    "crit": {},
-    "theme": {
-      "background": "radial-gradient(circle at 20% 30%, rgba(176, 196, 222, 0.3) 0%, transparent 50%),\n                 radial-gradient(circle at 80% 70%, rgba(119, 136, 153, 0.2) 0%, transparent 40%),\n                 radial-gradient(circle at 60% 10%, rgba(230, 230, 250, 0.2) 0%, transparent 45%),\n                 linear-gradient(145deg, #2f4f4f, #708090, #4682b4, #5f7f8f)",
-      "border": "6px solid #1a1a1a",
-      "header": {
-        "background": "radial-gradient(circle at 25% 50%, rgba(176, 196, 222, 0.4) 0%, transparent 60%),\n                   radial-gradient(circle at 75% 50%, rgba(119, 136, 153, 0.3) 0%, transparent 60%),\n                   linear-gradient(135deg, #708090, #b0c4de, #778899, #e6e6fa, #c0c0c0)",
-        "textShadow": "1px 1px 3px rgba(70, 130, 180, 0.6)",
-        "color": "#f8f8ff"
-      },
-      "level": {
-        "background": "rgba(47, 79, 79, 0.6)",
-        "border": "min(0.25vw, 2px) solid #b0c4de",
-        "color": "#b0c4de"
-      },
-      "flavorText": {
-        "background": "radial-gradient(circle at 40% 30%, rgba(176, 196, 222, 0.2) 0%, transparent 50%),\n                   radial-gradient(circle at 60% 70%, rgba(119, 136, 153, 0.2) 0%, transparent 50%),\n                   linear-gradient(145deg, #2f4f4f, #708090)"
-      }
-    },
-    "token_id": null,
-    "ipfs_cid": "bafkreicmjcmmlobny2bs3uof5qyfvxgblg3enlplpmpwz3olurqnnmt5yq"
-  },
-  {
     "name": "Feelsix",
     "subtitle": "Ashen Return",
     "level": "3",
-    "image": "undefined",
+    "image": "",
     "type": "",
     "stats": {
       "attack": "3",
@@ -15658,42 +15622,6 @@
     },
     "token_id": null,
     "ipfs_cid": "bafkreialcv6p7w4n75c3wxmr5pn6asfrb4cgd2tadq6l5htztiwyap44py"
-  },
-  {
-    "name": "Soh",
-    "subtitle": "Lucky Draw",
-    "level": "★",
-    "image": "/images/card-images/arts/soh.png",
-    "type": "",
-    "stats": {
-      "attack": "0",
-      "defense": "0"
-    },
-    "flavorText": "Slight of Hand ⟨Draw two addition cards⟩\nWhere fortunes rise and fall with the turn of a card, luck favors the bold.",
-    "artist": "SURF FINANCE STUDIOS",
-    "rarity": "1/1",
-    "hp": {},
-    "manaCost": {},
-    "crit": {},
-    "theme": {
-      "background": "radial-gradient(circle at 20% 30%, rgba(139, 117, 52, 0.2) 0%, transparent 50%),\n               radial-gradient(circle at 80% 70%, rgba(85, 0, 0, 0.2) 0%, transparent 40%),\n               radial-gradient(circle at 60% 10%, rgba(0, 64, 0, 0.3) 0%, transparent 45%),\n               linear-gradient(145deg, #1a1a1a, #2a4a2a, #4a0000, #2a2a2a)",
-      "border": "6px solid #1a1a1a",
-      "header": {
-        "background": "radial-gradient(circle at 25% 50%, rgba(139, 117, 52, 0.4) 0%, transparent 60%),\n                 radial-gradient(circle at 75% 50%, rgba(85, 0, 0, 0.3) 0%, transparent 60%),\n                 linear-gradient(135deg, #8b7534, #2a4a2a, #4a0000, #6b5d1a, #2a2a2a)",
-        "textShadow": "2px 2px 4px rgba(0, 0, 0, 0.8)",
-        "color": "#c9a961"
-      },
-      "level": {
-        "background": "rgba(0, 0, 0, 0.8)",
-        "border": "min(0.25vw, 2px) solid #c9a961",
-        "color": "#c9a961"
-      },
-      "flavorText": {
-        "background": "radial-gradient(circle at 40% 30%, rgba(139, 117, 52, 0.1) 0%, transparent 50%),\n                 radial-gradient(circle at 60% 70%, rgba(85, 0, 0, 0.1) 0%, transparent 50%),\n                 linear-gradient(145deg, #1a1a1a, #2a4a2a)"
-      }
-    },
-    "token_id": null,
-    "ipfs_cid": "bafkreigqi6jn6oyf5lsxugo47vrb2gwozy7yuzil3odzleeizra677zpua"
   },
   {
     "name": "Sol Eater",
