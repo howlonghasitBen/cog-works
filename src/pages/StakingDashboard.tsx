@@ -686,7 +686,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         <CardDetailModal
           card={modalCard}
           sourceRect={modalSourceRect}
-          onClose={() => { setModalCard(null); setModalSourceRect(null) }}
+          onClose={() => { setModalCard(null); setModalSourceRect(null); window.history.replaceState({}, '', '#whirlpool-stake') }}
           onStake={(id) => handleStake(id, { stopPropagation: () => {} } as any)}
           onUnstake={(id) => handleUnstake(id, { stopPropagation: () => {} } as any)}
         />
