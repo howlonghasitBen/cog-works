@@ -298,7 +298,7 @@ export default function SwapPage() {
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
   const [modalCard, setModalCard] = useState<CardState | null>(null)
-  const [modalCardId, setModalCardId] = useState<number | null>(null)
+  // modalCardId removed — using modalCard state directly
 
   // Build on-chain lookup by name
   const onChainByName = useMemo(() => {
@@ -406,11 +406,6 @@ export default function SwapPage() {
     } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Swap failed') }
   }
 
-  const modalCard = useMemo(() => {
-    if (modalCardId === null) return null
-    return whirlpool.cards.find(c => c.id === modalCardId) || null
-  }, [modalCardId, whirlpool.cards])
-
   const handleBuyWaves = () => {
     alert('Wrap ETH first (Mint page), then swap WETH → WAVES on SurfSwap')
   }
@@ -459,7 +454,10 @@ export default function SwapPage() {
                   card={card}
                   selected={selectedIds.has(card.id)}
                   onClick={() => toggleSelect(card.id)}
-                  onDetail={() => setModalCardId(card.id)}
+                  onDetail={() => {
+                    const c = whirlpool.cards.find(cc => cc.id === card.id)
+                    if (c) setModalCard(c)
+                  }}
                 />
               ))}
             </div>
@@ -657,7 +655,9 @@ export default function SwapPage() {
         </div>
       </div>
 
-      <CardDetailModal card={modalCard} onClose={() => setModalCardId(null)} />
+            {modalCard && (
+        <CardDetailModal card={modalCard} onClose={() => setModalCard(null)} />
+      )}
     </div>
   )
 }
