@@ -227,10 +227,12 @@ function MarketRow({
   card,
   onSelect,
   isTarget,
+  onDetail,
 }: {
   card: CardPool
   onSelect: () => void
   isTarget: boolean
+  onDetail?: () => void
 }) {
   return (
     <div className={`p-3 rounded-sm transition-all ${
@@ -244,7 +246,7 @@ function MarketRow({
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <p className="text-white text-base font-bold">{card.name} #{card.number}</p>
+            <p className="text-white text-base font-bold cursor-pointer hover:text-amber-300 transition-colors" onClick={e => { e.stopPropagation(); onDetail?.() }}>{card.name} #{card.number}</p>
             {isTarget && (
               <span className="text-[8px] font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">TARGETED</span>
             )}
@@ -295,6 +297,7 @@ export default function SwapPage() {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
+  const [modalCard, setModalCard] = useState<CardState | null>(null)
   const [modalCardId, setModalCardId] = useState<number | null>(null)
 
   // Build on-chain lookup by name
@@ -644,6 +647,10 @@ export default function SwapPage() {
                 card={card}
                 onSelect={() => setTargetId(targetId === card.id ? null : card.id)}
                 isTarget={targetId === card.id}
+                onDetail={() => {
+                  const chainCard = whirlpool.cards.find(c => c.id === card.id)
+                  if (chainCard) setModalCard(chainCard)
+                }}
               />
             ))
           )}
