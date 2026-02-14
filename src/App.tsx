@@ -361,7 +361,7 @@ export default function App() {
   // On mount: restore page from URL hash (e.g. #mumu-v2)
   useEffect(() => {
     const hash = window.location.hash.slice(1) // strip #
-    if (hash) {
+    if (hash && hash !== 'hero') {
       const page = findPageById(hash)
       if (page) {
         setActivePage(page)
@@ -370,6 +370,7 @@ export default function App() {
         }, 100)
       }
     }
+    // #hero or no hash → stay at hero (top), which is default
   }, [findPageById])
 
   // Listen for browser back/forward
@@ -386,9 +387,9 @@ export default function App() {
           return
         }
       }
-      // No subId or not found → go home
+      // No subId or not found or #hero → go home
       setActivePage(null)
-      scrollRef.current?.scrollTo({ top: 0, behavior: 'auto' })
+      scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
     }
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
@@ -419,8 +420,8 @@ export default function App() {
   const handleBackToTop = useCallback(() => {
     isAnimating.current = true
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
-    // Push clean URL
-    window.history.pushState({}, '', window.location.pathname)
+    // Push #hero URL
+    window.history.pushState({ hero: true }, '', '#hero')
     // Release lock + clear page after scroll settles
     setTimeout(() => {
       isAnimating.current = false
@@ -476,6 +477,7 @@ export default function App() {
             // Only clear page if we actually snapped back (scroll is near top)
             if (el.scrollTop < window.innerHeight * 0.1) {
               setActivePage(null)
+              window.history.pushState({ hero: true }, '', '#hero')
             }
           }, 600)
         } else if (progress >= 0.5 && progress < 0.9) {
