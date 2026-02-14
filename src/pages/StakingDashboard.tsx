@@ -18,10 +18,14 @@
  * Wired to useWhirlpool hook for live Anvil data.
  */
 import { useState, useMemo } from 'react'
+import { useToast } from '../components/Toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useWhirlpool } from '../hooks/useWhirlpool'
+import { useToast } from '../components/Toast'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
+import CardDetailModal from '../components/CardDetailModal'
+import CardDetailModal from '../components/CardDetailModal'
 
 /** Segment colors for donut charts and holder indicators */
 const COLORS = ['#0ea5e9', '#f97316', '#10b981', '#8b5cf6', '#ef4444', '#f59e0b', '#06b6d4']
@@ -58,11 +62,13 @@ function getRiskPct(ownerStake: number, total: number) {
 export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: () => void }) {
   const whirlpool = useWhirlpool()
   const { cards: allCardData } = useCardData()
+  const toast = useToast()
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState<FilterKey>('all')
   const [sort, setSort] = useState<SortKey>('name')
   const [selectedCard, setSelectedCard] = useState<string | null>(null)
   const [rewardsOpen, setRewardsOpen] = useState(false)
+  const [modalCard, setModalCard] = useState<typeof whirlpool.cards[0] | null>(null)
 
   // Build a lookup from on-chain cards by name
   const onChainByName = useMemo(() => {
@@ -124,18 +130,24 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   }
 
   const handleClaimAll = async () => {
-    for (const c of whirlpool.cards) {
-      if (parseFloat(c.myStake) > 0) {
-        await whirlpool.claimRewards(c.id)
+    try {
+      for (const c of whirlpool.cards) {
+        if (parseFloat(c.myStake) > 0) {
+          await whirlpool.claimRewards(c.id)
+        }
       }
-    }
+      toast.success('Rewards claimed!')
+    } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Claim failed') }
   }
 
   const handleStake = async (cardId: number, e: React.MouseEvent) => {
     e.stopPropagation()
     const amount = prompt('Amount to stake:')
     if (amount && parseFloat(amount) > 0) {
-      await whirlpool.stake(cardId, amount)
+      try {
+        await whirlpool.stake(cardId, amount)
+        toast.success(`Staked ${amount} WAVES`)
+      } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Stake failed') }
     }
   }
 
@@ -143,7 +155,10 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
     e.stopPropagation()
     const amount = prompt('Amount to unstake:')
     if (amount && parseFloat(amount) > 0) {
-      await whirlpool.unstake(cardId, amount)
+      try {
+        await whirlpool.unstake(cardId, amount)
+        toast.success(`Unstaked ${amount} WAVES`)
+      } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Unstake failed') }
     }
   }
 
@@ -455,7 +470,11 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.04, ease: 'easeOut' }}
-              onClick={() => setSelectedCard(isSelected ? null : card.name)}
+              onClick={() => {
+                const chainCard = onChainByName.get(card.name.toLowerCase())
+                if (chainCard) setModalCard(chainCard)
+                else setSelectedCard(isSelected ? null : card.name)
+              }}
               style={{
                 cursor: 'pointer',
                 position: 'relative',
@@ -622,8 +641,28 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                     exit={{ opacity: 0, height: 0 }}
                     style={{ overflow: 'hidden', marginTop: 8, width: '100%' }}
                   >
-                    {/* Stake / Unstake buttons */}
+                    {/* Stake / Unstake / Details buttons */}
                     <div style={{ display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
+                      <button
+                        onClick={e => {
+                          e.stopPropagation()
+                          const chainCard = whirlpool.cards.find(c => c.id === card.id)
+                          if (chainCard) setModalCard(chainCard)
+                        }}
+                        style={{
+                          fontFamily: "'DM Mono', monospace",
+                          fontSize: 10,
+                          fontWeight: 700,
+                          padding: '5px 14px',
+                          border: '1px solid rgba(200,165,90,0.4)',
+                          background: 'rgba(200,165,90,0.08)',
+                          color: '#c8a55a',
+                          cursor: 'pointer',
+                          borderRadius: 2,
+                        }}
+                      >
+                        Details
+                      </button>
                       <button
                         onClick={e => handleStake(card.id, e)}
                         style={{
@@ -682,6 +721,10 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         }}>
           {allCardData.length === 0 ? 'Loading cards...' : 'No cards match your search.'}
         </p>
+      )}
+
+      {modalCard && (
+        <CardDetailModal card={modalCard} onClose={() => setModalCard(null)} />
       )}
     </div>
   )

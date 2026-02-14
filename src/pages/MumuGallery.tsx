@@ -1,9 +1,10 @@
 /** MumuGallery — Collection gallery + mint sidebar for mumu-frens v2 */
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useAccount, useConnect, useDisconnect, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { injected } from 'wagmi/connectors'
 import { parseEther, zeroAddress, zeroHash } from 'viem'
 import { mainnet } from 'wagmi/chains'
+import { useToast } from '../components/Toast'
 
 const CONTRACT_ADDRESS = '0x0B202E6232F976D5a78A731cD621b82199F3D1be' as const
 const PRICE_PER_MINT = 0.025
@@ -60,13 +61,31 @@ export default function MumuGallery() {
     abi: MUMU_ABI,
     functionName: 'totalSupply',
     chainId: mainnet.id,
+    query: { refetchInterval: 15000 },
   })
 
   // Mint
   const { writeContract, data: txHash, isPending: isMinting, error: mintError, reset: resetMint } = useWriteContract()
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash: txHash })
 
-  useEffect(() => { if (isConfirmed) refetchSupply() }, [isConfirmed, refetchSupply])
+  const toast = useToast()
+  const prevSupply = useRef<number | null>(null)
+  const [barGlow, setBarGlow] = useState(false)
+
+  useEffect(() => { if (isConfirmed) { refetchSupply(); toast.success('🎉 Mint confirmed!') } }, [isConfirmed, refetchSupply])
+  useEffect(() => { if (mintError) toast.error((mintError as any)?.shortMessage || mintError.message) }, [mintError])
+
+  // Detect supply changes → pulse glow
+  useEffect(() => {
+    if (totalSupply === undefined) return
+    const cur = Number(totalSupply)
+    if (prevSupply.current !== null && cur !== prevSupply.current) {
+      setBarGlow(true)
+      const t = setTimeout(() => setBarGlow(false), 2000)
+      return () => clearTimeout(t)
+    }
+    prevSupply.current = cur
+  }, [totalSupply])
 
   const supply = totalSupply !== undefined ? Number(totalSupply) : null
   const soldOut = supply !== null && supply >= MAX_SUPPLY
@@ -234,7 +253,12 @@ export default function MumuGallery() {
 
             {/* Supply Bar */}
             <div style={{ marginBottom: 16 }}>
-              <div style={{ height: 6, background: '#2a2d40', borderRadius: 3, overflow: 'hidden' }}>
+              <div style={{
+                height: 6, background: '#2a2d40', borderRadius: 3, overflow: 'hidden',
+                boxShadow: barGlow ? '0 0 12px rgba(200,165,90,0.6), 0 0 24px rgba(200,165,90,0.3)' : 'none',
+                animation: barGlow ? 'supplyGlow 0.6s ease-in-out 3' : 'none',
+                transition: 'box-shadow 0.3s ease',
+              }}>
                 <div style={{
                   height: '100%',
                   width: supply !== null ? `${(supply / MAX_SUPPLY) * 100}%` : '0%',
@@ -490,6 +514,13 @@ export default function MumuGallery() {
           </div>
         </div>
       )}
+
+      <style>{`
+        @keyframes supplyGlow {
+          0%, 100% { box-shadow: 0 0 6px rgba(200,165,90,0.3); }
+          50% { box-shadow: 0 0 18px rgba(200,165,90,0.6), 0 0 30px rgba(200,165,90,0.3); }
+        }
+      `}</style>
     </div>
   )
 }

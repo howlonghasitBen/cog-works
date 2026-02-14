@@ -5,9 +5,11 @@
  */
 
 import { useState, useMemo } from 'react'
+import { useToast } from '../components/Toast'
 import { useWhirlpool } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
+import CardDetailModal from '../components/CardDetailModal'
 
 // ─── Types ──────────────────────────────────────────────────────
 interface CardPool {
@@ -67,10 +69,12 @@ function InventoryCard({
   card,
   selected,
   onClick,
+  onDetail,
 }: {
   card: CardPool
   selected: boolean
   onClick: () => void
+  onDetail?: () => void
 }) {
   return (
     <div className="cursor-pointer group" onClick={onClick}>
@@ -86,6 +90,13 @@ function InventoryCard({
               SELECTED
             </span>
           </div>
+        )}
+        {onDetail && (
+          <button
+            onClick={e => { e.stopPropagation(); onDetail() }}
+            className="absolute top-1 right-1 w-6 h-6 bg-black/70 hover:bg-[#c8a55a] rounded-full flex items-center justify-center text-gray-300 hover:text-black text-[10px] cursor-pointer transition-colors opacity-0 group-hover:opacity-100"
+            title="View details"
+          >ℹ</button>
         )}
       </div>
       <div className="mt-1.5 px-0.5">
@@ -282,6 +293,7 @@ export default function SwapPage() {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
+  const [modalCardId, setModalCardId] = useState<number | null>(null)
 
   // Build on-chain lookup by name
   const onChainByName = useMemo(() => {
@@ -374,16 +386,25 @@ export default function SwapPage() {
     return { wavesOut: totalWavesOut, tokensOut, wouldSteal, sourceCount: selectedCards.length }
   }, [selectedCards, targetPool])
 
+  const toast = useToast()
+
   const handleSwap = async () => {
     if (!canSwap || targetId === null) return
-    // For now: swap first selected card's stake to target
-    for (const card of selectedCards) {
-      const c = whirlpool.cards.find(cc => cc.id === card.id)
-      if (c && parseFloat(c.myStake) > 0) {
-        await whirlpool.swapStake(card.id, targetId, c.myStake)
+    try {
+      for (const card of selectedCards) {
+        const c = whirlpool.cards.find(cc => cc.id === card.id)
+        if (c && parseFloat(c.myStake) > 0) {
+          await whirlpool.swapStake(card.id, targetId, c.myStake)
+        }
       }
-    }
+      toast.success('Swap complete!')
+    } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Swap failed') }
   }
+
+  const modalCard = useMemo(() => {
+    if (modalCardId === null) return null
+    return whirlpool.cards.find(c => c.id === modalCardId) || null
+  }, [modalCardId, whirlpool.cards])
 
   const handleBuyWaves = () => {
     alert('Wrap ETH first (Mint page), then swap WETH → WAVES on SurfSwap')
@@ -433,6 +454,7 @@ export default function SwapPage() {
                   card={card}
                   selected={selectedIds.has(card.id)}
                   onClick={() => toggleSelect(card.id)}
+                  onDetail={() => setModalCardId(card.id)}
                 />
               ))}
             </div>
@@ -625,6 +647,8 @@ export default function SwapPage() {
           )}
         </div>
       </div>
+
+      <CardDetailModal card={modalCard} onClose={() => setModalCardId(null)} />
     </div>
   )
 }

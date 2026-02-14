@@ -317,6 +317,19 @@ export default function App() {
   const [lightningStep, setLightningStep] = useState(-1)
   const [pepesEnabled, setPepesEnabled] = useState(true)
 
+  // Page title
+  useEffect(() => {
+    if (!activePage) { document.title = 'Cog Works'; return }
+    const id = activePage.sub.id
+    const titles: Record<string, string> = {
+      'mumu-v2': 'Cog Works — Mumu Frens v2',
+      'whirlpool-stake': 'Cog Works — Staking',
+      'whirlpool-swap': 'Cog Works — Swap',
+      'whirlpool-mint': 'Cog Works — Mint',
+    }
+    document.title = titles[id || ''] || `Cog Works — ${activePage.sub.label}`
+  }, [activePage])
+
   // DOM refs for direct manipulation (no React re-renders during scroll)
   const scrollRef = useRef<HTMLDivElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
