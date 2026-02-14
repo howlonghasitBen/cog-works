@@ -17,7 +17,7 @@
  *
  * Wired to useWhirlpool hook for live Anvil data.
  */
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useToast } from '../components/Toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useWhirlpool, type CardState } from '../hooks/useWhirlpool'
@@ -100,6 +100,30 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       onChain: !!chain,
     }
   }), [allCardData, onChainByName, whirlpool.address])
+
+  // Auto-open card modal from URL hash param (e.g. #whirlpool-stake?card=aboleth)
+  useEffect(() => {
+    if (allCardData.length === 0) return
+    const hash = window.location.hash
+    const match = hash.match(/[?&]card=([^&]+)/)
+    if (!match) return
+    const slug = decodeURIComponent(match[1]).toLowerCase().replace(/-/g, ' ')
+    const cd = allCardData.find(c => c.name.toLowerCase() === slug || c.name.toLowerCase().replace(/\s+/g, '-') === match[1].toLowerCase())
+    if (!cd) return
+    const chain = onChainByName.get(cd.name.toLowerCase())
+    if (chain) {
+      setModalCard(chain)
+    } else {
+      setModalCard({
+        id: allCardData.indexOf(cd),
+        name: cd.name,
+        symbol: cd.name.toUpperCase().slice(0, 6),
+        uri: cd.image || '',
+        address: '0x0000000000000000000000000000000000000000' as `0x${string}`,
+        owner: '', price: '0', wavesReserve: '0', cardReserve: '0', myStake: '0', myBalance: '0',
+      })
+    }
+  }, [allCardData, onChainByName])
 
   const totalStaked = useMemo(() => cardData.reduce((s, c) => s + c.total, 0), [cardData])
   const yourStakes = useMemo(() => cardData.reduce((s, c) => s + c.myStake, 0), [cardData])

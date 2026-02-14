@@ -53,7 +53,8 @@ export default function CardDetailModal({ card, sourceRect, onClose, onStake, on
   const [tab, setTab] = useState<Tab>('stats')
   const [copied, setCopied] = useState(false)
 
-  const shareUrl = `${window.location.origin}/#whirlpool-stake?card=${card.id}`
+  const cardSlug = encodeURIComponent(card.name.toLowerCase().replace(/\s+/g, '-'))
+  const shareUrl = `${window.location.origin}/#whirlpool-stake?card=${cardSlug}`
 
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl).then(() => {
