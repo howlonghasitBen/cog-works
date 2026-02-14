@@ -10340,7 +10340,7 @@
     "name": "Feelsix",
     "subtitle": "Scorched Earth",
     "level": "3",
-    "image": "",
+    "image": "/images/card-images/arts/phoenix.png",
     "type": "",
     "stats": {
       "attack": "3",
@@ -14074,42 +14074,6 @@
       }
     },
     "ipfs_cid": "bafkreic6mkdkx7re35ply54dnuxkuovdqsgdhrbxhstf3usfhcy7lfrt5m"
-  },
-  {
-    "name": "Phoenix",
-    "subtitle": "Scorched Earth",
-    "level": "3",
-    "image": "/images/card-images/arts/phoenix.png",
-    "type": "",
-    "stats": {
-      "attack": "3",
-      "defense": "4"
-    },
-    "flavorText": "From ash and ember, it rises anew, leaving behind a world consumed in cleansing fire. Its rebirth paints the sky with the colors of destruction and hope.",
-    "artist": "SURF FINANCE STUDIOS",
-    "rarity": "1/1",
-    "hp": {},
-    "manaCost": {},
-    "crit": {},
-    "theme": {
-      "background": "radial-gradient(circle at 20% 30%, rgba(255, 69, 0, 0.6) 0%, transparent 50%),\n               radial-gradient(circle at 80% 70%, rgba(255, 140, 0, 0.5) 0%, transparent 40%),\n               radial-gradient(circle at 60% 10%, rgba(255, 215, 0, 0.4) 0%, transparent 45%),\n               linear-gradient(145deg, #8b0000, #ff4500, #ff8c00, #1a0600)",
-      "border": "6px solid #1a1a1a",
-      "header": {
-        "background": "radial-gradient(circle at 25% 50%, rgba(255, 69, 0, 0.8) 0%, transparent 60%),\n                 radial-gradient(circle at 75% 50%, rgba(255, 140, 0, 0.7) 0%, transparent 60%),\n                 linear-gradient(135deg, #ff4500, #ff6347, #ffd700, #ff8c00, #dc143c)",
-        "textShadow": "2px 2px 4px rgba(139, 0, 0, 0.9)",
-        "color": "#fff8dc"
-      },
-      "level": {
-        "background": "rgba(139, 0, 0, 0.8)",
-        "border": "min(0.25vw, 2px) solid #ffd700",
-        "color": "#fff8dc"
-      },
-      "flavorText": {
-        "background": "radial-gradient(circle at 40% 30%, rgba(255, 69, 0, 0.5) 0%, transparent 50%),\n                 radial-gradient(circle at 60% 70%, rgba(255, 140, 0, 0.4) 0%, transparent 50%),\n                 linear-gradient(145deg, #ff4500, #8b0000, #ff8c00)"
-      }
-    },
-    "token_id": null,
-    "ipfs_cid": "bafkreifsyalldv2czjuyfafe3e44gpqm7gpmxroxmblnkdddq6k44jufre"
   },
   {
     "name": "Pit Fiend",
