@@ -383,10 +383,12 @@ export default function App() {
       if (pageId && pageId !== 'hero') {
         const page = findPageById(pageId)
         if (page) {
+          isAnimating.current = true
           setActivePage(page)
           setTimeout(() => {
-            scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'auto' })
+            scrollRef.current?.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
           }, 100)
+          setTimeout(() => { isAnimating.current = false }, 1200)
           return
         }
       }
