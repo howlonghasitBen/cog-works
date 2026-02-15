@@ -72,7 +72,13 @@ export default function MumuGallery() {
   const prevSupply = useRef<number | null>(null)
   const [barGlow, setBarGlow] = useState(false)
 
-  useEffect(() => { if (isConfirmed) { refetchSupply(); toast.success('🎉 Mint confirmed!') } }, [isConfirmed, refetchSupply])
+  const [showMintSuccess, setShowMintSuccess] = useState(false)
+  useEffect(() => {
+    if (isConfirmed) {
+      refetchSupply()
+      setShowMintSuccess(true)
+    }
+  }, [isConfirmed, refetchSupply])
   useEffect(() => { if (mintError) toast.error((mintError as any)?.shortMessage || mintError.message) }, [mintError])
 
   // Detect supply changes → pulse glow
@@ -520,7 +526,168 @@ export default function MumuGallery() {
           0%, 100% { box-shadow: 0 0 6px rgba(200,165,90,0.3); }
           50% { box-shadow: 0 0 18px rgba(200,165,90,0.6), 0 0 30px rgba(200,165,90,0.3); }
         }
+        @keyframes confettiFall {
+          0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+          100% { transform: translateY(120px) rotate(360deg); opacity: 0; }
+        }
+        @keyframes successPulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+        @keyframes fadeSlideUp {
+          0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
       `}</style>
+
+      {/* Mint Success Modal */}
+      {showMintSuccess && (
+        <div
+          onClick={() => { setShowMintSuccess(false); resetMint() }}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 10000,
+            background: 'rgba(0,0,0,0.8)',
+            backdropFilter: 'blur(6px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          {/* Confetti particles */}
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div key={i} style={{
+              position: 'absolute',
+              top: `${Math.random() * 40}%`,
+              left: `${Math.random() * 100}%`,
+              width: 8, height: 8,
+              borderRadius: i % 3 === 0 ? '50%' : '2px',
+              background: ['#c8a55a', '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'][i % 7],
+              animation: `confettiFall ${1.5 + Math.random() * 2}s ease-out ${Math.random() * 0.8}s forwards`,
+              opacity: 0.9,
+            }} />
+          ))}
+
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'linear-gradient(135deg, #1a1d2e, #22252f)',
+              border: '2px solid #c8a55a',
+              borderRadius: 12,
+              padding: '32px 40px',
+              maxWidth: 420,
+              width: '90vw',
+              textAlign: 'center',
+              animation: 'fadeSlideUp 0.4s ease-out',
+              boxShadow: '0 0 60px rgba(200,165,90,0.2), 0 8px 40px rgba(0,0,0,0.5)',
+            }}
+          >
+            {/* Hero emoji */}
+            <div style={{
+              fontSize: 56,
+              marginBottom: 12,
+              animation: 'successPulse 2s ease-in-out infinite',
+            }}>
+              🐄✨
+            </div>
+
+            <h2 style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: 24,
+              fontWeight: 900,
+              color: '#c8a55a',
+              margin: '0 0 8px',
+            }}>
+              Mint Successful!
+            </h2>
+
+            <p style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 13,
+              color: '#d0d0d0',
+              margin: '0 0 20px',
+              lineHeight: 1.5,
+            }}>
+              You minted <span style={{ color: '#c8a55a', fontWeight: 700 }}>{quantity}</span> Mumu Fren{quantity > 1 ? 's' : ''} v2!
+            </p>
+
+            {/* Mumu hero gif */}
+            <div style={{
+              margin: '0 auto 20px',
+              width: 160, height: 160,
+              borderRadius: 12,
+              overflow: 'hidden',
+              border: '2px solid rgba(200,165,90,0.3)',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+            }}>
+              <img
+                src="/images/mumu-hero.gif"
+                alt="Mumu Fren"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+
+            {/* Supply update */}
+            <div style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 12,
+              color: '#6b7280',
+              marginBottom: 16,
+            }}>
+              {supply ?? '?'} / {MAX_SUPPLY} minted
+            </div>
+
+            {/* Action buttons */}
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {txHash && (
+                <a
+                  href={`https://etherscan.io/tx/${txHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 11,
+                    padding: '8px 16px',
+                    border: '1px solid rgba(59,130,246,0.4)',
+                    background: 'rgba(59,130,246,0.1)',
+                    color: '#60a5fa',
+                    borderRadius: 4,
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  View on Etherscan ↗
+                </a>
+              )}
+              <a
+                href="https://opensea.io/collection/mumu-frens-v2"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: 11,
+                  padding: '8px 16px',
+                  border: '1px solid rgba(200,165,90,0.4)',
+                  background: 'rgba(200,165,90,0.1)',
+                  color: '#c8a55a',
+                  borderRadius: 4,
+                  textDecoration: 'none',
+                  transition: 'all 0.2s',
+                }}
+              >
+                View on OpenSea ↗
+              </a>
+            </div>
+
+            {/* Close hint */}
+            <div style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 10,
+              color: '#4a4d5a',
+              marginTop: 20,
+            }}>
+              click anywhere to close
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
