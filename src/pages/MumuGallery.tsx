@@ -66,29 +66,38 @@ export default function MumuGallery() {
 
   // Mint
   const { writeContract, data: txHash, isPending: isMinting, error: mintError, reset: resetMint } = useWriteContract()
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash: txHash })
+  const { data: txReceipt, isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash: txHash })
 
   const toast = useToast()
   const prevSupply = useRef<number | null>(null)
   const [barGlow, setBarGlow] = useState(false)
-  const supplyBeforeMint = useRef<number | null>(null)
   const [mintedIds, setMintedIds] = useState<number[]>([])
 
   const [showMintSuccess, setShowMintSuccess] = useState(false)
+  // ERC-721 Transfer(address,address,uint256) topic
+  const TRANSFER_TOPIC = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+
   useEffect(() => {
-    if (isConfirmed) {
-      refetchSupply().then((res) => {
-        // Calculate minted token IDs from supply before → after
-        const before = supplyBeforeMint.current
-        const after = res?.data !== undefined ? Number(res.data) : null
-        if (before !== null && after !== null && after > before) {
-          const ids = Array.from({ length: after - before }, (_, i) => before + i + 1)
-          setMintedIds(ids)
+    if (isConfirmed && txReceipt) {
+      refetchSupply()
+      // Parse Transfer events from tx receipt to get actual minted token IDs
+      // Scatter randomizes which token you get, so we must read the logs
+      const ids: number[] = []
+      for (const log of txReceipt.logs) {
+        if (
+          log.address.toLowerCase() === CONTRACT_ADDRESS.toLowerCase() &&
+          log.topics[0] === TRANSFER_TOPIC &&
+          log.topics.length >= 4
+        ) {
+          // topics[3] = tokenId (uint256, zero-padded hex)
+          const tokenId = parseInt(log.topics[3], 16)
+          if (!isNaN(tokenId)) ids.push(tokenId)
         }
-        setShowMintSuccess(true)
-      })
+      }
+      setMintedIds(ids)
+      setShowMintSuccess(true)
     }
-  }, [isConfirmed, refetchSupply])
+  }, [isConfirmed, txReceipt, refetchSupply])
   useEffect(() => { if (mintError) toast.error((mintError as any)?.shortMessage || mintError.message) }, [mintError])
 
   // Detect supply changes → pulse glow
@@ -109,7 +118,6 @@ export default function MumuGallery() {
 
   const handleMint = () => {
     if (!isConnected || soldOut) return
-    supplyBeforeMint.current = supply
     writeContract({
       address: CONTRACT_ADDRESS,
       abi: MUMU_ABI,
