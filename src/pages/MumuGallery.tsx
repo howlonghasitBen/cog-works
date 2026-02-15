@@ -71,12 +71,22 @@ export default function MumuGallery() {
   const toast = useToast()
   const prevSupply = useRef<number | null>(null)
   const [barGlow, setBarGlow] = useState(false)
+  const supplyBeforeMint = useRef<number | null>(null)
+  const [mintedIds, setMintedIds] = useState<number[]>([])
 
   const [showMintSuccess, setShowMintSuccess] = useState(false)
   useEffect(() => {
     if (isConfirmed) {
-      refetchSupply()
-      setShowMintSuccess(true)
+      refetchSupply().then((res) => {
+        // Calculate minted token IDs from supply before → after
+        const before = supplyBeforeMint.current
+        const after = res?.data !== undefined ? Number(res.data) : null
+        if (before !== null && after !== null && after > before) {
+          const ids = Array.from({ length: after - before }, (_, i) => before + i + 1)
+          setMintedIds(ids)
+        }
+        setShowMintSuccess(true)
+      })
     }
   }, [isConfirmed, refetchSupply])
   useEffect(() => { if (mintError) toast.error((mintError as any)?.shortMessage || mintError.message) }, [mintError])
@@ -99,6 +109,7 @@ export default function MumuGallery() {
 
   const handleMint = () => {
     if (!isConnected || soldOut) return
+    supplyBeforeMint.current = supply
     writeContract({
       address: CONTRACT_ADDRESS,
       abi: MUMU_ABI,
@@ -579,15 +590,6 @@ export default function MumuGallery() {
               boxShadow: '0 0 60px rgba(200,165,90,0.2), 0 8px 40px rgba(0,0,0,0.5)',
             }}
           >
-            {/* Hero emoji */}
-            <div style={{
-              fontSize: 56,
-              marginBottom: 12,
-              animation: 'successPulse 2s ease-in-out infinite',
-            }}>
-              🐄✨
-            </div>
-
             <h2 style={{
               fontFamily: "'Cinzel', serif",
               fontSize: 24,
@@ -605,24 +607,47 @@ export default function MumuGallery() {
               margin: '0 0 20px',
               lineHeight: 1.5,
             }}>
-              You minted <span style={{ color: '#c8a55a', fontWeight: 700 }}>{quantity}</span> Mumu Fren{quantity > 1 ? 's' : ''} v2!
+              You minted <span style={{ color: '#c8a55a', fontWeight: 700 }}>{mintedIds.length || quantity}</span> Mumu Fren{(mintedIds.length || quantity) > 1 ? 's' : ''} v2!
             </p>
 
-            {/* Mumu hero gif */}
+            {/* Minted NFT image(s) */}
             <div style={{
-              margin: '0 auto 20px',
-              width: 160, height: 160,
-              borderRadius: 12,
-              overflow: 'hidden',
-              border: '2px solid rgba(200,165,90,0.3)',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+              display: 'flex',
+              gap: 12,
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              marginBottom: 20,
             }}>
-              <img
-                src="/images/mumu-hero.gif"
-                alt="Mumu Fren"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+              {(mintedIds.length > 0 ? mintedIds : [null]).map((id, i) => (
+                <div key={i} style={{
+                  width: mintedIds.length > 2 ? 120 : 160,
+                  height: mintedIds.length > 2 ? 120 : 160,
+                  borderRadius: 12,
+                  overflow: 'hidden',
+                  border: '2px solid rgba(200,165,90,0.3)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  animation: `fadeSlideUp 0.4s ease-out ${i * 0.1}s both`,
+                }}>
+                  <img
+                    src={id ? `/images/mumuFrensv2Images/${id}.png` : '/images/mumu-hero.gif'}
+                    alt={id ? `Mumu Fren #${id}` : 'Mumu Fren'}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+              ))}
             </div>
+
+            {/* Token IDs */}
+            {mintedIds.length > 0 && (
+              <div style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 11,
+                color: '#c8a55a',
+                marginBottom: 12,
+              }}>
+                {mintedIds.map(id => `#${id}`).join(', ')}
+              </div>
+            )}
 
             {/* Supply update */}
             <div style={{
