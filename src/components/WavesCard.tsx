@@ -4,7 +4,7 @@
  * NOT the marketplace "Live Preview" — this is the canonical WavesTCG card
  * with HP/Mana/Crit orbs in one row (gold crit), themed sections, and art.
  */
-import type { CSSProperties } from 'react'
+import { useRef, useState, useEffect, type CSSProperties } from 'react'
 
 export interface WavesCardData {
   name: string
@@ -40,7 +40,22 @@ const flavorFont = "'Crimson Text', serif"
 
 function esc(s?: string) { return (s || '').replace(/\n/g, ' ') }
 
-export default function WavesCard({ card, width = 400, artSrc, className, style }: Props) {
+export default function WavesCard({ card, width: widthProp = 400, artSrc, className, style }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [measuredWidth, setMeasuredWidth] = useState(widthProp || 400)
+  const fillParent = widthProp === 0
+
+  useEffect(() => {
+    if (!fillParent || !containerRef.current) return
+    const ro = new ResizeObserver(entries => {
+      for (const e of entries) setMeasuredWidth(e.contentRect.width || 400)
+    })
+    ro.observe(containerRef.current)
+    setMeasuredWidth(containerRef.current.offsetWidth || 400)
+    return () => ro.disconnect()
+  }, [fillParent])
+
+  const width = fillParent ? measuredWidth : widthProp
   const t = card.theme || {}
   const hp = card.hp || { value: '0', color: 'radial-gradient(circle, #dc143c, #8b0000)', textColor: '#fff' }
   const crit = card.crit || { value: '0', color: 'radial-gradient(circle, #32cd32, #228b22)', textColor: '#fff' }
@@ -87,8 +102,8 @@ export default function WavesCard({ card, width = 400, artSrc, className, style 
   }
 
   return (
-    <div className={className} style={{
-      width, maxWidth: '100%', aspectRatio: '3/4',
+    <div ref={containerRef} className={className} style={{
+      width: fillParent ? '100%' : width, maxWidth: '100%', aspectRatio: '3/4',
       border: `${5*s}px solid #1a1a1a`,
       borderRadius: 14 * s,
       overflow: 'hidden',

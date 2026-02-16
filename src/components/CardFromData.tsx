@@ -21,7 +21,7 @@ interface Props {
   style?: React.CSSProperties
 }
 
-export default function CardFromData({ name, width = 220, imageOverride, className, style }: Props) {
+export default function CardFromData({ name, width = 0, imageOverride, className, style }: Props) {
   const { lookup } = useCardData()
 
   const raw = useMemo(() => lookup(name), [name, lookup])
@@ -31,7 +31,7 @@ export default function CardFromData({ name, width = 220, imageOverride, classNa
       <div
         className={className}
         style={{
-          width, aspectRatio: '3/4',
+          width: width || '100%', aspectRatio: '3/4',
           background: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
           borderRadius: 4,
           display: 'flex', alignItems: 'center', justifyContent: 'center',

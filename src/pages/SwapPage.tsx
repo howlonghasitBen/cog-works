@@ -16,7 +16,6 @@ import { useWhirlpool } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
 import CardDetailModal from '../components/CardDetailModal'
-import { motion } from 'framer-motion'
 import type { CardState } from '../hooks/useWhirlpool'
 
 // ─── Types ──────────────────────────────────────────────────────
@@ -308,12 +307,12 @@ export default function SwapPage() {
             onBlur={e => { e.target.style.borderBottomColor = '#3a3d4a' }}
           />
 
-          {/* Card Grid — 2 columns */}
+          {/* Card Grid — simple 2-col, min 300px */}
           <div style={{ 
             flex: 1, 
             overflowY: 'auto', 
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             gap: 12,
             paddingRight: 8,
           }}>
@@ -329,107 +328,22 @@ export default function SwapPage() {
                 {whirlpool.isConnected ? 'No cards in inventory' : 'Connect wallet'}
               </p>
             ) : (
-              filteredInventory.map((card, i) => {
+              filteredInventory.map((card) => {
                 const selected = selectedIds.has(card.id)
                 return (
-                  <motion.div
-                    key={card.id}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.02 }}
+                  <div
+                    key={card.name}
                     onClick={() => toggleSelect(card.id)}
                     style={{
                       cursor: 'pointer',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      aspectRatio: '3/4',
-                      border: selected ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
-                      borderRadius: 3,
+                      border: selected ? '2px solid #c8a55a' : '2px solid transparent',
+                      borderRadius: 4,
                       boxShadow: selected ? '0 0 15px rgba(200,165,90,0.4)' : 'none',
                       transition: 'all 0.2s',
                     }}
-                    onMouseEnter={e => {
-                      if (!selected) e.currentTarget.style.borderColor = 'rgba(200,165,90,0.6)'
-                    }}
-                    onMouseLeave={e => {
-                      if (!selected) e.currentTarget.style.borderColor = 'rgba(58,61,74,0.4)'
-                    }}
                   >
-                    <CardFromData name={card.name} width={180} />
-                    {/* Card name overlay */}
-                    <div style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      padding: '16px 6px 6px',
-                      background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
-                    }}>
-                      <div style={{
-                        fontFamily: "'Cinzel', serif",
-                        fontSize: 9,
-                        fontWeight: 700,
-                        color: '#f0e6d0',
-                        textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                      }}>
-                        {card.name}
-                      </div>
-                      {card.userShares !== undefined && card.userShares > 0 && (
-                        <div style={{
-                          fontFamily: "'DM Mono', monospace",
-                          fontSize: 7,
-                          color: '#c8a55a',
-                          marginTop: 2,
-                        }}>
-                          {card.userShares.toFixed(2)} staked
-                        </div>
-                      )}
-                    </div>
-
-                    {selected && (
-                      <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        background: 'rgba(200,165,90,0.15)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
-                        <span style={{
-                          background: 'rgba(0,0,0,0.8)',
-                          color: '#c8a55a',
-                          fontSize: 8,
-                          fontWeight: 700,
-                          padding: '2px 8px',
-                          borderRadius: 2,
-                          border: '1px solid rgba(200,165,90,0.5)',
-                          fontFamily: "'DM Mono', monospace",
-                        }}>
-                          SELECTED
-                        </span>
-                      </div>
-                    )}
-
-                    {card.isOwner && (
-                      <div style={{
-                        position: 'absolute',
-                        top: 4,
-                        right: 4,
-                        background: 'rgba(245,158,11,0.9)',
-                        color: '#000',
-                        fontSize: 7,
-                        fontWeight: 800,
-                        padding: '1px 4px',
-                        borderRadius: 2,
-                        fontFamily: "'DM Mono', monospace",
-                      }}>
-                        OWNER
-                      </div>
-                    )}
-                  </motion.div>
+                    <CardFromData name={card.name} width={300} />
+                  </div>
                 )
               })
             )}
@@ -485,7 +399,7 @@ export default function SwapPage() {
               </span>
             ) : (
               selectedCards.map(card => (
-                <div key={card.id} style={{
+                <div key={card.name} style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
@@ -839,13 +753,13 @@ export default function SwapPage() {
             })}
           </div>
 
-          {/* Card grid */}
+          {/* Card grid — simple 2-col with min 300px */}
           <div style={{ 
             flex: 1, 
             overflowY: 'auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: 16,
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: 12,
             paddingRight: 8,
           }}>
             {filteredMarket.length === 0 ? (
@@ -860,17 +774,13 @@ export default function SwapPage() {
                 {allCardData.length === 0 ? 'Loading cards...' : 'No cards match'}
               </p>
             ) : (
-              filteredMarket.map((card, i) => {
+              filteredMarket.map((card) => {
                 const isTarget = targetId === card.id
                 return (
-                  <motion.div
-                    key={card.id}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.015 }}
+                  <div
+                    key={card.name}
                     onClick={(e) => {
                       setTargetId(isTarget ? null : card.id)
-                      // Also open modal
                       const chainCard = whirlpool.cards.find(c => c.id === card.id)
                       if (chainCard) {
                         setModalCard(chainCard)
@@ -879,83 +789,14 @@ export default function SwapPage() {
                     }}
                     style={{
                       cursor: 'pointer',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      aspectRatio: '3/4',
-                      border: isTarget ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
-                      borderRadius: 3,
+                      border: isTarget ? '2px solid #c8a55a' : '2px solid transparent',
+                      borderRadius: 4,
                       boxShadow: isTarget ? '0 0 15px rgba(200,165,90,0.4)' : 'none',
                       transition: 'all 0.2s',
                     }}
-                    onMouseEnter={e => {
-                      if (!isTarget) {
-                        e.currentTarget.style.borderColor = 'rgba(200,165,90,0.6)'
-                        e.currentTarget.style.transform = 'scale(1.02)'
-                      }
-                    }}
-                    onMouseLeave={e => {
-                      if (!isTarget) {
-                        e.currentTarget.style.borderColor = 'rgba(58,61,74,0.4)'
-                        e.currentTarget.style.transform = 'scale(1)'
-                      }
-                    }}
                   >
-                    <CardFromData name={card.name} width={180} />
-                    {/* Card name overlay */}
-                    <div style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      padding: '20px 8px 8px',
-                      background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
-                    }}>
-                      <div style={{
-                        fontFamily: "'Cinzel', serif",
-                        fontSize: 10,
-                        fontWeight: 800,
-                        color: '#f0e6d0',
-                        textShadow: '0 1px 3px rgba(0,0,0,0.8)',
-                      }}>
-                        {card.name}
-                      </div>
-                      <div style={{
-                        fontFamily: "'DM Mono', monospace",
-                        fontSize: 8,
-                        color: '#d1c4a0',
-                        marginTop: 2,
-                      }}>
-                        {card.priceWaves.toFixed(4)} WAVES
-                      </div>
-                    </div>
-
-                    {isTarget && (
-                      <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        background: 'rgba(200,165,90,0.15)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
-                        <span style={{
-                          background: 'rgba(0,0,0,0.8)',
-                          color: '#c8a55a',
-                          fontSize: 9,
-                          fontWeight: 700,
-                          padding: '3px 10px',
-                          borderRadius: 2,
-                          border: '1px solid rgba(200,165,90,0.5)',
-                          fontFamily: "'DM Mono', monospace",
-                        }}>
-                          TARGETED
-                        </span>
-                      </div>
-                    )}
-                  </motion.div>
+                    <CardFromData name={card.name} width={300} />
+                  </div>
                 )
               })
             )}
