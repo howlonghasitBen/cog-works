@@ -753,12 +753,12 @@ export default function SwapPage() {
             })}
           </div>
 
-          {/* Card grid — simple 2-col with min 300px */}
+          {/* Card grid — simple 2-col with min 250px */}
           <div style={{ 
             flex: 1, 
             overflowY: 'auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
             gap: 12,
             paddingRight: 8,
           }}>
@@ -795,7 +795,7 @@ export default function SwapPage() {
                       transition: 'all 0.2s',
                     }}
                   >
-                    <CardFromData name={card.name} width={300} />
+                    <CardFromData name={card.name} width={250} />
                   </div>
                 )
               })
