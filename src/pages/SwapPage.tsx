@@ -99,6 +99,8 @@ export default function SwapPage() {
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
   const [hoveredMarketCard, setHoveredMarketCard] = useState<string | null>(null)
+  const [wavesAmount, setWavesAmount] = useState('')
+  const [includeWaves, setIncludeWaves] = useState(false)
 
   // Build on-chain lookup by name
   const onChainByName = useMemo(() => {
@@ -185,15 +187,19 @@ export default function SwapPage() {
     setSelectedIds(prev => { const n = new Set(prev); n.delete(id); return n })
   }
 
-  const canSwap = selectedIds.size > 0 && targetId !== null && !selectedIds.has(targetId)
+  const parsedWaves = parseFloat(wavesAmount) || 0
+  const hasCardSelection = selectedIds.size > 0
+  const hasWavesInput = includeWaves && parsedWaves > 0
+  const canSwap = (hasCardSelection || hasWavesInput) && targetId !== null && !selectedIds.has(targetId!)
 
   const swapEstimate = useMemo(() => {
-    if (selectedCards.length === 0 || !targetPool) return null
-    const totalWavesOut = selectedCards.reduce((sum, p) => sum + (p.userShares || 0) * p.priceWaves, 0)
+    if ((!hasCardSelection && !hasWavesInput) || !targetPool) return null
+    const cardWavesOut = selectedCards.reduce((sum, p) => sum + (p.userShares || 0) * p.priceWaves, 0)
+    const totalWavesOut = cardWavesOut + (hasWavesInput ? parsedWaves : 0)
     const tokensOut = targetPool.priceWaves > 0 ? totalWavesOut / targetPool.priceWaves : 0
     const wouldSteal = tokensOut > targetPool.ownerShares
-    return { wavesOut: totalWavesOut, tokensOut, wouldSteal, sourceCount: selectedCards.length }
-  }, [selectedCards, targetPool])
+    return { wavesOut: totalWavesOut, tokensOut, wouldSteal, sourceCount: selectedCards.length, wavesAdded: hasWavesInput ? parsedWaves : 0 }
+  }, [selectedCards, targetPool, hasCardSelection, hasWavesInput, parsedWaves])
 
   const handleSwap = async () => {
     if (!canSwap || targetId === null) return
@@ -328,6 +334,95 @@ export default function SwapPage() {
             onBlur={e => { e.target.style.borderBottomColor = '#3a3d4a' }}
           />
 
+          {/* WAVES Token Selector */}
+          <div
+            onClick={() => setIncludeWaves(!includeWaves)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              padding: '10px 12px',
+              marginBottom: 12,
+              background: includeWaves ? 'rgba(200,165,90,0.08)' : 'rgba(26,29,46,0.5)',
+              border: includeWaves ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
+              borderRadius: 4,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            <div style={{
+              width: 28,
+              height: 28,
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #c8a55a, #e8c56a)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontFamily: "'Cinzel', serif",
+              fontSize: 11,
+              fontWeight: 900,
+              color: '#1a1d2e',
+              flexShrink: 0,
+            }}>
+              W
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{
+                fontFamily: "'Cinzel', serif",
+                fontSize: 11,
+                fontWeight: 700,
+                color: '#f0e6d0',
+              }}>
+                $WAVES
+              </div>
+              <div style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 9,
+                color: '#c8a55a',
+              }}>
+                Balance: {parseFloat(whirlpool.wavesBalance).toFixed(4)}
+              </div>
+            </div>
+            {includeWaves && (
+              <input
+                type="number"
+                placeholder="0.00"
+                value={wavesAmount}
+                onClick={e => e.stopPropagation()}
+                onChange={e => setWavesAmount(e.target.value)}
+                style={{
+                  width: 80,
+                  background: 'transparent',
+                  border: 'none',
+                  borderBottom: '1px solid #c8a55a',
+                  color: '#c8a55a',
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textAlign: 'right',
+                  outline: 'none',
+                  padding: '2px 0',
+                }}
+              />
+            )}
+            <div style={{
+              width: 18,
+              height: 18,
+              borderRadius: 3,
+              border: includeWaves ? '2px solid #c8a55a' : '1px solid #4a4d5a',
+              background: includeWaves ? '#c8a55a' : 'transparent',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+              fontSize: 11,
+              color: '#1a1d2e',
+              fontWeight: 900,
+            }}>
+              {includeWaves ? '✓' : ''}
+            </div>
+          </div>
+
           {/* Card Grid — simple 2-col, min 300px */}
           <div style={{ 
             flex: 1, 
@@ -407,7 +502,7 @@ export default function SwapPage() {
             gap: 6,
             alignContent: 'flex-start',
           }}>
-            {selectedCards.length === 0 ? (
+            {selectedCards.length === 0 && !hasWavesInput ? (
               <span style={{
                 fontFamily: "'DM Mono', monospace",
                 fontSize: 11,
@@ -419,7 +514,41 @@ export default function SwapPage() {
                 ← Select from inventory
               </span>
             ) : (
-              selectedCards.map(card => (
+              <>
+              {hasWavesInput && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  background: 'rgba(200,165,90,0.15)',
+                  border: '1px solid rgba(200,165,90,0.4)',
+                  borderRadius: 12,
+                  padding: '4px 10px',
+                }}>
+                  <span style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 10,
+                    color: '#c8a55a',
+                    fontWeight: 700,
+                  }}>
+                    {parsedWaves.toFixed(4)} WAVES
+                  </span>
+                  <button
+                    onClick={() => { setIncludeWaves(false); setWavesAmount('') }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#8a6d2b',
+                      fontSize: 12,
+                      cursor: 'pointer',
+                      padding: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >✕</button>
+                </div>
+              )}
+              {selectedCards.map(card => (
                 <div key={card.name} style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -451,7 +580,8 @@ export default function SwapPage() {
                     }}
                   >✕</button>
                 </div>
-              ))
+              ))}
+              </>
             )}
           </div>
 
@@ -570,9 +700,19 @@ export default function SwapPage() {
                   </span>
                 </div>
               )}
+              {swapEstimate.wavesAdded > 0 && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
+                    WAVES added
+                  </span>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#c8a55a', fontWeight: 600 }}>
+                    +{swapEstimate.wavesAdded.toFixed(4)}
+                  </span>
+                </div>
+              )}
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
-                  WAVES out
+                  Total WAVES
                 </span>
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#c8a55a', fontWeight: 600 }}>
                   {swapEstimate.wavesOut.toFixed(4)}
