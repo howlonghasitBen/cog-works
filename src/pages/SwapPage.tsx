@@ -259,9 +259,11 @@ export default function SwapPage() {
       {/* ── Main Layout: 3 columns ── */}
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: '25% 30% 45%', 
-        gap: 24,
-        alignItems: 'start',
+        gridTemplateColumns: '1fr 1fr 1fr', 
+        gap: 16,
+        alignItems: 'stretch',
+        maxWidth: '100vw',
+        overflow: 'hidden',
       }}>
 
         {/* ─── LEFT: My Inventory ─── */}
@@ -339,7 +341,6 @@ export default function SwapPage() {
                     style={{
                       cursor: 'pointer',
                       position: 'relative',
-                      aspectRatio: '4/3',
                       overflow: 'hidden',
                       border: selected ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
                       borderRadius: 3,
@@ -353,12 +354,7 @@ export default function SwapPage() {
                       if (!selected) e.currentTarget.style.borderColor = 'rgba(58,61,74,0.4)'
                     }}
                   >
-                    <img
-                      src={card.image || `/images/card-images/arts/${card.name.replace(/\s+/g, '_')}.png`}
-                      alt={card.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    />
-                    
+                    <CardFromData name={card.name} />
                     {/* Card name overlay */}
                     <div style={{
                       position: 'absolute',
@@ -847,7 +843,7 @@ export default function SwapPage() {
             flex: 1, 
             overflowY: 'auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+            gridTemplateColumns: 'repeat(2, 1fr)',
             gap: 16,
             paddingRight: 8,
           }}>
@@ -883,7 +879,6 @@ export default function SwapPage() {
                     style={{
                       cursor: 'pointer',
                       position: 'relative',
-                      aspectRatio: '4/3',
                       overflow: 'hidden',
                       border: isTarget ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
                       borderRadius: 3,
@@ -903,12 +898,7 @@ export default function SwapPage() {
                       }
                     }}
                   >
-                    <img
-                      src={card.image || `/images/card-images/arts/${card.name.replace(/\s+/g, '_')}.png`}
-                      alt={card.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    />
-
+                    <CardFromData name={card.name} />
                     {/* Card name overlay */}
                     <div style={{
                       position: 'absolute',
