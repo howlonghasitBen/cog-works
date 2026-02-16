@@ -1,7 +1,13 @@
 /** SwapPage — Whirlpool swapStake Interface
  *
- * Visual style from NFT Swapper mockup + ERC-1142 Whirlpool mechanics.
- * 3-column: My Inventory | Swap Stage | Market Search
+ * Redesigned to match StakingDashboard visual philosophy:
+ * - All inline styles (no Tailwind)
+ * - Gold steampunk theme (#c8a55a, #8a6d2b)
+ * - Stats header bar
+ * - Card grids for inventory and market
+ * - Compact center swap panel
+ * - Cinzel + DM Mono fonts
+ * - Framer Motion animations
  */
 
 import { useState, useMemo } from 'react'
@@ -10,6 +16,7 @@ import { useWhirlpool } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
 import CardDetailModal from '../components/CardDetailModal'
+import { motion } from 'framer-motion'
 import type { CardState } from '../hooks/useWhirlpool'
 
 // ─── Types ──────────────────────────────────────────────────────
@@ -53,11 +60,6 @@ function shortAddr(addr: string): string {
   return `${addr.slice(0, 6)}…${addr.slice(-4)}`
 }
 
-// ─── Colors ─────────────────────────────────────────────────────
-const rarityColor: Record<string, string> = {
-  Common: '#9ca3af', Rare: '#3b82f6', Epic: '#a855f7', Legendary: '#f59e0b',
-}
-
 function priceToRarity(price: number): 'Common' | 'Rare' | 'Epic' | 'Legendary' {
   if (price >= 1) return 'Legendary'
   if (price >= 0.3) return 'Epic'
@@ -65,239 +67,18 @@ function priceToRarity(price: number): 'Common' | 'Rare' | 'Epic' | 'Legendary' 
   return 'Common'
 }
 
-// ─── Inventory Card (visual, grid-style like mockup) ────────────
-function InventoryCard({
-  card,
-  selected,
-  onClick,
-  onDetail,
-}: {
-  card: CardPool
-  selected: boolean
-  onClick: () => void
-  onDetail?: () => void
-}) {
-  return (
-    <div className="cursor-pointer group" onClick={onClick}>
-      <div className={`relative overflow-hidden transition-all duration-200 ${
-        selected
-          ? 'border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)]'
-          : 'border-gray-700/60 hover:border-[#4a4d60] hover:shadow-lg'
-      }`} style={{ aspectRatio: '3/4' }}>
-        <CardFromData name={card.name} />
-        {selected && (
-          <div className="absolute inset-0 bg-cyan-500/15 flex items-center justify-center">
-            <span className="bg-gray-900/90 text-cyan-400 text-[10px] font-bold px-3 py-1 rounded border border-cyan-500/50">
-              SELECTED
-            </span>
-          </div>
-        )}
-        {onDetail && (
-          <button
-            onClick={e => { e.stopPropagation(); onDetail() }}
-            className="absolute top-1 right-1 w-6 h-6 bg-black/70 hover:bg-[#c8a55a] rounded-full flex items-center justify-center text-gray-300 hover:text-black text-[10px] cursor-pointer transition-colors opacity-0 group-hover:opacity-100"
-            title="View details"
-          >ℹ</button>
-        )}
-      </div>
-      <div className="mt-1.5 px-0.5">
-        <div className="flex items-center justify-between">
-          <p className="text-white text-xs font-bold leading-tight">{card.name} #{card.number}</p>
-          {card.isOwner && (
-            <span className="bg-amber-500/90 text-[8px] font-black text-black px-1.5 py-0.5 rounded">OWNER</span>
-          )}
-        </div>
-        <p className="text-[10px] leading-tight" style={{ color: rarityColor[card.rarity] }}>{card.rarity} {card.type}</p>
-        {card.userShares !== undefined && card.userShares > 0 && (
-          <p className="text-[9px] font-mono text-cyan-400 mt-0.5">{card.userShares.toFixed(2)} staked</p>
-        )}
-      </div>
-    </div>
-  )
-}
-
-// ─── Stage Card (large, framed, with ✕ button) ──────────────────
-function StageCard({
-  card,
-  onRemove,
-  placeholder,
-}: {
-  card: CardPool | null
-  onRemove?: () => void
-  placeholder: string
-}) {
-  return (
-    <div className={`relative overflow-hidden transition-all {
-      card ? 'border-cyan-500/50 bg-[#121420]' : 'border-dashed border-[#3a3d50] bg-[#121420]'
-    }`} style={{ width: 330, aspectRatio: '3/4' }}>
-      {card ? (
-        <>
-          <CardFromData name={card.name} width={330} />
-          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
-          <div className="absolute bottom-0 inset-x-0 p-3">
-            <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
-            <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity}</p>
-          </div>
-          {onRemove && (
-            <button
-              onClick={onRemove}
-              className="absolute top-2 right-2 w-6 h-6 bg-black/70 hover:bg-red-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-colors text-xs cursor-pointer"
-            >✕</button>
-          )}
-        </>
-      ) : (
-        <div className="w-full h-full flex items-center justify-center">
-          <span className="text-gray-600 text-xs">{placeholder}</span>
-        </div>
-      )}
-    </div>
-  )
-}
-
-// ─── Multi Stage Cards (for multi-select) ───────────────────────
-function MultiStageCards({
-  cards,
-  onRemove,
-  placeholder,
-}: {
-  cards: CardPool[]
-  onRemove: (id: number) => void
-  placeholder: string
-}) {
-  if (cards.length === 0) {
-    return <StageCard card={null} placeholder={placeholder} />
-  }
-  if (cards.length === 1) {
-    return <StageCard card={cards[0]} onRemove={() => onRemove(cards[0].id)} placeholder="" />
-  }
-  // Scroll carousel for multi-select
-  return (
-    <div style={{ width: 360 }}>
-      <div
-        className="flex gap-3 overflow-x-scroll snap-x snap-mandatory pb-2 overscroll-x-contain"
-        style={{ scrollbarWidth: 'thin', scrollbarColor: '#22d3ee44 transparent', WebkitOverflowScrolling: 'touch' }}
-        onWheel={e => {
-          e.stopPropagation()
-          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-            e.currentTarget.scrollLeft += e.deltaY
-          }
-        }}
-      >
-        {cards.map(card => (
-          <div
-            key={card.id}
-            className="relative overflow-hidden bg-transparent flex-shrink-0 snap-center"
-            style={{ width: 330, aspectRatio: '3/4' }}
-          >
-            <CardFromData name={card.name} width={330} />
-            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
-            <div className="absolute bottom-0 inset-x-0 p-3">
-              <p className="text-white text-sm font-bold">{card.name} #{card.number}</p>
-              <p className="text-[10px]" style={{ color: rarityColor[card.rarity] }}>{card.rarity}</p>
-            </div>
-            <button
-              onClick={() => onRemove(card.id)}
-              className="absolute top-2 right-2 w-6 h-6 bg-black/70 hover:bg-red-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white text-xs cursor-pointer"
-            >✕</button>
-          </div>
-        ))}
-      </div>
-      <p className="text-cyan-400 text-[9px] font-mono text-center mt-1">{cards.length} selected</p>
-    </div>
-  )
-}
-
-// ─── Cyan Arrows ────────────────────────────────────────────────
-function SwapArrows() {
-  return (
-    <div className="flex items-center justify-center gap-8 my-3">
-      <svg width="20" height="40" viewBox="0 0 20 40" fill="none">
-        <path d="M10 2v30M3 25l7 7 7-7" stroke="#22d3ee" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-      <svg width="20" height="40" viewBox="0 0 20 40" fill="none">
-        <path d="M10 2v30M3 25l7 7 7-7" stroke="#22d3ee" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
-  )
-}
-
-// ─── Market Card Row (with thumbnail, staker info, request) ─────
-function MarketRow({
-  card,
-  onSelect,
-  isTarget,
-  onDetail,
-}: {
-  card: CardPool
-  onSelect: () => void
-  isTarget: boolean
-  onDetail?: () => void
-}) {
-  return (
-    <div className={`p-3 rounded-sm transition-all ${
-      isTarget
-        ? 'bg-emerald-900/20 border border-emerald-500/40'
-        : 'bg-[#121420] border border-[#2a2d40] hover:border-[#3a3d50]'
-    }`}>
-      <div className="flex gap-3">
-        <div className="w-24 overflow-hidden flex-shrink-0" style={{ aspectRatio: '3/4' }}>
-          <CardFromData name={card.name} width={96} />
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <p className="text-white text-base font-bold cursor-pointer hover:text-amber-300 transition-colors" onClick={e => { e.stopPropagation(); onDetail?.() }}>{card.name} #{card.number}</p>
-            {isTarget && (
-              <span className="text-[8px] font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">TARGETED</span>
-            )}
-          </div>
-          <p className="text-xs mt-0.5" style={{ color: rarityColor[card.rarity] }}>{card.rarity}</p>
-          {/* Compact staker row */}
-          <div className="flex items-center gap-1.5 mt-2">
-            <span className="text-xs text-gray-500">👑</span>
-            <span className="text-xs text-amber-400 font-mono">{card.owner}</span>
-          </div>
-          <div className="flex items-center gap-3 mt-1">
-            <span className="text-[10px] text-gray-500 font-mono">
-              Pool: {parseFloat(card.totalStaked.toString()).toFixed(2)}
-            </span>
-            <span className="text-[10px] text-cyan-400 font-mono">
-              {card.priceWaves.toFixed(4)} $WAVES
-            </span>
-          </div>
-          <div className="flex items-center justify-between mt-2">
-            <span className="text-xs text-gray-500">
-              Steal: <span className="text-emerald-400 font-mono font-bold">{card.stealAmount.toFixed(2)}</span> tokens
-            </span>
-            {isTarget ? (
-              <span className="px-3 py-1 rounded text-xs font-bold bg-emerald-600/30 text-emerald-400 border border-emerald-500/50">Selected</span>
-            ) : (
-              <img
-                src="/images/surfSwapNoBG.png"
-                alt="Request swap"
-                onClick={onSelect}
-                style={{ width: 28, height: 28, objectFit: 'contain', cursor: 'pointer', transition: 'transform 0.2s' }}
-                onMouseEnter={e => { (e.target as HTMLImageElement).style.transform = 'scale(1.3)' }}
-                onMouseLeave={e => { (e.target as HTMLImageElement).style.transform = 'scale(1)' }}
-              />
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // ─── Main SwapPage ──────────────────────────────────────────────
 export default function SwapPage() {
   const whirlpool = useWhirlpool()
   const { cards: allCardData } = useCardData()
+  const toast = useToast()
   const [inventorySearch, setInventorySearch] = useState('')
   const [marketSearch, setMarketSearch] = useState('')
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
   const [modalCard, setModalCard] = useState<CardState | null>(null)
-  // modalCardId removed — using modalCard state directly
+  const [modalSourceRect, setModalSourceRect] = useState<DOMRect | null>(null)
 
   // Build on-chain lookup by name
   const onChainByName = useMemo(() => {
@@ -347,6 +128,10 @@ export default function SwapPage() {
   const selectedCards = myCards.filter(c => selectedIds.has(c.id))
   const targetPool = allPools.find(p => p.id === targetId) || null
 
+  const totalValue = useMemo(() => {
+    return myCards.reduce((sum, c) => sum + (c.userShares || 0) * c.priceWaves, 0)
+  }, [myCards])
+
   const filteredInventory = useMemo(() => {
     if (!inventorySearch) return myCards
     const q = inventorySearch.toLowerCase()
@@ -390,8 +175,6 @@ export default function SwapPage() {
     return { wavesOut: totalWavesOut, tokensOut, wouldSteal, sourceCount: selectedCards.length }
   }, [selectedCards, targetPool])
 
-  const toast = useToast()
-
   const handleSwap = async () => {
     if (!canSwap || targetId === null) return
     try {
@@ -402,260 +185,802 @@ export default function SwapPage() {
         }
       }
       toast.success('Swap complete!')
-    } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Swap failed') }
+      setSelectedIds(new Set())
+      setTargetId(null)
+    } catch (err: any) { 
+      toast.error(err?.shortMessage || err?.message || 'Swap failed') 
+    }
   }
 
   const handleBuyWaves = () => {
     alert('Wrap ETH first (Mint page), then swap WETH → WAVES on SurfSwap')
   }
 
-  const allTags = useMemo(() => {
-    const s = new Set<string>()
-    TAGS.forEach(t => s.add(t))
-    return Array.from(s)
-  }, [])
-
-  // No loading gate — show UI immediately, cards fill in progressively
-
   return (
-    <div className="w-full flex items-stretch justify-between gap-3" style={{ marginTop: 60, minHeight: '100dvh', paddingTop: 24, paddingBottom: 40, paddingLeft: 42, paddingRight: 42 }}>
+    <div style={{ width: '100%', margin: '60px 0 32px', padding: '0 24px', position: 'relative', minHeight: '100vh' }}>
 
-      {/* ─── LEFT: My Inventory ─── */}
-      <div className="border-2 border-[#3a3d4a] rounded p-4 flex flex-col w-full max-w-[440px]" style={{ maxHeight: 'calc(100dvh - 100px)', background: 'linear-gradient(180deg, #2a2d3a 0%, #1a1d2e 40%, #22252f 100%)', boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
-        <h2 className="text-lg font-black tracking-wider mb-3 pb-2 border-b-2 border-[#3a3d4a] uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#c8a55a', textShadow: '0 1px 3px rgba(0,0,0,0.6)', letterSpacing: '0.12em' }}>
-          My Inventory
-        </h2>
-        {/* Search */}
-        <div className="relative mb-4">
-          <input
-            type="text"
-            placeholder="Search"
-            value={inventorySearch}
-            onChange={e => setInventorySearch(e.target.value)}
-            className="w-full rounded-sm px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none transition-colors"
-            style={{ background: '#1a1d2e', border: '1px solid #4a4d5a', color: '#d0d0d0', fontFamily: "'DM Mono', monospace" }}
-          />
-          <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </div>
-        {/* Card Grid — 2 columns, scrollable */}
-        <div className="flex-1 overflow-y-auto pr-1 -mr-1">
-          {filteredInventory.length === 0 ? (
-            <p className="text-gray-500 text-xs text-center py-12 font-mono">
-              {whirlpool.isConnected ? 'No cards in your inventory yet' : 'Connect wallet to see your cards'}
-            </p>
-          ) : (
-            <div className="grid grid-cols-2 gap-3">
-              {filteredInventory.map(card => (
-                <InventoryCard
-                  key={card.id}
-                  card={card}
-                  selected={selectedIds.has(card.id)}
-                  onClick={() => toggleSelect(card.id)}
-                  onDetail={() => {
-                    const c = whirlpool.cards.find(cc => cc.id === card.id)
-                    if (c) setModalCard(c)
-                  }}
-                />
-              ))}
-            </div>
-          )}
+      {/* ── Header ── */}
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 8 }}>
+        <div>
+          <h2 style={{
+            fontFamily: "'Cinzel', serif",
+            fontSize: 32,
+            fontWeight: 900,
+            color: '#8a6d2b',
+            margin: 0,
+            letterSpacing: 1,
+          }}>
+            Whirlpool Swap
+          </h2>
+          <p style={{
+            fontFamily: "'DM Mono', monospace",
+            fontSize: 12,
+            fontWeight: 600,
+            color: '#4a4d5a',
+            margin: '2px 0 0',
+          }}>
+            Trade positions · Steal ownership · Build dominance
+          </p>
         </div>
       </div>
 
-      {/* ─── CENTER: Swap Stage ─── */}
-      <div className="border-2 border-[#3a3d4a] rounded p-5 flex flex-col items-center w-full max-w-[460px]" style={{ background: 'linear-gradient(180deg, #2a2d3a 0%, #1a1d2e 40%, #22252f 100%)', boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
-        <h2 className="text-lg font-black tracking-wider mb-5 pb-2 border-b-2 border-[#3a3d4a] w-full text-center uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#c8a55a', textShadow: '0 1px 3px rgba(0,0,0,0.6)', letterSpacing: '0.12em' }}>
-          Swap Stage
-        </h2>
+      {/* ── Thin gold separator ── */}
+      <div style={{ height: 1, background: 'linear-gradient(90deg, #c8a55a, transparent 80%)', marginBottom: 24 }} />
 
-        <div className="bg-[#121420] border border-[#2a2d40] rounded-sm p-3">
-          <MultiStageCards
-            cards={selectedCards}
-            onRemove={removeSelected}
-            placeholder="← Select from inventory"
+      {/* ── Stats: floating chips ── */}
+      <div style={{ display: 'flex', gap: 32, marginBottom: 28, flexWrap: 'wrap' }}>
+        {[
+          { label: 'Your Positions', value: myCards.length.toString(), accent: false },
+          { label: 'Total Value', value: `${totalValue.toFixed(4)} WAVES`, accent: true },
+          { label: 'Wallet', value: whirlpool.isConnected ? shortAddr(whirlpool.address || '') : 'Not Connected', accent: false },
+        ].map(stat => (
+          <div key={stat.label} style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+            <span style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 10,
+              color: '#4a4d5a',
+              textTransform: 'uppercase',
+              letterSpacing: 1,
+            }}>
+              {stat.label}
+            </span>
+            <span style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 20,
+              color: stat.accent ? '#8a6d2b' : '#2a2d3a',
+              fontWeight: 700,
+            }}>
+              {stat.value}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* ── Main Layout: 3 columns ── */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: '25% 30% 45%', 
+        gap: 24,
+        alignItems: 'start',
+      }}>
+
+        {/* ─── LEFT: My Inventory ─── */}
+        <div style={{
+          background: 'linear-gradient(180deg, #2a2d3a, #1a1d2e, #22252f)',
+          border: '1px solid rgba(200,165,90,0.2)',
+          borderRadius: 4,
+          padding: 20,
+          maxHeight: 'calc(100vh - 280px)',
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          <h3 style={{
+            fontFamily: "'Cinzel', serif",
+            fontSize: 14,
+            color: '#c8a55a',
+            margin: '0 0 16px',
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}>
+            My Inventory
+          </h3>
+
+          {/* Search */}
+          <input
+            type="text"
+            placeholder="Search..."
+            value={inventorySearch}
+            onChange={e => setInventorySearch(e.target.value)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              borderBottom: '1px solid #3a3d4a',
+              color: '#d0d0d0',
+              padding: '4px 0',
+              fontSize: 12,
+              fontFamily: "'DM Mono', monospace",
+              outline: 'none',
+              marginBottom: 16,
+            }}
+            onFocus={e => { e.target.style.borderBottomColor = '#c8a55a' }}
+            onBlur={e => { e.target.style.borderBottomColor = '#3a3d4a' }}
           />
+
+          {/* Card Grid — 2 columns */}
+          <div style={{ 
+            flex: 1, 
+            overflowY: 'auto', 
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: 12,
+            paddingRight: 8,
+          }}>
+            {filteredInventory.length === 0 ? (
+              <p style={{
+                fontFamily: "'DM Mono', monospace",
+                color: '#4a4d5a',
+                fontSize: 11,
+                textAlign: 'center',
+                padding: '40px 0',
+                gridColumn: '1 / -1',
+              }}>
+                {whirlpool.isConnected ? 'No cards in inventory' : 'Connect wallet'}
+              </p>
+            ) : (
+              filteredInventory.map((card, i) => {
+                const selected = selectedIds.has(card.id)
+                return (
+                  <motion.div
+                    key={card.id}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.02 }}
+                    onClick={() => toggleSelect(card.id)}
+                    style={{
+                      cursor: 'pointer',
+                      position: 'relative',
+                      aspectRatio: '4/3',
+                      overflow: 'hidden',
+                      border: selected ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
+                      borderRadius: 3,
+                      boxShadow: selected ? '0 0 15px rgba(200,165,90,0.4)' : 'none',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={e => {
+                      if (!selected) e.currentTarget.style.borderColor = 'rgba(200,165,90,0.6)'
+                    }}
+                    onMouseLeave={e => {
+                      if (!selected) e.currentTarget.style.borderColor = 'rgba(58,61,74,0.4)'
+                    }}
+                  >
+                    <img
+                      src={card.image || `/images/card-images/arts/${card.name.replace(/\s+/g, '_')}.png`}
+                      alt={card.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                    
+                    {/* Card name overlay */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      padding: '16px 6px 6px',
+                      background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                    }}>
+                      <div style={{
+                        fontFamily: "'Cinzel', serif",
+                        fontSize: 9,
+                        fontWeight: 700,
+                        color: '#f0e6d0',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+                      }}>
+                        {card.name}
+                      </div>
+                      {card.userShares !== undefined && card.userShares > 0 && (
+                        <div style={{
+                          fontFamily: "'DM Mono', monospace",
+                          fontSize: 7,
+                          color: '#c8a55a',
+                          marginTop: 2,
+                        }}>
+                          {card.userShares.toFixed(2)} staked
+                        </div>
+                      )}
+                    </div>
+
+                    {selected && (
+                      <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(200,165,90,0.15)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                        <span style={{
+                          background: 'rgba(0,0,0,0.8)',
+                          color: '#c8a55a',
+                          fontSize: 8,
+                          fontWeight: 700,
+                          padding: '2px 8px',
+                          borderRadius: 2,
+                          border: '1px solid rgba(200,165,90,0.5)',
+                          fontFamily: "'DM Mono', monospace",
+                        }}>
+                          SELECTED
+                        </span>
+                      </div>
+                    )}
+
+                    {card.isOwner && (
+                      <div style={{
+                        position: 'absolute',
+                        top: 4,
+                        right: 4,
+                        background: 'rgba(245,158,11,0.9)',
+                        color: '#000',
+                        fontSize: 7,
+                        fontWeight: 800,
+                        padding: '1px 4px',
+                        borderRadius: 2,
+                        fontFamily: "'DM Mono', monospace",
+                      }}>
+                        OWNER
+                      </div>
+                    )}
+                  </motion.div>
+                )
+              })
+            )}
+          </div>
         </div>
 
-        <SwapArrows />
+        {/* ─── CENTER: Swap Stage ─── */}
+        <div style={{
+          background: 'linear-gradient(180deg, #2a2d3a, #1a1d2e, #22252f)',
+          border: '1px solid rgba(200,165,90,0.2)',
+          borderRadius: 4,
+          padding: 20,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 16,
+        }}>
+          <h3 style={{
+            fontFamily: "'Cinzel', serif",
+            fontSize: 14,
+            color: '#c8a55a',
+            margin: 0,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+            textAlign: 'center',
+          }}>
+            Swap Stage
+          </h3>
 
-        <div className="bg-[#121420] border border-[#2a2d40] rounded-sm p-3">
-          <StageCard
-            card={targetPool}
-            onRemove={targetPool ? () => setTargetId(null) : undefined}
-            placeholder="Browse market →"
-          />
-        </div>
+          {/* Selected source cards as pills */}
+          <div style={{
+            width: '100%',
+            minHeight: 80,
+            background: 'rgba(26,29,46,0.5)',
+            border: '1px solid rgba(58,61,74,0.4)',
+            borderRadius: 3,
+            padding: 12,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 6,
+            alignContent: 'flex-start',
+          }}>
+            {selectedCards.length === 0 ? (
+              <span style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 11,
+                color: '#4a4d5a',
+                width: '100%',
+                textAlign: 'center',
+                padding: '24px 0',
+              }}>
+                ← Select from inventory
+              </span>
+            ) : (
+              selectedCards.map(card => (
+                <div key={card.id} style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  background: 'rgba(200,165,90,0.1)',
+                  border: '1px solid rgba(200,165,90,0.3)',
+                  borderRadius: 12,
+                  padding: '4px 8px 4px 10px',
+                }}>
+                  <span style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 10,
+                    color: '#c8a55a',
+                    fontWeight: 600,
+                  }}>
+                    {card.name}
+                  </span>
+                  <button
+                    onClick={() => removeSelected(card.id)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#8a6d2b',
+                      fontSize: 12,
+                      cursor: 'pointer',
+                      padding: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >✕</button>
+                </div>
+              ))
+            )}
+          </div>
 
-        {/* Swap estimate + button */}
-        <div className="w-full mt-6 space-y-3">
+          {/* Gold divider */}
+          <div style={{
+            width: 80,
+            height: 2,
+            background: 'linear-gradient(90deg, transparent, #c8a55a, transparent)',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 16,
+              color: '#c8a55a',
+            }}>→</div>
+          </div>
+
+          {/* Target card */}
+          <div style={{
+            width: 240,
+            aspectRatio: '3/4',
+            overflow: 'hidden',
+            border: targetPool ? '2px solid rgba(200,165,90,0.5)' : '1px dashed rgba(58,61,74,0.5)',
+            borderRadius: 4,
+            background: 'rgba(26,29,46,0.5)',
+            position: 'relative',
+          }}>
+            {targetPool ? (
+              <>
+                <CardFromData name={targetPool.name} width={240} />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: '20px 8px 8px',
+                  background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
+                }}>
+                  <div style={{
+                    fontFamily: "'Cinzel', serif",
+                    fontSize: 11,
+                    fontWeight: 800,
+                    color: '#f0e6d0',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+                  }}>
+                    {targetPool.name}
+                  </div>
+                  <div style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 8,
+                    color: '#d1c4a0',
+                    marginTop: 2,
+                  }}>
+                    {targetPool.rarity} · {targetPool.priceWaves.toFixed(4)} WAVES
+                  </div>
+                </div>
+                <button
+                  onClick={() => setTargetId(null)}
+                  style={{
+                    position: 'absolute',
+                    top: 6,
+                    right: 6,
+                    width: 20,
+                    height: 20,
+                    background: 'rgba(0,0,0,0.7)',
+                    border: 'none',
+                    borderRadius: '50%',
+                    color: '#fff',
+                    fontSize: 12,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >✕</button>
+              </>
+            ) : (
+              <div style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <span style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: 11,
+                  color: '#4a4d5a',
+                }}>
+                  Browse market →
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Swap estimate */}
           {swapEstimate && (
-            <div className="bg-[#121420] rounded-sm p-3 space-y-1 text-[11px] font-mono">
+            <div style={{
+              width: '100%',
+              background: 'rgba(26,29,46,0.5)',
+              border: '1px solid rgba(58,61,74,0.4)',
+              borderRadius: 3,
+              padding: 12,
+            }}>
               {swapEstimate.sourceCount > 1 && (
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Positions merged</span>
-                  <span className="text-cyan-400">{swapEstimate.sourceCount}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
+                    Positions merged
+                  </span>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#c8a55a', fontWeight: 600 }}>
+                    {swapEstimate.sourceCount}
+                  </span>
                 </div>
               )}
-              <div className="flex justify-between">
-                <span className="text-gray-500">WAVES out</span>
-                <span className="text-cyan-400">{swapEstimate.wavesOut.toFixed(4)}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
+                  WAVES out
+                </span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#c8a55a', fontWeight: 600 }}>
+                  {swapEstimate.wavesOut.toFixed(4)}
+                </span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-500">Tokens acquired</span>
-                <span className="text-emerald-400">{swapEstimate.tokensOut.toFixed(4)}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
+                  Tokens acquired
+                </span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#10b981', fontWeight: 600 }}>
+                  {swapEstimate.tokensOut.toFixed(4)}
+                </span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-500">Takes ownership?</span>
-                <span className={swapEstimate.wouldSteal ? 'text-amber-400 font-bold' : 'text-gray-400'}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
+                  Takes ownership?
+                </span>
+                <span style={{ 
+                  fontFamily: "'DM Mono', monospace", 
+                  fontSize: 10, 
+                  color: swapEstimate.wouldSteal ? '#f59e0b' : '#6b7280',
+                  fontWeight: swapEstimate.wouldSteal ? 700 : 400,
+                }}>
                   {swapEstimate.wouldSteal ? '⚡ YES' : 'No'}
                 </span>
               </div>
             </div>
           )}
 
-          <p className="text-gray-400 text-xs text-center">
-            Est. Gas: <span className="text-cyan-400 font-mono">~181k gas (~0.002 ETH)</span>
+          <p style={{
+            fontFamily: "'DM Mono', monospace",
+            fontSize: 9,
+            color: '#6b7280',
+            textAlign: 'center',
+            margin: 0,
+          }}>
+            Est. Gas: <span style={{ color: '#c8a55a' }}>~181k gas (~0.002 ETH)</span>
           </p>
 
+          {/* Swap button */}
           <button
             disabled={!canSwap}
             onClick={handleSwap}
-            className={`group relative w-full py-4 rounded-sm text-base font-black tracking-widest uppercase transition-all duration-300 overflow-hidden ${
-              canSwap
-                ? 'cursor-pointer border'
-                : 'bg-gray-800 text-gray-600 cursor-not-allowed border-2 border-[#2a2d40]'
-            } ${
-              canSwap && swapEstimate?.wouldSteal
-                ? 'border-amber-500/60 text-black hover:shadow-[0_0_40px_rgba(245,158,11,0.4)]'
-                : canSwap
-                  ? 'border-emerald-500/60 text-white hover:shadow-[0_0_40px_rgba(16,185,129,0.4)]'
-                  : ''
-            }`}
-            style={{ fontFamily: "'Inter Tight', sans-serif" }}
+            style={{
+              width: '100%',
+              padding: '14px 0',
+              fontFamily: "'Cinzel', serif",
+              fontSize: 13,
+              fontWeight: 700,
+              color: canSwap ? '#1a1d2e' : '#4a4d5a',
+              background: canSwap 
+                ? (swapEstimate?.wouldSteal 
+                  ? 'linear-gradient(135deg, #f59e0b, #d97706)' 
+                  : 'linear-gradient(135deg, #c8a55a, #e8c56a)')
+                : '#2a2d3a',
+              border: canSwap ? 'none' : '1px solid rgba(58,61,74,0.4)',
+              borderRadius: 2,
+              cursor: canSwap ? 'pointer' : 'not-allowed',
+              textTransform: 'uppercase',
+              letterSpacing: 1,
+              boxShadow: canSwap ? '0 4px 16px rgba(200,165,90,0.3)' : 'none',
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={e => {
+              if (canSwap) {
+                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(200,165,90,0.4)'
+              }
+            }}
+            onMouseLeave={e => {
+              if (canSwap) {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 16px rgba(200,165,90,0.3)'
+              }
+            }}
           >
-            {/* Animated gradient background */}
-            {canSwap && (
-              <div
-                className="absolute inset-0 transition-opacity duration-300"
-                style={{
-                  background: swapEstimate?.wouldSteal
-                    ? 'linear-gradient(135deg, #f59e0b, #d97706, #f59e0b)'
-                    : 'linear-gradient(135deg, #059669, #10b981, #059669)',
-                  backgroundSize: '200% 200%',
-                  animation: 'shimmer 3s ease-in-out infinite',
-                }}
-              />
-            )}
-            {/* Glow pulse on hover */}
-            {canSwap && (
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{
-                background: swapEstimate?.wouldSteal
-                  ? 'radial-gradient(circle at center, rgba(245,158,11,0.3), transparent 70%)'
-                  : 'radial-gradient(circle at center, rgba(16,185,129,0.3), transparent 70%)',
-              }} />
-            )}
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              {canSwap && swapEstimate?.wouldSteal && (
-                <svg className="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M13 0L0 14h9v10l13-14h-9V0z" />
-                </svg>
-              )}
-              {canSwap
-                ? swapEstimate?.wouldSteal ? 'SWAP TO STEAL' : 'INITIATE SWAP'
-                : 'SELECT CARDS TO SWAP'}
-            </span>
+            {canSwap
+              ? (swapEstimate?.wouldSteal ? '⚡ SWAP TO STEAL' : 'INITIATE SWAP')
+              : 'SELECT CARDS'}
           </button>
 
-          {/* Buy $WAVES */}
+          {/* Buy WAVES button */}
           <button
             onClick={handleBuyWaves}
-            className="w-full mt-3 py-3 rounded-sm border-2 border-cyan-500/40 bg-[#121420] text-cyan-400 font-bold text-sm tracking-wider uppercase cursor-pointer transition-all duration-200 hover:border-cyan-400 hover:bg-cyan-500/10 hover:shadow-[0_2px_12px_rgba(34,211,238,0.2)]"
-            style={{ fontFamily: "'Inter Tight', sans-serif" }}
+            style={{
+              width: '100%',
+              padding: '10px 0',
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11,
+              fontWeight: 600,
+              color: '#c8a55a',
+              background: 'transparent',
+              border: '1px solid rgba(200,165,90,0.3)',
+              borderRadius: 2,
+              cursor: 'pointer',
+              textTransform: 'uppercase',
+              letterSpacing: 1,
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'rgba(200,165,90,0.6)'
+              e.currentTarget.style.background = 'rgba(200,165,90,0.05)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'rgba(200,165,90,0.3)'
+              e.currentTarget.style.background = 'transparent'
+            }}
           >
             Buy $WAVES
           </button>
-
-          <style>{`
-            @keyframes shimmer {
-              0%, 100% { background-position: 0% 50%; }
-              50% { background-position: 100% 50%; }
-            }
-          `}</style>
         </div>
-      </div>
 
-      {/* ─── RIGHT: Market Search ─── */}
-      <div className="border-2 border-[#3a3d4a] rounded p-4 flex flex-col w-full max-w-[440px]" style={{ maxHeight: 'calc(100dvh - 100px)', background: 'linear-gradient(180deg, #2a2d3a 0%, #1a1d2e 40%, #22252f 100%)', boxShadow: '0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
-        <h2 className="text-lg font-black tracking-wider mb-3 pb-2 border-b-2 border-[#3a3d4a] uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#c8a55a', textShadow: '0 1px 3px rgba(0,0,0,0.6)', letterSpacing: '0.12em' }}>
-          Market Search <span style={{ fontSize: 11, fontWeight: 400, color: '#4a4d5a', fontFamily: "'DM Mono', monospace" }}>({allPools.length})</span>
-        </h2>
-        {/* Search + history button */}
-        <div className="flex gap-2 mb-3">
-          <div className="relative flex-1">
-            <input
-              type="text"
-              placeholder="Search"
-              value={marketSearch}
-              onChange={e => setMarketSearch(e.target.value)}
-              className="w-full rounded-sm px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none transition-colors"
-              style={{ background: '#1a1d2e', border: '1px solid #4a4d5a', color: '#d0d0d0', fontFamily: "'DM Mono', monospace" }}
-            />
+        {/* ─── RIGHT: Market Search ─── */}
+        <div style={{
+          background: 'linear-gradient(180deg, #2a2d3a, #1a1d2e, #22252f)',
+          border: '1px solid rgba(200,165,90,0.2)',
+          borderRadius: 4,
+          padding: 20,
+          maxHeight: 'calc(100vh - 280px)',
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            <h3 style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: 14,
+              color: '#c8a55a',
+              margin: 0,
+              textTransform: 'uppercase',
+              letterSpacing: 1,
+            }}>
+              Market Browse
+            </h3>
+            <span style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 10,
+              color: '#4a4d5a',
+            }}>
+              ({allPools.length})
+            </span>
           </div>
-          <button className="w-10 h-10 rounded-sm flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer" style={{ background: '#1a1d2e', border: '1px solid #4a4d5a' }}>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </button>
-        </div>
-        {/* Tag filter chips */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              onClick={() => {
-                setActiveTags(prev => {
-                  const n = new Set(prev)
-                  if (n.has(tag)) n.delete(tag); else n.add(tag)
-                  return n
-                })
-              }}
-              className={`px-2.5 py-1 rounded-sm text-[10px] font-medium transition-colors cursor-pointer ${
-                activeTags.has(tag)
-                  ? 'bg-cyan-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border-2 border-[#2a2d40]'
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-        {/* Card list with staker info + request */}
-        <div className="flex-1 overflow-y-auto space-y-2 pr-1 -mr-1">
-          {filteredMarket.length === 0 ? (
-            <p className="text-gray-500 text-xs text-center py-12 font-mono">
-              {allCardData.length === 0 ? 'Loading cards...' : 'No cards match your search'}
-            </p>
-          ) : (
-            filteredMarket.map(card => (
-              <MarketRow
-                key={card.id}
-                card={card}
-                onSelect={() => setTargetId(targetId === card.id ? null : card.id)}
-                isTarget={targetId === card.id}
-                onDetail={() => {
-                  const chainCard = whirlpool.cards.find(c => c.id === card.id)
-                  if (chainCard) setModalCard(chainCard)
-                }}
-              />
-            ))
-          )}
+
+          {/* Search */}
+          <input
+            type="text"
+            placeholder="Search..."
+            value={marketSearch}
+            onChange={e => setMarketSearch(e.target.value)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              borderBottom: '1px solid #3a3d4a',
+              color: '#d0d0d0',
+              padding: '4px 0',
+              fontSize: 12,
+              fontFamily: "'DM Mono', monospace",
+              outline: 'none',
+              marginBottom: 12,
+            }}
+            onFocus={e => { e.target.style.borderBottomColor = '#c8a55a' }}
+            onBlur={e => { e.target.style.borderBottomColor = '#3a3d4a' }}
+          />
+
+          {/* Tag filter chips */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
+            {TAGS.map(tag => {
+              const active = activeTags.has(tag)
+              return (
+                <button
+                  key={tag}
+                  onClick={() => {
+                    setActiveTags(prev => {
+                      const n = new Set(prev)
+                      if (n.has(tag)) n.delete(tag); else n.add(tag)
+                      return n
+                    })
+                  }}
+                  style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 9,
+                    padding: '3px 10px',
+                    border: 'none',
+                    borderRadius: 10,
+                    background: active ? 'rgba(200,165,90,0.2)' : 'transparent',
+                    color: active ? '#c8a55a' : '#6b7280',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={e => {
+                    if (!active) e.currentTarget.style.color = '#9ca3af'
+                  }}
+                  onMouseLeave={e => {
+                    if (!active) e.currentTarget.style.color = '#6b7280'
+                  }}
+                >
+                  {tag}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Card grid */}
+          <div style={{ 
+            flex: 1, 
+            overflowY: 'auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+            gap: 16,
+            paddingRight: 8,
+          }}>
+            {filteredMarket.length === 0 ? (
+              <p style={{
+                fontFamily: "'DM Mono', monospace",
+                color: '#4a4d5a',
+                fontSize: 11,
+                textAlign: 'center',
+                padding: '40px 0',
+                gridColumn: '1 / -1',
+              }}>
+                {allCardData.length === 0 ? 'Loading cards...' : 'No cards match'}
+              </p>
+            ) : (
+              filteredMarket.map((card, i) => {
+                const isTarget = targetId === card.id
+                return (
+                  <motion.div
+                    key={card.id}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.015 }}
+                    onClick={(e) => {
+                      setTargetId(isTarget ? null : card.id)
+                      // Also open modal
+                      const chainCard = whirlpool.cards.find(c => c.id === card.id)
+                      if (chainCard) {
+                        setModalCard(chainCard)
+                        setModalSourceRect(e.currentTarget.getBoundingClientRect())
+                      }
+                    }}
+                    style={{
+                      cursor: 'pointer',
+                      position: 'relative',
+                      aspectRatio: '4/3',
+                      overflow: 'hidden',
+                      border: isTarget ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
+                      borderRadius: 3,
+                      boxShadow: isTarget ? '0 0 15px rgba(200,165,90,0.4)' : 'none',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={e => {
+                      if (!isTarget) {
+                        e.currentTarget.style.borderColor = 'rgba(200,165,90,0.6)'
+                        e.currentTarget.style.transform = 'scale(1.02)'
+                      }
+                    }}
+                    onMouseLeave={e => {
+                      if (!isTarget) {
+                        e.currentTarget.style.borderColor = 'rgba(58,61,74,0.4)'
+                        e.currentTarget.style.transform = 'scale(1)'
+                      }
+                    }}
+                  >
+                    <img
+                      src={card.image || `/images/card-images/arts/${card.name.replace(/\s+/g, '_')}.png`}
+                      alt={card.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+
+                    {/* Card name overlay */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      padding: '20px 8px 8px',
+                      background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                    }}>
+                      <div style={{
+                        fontFamily: "'Cinzel', serif",
+                        fontSize: 10,
+                        fontWeight: 800,
+                        color: '#f0e6d0',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+                      }}>
+                        {card.name}
+                      </div>
+                      <div style={{
+                        fontFamily: "'DM Mono', monospace",
+                        fontSize: 8,
+                        color: '#d1c4a0',
+                        marginTop: 2,
+                      }}>
+                        {card.priceWaves.toFixed(4)} WAVES
+                      </div>
+                    </div>
+
+                    {isTarget && (
+                      <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(200,165,90,0.15)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                        <span style={{
+                          background: 'rgba(0,0,0,0.8)',
+                          color: '#c8a55a',
+                          fontSize: 9,
+                          fontWeight: 700,
+                          padding: '3px 10px',
+                          borderRadius: 2,
+                          border: '1px solid rgba(200,165,90,0.5)',
+                          fontFamily: "'DM Mono', monospace",
+                        }}>
+                          TARGETED
+                        </span>
+                      </div>
+                    )}
+                  </motion.div>
+                )
+              })
+            )}
+          </div>
         </div>
       </div>
 
-            {modalCard && (
-        <CardDetailModal card={modalCard} onClose={() => setModalCard(null)} />
+      {/* Card detail modal */}
+      {modalCard && (
+        <CardDetailModal
+          card={modalCard}
+          sourceRect={modalSourceRect}
+          onClose={() => { 
+            setModalCard(null)
+            setModalSourceRect(null)
+          }}
+        />
       )}
     </div>
   )
