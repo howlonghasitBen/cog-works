@@ -204,15 +204,36 @@ export default function SwapPage() {
   const handleSwap = async () => {
     if (!canSwap || targetId === null) return
     try {
-      for (const card of selectedCards) {
-        const c = whirlpool.cards.find(cc => cc.id === card.id)
-        if (c && parseFloat(c.myStake) > 0) {
-          await whirlpool.swapStake(card.id, targetId, c.myStake)
+      // 1. WAVES → card token swap (separate tx via SurfSwap AMM)
+      if (hasWavesInput && parsedWaves > 0) {
+        const targetCard = whirlpool.cards.find(c => c.id === targetId)
+        if (targetCard) {
+          await whirlpool.swap(targetCard.address, targetCard.address, wavesAmount, 'wallet')
         }
       }
+
+      // 2. Card → card swaps via batchSwapStake (single tx for all cards)
+      if (selectedCards.length > 0) {
+        const fromIds = selectedCards
+          .filter(card => {
+            const c = whirlpool.cards.find(cc => cc.id === card.id)
+            return c && parseFloat(c.myStake) > 0
+          })
+          .map(card => card.id)
+
+        if (fromIds.length === 1) {
+          const c = whirlpool.cards.find(cc => cc.id === fromIds[0])
+          if (c) await whirlpool.swapStake(fromIds[0], targetId, c.myStake)
+        } else if (fromIds.length > 1) {
+          await whirlpool.batchSwapStake(fromIds, targetId)
+        }
+      }
+
       toast.success('Swap complete!')
       setSelectedIds(new Set())
       setTargetId(null)
+      setWavesAmount('')
+      setIncludeWaves(false)
     } catch (err: any) { 
       toast.error(err?.shortMessage || err?.message || 'Swap failed') 
     }

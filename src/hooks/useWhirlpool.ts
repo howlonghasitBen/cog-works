@@ -261,6 +261,22 @@ export function useWhirlpool() {
     setLoading(false)
   }
 
+  const batchSwapStake = async (fromCardIds: number[], toCard: number) => {
+    if (!isConnected) return
+    setLoading(true)
+    try {
+      addLog(`BatchSwapStake ${fromCardIds.length} cards → #${toCard}...`, 'info')
+      const hash = await writeContractAsync({
+        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'batchSwapStake',
+        args: [fromCardIds.map(id => BigInt(id)), BigInt(toCard)],
+      })
+      const receipt = await publicClient.waitForTransactionReceipt({ hash })
+      addLog(`✓ BatchSwapStake confirmed · block #${receipt.blockNumber}`, 'success')
+      await loadCards()
+    } catch (e: any) { addLog(`✗ BatchSwapStake: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    setLoading(false)
+  }
+
   const stakeWETH = async (amount: string) => {
     if (!isConnected) return
     setLoading(true)
@@ -378,7 +394,7 @@ export function useWhirlpool() {
     cards, selectedCard, setSelectedCard,
     wavesBalance, wethBalance, myWethStake, pendingGlobal,
     isConnected, address, loading, logs,
-    createCard, swap, stake, unstake, swapStake,
+    createCard, swap, stake, unstake, swapStake, batchSwapStake,
     stakeWETH, unstakeWETH, claimRewards, claimWETHRewards, wrapETH,
     connect, disconnect, clearLogs,
   }
