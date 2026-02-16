@@ -15,8 +15,7 @@ import { useToast } from '../components/Toast'
 import { useWhirlpool } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
 import CardFromData from '../components/CardFromData'
-import CardDetailModal from '../components/CardDetailModal'
-import type { CardState } from '../hooks/useWhirlpool'
+// CardState type removed — no longer needed without modal
 
 // ─── Types ──────────────────────────────────────────────────────
 interface CardPool {
@@ -54,6 +53,29 @@ function cardImage(uri: string, name: string, id: number): string {
   return `${BASE}/${String(id + 1).padStart(3, '0')}_${slug}.png`
 }
 
+// Activity feed for hover overlay
+interface ActivityEntry {
+  type: 'stake' | 'unstake' | 'swap' | 'ownership'
+  actor: string
+  amount: string
+  time: string
+}
+
+const MOCK_ACTIVITY: ActivityEntry[] = [
+  { type: 'stake', actor: '0x93709D…250Ea', amount: '120.00', time: '2m ago' },
+  { type: 'swap', actor: '0xd8dA6B…045d', amount: '45.50', time: '8m ago' },
+  { type: 'unstake', actor: '0xAb5801…8aB6', amount: '30.00', time: '22m ago' },
+  { type: 'ownership', actor: '0x93709D…250Ea', amount: '—', time: '1h ago' },
+  { type: 'stake', actor: '0x1234AB…9def', amount: '200.00', time: '3h ago' },
+]
+
+const ACTIVITY_BADGE: Record<string, { bg: string; color: string; label: string }> = {
+  stake:     { bg: 'rgba(16,185,129,0.15)', color: '#10b981', label: 'STAKE' },
+  unstake:   { bg: 'rgba(239,68,68,0.15)',  color: '#ef4444', label: 'UNSTAKE' },
+  swap:      { bg: 'rgba(59,130,246,0.15)', color: '#3b82f6', label: 'SWAP' },
+  ownership: { bg: 'rgba(245,158,11,0.15)', color: '#f59e0b', label: 'OWNER' },
+}
+
 function shortAddr(addr: string): string {
   if (!addr || addr.length < 10) return addr || '???'
   return `${addr.slice(0, 6)}…${addr.slice(-4)}`
@@ -76,8 +98,7 @@ export default function SwapPage() {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
-  const [modalCard, setModalCard] = useState<CardState | null>(null)
-  const [modalSourceRect, setModalSourceRect] = useState<DOMRect | null>(null)
+  const [hoveredMarketCard, setHoveredMarketCard] = useState<string | null>(null)
 
   // Build on-chain lookup by name
   const onChainByName = useMemo(() => {
@@ -776,19 +797,16 @@ export default function SwapPage() {
             ) : (
               filteredMarket.map((card) => {
                 const isTarget = targetId === card.id
+                const isHovered = hoveredMarketCard === card.name
                 return (
                   <div
                     key={card.name}
-                    onClick={(e) => {
-                      setTargetId(isTarget ? null : card.id)
-                      const chainCard = whirlpool.cards.find(c => c.id === card.id)
-                      if (chainCard) {
-                        setModalCard(chainCard)
-                        setModalSourceRect(e.currentTarget.getBoundingClientRect())
-                      }
-                    }}
+                    onClick={() => setTargetId(isTarget ? null : card.id)}
+                    onMouseEnter={() => setHoveredMarketCard(card.name)}
+                    onMouseLeave={() => setHoveredMarketCard(null)}
                     style={{
                       cursor: 'pointer',
+                      position: 'relative',
                       border: isTarget ? '2px solid #c8a55a' : '2px solid transparent',
                       borderRadius: 4,
                       boxShadow: isTarget ? '0 0 15px rgba(200,165,90,0.4)' : 'none',
@@ -796,6 +814,109 @@ export default function SwapPage() {
                     }}
                   >
                     <CardFromData name={card.name} width={250} />
+
+                    {/* Activity hover overlay */}
+                    {isHovered && (
+                      <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(10,12,20,0.92)',
+                        borderRadius: 4,
+                        padding: '12px 10px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 4,
+                        overflow: 'hidden',
+                        zIndex: 2,
+                      }}>
+                        <div style={{
+                          fontFamily: "'Cinzel', serif",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          color: '#c8a55a',
+                          marginBottom: 4,
+                          textTransform: 'uppercase',
+                          letterSpacing: 1,
+                        }}>
+                          Recent Activity
+                        </div>
+                        {MOCK_ACTIVITY.map((entry, i) => {
+                          const badge = ACTIVITY_BADGE[entry.type]
+                          return (
+                            <div key={i} style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 6,
+                              padding: '4px 6px',
+                              background: 'rgba(255,255,255,0.03)',
+                              borderRadius: 3,
+                              border: '1px solid rgba(58,61,74,0.3)',
+                            }}>
+                              <span style={{
+                                fontFamily: "'DM Mono', monospace",
+                                fontSize: 7,
+                                fontWeight: 800,
+                                padding: '1px 5px',
+                                borderRadius: 2,
+                                background: badge.bg,
+                                color: badge.color,
+                                letterSpacing: 0.5,
+                                flexShrink: 0,
+                              }}>
+                                {badge.label}
+                              </span>
+                              <span style={{
+                                fontFamily: "'DM Mono', monospace",
+                                fontSize: 8,
+                                color: '#d0d0d0',
+                                flex: 1,
+                                minWidth: 0,
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}>
+                                {entry.actor}
+                              </span>
+                              {entry.amount !== '—' && (
+                                <span style={{
+                                  fontFamily: "'DM Mono', monospace",
+                                  fontSize: 8,
+                                  fontWeight: 700,
+                                  color: entry.type === 'unstake' ? '#ef4444' : '#10b981',
+                                  flexShrink: 0,
+                                }}>
+                                  {entry.type === 'unstake' ? '-' : '+'}{entry.amount}
+                                </span>
+                              )}
+                              <span style={{
+                                fontFamily: "'DM Mono', monospace",
+                                fontSize: 7,
+                                color: '#4a4d5a',
+                                flexShrink: 0,
+                              }}>
+                                {entry.time}
+                              </span>
+                            </div>
+                          )
+                        })}
+                        {isTarget && (
+                          <div style={{
+                            marginTop: 'auto',
+                            textAlign: 'center',
+                            fontFamily: "'DM Mono', monospace",
+                            fontSize: 8,
+                            fontWeight: 700,
+                            color: '#c8a55a',
+                            padding: '4px 0',
+                          }}>
+                            ✓ SELECTED AS TARGET
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )
               })
@@ -804,17 +925,6 @@ export default function SwapPage() {
         </div>
       </div>
 
-      {/* Card detail modal */}
-      {modalCard && (
-        <CardDetailModal
-          card={modalCard}
-          sourceRect={modalSourceRect}
-          onClose={() => { 
-            setModalCard(null)
-            setModalSourceRect(null)
-          }}
-        />
-      )}
     </div>
   )
 }
