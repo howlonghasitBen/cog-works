@@ -342,6 +342,7 @@ export default function SwapPage() {
                       cursor: 'pointer',
                       position: 'relative',
                       overflow: 'hidden',
+                      aspectRatio: '3/4',
                       border: selected ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
                       borderRadius: 3,
                       boxShadow: selected ? '0 0 15px rgba(200,165,90,0.4)' : 'none',
@@ -354,7 +355,7 @@ export default function SwapPage() {
                       if (!selected) e.currentTarget.style.borderColor = 'rgba(58,61,74,0.4)'
                     }}
                   >
-                    <CardFromData name={card.name} />
+                    <CardFromData name={card.name} width={180} />
                     {/* Card name overlay */}
                     <div style={{
                       position: 'absolute',
@@ -880,6 +881,7 @@ export default function SwapPage() {
                       cursor: 'pointer',
                       position: 'relative',
                       overflow: 'hidden',
+                      aspectRatio: '3/4',
                       border: isTarget ? '2px solid #c8a55a' : '1px solid rgba(58,61,74,0.4)',
                       borderRadius: 3,
                       boxShadow: isTarget ? '0 0 15px rgba(200,165,90,0.4)' : 'none',
@@ -898,7 +900,7 @@ export default function SwapPage() {
                       }
                     }}
                   >
-                    <CardFromData name={card.name} />
+                    <CardFromData name={card.name} width={180} />
                     {/* Card name overlay */}
                     <div style={{
                       position: 'absolute',

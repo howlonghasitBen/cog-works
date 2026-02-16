@@ -88,7 +88,7 @@ export default function WavesCard({ card, width = 400, artSrc, className, style 
 
   return (
     <div className={className} style={{
-      width, aspectRatio: '3/4',
+      width, maxWidth: '100%', aspectRatio: '3/4',
       border: `${5*s}px solid #1a1a1a`,
       borderRadius: 14 * s,
       overflow: 'hidden',
