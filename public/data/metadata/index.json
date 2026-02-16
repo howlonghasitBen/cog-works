@@ -1,0 +1,1170 @@
+{
+  "Moonwell Sanctuary": {
+    "index": 0,
+    "slug": "moonwell-sanctuary"
+  },
+  "Slight of Hand": {
+    "index": 1,
+    "slug": "slight-of-hand"
+  },
+  "Aboleth": {
+    "index": 2,
+    "slug": "aboleth"
+  },
+  "Acolyte": {
+    "index": 3,
+    "slug": "acolyte"
+  },
+  "Adult Bronze Dragon": {
+    "index": 4,
+    "slug": "adult-bronze-dragon"
+  },
+  "Adult Copper Dragon": {
+    "index": 5,
+    "slug": "adult-copper-dragon"
+  },
+  "Adult Gold Dragon": {
+    "index": 6,
+    "slug": "adult-gold-dragon"
+  },
+  "Adult Green Dragon": {
+    "index": 7,
+    "slug": "adult-green-dragon"
+  },
+  "Adult Silver Dragon": {
+    "index": 8,
+    "slug": "adult-silver-dragon"
+  },
+  "Air Elemental": {
+    "index": 9,
+    "slug": "air-elemental"
+  },
+  "Ancient Black Dragon": {
+    "index": 10,
+    "slug": "ancient-black-dragon"
+  },
+  "Ancient Brass Dragon": {
+    "index": 11,
+    "slug": "ancient-brass-dragon"
+  },
+  "Ancient Bronze Dragon": {
+    "index": 12,
+    "slug": "ancient-bronze-dragon"
+  },
+  "Ancient Copper Dragon": {
+    "index": 13,
+    "slug": "ancient-copper-dragon"
+  },
+  "Ancient Gold Dragon": {
+    "index": 14,
+    "slug": "ancient-gold-dragon"
+  },
+  "Ancient Green Dragon": {
+    "index": 15,
+    "slug": "ancient-green-dragon"
+  },
+  "Ancient Red Dragon": {
+    "index": 16,
+    "slug": "ancient-red-dragon"
+  },
+  "Ancient Silver Dragon": {
+    "index": 17,
+    "slug": "ancient-silver-dragon"
+  },
+  "Androsphinx": {
+    "index": 18,
+    "slug": "androsphinx"
+  },
+  "Animated Armor": {
+    "index": 19,
+    "slug": "animated-armor"
+  },
+  "Awakened Shrub": {
+    "index": 20,
+    "slug": "awakened-shrub"
+  },
+  "Azer": {
+    "index": 21,
+    "slug": "azer"
+  },
+  "Baboon": {
+    "index": 22,
+    "slug": "baboon"
+  },
+  "Balor": {
+    "index": 23,
+    "slug": "balor"
+  },
+  "Bandit Captain": {
+    "index": 24,
+    "slug": "bandit-captain"
+  },
+  "Barbed Devil": {
+    "index": 25,
+    "slug": "barbed-devil"
+  },
+  "Bat": {
+    "index": 26,
+    "slug": "bat"
+  },
+  "Bearded Devil": {
+    "index": 27,
+    "slug": "bearded-devil"
+  },
+  "Behir": {
+    "index": 28,
+    "slug": "behir"
+  },
+  "Berserker": {
+    "index": 29,
+    "slug": "berserker"
+  },
+  "Black Bear": {
+    "index": 30,
+    "slug": "black-bear"
+  },
+  "Black Dragon Wyrmling": {
+    "index": 31,
+    "slug": "black-dragon-wyrmling"
+  },
+  "Black Pudding": {
+    "index": 32,
+    "slug": "black-pudding"
+  },
+  "Blood Hawk": {
+    "index": 33,
+    "slug": "blood-hawk"
+  },
+  "Boar": {
+    "index": 34,
+    "slug": "boar"
+  },
+  "Bugbear": {
+    "index": 35,
+    "slug": "bugbear"
+  },
+  "Chimera": {
+    "index": 36,
+    "slug": "chimera"
+  },
+  "Chuul": {
+    "index": 37,
+    "slug": "chuul"
+  },
+  "Cloud Giant": {
+    "index": 38,
+    "slug": "cloud-giant"
+  },
+  "Cockatrice": {
+    "index": 39,
+    "slug": "cockatrice"
+  },
+  "Copper Dragon Wyrmling": {
+    "index": 40,
+    "slug": "copper-dragon-wyrmling"
+  },
+  "Couatl": {
+    "index": 41,
+    "slug": "couatl"
+  },
+  "Cultist": {
+    "index": 42,
+    "slug": "cultist"
+  },
+  "Cult Fanatic": {
+    "index": 43,
+    "slug": "cult-fanatic"
+  },
+  "Darkmantle": {
+    "index": 44,
+    "slug": "darkmantle"
+  },
+  "Draft Horse": {
+    "index": 45,
+    "slug": "draft-horse"
+  },
+  "Dragon Turtle": {
+    "index": 46,
+    "slug": "dragon-turtle"
+  },
+  "Drider": {
+    "index": 47,
+    "slug": "drider"
+  },
+  "Drow": {
+    "index": 48,
+    "slug": "drow"
+  },
+  "Druid": {
+    "index": 49,
+    "slug": "druid"
+  },
+  "Dryad": {
+    "index": 50,
+    "slug": "dryad"
+  },
+  "Duergar": {
+    "index": 51,
+    "slug": "duergar"
+  },
+  "Dust Mephit": {
+    "index": 52,
+    "slug": "dust-mephit"
+  },
+  "Efreeti": {
+    "index": 53,
+    "slug": "efreeti"
+  },
+  "Elephant": {
+    "index": 54,
+    "slug": "elephant"
+  },
+  "Elk": {
+    "index": 55,
+    "slug": "elk"
+  },
+  "Erinyes": {
+    "index": 56,
+    "slug": "erinyes"
+  },
+  "Ettin": {
+    "index": 57,
+    "slug": "ettin"
+  },
+  "Fire Elemental": {
+    "index": 58,
+    "slug": "fire-elemental"
+  },
+  "Gelatinous Cube": {
+    "index": 59,
+    "slug": "gelatinous-cube"
+  },
+  "Ghast": {
+    "index": 60,
+    "slug": "ghast"
+  },
+  "Giant Ape": {
+    "index": 61,
+    "slug": "giant-ape"
+  },
+  "Giant Bat": {
+    "index": 62,
+    "slug": "giant-bat"
+  },
+  "Giant Centipede": {
+    "index": 63,
+    "slug": "giant-centipede"
+  },
+  "Giant Constrictor Snake": {
+    "index": 64,
+    "slug": "giant-constrictor-snake"
+  },
+  "Giant Crab": {
+    "index": 65,
+    "slug": "giant-crab"
+  },
+  "Giant Fire Beetle": {
+    "index": 66,
+    "slug": "giant-fire-beetle"
+  },
+  "Giant Frog": {
+    "index": 67,
+    "slug": "giant-frog"
+  },
+  "Giant Goat": {
+    "index": 68,
+    "slug": "giant-goat"
+  },
+  "Giant Octopus": {
+    "index": 69,
+    "slug": "giant-octopus"
+  },
+  "Giant Sea Horse": {
+    "index": 70,
+    "slug": "giant-sea-horse"
+  },
+  "Gibbering Mouther": {
+    "index": 71,
+    "slug": "gibbering-mouther"
+  },
+  "Glabrezu": {
+    "index": 72,
+    "slug": "glabrezu"
+  },
+  "Goat": {
+    "index": 73,
+    "slug": "goat"
+  },
+  "Goblin": {
+    "index": 74,
+    "slug": "goblin"
+  },
+  "Gold Dragon Wyrmling": {
+    "index": 75,
+    "slug": "gold-dragon-wyrmling"
+  },
+  "Gorgon": {
+    "index": 76,
+    "slug": "gorgon"
+  },
+  "Green Dragon Wyrmling": {
+    "index": 77,
+    "slug": "green-dragon-wyrmling"
+  },
+  "Green Hag": {
+    "index": 78,
+    "slug": "green-hag"
+  },
+  "Griffon": {
+    "index": 79,
+    "slug": "griffon"
+  },
+  "Guard": {
+    "index": 80,
+    "slug": "guard"
+  },
+  "Half Red Dragon Veteran": {
+    "index": 81,
+    "slug": "half-red-dragon-veteran"
+  },
+  "Hell Hound": {
+    "index": 82,
+    "slug": "hell-hound"
+  },
+  "Hill Giant": {
+    "index": 83,
+    "slug": "hill-giant"
+  },
+  "Hobgoblin": {
+    "index": 84,
+    "slug": "hobgoblin"
+  },
+  "Homunculus": {
+    "index": 85,
+    "slug": "homunculus"
+  },
+  "Hydra": {
+    "index": 86,
+    "slug": "hydra"
+  },
+  "Ice Devil": {
+    "index": 87,
+    "slug": "ice-devil"
+  },
+  "Knight": {
+    "index": 88,
+    "slug": "knight"
+  },
+  "Kobold": {
+    "index": 89,
+    "slug": "kobold"
+  },
+  "Lich": {
+    "index": 90,
+    "slug": "lich"
+  },
+  "Lizardfolk": {
+    "index": 91,
+    "slug": "lizardfolk"
+  },
+  "Magma Mephit": {
+    "index": 92,
+    "slug": "magma-mephit"
+  },
+  "Mammoth": {
+    "index": 93,
+    "slug": "mammoth"
+  },
+  "Marilith": {
+    "index": 94,
+    "slug": "marilith"
+  },
+  "Mastiff": {
+    "index": 95,
+    "slug": "mastiff"
+  },
+  "Medusa": {
+    "index": 96,
+    "slug": "medusa"
+  },
+  "Merrow": {
+    "index": 97,
+    "slug": "merrow"
+  },
+  "Mimic": {
+    "index": 98,
+    "slug": "mimic"
+  },
+  "Minotaur": {
+    "index": 99,
+    "slug": "minotaur"
+  },
+  "Minotaur Skeleton": {
+    "index": 100,
+    "slug": "minotaur-skeleton"
+  },
+  "Mummy": {
+    "index": 101,
+    "slug": "mummy"
+  },
+  "Mummy Lord": {
+    "index": 102,
+    "slug": "mummy-lord"
+  },
+  "Nalfeshnee": {
+    "index": 103,
+    "slug": "nalfeshnee"
+  },
+  "Orc": {
+    "index": 104,
+    "slug": "orc"
+  },
+  "Phase Spider": {
+    "index": 105,
+    "slug": "phase-spider"
+  },
+  "Planetar": {
+    "index": 106,
+    "slug": "planetar"
+  },
+  "Poisonous Snake": {
+    "index": 107,
+    "slug": "poisonous-snake"
+  },
+  "Rat": {
+    "index": 108,
+    "slug": "rat"
+  },
+  "Reef Shark": {
+    "index": 109,
+    "slug": "reef-shark"
+  },
+  "Remorhaz": {
+    "index": 110,
+    "slug": "remorhaz"
+  },
+  "Riding Horse": {
+    "index": 111,
+    "slug": "riding-horse"
+  },
+  "Roper": {
+    "index": 112,
+    "slug": "roper"
+  },
+  "Rug Of Smothering": {
+    "index": 113,
+    "slug": "rug-of-smothering"
+  },
+  "Sahuagin": {
+    "index": 114,
+    "slug": "sahuagin"
+  },
+  "Scorpion": {
+    "index": 115,
+    "slug": "scorpion"
+  },
+  "Sea Horse": {
+    "index": 116,
+    "slug": "sea-horse"
+  },
+  "Shadow": {
+    "index": 117,
+    "slug": "shadow"
+  },
+  "Shambling Mound": {
+    "index": 118,
+    "slug": "shambling-mound"
+  },
+  "40till5": {
+    "index": 119,
+    "slug": "40till5"
+  },
+  "Aetos": {
+    "index": 120,
+    "slug": "aetos"
+  },
+  "Ape": {
+    "index": 121,
+    "slug": "ape"
+  },
+  "Apex Ape": {
+    "index": 122,
+    "slug": "apex-ape"
+  },
+  "Archangel": {
+    "index": 123,
+    "slug": "archangel"
+  },
+  "Archmage": {
+    "index": 124,
+    "slug": "archmage"
+  },
+  "Assassin": {
+    "index": 125,
+    "slug": "assassin"
+  },
+  "Badass Skag": {
+    "index": 126,
+    "slug": "badass-skag"
+  },
+  "Basilisk": {
+    "index": 127,
+    "slug": "basilisk"
+  },
+  "Beach Bum": {
+    "index": 128,
+    "slug": "beach-bum"
+  },
+  "Ben": {
+    "index": 129,
+    "slug": "ben"
+  },
+  "Bliddo": {
+    "index": 130,
+    "slug": "bliddo"
+  },
+  "Bloudraad, Spawn of Kek": {
+    "index": 131,
+    "slug": "bloudraad-spawn-of-kek"
+  },
+  "Bulette": {
+    "index": 132,
+    "slug": "bulette"
+  },
+  "Cag": {
+    "index": 133,
+    "slug": "cag"
+  },
+  "Capricorn Callsong": {
+    "index": 134,
+    "slug": "capricorn-callsong"
+  },
+  "Centaur": {
+    "index": 135,
+    "slug": "centaur"
+  },
+  "Chort": {
+    "index": 136,
+    "slug": "chort"
+  },
+  "Clay golem": {
+    "index": 137,
+    "slug": "clay-golem"
+  },
+  "Commoner": {
+    "index": 138,
+    "slug": "commoner"
+  },
+  "Crystal Golem": {
+    "index": 139,
+    "slug": "crystal-golem"
+  },
+  "Crystal Phoenix": {
+    "index": 140,
+    "slug": "crystal-phoenix"
+  },
+  "Crystalline Cosmic Bind": {
+    "index": 141,
+    "slug": "crystalline-cosmic-bind"
+  },
+  "Cyborg Hound": {
+    "index": 142,
+    "slug": "cyborg-hound"
+  },
+  "Deep Gnome  Svirfneblin": {
+    "index": 143,
+    "slug": "deep-gnome-svirfneblin"
+  },
+  "Demiurge": {
+    "index": 144,
+    "slug": "demiurge"
+  },
+  "Deva": {
+    "index": 145,
+    "slug": "deva"
+  },
+  "Dire Wolf": {
+    "index": 146,
+    "slug": "dire-wolf"
+  },
+  "Doppelganger": {
+    "index": 147,
+    "slug": "doppelganger"
+  },
+  "Drowners": {
+    "index": 148,
+    "slug": "drowners"
+  },
+  "Earth Elemental": {
+    "index": 149,
+    "slug": "earth-elemental"
+  },
+  "Ent": {
+    "index": 150,
+    "slug": "ent"
+  },
+  "Ettercap": {
+    "index": 151,
+    "slug": "ettercap"
+  },
+  "Feelsix": {
+    "index": 152,
+    "slug": "feelsix"
+  },
+  "Fisherman": {
+    "index": 153,
+    "slug": "fisherman"
+  },
+  "Flesh Golem": {
+    "index": 154,
+    "slug": "flesh-golem"
+  },
+  "Flying Sword": {
+    "index": 155,
+    "slug": "flying-sword"
+  },
+  "Forest Keeper": {
+    "index": 156,
+    "slug": "forest-keeper"
+  },
+  "Forest Shaman": {
+    "index": 157,
+    "slug": "forest-shaman"
+  },
+  "Forest Spirit": {
+    "index": 158,
+    "slug": "forest-spirit"
+  },
+  "Forest Titan": {
+    "index": 159,
+    "slug": "forest-titan"
+  },
+  "Frost Giant": {
+    "index": 160,
+    "slug": "frost-giant"
+  },
+  "Frost Thrall": {
+    "index": 161,
+    "slug": "frost-thrall"
+  },
+  "Getri": {
+    "index": 162,
+    "slug": "getri"
+  },
+  "Giant Elk": {
+    "index": 163,
+    "slug": "giant-elk"
+  },
+  "Giant Hyena": {
+    "index": 164,
+    "slug": "giant-hyena"
+  },
+  "Giant Rat  Diseased": {
+    "index": 165,
+    "slug": "giant-rat-diseased"
+  },
+  "Giant Scorpion": {
+    "index": 166,
+    "slug": "giant-scorpion"
+  },
+  "Giant Spider": {
+    "index": 167,
+    "slug": "giant-spider"
+  },
+  "Giant Vulture": {
+    "index": 168,
+    "slug": "giant-vulture"
+  },
+  "Golden Teacher": {
+    "index": 169,
+    "slug": "golden-teacher"
+  },
+  "Gribble": {
+    "index": 170,
+    "slug": "gribble"
+  },
+  "Griffin": {
+    "index": 171,
+    "slug": "griffin"
+  },
+  "Guardian Naga": {
+    "index": 172,
+    "slug": "guardian-naga"
+  },
+  "Gynosphinx": {
+    "index": 173,
+    "slug": "gynosphinx"
+  },
+  "HOL": {
+    "index": 174,
+    "slug": "hol"
+  },
+  "Hallucinogenic Hallelujah": {
+    "index": 175,
+    "slug": "hallucinogenic-hallelujah"
+  },
+  "Harpy": {
+    "index": 176,
+    "slug": "harpy"
+  },
+  "Hemo Wizard": {
+    "index": 177,
+    "slug": "hemo-wizard"
+  },
+  "Hyena": {
+    "index": 178,
+    "slug": "hyena"
+  },
+  "Imp": {
+    "index": 179,
+    "slug": "imp"
+  },
+  "Johnny": {
+    "index": 180,
+    "slug": "johnny"
+  },
+  "Juror": {
+    "index": 181,
+    "slug": "juror"
+  },
+  "Khazix": {
+    "index": 182,
+    "slug": "khazix"
+  },
+  "Kro": {
+    "index": 183,
+    "slug": "kro"
+  },
+  "LSD Tollmaster": {
+    "index": 184,
+    "slug": "lsd-tollmaster"
+  },
+  "Lemure": {
+    "index": 185,
+    "slug": "lemure"
+  },
+  "Lightning Phoenix": {
+    "index": 186,
+    "slug": "lightning-phoenix"
+  },
+  "Lillie007": {
+    "index": 187,
+    "slug": "lillie007"
+  },
+  "Lion": {
+    "index": 188,
+    "slug": "lion"
+  },
+  "Lionsnake Demiurge": {
+    "index": 189,
+    "slug": "lionsnake-demiurge"
+  },
+  "Lizard": {
+    "index": 190,
+    "slug": "lizard"
+  },
+  "Lunar Wizard": {
+    "index": 191,
+    "slug": "lunar-wizard"
+  },
+  "Maelstrom": {
+    "index": 192,
+    "slug": "maelstrom"
+  },
+  "Magma Mephite": {
+    "index": 193,
+    "slug": "magma-mephite"
+  },
+  "Maniacal Martian": {
+    "index": 194,
+    "slug": "maniacal-martian"
+  },
+  "Mastodon": {
+    "index": 195,
+    "slug": "mastodon"
+  },
+  "Mecha Wyvern": {
+    "index": 196,
+    "slug": "mecha-wyvern"
+  },
+  "Merfolk": {
+    "index": 197,
+    "slug": "merfolk"
+  },
+  "Molag Bal": {
+    "index": 198,
+    "slug": "molag-bal"
+  },
+  "Moondust Fiend": {
+    "index": 199,
+    "slug": "moondust-fiend"
+  },
+  "Moonwraith": {
+    "index": 200,
+    "slug": "moonwraith"
+  },
+  "Mothrakk": {
+    "index": 201,
+    "slug": "mothrakk"
+  },
+  "Mr. F": {
+    "index": 202,
+    "slug": "mr-f"
+  },
+  "Night Hag": {
+    "index": 203,
+    "slug": "night-hag"
+  },
+  "Nitro Slav": {
+    "index": 204,
+    "slug": "nitro-slav"
+  },
+  "Noble": {
+    "index": 205,
+    "slug": "noble"
+  },
+  "Ochre Jelly": {
+    "index": 206,
+    "slug": "ochre-jelly"
+  },
+  "Octopus": {
+    "index": 207,
+    "slug": "octopus"
+  },
+  "Oni": {
+    "index": 208,
+    "slug": "oni"
+  },
+  "Pep": {
+    "index": 209,
+    "slug": "pep"
+  },
+  "Pepelini": {
+    "index": 210,
+    "slug": "pepelini"
+  },
+  "Phelob": {
+    "index": 211,
+    "slug": "phelob"
+  },
+  "Pit Fiend": {
+    "index": 212,
+    "slug": "pit-fiend"
+  },
+  "Proof": {
+    "index": 213,
+    "slug": "proof"
+  },
+  "Rakshasa": {
+    "index": 214,
+    "slug": "rakshasa"
+  },
+  "Rampage": {
+    "index": 215,
+    "slug": "rampage"
+  },
+  "Raven": {
+    "index": 216,
+    "slug": "raven"
+  },
+  "Reality Splitter": {
+    "index": 217,
+    "slug": "reality-splitter"
+  },
+  "Roko the Basilisk": {
+    "index": 218,
+    "slug": "roko-the-basilisk"
+  },
+  "Runic Biplane Pilot": {
+    "index": 219,
+    "slug": "runic-biplane-pilot"
+  },
+  "Runic Dragon": {
+    "index": 220,
+    "slug": "runic-dragon"
+  },
+  "Runic Wizard": {
+    "index": 221,
+    "slug": "runic-wizard"
+  },
+  "Saber Toothed Tiger": {
+    "index": 222,
+    "slug": "saber-toothed-tiger"
+  },
+  "Sacred Geometric Seal": {
+    "index": 223,
+    "slug": "sacred-geometric-seal"
+  },
+  "Salamander": {
+    "index": 224,
+    "slug": "salamander"
+  },
+  "Sandshrew": {
+    "index": 225,
+    "slug": "sandshrew"
+  },
+  "Sasquepe": {
+    "index": 226,
+    "slug": "sasquepe"
+  },
+  "Sea Hag": {
+    "index": 227,
+    "slug": "sea-hag"
+  },
+  "Shadow Assassin": {
+    "index": 228,
+    "slug": "shadow-assassin"
+  },
+  "Shadow Dragon": {
+    "index": 229,
+    "slug": "shadow-dragon"
+  },
+  "Shai-Hulud": {
+    "index": 230,
+    "slug": "shai-hulud"
+  },
+  "Sheogorath": {
+    "index": 231,
+    "slug": "sheogorath"
+  },
+  "Shinigami": {
+    "index": 232,
+    "slug": "shinigami"
+  },
+  "Shrimp Baby": {
+    "index": 233,
+    "slug": "shrimp-baby"
+  },
+  "Silver Dragon Wyrmling": {
+    "index": 234,
+    "slug": "silver-dragon-wyrmling"
+  },
+  "Skeleton": {
+    "index": 235,
+    "slug": "skeleton"
+  },
+  "Skeleton Archer": {
+    "index": 236,
+    "slug": "skeleton-archer"
+  },
+  "Skeleton Warhorse": {
+    "index": 237,
+    "slug": "skeleton-warhorse"
+  },
+  "Sol Eater": {
+    "index": 238,
+    "slug": "sol-eater"
+  },
+  "Soul Reaper": {
+    "index": 239,
+    "slug": "soul-reaper"
+  },
+  "Spy": {
+    "index": 240,
+    "slug": "spy"
+  },
+  "Steam Mephit": {
+    "index": 241,
+    "slug": "steam-mephit"
+  },
+  "Stone Giant": {
+    "index": 242,
+    "slug": "stone-giant"
+  },
+  "Stone Guardian": {
+    "index": 243,
+    "slug": "stone-guardian"
+  },
+  "Stone Thrall": {
+    "index": 244,
+    "slug": "stone-thrall"
+  },
+  "Storm Giant": {
+    "index": 245,
+    "slug": "storm-giant"
+  },
+  "Striga": {
+    "index": 246,
+    "slug": "striga"
+  },
+  "Succubus Incubus": {
+    "index": 247,
+    "slug": "succubus-incubus"
+  },
+  "Supernova Mecha Dragon": {
+    "index": 248,
+    "slug": "supernova-mecha-dragon"
+  },
+  "Swarm Of Beetles": {
+    "index": 249,
+    "slug": "swarm-of-beetles"
+  },
+  "Swarm Of Poisonous Snakes": {
+    "index": 250,
+    "slug": "swarm-of-poisonous-snakes"
+  },
+  "Tarrasque": {
+    "index": 251,
+    "slug": "tarrasque"
+  },
+  "Temple of the Demiurge": {
+    "index": 252,
+    "slug": "temple-of-the-demiurge"
+  },
+  "Tiger": {
+    "index": 253,
+    "slug": "tiger"
+  },
+  "Tokiru": {
+    "index": 254,
+    "slug": "tokiru"
+  },
+  "Tribal Warrior": {
+    "index": 255,
+    "slug": "tribal-warrior"
+  },
+  "Unicorn": {
+    "index": 256,
+    "slug": "unicorn"
+  },
+  "Vampire": {
+    "index": 257,
+    "slug": "vampire"
+  },
+  "Vampire  Bat Form": {
+    "index": 258,
+    "slug": "vampire-bat-form"
+  },
+  "Vampire  Mist Form": {
+    "index": 259,
+    "slug": "vampire-mist-form"
+  },
+  "Vampire  Vampire Form": {
+    "index": 260,
+    "slug": "vampire-vampire-form"
+  },
+  "Vanpe": {
+    "index": 261,
+    "slug": "vanpe"
+  },
+  "Violet Fungus": {
+    "index": 262,
+    "slug": "violet-fungus"
+  },
+  "Void Assassin": {
+    "index": 263,
+    "slug": "void-assassin"
+  },
+  "Void Reaper": {
+    "index": 264,
+    "slug": "void-reaper"
+  },
+  "Void Wizard": {
+    "index": 265,
+    "slug": "void-wizard"
+  },
+  "Volcatoise": {
+    "index": 266,
+    "slug": "volcatoise"
+  },
+  "Vrock": {
+    "index": 267,
+    "slug": "vrock"
+  },
+  "Warhorse": {
+    "index": 268,
+    "slug": "warhorse"
+  },
+  "Warhorse Skeleton": {
+    "index": 269,
+    "slug": "warhorse-skeleton"
+  },
+  "Water Elemental": {
+    "index": 270,
+    "slug": "water-elemental"
+  },
+  "Wereboar  Hybrid Form": {
+    "index": 271,
+    "slug": "wereboar-hybrid-form"
+  },
+  "Wererat  Human Form": {
+    "index": 272,
+    "slug": "wererat-human-form"
+  },
+  "Weretiger  Tiger Form": {
+    "index": 273,
+    "slug": "weretiger-tiger-form"
+  },
+  "Werewolf  Hybrid Form": {
+    "index": 274,
+    "slug": "werewolf-hybrid-form"
+  },
+  "Will O  Wisp": {
+    "index": 275,
+    "slug": "will-o-wisp"
+  },
+  "Winter Wolf": {
+    "index": 276,
+    "slug": "winter-wolf"
+  },
+  "Wishing Well": {
+    "index": 277,
+    "slug": "wishing-well"
+  },
+  "Wood Elf": {
+    "index": 278,
+    "slug": "wood-elf"
+  },
+  "Wraith": {
+    "index": 279,
+    "slug": "wraith"
+  },
+  "Wyvern": {
+    "index": 280,
+    "slug": "wyvern"
+  },
+  "Ya Eagle": {
+    "index": 281,
+    "slug": "ya-eagle"
+  },
+  "Yaldabaoth": {
+    "index": 282,
+    "slug": "yaldabaoth"
+  },
+  "Yostari": {
+    "index": 283,
+    "slug": "yostari"
+  },
+  "Young Black Dragon": {
+    "index": 284,
+    "slug": "young-black-dragon"
+  },
+  "Young Brass Dragon": {
+    "index": 285,
+    "slug": "young-brass-dragon"
+  },
+  "Young Copper Dragon": {
+    "index": 286,
+    "slug": "young-copper-dragon"
+  },
+  "Young Green Dragon": {
+    "index": 287,
+    "slug": "young-green-dragon"
+  },
+  "Young Red Dragon": {
+    "index": 288,
+    "slug": "young-red-dragon"
+  },
+  "Young White Dragon": {
+    "index": 289,
+    "slug": "young-white-dragon"
+  },
+  "Zombie": {
+    "index": 290,
+    "slug": "zombie"
+  },
+  "https://chasetheace.online/pepejackpot": {
+    "index": 291,
+    "slug": "https-chasetheace-online-pepejackpot"
+  }
+}

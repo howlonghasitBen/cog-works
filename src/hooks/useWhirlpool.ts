@@ -44,6 +44,7 @@ export function useWhirlpool() {
   const [pendingGlobal, setPendingGlobal] = useState('0')
   const [loading, setLoading] = useState(false)
   const [logs, setLogs] = useState<LogEntry[]>([])
+  const [lastCreatedCard, setLastCreatedCard] = useState<{ name: string; symbol: string; hash: string } | null>(null)
 
   const addLog = useCallback((message: string, type: LogType = 'default', extra: Partial<LogEntry> = {}) => {
     const entry: LogEntry = {
@@ -163,6 +164,7 @@ export function useWhirlpool() {
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Card created! Block #${receipt.blockNumber}`, 'success', { hash })
+      setLastCreatedCard({ name, symbol, hash })
       await loadCards()
     } catch (e: any) { addLog(`✗ Create: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
     setLoading(false)
@@ -419,7 +421,7 @@ export function useWhirlpool() {
     cards, selectedCard, setSelectedCard,
     wavesBalance, wethBalance, myWethStake, pendingGlobal,
     isConnected, address, loading, logs,
-    createCard, swap, stake, unstake, swapStake, batchSwapStake,
+    createCard, swap, stake, unstake, swapStake, batchSwapStake, lastCreatedCard, clearLastCreated: () => setLastCreatedCard(null),
     stakeWETH, unstakeWETH, claimRewards, claimWETHRewards, wrapETH,
     connect, disconnect, clearLogs, getCardEvents,
   }

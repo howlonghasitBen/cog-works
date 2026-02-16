@@ -96,6 +96,13 @@ export default function SwapPage() {
   const [wavesAmount, setWavesAmount] = useState('')
   const [includeWaves, setIncludeWaves] = useState(false)
 
+  // Build cardData.json lookup by name for enrichment
+  const cardDataByName = useMemo(() => {
+    const map = new Map<string, typeof allCardData[0]>()
+    allCardData.forEach(c => map.set(c.name.toLowerCase(), c))
+    return map
+  }, [allCardData])
+
   // Build on-chain lookup by name
   const onChainByName = useMemo(() => {
     const map = new Map<string, typeof whirlpool.cards[0]>()
@@ -103,20 +110,20 @@ export default function SwapPage() {
     return map
   }, [whirlpool.cards])
 
-  // Map cardData.json → CardPool, overlay on-chain data
-  const allPools: CardPool[] = useMemo(() => allCardData.map((cd, idx) => {
-    const chain = onChainByName.get(cd.name.toLowerCase())
-    const price = chain ? (parseFloat(chain.price) || 0) : 0
-    const totalStaked = chain ? (parseFloat(chain.cardReserve) || 0) : 0
+  // Source of truth: ON-CHAIN data, enrich with cardData.json
+  const allPools: CardPool[] = useMemo(() => whirlpool.cards.map((chain) => {
+    const cd = cardDataByName.get(chain.name.toLowerCase())
+    const price = parseFloat(chain.price) || 0
+    const totalStaked = parseFloat(chain.cardReserve) || 0
     const ownerShares = totalStaked
-    const owner = chain?.owner || ''
+    const owner = chain.owner || ''
     return {
-      id: chain?.id ?? idx,
-      name: cd.name,
-      number: (chain?.id ?? idx) + 1,
-      image: cd.image || '',
+      id: chain.id,
+      name: chain.name,
+      number: chain.id + 1,
+      image: cd?.image || chain.uri || '',
       rarity: priceToRarity(price),
-      type: chain?.symbol || cd.type || '',
+      type: chain.symbol || cd?.type || '',
       owner: owner ? shortAddr(owner) : '—',
       ownerShares,
       totalStaked,
@@ -124,7 +131,7 @@ export default function SwapPage() {
       topStakers: owner ? [{ address: shortAddr(owner), shares: ownerShares, percentage: 100 }] : [],
       stealAmount: Math.max(0, ownerShares * 0.51),
     }
-  }), [allCardData, onChainByName])
+  }), [whirlpool.cards, cardDataByName])
 
   const myCards: CardPool[] = useMemo(() => allPools.filter(pool => {
     const chain = onChainByName.get(pool.name.toLowerCase())
@@ -947,7 +954,7 @@ export default function SwapPage() {
                 padding: '40px 0',
                 gridColumn: '1 / -1',
               }}>
-                {allCardData.length === 0 ? 'Loading cards...' : 'No cards match'}
+                {whirlpool.cards.length === 0 ? 'Loading cards...' : 'No cards match'}
               </p>
             ) : (
               filteredMarket.map((card) => {

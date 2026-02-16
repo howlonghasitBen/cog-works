@@ -68,20 +68,27 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   const [modalCard, setModalCard] = useState<CardState | null>(null)
   const [modalSourceRect, setModalSourceRect] = useState<DOMRect | null>(null)
 
-  // Build a lookup from on-chain cards by name
+  // Build a lookup from cardData.json by name (for enrichment: art, themes, flavor text)
+  const cardDataByName = useMemo(() => {
+    const map = new Map<string, typeof allCardData[0]>()
+    allCardData.forEach(c => map.set(c.name.toLowerCase(), c))
+    return map
+  }, [allCardData])
+
+  // Build a lookup from on-chain cards by name (kept for modal clicks)
   const onChainByName = useMemo(() => {
     const map = new Map<string, typeof whirlpool.cards[0]>()
     whirlpool.cards.forEach(c => map.set(c.name.toLowerCase(), c))
     return map
   }, [whirlpool.cards])
 
-  // Derived data — source of truth is cardData.json, overlay on-chain data
-  const cardData = useMemo(() => allCardData.map((cd, idx) => {
-    const chain = onChainByName.get(cd.name.toLowerCase())
-    const total = chain ? (parseFloat(chain.cardReserve) || 0) : 0
-    const myStake = chain ? (parseFloat(chain.myStake) || 0) : 0
+  // Derived data — source of truth is ON-CHAIN data, enrich with cardData.json
+  const cardData = useMemo(() => whirlpool.cards.map((chain) => {
+    const cd = cardDataByName.get(chain.name.toLowerCase())
+    const total = parseFloat(chain.cardReserve) || 0
+    const myStake = parseFloat(chain.myStake) || 0
     const isYou = myStake > 0
-    const owner = chain?.owner || ''
+    const owner = chain.owner || ''
     const stakers = owner ? [
       { label: shortAddr(owner), value: total, color: COLORS[0], isYou: owner.toLowerCase() === whirlpool.address?.toLowerCase() },
     ] : []
@@ -89,41 +96,30 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       stakers.push({ label: shortAddr(whirlpool.address || ''), value: myStake, color: COLORS[1], isYou: true })
     }
     return {
-      name: cd.name,
-      id: chain?.id ?? idx,
-      uri: chain?.uri || cd.image || '',
+      name: chain.name,
+      id: chain.id,
+      uri: cd?.image || chain.uri || '',
       stakers,
       total,
       myStake,
       hasYou: isYou,
       owner,
-      onChain: !!chain,
+      onChain: true,
     }
-  }), [allCardData, onChainByName, whirlpool.address])
+  }), [whirlpool.cards, cardDataByName, whirlpool.address])
 
   // Auto-open card modal from URL hash param (e.g. #whirlpool-stake?card=aboleth)
   useEffect(() => {
-    if (allCardData.length === 0) return
+    if (whirlpool.cards.length === 0) return
     const hash = window.location.hash
     const match = hash.match(/[?&]card=([^&]+)/)
     if (!match) return
     const slug = decodeURIComponent(match[1]).toLowerCase().replace(/-/g, ' ')
-    const cd = allCardData.find(c => c.name.toLowerCase() === slug || c.name.toLowerCase().replace(/\s+/g, '-') === match[1].toLowerCase())
-    if (!cd) return
-    const chain = onChainByName.get(cd.name.toLowerCase())
+    const chain = whirlpool.cards.find(c => c.name.toLowerCase() === slug || c.name.toLowerCase().replace(/\s+/g, '-') === match[1].toLowerCase())
     if (chain) {
       setModalCard(chain)
-    } else {
-      setModalCard({
-        id: allCardData.indexOf(cd),
-        name: cd.name,
-        symbol: cd.name.toUpperCase().slice(0, 6),
-        uri: cd.image || '',
-        address: '0x0000000000000000000000000000000000000000' as `0x${string}`,
-        owner: '', price: '0', wavesReserve: '0', cardReserve: '0', myStake: '0', myBalance: '0',
-      })
     }
-  }, [allCardData, onChainByName])
+  }, [whirlpool.cards])
 
   const totalStaked = useMemo(() => cardData.reduce((s, c) => s + c.total, 0), [cardData])
   const yourStakes = useMemo(() => cardData.reduce((s, c) => s + c.myStake, 0), [cardData])
@@ -218,7 +214,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
       {/* ── Stats: floating chips, not boxes ── */}
       <div style={{ display: 'flex', gap: 32, marginBottom: 28, flexWrap: 'wrap' }}>
         {[
-          { label: 'Cards', value: allCardData.length.toString(), accent: false },
+          { label: 'Cards', value: whirlpool.cards.length.toString(), accent: false },
           { label: 'Total Staked', value: totalStaked.toFixed(2), accent: false },
           { label: 'Your Stakes', value: yourStakes.toFixed(2), accent: true },
           { label: 'Pending Rewards', value: parseFloat(pendingRewards).toFixed(4), accent: true },
@@ -497,21 +493,6 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                 const chainCard = onChainByName.get(card.name.toLowerCase())
                 if (chainCard) {
                   setModalCard(chainCard)
-                } else {
-                  // Build stub CardState for cards without on-chain data
-                  setModalCard({
-                    id: card.id,
-                    name: card.name,
-                    symbol: card.name.toUpperCase().slice(0, 6),
-                    uri: card.uri,
-                    address: '0x0000000000000000000000000000000000000000' as `0x${string}`,
-                    owner: '',
-                    price: '0',
-                    wavesReserve: '0',
-                    cardReserve: '0',
-                    myStake: '0',
-                    myBalance: '0',
-                  })
                 }
               }}
               style={{
@@ -678,8 +659,135 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           textAlign: 'center',
           padding: '80px 0',
         }}>
-          {allCardData.length === 0 ? 'Loading cards...' : 'No cards match your search.'}
+          {whirlpool.cards.length === 0 ? 'Loading cards...' : 'No cards match your search.'}
         </p>
+      )}
+
+      {/* ── Mint Success Modal ── */}
+      {whirlpool.lastCreatedCard && (
+        <>
+          <style>{`
+            @keyframes confettiFall {
+              0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+              100% { transform: translateY(120px) rotate(360deg); opacity: 0; }
+            }
+            @keyframes fadeSlideUp {
+              0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+              100% { opacity: 1; transform: translateY(0) scale(1); }
+            }
+          `}</style>
+          <div
+            onClick={() => whirlpool.clearLastCreated()}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 10000,
+              background: 'rgba(0,0,0,0.8)',
+              backdropFilter: 'blur(6px)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            {/* Confetti */}
+            {Array.from({ length: 30 }).map((_, i) => (
+              <div key={i} style={{
+                position: 'absolute',
+                top: `${Math.random() * 40}%`,
+                left: `${Math.random() * 100}%`,
+                width: 8, height: 8,
+                borderRadius: i % 3 === 0 ? '50%' : '2px',
+                background: ['#c8a55a', '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'][i % 7],
+                animation: `confettiFall ${1.5 + Math.random() * 2}s ease-out ${Math.random() * 0.8}s forwards`,
+                opacity: 0.9,
+              }} />
+            ))}
+
+            <div
+              onClick={e => e.stopPropagation()}
+              style={{
+                background: 'linear-gradient(135deg, #1a1d2e, #22252f)',
+                border: '2px solid #c8a55a',
+                borderRadius: 12,
+                padding: '32px 40px',
+                maxWidth: 460,
+                width: '90vw',
+                textAlign: 'center',
+                animation: 'fadeSlideUp 0.4s ease-out',
+                boxShadow: '0 0 60px rgba(200,165,90,0.2), 0 8px 40px rgba(0,0,0,0.5)',
+                position: 'relative',
+              }}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => whirlpool.clearLastCreated()}
+                style={{
+                  position: 'absolute', top: 12, right: 12,
+                  background: 'none', border: 'none',
+                  color: '#6b7280', fontSize: 20, cursor: 'pointer',
+                  fontFamily: "'DM Mono', monospace",
+                }}
+              >✕</button>
+
+              <h2 style={{
+                fontFamily: "'Cinzel', serif",
+                fontSize: 24,
+                fontWeight: 900,
+                color: '#c8a55a',
+                margin: '0 0 8px',
+              }}>
+                Card Created!
+              </h2>
+
+              <p style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 13,
+                color: '#d0d0d0',
+                margin: '0 0 20px',
+              }}>
+                <span style={{ color: '#c8a55a', fontWeight: 700 }}>{whirlpool.lastCreatedCard.name}</span> ({whirlpool.lastCreatedCard.symbol}) is now live in the Whirlpool!
+              </p>
+
+              {/* Card preview */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+                <div style={{
+                  width: 240,
+                  border: '2px solid rgba(200,165,90,0.4)',
+                  borderRadius: 4,
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 20px rgba(200,165,90,0.15)',
+                }}>
+                  <CardFromData name={whirlpool.lastCreatedCard.name} width={240} />
+                </div>
+              </div>
+
+              {/* Tx hash link */}
+              <p style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 10,
+                color: '#6b7280',
+                margin: '0 0 16px',
+                wordBreak: 'break-all',
+              }}>
+                Tx: <span style={{ color: '#c8a55a' }}>{whirlpool.lastCreatedCard.hash.slice(0, 10)}…{whirlpool.lastCreatedCard.hash.slice(-8)}</span>
+              </p>
+
+              <button
+                onClick={() => whirlpool.clearLastCreated()}
+                style={{
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: '#1a1d2e',
+                  background: 'linear-gradient(135deg, #c8a55a, #e8c56a)',
+                  border: 'none',
+                  padding: '10px 32px',
+                  borderRadius: 4,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 10px rgba(200,165,90,0.25)',
+                }}
+              >
+                ⚡ Continue
+              </button>
+            </div>
+          </div>
+        </>
       )}
 
       {modalCard && (
@@ -691,6 +799,114 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           onUnstake={(id) => handleUnstake(id, { stopPropagation: () => {} } as any)}
         />
       )}
+
+      {/* Card Mint Success Modal */}
+      {whirlpool.lastCreatedCard && (
+        <div
+          onClick={() => whirlpool.clearLastCreated()}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 10000,
+            background: 'rgba(0,0,0,0.8)',
+            backdropFilter: 'blur(6px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          {/* Confetti */}
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div key={i} style={{
+              position: 'absolute',
+              top: `${Math.random() * 40}%`,
+              left: `${Math.random() * 100}%`,
+              width: 8, height: 8,
+              borderRadius: i % 3 === 0 ? '50%' : '2px',
+              background: ['#c8a55a', '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'][i % 7],
+              animation: `confettiFall ${1.5 + Math.random() * 2}s ease-out ${Math.random() * 0.8}s forwards`,
+              opacity: 0.9,
+            }} />
+          ))}
+
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'linear-gradient(135deg, #1a1d2e, #22252f)',
+              border: '2px solid #c8a55a',
+              borderRadius: 12,
+              padding: '32px 40px',
+              maxWidth: 480,
+              width: '90vw',
+              textAlign: 'center',
+              animation: 'fadeSlideUp 0.4s ease-out',
+              boxShadow: '0 0 60px rgba(200,165,90,0.2), 0 8px 40px rgba(0,0,0,0.5)',
+            }}
+          >
+            <h2 style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: 24,
+              fontWeight: 900,
+              color: '#c8a55a',
+              margin: '0 0 8px',
+            }}>
+              Card Created!
+            </h2>
+
+            <p style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 14,
+              color: '#d0d0d0',
+              margin: '0 0 20px',
+            }}>
+              <span style={{ color: '#c8a55a', fontWeight: 700 }}>{whirlpool.lastCreatedCard.name}</span> ({whirlpool.lastCreatedCard.symbol}) has entered the Whirlpool
+            </p>
+
+            {/* Card Preview */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+              <div style={{ width: 240, animation: 'fadeSlideUp 0.4s ease-out 0.15s both' }}>
+                <CardFromData name={whirlpool.lastCreatedCard.name} width={240} />
+              </div>
+            </div>
+
+            {/* Tx Link */}
+            <p style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11,
+              color: '#888',
+              margin: '0 0 16px',
+              wordBreak: 'break-all',
+            }}>
+              tx: {whirlpool.lastCreatedCard.hash.slice(0, 20)}...
+            </p>
+
+            <button
+              onClick={() => whirlpool.clearLastCreated()}
+              style={{
+                fontFamily: "'Cinzel', serif",
+                fontSize: 14,
+                fontWeight: 700,
+                color: '#1a1d2e',
+                background: 'linear-gradient(135deg, #c8a55a, #e8c96a)',
+                border: 'none',
+                borderRadius: 8,
+                padding: '10px 32px',
+                cursor: 'pointer',
+                boxShadow: '0 4px 16px rgba(200,165,90,0.3)',
+              }}
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes confettiFall {
+          0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+          100% { transform: translateY(60vh) rotate(720deg); opacity: 0; }
+        }
+        @keyframes fadeSlideUp {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   )
 }
