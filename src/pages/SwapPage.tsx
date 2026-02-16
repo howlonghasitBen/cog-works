@@ -53,21 +53,13 @@ function cardImage(uri: string, name: string, id: number): string {
   return `${BASE}/${String(id + 1).padStart(3, '0')}_${slug}.png`
 }
 
-// Activity feed for hover overlay
+// Activity feed types
 interface ActivityEntry {
   type: 'stake' | 'unstake' | 'swap' | 'ownership'
   actor: string
   amount: string
   time: string
 }
-
-const MOCK_ACTIVITY: ActivityEntry[] = [
-  { type: 'stake', actor: '0x93709D…250Ea', amount: '120.00', time: '2m ago' },
-  { type: 'swap', actor: '0xd8dA6B…045d', amount: '45.50', time: '8m ago' },
-  { type: 'unstake', actor: '0xAb5801…8aB6', amount: '30.00', time: '22m ago' },
-  { type: 'ownership', actor: '0x93709D…250Ea', amount: '—', time: '1h ago' },
-  { type: 'stake', actor: '0x1234AB…9def', amount: '200.00', time: '3h ago' },
-]
 
 const ACTIVITY_BADGE: Record<string, { bg: string; color: string; label: string }> = {
   stake:     { bg: 'rgba(16,185,129,0.15)', color: '#10b981', label: 'STAKE' },
@@ -99,6 +91,8 @@ export default function SwapPage() {
   const [targetId, setTargetId] = useState<number | null>(null)
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
   const [hoveredMarketCard, setHoveredMarketCard] = useState<string | null>(null)
+  const [hoverActivity, setHoverActivity] = useState<ActivityEntry[]>([])
+  const [loadingActivity, setLoadingActivity] = useState(false)
   const [wavesAmount, setWavesAmount] = useState('')
   const [includeWaves, setIncludeWaves] = useState(false)
 
@@ -963,8 +957,23 @@ export default function SwapPage() {
                   <div
                     key={card.name}
                     onClick={() => setTargetId(isTarget ? null : card.id)}
-                    onMouseEnter={() => setHoveredMarketCard(card.name)}
-                    onMouseLeave={() => setHoveredMarketCard(null)}
+                    onMouseEnter={async () => {
+                      setHoveredMarketCard(card.name)
+                      setHoverActivity([])
+                      setLoadingActivity(true)
+                      try {
+                        const events = await whirlpool.getCardEvents(card.id, 6)
+                        const entries: ActivityEntry[] = events.map(e => {
+                          const addr = e.args?.user || e.args?.newOwner || '???'
+                          const short = typeof addr === 'string' ? `${addr.slice(0,6)}…${addr.slice(-4)}` : '???'
+                          const amt = e.args?.amount ? (Number(e.args.amount) / 1e18).toFixed(2) : '—'
+                          return { type: e.type, actor: short, amount: amt, time: `blk ${e.block}` }
+                        })
+                        setHoverActivity(entries)
+                      } catch { setHoverActivity([]) }
+                      setLoadingActivity(false)
+                    }}
+                    onMouseLeave={() => { setHoveredMarketCard(null); setHoverActivity([]) }}
                     style={{
                       cursor: 'pointer',
                       position: 'relative',
@@ -1004,7 +1013,25 @@ export default function SwapPage() {
                         }}>
                           Recent Activity
                         </div>
-                        {MOCK_ACTIVITY.map((entry, i) => {
+                        {loadingActivity && hoverActivity.length === 0 && (
+                          <div style={{
+                            fontFamily: "'DM Mono', monospace",
+                            fontSize: 9,
+                            color: '#4a4d5a',
+                            textAlign: 'center',
+                            padding: '8px 0',
+                          }}>Loading…</div>
+                        )}
+                        {!loadingActivity && hoverActivity.length === 0 && (
+                          <div style={{
+                            fontFamily: "'DM Mono', monospace",
+                            fontSize: 9,
+                            color: '#4a4d5a',
+                            textAlign: 'center',
+                            padding: '8px 0',
+                          }}>No activity yet</div>
+                        )}
+                        {hoverActivity.map((entry, i) => {
                           const badge = ACTIVITY_BADGE[entry.type]
                           return (
                             <div key={i} style={{

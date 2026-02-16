@@ -390,12 +390,37 @@ export function useWhirlpool() {
     return () => unwatch()
   }, [addLog, loadCards])
 
+  const getCardEvents = async (cardId: number, limit = 10) => {
+    try {
+      const [stakeLogs, unstakeLogs, ownerLogs] = await Promise.all([
+        publicClient.getLogs({
+          address: WHIRLPOOL_ADDRESS, event: { type: 'event', name: 'Staked', inputs: [{ name: 'cardId', type: 'uint256', indexed: true }, { name: 'user', type: 'address', indexed: true }, { name: 'amount', type: 'uint256', indexed: false }] },
+          args: { cardId: BigInt(cardId) }, fromBlock: 0n,
+        }),
+        publicClient.getLogs({
+          address: WHIRLPOOL_ADDRESS, event: { type: 'event', name: 'Unstaked', inputs: [{ name: 'cardId', type: 'uint256', indexed: true }, { name: 'user', type: 'address', indexed: true }, { name: 'amount', type: 'uint256', indexed: false }] },
+          args: { cardId: BigInt(cardId) }, fromBlock: 0n,
+        }),
+        publicClient.getLogs({
+          address: WHIRLPOOL_ADDRESS, event: { type: 'event', name: 'OwnerChanged', inputs: [{ name: 'cardId', type: 'uint256', indexed: true }, { name: 'previousOwner', type: 'address', indexed: true }, { name: 'newOwner', type: 'address', indexed: true }] },
+          args: { cardId: BigInt(cardId) }, fromBlock: 0n,
+        }),
+      ])
+      const all = [
+        ...stakeLogs.map(l => ({ type: 'stake' as const, block: l.blockNumber, args: l.args as any })),
+        ...unstakeLogs.map(l => ({ type: 'unstake' as const, block: l.blockNumber, args: l.args as any })),
+        ...ownerLogs.map(l => ({ type: 'ownership' as const, block: l.blockNumber, args: l.args as any })),
+      ].sort((a, b) => Number(b.block - a.block)).slice(0, limit)
+      return all
+    } catch { return [] }
+  }
+
   return {
     cards, selectedCard, setSelectedCard,
     wavesBalance, wethBalance, myWethStake, pendingGlobal,
     isConnected, address, loading, logs,
     createCard, swap, stake, unstake, swapStake, batchSwapStake,
     stakeWETH, unstakeWETH, claimRewards, claimWETHRewards, wrapETH,
-    connect, disconnect, clearLogs,
+    connect, disconnect, clearLogs, getCardEvents,
   }
 }
