@@ -281,9 +281,26 @@ export function useWhirlpool() {
     }) as bigint
     if (allowance < amount) {
       addLog(`Approving ${spender.slice(0, 10)}...`, 'info')
-      const hash = await writeContractAsync({ address: token, abi: CARD_TOKEN_ABI, functionName: 'approve', args: [spender, maxUint256] })
-      await publicClient.waitForTransactionReceipt({ hash })
-      addLog(`✓ Approval confirmed`, 'success')
+      try {
+        const hash = await writeContractAsync({ address: token, abi: CARD_TOKEN_ABI, functionName: 'approve', args: [spender, maxUint256] })
+        await publicClient.waitForTransactionReceipt({ hash })
+        addLog(`✓ Approval confirmed`, 'success')
+      } catch (e: any) {
+        // "already imported" = tx is already in Anvil's pool, re-check allowance
+        if (e?.message?.includes('already imported') || e?.shortMessage?.includes('already imported')) {
+          addLog(`⚠ Approval tx already in pool, re-checking allowance...`, 'info')
+          await new Promise(r => setTimeout(r, 1000))
+          const recheck = await publicClient.readContract({
+            address: token, abi: CARD_TOKEN_ABI, functionName: 'allowance', args: [address!, spender],
+          }) as bigint
+          if (recheck >= amount) {
+            addLog(`✓ Allowance confirmed on recheck`, 'success')
+            return
+          }
+          throw e // still no allowance, rethrow
+        }
+        throw e
+      }
     }
   }
 
