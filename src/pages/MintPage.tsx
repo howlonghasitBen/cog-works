@@ -7,6 +7,7 @@ import CardPreview from '@marketplace/components/editor/CardPreview'
 import CardFromData, { buildFallbackCard } from '../components/CardFromData'
 import WhirlpoolTerminal from '../components/WhirlpoolTerminal'
 import { useWhirlpool } from '../hooks/useWhirlpool'
+import { invalidateCardData } from '../hooks/useCardData'
 
 function generateSymbol(name: string): string {
   if (!name.trim()) return '???'
@@ -65,8 +66,20 @@ export default function MintPage() {
     if (!canMint) return
     setMinting(true)
     try {
-      const uri = await uploadMetadataToIPFS(card)
+      // Save card data + metadata file locally (adds to cardData.json + metadata dir)
+      const saveRes = await fetch('/api/mint-card', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(card),
+      })
+      const saveData = await saveRes.json()
+      if (!saveData.ok) throw new Error(saveData.error || 'Failed to save card data')
+
+      // Use the local metadata URI as the tokenURI on-chain
+      const uri = saveData.uri
       await whirlpool.createCard(card.name.trim(), symbol, uri, card)
+      // Refresh cardData.json cache so staking/swap pages pick up the new card
+      invalidateCardData()
     } catch (e: any) {
       console.error('Mint failed:', e)
     }
