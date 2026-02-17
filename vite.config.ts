@@ -30,9 +30,10 @@ function cardMintApi(): Plugin {
             const cards: any[] = JSON.parse(fs.readFileSync(cardDataPath, 'utf-8'))
 
             // Build WavesCardData entry (same shape as existing cards in cardData.json)
-            // In cardData.json: subtitle = move/attack name (e.g. "Fairy Magic")
-            // In editor: subtitle = subtitle field, moveName = move name field
-            const subtitle = editorData.subtitle || editorData.moveName || ''
+            // subtitle = card subtitle (shown under name in header)
+            // moveName = move/attack name (shown above flavor text)
+            const subtitle = editorData.subtitle || ''
+            const moveName = editorData.moveName || ''
             const stats = editorData.stats || {}
             const theme = editorData.theme || {}
             const manaCostArr = Array.isArray(editorData.manaCost) ? editorData.manaCost : []
@@ -44,7 +45,8 @@ function cardMintApi(): Plugin {
 
             const newCard: any = {
               name: editorData.name || 'Untitled',
-              subtitle,
+              subtitle: subtitle || undefined,
+              moveName: moveName || undefined,
               level: editorData.level != null ? String(editorData.level) : '1',
               image: editorData.imageData || '',
               type: editorData.type || 'Creature',
@@ -98,7 +100,8 @@ function cardMintApi(): Plugin {
                 ...(newCard.type ? [{ trait_type: 'Type', value: newCard.type }] : []),
                 ...(newCard.rarity ? [{ trait_type: 'Rarity', value: newCard.rarity }] : []),
                 ...(newCard.level ? [{ trait_type: 'Level', value: newCard.level }] : []),
-                ...(newCard.subtitle ? [{ trait_type: 'Move', value: newCard.subtitle }] : []),
+                ...(newCard.subtitle ? [{ trait_type: 'Subtitle', value: newCard.subtitle }] : []),
+                ...(newCard.moveName ? [{ trait_type: 'Move', value: newCard.moveName }] : []),
                 ...(newCard.artist ? [{ trait_type: 'Artist', value: newCard.artist }] : []),
               ],
               properties: { theme: newCard.theme },

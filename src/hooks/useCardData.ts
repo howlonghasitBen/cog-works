@@ -30,6 +30,14 @@ export function useCardData() {
     fetch('/data/cardData.json')
       .then(r => r.json())
       .then((data: WavesCardData[]) => {
+        // Backward compat: old cards have subtitle = move name, no moveName field
+        // New cards have subtitle = card subtitle, moveName = move name
+        data.forEach(c => {
+          if (c.subtitle && !c.moveName) {
+            c.moveName = c.subtitle
+            c.subtitle = undefined
+          }
+        })
         _cache = data
         setCards(data)
       })

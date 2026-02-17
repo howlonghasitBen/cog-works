@@ -8,7 +8,8 @@ import { useRef, useState, useEffect, type CSSProperties } from 'react'
 
 export interface WavesCardData {
   name: string
-  subtitle?: string
+  subtitle?: string       // Card subtitle shown in header under name (e.g. "Ocean Guardian")
+  moveName?: string       // Move/attack name shown above flavor text (e.g. "Tidal Crash")
   level?: string | number
   image?: string
   type?: string
@@ -153,6 +154,15 @@ export default function WavesCard({ card, width: widthProp = 400, artSrc, classN
           }}>
             {card.name || 'Untitled'}
           </div>
+          {card.subtitle && (
+            <div style={{
+              fontSize: 9 * s, fontWeight: 500, opacity: 0.7,
+              letterSpacing: '0.05em', marginTop: 1 * s,
+              color: t.header?.color || '#fff',
+            }}>
+              {card.subtitle}
+            </div>
+          )}
         </div>
         {/* Level badge */}
         <div style={{
@@ -238,9 +248,9 @@ export default function WavesCard({ card, width: widthProp = 400, artSrc, classN
           WebkitBoxOrient: 'vertical' as const, overflow: 'hidden',
           whiteSpace: 'pre-line',
         }}>
-          {card.subtitle && (
+          {card.moveName && (
             <div style={{ fontWeight: 700, fontStyle: 'normal', marginBottom: 4 * s, color: '#fff' }}>
-              {card.subtitle}
+              {card.moveName}
             </div>
           )}
           {card.flavorText || 'No flavor text yet...'}
