@@ -65,8 +65,10 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
   const [filter, setFilter] = useState<FilterKey>('all')
   const [sort, setSort] = useState<SortKey>('name')
   const [rewardsOpen, setRewardsOpen] = useState(false)
-  const [modalCard, setModalCard] = useState<CardState | null>(null)
+  const [modalCardId, setModalCardId] = useState<number | null>(null)
   const [modalSourceRect, setModalSourceRect] = useState<DOMRect | null>(null)
+  // Derive modal card from live on-chain data so it updates on events
+  const modalCard = modalCardId !== null ? whirlpool.cards.find(c => c.id === modalCardId) || null : null
 
   // Build a lookup from cardData.json by name (for enrichment: art, themes, flavor text)
   const cardDataByName = useMemo(() => {
@@ -117,7 +119,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
     const slug = decodeURIComponent(match[1]).toLowerCase().replace(/-/g, ' ')
     const chain = whirlpool.cards.find(c => c.name.toLowerCase() === slug || c.name.toLowerCase().replace(/\s+/g, '-') === match[1].toLowerCase())
     if (chain) {
-      setModalCard(chain)
+      setModalCardId(chain.id)
     }
   }, [whirlpool.cards])
 
@@ -488,7 +490,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                 setModalSourceRect(e.currentTarget.getBoundingClientRect())
                 const chainCard = onChainByName.get(card.name.toLowerCase())
                 if (chainCard) {
-                  setModalCard(chainCard)
+                  setModalCardId(chainCard.id)
                 }
               }}
               style={{
@@ -664,7 +666,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         <CardDetailModal
           card={modalCard}
           sourceRect={modalSourceRect}
-          onClose={() => { setModalCard(null); setModalSourceRect(null); window.history.replaceState({}, '', '#whirlpool-stake') }}
+          onClose={() => { setModalCardId(null); setModalSourceRect(null); window.history.replaceState({}, '', '#whirlpool-stake') }}
           onStake={(id) => handleStake(id, { stopPropagation: () => {} } as any)}
           onUnstake={(id) => handleUnstake(id, { stopPropagation: () => {} } as any)}
           getCardEvents={whirlpool.getCardEvents}

@@ -356,33 +356,12 @@ export function useWhirlpool() {
     setLoading(true)
     try {
       const amt = parseEther(amount)
-      const card = cards.find(c => c.id === cardId)
-      addLog(`Unstaking ${amount} shares from card #${cardId} (${card?.name || '?'})...`, 'info')
-
-      // Step 1: Unstake — returns card tokens to wallet
+      addLog(`Unstaking ${amount} from card #${cardId}...`, 'info')
       const hash = await writeContractAsync({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'unstake', args: [BigInt(cardId), amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Unstaked · block #${receipt.blockNumber}`, 'success')
-
-      // Step 2: Swap received card tokens → WAVES
-      if (card) {
-        const cardBalance = await publicClient.readContract({
-          address: card.address, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address!],
-        }) as bigint
-        if (cardBalance > 0n) {
-          addLog(`Swapping ${formatEther(cardBalance)} ${card.symbol} → WAVES...`, 'info')
-          await ensureApproval(card.address, SURFSWAP_ADDRESS, cardBalance)
-          const swapHash = await writeContractAsync({
-            address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'swapExact',
-            args: [card.address, WAVES_ADDRESS, cardBalance, BigInt(0)],
-          })
-          const swapReceipt = await publicClient.waitForTransactionReceipt({ hash: swapHash })
-          addLog(`✓ Swapped to WAVES · block #${swapReceipt.blockNumber}`, 'success')
-        }
-      }
-
       await loadCards()
     } catch (e: any) {
       addLog(`✗ Unstake: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
