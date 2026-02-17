@@ -28,6 +28,162 @@ const publicClient = createPublicClient({
   transport: http('http://192.168.0.82:8545'),
 })
 
+// ═══════════════════════════════════════════════════════════
+//  Shared module-level cache — survives page navigation
+//  Cards stay hot for CACHE_TTL_MS after last consumer unmounts
+// ═══════════════════════════════════════════════════════════
+const CACHE_TTL_MS = 2 * 60 * 1000 // 2 minutes
+
+interface SharedState {
+  cards: CardState[]
+  wavesBalance: string
+  wethBalance: string
+  myWethStake: string
+  pendingGlobal: string
+  lastAddress: string | undefined
+  lastLoadTime: number
+  loading: boolean
+}
+
+const _shared: SharedState = {
+  cards: [],
+  wavesBalance: '0',
+  wethBalance: '0',
+  myWethStake: '0',
+  pendingGlobal: '0',
+  lastAddress: undefined,
+  lastLoadTime: 0,
+  loading: false,
+}
+
+// Listeners for shared state changes
+const _listeners = new Set<() => void>()
+function notifyListeners() { _listeners.forEach(fn => fn()) }
+
+// Polling management — only poll while consumers exist, keep alive for TTL after
+let _pollInterval: ReturnType<typeof setInterval> | null = null
+let _ttlTimeout: ReturnType<typeof setTimeout> | null = null
+let _consumerCount = 0
+let _unwatchEvents: (() => void) | null = null
+
+function startPolling(address: string | undefined) {
+  if (_pollInterval) return
+  _pollInterval = setInterval(() => loadCardsShared(address), 30000)
+}
+
+function stopPolling() {
+  if (_pollInterval) { clearInterval(_pollInterval); _pollInterval = null }
+  if (_unwatchEvents) { _unwatchEvents(); _unwatchEvents = null }
+}
+
+function scheduleExpiry() {
+  if (_ttlTimeout) clearTimeout(_ttlTimeout)
+  _ttlTimeout = setTimeout(() => {
+    if (_consumerCount === 0) stopPolling()
+  }, CACHE_TTL_MS)
+}
+
+// The shared load function
+async function loadCardsShared(address: string | undefined) {
+  if (_shared.loading) return
+  _shared.loading = true
+  notifyListeners()
+  try {
+    const totalBig = await publicClient.readContract({
+      address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'totalCards',
+    }) as bigint
+    const total = Number(totalBig)
+    if (total === 0) {
+      _shared.cards = []
+      _shared.lastLoadTime = Date.now()
+      _shared.loading = false
+      notifyListeners()
+      return
+    }
+
+    // Batch: first get all token addresses in parallel (chunks of 20)
+    const CHUNK = 20
+    const tokenAddrs: (`0x${string}` | null)[] = new Array(total).fill(null)
+    for (let start = 0; start < total; start += CHUNK) {
+      const end = Math.min(start + CHUNK, total)
+      const batch = Array.from({ length: end - start }, (_, j) =>
+        publicClient.readContract({
+          address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'cardToken', args: [BigInt(start + j)],
+        }).catch(() => null)
+      )
+      const results = await Promise.all(batch)
+      results.forEach((addr, j) => { tokenAddrs[start + j] = addr as `0x${string}` | null })
+    }
+
+    // Now load card data in parallel chunks
+    const cardData: CardState[] = []
+    for (let start = 0; start < total; start += CHUNK) {
+      const end = Math.min(start + CHUNK, total)
+      const batch = Array.from({ length: end - start }, async (_, j) => {
+        const i = start + j
+        const tokenAddr = tokenAddrs[i]
+        if (!tokenAddr) return null
+        try {
+          const [name, symbol, owner, price, reserves, uri] = await Promise.all([
+            publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'name' }),
+            publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'symbol' }),
+            publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'ownerOfCard', args: [BigInt(i)] }),
+            publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getPrice', args: [BigInt(i)] }),
+            publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getReserves', args: [BigInt(i)] }),
+            publicClient.readContract({ address: BIDNFT_ADDRESS, abi: BIDNFT_ABI, functionName: 'tokenURI', args: [BigInt(i)] }).catch(() => ''),
+          ])
+          let myStake = '0', myBalance = '0'
+          if (address) {
+            const [s, b] = await Promise.all([
+              publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeOf', args: [BigInt(i), address as `0x${string}`] }),
+              publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
+            ])
+            myStake = formatEther(s as bigint)
+            myBalance = formatEther(b as bigint)
+          }
+          const [wavesR, cardsR] = reserves as [bigint, bigint]
+          return {
+            id: i, name: name as string, symbol: symbol as string, uri: uri as string, address: tokenAddr,
+            owner: owner as string, price: formatEther(price as bigint),
+            wavesReserve: formatEther(wavesR), cardReserve: formatEther(cardsR), myStake, myBalance,
+          } as CardState
+        } catch { return null }
+      })
+      const results = await Promise.all(batch)
+      results.forEach(r => { if (r) cardData.push(r) })
+
+      // Progressive update on first load
+      if (_shared.cards.length === 0 && cardData.length > 0) {
+        _shared.cards = [...cardData]
+        notifyListeners()
+      }
+    }
+    _shared.cards = cardData
+
+    if (address) {
+      try {
+        const [wb, wethb, ws, pg] = await Promise.all([
+          publicClient.readContract({ address: WAVES_ADDRESS, abi: WAVES_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
+          publicClient.readContract({ address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
+          publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'userWethStake', args: [address as `0x${string}`] }),
+          publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'pendingGlobalRewards', args: [address as `0x${string}`] }),
+        ])
+        _shared.wavesBalance = formatEther(wb as bigint)
+        _shared.wethBalance = formatEther(wethb as bigint)
+        _shared.myWethStake = formatEther(ws as bigint)
+        _shared.pendingGlobal = formatEther(pg as bigint)
+      } catch { /* ignore */ }
+    }
+
+    _shared.lastAddress = address
+    _shared.lastLoadTime = Date.now()
+  } catch (e) {
+    console.error('loadCards error:', e)
+  }
+  _shared.loading = false
+  notifyListeners()
+}
+
 let logCounter = 0
 
 export function useWhirlpool() {
@@ -36,15 +192,19 @@ export function useWhirlpool() {
   const { disconnect: disconnectFn } = useDisconnect()
   const { writeContractAsync } = useWriteContract()
 
-  const [cards, setCards] = useState<CardState[]>([])
+  // Local state synced from shared cache
+  const [, forceUpdate] = useState(0)
   const [selectedCard, setSelectedCard] = useState(0)
-  const [wavesBalance, setWavesBalance] = useState('0')
-  const [wethBalance, setWethBalance] = useState('0')
-  const [myWethStake, setMyWethStake] = useState('0')
-  const [pendingGlobal, setPendingGlobal] = useState('0')
   const [loading, setLoading] = useState(false)
   const [logs, setLogs] = useState<LogEntry[]>([])
   const [lastCreatedCard, setLastCreatedCard] = useState<{ name: string; symbol: string; hash: string; editorData?: any } | null>(null)
+
+  // Shared cache accessors
+  const cards = _shared.cards
+  const wavesBalance = _shared.wavesBalance
+  const wethBalance = _shared.wethBalance
+  const myWethStake = _shared.myWethStake
+  const pendingGlobal = _shared.pendingGlobal
 
   const addLog = useCallback((message: string, type: LogType = 'default', extra: Partial<LogEntry> = {}) => {
     const entry: LogEntry = {
@@ -57,89 +217,22 @@ export function useWhirlpool() {
 
   const clearLogs = useCallback(() => setLogs([]), [])
 
-  const cardsRef = useRef<CardState[]>([])
-  const loadCards = useCallback(async () => {
-    try {
-      const totalBig = await publicClient.readContract({
-        address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'totalCards',
-      }) as bigint
-      const total = Number(totalBig)
-      if (total === 0) { setCards([]); return }
-
-      // Batch: first get all token addresses in parallel (chunks of 20)
-      const CHUNK = 20
-      const tokenAddrs: (`0x${string}` | null)[] = new Array(total).fill(null)
-      for (let start = 0; start < total; start += CHUNK) {
-        const end = Math.min(start + CHUNK, total)
-        const batch = Array.from({ length: end - start }, (_, j) =>
-          publicClient.readContract({
-            address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'cardToken', args: [BigInt(start + j)],
-          }).catch(() => null)
-        )
-        const results = await Promise.all(batch)
-        results.forEach((addr, j) => { tokenAddrs[start + j] = addr as `0x${string}` | null })
-      }
-
-      // Now load card data in parallel chunks
-      const cardData: CardState[] = []
-      for (let start = 0; start < total; start += CHUNK) {
-        const end = Math.min(start + CHUNK, total)
-        const batch = Array.from({ length: end - start }, async (_, j) => {
-          const i = start + j
-          const tokenAddr = tokenAddrs[i]
-          if (!tokenAddr) return null
-          try {
-            const [name, symbol, owner, price, reserves, uri] = await Promise.all([
-              publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'name' }),
-              publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'symbol' }),
-              publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'ownerOfCard', args: [BigInt(i)] }),
-              publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getPrice', args: [BigInt(i)] }),
-              publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getReserves', args: [BigInt(i)] }),
-              publicClient.readContract({ address: BIDNFT_ADDRESS, abi: BIDNFT_ABI, functionName: 'tokenURI', args: [BigInt(i)] }).catch(() => ''),
-            ])
-            let myStake = '0', myBalance = '0'
-            if (address) {
-              const [s, b] = await Promise.all([
-                publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeOf', args: [BigInt(i), address] }),
-                publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address] }),
-              ])
-              myStake = formatEther(s as bigint)
-              myBalance = formatEther(b as bigint)
-            }
-            const [wavesR, cardsR] = reserves as [bigint, bigint]
-            return {
-              id: i, name: name as string, symbol: symbol as string, uri: uri as string, address: tokenAddr,
-              owner: owner as string, price: formatEther(price as bigint),
-              wavesReserve: formatEther(wavesR), cardReserve: formatEther(cardsR), myStake, myBalance,
-            } as CardState
-          } catch { return null }
-        })
-        const results = await Promise.all(batch)
-        results.forEach(r => { if (r) cardData.push(r) })
-        // Progressive update only on first load
-        if (cardsRef.current.length === 0) setCards([...cardData])
-      }
-      cardsRef.current = cardData
-      setCards(cardData)
-
-      if (address) {
-        try {
-          const [wb, wethb, ws, pg] = await Promise.all([
-            publicClient.readContract({ address: WAVES_ADDRESS, abi: WAVES_ABI, functionName: 'balanceOf', args: [address] }),
-            publicClient.readContract({ address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'balanceOf', args: [address] }),
-            publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'userWethStake', args: [address] }),
-            publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'pendingGlobalRewards', args: [address] }),
-          ])
-          setWavesBalance(formatEther(wb as bigint))
-          setWethBalance(formatEther(wethb as bigint))
-          setMyWethStake(formatEther(ws as bigint))
-          setPendingGlobal(formatEther(pg as bigint))
-        } catch { /* ignore */ }
-      }
-    } catch (e: any) {
-      addLog(`⚠ Error loading cards: ${e.shortMessage || e.message}`, 'error')
+  // Subscribe to shared state changes
+  useEffect(() => {
+    const listener = () => forceUpdate(v => v + 1)
+    _listeners.add(listener)
+    _consumerCount++
+    if (_ttlTimeout) { clearTimeout(_ttlTimeout); _ttlTimeout = null }
+    return () => {
+      _listeners.delete(listener)
+      _consumerCount--
+      if (_consumerCount === 0) scheduleExpiry()
     }
-  }, [address, addLog])
+  }, [])
+
+  const loadCards = useCallback(async () => {
+    await loadCardsShared(address)
+  }, [address])
 
   const ensureApproval = async (token: `0x${string}`, spender: `0x${string}`, amount: bigint) => {
     const allowance = await publicClient.readContract({
@@ -294,7 +387,7 @@ export function useWhirlpool() {
       addLog(`BatchSwapStake ${fromCardIds.length} cards → #${toCard}...`, 'info')
       const hash = await writeContractAsync({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'batchSwapStake',
-        args: [fromCardIds.map(id => BigInt(id)), BigInt(toCard)],
+        args: [fromCardIds.map(BigInt), BigInt(toCard)],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ BatchSwapStake confirmed · block #${receipt.blockNumber}`, 'success')
@@ -303,77 +396,44 @@ export function useWhirlpool() {
     setLoading(false)
   }
 
-  const stakeWETH = async (amount: string) => {
+  const claimRewards = async (cardId?: number) => {
     if (!isConnected) return
     setLoading(true)
     try {
-      const amt = parseEther(amount)
-      addLog(`Staking ${amount} WETH...`, 'info')
-      await ensureApproval(WETH_ADDRESS, WHIRLPOOL_ADDRESS, amt)
-      const hash = await writeContractAsync({
-        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeWETH', args: [amt],
-      })
-      const receipt = await publicClient.waitForTransactionReceipt({ hash })
-      addLog(`✓ WETH staked · block #${receipt.blockNumber}`, 'success')
-      await loadCards()
-    } catch (e: any) { addLog(`✗ WETH stake: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
-    setLoading(false)
-  }
-
-  const unstakeWETH = async (amount: string) => {
-    if (!isConnected) return
-    setLoading(true)
-    try {
-      const amt = parseEther(amount)
-      addLog(`Unstaking ${amount} WETH...`, 'info')
-      const hash = await writeContractAsync({
-        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'unstakeWETH', args: [amt],
-      })
-      const receipt = await publicClient.waitForTransactionReceipt({ hash })
-      addLog(`✓ WETH unstaked · block #${receipt.blockNumber}`, 'success')
-      await loadCards()
-    } catch (e: any) { addLog(`✗ WETH unstake: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
-    setLoading(false)
-  }
-
-  const claimRewards = async (cardId: number) => {
-    if (!isConnected) return
-    setLoading(true)
-    try {
-      addLog(`Claiming rewards for card #${cardId}...`, 'info')
-      const hash = await writeContractAsync({
-        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimRewards', args: [BigInt(cardId)],
-      })
-      await publicClient.waitForTransactionReceipt({ hash })
-      addLog(`✓ Rewards claimed`, 'success')
+      if (cardId !== undefined) {
+        addLog(`Claiming rewards for card #${cardId}...`, 'info')
+        const hash = await writeContractAsync({
+          address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimRewards',
+          args: [BigInt(cardId)],
+        })
+        const receipt = await publicClient.waitForTransactionReceipt({ hash })
+        addLog(`✓ Rewards claimed · block #${receipt.blockNumber}`, 'success')
+      } else {
+        // Claim all — iterate staked cards
+        const staked = cards.filter(c => parseFloat(c.myStake) > 0)
+        for (const c of staked) {
+          addLog(`Claiming rewards for ${c.name}...`, 'info')
+          const hash = await writeContractAsync({
+            address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimRewards',
+            args: [BigInt(c.id)],
+          })
+          await publicClient.waitForTransactionReceipt({ hash })
+        }
+        addLog(`✓ All rewards claimed (${staked.length} cards)`, 'success')
+      }
       await loadCards()
     } catch (e: any) { addLog(`✗ Claim: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
     setLoading(false)
   }
 
-  const claimWETHRewards = async () => {
+  const wrapEth = async (amount: string) => {
     if (!isConnected) return
     setLoading(true)
     try {
-      addLog(`Claiming WETH rewards...`, 'info')
-      const hash = await writeContractAsync({
-        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimWETHRewards',
-      })
-      await publicClient.waitForTransactionReceipt({ hash })
-      addLog(`✓ WETH rewards claimed`, 'success')
-      await loadCards()
-    } catch (e: any) { addLog(`✗ Claim: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
-    setLoading(false)
-  }
-
-  const wrapETH = async (amount: string) => {
-    if (!isConnected) return
-    setLoading(true)
-    try {
-      const amt = parseEther(amount)
       addLog(`Wrapping ${amount} ETH → WETH...`, 'info')
       const hash = await writeContractAsync({
-        address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'deposit', value: amt,
+        address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'deposit',
+        value: parseEther(amount),
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Wrapped · block #${receipt.blockNumber}`, 'success')
@@ -392,29 +452,40 @@ export function useWhirlpool() {
     try { disconnectFn() } catch { /* */ }
   }
 
-  // Init + polling
+  // Init: load from cache or fetch, start polling
   useEffect(() => {
     addLog('═══ ERC-1142 · Whirlpool Terminal ═══', 'system', { category: 'system' })
     addLog(`RPC: http://192.168.0.82:8545 · Chain 31337`, 'system', { category: 'system' })
-    loadCards()
-    const interval = setInterval(loadCards, 30000)
-    return () => clearInterval(interval)
-  }, [address])
 
-  // Watch OwnerChanged events
-  useEffect(() => {
-    const unwatch = publicClient.watchContractEvent({
-      address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, eventName: 'OwnerChanged',
-      onLogs: (eventLogs) => {
-        for (const log of eventLogs) {
-          const args = log.args as any
-          addLog(`★ OWNERSHIP CHANGED card #${args.cardId} → ${args.newOwner?.slice(0, 12)}…`, 'ownership', { category: 'ownership' })
-        }
-        loadCards()
-      },
-    })
-    return () => unwatch()
-  }, [addLog, loadCards])
+    const cacheAge = Date.now() - _shared.lastLoadTime
+    const addressChanged = _shared.lastAddress !== address
+
+    if (_shared.cards.length > 0 && cacheAge < CACHE_TTL_MS && !addressChanged) {
+      addLog(`♻ Using cached cards (${_shared.cards.length} cards, ${Math.round(cacheAge / 1000)}s old)`, 'system', { category: 'system' })
+    } else {
+      loadCards()
+    }
+
+    startPolling(address)
+
+    // Watch OwnerChanged events (shared — only one watcher at a time)
+    if (!_unwatchEvents) {
+      _unwatchEvents = publicClient.watchContractEvent({
+        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, eventName: 'OwnerChanged',
+        onLogs: (eventLogs) => {
+          for (const log of eventLogs) {
+            const args = log.args as any
+            console.log(`★ OWNERSHIP CHANGED card #${args.cardId} → ${args.newOwner?.slice(0, 12)}…`)
+          }
+          loadCardsShared(address)
+        },
+      })
+    }
+
+    return () => {
+      // Don't stop polling on unmount — let the TTL handle it
+    }
+  }, [address])
 
   const getCardEvents = async (cardId: number, limit = 10) => {
     try {
@@ -446,7 +517,7 @@ export function useWhirlpool() {
     wavesBalance, wethBalance, myWethStake, pendingGlobal,
     isConnected, address, loading, logs,
     createCard, swap, stake, unstake, swapStake, batchSwapStake, lastCreatedCard, clearLastCreated: () => setLastCreatedCard(null),
-    stakeWETH, unstakeWETH, claimRewards, claimWETHRewards, wrapETH,
-    connect, disconnect, clearLogs, getCardEvents,
+    claimRewards, wrapEth, connect, disconnect, clearLogs, getCardEvents,
+    loadCards,
   }
 }

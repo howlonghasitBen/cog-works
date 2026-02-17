@@ -149,11 +149,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
 
   const handleClaimAll = async () => {
     try {
-      for (const c of whirlpool.cards) {
-        if (parseFloat(c.myStake) > 0) {
-          await whirlpool.claimRewards(c.id)
-        }
-      }
+      await whirlpool.claimRewards()
       toast.success('Rewards claimed!')
     } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Claim failed') }
   }

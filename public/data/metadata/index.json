@@ -1174,5 +1174,9 @@
   "Test": {
     "index": 293,
     "slug": "test"
+  },
+  "Teemo": {
+    "index": 294,
+    "slug": "teemo"
   }
 }
