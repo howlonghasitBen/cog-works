@@ -1182,5 +1182,9 @@
   "Mumu": {
     "index": 295,
     "slug": "mumu"
+  },
+  "Angler": {
+    "index": 296,
+    "slug": "angler"
   }
 }
