@@ -30,22 +30,50 @@ function cardMintApi(): Plugin {
             const cards: any[] = JSON.parse(fs.readFileSync(cardDataPath, 'utf-8'))
 
             // Build WavesCardData entry (same shape as existing cards in cardData.json)
+            // In cardData.json: subtitle = move/attack name (e.g. "Fairy Magic")
+            // In editor: subtitle = subtitle field, moveName = move name field
+            const subtitle = editorData.subtitle || editorData.moveName || ''
+            const stats = editorData.stats || {}
+            const theme = editorData.theme || {}
+            const manaCostArr = Array.isArray(editorData.manaCost) ? editorData.manaCost : []
+
+            // Use theme colors for stat orbs if available, otherwise defaults
+            const hpColor = editorData.colors?.hp || 'radial-gradient(circle, #dc143c, #8b0000)'
+            const manaColor = manaCostArr[0]?.color || editorData.colors?.mana || 'radial-gradient(circle, #4169e1, #0000cd)'
+            const critColor = editorData.colors?.crit || 'linear-gradient(135deg, gold, orange)'
+
             const newCard: any = {
               name: editorData.name || 'Untitled',
-              subtitle: editorData.moveName || editorData.subtitle || '',
+              subtitle,
               level: editorData.level != null ? String(editorData.level) : '1',
               image: editorData.imageData || '',
               type: editorData.type || 'Creature',
-              stats: editorData.stats || null,
+              stats: Object.keys(stats).length > 0 ? stats : null,
               flavorText: editorData.flavorText || 'A newly forged card enters the Whirlpool.',
               artist: editorData.artist || 'WHIRLPOOL',
               rarity: editorData.rarity || 'Common',
-              hp: { value: String(editorData.stats?.hp ?? '?'), color: 'radial-gradient(circle, #dc143c, #8b0000)', textColor: '#ffffff' },
-              manaCost: Array.isArray(editorData.manaCost) && editorData.manaCost.length > 0
-                ? editorData.manaCost.map((mc: any) => ({ value: String(mc.value ?? '?'), color: mc.color || 'radial-gradient(circle, #4169e1, #0000cd)', textColor: mc.textColor || '#ffffff' }))
-                : { value: String(editorData.stats?.mana ?? '?'), color: 'radial-gradient(circle, #4169e1, #0000cd)', textColor: '#ffffff' },
-              crit: { value: String(editorData.stats?.crit ?? '?'), color: 'linear-gradient(135deg, gold, orange)', textColor: '#1a1a1a' },
-              theme: editorData.theme || {},
+              hp: {
+                value: String(stats.hp ?? '?'),
+                color: hpColor,
+                textColor: '#ffffff',
+              },
+              manaCost: manaCostArr.length > 0
+                ? manaCostArr.map((mc: any) => ({
+                    value: String(mc.value ?? '?'),
+                    color: mc.color || manaColor,
+                    textColor: mc.textColor || '#ffffff',
+                  }))
+                : {
+                    value: String(stats.mana ?? '?'),
+                    color: manaColor,
+                    textColor: '#ffffff',
+                  },
+              crit: {
+                value: String(stats.crit ?? '?'),
+                color: critColor,
+                textColor: '#1a1a1a',
+              },
+              theme: Object.keys(theme).length > 0 ? theme : undefined,
               token_id: null,
             }
 

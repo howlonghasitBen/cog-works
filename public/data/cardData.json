@@ -2,15 +2,15 @@
   {
     "name": "Moonwell Sanctuary",
     "subtitle": "Fairy Magic",
-    "level": "★",
+    "level": "\u2605",
     "image": "/images/card-images/arts/fairy_fountain.png",
-    "type": "Consumable — Mana Restoration",
+    "type": "Consumable \u2014 Mana Restoration",
     "stats": null,
     "flavorText": "Where moonbeams kiss the sacred waters, ancient magic flows eternal.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "★",
+      "value": "\u2605",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -69,15 +69,15 @@
   {
     "name": "Slight of Hand",
     "subtitle": "Quick Draw",
-    "level": "★",
+    "level": "\u2605",
     "image": "/images/card-images/arts/soh.png",
-    "type": "Consumable — Cards",
+    "type": "Consumable \u2014 Cards",
     "stats": null,
     "flavorText": "Where fortunes rise and fall with the turn of a card, luck favors the bold.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "★",
+      "value": "\u2605",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -138,12 +138,12 @@
     "subtitle": "Enslave Mind",
     "level": "1",
     "image": "/images/card-images/arts/aboleth.png",
-    "type": "Creature — Deepmaster",
+    "type": "Creature \u2014 Deepmaster",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It remembers everything — every civilization it watched drown, every mind it claimed. The small fish circle close, unaware they already belong to it.",
+    "flavorText": "It remembers everything \u2014 every civilization it watched drown, every mind it claimed. The small fish circle close, unaware they already belong to it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -208,7 +208,7 @@
     "subtitle": "Unblinking Vigil",
     "level": "1",
     "image": "/images/card-images/arts/acolyte.png",
-    "type": "Creature — Lightsworn",
+    "type": "Creature \u2014 Lightsworn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -278,12 +278,12 @@
     "subtitle": "Repulsion Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_bronze_dragon.png",
-    "type": "Creature — Bronzewing",
+    "type": "Creature \u2014 Bronzewing",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It has guarded the valley since before the river changed course. It does not attack — it simply waits, unamused, until you leave.",
+    "flavorText": "It has guarded the valley since before the river changed course. It does not attack \u2014 it simply waits, unamused, until you leave.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -348,7 +348,7 @@
     "subtitle": "Corroding Apathy",
     "level": "1",
     "image": "/images/card-images/arts/adult_copper_dragon.png",
-    "type": "Creature — Copperclaw",
+    "type": "Creature \u2014 Copperclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -418,7 +418,7 @@
     "subtitle": "Gilded Sorrow Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_gold_dragon.png",
-    "type": "Creature — Goldheart",
+    "type": "Creature \u2014 Goldheart",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -488,12 +488,12 @@
     "subtitle": "Noxious Exhalation",
     "level": "1",
     "image": "/images/card-images/arts/adult_green_dragon.png",
-    "type": "Creature — Verdantstrike",
+    "type": "Creature \u2014 Verdantstrike",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The forest does not fear the storm — it fears what watches from the cliff above, grinning with too many teeth.",
+    "flavorText": "The forest does not fear the storm \u2014 it fears what watches from the cliff above, grinning with too many teeth.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -558,7 +558,7 @@
     "subtitle": "Paralyzing Breath",
     "level": "1",
     "image": "/images/card-images/arts/adult_silver_dragon.png",
-    "type": "Creature — Silverspear",
+    "type": "Creature \u2014 Silverspear",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -628,7 +628,7 @@
     "subtitle": "Sulking Tempest",
     "level": "1",
     "image": "/images/card-images/arts/air_elemental.png",
-    "type": "Creature — Windwhisper",
+    "type": "Creature \u2014 Windwhisper",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -698,12 +698,12 @@
     "subtitle": "Ageless Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_black_dragon.png",
-    "type": "Creature — Nightshade",
+    "type": "Creature \u2014 Nightshade",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It has watched empires crumble and gods go silent, yet still it smirks—for it alone remembers the joke the world has become.",
+    "flavorText": "It has watched empires crumble and gods go silent, yet still it smirks\u2014for it alone remembers the joke the world has become.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -768,7 +768,7 @@
     "subtitle": "Corroded Dominion",
     "level": "1",
     "image": "/images/card-images/arts/ancient_brass_dragon.png",
-    "type": "Creature — Sunstone",
+    "type": "Creature \u2014 Sunstone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -838,7 +838,7 @@
     "subtitle": "Eternal Sulk",
     "level": "1",
     "image": "/images/card-images/arts/ancient_bronze_dragon.png",
-    "type": "Creature — Bronzeguard",
+    "type": "Creature \u2014 Bronzeguard",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -908,12 +908,12 @@
     "subtitle": "Verdigris Ruin",
     "level": "1",
     "image": "/images/card-images/arts/ancient_copper_dragon.png",
-    "type": "Creature — Coppertrick",
+    "type": "Creature \u2014 Coppertrick",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It has outlasted every empire foolish enough to claim its temple. The moss grows, the columns crumble, and still it grins—knowing that patience is the cruelest treasure of all.",
+    "flavorText": "It has outlasted every empire foolish enough to claim its temple. The moss grows, the columns crumble, and still it grins\u2014knowing that patience is the cruelest treasure of all.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -978,7 +978,7 @@
     "subtitle": "Gilded Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_gold_dragon_2.png",
-    "type": "Creature — Goldflare",
+    "type": "Creature \u2014 Goldflare",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1048,7 +1048,7 @@
     "subtitle": "Primordial Sigh",
     "level": "1",
     "image": "/images/card-images/arts/ancient_green_dragon.png",
-    "type": "Creature — Emeraldrot",
+    "type": "Creature \u2014 Emeraldrot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1118,7 +1118,7 @@
     "subtitle": "Molten Contempt",
     "level": "1",
     "image": "/images/card-images/arts/ancient_red_dragon.png",
-    "type": "Creature — Bloodstorm",
+    "type": "Creature \u2014 Bloodstorm",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1188,12 +1188,12 @@
     "subtitle": "Frozen Lament",
     "level": "1",
     "image": "/images/card-images/arts/ancient_silver_dragon.png",
-    "type": "Creature — Moonshard",
+    "type": "Creature \u2014 Moonshard",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It has watched empires crumble from its frozen throne, shedding no tears—only frost. Even the moon turns away, unable to bear the weight of its ancient sorrow.",
+    "flavorText": "It has watched empires crumble from its frozen throne, shedding no tears\u2014only frost. Even the moon turns away, unable to bear the weight of its ancient sorrow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1258,12 +1258,12 @@
     "subtitle": "Sorrowful Roar",
     "level": "1",
     "image": "/images/card-images/arts/androsphinx.png",
-    "type": "Creature — Riddleguard",
+    "type": "Creature \u2014 Riddleguard",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It asks no riddles, for it already knows the answer — and the answer is sorrow. Kingdoms rose and fell beneath its gaze, and still it sits, waiting for one worthy of its tears.",
+    "flavorText": "It asks no riddles, for it already knows the answer \u2014 and the answer is sorrow. Kingdoms rose and fell beneath its gaze, and still it sits, waiting for one worthy of its tears.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1328,7 +1328,7 @@
     "subtitle": "Hollow Advance",
     "level": "1",
     "image": "/images/card-images/arts/animated_armor.png",
-    "type": "Creature — Ironclad",
+    "type": "Creature \u2014 Ironclad",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1398,7 +1398,7 @@
     "subtitle": "Rootbound Sorrow",
     "level": "1",
     "image": "/images/card-images/arts/awakened_shrub.png",
-    "type": "Creature — Lifesprout",
+    "type": "Creature \u2014 Lifesprout",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1468,7 +1468,7 @@
     "subtitle": "Molten Lament",
     "level": "1",
     "image": "/images/card-images/arts/azer.png",
-    "type": "Creature — Fireforge",
+    "type": "Creature \u2014 Fireforge",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1538,7 +1538,7 @@
     "subtitle": "Feral Gnash",
     "level": "1",
     "image": "/images/card-images/arts/baboon.png",
-    "type": "Creature — Baboonfist",
+    "type": "Creature \u2014 Baboonfist",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1608,12 +1608,12 @@
     "subtitle": "Molten Lash",
     "level": "1",
     "image": "/images/card-images/arts/balor.png",
-    "type": "Creature — Balorrow",
+    "type": "Creature \u2014 Balorrow",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "When the mountains split and the sky bled cinder, Balor rose from the molten deep — not to witness the end, but to bring it.",
+    "flavorText": "When the mountains split and the sky bled cinder, Balor rose from the molten deep \u2014 not to witness the end, but to bring it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1678,12 +1678,12 @@
     "subtitle": "Cutthroat Rally",
     "level": "1",
     "image": "/images/card-images/arts/bandit_captain.png",
-    "type": "Creature — Banditlord",
+    "type": "Creature \u2014 Banditlord",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The road belongs to whoever's willing to bleed for it. His crew learned that lesson—and now they teach it to others.",
+    "flavorText": "The road belongs to whoever's willing to bleed for it. His crew learned that lesson\u2014and now they teach it to others.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1748,7 +1748,7 @@
     "subtitle": "Piercing Embrace",
     "level": "1",
     "image": "/images/card-images/arts/barbed_devil_2.png",
-    "type": "Creature — Barbspike",
+    "type": "Creature \u2014 Barbspike",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1818,7 +1818,7 @@
     "subtitle": "Mournful Shriek",
     "level": "1",
     "image": "/images/card-images/arts/bat.png",
-    "type": "Creature — Batscream",
+    "type": "Creature \u2014 Batscream",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -1888,12 +1888,12 @@
     "subtitle": "Infernal Prong",
     "level": "1",
     "image": "/images/card-images/arts/bearded_devil_3.png",
-    "type": "Creature — Beardclaw",
+    "type": "Creature \u2014 Beardclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "He guards the third circle not out of duty, but boredom — and the damned have learned that apathy burns worse than any flame.",
+    "flavorText": "He guards the third circle not out of duty, but boredom \u2014 and the damned have learned that apathy burns worse than any flame.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -1958,12 +1958,12 @@
     "subtitle": "Cavern Constrict",
     "level": "1",
     "image": "/images/card-images/arts/behir.png",
-    "type": "Creature — Behirfang",
+    "type": "Creature \u2014 Behirfang",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It does not hunt out of malice—only a deep, ancient sadness that swallows everything it touches. The last thing its prey sees is not rage, but resignation.",
+    "flavorText": "It does not hunt out of malice\u2014only a deep, ancient sadness that swallows everything it touches. The last thing its prey sees is not rage, but resignation.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2028,12 +2028,12 @@
     "subtitle": "Raging Cleave",
     "level": "1",
     "image": "/images/card-images/arts/berserker_2.png",
-    "type": "Creature — Berserkrage",
+    "type": "Creature \u2014 Berserkrage",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "When the storm broke over the burning village, the last thing the raiders heard was not thunder—but laughter.",
+    "flavorText": "When the storm broke over the burning village, the last thing the raiders heard was not thunder\u2014but laughter.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2098,12 +2098,12 @@
     "subtitle": "Grieving Maul",
     "level": "1",
     "image": "/images/card-images/arts/black_bear.png",
-    "type": "Creature — Blackclaw",
+    "type": "Creature \u2014 Blackclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The forest learned long ago not to mistake its sorrow for weakness. Every tear shed is a promise that something beautiful was lost—and something terrible will follow.",
+    "flavorText": "The forest learned long ago not to mistake its sorrow for weakness. Every tear shed is a promise that something beautiful was lost\u2014and something terrible will follow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2168,7 +2168,7 @@
     "subtitle": "Ember Melancholy",
     "level": "1",
     "image": "/images/card-images/arts/black_dragon_wyrmling.png",
-    "type": "Creature — Blackacid",
+    "type": "Creature \u2014 Blackacid",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2238,7 +2238,7 @@
     "subtitle": "Engulfing Grief",
     "level": "1",
     "image": "/images/card-images/arts/black_pudding_3.png",
-    "type": "Creature — Blackooze",
+    "type": "Creature \u2014 Blackooze",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2308,7 +2308,7 @@
     "subtitle": "Crimson Talon Dive",
     "level": "1",
     "image": "/images/card-images/arts/blood_hawk.png",
-    "type": "Creature — Bloodtalon",
+    "type": "Creature \u2014 Bloodtalon",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2378,12 +2378,12 @@
     "subtitle": "Mire Charge",
     "level": "1",
     "image": "/images/card-images/arts/boar_2.png",
-    "type": "Creature — Boargore",
+    "type": "Creature \u2014 Boargore",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born from the mire where roots twist and rot, it guards the deepest bogs with a patience older than the trees — and a temper far shorter.",
+    "flavorText": "Born from the mire where roots twist and rot, it guards the deepest bogs with a patience older than the trees \u2014 and a temper far shorter.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2448,7 +2448,7 @@
     "subtitle": "Cavern Ambush",
     "level": "1",
     "image": "/images/card-images/arts/bugbear.png",
-    "type": "Creature — Bugreave",
+    "type": "Creature \u2014 Bugreave",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2518,12 +2518,12 @@
     "subtitle": "Trihead Inferno",
     "level": "1",
     "image": "/images/card-images/arts/chimera.png",
-    "type": "Creature — Chimeraflame",
+    "type": "Creature \u2014 Chimeraflame",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Three minds, one hunger. It argues with itself over prey — but never over whether to devour.",
+    "flavorText": "Three minds, one hunger. It argues with itself over prey \u2014 but never over whether to devour.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2588,12 +2588,12 @@
     "subtitle": "Tentacle Crush",
     "level": "1",
     "image": "/images/card-images/arts/chuul.png",
-    "type": "Creature — Chuulgrasp",
+    "type": "Creature \u2014 Chuulgrasp",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It crawled from the deep when the lighthouse went dark, and the keepers were never found—only their empty boots, slick with brine and arranged neatly on the rocks.",
+    "flavorText": "It crawled from the deep when the lighthouse went dark, and the keepers were never found\u2014only their empty boots, slick with brine and arranged neatly on the rocks.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2658,7 +2658,7 @@
     "subtitle": "Sorrowful Downpour",
     "level": "1",
     "image": "/images/card-images/arts/cloud_giant.png",
-    "type": "Creature — Cloudpeak",
+    "type": "Creature \u2014 Cloudpeak",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2728,12 +2728,12 @@
     "subtitle": "Petrifying Glare",
     "level": "1",
     "image": "/images/card-images/arts/cockatrice_2.png",
-    "type": "Creature — Cockastone",
+    "type": "Creature \u2014 Cockastone",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It haunts the bog where no mirror exists, for even the moon averts its gaze. Those who meet its sullen eyes find their last thought is pity—for themselves.",
+    "flavorText": "It haunts the bog where no mirror exists, for even the moon averts its gaze. Those who meet its sullen eyes find their last thought is pity\u2014for themselves.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -2798,7 +2798,7 @@
     "subtitle": "Sulking Corrosion",
     "level": "1",
     "image": "/images/card-images/arts/copper_dragon_wyrmling_3.png",
-    "type": "Creature — Copperspark",
+    "type": "Creature \u2014 Copperspark",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2868,7 +2868,7 @@
     "subtitle": "Plumed Ascension",
     "level": "1",
     "image": "/images/card-images/arts/couatl.png",
-    "type": "Creature — Couatlwisdom",
+    "type": "Creature \u2014 Couatlwisdom",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -2938,7 +2938,7 @@
     "subtitle": "Eldritch Invocation",
     "level": "1",
     "image": "/images/card-images/arts/cultist.png",
-    "type": "Creature — Soulsworn",
+    "type": "Creature \u2014 Soulsworn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3008,12 +3008,12 @@
     "subtitle": "Zealot's Vortex",
     "level": "1",
     "image": "/images/card-images/arts/cult_fanatic.png",
-    "type": "Creature — Zealblade",
+    "type": "Creature \u2014 Zealblade",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "\"The faces stitched upon his vestments do not sleep — they whisper the incantation he has long since forgotten how to stop.\"",
+    "flavorText": "\"The faces stitched upon his vestments do not sleep \u2014 they whisper the incantation he has long since forgotten how to stop.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3078,7 +3078,7 @@
     "subtitle": "Abyssal Smother",
     "level": "1",
     "image": "/images/card-images/arts/darkmantle_2.png",
-    "type": "Creature — Shadowclasp",
+    "type": "Creature \u2014 Shadowclasp",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3148,12 +3148,12 @@
     "subtitle": "Mosshide Trample",
     "level": "1",
     "image": "/images/card-images/arts/draft_horse_3.png",
-    "type": "Creature — Plowhoof",
+    "type": "Creature \u2014 Plowhoof",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born from the bog and burdened by centuries of solitude, it trudges ever onward—too stubborn to stop, too sorrowful to know why.",
+    "flavorText": "Born from the bog and burdened by centuries of solitude, it trudges ever onward\u2014too stubborn to stop, too sorrowful to know why.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3218,7 +3218,7 @@
     "subtitle": "Swamp Shell Crush",
     "level": "1",
     "image": "/images/card-images/arts/dragon_turtle.png",
-    "type": "Creature — Seascourge",
+    "type": "Creature \u2014 Seascourge",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3288,12 +3288,12 @@
     "subtitle": "Webbed Ambush",
     "level": "1",
     "image": "/images/card-images/arts/drider.png",
-    "type": "Creature — Spidercurse",
+    "type": "Creature \u2014 Spidercurse",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It spins no web to catch its prey — the darkness itself funnels the lost into its lair. The young watch and learn; soon, every shadow will have eight legs.",
+    "flavorText": "It spins no web to catch its prey \u2014 the darkness itself funnels the lost into its lair. The young watch and learn; soon, every shadow will have eight legs.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3358,12 +3358,12 @@
     "subtitle": "Underdark Hex",
     "level": "1",
     "image": "/images/card-images/arts/drow.png",
-    "type": "Creature — Nightelf",
+    "type": "Creature \u2014 Nightelf",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born where no sunlight dares to reach, he rules the fungal dark with blade and spite. The caverns do not echo his steps — they swallow the screams of those who follow.",
+    "flavorText": "Born where no sunlight dares to reach, he rules the fungal dark with blade and spite. The caverns do not echo his steps \u2014 they swallow the screams of those who follow.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3428,12 +3428,12 @@
     "subtitle": "Verdant Communion",
     "level": "1",
     "image": "/images/card-images/arts/druid.png",
-    "type": "Creature — Treekeeper",
+    "type": "Creature \u2014 Treekeeper",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "\"The forest does not speak to those who listen — it speaks through those who grieve. His sorrow feeds the roots, and the roots feed everything.\"",
+    "flavorText": "\"The forest does not speak to those who listen \u2014 it speaks through those who grieve. His sorrow feeds the roots, and the roots feed everything.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3498,7 +3498,7 @@
     "subtitle": "Rooted Lament",
     "level": "1",
     "image": "/images/card-images/arts/dryad_2.png",
-    "type": "Creature — Leafsister",
+    "type": "Creature \u2014 Leafsister",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3568,7 +3568,7 @@
     "subtitle": "Cavern Crush",
     "level": "1",
     "image": "/images/card-images/arts/duergar_2.png",
-    "type": "Creature — Stoneborn",
+    "type": "Creature \u2014 Stoneborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3638,12 +3638,12 @@
     "subtitle": "Choking Gust",
     "level": "1",
     "image": "/images/card-images/arts/dust_mephit.png",
-    "type": "Creature — Sandwraith",
+    "type": "Creature \u2014 Sandwraith",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born where the last rain fell and forgotten, it drifts the salt flats in quiet grief—every wingbeat a small erosion, every sigh a dying storm.",
+    "flavorText": "Born where the last rain fell and forgotten, it drifts the salt flats in quiet grief\u2014every wingbeat a small erosion, every sigh a dying storm.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3708,12 +3708,12 @@
     "subtitle": "Blazing Decree",
     "level": "1",
     "image": "/images/card-images/arts/efreeti_2.png",
-    "type": "Creature — Firelord",
+    "type": "Creature \u2014 Firelord",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "\"It granted three wishes once — each answered in ash. Now it asks the questions, and the blade speaks for it.\"",
+    "flavorText": "\"It granted three wishes once \u2014 each answered in ash. Now it asks the questions, and the blade speaks for it.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3778,12 +3778,12 @@
     "subtitle": "Smug Trample",
     "level": "1",
     "image": "/images/card-images/arts/elephant_2.png",
-    "type": "Creature — Mammothfist",
+    "type": "Creature \u2014 Mammothfist",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It emerged from the bog wearing an expression that unsettled even the elder druids — as if it alone knew how the world would end, and found it amusing.",
+    "flavorText": "It emerged from the bog wearing an expression that unsettled even the elder druids \u2014 as if it alone knew how the world would end, and found it amusing.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -3848,7 +3848,7 @@
     "subtitle": "Moss-Crown Charge",
     "level": "1",
     "image": "/images/card-images/arts/elk_3.png",
-    "type": "Creature — Antlercrown",
+    "type": "Creature \u2014 Antlercrown",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3918,7 +3918,7 @@
     "subtitle": "Vengeance Scourge",
     "level": "1",
     "image": "/images/card-images/arts/erinyes.png",
-    "type": "Creature — Furywing",
+    "type": "Creature \u2014 Furywing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -3988,12 +3988,12 @@
     "subtitle": "Twin Cleave",
     "level": "1",
     "image": "/images/card-images/arts/ettin.png",
-    "type": "Creature — Skullcleaver",
+    "type": "Creature \u2014 Skullcleaver",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "\"Four minds, one purpose. They argue over everything—except whom to crush next.\"",
+    "flavorText": "\"Four minds, one purpose. They argue over everything\u2014except whom to crush next.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4058,12 +4058,12 @@
     "subtitle": "Molten Lament",
     "level": "1",
     "image": "/images/card-images/arts/fire_elemental.png",
-    "type": "Creature — Emberstorm",
+    "type": "Creature \u2014 Emberstorm",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born from the volcano's grief, it wanders the scorched earth with sorrowful eyes — not because it burns, but because it cannot stop.",
+    "flavorText": "Born from the volcano's grief, it wanders the scorched earth with sorrowful eyes \u2014 not because it burns, but because it cannot stop.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4128,7 +4128,7 @@
     "subtitle": "Sorrowful Engulf",
     "level": "1",
     "image": "/images/card-images/arts/gelatinous_cube.png",
-    "type": "Creature — Oozemass",
+    "type": "Creature \u2014 Oozemass",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4198,12 +4198,12 @@
     "subtitle": "Anguished Volley",
     "level": "1",
     "image": "/images/card-images/arts/ghast.png",
-    "type": "Creature — Corpsebreath",
+    "type": "Creature \u2014 Corpsebreath",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Its tears evaporate before they fall, yet still it weeps — for the Nether holds no memory of kindness, only the echo of fire and an ache without end.",
+    "flavorText": "Its tears evaporate before they fall, yet still it weeps \u2014 for the Nether holds no memory of kindness, only the echo of fire and an ache without end.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4268,12 +4268,12 @@
     "subtitle": "Ruinous Stomp",
     "level": "1",
     "image": "/images/card-images/arts/giant_ape.png",
-    "type": "Creature — Jungleking",
+    "type": "Creature \u2014 Jungleking",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It did not come to conquer—only to stand. But where it stood, nothing else remained.",
+    "flavorText": "It did not come to conquer\u2014only to stand. But where it stood, nothing else remained.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4338,7 +4338,7 @@
     "subtitle": "Stormwing Dive",
     "level": "1",
     "image": "/images/card-images/arts/giant_bat.png",
-    "type": "Creature — Batwing",
+    "type": "Creature \u2014 Batwing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4408,12 +4408,12 @@
     "subtitle": "Hundred Leg Crush",
     "level": "1",
     "image": "/images/card-images/arts/giant_centipede.png",
-    "type": "Creature — Centipedestride",
+    "type": "Creature \u2014 Centipedestride",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It crawls through the deep places where light fears to linger, each segment watching with ancient, sorrowful eyes. The glowing fungi part before it—even the fungus knows not to be underfoot.",
+    "flavorText": "It crawls through the deep places where light fears to linger, each segment watching with ancient, sorrowful eyes. The glowing fungi part before it\u2014even the fungus knows not to be underfoot.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4478,7 +4478,7 @@
     "subtitle": "Crushing Embrace",
     "level": "1",
     "image": "/images/card-images/arts/giant_constrictor_snake.png",
-    "type": "Creature — Snakewrath",
+    "type": "Creature \u2014 Snakewrath",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4548,12 +4548,12 @@
     "subtitle": "Sorrowful Crush",
     "level": "1",
     "image": "/images/card-images/arts/giant_crab.png",
-    "type": "Creature — Crabclaw",
+    "type": "Creature \u2014 Crabclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It emerged from the surf with sorrowful eyes and merciless claws — mourning every soul it was about to crush.",
+    "flavorText": "It emerged from the surf with sorrowful eyes and merciless claws \u2014 mourning every soul it was about to crush.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4618,12 +4618,12 @@
     "subtitle": "Ember Torrent",
     "level": "1",
     "image": "/images/card-images/arts/giant_fire_beetle.png",
-    "type": "Creature — Fireglow",
+    "type": "Creature \u2014 Fireglow",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The forest learned to fear the dusk — not for the darkness it brought, but for the glow that followed. Where it walks, even ancient oaks bow to ash.",
+    "flavorText": "The forest learned to fear the dusk \u2014 not for the darkness it brought, but for the glow that followed. Where it walks, even ancient oaks bow to ash.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4688,12 +4688,12 @@
     "subtitle": "Ruinous Calm",
     "level": "1",
     "image": "/images/card-images/arts/giant_frog.png",
-    "type": "Creature — Frogleap",
+    "type": "Creature \u2014 Frogleap",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It arrived with the storm and stayed long after the cities fell. Among the rubble, it offered no malice—only an indifferent peace to a world that could no longer refuse it.",
+    "flavorText": "It arrived with the storm and stayed long after the cities fell. Among the rubble, it offered no malice\u2014only an indifferent peace to a world that could no longer refuse it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -4758,7 +4758,7 @@
     "subtitle": "Doleful Rampage",
     "level": "1",
     "image": "/images/card-images/arts/giant_goat_3.png",
-    "type": "Creature — Goatpeak",
+    "type": "Creature \u2014 Goatpeak",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4828,7 +4828,7 @@
     "subtitle": "Sorrowful Embrace",
     "level": "1",
     "image": "/images/card-images/arts/giant_octopus_2.png",
-    "type": "Creature — Octohold",
+    "type": "Creature \u2014 Octohold",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4898,7 +4898,7 @@
     "subtitle": "Abyssal Undertow",
     "level": "1",
     "image": "/images/card-images/arts/giant_sea_horse.png",
-    "type": "Creature — Seaswift",
+    "type": "Creature \u2014 Seaswift",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -4968,7 +4968,7 @@
     "subtitle": "Maddening Cacophony",
     "level": "1",
     "image": "/images/card-images/arts/gibbering_mouther.png",
-    "type": "Creature — Mouthchurn",
+    "type": "Creature \u2014 Mouthchurn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5038,12 +5038,12 @@
     "subtitle": "Abyssal Cleave",
     "level": "1",
     "image": "/images/card-images/arts/glabrezu.png",
-    "type": "Creature — Glabrethorn",
+    "type": "Creature \u2014 Glabrethorn",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "\"It offers you a choice—the blade or the lash. But in the gloom of the runed deep, both paths end the same.\"",
+    "flavorText": "\"It offers you a choice\u2014the blade or the lash. But in the gloom of the runed deep, both paths end the same.\"",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5108,12 +5108,12 @@
     "subtitle": "Mire Headbutt",
     "level": "1",
     "image": "/images/card-images/arts/goat.png",
-    "type": "Creature — Goathoof",
+    "type": "Creature \u2014 Goathoof",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It rose from the bayou with a sullen frown, neither beast nor spirit—just an ancient stubbornness the swamp itself could not digest.",
+    "flavorText": "It rose from the bayou with a sullen frown, neither beast nor spirit\u2014just an ancient stubbornness the swamp itself could not digest.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5178,12 +5178,12 @@
     "subtitle": "Cavern Bash",
     "level": "1",
     "image": "/images/card-images/arts/goblin.png",
-    "type": "Creature — Goblinscar",
+    "type": "Creature \u2014 Goblinscar",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The deep places remember every footstep, every stolen bone, every cackling echo. He calls the cavern home — and the cavern answers with teeth.",
+    "flavorText": "The deep places remember every footstep, every stolen bone, every cackling echo. He calls the cavern home \u2014 and the cavern answers with teeth.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5248,12 +5248,12 @@
     "subtitle": "Gilded Ember",
     "level": "1",
     "image": "/images/card-images/arts/gold_dragon_wyrmling_2.png",
-    "type": "Creature — Goldbreath",
+    "type": "Creature \u2014 Goldbreath",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born beneath the last light of a dying sun, it gazed upon the kingdom it would one day claim — and simply smiled.",
+    "flavorText": "Born beneath the last light of a dying sun, it gazed upon the kingdom it would one day claim \u2014 and simply smiled.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5318,12 +5318,12 @@
     "subtitle": "Petrifying Smirk",
     "level": "1",
     "image": "/images/card-images/arts/gorgon.png",
-    "type": "Creature — Gorgonstone",
+    "type": "Creature \u2014 Gorgonstone",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Heroes enter her cavern seeking glory. They leave as stone monuments to their own hubris — each one wearing a frozen look of smug recognition.",
+    "flavorText": "Heroes enter her cavern seeking glory. They leave as stone monuments to their own hubris \u2014 each one wearing a frozen look of smug recognition.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5388,7 +5388,7 @@
     "subtitle": "Noxious Breath",
     "level": "1",
     "image": "/images/card-images/arts/green_dragon_wyrmling.png",
-    "type": "Creature — Greentide",
+    "type": "Creature \u2014 Greentide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5458,7 +5458,7 @@
     "subtitle": "Bogwater Curse",
     "level": "1",
     "image": "/images/card-images/arts/green_hag.png",
-    "type": "Creature — Hagroot",
+    "type": "Creature \u2014 Hagroot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5528,7 +5528,7 @@
     "subtitle": "Somber Descent",
     "level": "1",
     "image": "/images/card-images/arts/griffon.png",
-    "type": "Creature — Griffonflight",
+    "type": "Creature \u2014 Griffonflight",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5598,7 +5598,7 @@
     "subtitle": "Halberd Hold",
     "level": "1",
     "image": "/images/card-images/arts/guard_2.png",
-    "type": "Creature — Shieldward",
+    "type": "Creature \u2014 Shieldward",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5668,12 +5668,12 @@
     "subtitle": "Molten Cleave",
     "level": "1",
     "image": "/images/card-images/arts/half_red_dragon_veteran_2.png",
-    "type": "Creature — Dragonfist",
+    "type": "Creature \u2014 Dragonfist",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "A hundred battles fought in the deep places of the world, and still the molten dark calls him back. His blood runs half with fire—the other half, with stubbornness.",
+    "flavorText": "A hundred battles fought in the deep places of the world, and still the molten dark calls him back. His blood runs half with fire\u2014the other half, with stubbornness.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5738,12 +5738,12 @@
     "subtitle": "Brimstone Maw",
     "level": "1",
     "image": "/images/card-images/arts/hell_hound.png",
-    "type": "Creature — Hellfang",
+    "type": "Creature \u2014 Hellfang",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "It does not chase the damned — it simply waits where all lost paths converge. The smoke from its maw is the last prayer of every soul it has swallowed.",
+    "flavorText": "It does not chase the damned \u2014 it simply waits where all lost paths converge. The smoke from its maw is the last prayer of every soul it has swallowed.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -5808,7 +5808,7 @@
     "subtitle": "Hillcrest Crush",
     "level": "1",
     "image": "/images/card-images/arts/hill_giant.png",
-    "type": "Creature — Hillstone",
+    "type": "Creature \u2014 Hillstone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5878,7 +5878,7 @@
     "subtitle": "Jagged Cleave",
     "level": "1",
     "image": "/images/card-images/arts/hobgoblin.png",
-    "type": "Creature — Hobnail",
+    "type": "Creature \u2014 Hobnail",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -5948,12 +5948,12 @@
     "subtitle": "Vile Synthesis",
     "level": "1",
     "image": "/images/card-images/arts/homunculus.png",
-    "type": "Creature — Manikin",
+    "type": "Creature \u2014 Manikin",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born from spite and spilled reagents, it blinked once upon the worktable and refused to die — much to its creator's regret.",
+    "flavorText": "Born from spite and spilled reagents, it blinked once upon the worktable and refused to die \u2014 much to its creator's regret.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6018,12 +6018,12 @@
     "subtitle": "Sevenfold Rage",
     "level": "1",
     "image": "/images/card-images/arts/hydra.png",
-    "type": "Creature — Hydrablood",
+    "type": "Creature \u2014 Hydrablood",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Seven heads, seven hungers, seven different ways to die. Cut one down and two more rise—each angrier than the last.",
+    "flavorText": "Seven heads, seven hungers, seven different ways to die. Cut one down and two more rise\u2014each angrier than the last.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6088,12 +6088,12 @@
     "subtitle": "Glacial Rend",
     "level": "1",
     "image": "/images/card-images/arts/ice_devil.png",
-    "type": "Creature — Icechill",
+    "type": "Creature \u2014 Icechill",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born where glaciers groan and moonlight freezes mid-fall, it wears the cold not as armor but as appetite — every step cracking the world a little closer to silence.",
+    "flavorText": "Born where glaciers groan and moonlight freezes mid-fall, it wears the cold not as armor but as appetite \u2014 every step cracking the world a little closer to silence.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6158,12 +6158,12 @@
     "subtitle": "Forlorn Blade",
     "level": "1",
     "image": "/images/card-images/arts/knight_2.png",
-    "type": "Creature — Kingsblade",
+    "type": "Creature \u2014 Kingsblade",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "His armor bears the rust of a hundred forgotten battles, yet still he rides toward the storm. No oath binds him—only the quiet sorrow of one who has nothing left to lose.",
+    "flavorText": "His armor bears the rust of a hundred forgotten battles, yet still he rides toward the storm. No oath binds him\u2014only the quiet sorrow of one who has nothing left to lose.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6228,7 +6228,7 @@
     "subtitle": "Tunnel Shiv",
     "level": "1",
     "image": "/images/card-images/arts/kobold.png",
-    "type": "Creature — Koboldclaw",
+    "type": "Creature \u2014 Koboldclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6298,7 +6298,7 @@
     "subtitle": "Blighted Dominion",
     "level": "1",
     "image": "/images/card-images/arts/lich_2.png",
-    "type": "Creature — Lichbone",
+    "type": "Creature \u2014 Lichbone",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6368,7 +6368,7 @@
     "subtitle": "Mire Crusher",
     "level": "1",
     "image": "/images/card-images/arts/lizardfolk_2.png",
-    "type": "Creature — Lizardhide",
+    "type": "Creature \u2014 Lizardhide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6438,12 +6438,12 @@
     "subtitle": "Molten Drool",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephit.png",
-    "type": "Creature — Magmaborn",
+    "type": "Creature \u2014 Magmaborn",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born where the earth splits and bleeds, it wears the mountain's wrath as a shell—and grins because it knows nothing burns hotter than its spite.",
+    "flavorText": "Born where the earth splits and bleeds, it wears the mountain's wrath as a shell\u2014and grins because it knows nothing burns hotter than its spite.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6508,7 +6508,7 @@
     "subtitle": "Ancient Trample",
     "level": "1",
     "image": "/images/card-images/arts/mammoth.png",
-    "type": "Creature — Tuskwall",
+    "type": "Creature \u2014 Tuskwall",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6578,7 +6578,7 @@
     "subtitle": "Sixfold Reckoning",
     "level": "1",
     "image": "/images/card-images/arts/marilith_2.png",
-    "type": "Creature — Serpentstorm",
+    "type": "Creature \u2014 Serpentstorm",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6648,7 +6648,7 @@
     "subtitle": "Mournful Vigil",
     "level": "1",
     "image": "/images/card-images/arts/mastiff.png",
-    "type": "Creature — Guardhound",
+    "type": "Creature \u2014 Guardhound",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6718,12 +6718,12 @@
     "subtitle": "Sorrowful Gaze",
     "level": "1",
     "image": "/images/card-images/arts/medusa.png",
-    "type": "Creature — Snakesnare",
+    "type": "Creature \u2014 Snakesnare",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "She does not turn heroes to stone out of malice — only so they'll stop looking at her with pity.",
+    "flavorText": "She does not turn heroes to stone out of malice \u2014 only so they'll stop looking at her with pity.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6788,7 +6788,7 @@
     "subtitle": "Sorrowful Depths",
     "level": "1",
     "image": "/images/card-images/arts/merrow.png",
-    "type": "Creature — Seadeath",
+    "type": "Creature \u2014 Seadeath",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6858,7 +6858,7 @@
     "subtitle": "Gilded Lure",
     "level": "1",
     "image": "/images/card-images/arts/mimic_2.png",
-    "type": "Creature — Chesttrap",
+    "type": "Creature \u2014 Chesttrap",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -6928,12 +6928,12 @@
     "subtitle": "Labyrinth Crush",
     "level": "1",
     "image": "/images/card-images/arts/minotaur.png",
-    "type": "Creature — Mazebull",
+    "type": "Creature \u2014 Mazebull",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The labyrinth does not keep him prisoner — it keeps the world safe from his sorrow. Those who mistake his sadness for weakness never find the exit.",
+    "flavorText": "The labyrinth does not keep him prisoner \u2014 it keeps the world safe from his sorrow. Those who mistake his sadness for weakness never find the exit.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -6998,12 +6998,12 @@
     "subtitle": "Hollow Cleave",
     "level": "1",
     "image": "/images/card-images/arts/minotaur_skeleton.png",
-    "type": "Creature — Minobone",
+    "type": "Creature \u2014 Minobone",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The labyrinth forgot its champion, but the champion never forgot its rage. Even stripped to bone, it guards the passage still — sad-eyed and eternal.",
+    "flavorText": "The labyrinth forgot its champion, but the champion never forgot its rage. Even stripped to bone, it guards the passage still \u2014 sad-eyed and eternal.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7068,7 +7068,7 @@
     "subtitle": "Tomb Grasp",
     "level": "1",
     "image": "/images/card-images/arts/mummy.png",
-    "type": "Creature — Wrapmold",
+    "type": "Creature \u2014 Wrapmold",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7138,12 +7138,12 @@
     "subtitle": "Eternal Decree",
     "level": "1",
     "image": "/images/card-images/arts/mummy_lord.png",
-    "type": "Creature — Wraplord",
+    "type": "Creature \u2014 Wraplord",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Entombed for aeons beneath forgotten sands, he rose not to rest but to reign — his ankh burning with the light of a kingdom that never truly fell.",
+    "flavorText": "Entombed for aeons beneath forgotten sands, he rose not to rest but to reign \u2014 his ankh burning with the light of a kingdom that never truly fell.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7208,7 +7208,7 @@
     "subtitle": "Abyssal Melancholy",
     "level": "1",
     "image": "/images/card-images/arts/nalfeshnee_2.png",
-    "type": "Creature — Fleshmaw",
+    "type": "Creature \u2014 Fleshmaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7278,12 +7278,12 @@
     "subtitle": "Iron Tusk Charge",
     "level": "1",
     "image": "/images/card-images/arts/orc.png",
-    "type": "Creature — Bloodfist",
+    "type": "Creature \u2014 Bloodfist",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Born where the mountains bleed fire and the swamps swallow the foolish, he grins because he knows something you don't — you're already surrounded.",
+    "flavorText": "Born where the mountains bleed fire and the swamps swallow the foolish, he grins because he knows something you don't \u2014 you're already surrounded.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7348,7 +7348,7 @@
     "subtitle": "Ethereal Shift",
     "level": "1",
     "image": "/images/card-images/arts/phase_spider.png",
-    "type": "Creature — Shimmershift",
+    "type": "Creature \u2014 Shimmershift",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7418,12 +7418,12 @@
     "subtitle": "Celestial Grasp",
     "level": "1",
     "image": "/images/card-images/arts/planetar_3.png",
-    "type": "Creature — Lightbringer",
+    "type": "Creature \u2014 Lightbringer",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Six hands to hold the cosmos, six fingers to snuff it out. It does not create or destroy — it simply decides which galaxies are worth its melancholy.",
+    "flavorText": "Six hands to hold the cosmos, six fingers to snuff it out. It does not create or destroy \u2014 it simply decides which galaxies are worth its melancholy.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7488,12 +7488,12 @@
     "subtitle": "Dripping Malice",
     "level": "1",
     "image": "/images/card-images/arts/poisonous_snake.png",
-    "type": "Creature — Toxinfang",
+    "type": "Creature \u2014 Toxinfang",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "The swamp does not warn you — it simply watches with half-lidded eyes as the venom finds your veins. Those who see the dripping smile never live long enough to feel sad about it.",
+    "flavorText": "The swamp does not warn you \u2014 it simply watches with half-lidded eyes as the venom finds your veins. Those who see the dripping smile never live long enough to feel sad about it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7558,12 +7558,12 @@
     "subtitle": "Gutter Shakedown",
     "level": "1",
     "image": "/images/card-images/arts/rat.png",
-    "type": "Creature — Filthclaw",
+    "type": "Creature \u2014 Filthclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
     },
-    "flavorText": "Every alley has its king, and every king demands his tribute. Pay in cheese—or pay in blood.",
+    "flavorText": "Every alley has its king, and every king demands his tribute. Pay in cheese\u2014or pay in blood.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
@@ -7628,7 +7628,7 @@
     "subtitle": "Bitter Bite",
     "level": "1",
     "image": "/images/card-images/arts/reef_shark.png",
-    "type": "Creature — Tidejaw",
+    "type": "Creature \u2014 Tidejaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7698,7 +7698,7 @@
     "subtitle": "Chilling Roar",
     "level": "1",
     "image": "/images/card-images/arts/remorhaz.png",
-    "type": "Creature — Magmaburn",
+    "type": "Creature \u2014 Magmaburn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7768,7 +7768,7 @@
     "subtitle": "Mystic Trot",
     "level": "1",
     "image": "/images/card-images/arts/riding_horse_2.png",
-    "type": "Creature — Battlestride",
+    "type": "Creature \u2014 Battlestride",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7838,7 +7838,7 @@
     "subtitle": "Tearing Water Orbs",
     "level": "1",
     "image": "/images/card-images/arts/roper.png",
-    "type": "Creature — Stonegrip",
+    "type": "Creature \u2014 Stonegrip",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7908,7 +7908,7 @@
     "subtitle": "Crying Grab",
     "level": "1",
     "image": "/images/card-images/arts/rug_of_smothering.png",
-    "type": "Creature — Deathweave",
+    "type": "Creature \u2014 Deathweave",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -7978,7 +7978,7 @@
     "subtitle": "Jagged Maw",
     "level": "1",
     "image": "/images/card-images/arts/sahuagin.png",
-    "type": "Creature — Coralspawn",
+    "type": "Creature \u2014 Coralspawn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8048,7 +8048,7 @@
     "subtitle": "Poison Sting",
     "level": "1",
     "image": "/images/card-images/arts/scorpion.png",
-    "type": "Creature — Venomsting",
+    "type": "Creature \u2014 Venomsting",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8118,7 +8118,7 @@
     "subtitle": "Tide of Woe",
     "level": "1",
     "image": "/images/card-images/arts/sea_horse_4.png",
-    "type": "Creature — Seastrand",
+    "type": "Creature \u2014 Seastrand",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8188,7 +8188,7 @@
     "subtitle": "Spectral Lament",
     "level": "1",
     "image": "/images/card-images/arts/shadow.png",
-    "type": "Creature — Nightshade",
+    "type": "Creature \u2014 Nightshade",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8258,7 +8258,7 @@
     "subtitle": "Mire Strangler",
     "level": "1",
     "image": "/images/card-images/arts/shambling_mound.png",
-    "type": "Creature — Bogrot",
+    "type": "Creature \u2014 Bogrot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8325,19 +8325,19 @@
   },
   {
     "name": "40till5",
-    "subtitle": "〈Designer〉",
-    "level": "∞",
+    "subtitle": "\u3008Designer\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/40till5.png",
-    "type": "Creature – OG Memer",
+    "type": "Creature \u2013 OG Memer",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Every wave between you and I, recieved. The cosmos, interpreted by waves, through waves. If we can perceive, can we not also impact?",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -8392,7 +8392,7 @@
     "subtitle": "Knight's Roost",
     "level": "1",
     "image": "/images/card-images/arts/fledgling_eagle.png",
-    "type": "Creature — Fledgling Eagle",
+    "type": "Creature \u2014 Fledgling Eagle",
     "stats": {
       "attack": "1",
       "defense": "2"
@@ -8462,7 +8462,7 @@
     "subtitle": "Seismic Stomp",
     "level": "1",
     "image": "/images/card-images/arts/ape.png",
-    "type": "Creature — Zhathik",
+    "type": "Creature \u2014 Zhathik",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8581,7 +8581,7 @@
     "subtitle": "Celestial Firestorm Descent",
     "level": "1",
     "image": "/images/card-images/arts/archangel.png",
-    "type": "Creature — Flarefall",
+    "type": "Creature \u2014 Flarefall",
     "stats": {
       "attack": "6",
       "defense": "5"
@@ -8631,7 +8631,7 @@
     "subtitle": "Arcane Echo",
     "level": "1",
     "image": "/images/card-images/arts/archmage.png",
-    "type": "Creature — Aeromancy",
+    "type": "Creature \u2014 Aeromancy",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8700,7 +8700,7 @@
     "subtitle": "Moonlit Strike",
     "level": "1",
     "image": "/images/card-images/arts/assassin.png",
-    "type": "Creature — Silentium",
+    "type": "Creature \u2014 Silentium",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -8769,7 +8769,7 @@
     "subtitle": "Rabid Bile Barrage",
     "level": "1",
     "image": "/images/card-images/arts/badass_skag.png",
-    "type": "Creature — Khaosbite",
+    "type": "Creature \u2014 Khaosbite",
     "stats": {
       "attack": "7",
       "defense": "4"
@@ -8819,7 +8819,7 @@
     "subtitle": "Petrifying Gaze",
     "level": "1",
     "image": "/images/card-images/arts/basilisk.png",
-    "type": "Creature — Khthonix",
+    "type": "Creature \u2014 Khthonix",
     "stats": {
       "attack": "7",
       "defense": "6"
@@ -8867,18 +8867,18 @@
   {
     "name": "Beach Bum",
     "subtitle": "Island Time",
-    "level": "∞",
+    "level": "\u221e",
     "image": "/images/card-images/arts/beachjester.png",
-    "type": "Creature — Beach Philosopher",
+    "type": "Creature \u2014 Beach Philosopher",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "The tide whispers secrets of serenity, and the sand holds the wisdom of ages. He listens, and understands, in the language of the shore.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -8936,19 +8936,19 @@
   },
   {
     "name": "Ben",
-    "subtitle": "⟨MEME KING⟩",
-    "level": "∞",
+    "subtitle": "\u27e8MEME KING\u27e9",
+    "level": "\u221e",
     "image": "/images/card-images/arts/ben.png",
-    "type": "Creature — Artist",
+    "type": "Creature \u2014 Artist",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Humankind cannot gain anything without first giving something in return. To obtain something, something of equal value must be lost. That is alchemy's first law of Equivalent Exchange.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -9006,19 +9006,19 @@
   },
   {
     "name": "Bliddo",
-    "subtitle": "⟨Card Crafter⟩",
-    "level": "∞",
+    "subtitle": "\u27e8Card Crafter\u27e9",
+    "level": "\u221e",
     "image": "/images/card-images/arts/bliddo.png",
-    "type": "Creature — COPYCAT",
+    "type": "Creature \u2014 COPYCAT",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Saw what you did there, glad I thought of it.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -9079,7 +9079,7 @@
     "subtitle": "Chaotic Reality Warp",
     "level": "1",
     "image": "/images/card-images/arts/bloudraad_spawn_of_kek.png",
-    "type": "Creature — Fractureborn",
+    "type": "Creature \u2014 Fractureborn",
     "stats": {
       "attack": "5",
       "defense": "3"
@@ -9129,7 +9129,7 @@
     "subtitle": "Primordial Eruption",
     "level": "1",
     "image": "/images/card-images/arts/bulette.png",
-    "type": "Creature — Terragrim",
+    "type": "Creature \u2014 Terragrim",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -9195,19 +9195,19 @@
   },
   {
     "name": "Cag",
-    "subtitle": "〈ZEN〉",
-    "level": "∞",
+    "subtitle": "\u3008ZEN\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/cag.png",
-    "type": "Creature – Wanderer",
+    "type": "Creature \u2013 Wanderer",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Empty the mind, release the self, become one with the infinite void. In detachment from material bonds, true freedom is found.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -9268,7 +9268,7 @@
     "subtitle": "Stone Shell",
     "level": "1",
     "image": "/images/card-images/arts/capricorn_callsong.png",
-    "type": "Creature — Maledicta",
+    "type": "Creature \u2014 Maledicta",
     "stats": {
       "attack": "5",
       "defense": "6"
@@ -9318,7 +9318,7 @@
     "subtitle": "Storm's Descent",
     "level": "1",
     "image": "/images/card-images/arts/centaur.png",
-    "type": "Creature — Zhathik",
+    "type": "Creature \u2014 Zhathik",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -9387,7 +9387,7 @@
     "subtitle": "Infernal Bargain",
     "level": "1",
     "image": "/images/card-images/arts/chort.png",
-    "type": "Creature — Kraxor",
+    "type": "Creature \u2014 Kraxor",
     "stats": {
       "attack": "4",
       "defense": "4"
@@ -9437,7 +9437,7 @@
     "subtitle": "Earthshaking Fissure",
     "level": "1",
     "image": "/images/card-images/arts/clay_golem.png",
-    "type": "Creature — Fissura",
+    "type": "Creature \u2014 Fissura",
     "stats": {
       "attack": "3",
       "defense": "4"
@@ -9487,7 +9487,7 @@
     "subtitle": "Wind Whispers",
     "level": "1",
     "image": "/images/card-images/arts/commoner.png",
-    "type": "Creature — Silvaneer",
+    "type": "Creature \u2014 Silvaneer",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -9556,7 +9556,7 @@
     "subtitle": "Crystalline Groundswell",
     "level": "1",
     "image": "/images/card-images/arts/crystal_golem.png",
-    "type": "Creature — Gelrakk",
+    "type": "Creature \u2014 Gelrakk",
     "stats": {
       "attack": "3",
       "defense": "4"
@@ -9606,7 +9606,7 @@
     "subtitle": "Crystalline Rebirth",
     "level": "1",
     "image": "/images/card-images/arts/crystal_phoenix.png",
-    "type": "Creature — Aethonix",
+    "type": "Creature \u2014 Aethonix",
     "stats": {
       "attack": "4",
       "defense": "4"
@@ -9656,7 +9656,7 @@
     "subtitle": "Astral Echo Fracture",
     "level": "1",
     "image": "/images/card-images/arts/crystalline_cosmic_bind.png",
-    "type": "Creature — Fractura",
+    "type": "Creature \u2014 Fractura",
     "stats": {
       "attack": "5",
       "defense": "5"
@@ -9706,7 +9706,7 @@
     "subtitle": "Cybernetic Pursuit Lock",
     "level": "1",
     "image": "/images/card-images/arts/cyborg_hound.png",
-    "type": "Creature — Cybrox",
+    "type": "Creature \u2014 Cybrox",
     "stats": {
       "attack": "5",
       "defense": "7"
@@ -9756,7 +9756,7 @@
     "subtitle": "Gloom Ward",
     "level": "1",
     "image": "/images/card-images/arts/deep_gnome__svirfneblin_.png",
-    "type": "Creature — Earthkin",
+    "type": "Creature \u2014 Earthkin",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -9826,7 +9826,7 @@
     "subtitle": "Chaotic Edict",
     "level": "1",
     "image": "/images/card-images/arts/demiurge.png",
-    "type": "Creature — Khaosborn",
+    "type": "Creature \u2014 Khaosborn",
     "stats": {
       "attack": "4",
       "defense": "3"
@@ -9876,7 +9876,7 @@
     "subtitle": "Cosmic Lament",
     "level": "1",
     "image": "/images/card-images/arts/deva.png",
-    "type": "Creature — Khaosora",
+    "type": "Creature \u2014 Khaosora",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -9945,7 +9945,7 @@
     "subtitle": "Emerald Howl",
     "level": "1",
     "image": "/images/card-images/arts/dire_wolf.png",
-    "type": "Creature — Tenebrous",
+    "type": "Creature \u2014 Tenebrous",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -10014,7 +10014,7 @@
     "subtitle": "Mimic's Embrace",
     "level": "1",
     "image": "/images/card-images/arts/doppelganger.png",
-    "type": "Creature — Xarathys",
+    "type": "Creature \u2014 Xarathys",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -10083,7 +10083,7 @@
     "subtitle": "Abyssal Grasp",
     "level": "1",
     "image": "/images/card-images/arts/drowners.png",
-    "type": "Creature — Nyxoria",
+    "type": "Creature \u2014 Nyxoria",
     "stats": {
       "attack": "5",
       "defense": "3"
@@ -10133,7 +10133,7 @@
     "subtitle": "Emerald Eruption",
     "level": "1",
     "image": "/images/card-images/arts/earth_elemental.png",
-    "type": "Creature — Vemnixx",
+    "type": "Creature \u2014 Vemnixx",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -10199,10 +10199,10 @@
   },
   {
     "name": "Ent",
-    "subtitle": "⟨Woodland⟩",
+    "subtitle": "\u27e8Woodland\u27e9",
     "level": "1",
     "image": "/images/card-images/arts/ent.png",
-    "type": "Creature — Living Forest",
+    "type": "Creature \u2014 Living Forest",
     "stats": {
       "attack": "0",
       "defense": "4"
@@ -10272,7 +10272,7 @@
     "subtitle": "Venomous Embrace",
     "level": "1",
     "image": "/images/card-images/arts/ettercap.png",
-    "type": "Creature — Khthonia",
+    "type": "Creature \u2014 Khthonia",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -10388,19 +10388,19 @@
   },
   {
     "name": "Fisherman",
-    "subtitle": "⟨Monger⟩",
-    "level": "∞",
+    "subtitle": "\u27e8Monger\u27e9",
+    "level": "\u221e",
     "image": "/images/card-images/arts/fisherman.png",
-    "type": "Creature — Peaceful Angler",
+    "type": "Creature \u2014 Peaceful Angler",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Sometimes, the best catch is a moment of peace.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -10461,7 +10461,7 @@
     "subtitle": "Stitched Horror",
     "level": "1",
     "image": "/images/card-images/arts/flesh_golem.png",
-    "type": "Creature — Malumbra",
+    "type": "Creature \u2014 Malumbra",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -10530,7 +10530,7 @@
     "subtitle": "Meme Prophecy",
     "level": "1",
     "image": "/images/card-images/arts/flying_sword.png",
-    "type": "Creature — Fluxxle",
+    "type": "Creature \u2014 Fluxxle",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -10599,7 +10599,7 @@
     "subtitle": "Sacred Grove",
     "level": "2",
     "image": "/images/card-images/arts/treant.png",
-    "type": "Creature — Forest Guardian",
+    "type": "Creature \u2014 Forest Guardian",
     "stats": {
       "attack": "4",
       "defense": "6"
@@ -10669,7 +10669,7 @@
     "subtitle": "Spirit Call",
     "level": "2",
     "image": "/images/card-images/arts/warlock.png",
-    "type": "Creature — Warlock",
+    "type": "Creature \u2014 Warlock",
     "stats": {
       "attack": "5",
       "defense": "6"
@@ -10739,7 +10739,7 @@
     "subtitle": "Void Strike",
     "level": "1",
     "image": "/images/card-images/arts/forestspirit.png",
-    "type": "Creature — Nightmare Beast",
+    "type": "Creature \u2014 Nightmare Beast",
     "stats": {
       "attack": "2",
       "defense": "2"
@@ -10809,7 +10809,7 @@
     "subtitle": "Nature's Wrath",
     "level": "3",
     "image": "/images/card-images/arts/foresttitan.png",
-    "type": "Creature — Ancient Treant",
+    "type": "Creature \u2014 Ancient Treant",
     "stats": {
       "attack": "4",
       "defense": "8"
@@ -10879,7 +10879,7 @@
     "subtitle": "Frozen Earth Shatter",
     "level": "1",
     "image": "/images/card-images/arts/frost_giant.png",
-    "type": "Creature — Icecrush",
+    "type": "Creature \u2014 Icecrush",
     "stats": {
       "attack": "6",
       "defense": "4"
@@ -10929,7 +10929,7 @@
     "subtitle": "Frozen Heart Shatters",
     "level": "1",
     "image": "/images/card-images/arts/frost_thrall.png",
-    "type": "Creature — Frostbite",
+    "type": "Creature \u2014 Frostbite",
     "stats": {
       "attack": "5",
       "defense": "4"
@@ -10979,7 +10979,7 @@
     "subtitle": "Bite",
     "level": "1",
     "image": "/images/card-images/arts/wyrm.png",
-    "type": "Creature — Wyrm",
+    "type": "Creature \u2014 Wyrm",
     "stats": {
       "attack": "2",
       "defense": "1"
@@ -11049,7 +11049,7 @@
     "subtitle": "Murk Antlers",
     "level": "1",
     "image": "/images/card-images/arts/giant_elk.png",
-    "type": "Creature — Mireborn",
+    "type": "Creature \u2014 Mireborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11118,7 +11118,7 @@
     "subtitle": "Spiritual Howl",
     "level": "1",
     "image": "/images/card-images/arts/giant_hyena.png",
-    "type": "Creature — Echoluxe",
+    "type": "Creature \u2014 Echoluxe",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11187,7 +11187,7 @@
     "subtitle": "Plague's Advance",
     "level": "1",
     "image": "/images/card-images/arts/giant_rat__diseased_.png",
-    "type": "Creature — Malaise",
+    "type": "Creature \u2014 Malaise",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11256,7 +11256,7 @@
     "subtitle": "Venomous Gaze",
     "level": "1",
     "image": "/images/card-images/arts/giant_scorpion.png",
-    "type": "Creature — Desoloxa",
+    "type": "Creature \u2014 Desoloxa",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11325,7 +11325,7 @@
     "subtitle": "Omen's Crawl",
     "level": "1",
     "image": "/images/card-images/arts/giant_spider.png",
-    "type": "Creature — Duskweaver",
+    "type": "Creature \u2014 Duskweaver",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11394,7 +11394,7 @@
     "subtitle": "Carrion Plunge",
     "level": "1",
     "image": "/images/card-images/arts/giant_vulture.png",
-    "type": "Creature — Kaelos",
+    "type": "Creature \u2014 Kaelos",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11463,7 +11463,7 @@
     "subtitle": "Spore Cloud Enlightenment",
     "level": "1",
     "image": "/images/card-images/arts/golden_teacher.png",
-    "type": "Creature — Sporium",
+    "type": "Creature \u2014 Sporium",
     "stats": {
       "attack": "6",
       "defense": "5"
@@ -11513,7 +11513,7 @@
     "subtitle": "Coin Toss",
     "level": "2",
     "image": "/images/card-images/arts/lootgremlin.png",
-    "type": "Creature — Treasure Goblin",
+    "type": "Creature \u2014 Treasure Goblin",
     "stats": {
       "attack": "3",
       "defense": "4"
@@ -11583,7 +11583,7 @@
     "subtitle": "Sunstrike Aerial Assault",
     "level": "1",
     "image": "/images/card-images/arts/griffin.png",
-    "type": "Creature — Aerius",
+    "type": "Creature \u2014 Aerius",
     "stats": {
       "attack": "6",
       "defense": "7"
@@ -11633,7 +11633,7 @@
     "subtitle": "Runic Command",
     "level": "1",
     "image": "/images/card-images/arts/guardian_naga.png",
-    "type": "Creature — Khaosborn",
+    "type": "Creature \u2014 Khaosborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11702,7 +11702,7 @@
     "subtitle": "Temporal Echo",
     "level": "1",
     "image": "/images/card-images/arts/gynosphinx.png",
-    "type": "Creature — Chronomage",
+    "type": "Creature \u2014 Chronomage",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11768,19 +11768,19 @@
   },
   {
     "name": "HOL",
-    "subtitle": "〈FED〉",
-    "level": "∞",
+    "subtitle": "\u3008FED\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/hol.png",
-    "type": "Creature – That Guy",
+    "type": "Creature \u2013 That Guy",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "He didn't know anything, other than how to be an asshole. Broke the news to him while he was eviscerated out of this plane of existance on drugs he didn't know and doses he couldn't measure. Serves him right.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -11841,7 +11841,7 @@
     "subtitle": "Reality Bleeds Anew",
     "level": "1",
     "image": "/images/card-images/arts/hallucinogenic_hallelujah.png",
-    "type": "Creature — Melliscape",
+    "type": "Creature \u2014 Melliscape",
     "stats": {
       "attack": "5",
       "defense": "5"
@@ -11941,7 +11941,7 @@
     "subtitle": "Crimson Life Tap",
     "level": "1",
     "image": "/images/card-images/arts/hemo_wizard.png",
-    "type": "Creature — Vitalis",
+    "type": "Creature \u2014 Vitalis",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -11991,7 +11991,7 @@
     "subtitle": "Murky Gaze",
     "level": "1",
     "image": "/images/card-images/arts/hyena.png",
-    "type": "Creature — Tenebrous",
+    "type": "Creature \u2014 Tenebrous",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -12060,7 +12060,7 @@
     "subtitle": "Ember Trick",
     "level": "1",
     "image": "/images/card-images/arts/imp.png",
-    "type": "Creature — Pyropex",
+    "type": "Creature \u2014 Pyropex",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -12126,19 +12126,19 @@
   },
   {
     "name": "Johnny",
-    "subtitle": "〈Gambler〉",
-    "level": "∞",
+    "subtitle": "\u3008Gambler\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/albinoApe.png",
-    "type": "Creature — Albino Ape",
+    "type": "Creature \u2014 Albino Ape",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Eternal salvation was promised to this ape before he was born.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -12196,19 +12196,19 @@
   },
   {
     "name": "Juror",
-    "subtitle": "〈KLEROS〉",
-    "level": "∞",
+    "subtitle": "\u3008KLEROS\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/pinakion.png",
-    "type": "Creature – Decentralized Judge",
+    "type": "Creature \u2013 Decentralized Judge",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Where consensus meets justice, in the court of cryptographic truth, every dispute finds its resolution through the ancient scales of collective reason.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -12269,7 +12269,7 @@
     "subtitle": "Evolved Adaptive Assault",
     "level": "1",
     "image": "/images/card-images/arts/khazix.png",
-    "type": "Creature — Khronokill",
+    "type": "Creature \u2014 Khronokill",
     "stats": {
       "attack": "6",
       "defense": "5"
@@ -12319,7 +12319,7 @@
     "subtitle": "Tentacle Crush",
     "level": "3",
     "image": "/images/card-images/arts/kraken.png",
-    "type": "Creature — The Kraken",
+    "type": "Creature \u2014 The Kraken",
     "stats": {
       "attack": "8",
       "defense": "5"
@@ -12439,7 +12439,7 @@
     "subtitle": "Fetid Grasp",
     "level": "1",
     "image": "/images/card-images/arts/lemure.png",
-    "type": "Creature— Swampborn",
+    "type": "Creature\u2014 Swampborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -12508,7 +12508,7 @@
     "subtitle": "Skyfire Rebirth",
     "level": "1",
     "image": "/images/card-images/arts/lightning_phoenix.png",
-    "type": "Creature— Skyfire",
+    "type": "Creature\u2014 Skyfire",
     "stats": {
       "attack": "4",
       "defense": "7"
@@ -12555,19 +12555,19 @@
   },
   {
     "name": "Lillie007",
-    "subtitle": "〈Agent〉",
-    "level": "∞",
+    "subtitle": "\u3008Agent\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/Lillie007.png",
-    "type": "Creature – Op",
+    "type": "Creature \u2013 Op",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Baby Mama? Yes Baby Daddy?",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -12628,7 +12628,7 @@
     "subtitle": "Swamp Terror",
     "level": "1",
     "image": "/images/card-images/arts/lion.png",
-    "type": "Creature — Skyfire",
+    "type": "Creature \u2014 Skyfire",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -12697,7 +12697,7 @@
     "subtitle": "Venomous Sunbeam Embrace",
     "level": "1",
     "image": "/images/card-images/arts/lionsnake_demiurge.png",
-    "type": "Creature— Venomscale",
+    "type": "Creature\u2014 Venomscale",
     "stats": {
       "attack": "6",
       "defense": "4"
@@ -12747,7 +12747,7 @@
     "subtitle": "Swamp's Lament",
     "level": "1",
     "image": "/images/card-images/arts/lizard.png",
-    "type": "Creature— Bayoucrawl",
+    "type": "Creature\u2014 Bayoucrawl",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -12816,7 +12816,7 @@
     "subtitle": "Lunar Gravity Well",
     "level": "1",
     "image": "/images/card-images/arts/lunar_wizard.png",
-    "type": "Creature— Moontide",
+    "type": "Creature\u2014 Moontide",
     "stats": {
       "attack": "6",
       "defense": "7"
@@ -12866,7 +12866,7 @@
     "subtitle": "Glacial Heart Shatters",
     "level": "1",
     "image": "/images/card-images/arts/maelstrom.png",
-    "type": "Creature — Venomous",
+    "type": "Creature \u2014 Venomous",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -12916,7 +12916,7 @@
     "subtitle": "Molten Shard Eruption",
     "level": "1",
     "image": "/images/card-images/arts/magma_mephite.png",
-    "type": "Creature— Moltenshard",
+    "type": "Creature\u2014 Moltenshard",
     "stats": {
       "attack": "6",
       "defense": "3"
@@ -12966,7 +12966,7 @@
     "subtitle": "Disintegration Ray Onslaught",
     "level": "1",
     "image": "/images/card-images/arts/maniacal_martian.png",
-    "type": "Creature— Disintegrator",
+    "type": "Creature\u2014 Disintegrator",
     "stats": {
       "attack": "6",
       "defense": "6"
@@ -13016,7 +13016,7 @@
     "subtitle": "Earthshaking Ancestral Charge",
     "level": "1",
     "image": "/images/card-images/arts/mastodon.png",
-    "type": "Creature— Thunderstep",
+    "type": "Creature\u2014 Thunderstep",
     "stats": {
       "attack": "7",
       "defense": "4"
@@ -13066,7 +13066,7 @@
     "subtitle": "Alloy Inferno Cascade",
     "level": "1",
     "image": "/images/card-images/arts/mecha_wyvern.png",
-    "type": "Creature — Inferno",
+    "type": "Creature \u2014 Inferno",
     "stats": {
       "attack": "6",
       "defense": "7"
@@ -13116,7 +13116,7 @@
     "subtitle": "Abyssal Tears",
     "level": "1",
     "image": "/images/card-images/arts/merfolk.png",
-    "type": "Creature— Abyssworn",
+    "type": "Creature\u2014 Abyssworn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -13185,7 +13185,7 @@
     "subtitle": "Dark Dominion",
     "level": "1",
     "image": "/images/card-images/arts/molag_bal.png",
-    "type": "Creature— Dominator",
+    "type": "Creature\u2014 Dominator",
     "stats": {
       "attack": "7",
       "defense": "3"
@@ -13235,7 +13235,7 @@
     "subtitle": "Lunar Dust Dream",
     "level": "1",
     "image": "/images/card-images/arts/moondust_fiend.png",
-    "type": "Creature— Dreamdust",
+    "type": "Creature\u2014 Dreamdust",
     "stats": {
       "attack": "5",
       "defense": "3"
@@ -13285,7 +13285,7 @@
     "subtitle": "Phase Shift",
     "level": "2",
     "image": "/images/card-images/arts/specter.png",
-    "type": "Creature — Specter",
+    "type": "Creature \u2014 Specter",
     "stats": {
       "attack": "2",
       "defense": "4"
@@ -13355,7 +13355,7 @@
     "subtitle": "Lunar Dust Dream",
     "level": "1",
     "image": "/images/card-images/arts/mothrakk.png",
-    "type": "Creature— Dustwing",
+    "type": "Creature\u2014 Dustwing",
     "stats": {
       "attack": "4",
       "defense": "6"
@@ -13402,19 +13402,19 @@
   },
   {
     "name": "Mr. F",
-    "subtitle": "〈GENESIS〉",
-    "level": "∞",
+    "subtitle": "\u3008GENESIS\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/mrf.png",
-    "type": "Creature – Genesis Validator",
+    "type": "Creature \u2013 Genesis Validator",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "From the first block forged in digital fire. Guardian of consensus, keeper of the protocol's promise, forever bound to the network's beating heart.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -13475,7 +13475,7 @@
     "subtitle": "Lunar Lament",
     "level": "1",
     "image": "/images/card-images/arts/night_hag.png",
-    "type": "Creature— Abysswalker",
+    "type": "Creature\u2014 Abysswalker",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -13541,19 +13541,19 @@
   },
   {
     "name": "Nitro Slav",
-    "subtitle": "⟨LUXURY⟩",
-    "level": "∞",
+    "subtitle": "\u27e8LUXURY\u27e9",
+    "level": "\u221e",
     "image": "/images/card-images/arts/Nitro.png",
-    "type": "Creature — Vacation Master",
+    "type": "Creature \u2014 Vacation Master",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Whether it's nine ETH for a BOARD, or nine foot backs off the coast of Kona, Nitro is always the first in the water. An example for all surfers, if the water is wet, Nitro is surfing.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -13614,7 +13614,7 @@
     "subtitle": "Crimson Reign",
     "level": "1",
     "image": "/images/card-images/arts/noble.png",
-    "type": "Creature— Sorrowking",
+    "type": "Creature\u2014 Sorrowking",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -13683,7 +13683,7 @@
     "subtitle": "Golden Despair",
     "level": "1",
     "image": "/images/card-images/arts/ochre_jelly.png",
-    "type": "Creature— Cavemelt",
+    "type": "Creature\u2014 Cavemelt",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -13752,7 +13752,7 @@
     "subtitle": "Abyssal Gaze",
     "level": "1",
     "image": "/images/card-images/arts/octopus.png",
-    "type": "Creature— Leviathan",
+    "type": "Creature\u2014 Leviathan",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -13821,7 +13821,7 @@
     "subtitle": "Stormforged Wrath",
     "level": "1",
     "image": "/images/card-images/arts/oni.png",
-    "type": "Creature — Stormforged",
+    "type": "Creature \u2014 Stormforged",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -13887,19 +13887,19 @@
   },
   {
     "name": "Pep",
-    "subtitle": "〈AEGIS〉",
-    "level": "∞",
+    "subtitle": "\u3008AEGIS\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/pep.jpg",
-    "type": "Creature – Developer Sage",
+    "type": "Creature \u2013 Developer Sage",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "In the depths of blockchain realms, where smart contracts weave destiny itself, stands the architect of digital empires. Master of the AEGIS protocol, guardian of decentralized dreams.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -13960,7 +13960,7 @@
     "subtitle": "Emerald Dream Weave",
     "level": "1",
     "image": "/images/card-images/arts/pepelini.png",
-    "type": "Creature— Dreamweave",
+    "type": "Creature\u2014 Dreamweave",
     "stats": {
       "attack": "3",
       "defense": "6"
@@ -14010,7 +14010,7 @@
     "subtitle": "Hemodrain",
     "level": "2",
     "image": "/images/card-images/arts/Phelob.png",
-    "type": "Creature — Giant Cave Spider",
+    "type": "Creature \u2014 Giant Cave Spider",
     "stats": {
       "attack": "4",
       "defense": "2"
@@ -14080,7 +14080,7 @@
     "subtitle": "Volcanic Eruption",
     "level": "1",
     "image": "/images/card-images/arts/pit_fiend.png",
-    "type": "Creature— Volcborn",
+    "type": "Creature\u2014 Volcborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -14146,19 +14146,19 @@
   },
   {
     "name": "Proof",
-    "subtitle": "〈SURF〉",
-    "level": "∞",
+    "subtitle": "\u3008SURF\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/proof.png",
-    "type": "Creature — DeFi Innovator",
+    "type": "Creature \u2014 DeFi Innovator",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Where liquidity meets innovation, riding the waves of DeFi protocols with unmatched precision. Master of automated market makers, guardian of yield strategies, architect of the next financial tide.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -14219,7 +14219,7 @@
     "subtitle": "Templefire Touch",
     "level": "1",
     "image": "/images/card-images/arts/rakshasa.png",
-    "type": "Creature— Templeborn",
+    "type": "Creature\u2014 Templeborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -14288,7 +14288,7 @@
     "subtitle": "Big Stick Swinging",
     "level": "2",
     "image": "/images/card-images/arts/cyclops.png",
-    "type": "Creature – Cyclops",
+    "type": "Creature \u2013 Cyclops",
     "stats": {
       "attack": "4",
       "defense": "5"
@@ -14358,7 +14358,7 @@
     "subtitle": "Bayou's Call",
     "level": "1",
     "image": "/images/card-images/arts/raven.png",
-    "type": "Creature— Bayouomen",
+    "type": "Creature\u2014 Bayouomen",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -14427,7 +14427,7 @@
     "subtitle": "Temporal Echo Fracture",
     "level": "1",
     "image": "/images/card-images/arts/reality_splitter.png",
-    "type": "Creature— Temporalrift",
+    "type": "Creature\u2014 Temporalrift",
     "stats": {
       "attack": "4",
       "defense": "6"
@@ -14477,7 +14477,7 @@
     "subtitle": "Immutable Gaze",
     "level": "1",
     "image": "/images/card-images/arts/roko_the_basilisk.png",
-    "type": "Creature — Immutable",
+    "type": "Creature \u2014 Immutable",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -14527,7 +14527,7 @@
     "subtitle": "Runic Skyfire Barrage",
     "level": "1",
     "image": "/images/card-images/arts/runic_biplane_pilot.png",
-    "type": "Creature— Skyrune",
+    "type": "Creature\u2014 Skyrune",
     "stats": {
       "attack": "5",
       "defense": "7"
@@ -14577,7 +14577,7 @@
     "subtitle": "Rune-Etched Inferno",
     "level": "1",
     "image": "/images/card-images/arts/runic_dragon.png",
-    "type": "Creature— Runescale",
+    "type": "Creature\u2014 Runescale",
     "stats": {
       "attack": "5",
       "defense": "4"
@@ -14627,7 +14627,7 @@
     "subtitle": "Rune-Etched Annihilation",
     "level": "1",
     "image": "/images/card-images/arts/runic_wizard.png",
-    "type": "Creature— Runewraith",
+    "type": "Creature\u2014 Runewraith",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -14677,7 +14677,7 @@
     "subtitle": "Marsh Ambush",
     "level": "1",
     "image": "/images/card-images/arts/saber_toothed_tiger.png",
-    "type": "Creature— Swampstalker",
+    "type": "Creature\u2014 Swampstalker",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -14746,7 +14746,7 @@
     "subtitle": "Harmonious Binding Radiance",
     "level": "1",
     "image": "/images/card-images/arts/sacred_geometric_seal.png",
-    "type": "Creature— Bindweave",
+    "type": "Creature\u2014 Bindweave",
     "stats": {
       "attack": "5",
       "defense": "7"
@@ -14796,7 +14796,7 @@
     "subtitle": "Bayou's Lament",
     "level": "1",
     "image": "/images/card-images/arts/salamander.png",
-    "type": "Creature— Bayouscale",
+    "type": "Creature\u2014 Bayouscale",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -14865,7 +14865,7 @@
     "subtitle": "Sand Tomb Eruption",
     "level": "1",
     "image": "/images/card-images/arts/sandshrew.png",
-    "type": "Creature— Sandtomb",
+    "type": "Creature\u2014 Sandtomb",
     "stats": {
       "attack": "6",
       "defense": "5"
@@ -14915,7 +14915,7 @@
     "subtitle": "Hammer Fist",
     "level": "1",
     "image": "/images/card-images/arts/sasquepe.png",
-    "type": "Creature — Great Ape",
+    "type": "Creature \u2014 Great Ape",
     "stats": {
       "attack": "5",
       "defense": "3"
@@ -14985,7 +14985,7 @@
     "subtitle": "Abyssal Gaze",
     "level": "1",
     "image": "/images/card-images/arts/sea_hag.png",
-    "type": "Creature— Stormcaller",
+    "type": "Creature\u2014 Stormcaller",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15054,7 +15054,7 @@
     "subtitle": "Silent Blade Descent",
     "level": "1",
     "image": "/images/card-images/arts/shadow_assassin.png",
-    "type": "Creature— Silentblade",
+    "type": "Creature\u2014 Silentblade",
     "stats": {
       "attack": "3",
       "defense": "5"
@@ -15104,7 +15104,7 @@
     "subtitle": "Obsidian Heart Shatters",
     "level": "1",
     "image": "/images/card-images/arts/shadow_dragon.png",
-    "type": "Creature— Heartshatter",
+    "type": "Creature\u2014 Heartshatter",
     "stats": {
       "attack": "5",
       "defense": "7"
@@ -15154,7 +15154,7 @@
     "subtitle": "Desert Swallows All",
     "level": "1",
     "image": "/images/card-images/arts/shai_hulud.png",
-    "type": "Creature— Sandswallow",
+    "type": "Creature\u2014 Sandswallow",
     "stats": {
       "attack": "4",
       "defense": "6"
@@ -15204,7 +15204,7 @@
     "subtitle": "Curdled Reality",
     "level": "1",
     "image": "/images/card-images/arts/sheogorath.png",
-    "type": "Creature— Cheesemancer",
+    "type": "Creature\u2014 Cheesemancer",
     "stats": {
       "attack": "7",
       "defense": "3"
@@ -15254,7 +15254,7 @@
     "subtitle": "Soul Severing Scythe",
     "level": "1",
     "image": "/images/card-images/arts/shinigami.png",
-    "type": "Creature— Soulscythe",
+    "type": "Creature\u2014 Soulscythe",
     "stats": {
       "attack": "7",
       "defense": "7"
@@ -15304,7 +15304,7 @@
     "subtitle": "Brine Bubble Barrage",
     "level": "1",
     "image": "/images/card-images/arts/shrimp_baby.png",
-    "type": "Creature— Brineblast",
+    "type": "Creature\u2014 Brineblast",
     "stats": {
       "attack": "4",
       "defense": "7"
@@ -15354,7 +15354,7 @@
     "subtitle": "Frigid Sigh",
     "level": "1",
     "image": "/images/card-images/arts/silver_dragon_wyrmling.png",
-    "type": "Creature — Glimmerscale",
+    "type": "Creature \u2014 Glimmerscale",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15423,7 +15423,7 @@
     "subtitle": "Deadened Gaze",
     "level": "1",
     "image": "/images/card-images/arts/skeleton_2.png",
-    "type": "Creature — Bonelord",
+    "type": "Creature \u2014 Bonelord",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15492,7 +15492,7 @@
     "subtitle": "Bone-Piercing Volley",
     "level": "1",
     "image": "/images/card-images/arts/skeleton_archer.png",
-    "type": "Creature — Bone-Piercing",
+    "type": "Creature \u2014 Bone-Piercing",
     "stats": {
       "attack": "3",
       "defense": "5"
@@ -15542,7 +15542,7 @@
     "subtitle": "Bone-Shaking Charge",
     "level": "1",
     "image": "/images/card-images/arts/skeleton_warhorse.png",
-    "type": "Creature — Bone-Shaking",
+    "type": "Creature \u2014 Bone-Shaking",
     "stats": {
       "attack": "4",
       "defense": "4"
@@ -15592,7 +15592,7 @@
     "subtitle": "Solar Flare Devour",
     "level": "1",
     "image": "/images/card-images/arts/sol_eater.png",
-    "type": "Creature— Flaredevour",
+    "type": "Creature\u2014 Flaredevour",
     "stats": {
       "attack": "6",
       "defense": "6"
@@ -15642,7 +15642,7 @@
     "subtitle": "Soul Severing Scythe",
     "level": "1",
     "image": "/images/card-images/arts/soul_reaper.png",
-    "type": "Creature— Deathscythe",
+    "type": "Creature\u2014 Deathscythe",
     "stats": {
       "attack": "4",
       "defense": "5"
@@ -15692,7 +15692,7 @@
     "subtitle": "Hidden Camera",
     "level": "1",
     "image": "/images/card-images/arts/spy.png",
-    "type": "Creature — Shadowstrike",
+    "type": "Creature \u2014 Shadowstrike",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15761,7 +15761,7 @@
     "subtitle": "Meme Stream",
     "level": "1",
     "image": "/images/card-images/arts/steam_mephit.png",
-    "type": "Creature— Clockborn",
+    "type": "Creature\u2014 Clockborn",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15830,7 +15830,7 @@
     "subtitle": "Mountain's Grasp",
     "level": "1",
     "image": "/images/card-images/arts/stone_giant.png",
-    "type": "Creature — Stonefist",
+    "type": "Creature \u2014 Stonefist",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -15896,10 +15896,10 @@
   },
   {
     "name": "Stone Guardian",
-    "subtitle": "⟨SENTINEL⟩",
+    "subtitle": "\u27e8SENTINEL\u27e9",
     "level": "3",
     "image": "/images/card-images/arts/golem.png",
-    "type": "Construct — Stone Golem",
+    "type": "Construct \u2014 Stone Golem",
     "stats": {
       "attack": "3",
       "defense": "7"
@@ -15969,7 +15969,7 @@
     "subtitle": "Seismic Rupture",
     "level": "1",
     "image": "/images/card-images/arts/stone_thrall.png",
-    "type": "Creature— Groundshatter",
+    "type": "Creature\u2014 Groundshatter",
     "stats": {
       "attack": "6",
       "defense": "3"
@@ -16019,7 +16019,7 @@
     "subtitle": "Thunderous Club",
     "level": "1",
     "image": "/images/card-images/arts/storm_giant.png",
-    "type": "Creature — Stormbringer",
+    "type": "Creature \u2014 Stormbringer",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16138,7 +16138,7 @@
     "subtitle": "Shadowed Bargain",
     "level": "1",
     "image": "/images/card-images/arts/succubus_incubus.png",
-    "type": "Creature— Shadowwing",
+    "type": "Creature\u2014 Shadowwing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16207,7 +16207,7 @@
     "subtitle": "Cosmic Ignition Sequence",
     "level": "1",
     "image": "/images/card-images/arts/supernova_mecha_dragon.png",
-    "type": "Creature— Starforge",
+    "type": "Creature\u2014 Starforge",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16257,7 +16257,7 @@
     "subtitle": "Viral Ascension",
     "level": "1",
     "image": "/images/card-images/arts/swarm_of_beetles_2.png",
-    "type": "Creature — Beetlegrind",
+    "type": "Creature \u2014 Beetlegrind",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16326,7 +16326,7 @@
     "subtitle": "Venomous Cascade",
     "level": "1",
     "image": "/images/card-images/arts/swarm_of_poisonous_snakes.png",
-    "type": "Creature — Venomcoil",
+    "type": "Creature \u2014 Venomcoil",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16395,7 +16395,7 @@
     "subtitle": "End Times",
     "level": "1",
     "image": "/images/card-images/arts/tarrasque.png",
-    "type": "Creature — Doomwalker",
+    "type": "Creature \u2014 Doomwalker",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16464,7 +16464,7 @@
     "subtitle": "Soul-Sealing Requiem",
     "level": "1",
     "image": "/images/card-images/arts/temple_of_the_demiurge.png",
-    "type": "Creature — Soul-Sealing",
+    "type": "Creature \u2014 Soul-Sealing",
     "stats": {
       "attack": "7",
       "defense": "5"
@@ -16514,7 +16514,7 @@
     "subtitle": "Vine Lash",
     "level": "1",
     "image": "/images/card-images/arts/tiger_2.png",
-    "type": "Creature — Stripeslash",
+    "type": "Creature \u2014 Stripeslash",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16583,7 +16583,7 @@
     "subtitle": "Shell Fortress",
     "level": "2",
     "image": "/images/card-images/arts/tokiru.png",
-    "type": "Creature — Ancient Turtle",
+    "type": "Creature \u2014 Ancient Turtle",
     "stats": {
       "attack": "2",
       "defense": "4"
@@ -16653,7 +16653,7 @@
     "subtitle": "Crushing Blow",
     "level": "1",
     "image": "/images/card-images/arts/tribal_warrior.png",
-    "type": "Creature — Warspear",
+    "type": "Creature \u2014 Warspear",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16722,7 +16722,7 @@
     "subtitle": "Mystical",
     "level": "2",
     "image": "/images/card-images/arts/unicorn.png",
-    "type": "Creature – Unicorn",
+    "type": "Creature \u2013 Unicorn",
     "stats": {
       "attack": "3",
       "defense": "4"
@@ -16792,7 +16792,7 @@
     "subtitle": "Crimson Hypnosis",
     "level": "1",
     "image": "/images/card-images/arts/vampire.png",
-    "type": "Creature— Bloodthrall",
+    "type": "Creature\u2014 Bloodthrall",
     "stats": {
       "attack": "3",
       "defense": "5"
@@ -16842,7 +16842,7 @@
     "subtitle": "Blood Barrage",
     "level": "1",
     "image": "/images/card-images/arts/vampire__bat_form.png",
-    "type": "Creature — Bloodscream",
+    "type": "Creature \u2014 Bloodscream",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16911,7 +16911,7 @@
     "subtitle": "Vampiric Shift",
     "level": "1",
     "image": "/images/card-images/arts/vampire__mist_form_4.png",
-    "type": "Creature — Mistform",
+    "type": "Creature \u2014 Mistform",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -16980,7 +16980,7 @@
     "subtitle": "Blood Moon Descent",
     "level": "1",
     "image": "/images/card-images/arts/vampire__vampire_form.png",
-    "type": "Creature — Abaddon",
+    "type": "Creature \u2014 Abaddon",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17049,7 +17049,7 @@
     "subtitle": "Antirush",
     "level": "1",
     "image": "/images/card-images/arts/vanpe.png",
-    "type": "Creature — Urchin",
+    "type": "Creature \u2014 Urchin",
     "stats": {
       "attack": "0",
       "defense": "3"
@@ -17119,7 +17119,7 @@
     "subtitle": "Spore Infusion",
     "level": "1",
     "image": "/images/card-images/arts/violet_fungus.png",
-    "type": "Creature — Fungusrot",
+    "type": "Creature \u2014 Fungusrot",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17188,7 +17188,7 @@
     "subtitle": "Ethereal Blade Dance",
     "level": "1",
     "image": "/images/card-images/arts/void_assassin.png",
-    "type": "Creature— Phaseblade",
+    "type": "Creature\u2014 Phaseblade",
     "stats": {
       "attack": "3",
       "defense": "5"
@@ -17238,7 +17238,7 @@
     "subtitle": "Void Harvest",
     "level": "1",
     "image": "/images/card-images/arts/void_reaper.png",
-    "type": "Creature— Entropyx",
+    "type": "Creature\u2014 Entropyx",
     "stats": {
       "attack": "7",
       "defense": "5"
@@ -17288,7 +17288,7 @@
     "subtitle": "Null Reality Fracture",
     "level": "1",
     "image": "/images/card-images/arts/void_wizard.png",
-    "type": "Creature— Nullshatter",
+    "type": "Creature\u2014 Nullshatter",
     "stats": {
       "attack": "7",
       "defense": "3"
@@ -17388,7 +17388,7 @@
     "subtitle": "Despair's Descent",
     "level": "1",
     "image": "/images/card-images/arts/vrock.png",
-    "type": "Creature — Malediction",
+    "type": "Creature \u2014 Malediction",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17457,7 +17457,7 @@
     "subtitle": "Sorrow's Charge",
     "level": "1",
     "image": "/images/card-images/arts/warhorse.png",
-    "type": "Creature— Swampknight",
+    "type": "Creature\u2014 Swampknight",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17526,7 +17526,7 @@
     "subtitle": "Spectral Charge",
     "level": "1",
     "image": "/images/card-images/arts/warhorse_skeleton.png",
-    "type": "Creature— Bonesteed",
+    "type": "Creature\u2014 Bonesteed",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17595,7 +17595,7 @@
     "subtitle": "Abyssal Grasp",
     "level": "1",
     "image": "/images/card-images/arts/water_elemental.png",
-    "type": "Creature— Tidalwoe",
+    "type": "Creature\u2014 Tidalwoe",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17664,7 +17664,7 @@
     "subtitle": "Razor Fury",
     "level": "1",
     "image": "/images/card-images/arts/wereboar__hybrid_form_2.png",
-    "type": "Creature — Boarhide",
+    "type": "Creature \u2014 Boarhide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17733,7 +17733,7 @@
     "subtitle": "Sewer Slash",
     "level": "1",
     "image": "/images/card-images/arts/wererat__human_form.png",
-    "type": "Creature — Rathide",
+    "type": "Creature \u2014 Rathide",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17802,7 +17802,7 @@
     "subtitle": "Lunar Fury",
     "level": "1",
     "image": "/images/card-images/arts/weretiger__tiger_form.png",
-    "type": "Creature— Moonprowl",
+    "type": "Creature\u2014 Moonprowl",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17871,7 +17871,7 @@
     "subtitle": "Lunatic Frenzy",
     "level": "1",
     "image": "/images/card-images/arts/werewolf__hybrid_form_2.png",
-    "type": "Creature — Wolfclaw",
+    "type": "Creature \u2014 Wolfclaw",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -17940,7 +17940,7 @@
     "subtitle": "Swamp Haunt",
     "level": "1",
     "image": "/images/card-images/arts/will_o__wisp.png",
-    "type": "Creature — Ghostlight",
+    "type": "Creature \u2014 Ghostlight",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18009,7 +18009,7 @@
     "subtitle": "Glacial Tears",
     "level": "1",
     "image": "/images/card-images/arts/winter_wolf.png",
-    "type": "Creature — Frostfang",
+    "type": "Creature \u2014 Frostfang",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18078,7 +18078,7 @@
     "subtitle": "Gilded Cage Beckons",
     "level": "1",
     "image": "/images/card-images/arts/wishing_well.png",
-    "type": "Creature— Gildtrap",
+    "type": "Creature\u2014 Gildtrap",
     "stats": {
       "attack": "7",
       "defense": "5"
@@ -18128,7 +18128,7 @@
     "subtitle": "Wildwood Summons",
     "level": "1",
     "image": "/images/card-images/arts/wood_elf.png",
-    "type": "Creature — Gnarlsong",
+    "type": "Creature \u2014 Gnarlsong",
     "stats": {
       "attack": "3",
       "defense": "4"
@@ -18178,7 +18178,7 @@
     "subtitle": "Life Drain",
     "level": "1",
     "image": "/images/card-images/arts/wraith.png",
-    "type": "Creature — Lifedrain",
+    "type": "Creature \u2014 Lifedrain",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18247,7 +18247,7 @@
     "subtitle": "Emerald Dread",
     "level": "1",
     "image": "/images/card-images/arts/wyvern.png",
-    "type": "Creature — Venomwing",
+    "type": "Creature \u2014 Venomwing",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18352,7 +18352,7 @@
     "subtitle": "Cosmic Fracture",
     "level": "1",
     "image": "/images/card-images/arts/yaldabaoth.png",
-    "type": "Creature — Maledicta",
+    "type": "Creature \u2014 Maledicta",
     "stats": {
       "attack": "3",
       "defense": "7"
@@ -18399,19 +18399,19 @@
   },
   {
     "name": "Yostari",
-    "subtitle": "〈Scribe〉",
-    "level": "∞",
+    "subtitle": "\u3008Scribe\u3009",
+    "level": "\u221e",
     "image": "/images/card-images/arts/yostari.png",
-    "type": "Creature – Tech Archivist",
+    "type": "Creature \u2013 Tech Archivist",
     "stats": {
-      "attack": "∞",
-      "defense": "∞"
+      "attack": "\u221e",
+      "defense": "\u221e"
     },
     "flavorText": "Every event push catalogued, every price change recorded, every fragment of the old world's wisdom safeguarded for humanity's future.",
     "artist": "SURF FINANCE STUDIOS",
     "rarity": "1/1",
     "hp": {
-      "value": "∞",
+      "value": "\u221e",
       "color": "radial-gradient(circle, #dc143c, #8b0000)",
       "textColor": "#ffffff"
     },
@@ -18472,7 +18472,7 @@
     "subtitle": "Swamp Sigh",
     "level": "1",
     "image": "/images/card-images/arts/young_black_dragon.png",
-    "type": "Creature — Scaleshear",
+    "type": "Creature \u2014 Scaleshear",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18541,7 +18541,7 @@
     "subtitle": "Scale Barrier",
     "level": "1",
     "image": "/images/card-images/arts/young_brass_dragon.png",
-    "type": "Creature — Scaleshine",
+    "type": "Creature \u2014 Scaleshine",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18610,7 +18610,7 @@
     "subtitle": "Coiled Scales",
     "level": "1",
     "image": "/images/card-images/arts/young_copper_dragon.png",
-    "type": "Creature — Jokewrought",
+    "type": "Creature \u2014 Jokewrought",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18679,7 +18679,7 @@
     "subtitle": "Emerald Haze",
     "level": "1",
     "image": "/images/card-images/arts/young_green_dragon_2.png",
-    "type": "Creature — Gloomfang",
+    "type": "Creature \u2014 Gloomfang",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18748,7 +18748,7 @@
     "subtitle": "Blistering Sigh",
     "level": "1",
     "image": "/images/card-images/arts/young_red_dragon_3.png",
-    "type": "Creature — Rageforge",
+    "type": "Creature \u2014 Rageforge",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18817,7 +18817,7 @@
     "subtitle": "Mire Breath",
     "level": "1",
     "image": "/images/card-images/arts/young_white_dragon.png",
-    "type": "Creature — Icebite",
+    "type": "Creature \u2014 Icebite",
     "stats": {
       "attack": "3",
       "defense": "3"
@@ -18886,7 +18886,7 @@
     "subtitle": "Bite",
     "level": "1",
     "image": "/images/card-images/arts/zombie.png",
-    "type": "Creature — Zombie",
+    "type": "Creature \u2014 Zombie",
     "stats": {
       "attack": "1",
       "defense": "1"
@@ -18956,7 +18956,7 @@
     "subtitle": "Jackpot Cascade",
     "level": "1",
     "image": "/images/card-images/arts/https_chasetheace_online_pepejackpot.png",
-    "type": "Creature— Jackpotfall",
+    "type": "Creature\u2014 Jackpotfall",
     "stats": {
       "attack": "7",
       "defense": "6"

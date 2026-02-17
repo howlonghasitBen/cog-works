@@ -18,7 +18,7 @@ export function buildFallbackCard(name: string, symbol?: string, editorData?: an
     const ed = editorData
     return {
       name: ed.name || name,
-      subtitle: ed.moveName || ed.subtitle || symbol || undefined,
+      subtitle: ed.subtitle || ed.moveName || symbol || undefined,
       level: ed.level != null ? String(ed.level) : '1',
       image: ed.imageData || undefined,
       type: ed.type || 'Creature',
