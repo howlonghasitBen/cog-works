@@ -516,9 +516,9 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
             {/* Stats */}
             <div style={{ flex: 1, padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
-                { label: 'Your Stake', value: `${parseFloat(whirlpool.myWethStake).toFixed(4)} WETH`, highlight: parseFloat(whirlpool.myWethStake) > 0 },
+                { label: 'Your Shares', value: `${parseFloat(whirlpool.myWethShares).toFixed(4)}`, highlight: parseFloat(whirlpool.myWethShares) > 0 },
+                { label: 'Claimable WETH', value: `${parseFloat(whirlpool.claimableWeth).toFixed(4)} WETH`, highlight: parseFloat(whirlpool.claimableWeth) > 0 },
                 { label: 'ETH Balance', value: `${parseFloat(whirlpool.ethBalance).toFixed(4)} ETH` },
-                { label: 'WETH Balance', value: `${parseFloat(whirlpool.wethBalance).toFixed(4)} WETH` },
                 { label: 'Pool WETH', value: `${parseFloat(whirlpool.wethPoolWeth).toFixed(4)}` },
                 { label: 'Pool WAVES', value: `${parseFloat(whirlpool.wethPoolWaves).toFixed(4)}` },
                 { label: 'Pending Rewards', value: `${parseFloat(whirlpool.pendingGlobal).toFixed(6)} ETH`, highlight: parseFloat(whirlpool.pendingGlobal) > 0 },
@@ -571,9 +571,11 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
               </button>
               <button
                 onClick={async () => {
-                  const amt = prompt('Amount of WETH to unstake:')
+                  const shares = whirlpool.myWethShares
+                  const claimable = whirlpool.claimableWeth
+                  const amt = prompt(`Shares to unstake (you have ${parseFloat(shares).toFixed(4)} shares ≈ ${parseFloat(claimable).toFixed(4)} WETH):`)
                   if (amt && parseFloat(amt) > 0) {
-                    try { await whirlpool.unstakeWETH(amt); toast.success(`${amt} WETH Unstaked`) }
+                    try { await whirlpool.unstakeWETH(amt); toast.success(`Unstaked → WETH`) }
                     catch (e: any) { toast.error(e?.shortMessage || e?.message || 'Unstake failed') }
                   }
                 }}
