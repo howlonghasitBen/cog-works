@@ -11,8 +11,30 @@ import { useMemo } from 'react'
 import WavesCard, { type WavesCardData } from './WavesCard'
 import { useCardData } from '../hooks/useCardData'
 
-/** Build a default WavesCardData for a card with just a name/symbol */
-export function buildFallbackCard(name: string, symbol?: string): WavesCardData {
+/** Build a WavesCardData from editor data, or a default gold theme for unknown cards */
+export function buildFallbackCard(name: string, symbol?: string, editorData?: any): WavesCardData {
+  // If we have full editor data from the mint page, convert it
+  if (editorData) {
+    const ed = editorData
+    return {
+      name: ed.name || name,
+      subtitle: ed.moveName || ed.subtitle || symbol || undefined,
+      level: ed.level != null ? String(ed.level) : '1',
+      image: ed.imageData || undefined,
+      type: ed.type || 'Creature',
+      flavorText: ed.flavorText || 'A newly forged card enters the Whirlpool.',
+      artist: ed.artist || 'WHIRLPOOL',
+      rarity: ed.rarity || 'Common',
+      hp: { value: String(ed.stats?.hp ?? '?'), color: 'radial-gradient(circle, #dc143c, #8b0000)', textColor: '#ffffff' },
+      manaCost: Array.isArray(ed.manaCost) && ed.manaCost.length > 0
+        ? ed.manaCost.map((mc: any) => ({ value: String(mc.value ?? '?'), color: mc.color || 'radial-gradient(circle, #4169e1, #0000cd)', textColor: mc.textColor || '#ffffff' }))
+        : { value: String(ed.stats?.mana ?? '?'), color: 'radial-gradient(circle, #4169e1, #0000cd)', textColor: '#ffffff' },
+      crit: { value: String(ed.stats?.crit ?? '?'), color: 'linear-gradient(135deg, gold, orange)', textColor: '#1a1a1a' },
+      theme: ed.theme || defaultGoldTheme(),
+    }
+  }
+
+  // No editor data — generic gold fallback
   return {
     name,
     subtitle: symbol || undefined,
@@ -24,31 +46,20 @@ export function buildFallbackCard(name: string, symbol?: string): WavesCardData 
     hp: { value: '?', color: 'radial-gradient(circle, #dc143c, #8b0000)', textColor: '#ffffff' },
     manaCost: { value: '?', color: 'radial-gradient(circle, #4169e1, #0000cd)', textColor: '#ffffff' },
     crit: { value: '?', color: 'linear-gradient(135deg, gold, orange)', textColor: '#1a1a1a' },
-    theme: {
-      background: 'linear-gradient(145deg, #1a1d2e, #2a2d3e, #1a1d2e)',
-      header: {
-        background: 'linear-gradient(135deg, #c8a55a, #a08030, #c8a55a)',
-        color: '#1a1d2e',
-        textShadow: 'none',
-      },
-      imageArea: {
-        background: 'linear-gradient(145deg, #22252f, #2a2d3e)',
-        border: '2px solid #c8a55a40',
-      },
-      typeSection: {
-        background: 'linear-gradient(135deg, #c8a55a80, #a0803080)',
-        color: '#f0e6d0',
-      },
-      flavorText: {
-        background: 'linear-gradient(145deg, #1a1d2e, #22252f)',
-        color: '#c0b090',
-        accentColor: '#c8a55a',
-        border: '1px solid #c8a55a30',
-      },
-      bottomSection: { background: 'linear-gradient(135deg, #2a2d3e, #1a1d2e)' },
-      stat: { background: 'rgba(26,29,46,0.6)', border: '1px solid #c8a55a40', color: '#c8a55a' },
-      rarity: { background: 'linear-gradient(135deg, #c8a55a, #e8c96a)', color: '#1a1d2e', border: '1px solid #c8a55a' },
-    },
+    theme: defaultGoldTheme(),
+  }
+}
+
+function defaultGoldTheme() {
+  return {
+    background: 'linear-gradient(145deg, #1a1d2e, #2a2d3e, #1a1d2e)',
+    header: { background: 'linear-gradient(135deg, #c8a55a, #a08030, #c8a55a)', color: '#1a1d2e', textShadow: 'none' },
+    imageArea: { background: 'linear-gradient(145deg, #22252f, #2a2d3e)', border: '2px solid #c8a55a40' },
+    typeSection: { background: 'linear-gradient(135deg, #c8a55a80, #a0803080)', color: '#f0e6d0' },
+    flavorText: { background: 'linear-gradient(145deg, #1a1d2e, #22252f)', color: '#c0b090', accentColor: '#c8a55a', border: '1px solid #c8a55a30' },
+    bottomSection: { background: 'linear-gradient(135deg, #2a2d3e, #1a1d2e)' },
+    stat: { background: 'rgba(26,29,46,0.6)', border: '1px solid #c8a55a40', color: '#c8a55a' },
+    rarity: { background: 'linear-gradient(135deg, #c8a55a, #e8c96a)', color: '#1a1d2e', border: '1px solid #c8a55a' },
   }
 }
 
@@ -71,7 +82,16 @@ export default function CardFromData({ name, width = 0, imageOverride, fallbackD
   const { lookup } = useCardData()
 
   const cardData = useMemo(() => {
-    return lookup(name) || fallbackData || null
+    const fromJson = lookup(name)
+    if (fromJson) return fromJson
+    if (fallbackData) return fallbackData
+    // Check localStorage for minted card editor data
+    try {
+      const cache = JSON.parse(localStorage.getItem('mintedCardData') || '{}')
+      const ed = cache[name.toLowerCase()]
+      if (ed) return buildFallbackCard(name, undefined, ed)
+    } catch {}
+    return null
   }, [name, lookup, fallbackData])
 
   if (!cardData) {

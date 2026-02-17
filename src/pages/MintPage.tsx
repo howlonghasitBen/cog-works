@@ -66,7 +66,7 @@ export default function MintPage() {
     setMinting(true)
     try {
       const uri = await uploadMetadataToIPFS(card)
-      await whirlpool.createCard(card.name.trim(), symbol, uri)
+      await whirlpool.createCard(card.name.trim(), symbol, uri, card)
     } catch (e: any) {
       console.error('Mint failed:', e)
     }
@@ -267,7 +267,7 @@ export default function MintPage() {
                 <CardFromData
                   name={whirlpool.lastCreatedCard.name}
                   width={220}
-                  fallbackData={buildFallbackCard(whirlpool.lastCreatedCard.name, whirlpool.lastCreatedCard.symbol)}
+                  fallbackData={buildFallbackCard(whirlpool.lastCreatedCard.name, whirlpool.lastCreatedCard.symbol, whirlpool.lastCreatedCard.editorData)}
                 />
               </div>
             </div>

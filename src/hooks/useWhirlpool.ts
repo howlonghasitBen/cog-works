@@ -44,7 +44,7 @@ export function useWhirlpool() {
   const [pendingGlobal, setPendingGlobal] = useState('0')
   const [loading, setLoading] = useState(false)
   const [logs, setLogs] = useState<LogEntry[]>([])
-  const [lastCreatedCard, setLastCreatedCard] = useState<{ name: string; symbol: string; hash: string } | null>(null)
+  const [lastCreatedCard, setLastCreatedCard] = useState<{ name: string; symbol: string; hash: string; editorData?: any } | null>(null)
 
   const addLog = useCallback((message: string, type: LogType = 'default', extra: Partial<LogEntry> = {}) => {
     const entry: LogEntry = {
@@ -153,7 +153,7 @@ export function useWhirlpool() {
     }
   }
 
-  const createCard = async (name: string, symbol: string, uri?: string) => {
+  const createCard = async (name: string, symbol: string, uri?: string, editorData?: any) => {
     if (!isConnected) return
     setLoading(true)
     try {
@@ -164,7 +164,15 @@ export function useWhirlpool() {
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Card created! Block #${receipt.blockNumber}`, 'success', { hash })
-      setLastCreatedCard({ name, symbol, hash })
+      setLastCreatedCard({ name, symbol, hash, editorData })
+      // Cache editor data in localStorage so staking/swap pages can use it
+      if (editorData) {
+        try {
+          const cache = JSON.parse(localStorage.getItem('mintedCardData') || '{}')
+          cache[name.toLowerCase()] = editorData
+          localStorage.setItem('mintedCardData', JSON.stringify(cache))
+        } catch {}
+      }
       setLoading(false)
       // Refresh card list in background (don't block UI)
       loadCards().catch(() => {})
