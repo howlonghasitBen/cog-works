@@ -98,6 +98,7 @@ export default function MintPage() {
   }
 
   return (
+    <>
     <div style={{ marginTop: 60, width: '100%', minHeight: 'calc(100vh - 60px)', display: 'flex', alignItems: 'center' }}>
       <div style={{
           display: 'flex',
@@ -278,5 +279,6 @@ export default function MintPage() {
         @keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(60vh) rotate(720deg); opacity: 0; } }
         @keyframes fadeSlideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
       `}</style>
+    </>
   )
 }
