@@ -207,10 +207,7 @@ export default function SwapPage() {
     try {
       // 1. WAVES → card token swap (separate tx via SurfSwap AMM)
       if (hasWavesInput && parsedWaves > 0) {
-        const targetCard = whirlpool.cards.find(c => c.id === targetId)
-        if (targetCard) {
-          await whirlpool.swap(targetCard.address, targetCard.address, wavesAmount, 'wallet')
-        }
+        await whirlpool.swap('waves', `card-${targetId}`, wavesAmount, 'wallet')
       }
 
       // 2. Card → card swaps via batchSwapStake (single tx for all cards)

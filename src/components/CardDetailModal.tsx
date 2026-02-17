@@ -3,7 +3,7 @@
  * Animation: entire modal grows from the clicked card's grid position to center screen.
  * The card in the modal IS the card — no duplicate.
  */
-import { useState, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import CardFromData from './CardFromData'
 import type { CardState } from '../hooks/useWhirlpool'
@@ -14,6 +14,7 @@ interface Props {
   onClose: () => void
   onStake?: (id: number) => void
   onUnstake?: (id: number) => void
+  getCardEvents?: (cardId: number, limit?: number) => Promise<any[]>
 }
 
 type Tab = 'stats' | 'activity' | 'chart'
@@ -24,16 +25,6 @@ interface ActivityEntry {
   amount: string
   time: string
 }
-
-const MOCK_ACTIVITY: ActivityEntry[] = [
-  { type: 'stake', actor: '0x93709D…250Ea', amount: '120.00', time: '2m ago' },
-  { type: 'swap', actor: '0xd8dA6B…045d', amount: '45.50', time: '8m ago' },
-  { type: 'unstake', actor: '0xAb5801…8aB6', amount: '30.00', time: '22m ago' },
-  { type: 'ownership', actor: '0x93709D…250Ea', amount: '—', time: '1h ago' },
-  { type: 'stake', actor: '0x1234AB…9def', amount: '200.00', time: '3h ago' },
-  { type: 'swap', actor: '0xBEEF00…cafe', amount: '88.88', time: '5h ago' },
-  { type: 'unstake', actor: '0xdead00…beef', amount: '15.25', time: '1d ago' },
-]
 
 const BADGE: Record<string, { bg: string; color: string; label: string }> = {
   stake:     { bg: 'rgba(16,185,129,0.15)', color: '#10b981', label: 'STAKE' },
@@ -49,9 +40,25 @@ function shortAddr(addr: string): string {
 
 const CARD_W = 320
 
-export default function CardDetailModal({ card, sourceRect, onClose, onStake, onUnstake }: Props) {
+export default function CardDetailModal({ card, sourceRect, onClose, onStake, onUnstake, getCardEvents }: Props) {
   const [tab, setTab] = useState<Tab>('stats')
   const [copied, setCopied] = useState(false)
+  const [activity, setActivity] = useState<ActivityEntry[]>([])
+  const [loadingActivity, setLoadingActivity] = useState(false)
+
+  // Fetch real on-chain events when activity tab is selected
+  useEffect(() => {
+    if (tab !== 'activity' || !getCardEvents) return
+    setLoadingActivity(true)
+    getCardEvents(card.id, 10).then(events => {
+      setActivity(events.map(e => {
+        const addr = e.args?.user || e.args?.newOwner || '???'
+        const short = typeof addr === 'string' ? shortAddr(addr) : '???'
+        const amt = e.args?.amount ? (Number(e.args.amount) / 1e18).toFixed(2) : '—'
+        return { type: e.type, actor: short, amount: amt, time: `blk ${e.block}` }
+      }))
+    }).catch(() => setActivity([])).finally(() => setLoadingActivity(false))
+  }, [tab, card.id, getCardEvents])
 
   const cardSlug = encodeURIComponent(card.name.toLowerCase().replace(/\s+/g, '-'))
   const shareUrl = `${window.location.origin}/#whirlpool-stake?card=${cardSlug}`
@@ -430,7 +437,11 @@ export default function CardDetailModal({ card, sourceRect, onClose, onStake, on
               </div>
             ) : tab === 'activity' ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                {MOCK_ACTIVITY.map((entry, i) => {
+                {loadingActivity ? (
+                  <div style={{ color: '#666', fontFamily: "'DM Mono', monospace", fontSize: 11, textAlign: 'center', padding: 20 }}>Loading events...</div>
+                ) : activity.length === 0 ? (
+                  <div style={{ color: '#666', fontFamily: "'DM Mono', monospace", fontSize: 11, textAlign: 'center', padding: 20 }}>No activity yet</div>
+                ) : activity.map((entry, i) => {
                   const badge = BADGE[entry.type]
                   return (
                     <div key={i} style={{
