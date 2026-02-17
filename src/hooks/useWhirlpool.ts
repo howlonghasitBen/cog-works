@@ -193,7 +193,12 @@ export function useWhirlpool() {
         // key is 'card-<id>' where id is the on-chain card index
         const id = parseInt(key.replace('card-', ''))
         const card = cards.find(c => c.id === id)
-        return card?.address || ('0x0' as `0x${string}`)
+        if (!card) {
+          addLog(`✗ Card #${id} not found in loaded cards (${cards.length} total)`, 'error')
+          throw new Error(`Card #${id} not found`)
+        }
+        addLog(`Resolved card-${id} → ${card.name} (${card.address.slice(0,10)}...)`, 'info')
+        return card.address
       }
 
       const isCardIn = tokenIn.startsWith('card-')
@@ -212,8 +217,9 @@ export function useWhirlpool() {
       } else {
         const addrIn = resolveToken(tokenIn)
         const addrOut = resolveToken(tokenOut)
-        addLog(`Swapping ${amount} ${tokenIn} → ${tokenOut}...`, 'info')
+        addLog(`Swapping ${amount} ${tokenIn} → ${tokenOut} (${addrIn.slice(0,10)} → ${addrOut.slice(0,10)})...`, 'info')
         await ensureApproval(addrIn, SURFSWAP_ADDRESS, amt)
+        addLog(`Approval confirmed, sending swapExact...`, 'info')
         const hash = await writeContractAsync({
           address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'swapExact',
           args: [addrIn, addrOut, amt, BigInt(0)],
