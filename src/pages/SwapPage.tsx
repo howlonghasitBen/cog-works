@@ -210,24 +210,22 @@ export default function SwapPage() {
         await whirlpool.swap('waves', `card-${targetId}`, wavesAmount, 'wallet')
       }
 
-      // 2. Card → card swaps via swapStake (staked shares)
+      // 2. Card → card swaps
       if (selectedCards.length > 0) {
-        const fromEntries = selectedCards
-          .map(card => {
-            const c = whirlpool.cards.find(cc => cc.id === card.id)
-            return { id: card.id, name: card.name, myStake: c?.myStake || '0', hasStake: c ? parseFloat(c.myStake) > 0 : false }
-          })
-          .filter(e => e.hasStake)
+        for (const card of selectedCards) {
+          const c = whirlpool.cards.find(cc => cc.id === card.id)
+          if (!c) continue
+          const staked = parseFloat(c.myStake) || 0
+          const wallet = parseFloat(c.myBalance) || 0
 
-        console.log('[SwapPage] swapStake entries:', fromEntries, '→ target:', targetId)
-
-        if (fromEntries.length === 1) {
-          await whirlpool.swapStake(fromEntries[0].id, targetId, fromEntries[0].myStake)
-        } else if (fromEntries.length > 1) {
-          await whirlpool.batchSwapStake(fromEntries.map(e => e.id), targetId)
-        } else {
-          toast.error('No staked cards selected')
-          return
+          // Staked shares → swapStake (direct, no AMM)
+          if (staked > 0) {
+            await whirlpool.swapStake(card.id, targetId, c.myStake)
+          }
+          // Wallet balance → sell to WAVES via AMM, then buy target card
+          if (wallet > 0) {
+            await whirlpool.swap(`card-${card.id}`, `card-${targetId}`, c.myBalance, 'wallet')
+          }
         }
       }
 
