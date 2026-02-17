@@ -229,13 +229,17 @@ export default function SwapPage() {
         }
       }
 
+      // Force fresh reload after all swaps
+      await whirlpool.loadCards()
       toast.success('Swap complete!')
       setSelectedIds(new Set())
       setTargetId(null)
       setWavesAmount('')
       setIncludeWaves(false)
     } catch (err: any) { 
-      toast.error(err?.shortMessage || err?.message || 'Swap failed') 
+      toast.error(err?.shortMessage || err?.message || 'Swap failed')
+      // Still refresh on error — partial swaps may have landed
+      whirlpool.loadCards().catch(() => {})
     }
   }
 

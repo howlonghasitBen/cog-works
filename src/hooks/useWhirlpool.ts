@@ -85,9 +85,14 @@ function scheduleExpiry() {
 }
 
 // The shared load function
+let _pendingReload = false
 async function loadCardsShared(address: string | undefined) {
-  if (_shared.loading) return
+  if (_shared.loading) {
+    _pendingReload = true  // Queue a reload after current one finishes
+    return
+  }
   _shared.loading = true
+  _pendingReload = false
   notifyListeners()
   try {
     const totalBig = await publicClient.readContract({
@@ -183,6 +188,12 @@ async function loadCardsShared(address: string | undefined) {
   }
   _shared.loading = false
   notifyListeners()
+
+  // If a reload was requested while we were loading, run it now
+  if (_pendingReload) {
+    _pendingReload = false
+    loadCardsShared(_currentAddress)
+  }
 }
 
 let logCounter = 0
