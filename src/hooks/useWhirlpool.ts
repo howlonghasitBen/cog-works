@@ -470,6 +470,47 @@ export function useWhirlpool() {
     setLoading(false)
   }
 
+  const stakeWETH = async (amount: string) => {
+    if (!isConnected) return
+    setLoading(true)
+    try {
+      const amt = parseEther(amount)
+      addLog(`Staking ${amount} WETH...`, 'info')
+      await ensureApproval(WETH_ADDRESS, WHIRLPOOL_ADDRESS, amt)
+      const hash = await writeContractAsync({
+        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeWETH', args: [amt],
+      })
+      const receipt = await publicClient.waitForTransactionReceipt({ hash })
+      addLog(`✓ WETH Staked · block #${receipt.blockNumber}`, 'success')
+      await loadCards()
+    } catch (e: any) {
+      addLog(`✗ WETH Stake: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+      throw e
+    }
+    setLoading(false)
+  }
+
+  const unstakeWETH = async (amount: string) => {
+    if (!isConnected) return
+    setLoading(true)
+    try {
+      const amt = parseEther(amount)
+      addLog(`Unstaking ${amount} WETH...`, 'info')
+      const hash = await writeContractAsync({
+        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'unstakeWETH', args: [amt],
+      })
+      const receipt = await publicClient.waitForTransactionReceipt({ hash })
+      addLog(`✓ WETH Unstaked · block #${receipt.blockNumber}`, 'success')
+      await loadCards()
+    } catch (e: any) {
+      addLog(`✗ WETH Unstake: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+      throw e
+    }
+    setLoading(false)
+  }
+
   const connect = () => {
     try {
       connectFn({ connector: injected() })
@@ -555,7 +596,7 @@ export function useWhirlpool() {
     wavesBalance, wethBalance, myWethStake, pendingGlobal,
     isConnected, address, loading, logs,
     createCard, swap, stake, unstake, swapStake, batchSwapStake, lastCreatedCard, clearLastCreated: () => setLastCreatedCard(null),
-    claimRewards, wrapEth, connect, disconnect, clearLogs, getCardEvents,
+    claimRewards, wrapEth, stakeWETH, unstakeWETH, connect, disconnect, clearLogs, getCardEvents,
     loadCards,
   }
 }

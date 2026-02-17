@@ -472,6 +472,134 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
         gap: 32,
         justifyItems: 'center',
       }}>
+        {/* WETH Pool Card — always first */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          style={{ cursor: 'default', width: 330 }}
+        >
+          <div style={{
+            width: 330, height: 330 * (4/3),
+            borderRadius: 8,
+            background: 'linear-gradient(145deg, #1a1d2e, #22252f)',
+            border: '2px solid #6366f1',
+            boxShadow: '0 0 20px rgba(99,102,241,0.15), 0 8px 32px rgba(0,0,0,0.4)',
+            display: 'flex', flexDirection: 'column',
+            overflow: 'hidden', position: 'relative',
+          }}>
+            {/* Header */}
+            <div style={{
+              padding: '16px 20px 12px',
+              background: 'linear-gradient(135deg, #4338ca, #6366f1)',
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            }}>
+              <div>
+                <div style={{ fontFamily: "'Cinzel', serif", fontSize: 18, fontWeight: 900, color: '#fff', letterSpacing: 1 }}>
+                  Ξ WETH POOL
+                </div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>
+                  Global Fee Rewards
+                </div>
+              </div>
+              <div style={{
+                width: 44, height: 44, borderRadius: '50%',
+                background: 'linear-gradient(135deg, #818cf8, #c4b5fd)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 22, fontWeight: 900, color: '#1e1b4b',
+                boxShadow: '0 4px 12px rgba(99,102,241,0.4)',
+              }}>
+                Ξ
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div style={{ flex: 1, padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {[
+                { label: 'Your Stake', value: `${parseFloat(whirlpool.myWethStake).toFixed(4)} WETH`, highlight: parseFloat(whirlpool.myWethStake) > 0 },
+                { label: 'WETH Balance', value: `${parseFloat(whirlpool.wethBalance).toFixed(4)} WETH` },
+                { label: 'Pending Rewards', value: `${parseFloat(whirlpool.pendingGlobal).toFixed(6)} ETH`, highlight: parseFloat(whirlpool.pendingGlobal) > 0 },
+              ].map(s => (
+                <div key={s.label} style={{
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  padding: '8px 12px', borderRadius: 4,
+                  background: s.highlight ? 'rgba(99,102,241,0.08)' : 'rgba(255,255,255,0.02)',
+                  border: `1px solid ${s.highlight ? 'rgba(99,102,241,0.3)' : 'rgba(58,61,74,0.3)'}`,
+                }}>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                    {s.label}
+                  </span>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 700, color: s.highlight ? '#818cf8' : '#d0d0d0' }}>
+                    {s.value}
+                  </span>
+                </div>
+              ))}
+
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: '#4a4d5a', textAlign: 'center', marginTop: 4, fontStyle: 'italic' }}>
+                Stake WETH to earn a share of all mint fees
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div style={{
+              padding: '12px 20px 16px',
+              display: 'flex', gap: 8,
+              borderTop: '1px solid rgba(99,102,241,0.15)',
+            }}>
+              <button
+                onClick={async () => {
+                  const amt = prompt('Amount of WETH to stake:')
+                  if (amt && parseFloat(amt) > 0) {
+                    try { await whirlpool.stakeWETH(amt); toast.success(`${amt} WETH Staked`) }
+                    catch (e: any) { toast.error(e?.shortMessage || e?.message || 'Stake failed') }
+                  }
+                }}
+                style={{
+                  flex: 1, padding: '8px 0', borderRadius: 4,
+                  background: 'linear-gradient(135deg, #4338ca, #6366f1)',
+                  border: 'none', cursor: 'pointer',
+                  fontFamily: "'Cinzel', serif", fontSize: 11, fontWeight: 700, color: '#fff',
+                }}
+              >
+                ⬆ Stake
+              </button>
+              <button
+                onClick={async () => {
+                  const amt = prompt('Amount of WETH to unstake:')
+                  if (amt && parseFloat(amt) > 0) {
+                    try { await whirlpool.unstakeWETH(amt); toast.success(`${amt} WETH Unstaked`) }
+                    catch (e: any) { toast.error(e?.shortMessage || e?.message || 'Unstake failed') }
+                  }
+                }}
+                style={{
+                  flex: 1, padding: '8px 0', borderRadius: 4,
+                  background: 'transparent',
+                  border: '1px solid #6366f1', cursor: 'pointer',
+                  fontFamily: "'Cinzel', serif", fontSize: 11, fontWeight: 700, color: '#6366f1',
+                }}
+              >
+                ⬇ Unstake
+              </button>
+              {parseFloat(whirlpool.pendingGlobal) > 0 && (
+                <button
+                  onClick={async () => {
+                    try { await whirlpool.claimRewards(); toast.success('Rewards claimed!') }
+                    catch (e: any) { toast.error(e?.shortMessage || e?.message || 'Claim failed') }
+                  }}
+                  style={{
+                    flex: 1, padding: '8px 0', borderRadius: 4,
+                    background: 'linear-gradient(135deg, #c8a55a, #e8c96a)',
+                    border: 'none', cursor: 'pointer',
+                    fontFamily: "'Cinzel', serif", fontSize: 11, fontWeight: 700, color: '#1a1d2e',
+                  }}
+                >
+                  ★ Claim
+                </button>
+              )}
+            </div>
+          </div>
+        </motion.div>
+
         {cards.map((card, i) => {
           const risk = getRiskPct(card.stakers[0]?.value || 0, card.total)
           const sorted = [...card.stakers].sort((a, b) => b.value - a.value)
