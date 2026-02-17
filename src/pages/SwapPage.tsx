@@ -92,6 +92,8 @@ export default function SwapPage() {
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
   const [hoveredMarketCard, setHoveredMarketCard] = useState<string | null>(null)
   const [hoverActivity, setHoverActivity] = useState<ActivityEntry[]>([])
+  const [buyWavesMode, setBuyWavesMode] = useState(false)
+  const [buyWavesAmount, setBuyWavesAmount] = useState('')
   const [cashOutOpen, setCashOutOpen] = useState(false)
   const [cashOutMode, setCashOutMode] = useState<'waves' | 'card'>('waves')
   const [cashOutCardId, setCashOutCardId] = useState<number | null>(null)
@@ -249,7 +251,34 @@ export default function SwapPage() {
   }
 
   const handleBuyWaves = () => {
-    alert('Wrap ETH first (Mint page), then swap WETH → WAVES on SurfSwap')
+    setBuyWavesMode(true)
+    setBuyWavesAmount('')
+    setSelectedIds(new Set())
+    setTargetId(null)
+    setIncludeWaves(false)
+  }
+
+  const handleBuyWavesExecute = async () => {
+    const amt = parseFloat(buyWavesAmount)
+    if (!amt || amt <= 0 || !whirlpool.isConnected) return
+    try {
+      // Wrap ETH → WETH first
+      await whirlpool.wrapEth(buyWavesAmount)
+      // Swap WETH → WAVES
+      await whirlpool.swap('weth', 'waves', buyWavesAmount, 'wallet')
+      toast.success(`Bought WAVES with ${buyWavesAmount} ETH`)
+      setBuyWavesMode(false)
+      setBuyWavesAmount('')
+      await whirlpool.loadCards()
+    } catch (err: any) {
+      toast.error(err?.shortMessage || err?.message || 'Buy WAVES failed')
+      whirlpool.loadCards().catch(() => {})
+    }
+  }
+
+  const cancelBuyWaves = () => {
+    setBuyWavesMode(false)
+    setBuyWavesAmount('')
   }
 
   const handleCashOut = async () => {
@@ -535,15 +564,94 @@ export default function SwapPage() {
           <h3 style={{
             fontFamily: "'Cinzel', serif",
             fontSize: 14,
-            color: '#c8a55a',
+            color: buyWavesMode ? '#6366f1' : '#c8a55a',
             margin: 0,
             textTransform: 'uppercase',
             letterSpacing: 1,
             textAlign: 'center',
           }}>
-            Swap Stage
+            {buyWavesMode ? 'Buy WAVES' : 'Swap Stage'}
           </h3>
 
+          {buyWavesMode ? (
+            /* ── Buy WAVES mode: WETH → WAVES via AMM ── */
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
+              {/* Pool visualization */}
+              <div style={{
+                width: '100%', padding: 16, borderRadius: 4,
+                background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.2)',
+                textAlign: 'center',
+              }}>
+                <div style={{ fontSize: 28, marginBottom: 8 }}>Ξ → 🌊</div>
+                <div style={{ fontFamily: "'Cinzel', serif", fontSize: 13, color: '#818cf8', fontWeight: 700 }}>
+                  WETH ↔ WAVES Pool
+                </div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#4a4d5a', marginTop: 4 }}>
+                  ETH is auto-wrapped to WETH before swap
+                </div>
+              </div>
+
+              {/* ETH balance */}
+              <div style={{
+                width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                padding: '8px 12px', borderRadius: 3,
+                background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(58,61,74,0.3)',
+              }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>ETH Balance</span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 700, color: '#d0d0d0' }}>
+                  {parseFloat(whirlpool.ethBalance).toFixed(4)} ETH
+                </span>
+              </div>
+
+              {/* Amount input */}
+              <div style={{ width: '100%' }}>
+                <label style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: '#4a4d5a', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                  Amount (ETH)
+                </label>
+                <input
+                  type="number" placeholder="0.00" value={buyWavesAmount}
+                  onChange={e => setBuyWavesAmount(e.target.value)}
+                  style={{
+                    width: '100%', marginTop: 4, padding: '10px 12px', boxSizing: 'border-box',
+                    background: 'rgba(26,29,46,0.5)', border: '1px solid rgba(99,102,241,0.3)', borderRadius: 3,
+                    color: '#d0d0d0', fontSize: 14, fontFamily: "'DM Mono', monospace", fontWeight: 700,
+                    outline: 'none', textAlign: 'center',
+                  }}
+                />
+              </div>
+
+              {/* Execute */}
+              <button
+                onClick={handleBuyWavesExecute}
+                disabled={!buyWavesAmount || parseFloat(buyWavesAmount) <= 0 || !whirlpool.isConnected}
+                style={{
+                  width: '100%', padding: '12px 0', borderRadius: 3,
+                  background: buyWavesAmount && parseFloat(buyWavesAmount) > 0
+                    ? 'linear-gradient(135deg, #4338ca, #6366f1)'
+                    : '#2a2d3a',
+                  border: 'none', cursor: buyWavesAmount ? 'pointer' : 'not-allowed',
+                  fontFamily: "'Cinzel', serif", fontSize: 13, fontWeight: 900, letterSpacing: 2,
+                  color: buyWavesAmount ? '#fff' : '#4a4d5a',
+                }}
+              >
+                BUY WAVES
+              </button>
+
+              {/* Cancel */}
+              <button
+                onClick={cancelBuyWaves}
+                style={{
+                  width: '100%', padding: '8px 0',
+                  background: 'transparent', border: '1px solid rgba(58,61,74,0.4)', borderRadius: 3,
+                  fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#4a4d5a', cursor: 'pointer',
+                }}
+              >
+                ← Back to Swap
+              </button>
+            </div>
+          ) : (
+          /* ── Normal swap mode ── */
+          <>
           {/* Selected source cards as pills */}
           <div style={{
             width: '100%',
@@ -878,6 +986,8 @@ export default function SwapPage() {
           >
             Buy $WAVES
           </button>
+          </>
+          )}
         </div>
 
         {/* ─── RIGHT: Market Search ─── */}
