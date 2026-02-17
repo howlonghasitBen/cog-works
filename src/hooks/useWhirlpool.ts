@@ -37,6 +37,7 @@ const CACHE_TTL_MS = 2 * 60 * 1000 // 2 minutes
 interface SharedState {
   cards: CardState[]
   wavesBalance: string
+  ethBalance: string
   wethBalance: string
   myWethStake: string
   pendingGlobal: string
@@ -48,6 +49,7 @@ interface SharedState {
 const _shared: SharedState = {
   cards: [],
   wavesBalance: '0',
+  ethBalance: '0',
   wethBalance: '0',
   myWethStake: '0',
   pendingGlobal: '0',
@@ -168,12 +170,14 @@ async function loadCardsShared(address: string | undefined) {
 
     if (address) {
       try {
-        const [wb, wethb, ws, pg] = await Promise.all([
+        const [wb, wethb, ws, pg, eb] = await Promise.all([
           publicClient.readContract({ address: WAVES_ADDRESS, abi: WAVES_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'userWethStake', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'pendingGlobalRewards', args: [address as `0x${string}`] }),
+          publicClient.getBalance({ address: address as `0x${string}` }),
         ])
+        _shared.ethBalance = formatEther(eb)
         _shared.wavesBalance = formatEther(wb as bigint)
         _shared.wethBalance = formatEther(wethb as bigint)
         _shared.myWethStake = formatEther(ws as bigint)
@@ -214,6 +218,7 @@ export function useWhirlpool() {
   // Shared cache accessors
   const cards = _shared.cards
   const wavesBalance = _shared.wavesBalance
+  const ethBalance = _shared.ethBalance
   const wethBalance = _shared.wethBalance
   const myWethStake = _shared.myWethStake
   const pendingGlobal = _shared.pendingGlobal
@@ -593,7 +598,7 @@ export function useWhirlpool() {
 
   return {
     cards, selectedCard, setSelectedCard,
-    wavesBalance, wethBalance, myWethStake, pendingGlobal,
+    ethBalance, wavesBalance, wethBalance, myWethStake, pendingGlobal,
     isConnected, address, loading, logs,
     createCard, swap, stake, unstake, swapStake, batchSwapStake, lastCreatedCard, clearLastCreated: () => setLastCreatedCard(null),
     claimRewards, wrapEth, stakeWETH, unstakeWETH, connect, disconnect, clearLogs, getCardEvents,

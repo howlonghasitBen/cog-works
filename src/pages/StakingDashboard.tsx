@@ -517,6 +517,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
             <div style={{ flex: 1, padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
                 { label: 'Your Stake', value: `${parseFloat(whirlpool.myWethStake).toFixed(4)} WETH`, highlight: parseFloat(whirlpool.myWethStake) > 0 },
+                { label: 'ETH Balance', value: `${parseFloat(whirlpool.ethBalance).toFixed(4)} ETH` },
                 { label: 'WETH Balance', value: `${parseFloat(whirlpool.wethBalance).toFixed(4)} WETH` },
                 { label: 'Pending Rewards', value: `${parseFloat(whirlpool.pendingGlobal).toFixed(6)} ETH`, highlight: parseFloat(whirlpool.pendingGlobal) > 0 },
               ].map(s => (
