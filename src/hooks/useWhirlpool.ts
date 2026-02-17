@@ -65,10 +65,11 @@ let _pollInterval: ReturnType<typeof setInterval> | null = null
 let _ttlTimeout: ReturnType<typeof setTimeout> | null = null
 let _consumerCount = 0
 let _unwatchFns: (() => void)[] = []
+let _currentAddress: string | undefined
 
-function startPolling(address: string | undefined) {
+function startPolling() {
   if (_pollInterval) return
-  _pollInterval = setInterval(() => loadCardsShared(address), 30000)
+  _pollInterval = setInterval(() => loadCardsShared(_currentAddress), 30000)
 }
 
 function stopPolling() {
@@ -482,11 +483,12 @@ export function useWhirlpool() {
       loadCards()
     }
 
-    startPolling(address)
+    _currentAddress = address
+    startPolling()
 
     // Watch on-chain events for real-time updates (shared — only one set of watchers)
     if (_unwatchFns.length === 0) {
-      const reload = () => loadCardsShared(address)
+      const reload = () => loadCardsShared(_currentAddress)
       // Whirlpool events
       _unwatchFns.push(publicClient.watchContractEvent({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, eventName: 'OwnerChanged',
