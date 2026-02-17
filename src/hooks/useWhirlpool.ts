@@ -190,8 +190,10 @@ export function useWhirlpool() {
       const resolveToken = (key: string): `0x${string}` => {
         if (key === 'waves') return WAVES_ADDRESS
         if (key === 'weth') return WETH_ADDRESS
-        const idx = parseInt(key.replace('card-', ''))
-        return cards[idx]?.address || ('0x0' as `0x${string}`)
+        // key is 'card-<id>' where id is the on-chain card index
+        const id = parseInt(key.replace('card-', ''))
+        const card = cards.find(c => c.id === id)
+        return card?.address || ('0x0' as `0x${string}`)
       }
 
       const isCardIn = tokenIn.startsWith('card-')
@@ -220,7 +222,11 @@ export function useWhirlpool() {
         addLog(`✓ Swap confirmed · block #${receipt.blockNumber}`, 'success')
       }
       await loadCards()
-    } catch (e: any) { addLog(`✗ Swap: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    } catch (e: any) {
+      addLog(`✗ Swap: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+      throw e
+    }
     setLoading(false)
   }
 
@@ -229,7 +235,7 @@ export function useWhirlpool() {
     setLoading(true)
     try {
       const amt = parseEther(amount)
-      const card = cards[cardId]
+      const card = cards.find(c => c.id === cardId)
       addLog(`Staking ${amount} ${card?.symbol || '?'}...`, 'info')
       if (card) await ensureApproval(card.address, WHIRLPOOL_ADDRESS, amt)
       const hash = await writeContractAsync({
