@@ -151,18 +151,19 @@ export default function WavesCard({ card, width: widthProp = 400, artSrc, classN
           <div style={{
             fontSize: 14 * s, fontWeight: 700, lineHeight: 1.2,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
+            display: 'flex', alignItems: 'baseline', gap: 4 * s,
           }}>
             {card.name || 'Untitled'}
+            {card.subtitle && (
+              <span style={{
+                fontSize: 9 * s, fontWeight: 500, opacity: 0.7,
+                letterSpacing: '0.05em',
+                textTransform: 'none' as const,
+              }}>
+                {card.subtitle}
+              </span>
+            )}
           </div>
-          {card.subtitle && (
-            <div style={{
-              fontSize: 9 * s, fontWeight: 500, opacity: 0.7,
-              letterSpacing: '0.05em', marginTop: 1 * s,
-              color: t.header?.color || '#fff',
-            }}>
-              {card.subtitle}
-            </div>
-          )}
         </div>
         {/* Level badge */}
         <div style={{
