@@ -114,14 +114,14 @@ function cardMintApi(): Plugin {
             }
 
             // Theme section gradients
-            const theme = newCard.theme || {}
-            if (theme.background) meta.attributes.push({ trait_type: 'Card Background', value: theme.background })
+            const cardTheme = newCard.theme || {}
+            if (cardTheme.background) meta.attributes.push({ trait_type: 'Card Background', value: cardTheme.background })
             const sections: Record<string, string> = {
               header: 'Header', imageArea: 'Image Area', typeSection: 'Type Section',
               flavorText: 'Flavor Text', bottomSection: 'Bottom Section', stat: 'Stat', rarity: 'Rarity Badge',
             }
             for (const [k, label] of Object.entries(sections)) {
-              const s = theme[k]
+              const s = cardTheme[k]
               if (s?.background) meta.attributes.push({ trait_type: `${label} Background`, value: s.background })
               if (s?.color) meta.attributes.push({ trait_type: `${label} Color`, value: s.color })
               if (s?.border) meta.attributes.push({ trait_type: `${label} Border`, value: s.border })
