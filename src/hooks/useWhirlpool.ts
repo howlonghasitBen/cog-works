@@ -165,9 +165,13 @@ export function useWhirlpool() {
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Card created! Block #${receipt.blockNumber}`, 'success', { hash })
       setLastCreatedCard({ name, symbol, hash })
-      await loadCards()
-    } catch (e: any) { addLog(`✗ Create: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
-    setLoading(false)
+      setLoading(false)
+      // Refresh card list in background (don't block UI)
+      loadCards().catch(() => {})
+    } catch (e: any) {
+      addLog(`✗ Create: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+    }
   }
 
   const swap = async (tokenIn: string, tokenOut: string, amount: string, source: 'wallet' | 'staked' = 'wallet') => {

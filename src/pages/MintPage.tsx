@@ -215,5 +215,68 @@ export default function MintPage() {
           </div>
         </div>
       </div>
+
+      {/* Mint Success Modal */}
+      {whirlpool.lastCreatedCard && (
+        <div
+          onClick={() => whirlpool.clearLastCreated()}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 10000,
+            background: 'rgba(0,0,0,0.8)',
+            backdropFilter: 'blur(6px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div key={i} style={{
+              position: 'absolute',
+              top: `${Math.random() * 40}%`,
+              left: `${Math.random() * 100}%`,
+              width: 8, height: 8,
+              borderRadius: i % 3 === 0 ? '50%' : '2px',
+              background: ['#c8a55a', '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'][i % 7],
+              animation: `confettiFall ${1.5 + Math.random() * 2}s ease-out ${Math.random() * 0.8}s forwards`,
+              opacity: 0.9,
+            }} />
+          ))}
+          <div onClick={e => e.stopPropagation()} style={{
+            background: 'linear-gradient(135deg, #1a1d2e, #22252f)',
+            border: '2px solid #c8a55a',
+            borderRadius: 12,
+            padding: '32px 40px',
+            maxWidth: 480, width: '90vw',
+            textAlign: 'center',
+            animation: 'fadeSlideUp 0.4s ease-out',
+            boxShadow: '0 0 60px rgba(200,165,90,0.2), 0 8px 40px rgba(0,0,0,0.5)',
+          }}>
+            <h2 style={{
+              fontFamily: "'Cinzel', serif", fontSize: 24, fontWeight: 900,
+              color: '#c8a55a', margin: '0 0 8px',
+            }}>Card Created!</h2>
+            <p style={{
+              fontFamily: "'DM Mono', monospace", fontSize: 14,
+              color: '#d0d0d0', margin: '0 0 20px',
+            }}>
+              <span style={{ color: '#c8a55a', fontWeight: 700 }}>{whirlpool.lastCreatedCard.name}</span> ({whirlpool.lastCreatedCard.symbol}) has entered the Whirlpool
+            </p>
+            <p style={{
+              fontFamily: "'DM Mono', monospace", fontSize: 11,
+              color: '#888', margin: '0 0 16px', wordBreak: 'break-all',
+            }}>
+              tx: {whirlpool.lastCreatedCard.hash.slice(0, 20)}...
+            </p>
+            <button onClick={() => whirlpool.clearLastCreated()} style={{
+              fontFamily: "'Cinzel', serif", fontSize: 14, fontWeight: 700,
+              color: '#1a1d2e', background: 'linear-gradient(135deg, #c8a55a, #e8c96a)',
+              border: 'none', borderRadius: 8, padding: '10px 32px', cursor: 'pointer',
+              boxShadow: '0 4px 16px rgba(200,165,90,0.3)',
+            }}>Continue</button>
+          </div>
+        </div>
+      )}
+      <style>{`
+        @keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(60vh) rotate(720deg); opacity: 0; } }
+        @keyframes fadeSlideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+      `}</style>
   )
 }
