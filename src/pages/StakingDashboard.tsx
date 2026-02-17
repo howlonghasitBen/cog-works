@@ -548,10 +548,13 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
             }}>
               <button
                 onClick={async () => {
-                  const amt = prompt('Amount of WETH to stake:')
+                  const amt = prompt('Amount of ETH to wrap & stake:')
                   if (amt && parseFloat(amt) > 0) {
-                    try { await whirlpool.stakeWETH(amt); toast.success(`${amt} WETH Staked`) }
-                    catch (e: any) { toast.error(e?.shortMessage || e?.message || 'Stake failed') }
+                    try {
+                      await whirlpool.wrapEth(amt)
+                      await whirlpool.stakeWETH(amt)
+                      toast.success(`${amt} ETH → WETH Staked`)
+                    } catch (e: any) { toast.error(e?.shortMessage || e?.message || 'Stake failed') }
                   }
                 }}
                 style={{
