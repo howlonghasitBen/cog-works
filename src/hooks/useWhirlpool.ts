@@ -284,6 +284,7 @@ export function useWhirlpool() {
     const allowance = await publicClient.readContract({
       address: token, abi: CARD_TOKEN_ABI, functionName: 'allowance', args: [address!, spender],
     }) as bigint
+    console.log('[Approval] allowance:', allowance.toString(), 'need:', amount.toString(), 'skip:', allowance >= amount)
     if (allowance < amount) {
       addLog(`Approving ${spender.slice(0, 10)}...`, 'info')
       try {
