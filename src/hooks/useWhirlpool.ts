@@ -64,7 +64,7 @@ function notifyListeners() { _listeners.forEach(fn => fn()) }
 let _pollInterval: ReturnType<typeof setInterval> | null = null
 let _ttlTimeout: ReturnType<typeof setTimeout> | null = null
 let _consumerCount = 0
-let _unwatchEvents: (() => void) | null = null
+let _unwatchFns: (() => void)[] = []
 
 function startPolling(address: string | undefined) {
   if (_pollInterval) return
@@ -73,7 +73,7 @@ function startPolling(address: string | undefined) {
 
 function stopPolling() {
   if (_pollInterval) { clearInterval(_pollInterval); _pollInterval = null }
-  if (_unwatchEvents) { _unwatchEvents(); _unwatchEvents = null }
+  _unwatchFns.forEach(fn => fn()); _unwatchFns = []
 }
 
 function scheduleExpiry() {
@@ -343,7 +343,11 @@ export function useWhirlpool() {
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Staked · block #${receipt.blockNumber}`, 'success')
       await loadCards()
-    } catch (e: any) { addLog(`✗ Stake: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    } catch (e: any) {
+      addLog(`✗ Stake: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+      throw e
+    }
     setLoading(false)
   }
 
@@ -352,14 +356,39 @@ export function useWhirlpool() {
     setLoading(true)
     try {
       const amt = parseEther(amount)
-      addLog(`Unstaking ${amount} from card #${cardId}...`, 'info')
+      const card = cards.find(c => c.id === cardId)
+      addLog(`Unstaking ${amount} shares from card #${cardId} (${card?.name || '?'})...`, 'info')
+
+      // Step 1: Unstake — returns card tokens to wallet
       const hash = await writeContractAsync({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'unstake', args: [BigInt(cardId), amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Unstaked · block #${receipt.blockNumber}`, 'success')
+
+      // Step 2: Swap received card tokens → WAVES
+      if (card) {
+        const cardBalance = await publicClient.readContract({
+          address: card.address, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address!],
+        }) as bigint
+        if (cardBalance > 0n) {
+          addLog(`Swapping ${formatEther(cardBalance)} ${card.symbol} → WAVES...`, 'info')
+          await ensureApproval(card.address, SURFSWAP_ADDRESS, cardBalance)
+          const swapHash = await writeContractAsync({
+            address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'swapExact',
+            args: [card.address, WAVES_ADDRESS, cardBalance, BigInt(0)],
+          })
+          const swapReceipt = await publicClient.waitForTransactionReceipt({ hash: swapHash })
+          addLog(`✓ Swapped to WAVES · block #${swapReceipt.blockNumber}`, 'success')
+        }
+      }
+
       await loadCards()
-    } catch (e: any) { addLog(`✗ Unstake: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    } catch (e: any) {
+      addLog(`✗ Unstake: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+      throw e
+    }
     setLoading(false)
   }
 
@@ -376,7 +405,11 @@ export function useWhirlpool() {
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ SwapStake confirmed · block #${receipt.blockNumber}`, 'success')
       await loadCards()
-    } catch (e: any) { addLog(`✗ SwapStake: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    } catch (e: any) {
+      addLog(`✗ SwapStake: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+      throw e
+    }
     setLoading(false)
   }
 
@@ -392,7 +425,11 @@ export function useWhirlpool() {
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ BatchSwapStake confirmed · block #${receipt.blockNumber}`, 'success')
       await loadCards()
-    } catch (e: any) { addLog(`✗ BatchSwapStake: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    } catch (e: any) {
+      addLog(`✗ BatchSwapStake: ${e.shortMessage || e.message}`, 'error', { category: 'error' })
+      setLoading(false)
+      throw e
+    }
     setLoading(false)
   }
 
@@ -468,18 +505,27 @@ export function useWhirlpool() {
 
     startPolling(address)
 
-    // Watch OwnerChanged events (shared — only one watcher at a time)
-    if (!_unwatchEvents) {
-      _unwatchEvents = publicClient.watchContractEvent({
+    // Watch on-chain events for real-time updates (shared — only one set of watchers)
+    if (_unwatchFns.length === 0) {
+      const reload = () => loadCardsShared(address)
+      // Whirlpool events
+      _unwatchFns.push(publicClient.watchContractEvent({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, eventName: 'OwnerChanged',
-        onLogs: (eventLogs) => {
-          for (const log of eventLogs) {
-            const args = log.args as any
-            console.log(`★ OWNERSHIP CHANGED card #${args.cardId} → ${args.newOwner?.slice(0, 12)}…`)
-          }
-          loadCardsShared(address)
-        },
-      })
+        onLogs: reload,
+      }))
+      _unwatchFns.push(publicClient.watchContractEvent({
+        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, eventName: 'Staked',
+        onLogs: reload,
+      }))
+      _unwatchFns.push(publicClient.watchContractEvent({
+        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, eventName: 'Unstaked',
+        onLogs: reload,
+      }))
+      // SurfSwap events
+      _unwatchFns.push(publicClient.watchContractEvent({
+        address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, eventName: 'Swap',
+        onLogs: reload,
+      }))
     }
 
     return () => {

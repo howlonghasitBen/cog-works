@@ -171,7 +171,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
     if (amount && parseFloat(amount) > 0) {
       try {
         await whirlpool.unstake(cardId, amount)
-        toast.success(`Unstaked ${amount} WAVES`)
+        toast.success(`Unstaked ${amount} shares → WAVES`)
       } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Unstake failed') }
     }
   }

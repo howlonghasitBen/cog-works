@@ -1,8 +1,4 @@
 {
-  "1": {
-    "index": 292,
-    "slug": "1"
-  },
   "Moonwell Sanctuary": {
     "index": 0,
     "slug": "moonwell-sanctuary"
@@ -1171,12 +1167,8 @@
     "index": 291,
     "slug": "https-chasetheace-online-pepejackpot"
   },
-  "Test": {
-    "index": 293,
-    "slug": "test"
-  },
   "Teemo": {
-    "index": 294,
+    "index": 292,
     "slug": "teemo"
   }
 }
