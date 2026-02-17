@@ -162,7 +162,8 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
     if (amount && parseFloat(amount) > 0) {
       try {
         await whirlpool.stake(cardId, amount)
-        toast.success(`Staked ${amount} WAVES`)
+        const card = whirlpool.cards.find(c => c.id === cardId)
+        toast.success(`${amount} $${card?.symbol || 'cardTOKEN'} Staked`)
       } catch (err: any) { toast.error(err?.shortMessage || err?.message || 'Stake failed') }
     }
   }
