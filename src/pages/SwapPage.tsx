@@ -210,20 +210,24 @@ export default function SwapPage() {
         await whirlpool.swap('waves', `card-${targetId}`, wavesAmount, 'wallet')
       }
 
-      // 2. Card → card swaps via batchSwapStake (single tx for all cards)
+      // 2. Card → card swaps via swapStake (staked shares)
       if (selectedCards.length > 0) {
-        const fromIds = selectedCards
-          .filter(card => {
+        const fromEntries = selectedCards
+          .map(card => {
             const c = whirlpool.cards.find(cc => cc.id === card.id)
-            return c && parseFloat(c.myStake) > 0
+            return { id: card.id, name: card.name, myStake: c?.myStake || '0', hasStake: c ? parseFloat(c.myStake) > 0 : false }
           })
-          .map(card => card.id)
+          .filter(e => e.hasStake)
 
-        if (fromIds.length === 1) {
-          const c = whirlpool.cards.find(cc => cc.id === fromIds[0])
-          if (c) await whirlpool.swapStake(fromIds[0], targetId, c.myStake)
-        } else if (fromIds.length > 1) {
-          await whirlpool.batchSwapStake(fromIds, targetId)
+        console.log('[SwapPage] swapStake entries:', fromEntries, '→ target:', targetId)
+
+        if (fromEntries.length === 1) {
+          await whirlpool.swapStake(fromEntries[0].id, targetId, fromEntries[0].myStake)
+        } else if (fromEntries.length > 1) {
+          await whirlpool.batchSwapStake(fromEntries.map(e => e.id), targetId)
+        } else {
+          toast.error('No staked cards selected')
+          return
         }
       }
 
