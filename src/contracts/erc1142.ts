@@ -45,6 +45,7 @@ export const WHIRLPOOL_ABI = [
   { inputs: [{ name: 'cardId', type: 'uint256' }], name: 'ownerOfCard', outputs: [{ name: '', type: 'address' }], stateMutability: 'view', type: 'function' },
   { inputs: [{ name: '', type: 'address' }], name: 'userWethStake', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
   { inputs: [{ name: 'user', type: 'address' }], name: 'claimableWeth', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
+  { inputs: [{ name: 'user', type: 'address' }], name: 'claimableWethPool', outputs: [{ name: 'wethAmount', type: 'uint256' }, { name: 'wavesAmount', type: 'uint256' }], stateMutability: 'view', type: 'function' },
   { inputs: [{ name: 'user', type: 'address' }], name: 'userWethShares', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
   { inputs: [{ name: 'cardId', type: 'uint256' }, { name: 'user', type: 'address' }], name: 'pendingRewards', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
   { inputs: [{ name: 'user', type: 'address' }], name: 'pendingGlobalRewards', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },

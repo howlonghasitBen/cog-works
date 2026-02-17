@@ -44,6 +44,7 @@ interface SharedState {
   myWethShares: string
   myWethStake: string
   claimableWeth: string
+  claimableWaves: string
   pendingGlobal: string
   lastAddress: string | undefined
   lastLoadTime: number
@@ -60,6 +61,7 @@ const _shared: SharedState = {
   myWethShares: '0',
   myWethStake: '0',
   claimableWeth: '0',
+  claimableWaves: '0',
   pendingGlobal: '0',
   lastAddress: undefined,
   lastLoadTime: 0,
@@ -193,14 +195,16 @@ async function loadCardsShared(address: string | undefined) {
           publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'userWethShares', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'pendingGlobalRewards', args: [address as `0x${string}`] }),
           publicClient.getBalance({ address: address as `0x${string}` }),
-          publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimableWeth', args: [address as `0x${string}`] }),
+          publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimableWethPool', args: [address as `0x${string}`] }),
         ])
         _shared.ethBalance = formatEther(eb)
         _shared.wavesBalance = formatEther(wb as bigint)
         _shared.wethBalance = formatEther(wethb as bigint)
         _shared.myWethShares = formatEther(ws as bigint)
         _shared.myWethStake = formatEther(ws as bigint) // backward compat
-        _shared.claimableWeth = formatEther(cw as bigint)
+        const cwResult = cw as [bigint, bigint]
+        _shared.claimableWeth = formatEther(cwResult[0])
+        _shared.claimableWaves = formatEther(cwResult[1])
         _shared.pendingGlobal = formatEther(pg as bigint)
       } catch { /* ignore */ }
     }
@@ -244,6 +248,7 @@ export function useWhirlpool() {
   const wethPoolWeth = _shared.wethPoolWeth
   const myWethShares = _shared.myWethShares
   const claimableWeth = _shared.claimableWeth
+  const claimableWaves = _shared.claimableWaves
   const myWethStake = _shared.myWethStake
   const pendingGlobal = _shared.pendingGlobal
 
@@ -649,7 +654,7 @@ export function useWhirlpool() {
 
   return {
     cards, selectedCard, setSelectedCard,
-    ethBalance, wavesBalance, wethBalance, wethPoolWaves, wethPoolWeth, myWethShares, myWethStake, claimableWeth, pendingGlobal,
+    ethBalance, wavesBalance, wethBalance, wethPoolWaves, wethPoolWeth, myWethShares, myWethStake, claimableWeth, claimableWaves, pendingGlobal,
     isConnected, address, loading, logs,
     createCard, swap, stake, unstake, swapStake, batchSwapStake, lastCreatedCard, clearLastCreated: () => setLastCreatedCard(null),
     claimRewards, wrapEth, stakeWETH, unstakeWETH, connect, disconnect, clearLogs, getCardEvents,

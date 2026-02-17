@@ -518,6 +518,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
               {[
                 { label: 'Your Shares', value: `${parseFloat(whirlpool.myWethShares).toFixed(4)}`, highlight: parseFloat(whirlpool.myWethShares) > 0 },
                 { label: 'Claimable WETH', value: `${parseFloat(whirlpool.claimableWeth).toFixed(4)} WETH`, highlight: parseFloat(whirlpool.claimableWeth) > 0 },
+                { label: 'Claimable WAVES', value: `${parseFloat(whirlpool.claimableWaves).toFixed(4)} WAVES`, highlight: parseFloat(whirlpool.claimableWaves) > 0 },
                 { label: 'ETH Balance', value: `${parseFloat(whirlpool.ethBalance).toFixed(4)} ETH` },
                 { label: 'Pool WETH', value: `${parseFloat(whirlpool.wethPoolWeth).toFixed(4)}` },
                 { label: 'Pool WAVES', value: `${parseFloat(whirlpool.wethPoolWaves).toFixed(4)}` },
