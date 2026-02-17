@@ -79,12 +79,15 @@ function cardMintApi(): Plugin {
               token_id: null,
             }
 
-            // Check for duplicate
+            // Check for duplicate — reject if name already exists
             const exists = cards.some(c => c.name.toLowerCase() === newCard.name.toLowerCase())
-            if (!exists) {
-              cards.push(newCard)
-              fs.writeFileSync(cardDataPath, JSON.stringify(cards, null, 2))
+            if (exists) {
+              res.writeHead(409, { 'Content-Type': 'application/json' })
+              res.end(JSON.stringify({ ok: false, error: `Card name "${newCard.name}" already exists` }))
+              return
             }
+            cards.push(newCard)
+            fs.writeFileSync(cardDataPath, JSON.stringify(cards, null, 2))
 
             // Create metadata file (same format as generate-metadata.py)
             const idx = exists
