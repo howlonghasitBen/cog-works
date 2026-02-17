@@ -1170,5 +1170,9 @@
   "Teemo": {
     "index": 292,
     "slug": "teemo"
+  },
+  "Test": {
+    "index": 293,
+    "slug": "test"
   }
 }
