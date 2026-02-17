@@ -92,6 +92,11 @@ export default function SwapPage() {
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set())
   const [hoveredMarketCard, setHoveredMarketCard] = useState<string | null>(null)
   const [hoverActivity, setHoverActivity] = useState<ActivityEntry[]>([])
+  const [cashOutOpen, setCashOutOpen] = useState(false)
+  const [cashOutMode, setCashOutMode] = useState<'waves' | 'card'>('waves')
+  const [cashOutCardId, setCashOutCardId] = useState<number | null>(null)
+  const [cashOutAmount, setCashOutAmount] = useState('')
+  const [cashingOut, setCashingOut] = useState(false)
   const [loadingActivity, setLoadingActivity] = useState(false)
   const [wavesAmount, setWavesAmount] = useState('')
   const [includeWaves, setIncludeWaves] = useState(false)
@@ -245,6 +250,31 @@ export default function SwapPage() {
 
   const handleBuyWaves = () => {
     alert('Wrap ETH first (Mint page), then swap WETH → WAVES on SurfSwap')
+  }
+
+  const handleCashOut = async () => {
+    if (!whirlpool.isConnected || cashingOut) return
+    const amt = parseFloat(cashOutAmount)
+    if (!amt || amt <= 0) { toast.error('Enter an amount'); return }
+    setCashingOut(true)
+    try {
+      if (cashOutMode === 'waves') {
+        // WAVES → WETH
+        await whirlpool.swap('waves', 'weth', cashOutAmount, 'wallet')
+        toast.success(`Swapped ${cashOutAmount} WAVES → ETH`)
+      } else if (cashOutCardId !== null) {
+        // Card → WAVES → WETH (two hops via AMM)
+        await whirlpool.swap(`card-${cashOutCardId}`, 'weth', cashOutAmount, 'wallet')
+        const card = whirlpool.cards.find(c => c.id === cashOutCardId)
+        toast.success(`Swapped ${cashOutAmount} $${card?.symbol || '?'} → ETH`)
+      }
+      setCashOutOpen(false)
+      setCashOutAmount('')
+      await whirlpool.loadCards()
+    } catch (err: any) {
+      toast.error(err?.shortMessage || err?.message || 'Cash out failed')
+    }
+    setCashingOut(false)
   }
 
   return (
@@ -871,13 +901,100 @@ export default function SwapPage() {
             }}>
               Market Browse
             </h3>
-            <span style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 10,
-              color: '#4a4d5a',
-            }}>
-              ({allPools.length})
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#4a4d5a' }}>
+                ({allPools.length})
+              </span>
+              {/* Cash Out to ETH button */}
+              <div style={{ position: 'relative' }}>
+                <button
+                  onClick={() => setCashOutOpen(!cashOutOpen)}
+                  style={{
+                    background: cashOutOpen ? 'rgba(99,102,241,0.2)' : 'rgba(99,102,241,0.08)',
+                    border: `1px solid ${cashOutOpen ? '#6366f1' : '#4a4d5a'}`,
+                    borderRadius: 4,
+                    padding: '3px 8px',
+                    cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', gap: 4,
+                    fontSize: 10, fontFamily: "'DM Mono', monospace", fontWeight: 700,
+                    color: '#6366f1',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  <span style={{ fontSize: 12 }}>Ξ</span> Cash Out
+                </button>
+                {cashOutOpen && (
+                  <div style={{
+                    position: 'absolute', top: '100%', right: 0, marginTop: 4,
+                    background: 'linear-gradient(135deg, #1a1d2e, #22252f)',
+                    border: '1px solid #6366f1',
+                    borderRadius: 6, padding: 12, width: 240, zIndex: 100,
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+                  }}>
+                    <div style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: '#6366f1', marginBottom: 8, fontWeight: 700 }}>
+                      CASH OUT → ETH
+                    </div>
+                    {/* Mode toggle */}
+                    <div style={{ display: 'flex', gap: 4, marginBottom: 8 }}>
+                      {(['waves', 'card'] as const).map(m => (
+                        <button key={m} onClick={() => setCashOutMode(m)} style={{
+                          flex: 1, padding: '4px 0', fontSize: 9, fontFamily: "'DM Mono', monospace", fontWeight: 700,
+                          background: cashOutMode === m ? 'rgba(99,102,241,0.2)' : 'transparent',
+                          border: `1px solid ${cashOutMode === m ? '#6366f1' : '#3a3d4a'}`,
+                          borderRadius: 3, color: cashOutMode === m ? '#6366f1' : '#4a4d5a', cursor: 'pointer',
+                        }}>
+                          {m === 'waves' ? '$WAVES' : 'Card Token'}
+                        </button>
+                      ))}
+                    </div>
+                    {/* Card selector (card mode only) */}
+                    {cashOutMode === 'card' && (
+                      <select
+                        value={cashOutCardId ?? ''}
+                        onChange={e => setCashOutCardId(e.target.value ? Number(e.target.value) : null)}
+                        style={{
+                          width: '100%', marginBottom: 8, padding: '4px 6px',
+                          background: '#1a1d2e', border: '1px solid #3a3d4a', borderRadius: 3,
+                          color: '#d0d0d0', fontSize: 10, fontFamily: "'DM Mono', monospace", outline: 'none',
+                        }}
+                      >
+                        <option value="">Select card...</option>
+                        {myCards.map(c => (
+                          <option key={c.id} value={c.id}>{c.name} ({(c.userShares || 0).toFixed(1)})</option>
+                        ))}
+                      </select>
+                    )}
+                    {/* Amount */}
+                    <input
+                      type="number" placeholder="0.00" value={cashOutAmount}
+                      onChange={e => setCashOutAmount(e.target.value)}
+                      style={{
+                        width: '100%', marginBottom: 4, padding: '6px 8px', boxSizing: 'border-box',
+                        background: 'transparent', border: '1px solid #3a3d4a', borderRadius: 3,
+                        color: '#d0d0d0', fontSize: 12, fontFamily: "'DM Mono', monospace", outline: 'none',
+                      }}
+                    />
+                    {cashOutMode === 'waves' && (
+                      <div style={{ fontSize: 9, color: '#4a4d5a', fontFamily: "'DM Mono', monospace", marginBottom: 8 }}>
+                        Balance: {parseFloat(whirlpool.wavesBalance).toFixed(4)} WAVES
+                      </div>
+                    )}
+                    <button
+                      onClick={handleCashOut}
+                      disabled={cashingOut || !cashOutAmount}
+                      style={{
+                        width: '100%', padding: '6px 0',
+                        background: cashingOut ? '#3a3d4a' : 'linear-gradient(135deg, #6366f1, #818cf8)',
+                        border: 'none', borderRadius: 3, cursor: cashingOut ? 'wait' : 'pointer',
+                        color: '#fff', fontSize: 11, fontFamily: "'Cinzel', serif", fontWeight: 700,
+                      }}
+                    >
+                      {cashingOut ? 'Processing...' : `Swap → ETH`}
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Search */}
