@@ -4,6 +4,7 @@ import type { CardEditorData } from '@marketplace/components/editor/types'
 import CogPartSelector from '../components/CogPartSelector'
 import CogPartEditor from '../components/CogPartEditor'
 import CardPreview from '@marketplace/components/editor/CardPreview'
+import CardFromData, { buildFallbackCard } from '../components/CardFromData'
 import WhirlpoolTerminal from '../components/WhirlpoolTerminal'
 import { useWhirlpool } from '../hooks/useWhirlpool'
 
@@ -260,6 +261,16 @@ export default function MintPage() {
             }}>
               <span style={{ color: '#c8a55a', fontWeight: 700 }}>{whirlpool.lastCreatedCard.name}</span> ({whirlpool.lastCreatedCard.symbol}) has entered the Whirlpool
             </p>
+            {/* Card Preview */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+              <div style={{ width: 220, animation: 'fadeSlideUp 0.4s ease-out 0.15s both' }}>
+                <CardFromData
+                  name={whirlpool.lastCreatedCard.name}
+                  width={220}
+                  fallbackData={buildFallbackCard(whirlpool.lastCreatedCard.name, whirlpool.lastCreatedCard.symbol)}
+                />
+              </div>
+            </div>
             <p style={{
               fontFamily: "'DM Mono', monospace", fontSize: 11,
               color: '#888', margin: '0 0 16px', wordBreak: 'break-all',

@@ -14,7 +14,7 @@ import { useState, useMemo } from 'react'
 import { useToast } from '../components/Toast'
 import { useWhirlpool } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
-import CardFromData from '../components/CardFromData'
+import CardFromData, { buildFallbackCard } from '../components/CardFromData'
 // CardState type removed — no longer needed without modal
 
 // ─── Types ──────────────────────────────────────────────────────
@@ -480,7 +480,7 @@ export default function SwapPage() {
                       transition: 'all 0.2s',
                     }}
                   >
-                    <CardFromData name={card.name} width={300} />
+                    <CardFromData name={card.name} width={300} fallbackData={buildFallbackCard(card.name)} />
                   </div>
                 )
               })
@@ -637,7 +637,7 @@ export default function SwapPage() {
           }}>
             {targetPool ? (
               <>
-                <CardFromData name={targetPool.name} width={240} />
+                <CardFromData name={targetPool.name} width={240} fallbackData={buildFallbackCard(targetPool.name)} />
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
@@ -990,7 +990,7 @@ export default function SwapPage() {
                       transition: 'all 0.2s',
                     }}
                   >
-                    <CardFromData name={card.name} width={250} />
+                    <CardFromData name={card.name} width={250} fallbackData={buildFallbackCard(card.name)} />
 
                     {/* Activity hover overlay */}
                     {isHovered && (

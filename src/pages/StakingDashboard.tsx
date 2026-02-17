@@ -22,7 +22,7 @@ import { useToast } from '../components/Toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useWhirlpool, type CardState } from '../hooks/useWhirlpool'
 import { useCardData } from '../hooks/useCardData'
-import CardFromData from '../components/CardFromData'
+import CardFromData, { buildFallbackCard } from '../components/CardFromData'
 import CardDetailModal from '../components/CardDetailModal'
 
 /** Segment colors for donut charts and holder indicators */
@@ -510,7 +510,7 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
                 outline: hasYou ? '2px solid #8a6d2b' : 'none',
                 position: 'relative',
               }}>
-                <CardFromData name={card.name} width={CARD_W} />
+                <CardFromData name={card.name} width={CARD_W} fallbackData={buildFallbackCard(card.name)} />
 
                 {/* Top 4 holders overlay on hover (only if on-chain) */}
                 {card.onChain && card.stakers.length > 0 && (
