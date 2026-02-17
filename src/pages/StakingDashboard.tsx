@@ -480,13 +480,13 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
           style={{ cursor: 'default', width: 330 }}
         >
           <div style={{
-            width: 330, height: 330 * (4/3),
+            width: 330, minHeight: 330 * (4/3),
             borderRadius: 8,
             background: 'linear-gradient(145deg, #1a1d2e, #22252f)',
             border: '2px solid #6366f1',
             boxShadow: '0 0 20px rgba(99,102,241,0.15), 0 8px 32px rgba(0,0,0,0.4)',
             display: 'flex', flexDirection: 'column',
-            overflow: 'hidden', position: 'relative',
+            overflowY: 'auto', position: 'relative',
           }}>
             {/* Header */}
             <div style={{
