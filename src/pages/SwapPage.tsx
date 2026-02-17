@@ -282,7 +282,9 @@ export default function SwapPage() {
   }
 
   const handleCashOut = async () => {
-    if (!whirlpool.isConnected || cashingOut) return
+    console.log('[CashOut] start', { isConnected: whirlpool.isConnected, cashingOut, cashOutMode, cashOutCardId, cashOutAmount })
+    if (!whirlpool.isConnected) { toast.error('Connect wallet first'); return }
+    if (cashingOut) { console.log('[CashOut] blocked — already cashing out'); return }
     const amt = parseFloat(cashOutAmount)
     if (!amt || amt <= 0) { toast.error('Enter an amount'); return }
     if (cashOutMode === 'card' && cashOutCardId === null) {
@@ -292,11 +294,11 @@ export default function SwapPage() {
     setCashingOut(true)
     try {
       if (cashOutMode === 'waves') {
-        // WAVES → WETH
+        console.log('[CashOut] WAVES → WETH', cashOutAmount)
         await whirlpool.swap('waves', 'weth', cashOutAmount, 'wallet')
         toast.success(`Swapped ${cashOutAmount} WAVES → ETH`)
       } else {
-        // Card → WAVES → WETH (two hops via AMM)
+        console.log('[CashOut] Card → WETH', { cardId: cashOutCardId, amount: cashOutAmount })
         await whirlpool.swap(`card-${cashOutCardId}`, 'weth', cashOutAmount, 'wallet')
         const card = whirlpool.cards.find(c => c.id === cashOutCardId)
         toast.success(`Swapped ${cashOutAmount} $${card?.symbol || '?'} → ETH`)
@@ -305,6 +307,7 @@ export default function SwapPage() {
       setCashOutAmount('')
       await whirlpool.loadCards()
     } catch (err: any) {
+      console.error('[CashOut] error', err)
       toast.error(err?.shortMessage || err?.message || 'Cash out failed')
     }
     setCashingOut(false)
