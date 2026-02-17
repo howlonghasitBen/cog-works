@@ -39,6 +39,8 @@ interface SharedState {
   wavesBalance: string
   ethBalance: string
   wethBalance: string
+  wethPoolWaves: string
+  wethPoolWeth: string
   myWethStake: string
   pendingGlobal: string
   lastAddress: string | undefined
@@ -51,6 +53,8 @@ const _shared: SharedState = {
   wavesBalance: '0',
   ethBalance: '0',
   wethBalance: '0',
+  wethPoolWaves: '0',
+  wethPoolWeth: '0',
   myWethStake: '0',
   pendingGlobal: '0',
   lastAddress: undefined,
@@ -168,6 +172,15 @@ async function loadCardsShared(address: string | undefined) {
     }
     _shared.cards = cardData
 
+    // Fetch WETH pool reserves (public, no address needed)
+    try {
+      const wethPoolRes = await publicClient.readContract({
+        address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getWethReserves',
+      }) as [bigint, bigint]
+      _shared.wethPoolWaves = formatEther(wethPoolRes[0])
+      _shared.wethPoolWeth = formatEther(wethPoolRes[1])
+    } catch { /* ignore */ }
+
     if (address) {
       try {
         const [wb, wethb, ws, pg, eb] = await Promise.all([
@@ -220,6 +233,8 @@ export function useWhirlpool() {
   const wavesBalance = _shared.wavesBalance
   const ethBalance = _shared.ethBalance
   const wethBalance = _shared.wethBalance
+  const wethPoolWaves = _shared.wethPoolWaves
+  const wethPoolWeth = _shared.wethPoolWeth
   const myWethStake = _shared.myWethStake
   const pendingGlobal = _shared.pendingGlobal
 
@@ -598,7 +613,7 @@ export function useWhirlpool() {
 
   return {
     cards, selectedCard, setSelectedCard,
-    ethBalance, wavesBalance, wethBalance, myWethStake, pendingGlobal,
+    ethBalance, wavesBalance, wethBalance, wethPoolWaves, wethPoolWeth, myWethStake, pendingGlobal,
     isConnected, address, loading, logs,
     createCard, swap, stake, unstake, swapStake, batchSwapStake, lastCreatedCard, clearLastCreated: () => setLastCreatedCard(null),
     claimRewards, wrapEth, stakeWETH, unstakeWETH, connect, disconnect, clearLogs, getCardEvents,
