@@ -38,27 +38,27 @@ export const WHIRLPOOL_ABI = [
   { inputs: [{ name: 'cardId', type: 'uint256' }, { name: 'amount', type: 'uint256' }], name: 'stake', outputs: [], stateMutability: 'nonpayable', type: 'function' },
   { inputs: [{ name: 'cardId', type: 'uint256' }, { name: 'amount', type: 'uint256' }], name: 'unstake', outputs: [], stateMutability: 'nonpayable', type: 'function' },
   { inputs: [{ name: 'cardId', type: 'uint256' }], name: 'claimRewards', outputs: [], stateMutability: 'nonpayable', type: 'function' },
-  { inputs: [{ name: 'amount', type: 'uint256' }], name: 'stakeWETH', outputs: [], stateMutability: 'nonpayable', type: 'function' },
-  { inputs: [{ name: 'amount', type: 'uint256' }], name: 'unstakeWETH', outputs: [], stateMutability: 'nonpayable', type: 'function' },
-  { inputs: [], name: 'claimWETHRewards', outputs: [], stateMutability: 'nonpayable', type: 'function' },
+  // stakeWETH, unstakeWETH, claimWETHRewards → moved to WETH_POOL_ABI
   { inputs: [{ name: 'fromCardId', type: 'uint256' }, { name: 'toCardId', type: 'uint256' }, { name: 'shares', type: 'uint256' }], name: 'swapStake', outputs: [], stateMutability: 'nonpayable', type: 'function' },
   { inputs: [{ name: 'fromCardIds', type: 'uint256[]' }, { name: 'toCardId', type: 'uint256' }], name: 'batchSwapStake', outputs: [], stateMutability: 'nonpayable', type: 'function' },
   // ─── Views ───
-  { inputs: [{ name: 'cardId', type: 'uint256' }, { name: 'user', type: 'address' }], name: 'stakeOf', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
+  { inputs: [{ name: 'cardId', type: 'uint256' }, { name: 'user', type: 'address' }], name: 'userCardShares', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
+  { inputs: [{ name: 'cardId', type: 'uint256' }, { name: 'user', type: 'address' }], name: 'effectiveBalance', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
   { inputs: [{ name: 'cardId', type: 'uint256' }], name: 'ownerOfCard', outputs: [{ name: '', type: 'address' }], stateMutability: 'view', type: 'function' },
-  { inputs: [{ name: '', type: 'address' }], name: 'userWethStake', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
-  { inputs: [{ name: 'user', type: 'address' }], name: 'claimableWeth', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
-  { inputs: [{ name: 'user', type: 'address' }], name: 'claimableWethPool', outputs: [{ name: 'wethAmount', type: 'uint256' }, { name: 'wavesAmount', type: 'uint256' }], stateMutability: 'view', type: 'function' },
-  { inputs: [{ name: 'user', type: 'address' }], name: 'userWethShares', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
+  // userWethShares, claimableWeth, claimableWethPool → moved to WETH_POOL_ABI
   { inputs: [{ name: 'cardId', type: 'uint256' }, { name: 'user', type: 'address' }], name: 'pendingRewards', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
-  { inputs: [{ name: 'user', type: 'address' }], name: 'pendingGlobalRewards', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
+  // pendingGlobalRewards → moved to GLOBAL_REWARDS_ABI
   // ─── Events ───
   { anonymous: false, inputs: [{ indexed: true, name: 'cardId', type: 'uint256' }, { indexed: true, name: 'user', type: 'address' }, { indexed: false, name: 'amount', type: 'uint256' }], name: 'Staked', type: 'event' },
   { anonymous: false, inputs: [{ indexed: true, name: 'cardId', type: 'uint256' }, { indexed: true, name: 'user', type: 'address' }, { indexed: false, name: 'amount', type: 'uint256' }], name: 'Unstaked', type: 'event' },
   { anonymous: false, inputs: [{ indexed: true, name: 'cardId', type: 'uint256' }, { indexed: true, name: 'previousOwner', type: 'address' }, { indexed: true, name: 'newOwner', type: 'address' }], name: 'OwnerChanged', type: 'event' },
-  { anonymous: false, inputs: [{ indexed: true, name: 'user', type: 'address' }, { indexed: false, name: 'amount', type: 'uint256' }], name: 'WETHStaked', type: 'event' },
-  { anonymous: false, inputs: [{ indexed: true, name: 'user', type: 'address' }, { indexed: false, name: 'amount', type: 'uint256' }], name: 'WETHUnstaked', type: 'event' },
+  // WETHStaked, WETHUnstaked → moved to WETH_POOL_ABI
   { anonymous: false, inputs: [{ indexed: true, name: 'user', type: 'address' }, { indexed: false, name: 'amount', type: 'uint256' }], name: 'RewardsClaimed', type: 'event' },
+] as const;
+
+// GlobalRewards ABI - ETH mint fee distribution (Option B split)
+export const GLOBAL_REWARDS_ABI = [
+  { inputs: [{ name: 'user', type: 'address' }], name: 'pendingGlobalRewards', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
 ] as const;
 
 // WethPool ABI - WETH LP staking (Option B split)

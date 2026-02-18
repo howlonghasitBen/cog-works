@@ -6,6 +6,7 @@ import type { LogEntry, LogType } from '../components/WhirlpoolTerminal'
 import {
   WHIRLPOOL_ADDRESS, WAVES_ADDRESS, WETH_ADDRESS, SURFSWAP_ADDRESS, ROUTER_ADDRESS, BIDNFT_ADDRESS,
   WETH_POOL_ADDRESS, WETH_POOL_ABI,
+  GLOBAL_REWARDS_ADDRESS, GLOBAL_REWARDS_ABI,
   WHIRLPOOL_ABI, WAVES_ABI, CARD_TOKEN_ABI, WETH_ABI, SURFSWAP_ABI, ROUTER_ABI, BIDNFT_ABI,
 } from '../contracts/erc1142'
 import { anvilChain } from '../contracts/wagmi-config'
@@ -154,7 +155,7 @@ async function loadCardsShared(address: string | undefined) {
           let myStake = '0', myBalance = '0'
           if (address) {
             const [s, b] = await Promise.all([
-              publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeOf', args: [BigInt(i), address as `0x${string}`] }),
+              publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'userCardShares', args: [BigInt(i), address as `0x${string}`] }),
               publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
             ])
             myStake = formatEther(s as bigint)
@@ -194,7 +195,7 @@ async function loadCardsShared(address: string | undefined) {
           publicClient.readContract({ address: WAVES_ADDRESS, abi: WAVES_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'userWethShares', args: [address as `0x${string}`] }),
-          publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'pendingGlobalRewards', args: [address as `0x${string}`] }),
+          publicClient.readContract({ address: GLOBAL_REWARDS_ADDRESS, abi: GLOBAL_REWARDS_ABI, functionName: 'pendingGlobalRewards', args: [address as `0x${string}`] }),
           publicClient.getBalance({ address: address as `0x${string}` }),
           publicClient.readContract({ address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'claimableWethPool', args: [address as `0x${string}`] }),
         ])
