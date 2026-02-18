@@ -37,6 +37,42 @@ interface CardPool {
 }
 
 // ─── Helpers ────────────────────────────────────────────────────
+// ─── Slippage Estimation (constant product AMM) ──────────────
+const SWAP_FEE_BPS = 30 // 0.3%
+const BPS = 10000
+
+/** Estimate output from constant product swap: (x+Δx)(y-Δy) = xy, with 0.3% fee on both sides */
+function quoteAmmSwap(amountIn: number, reserveIn: number, reserveOut: number): { amountOut: number; priceImpact: number } {
+  if (reserveIn <= 0 || reserveOut <= 0 || amountIn <= 0) return { amountOut: 0, priceImpact: 0 }
+  const fee = amountIn * SWAP_FEE_BPS / BPS
+  const amtAfterFee = amountIn - fee
+  const newReserveIn = reserveIn + amtAfterFee
+  const grossOut = reserveOut - (reserveIn * reserveOut) / newReserveIn
+  const outFee = grossOut * SWAP_FEE_BPS / BPS
+  const amountOut = grossOut - outFee
+  // Price impact: compare effective price vs mid-market
+  const midPrice = reserveOut / reserveIn
+  const effectivePrice = amountOut / amountIn
+  const priceImpact = midPrice > 0 ? (1 - effectivePrice / midPrice) * 100 : 0
+  return { amountOut, priceImpact }
+}
+
+/** Quote card→WETH: card→WAVES (card pool) → WAVES→WETH (weth pool) */
+function quoteCardToEth(tokenAmount: number, cardWavesR: number, cardCardsR: number, wethPoolWavesR: number, wethPoolWethR: number) {
+  const hop1 = quoteAmmSwap(tokenAmount, cardCardsR, cardWavesR) // card→WAVES
+  const hop2 = quoteAmmSwap(hop1.amountOut, wethPoolWavesR, wethPoolWethR) // WAVES→WETH
+  const midWaves = tokenAmount * (cardWavesR / cardCardsR)
+  const midWeth = midWaves * (wethPoolWethR / wethPoolWavesR)
+  const totalImpact = midWeth > 0 ? (1 - hop2.amountOut / midWeth) * 100 : 0
+  return { wavesOut: hop1.amountOut, wethOut: hop2.amountOut, priceImpact: totalImpact, hop1Impact: hop1.priceImpact, hop2Impact: hop2.priceImpact }
+}
+
+/** Quote WAVES→WETH */
+function quoteWavesToEth(wavesAmount: number, wethPoolWavesR: number, wethPoolWethR: number) {
+  const result = quoteAmmSwap(wavesAmount, wethPoolWavesR, wethPoolWethR)
+  return { wethOut: result.amountOut, priceImpact: result.priceImpact }
+}
+
 const BASE = '/images/card-images'
 const TAGS = ['Creature', 'Consumable', 'Eagle', 'Beast', 'OG', 'Legendary', 'Forest', 'Memer']
 
@@ -204,10 +240,17 @@ export default function SwapPage() {
     if ((!hasCardSelection && !hasWavesInput) || !targetPool) return null
     const cardWavesOut = selectedCards.reduce((sum, p) => sum + (p.userShares || 0) * p.priceWaves, 0)
     const totalWavesOut = cardWavesOut + (hasWavesInput ? parsedWaves : 0)
-    const tokensOut = targetPool.priceWaves > 0 ? totalWavesOut / targetPool.priceWaves : 0
+    const tokensOutMid = targetPool.priceWaves > 0 ? totalWavesOut / targetPool.priceWaves : 0
+    // Slippage estimate: WAVES → target card via AMM
+    const targetChain = whirlpool.cards.find(c => c.id === targetPool.id)
+    const tWavesR = parseFloat(targetChain?.wavesReserve || '0')
+    const tCardsR = parseFloat(targetChain?.cardReserve || '0')
+    const ammQuote = quoteAmmSwap(totalWavesOut, tWavesR, tCardsR)
+    const tokensOut = ammQuote.amountOut > 0 ? ammQuote.amountOut : tokensOutMid
+    const priceImpact = ammQuote.priceImpact
     const wouldSteal = tokensOut > targetPool.ownerShares
-    return { wavesOut: totalWavesOut, tokensOut, wouldSteal, sourceCount: selectedCards.length, wavesAdded: hasWavesInput ? parsedWaves : 0 }
-  }, [selectedCards, targetPool, hasCardSelection, hasWavesInput, parsedWaves])
+    return { wavesOut: totalWavesOut, tokensOut, tokensOutMid, priceImpact, wouldSteal, sourceCount: selectedCards.length, wavesAdded: hasWavesInput ? parsedWaves : 0 }
+  }, [selectedCards, targetPool, hasCardSelection, hasWavesInput, parsedWaves, whirlpool.cards])
 
   const handleSwap = async () => {
     if (!canSwap || targetId === null) return
@@ -917,6 +960,17 @@ export default function SwapPage() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
+                  Price impact
+                </span>
+                <span style={{ 
+                  fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 600,
+                  color: swapEstimate.priceImpact > 5 ? '#ef4444' : swapEstimate.priceImpact > 2 ? '#f59e0b' : '#4ade80',
+                }}>
+                  {swapEstimate.priceImpact.toFixed(2)}%{swapEstimate.priceImpact > 5 ? ' ⚠️' : ''}
+                </span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
                   Takes ownership?
                 </span>
                 <span style={{ 
@@ -1112,10 +1166,24 @@ export default function SwapPage() {
                         color: '#d0d0d0', fontSize: 12, fontFamily: "'DM Mono', monospace", outline: 'none',
                       }}
                     />
-                    {cashOutMode === 'waves' ? (
+                    {cashOutMode === 'waves' ? (() => {
+                      const inputAmt = parseFloat(cashOutAmount) || 0
+                      const wpWaves = parseFloat(whirlpool.wethPoolWaves || '0')
+                      const wpWeth = parseFloat(whirlpool.wethPoolWeth || '0')
+                      const estimate = inputAmt > 0 ? quoteWavesToEth(inputAmt, wpWaves, wpWeth) : null
+                      return (
                       <div style={{ fontSize: 9, color: '#4a4d5a', fontFamily: "'DM Mono', monospace", marginBottom: 8 }}>
-                        Balance: {parseFloat(whirlpool.wavesBalance).toFixed(4)} WAVES
-                      </div>
+                        <div>Balance: {parseFloat(whirlpool.wavesBalance).toFixed(4)} WAVES</div>
+                        {estimate && (
+                          <div style={{ marginTop: 4, padding: '4px 6px', background: 'rgba(99,102,241,0.08)', borderRadius: 3, border: '1px solid #2a2d3a' }}>
+                            <div style={{ color: '#d0d0d0' }}>Est. output: <strong style={{ color: '#818cf8' }}>{estimate.wethOut.toFixed(6)} ETH</strong></div>
+                            <div style={{ color: estimate.priceImpact > 5 ? '#ef4444' : estimate.priceImpact > 2 ? '#f59e0b' : '#4ade80' }}>
+                              Price impact: {estimate.priceImpact.toFixed(2)}%{estimate.priceImpact > 5 && ' ⚠️ HIGH'}
+                            </div>
+                          </div>
+                        )}
+                      </div>)
+                    })()
                     ) : cashOutCardId !== null ? (() => {
                       const ch = whirlpool.cards.find(c => c.id === cashOutCardId)
                       const mc = myCards.find(c => c.id === cashOutCardId)
@@ -1123,14 +1191,30 @@ export default function SwapPage() {
                       const stk = parseFloat(ch?.myStake || '0')
                       const total = wal + stk
                       const wavesValue = total * (mc?.priceWaves || 0)
+                      // Slippage estimate for current input amount
+                      const inputAmt = parseFloat(cashOutAmount) || 0
+                      const cardWavesR = parseFloat(ch?.wavesReserve || '0')
+                      const cardCardsR = parseFloat(ch?.cardReserve || '0')
+                      const wpWaves = parseFloat(whirlpool.wethPoolWaves || '0')
+                      const wpWeth = parseFloat(whirlpool.wethPoolWeth || '0')
+                      const estimate = inputAmt > 0 ? quoteCardToEth(inputAmt, cardWavesR, cardCardsR, wpWaves, wpWeth) : null
                       return (
                         <div style={{ fontSize: 9, color: '#4a4d5a', fontFamily: "'DM Mono', monospace", marginBottom: 8 }}>
                           <div>Wallet: {wal.toFixed(1)} · Staked: {stk.toFixed(1)} · <strong style={{ color: '#d0d0d0' }}>Total: {total.toFixed(1)}</strong></div>
-                          <div>≈ {wavesValue.toFixed(4)} WAVES{stk > 0 && <span style={{ color: '#6366f1' }}> (will auto-unstake)</span>}</div>
+                          <div>≈ {wavesValue.toFixed(4)} WAVES (mid-price){stk > 0 && <span style={{ color: '#6366f1' }}> (will auto-unstake)</span>}</div>
                           <button onClick={() => setCashOutAmount(total.toFixed(2))} style={{
                             marginTop: 2, padding: '1px 6px', fontSize: 8, background: 'rgba(99,102,241,0.15)',
                             border: '1px solid #6366f1', borderRadius: 2, color: '#6366f1', cursor: 'pointer',
                           }}>MAX</button>
+                          {estimate && (
+                            <div style={{ marginTop: 4, padding: '4px 6px', background: 'rgba(99,102,241,0.08)', borderRadius: 3, border: '1px solid #2a2d3a' }}>
+                              <div style={{ color: '#d0d0d0' }}>Est. output: <strong style={{ color: '#818cf8' }}>{estimate.wethOut.toFixed(6)} ETH</strong></div>
+                              <div>via {estimate.wavesOut.toFixed(2)} WAVES</div>
+                              <div style={{ color: estimate.priceImpact > 5 ? '#ef4444' : estimate.priceImpact > 2 ? '#f59e0b' : '#4ade80' }}>
+                                Price impact: {estimate.priceImpact.toFixed(2)}%{estimate.priceImpact > 5 && ' ⚠️ HIGH'}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )
                     })() : null}
