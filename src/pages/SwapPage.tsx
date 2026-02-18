@@ -1183,8 +1183,7 @@ export default function SwapPage() {
                           </div>
                         )}
                       </div>)
-                    })()
-                    ) : cashOutCardId !== null ? (() => {
+                    })() : cashOutCardId !== null ? (() => {
                       const ch = whirlpool.cards.find(c => c.id === cashOutCardId)
                       const mc = myCards.find(c => c.id === cashOutCardId)
                       const wal = parseFloat(ch?.myBalance || '0')
