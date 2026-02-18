@@ -1170,5 +1170,21 @@
   "Mumu": {
     "index": 292,
     "slug": "mumu"
+  },
+  "Spike": {
+    "index": 293,
+    "slug": "spike"
+  },
+  "MuFrens2": {
+    "index": 294,
+    "slug": "mufrens2"
+  },
+  "Gamer": {
+    "index": 295,
+    "slug": "gamer"
+  },
+  "Aviator": {
+    "index": 296,
+    "slug": "aviator"
   }
 }

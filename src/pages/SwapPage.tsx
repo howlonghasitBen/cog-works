@@ -299,6 +299,18 @@ export default function SwapPage() {
         toast.success(`Swapped ${cashOutAmount} WAVES → ETH`)
       } else {
         console.log('[CashOut] Card → WETH', { cardId: cashOutCardId, amount: cashOutAmount })
+        // Check wallet balance — if insufficient, unstake first
+        const chain = whirlpool.cards.find(c => c.id === cashOutCardId)
+        if (chain) {
+          const walletBal = parseFloat(chain.myBalance || '0')
+          const needed = parseFloat(cashOutAmount)
+          if (walletBal < needed) {
+            const unstakeAmt = needed - walletBal
+            console.log('[CashOut] Wallet insufficient, unstaking', unstakeAmt)
+            toast.info(`Unstaking ${unstakeAmt.toFixed(2)} shares first...`)
+            await whirlpool.unstake(cashOutCardId!, unstakeAmt.toString())
+          }
+        }
         await whirlpool.swap(`card-${cashOutCardId}`, 'weth', cashOutAmount, 'wallet')
         const card = whirlpool.cards.find(c => c.id === cashOutCardId)
         toast.success(`Swapped ${cashOutAmount} $${card?.symbol || '?'} → ETH`)
@@ -1091,11 +1103,20 @@ export default function SwapPage() {
                         color: '#d0d0d0', fontSize: 12, fontFamily: "'DM Mono', monospace", outline: 'none',
                       }}
                     />
-                    {cashOutMode === 'waves' && (
+                    {cashOutMode === 'waves' ? (
                       <div style={{ fontSize: 9, color: '#4a4d5a', fontFamily: "'DM Mono', monospace", marginBottom: 8 }}>
                         Balance: {parseFloat(whirlpool.wavesBalance).toFixed(4)} WAVES
                       </div>
-                    )}
+                    ) : cashOutCardId !== null ? (() => {
+                      const ch = whirlpool.cards.find(c => c.id === cashOutCardId)
+                      const wal = parseFloat(ch?.myBalance || '0')
+                      const stk = parseFloat(ch?.myStake || '0')
+                      return (
+                        <div style={{ fontSize: 9, color: '#4a4d5a', fontFamily: "'DM Mono', monospace", marginBottom: 8 }}>
+                          Wallet: {wal.toFixed(2)} · Staked: {stk.toFixed(2)}{stk > 0 && <span style={{ color: '#6366f1' }}> (will auto-unstake)</span>}
+                        </div>
+                      )
+                    })() : null}
                     <button
                       onClick={handleCashOut}
                       disabled={cashingOut || !cashOutAmount}
