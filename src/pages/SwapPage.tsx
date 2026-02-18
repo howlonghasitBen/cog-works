@@ -299,21 +299,28 @@ export default function SwapPage() {
         toast.success(`Swapped ${cashOutAmount} WAVES → ETH`)
       } else {
         console.log('[CashOut] Card → WETH', { cardId: cashOutCardId, amount: cashOutAmount })
-        // Check wallet balance — if insufficient, unstake first
         const chain = whirlpool.cards.find(c => c.id === cashOutCardId)
-        if (chain) {
-          const walletBal = parseFloat(chain.myBalance || '0')
-          const needed = parseFloat(cashOutAmount)
-          if (walletBal < needed) {
-            const unstakeAmt = needed - walletBal
-            console.log('[CashOut] Wallet insufficient, unstaking', unstakeAmt)
-            toast.info(`Unstaking ${unstakeAmt.toFixed(2)} shares first...`)
-            await whirlpool.unstake(cashOutCardId!, unstakeAmt.toString())
-          }
+        if (!chain) { toast.error('Card not found'); setCashingOut(false); return }
+        
+        // If user has staked shares, unstake ALL first to get real tokens
+        const stakedShares = parseFloat(chain.myStake || '0')
+        if (stakedShares > 0) {
+          console.log('[CashOut] Unstaking all', stakedShares, 'shares first')
+          toast.info(`Unstaking ${stakedShares.toFixed(2)} shares...`)
+          await whirlpool.unstake(cashOutCardId!, chain.myStake)
+          // Reload to get updated wallet balance
+          await whirlpool.loadCards()
         }
-        await whirlpool.swap(`card-${cashOutCardId}`, 'weth', cashOutAmount, 'wallet')
-        const card = whirlpool.cards.find(c => c.id === cashOutCardId)
-        toast.success(`Swapped ${cashOutAmount} $${card?.symbol || '?'} → ETH`)
+        
+        // Now read actual wallet balance and swap ALL of it (or user amount, whichever is less)
+        const updatedCard = whirlpool.cards.find(c => c.id === cashOutCardId)
+        const actualWalletBal = parseFloat(updatedCard?.myBalance || chain.myBalance || '0')
+        const swapAmount = Math.min(parseFloat(cashOutAmount), actualWalletBal)
+        if (swapAmount <= 0) { toast.error('No tokens available to swap'); setCashingOut(false); return }
+        
+        console.log('[CashOut] Swapping', swapAmount, 'tokens → WETH')
+        await whirlpool.swap(`card-${cashOutCardId}`, 'weth', swapAmount.toString(), 'wallet')
+        toast.success(`Swapped ${swapAmount.toFixed(2)} $${chain.symbol || '?'} → ETH`)
       }
       setCashOutOpen(false)
       setCashOutAmount('')
@@ -1089,7 +1096,7 @@ export default function SwapPage() {
                       >
                         <option value="">Select card...</option>
                         {myCards.map(c => (
-                          <option key={c.id} value={c.id}>{c.name} ({(c.userShares || 0).toFixed(1)})</option>
+                          <option key={c.id} value={c.id}>{c.name} (wallet: {parseFloat(whirlpool.cards.find(ch => ch.id === c.id)?.myBalance || '0').toFixed(1)} + staked)</option>
                         ))}
                       </select>
                     )}
