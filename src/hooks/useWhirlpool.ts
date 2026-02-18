@@ -5,6 +5,7 @@ import { createPublicClient, http, formatEther, parseEther, maxUint256 } from 'v
 import type { LogEntry, LogType } from '../components/WhirlpoolTerminal'
 import {
   WHIRLPOOL_ADDRESS, WAVES_ADDRESS, WETH_ADDRESS, SURFSWAP_ADDRESS, ROUTER_ADDRESS, BIDNFT_ADDRESS,
+  WETH_POOL_ADDRESS, WETH_POOL_ABI,
   WHIRLPOOL_ABI, WAVES_ABI, CARD_TOKEN_ABI, WETH_ABI, SURFSWAP_ABI, ROUTER_ABI, BIDNFT_ABI,
 } from '../contracts/erc1142'
 import { anvilChain } from '../contracts/wagmi-config'
@@ -192,10 +193,10 @@ async function loadCardsShared(address: string | undefined) {
         const [wb, wethb, ws, pg, eb, cw] = await Promise.all([
           publicClient.readContract({ address: WAVES_ADDRESS, abi: WAVES_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
-          publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'userWethShares', args: [address as `0x${string}`] }),
+          publicClient.readContract({ address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'userWethShares', args: [address as `0x${string}`] }),
           publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'pendingGlobalRewards', args: [address as `0x${string}`] }),
           publicClient.getBalance({ address: address as `0x${string}` }),
-          publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimableWethPool', args: [address as `0x${string}`] }),
+          publicClient.readContract({ address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'claimableWethPool', args: [address as `0x${string}`] }),
         ])
         _shared.ethBalance = formatEther(eb)
         _shared.wavesBalance = formatEther(wb as bigint)
@@ -538,9 +539,9 @@ export function useWhirlpool() {
     try {
       const amt = parseEther(amount)
       addLog(`Staking ${amount} WETH...`, 'info')
-      await ensureApproval(WETH_ADDRESS, WHIRLPOOL_ADDRESS, amt)
+      await ensureApproval(WETH_ADDRESS, WETH_POOL_ADDRESS, amt)
       const hash = await writeContractAsync({
-        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stakeWETH', args: [amt],
+        address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'stakeWETH', args: [amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ WETH Staked · block #${receipt.blockNumber}`, 'success')
@@ -560,7 +561,7 @@ export function useWhirlpool() {
       const amt = parseEther(amount)
       addLog(`Unstaking ${amount} WETH...`, 'info')
       const hash = await writeContractAsync({
-        address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'unstakeWETH', args: [amt],
+        address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'unstakeWETH', args: [amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ WETH Unstaked · block #${receipt.blockNumber}`, 'success')
