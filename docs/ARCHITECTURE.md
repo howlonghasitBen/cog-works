@@ -26,10 +26,10 @@ Content (viewport 2)
 
 The app uses a scroll container with snap behavior:
 
-- **0-10% scroll**: Dead zone → snaps back to hero
-- **10-50%**: Upper dead zone → snaps to hero
-- **50-90%**: Lower dead zone → snaps to content
-- **90-100%**: Content fully visible
+- **0–10% scroll**: Dead zone → snaps back to hero
+- **10–50%**: Upper dead zone → snaps to hero
+- **50–90%**: Lower dead zone → snaps to content
+- **90–100%**: Content fully visible
 
 An `isAnimating` ref prevents the snap logic from fighting programmatic scrolls (navigation, back button).
 
@@ -44,77 +44,139 @@ An `isAnimating` ref prevents the snap logic from fighting programmatic scrolls 
 | `#mumu-v2` | Mumu Frens v2 Gallery |
 | `#whirlpool-stake?card=name` | Staking + card detail modal |
 
-Hashes are pushed via `window.history.pushState`. The `popstate` listener restores pages on back/forward with animation lock to prevent snap interference.
+Hashes are pushed via `window.history.pushState`. The `popstate` listener restores pages on back/forward with animation lock to prevent snap interference. Closing the card modal uses `replaceState` (doesn't pollute back button history).
 
 ## Data Architecture
 
-### Card Data (Source of Truth)
+### On-Chain Primary, cardData.json for Enrichment
 
-`public/data/cardData.json` contains all 292 cards with:
+The StakingDashboard and SwapPage iterate `whirlpool.cards` (on-chain) as the primary card list. `cardData.json` provides visual enrichment (art, flavor text, stats, themes). This means newly minted cards appear immediately without needing a cardData.json update.
 
-```typescript
-interface CardData {
-  name: string
-  type: string        // "Creature", "Spell", "Enchantment"
-  subtype: string     // "Dragon", "Memer", "Elemental"
-  rarity: string      // "common", "uncommon", "rare", "epic", "legendary", "mythic"
-  hp: number
-  mana: number
-  crit: number
-  atk: number
-  def: number
-  image: string       // path to art PNG
-  flavor: string      // flavor text
-  subtitle: string    // move name
-  token_id?: number   // on-chain token ID (if minted)
-}
-```
+### Shared Module-Level Cache
 
-### On-Chain Overlay
-
-`useWhirlpool()` hook reads live data from Anvil:
+`useWhirlpool()` uses a module-level `_shared` object (not React state) as a singleton cache:
 
 ```typescript
-interface CardState {
-  id: number
-  name: string
-  symbol: string
-  uri: string
-  address: `0x${string}`  // card token contract
-  owner: string
-  price: string           // WAVES price from AMM curve
-  wavesReserve: string
-  cardReserve: string
-  myStake: string
-  myBalance: string
+// Module-level (survives component unmount/remount)
+const _shared = {
+  cards: [], wavesBalance: '0', wethBalance: '0',
+  wethPoolWaves: '0', wethPoolWeth: '0',
+  myWethShares: '0', claimableWeth: '0', claimableWaves: '0',
+  loading: false, lastLoad: 0, // ... etc
 }
+const _listeners = new Set<() => void>()
+let _currentAddress: string | undefined
+let _pendingReload = false
 ```
 
-The StakingDashboard merges these: `cardData.json` provides the full card list, `useWhirlpool()` overlays reserves, prices, and ownership for cards that exist on-chain.
+- **2-min TTL** (`CACHE_TTL_MS`): Skips reload if cache is fresh and same address
+- **Consumer count**: Tracks active hook instances; clears when all unmount
+- **`_currentAddress`**: Stored at module level so event watcher closures always use current wallet (not stale)
+- **`_pendingReload`**: If an event fires during `loadCards()`, queues a reload for after completion
 
-## Contract Integration
+### Event-Driven Updates
 
-### ERC-1142 (Whirlpool)
+Watches four contract events for instant UI updates:
 
-Three contracts deployed to Anvil:
+```typescript
+watchContractEvent({ eventName: 'Staked' })
+watchContractEvent({ eventName: 'Unstaked' })
+watchContractEvent({ eventName: 'OwnerChanged' })
+watchContractEvent({ eventName: 'Swap' })
+```
 
-1. **WhirlpoolStaking** — Card token creation, staking, ownership, fee distribution
-2. **SurfSwap** — AMM for WAVES↔card token swaps (bonding curve pricing)
-3. **WhirlpoolRouter** — Card creation helper (creates token + initial liquidity)
+30-second polling kept as fallback for missed events.
 
-Key functions used:
-- `stake(cardId, amount)` — Stake WAVES into a card
-- `unstake(cardId, amount)` — Withdraw stake
-- `swapStake(fromCard, toCard, amount)` — Atomic position swap
-- `batchSwapStake(fromCards[], toCard, amounts[])` — Consolidate positions
-- `claimRewards()` — Claim pending staking rewards
+### Card Data Migration
 
-### Mumu Frens v2
+`useCardData()` handles backward compatibility:
+- Old cards stored move name in `subtitle` field
+- Hook auto-migrates: `subtitle` → `moveName`, `subtitle` cleared
+- New cards have both fields: `subtitle` (header beside name) and `moveName` (bold above flavor text)
 
-ERC-721A on ETH mainnet via Scatter/Archetype:
-- Public mint with `auth = {key: 0x0, proof: []}`, `affiliate = address(0)`, `signature = 0x`
-- Random token assignment (parsed from Transfer events in tx receipt)
-- 0.025 ETH per mint, 100 max supply
+## Contract Architecture (Option B)
+
+Three-contract split for extensibility:
+
+```
+GlobalRewards (hub)
+  ├── Weight registry (addWeight/removeWeight per card)
+  ├── ETH mint fee accumulator (distributeMintFee)
+  ├── Reward calculation (pendingGlobalRewards)
+  └── Operator pattern (CardStaking + WethPool are operators)
+
+CardStaking (card-specific)
+  ├── Card token staking (LP shares)
+  ├── effectiveBalance() — real token value (shares ≠ tokens after trading)
+  ├── Ownership tracking (cardStakers[] + isCardStaker[] per card)
+  ├── _findNewOwner() — scans staker list for largest shareholder
+  ├── swapStake / batchSwapStake — atomic position swaps
+  └── Calls GlobalRewards for weight changes
+
+WethPool (WETH LP)
+  ├── Share-based staking (first depositor 1:1, subsequent proportional)
+  ├── 1.5x reward boost
+  ├── Dual-token withdrawal (unstakeWETH returns WETH + WAVES)
+  ├── claimableWethPool(user) → (wethAmount, wavesAmount)
+  └── Calls SurfSwap for reserve management
+
+SurfSwap (AMM)
+  ├── Bonding curve pricing per card
+  ├── 0.3% swap fee (applied on both sides)
+  ├── WAVES↔Card and WAVES↔WETH pools
+  ├── cardStaking + wethPool immutables (replaces old whirlpool ref)
+  └── addToWethReserve / removeFromWethReserve / removeFromWavesWethReserve
+
+WhirlpoolRouter (entry point)
+  ├── createCard(name, symbol, tokenURI) — deploy token + pool
+  ├── cardNameTaken mapping (case-insensitive, _toLower helper)
+  └── distributeMintFee{value: 0.05 ETH}() to GlobalRewards
+```
+
+### Why Option B (3-way) Over Option A (2-way)
+
+Chosen because Ben plans **standard edition 1155 mints** per card (each card becomes a collection, mint fees to 1-of-1 stakers). GlobalRewards as a standalone hub enables:
+- Future staking types (1155 editions, governance) as new contracts
+- Each new staking contract registers as an operator on GlobalRewards
+- Weight distribution stays centralized while staking logic is modular
+
+### Frontend Contract Mapping
+
+```typescript
+// erc1142.ts
+WHIRLPOOL_ADDRESS → CardStaking (backward compat)
+CARD_STAKING_ADDRESS → CardStaking
+WETH_POOL_ADDRESS → WethPool
+GLOBAL_REWARDS_ADDRESS → GlobalRewards
+SURFSWAP_ADDRESS → SurfSwap
+ROUTER_ADDRESS → WhirlpoolRouter
+```
+
+WETH reads/writes → `WETH_POOL_ADDRESS` + `WETH_POOL_ABI`
+Card staking reads/writes → `WHIRLPOOL_ADDRESS` + `WHIRLPOOL_ABI`
+Global rewards → `GLOBAL_REWARDS_ADDRESS` + `GLOBAL_REWARDS_ABI`
+
+## Slippage Estimation
+
+Client-side constant product AMM math (no on-chain quote function):
+
+```typescript
+// Constant product: (x + Δx)(y - Δy) = xy, with 0.3% fee on both sides
+function quoteAmmSwap(amountIn, reserveIn, reserveOut) {
+  const fee = amountIn * 30 / 10000
+  const amtAfterFee = amountIn - fee
+  const newReserveIn = reserveIn + amtAfterFee
+  const grossOut = reserveOut - (reserveIn * reserveOut) / newReserveIn
+  return grossOut - grossOut * 30 / 10000
+}
+
+// Card→ETH: two hops
+quoteCardToEth(tokens, cardWavesR, cardCardsR, wethWavesR, wethWethR)
+// WAVES→ETH: one hop
+quoteWavesToEth(wavesAmount, wethWavesR, wethWethR)
+```
+
+Price impact = `1 - (effectivePrice / midMarketPrice) × 100`
 
 ## Component Hierarchy
 
@@ -122,44 +184,39 @@ ERC-721A on ETH mainnet via Scatter/Archetype:
 App
 ├── GearHero
 │   ├── Background (parallax layers)
-│   ├── CenterCog (nav_cog.svg, click to toggle menu)
-│   ├── SatelliteCogs[] (orbiting items with innard images)
+│   ├── CenterCog (nav_cog.svg)
+│   ├── SatelliteCogs[] (orbiting items)
 │   ├── CogMenu (radial sub-cog picker)
 │   └── LightningBolt (decorative)
 ├── ContentPage
 │   ├── StakingDashboard
+│   │   ├── WethPoolCard (stake ETH, shares, claimable WETH+WAVES)
 │   │   ├── SearchBar + Filters + Sort
-│   │   ├── StatsBar (total staked, your stakes, pending rewards)
+│   │   ├── StatsBar (totals, pending rewards)
 │   │   ├── CardGrid → CardFromData[] → WavesCard
-│   │   ├── CardDetailModal (on card click)
+│   │   ├── CardDetailModal (Stats/Activity/Chart tabs)
 │   │   └── RewardsBreakdown
 │   ├── SwapPage
-│   │   ├── InventoryPanel
-│   │   ├── SwapStage
-│   │   └── MarketSearch
+│   │   ├── StatsHeader (portfolio value, card count)
+│   │   ├── CashOutDropdown (WAVES→ETH, Card→ETH, slippage estimates)
+│   │   ├── InventoryPanel (your cards, WAVES toggle, amount input)
+│   │   ├── SwapStage (selected → target, estimate with price impact)
+│   │   └── MarketBrowse (all cards grid, hover activity, click to select)
 │   ├── MumuGallery
 │   │   ├── ImageGrid (80%)
-│   │   ├── MintSidebar (20%)
-│   │   └── MintSuccessModal
+│   │   ├── MintSidebar (20%, vertically centered)
+│   │   └── MintSuccessModal (confetti, NFT images, links)
 │   └── MintPage
-│       ├── CogPartSelector
-│       ├── CogPartEditor
-│       └── CogCardPreview
+│       ├── CogPartSelector + CogPartEditor
+│       ├── CogCardPreview
+│       └── MintSuccessModal (card preview, tx hash)
 └── ToastProvider → Toast[]
 ```
-
-## State Management
-
-No external state library. All state is local (`useState`) or derived (`useMemo`):
-
-- **`useWhirlpool()`** — Singleton hook for all on-chain reads/writes. Polls every 5s.
-- **`useCardData()`** — Fetches and caches `cardData.json`. Returns all 292 cards.
-- **`useToast()`** — Context-based toast notifications.
-- **`activePage`** — Current page state in App.tsx, drives content rendering.
 
 ## Build & Deploy
 
 - **Dev**: `npm run dev` → Vite HMR on port 5174
+- **Full stack**: `bash launch-dev.sh` in erc-1142 repo (Anvil + deploy + mint + both frontends)
 - **Build**: `npm run build` → Static output in `dist/`
 - **Deploy**: Static hosting (Vercel, Netlify, IPFS). No server required.
-- **Chain**: Anvil for dev (localhost:8545), ETH mainnet for Mumu Frens v2
+- **Chains**: Anvil (31337) for dev, ETH mainnet (1) for Mumu Frens v2
