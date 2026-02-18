@@ -1095,9 +1095,11 @@ export default function SwapPage() {
                         }}
                       >
                         <option value="">Select card...</option>
-                        {myCards.map(c => (
-                          <option key={c.id} value={c.id}>{c.name} (wallet: {parseFloat(whirlpool.cards.find(ch => ch.id === c.id)?.myBalance || '0').toFixed(1)} + staked)</option>
-                        ))}
+                        {myCards.map(c => {
+                          const ch = whirlpool.cards.find(x => x.id === c.id)
+                          const total = parseFloat(ch?.myStake || '0') + parseFloat(ch?.myBalance || '0')
+                          return <option key={c.id} value={c.id}>{c.name} ({total.toFixed(0)} tokens ≈ {(total * c.priceWaves).toFixed(2)} WAVES)</option>
+                        })}
                       </select>
                     )}
                     {/* Amount */}
@@ -1116,11 +1118,19 @@ export default function SwapPage() {
                       </div>
                     ) : cashOutCardId !== null ? (() => {
                       const ch = whirlpool.cards.find(c => c.id === cashOutCardId)
+                      const mc = myCards.find(c => c.id === cashOutCardId)
                       const wal = parseFloat(ch?.myBalance || '0')
                       const stk = parseFloat(ch?.myStake || '0')
+                      const total = wal + stk
+                      const wavesValue = total * (mc?.priceWaves || 0)
                       return (
                         <div style={{ fontSize: 9, color: '#4a4d5a', fontFamily: "'DM Mono', monospace", marginBottom: 8 }}>
-                          Wallet: {wal.toFixed(2)} · Staked: {stk.toFixed(2)}{stk > 0 && <span style={{ color: '#6366f1' }}> (will auto-unstake)</span>}
+                          <div>Wallet: {wal.toFixed(1)} · Staked: {stk.toFixed(1)} · <strong style={{ color: '#d0d0d0' }}>Total: {total.toFixed(1)}</strong></div>
+                          <div>≈ {wavesValue.toFixed(4)} WAVES{stk > 0 && <span style={{ color: '#6366f1' }}> (will auto-unstake)</span>}</div>
+                          <button onClick={() => setCashOutAmount(total.toFixed(2))} style={{
+                            marginTop: 2, padding: '1px 6px', fontSize: 8, background: 'rgba(99,102,241,0.15)',
+                            border: '1px solid #6366f1', borderRadius: 2, color: '#6366f1', cursor: 'pointer',
+                          }}>MAX</button>
                         </div>
                       )
                     })() : null}
