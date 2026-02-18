@@ -170,7 +170,10 @@ export default function StakingDashboard({ onNavigateSwap }: { onNavigateSwap?: 
 
   const handleUnstake = async (cardId: number, e: React.MouseEvent) => {
     e.stopPropagation()
-    const amount = prompt('Amount to unstake:')
+    const card = whirlpool.cards.find(c => c.id === cardId)
+    const shares = card?.myShares || '0'
+    const effective = card?.myStake || '0'
+    const amount = prompt(`Shares to unstake (you have ${parseFloat(shares).toFixed(2)} shares ≈ ${parseFloat(effective).toFixed(2)} tokens):`, shares)
     if (amount && parseFloat(amount) > 0) {
       try {
         await whirlpool.unstake(cardId, amount)

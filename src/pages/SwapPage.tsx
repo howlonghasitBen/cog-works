@@ -227,7 +227,7 @@ export default function SwapPage() {
 
           // Staked shares → swapStake (direct, no AMM)
           if (staked > 0) {
-            await whirlpool.swapStake(card.id, targetId, c.myStake)
+            await whirlpool.swapStake(card.id, targetId, c.myShares)
           }
           // Wallet balance → sell to WAVES via AMM, then buy target card
           if (wallet > 0) {
@@ -303,11 +303,11 @@ export default function SwapPage() {
         if (!chain) { toast.error('Card not found'); setCashingOut(false); return }
         
         // If user has staked shares, unstake ALL first to get real tokens
-        const stakedShares = parseFloat(chain.myStake || '0')
+        const stakedShares = parseFloat(chain.myShares || '0')
         if (stakedShares > 0) {
           console.log('[CashOut] Unstaking all', stakedShares, 'shares first')
           toast.info(`Unstaking ${stakedShares.toFixed(2)} shares...`)
-          await whirlpool.unstake(cashOutCardId!, chain.myStake)
+          await whirlpool.unstake(cashOutCardId!, chain.myShares)
           // Reload to get updated wallet balance
           await whirlpool.loadCards()
         }

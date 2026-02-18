@@ -21,7 +21,8 @@ export interface CardState {
   price: string
   wavesReserve: string
   cardReserve: string
-  myStake: string
+  myStake: string      // effective token balance (what you'd get if you unstaked all)
+  myShares: string     // raw LP shares (for unstake/swapStake calls)
   myBalance: string
 }
 
@@ -152,20 +153,22 @@ async function loadCardsShared(address: string | undefined) {
             publicClient.readContract({ address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getReserves', args: [BigInt(i)] }),
             publicClient.readContract({ address: BIDNFT_ADDRESS, abi: BIDNFT_ABI, functionName: 'tokenURI', args: [BigInt(i)] }).catch(() => ''),
           ])
-          let myStake = '0', myBalance = '0'
+          let myStake = '0', myShares = '0', myBalance = '0'
           if (address) {
-            const [s, b] = await Promise.all([
+            const [eff, shares, b] = await Promise.all([
+              publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'effectiveBalance', args: [BigInt(i), address as `0x${string}`] }),
               publicClient.readContract({ address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'userCardShares', args: [BigInt(i), address as `0x${string}`] }),
               publicClient.readContract({ address: tokenAddr, abi: CARD_TOKEN_ABI, functionName: 'balanceOf', args: [address as `0x${string}`] }),
             ])
-            myStake = formatEther(s as bigint)
+            myStake = formatEther(eff as bigint)   // actual token value
+            myShares = formatEther(shares as bigint) // raw shares for tx calls
             myBalance = formatEther(b as bigint)
           }
           const [wavesR, cardsR] = reserves as [bigint, bigint]
           return {
             id: i, name: name as string, symbol: symbol as string, uri: uri as string, address: tokenAddr,
             owner: owner as string, price: formatEther(price as bigint),
-            wavesReserve: formatEther(wavesR), cardReserve: formatEther(cardsR), myStake, myBalance,
+            wavesReserve: formatEther(wavesR), cardReserve: formatEther(cardsR), myStake, myShares, myBalance,
           } as CardState
         } catch { return null }
       })
