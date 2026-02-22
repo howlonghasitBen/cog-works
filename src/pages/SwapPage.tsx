@@ -325,9 +325,7 @@ export default function SwapPage() {
   }
 
   const handleCashOut = async () => {
-    console.log('[CashOut] start', { isConnected: whirlpool.isConnected, cashingOut, cashOutMode, cashOutCardId, cashOutAmount })
     if (!whirlpool.isConnected) { toast.error('Connect wallet first'); return }
-    if (cashingOut) { console.log('[CashOut] blocked — already cashing out'); return }
     const amt = parseFloat(cashOutAmount)
     if (!amt || amt <= 0) { toast.error('Enter an amount'); return }
     if (cashOutMode === 'card' && cashOutCardId === null) {
@@ -337,18 +335,15 @@ export default function SwapPage() {
     setCashingOut(true)
     try {
       if (cashOutMode === 'waves') {
-        console.log('[CashOut] WAVES → WETH', cashOutAmount)
         await whirlpool.swap('waves', 'weth', cashOutAmount, 'wallet')
         toast.success(`Swapped ${cashOutAmount} WAVES → ETH`)
       } else {
-        console.log('[CashOut] Card → WETH', { cardId: cashOutCardId, amount: cashOutAmount })
         const chain = whirlpool.cards.find(c => c.id === cashOutCardId)
         if (!chain) { toast.error('Card not found'); setCashingOut(false); return }
         
         // If user has staked shares, unstake ALL first to get real tokens
         const stakedShares = parseFloat(chain.myShares || '0')
         if (stakedShares > 0) {
-          console.log('[CashOut] Unstaking all', stakedShares, 'shares first')
           toast.info(`Unstaking ${stakedShares.toFixed(2)} shares...`)
           await whirlpool.unstake(cashOutCardId!, chain.myShares)
           // Reload to get updated wallet balance
@@ -361,7 +356,6 @@ export default function SwapPage() {
         const swapAmount = Math.min(parseFloat(cashOutAmount), actualWalletBal)
         if (swapAmount <= 0) { toast.error('No tokens available to swap'); setCashingOut(false); return }
         
-        console.log('[CashOut] Swapping', swapAmount, 'tokens → WETH')
         await whirlpool.swap(`card-${cashOutCardId}`, 'weth', swapAmount.toString(), 'wallet')
         toast.success(`Swapped ${swapAmount.toFixed(2)} $${chain.symbol || '?'} → ETH`)
       }

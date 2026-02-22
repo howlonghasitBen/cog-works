@@ -289,7 +289,6 @@ export function useWhirlpool() {
     const allowance = await publicClient.readContract({
       address: token, abi: CARD_TOKEN_ABI, functionName: 'allowance', args: [address!, spender],
     }) as bigint
-    console.log('[Approval] allowance:', allowance.toString(), 'need:', amount.toString(), 'skip:', allowance >= amount)
     if (allowance < amount) {
       addLog(`Approving ${spender.slice(0, 10)}...`, 'info')
       try {
@@ -379,24 +378,17 @@ export function useWhirlpool() {
       } else {
         const addrIn = resolveToken(tokenIn)
         const addrOut = resolveToken(tokenOut)
-        console.log('[Swap] resolveToken done', { addrIn, addrOut, amt: amt.toString() })
         addLog(`Swapping ${amount} ${tokenIn} → ${tokenOut} (${addrIn.slice(0,10)} → ${addrOut.slice(0,10)})...`, 'info')
         // Check wallet balance of tokenIn
         try {
           const bal = await publicClient.readContract({ address: addrIn, abi: WAVES_ABI, functionName: 'balanceOf', args: [_currentAddress as `0x${string}`] })
-          console.log('[Swap] wallet balance of tokenIn:', formatEther(bal as bigint), 'need:', amount)
-        } catch (e) { console.log('[Swap] balance check failed', e) }
-        console.log('[Swap] ensuring approval...')
         await ensureApproval(addrIn, SURFSWAP_ADDRESS, amt)
-        console.log('[Swap] approval done, calling swapExact...')
         addLog(`Approval confirmed, sending swapExact...`, 'info')
         const hash = await writeContractAsync({
           address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'swapExact',
           args: [addrIn, addrOut, amt, BigInt(0)],
         })
-        console.log('[Swap] tx hash:', hash)
         const receipt = await publicClient.waitForTransactionReceipt({ hash })
-        console.log('[Swap] receipt:', receipt.status)
         addLog(`✓ Swap confirmed · block #${receipt.blockNumber}`, 'success')
       }
       await loadCards()
