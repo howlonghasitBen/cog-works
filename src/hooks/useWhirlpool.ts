@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useAccount, useConnect, useDisconnect, useWriteContract } from 'wagmi'
-import { injected } from 'wagmi/connectors'
+import { useAccount, useDisconnect, useWriteContract } from 'wagmi'
+import { ensureAnvilChain } from '../contracts/connect-anvil'
 import { createPublicClient, http, formatEther, parseEther, maxUint256 } from 'viem'
 import type { LogEntry, LogType } from '../components/WhirlpoolTerminal'
 import {
@@ -10,6 +10,7 @@ import {
   WHIRLPOOL_ABI, WAVES_ABI, CARD_TOKEN_ABI, WETH_ABI, SURFSWAP_ABI, ROUTER_ABI, BIDNFT_ABI,
 } from '../contracts/erc1142'
 import { anvilChain } from '../contracts/wagmi-config'
+import { getAnvilRpcUrl } from '../contracts/anvil-rpc'
 
 export interface CardState {
   id: number
@@ -28,7 +29,7 @@ export interface CardState {
 
 const publicClient = createPublicClient({
   chain: anvilChain as any,
-  transport: http('http://192.168.0.82:8545'),
+  transport: http(getAnvilRpcUrl()),
 })
 
 // ═══════════════════════════════════════════════════════════
@@ -44,6 +45,7 @@ interface SharedState {
   wethBalance: string
   wethPoolWaves: string
   wethPoolWeth: string
+  wethPoolSeeded: boolean
   myWethShares: string
   myWethStake: string
   claimableWeth: string
@@ -61,6 +63,7 @@ const _shared: SharedState = {
   wethBalance: '0',
   wethPoolWaves: '0',
   wethPoolWeth: '0',
+  wethPoolSeeded: false,
   myWethShares: '0',
   myWethStake: '0',
   claimableWeth: '0',
@@ -183,13 +186,18 @@ async function loadCardsShared(address: string | undefined) {
     }
     _shared.cards = cardData
 
-    // Fetch WETH pool reserves (public, no address needed)
+    // Fetch WETH pool reserves + seeded status (post-audit hardening visible here)
     try {
       const wethPoolRes = await publicClient.readContract({
         address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'getWethReserves',
       }) as [bigint, bigint]
       _shared.wethPoolWaves = formatEther(wethPoolRes[0])
       _shared.wethPoolWeth = formatEther(wethPoolRes[1])
+
+      const seeded = await publicClient.readContract({
+        address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'isWethPoolSeeded',
+      })
+      _shared.wethPoolSeeded = !!seeded
     } catch { /* ignore */ }
 
     if (address) {
@@ -232,10 +240,17 @@ async function loadCardsShared(address: string | undefined) {
 let logCounter = 0
 
 export function useWhirlpool() {
-  const { address, isConnected } = useAccount()
-  const { connect: connectFn } = useConnect()
+  const { address, isConnected: walletConnected, chainId } = useAccount()
   const { disconnect: disconnectFn } = useDisconnect()
   const { writeContractAsync } = useWriteContract()
+  const isAnvilReady = walletConnected && chainId === anvilChain.id
+
+  const writeAnvil = useCallback(async (
+    params: Parameters<typeof writeContractAsync>[0],
+  ) => {
+    await ensureAnvilChain()
+    return writeContractAsync({ ...params, chainId: anvilChain.id })
+  }, [writeContractAsync])
 
   // Local state synced from shared cache
   const [, forceUpdate] = useState(0)
@@ -251,6 +266,7 @@ export function useWhirlpool() {
   const wethBalance = _shared.wethBalance
   const wethPoolWaves = _shared.wethPoolWaves
   const wethPoolWeth = _shared.wethPoolWeth
+  const wethPoolSeeded = _shared.wethPoolSeeded
   const myWethShares = _shared.myWethShares
   const claimableWeth = _shared.claimableWeth
   const claimableWaves = _shared.claimableWaves
@@ -292,7 +308,7 @@ export function useWhirlpool() {
     if (allowance < amount) {
       addLog(`Approving ${spender.slice(0, 10)}...`, 'info')
       try {
-        const hash = await writeContractAsync({ address: token, abi: CARD_TOKEN_ABI, functionName: 'approve', args: [spender, maxUint256] })
+        const hash = await writeAnvil({ address: token, abi: CARD_TOKEN_ABI, functionName: 'approve', args: [spender, maxUint256] })
         await publicClient.waitForTransactionReceipt({ hash })
         addLog(`✓ Approval confirmed`, 'success')
       } catch (e: any) {
@@ -315,11 +331,11 @@ export function useWhirlpool() {
   }
 
   const createCard = async (name: string, symbol: string, uri?: string, editorData?: any) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       addLog(`Creating card "${name}" (${symbol})...`, 'info')
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: ROUTER_ADDRESS, abi: ROUTER_ABI, functionName: 'createCard',
         args: [name, symbol, uri || ''], value: parseEther('0.05'),
       })
@@ -343,10 +359,10 @@ export function useWhirlpool() {
     }
   }
 
-  const swap = async (tokenIn: string, tokenOut: string, amount: string, source: 'wallet' | 'staked' = 'wallet') => {
-    if (!isConnected) return
+  const swap = async (tokenIn: string, tokenOut: string, amount: string, source: 'wallet' | 'staked' = 'wallet', minAmountOut: bigint = 0n) => {
     setLoading(true)
     try {
+      await ensureAnvilChain()
       const amt = parseEther(amount)
       const resolveToken = (key: string): `0x${string}` => {
         if (key === 'waves') return WAVES_ADDRESS
@@ -369,7 +385,7 @@ export function useWhirlpool() {
         const fromId = parseInt(tokenIn.replace('card-', ''))
         const toId = parseInt(tokenOut.replace('card-', ''))
         addLog(`⚡ SwapStake ${amount} shares card #${fromId} → #${toId}...`, 'info')
-        const hash = await writeContractAsync({
+        const hash = await writeAnvil({
           address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'swapStake',
           args: [BigInt(fromId), BigInt(toId), amt],
         })
@@ -379,14 +395,11 @@ export function useWhirlpool() {
         const addrIn = resolveToken(tokenIn)
         const addrOut = resolveToken(tokenOut)
         addLog(`Swapping ${amount} ${tokenIn} → ${tokenOut} (${addrIn.slice(0,10)} → ${addrOut.slice(0,10)})...`, 'info')
-        // Check wallet balance of tokenIn
-        try {
-          const bal = await publicClient.readContract({ address: addrIn, abi: WAVES_ABI, functionName: 'balanceOf', args: [_currentAddress as `0x${string}`] })
         await ensureApproval(addrIn, SURFSWAP_ADDRESS, amt)
         addLog(`Approval confirmed, sending swapExact...`, 'info')
-        const hash = await writeContractAsync({
+        const hash = await writeAnvil({
           address: SURFSWAP_ADDRESS, abi: SURFSWAP_ABI, functionName: 'swapExact',
-          args: [addrIn, addrOut, amt, BigInt(0)],
+          args: [addrIn, addrOut, amt, minAmountOut],
         })
         const receipt = await publicClient.waitForTransactionReceipt({ hash })
         addLog(`✓ Swap confirmed · block #${receipt.blockNumber}`, 'success')
@@ -401,14 +414,14 @@ export function useWhirlpool() {
   }
 
   const stake = async (cardId: number, amount: string) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       const amt = parseEther(amount)
       const card = cards.find(c => c.id === cardId)
       addLog(`Staking ${amount} ${card?.symbol || '?'}...`, 'info')
       if (card) await ensureApproval(card.address, WHIRLPOOL_ADDRESS, amt)
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'stake', args: [BigInt(cardId), amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
@@ -423,12 +436,12 @@ export function useWhirlpool() {
   }
 
   const unstake = async (cardId: number, amount: string) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       const amt = parseEther(amount)
       addLog(`Unstaking ${amount} from card #${cardId}...`, 'info')
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'unstake', args: [BigInt(cardId), amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
@@ -443,12 +456,12 @@ export function useWhirlpool() {
   }
 
   const swapStake = async (fromCard: number, toCard: number, shares: string) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       const amt = parseEther(shares)
       addLog(`SwapStake ${shares} shares #${fromCard} → #${toCard}...`, 'info')
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'swapStake',
         args: [BigInt(fromCard), BigInt(toCard), amt],
       })
@@ -464,11 +477,11 @@ export function useWhirlpool() {
   }
 
   const batchSwapStake = async (fromCardIds: number[], toCard: number) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       addLog(`BatchSwapStake ${fromCardIds.length} cards → #${toCard}...`, 'info')
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'batchSwapStake',
         args: [fromCardIds.map(BigInt), BigInt(toCard)],
       })
@@ -484,12 +497,12 @@ export function useWhirlpool() {
   }
 
   const claimRewards = async (cardId?: number) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       if (cardId !== undefined) {
         addLog(`Claiming rewards for card #${cardId}...`, 'info')
-        const hash = await writeContractAsync({
+        const hash = await writeAnvil({
           address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimRewards',
           args: [BigInt(cardId)],
         })
@@ -500,7 +513,7 @@ export function useWhirlpool() {
         const staked = cards.filter(c => parseFloat(c.myStake) > 0)
         for (const c of staked) {
           addLog(`Claiming rewards for ${c.name}...`, 'info')
-          const hash = await writeContractAsync({
+          const hash = await writeAnvil({
             address: WHIRLPOOL_ADDRESS, abi: WHIRLPOOL_ABI, functionName: 'claimRewards',
             args: [BigInt(c.id)],
           })
@@ -509,34 +522,34 @@ export function useWhirlpool() {
         addLog(`✓ All rewards claimed (${staked.length} cards)`, 'success')
       }
       await loadCards()
-    } catch (e: any) { addLog(`✗ Claim: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    } catch (e: any) { addLog(`✗ Claim: ${e.shortMessage || e.message}`, 'error', { category: 'error' }); throw e }
     setLoading(false)
   }
 
   const wrapEth = async (amount: string) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       addLog(`Wrapping ${amount} ETH → WETH...`, 'info')
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: WETH_ADDRESS, abi: WETH_ABI, functionName: 'deposit',
         value: parseEther(amount),
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
       addLog(`✓ Wrapped · block #${receipt.blockNumber}`, 'success')
       await loadCards()
-    } catch (e: any) { addLog(`✗ Wrap: ${e.shortMessage || e.message}`, 'error', { category: 'error' }) }
+    } catch (e: any) { addLog(`✗ Wrap: ${e.shortMessage || e.message}`, 'error', { category: 'error' }); throw e }
     setLoading(false)
   }
 
   const stakeWETH = async (amount: string) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       const amt = parseEther(amount)
       addLog(`Staking ${amount} WETH...`, 'info')
       await ensureApproval(WETH_ADDRESS, WETH_POOL_ADDRESS, amt)
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'stakeWETH', args: [amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
@@ -551,12 +564,12 @@ export function useWhirlpool() {
   }
 
   const unstakeWETH = async (amount: string) => {
-    if (!isConnected) return
     setLoading(true)
     try {
+      await ensureAnvilChain()
       const amt = parseEther(amount)
       addLog(`Unstaking ${amount} WETH...`, 'info')
-      const hash = await writeContractAsync({
+      const hash = await writeAnvil({
         address: WETH_POOL_ADDRESS, abi: WETH_POOL_ABI, functionName: 'unstakeWETH', args: [amt],
       })
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
@@ -571,9 +584,9 @@ export function useWhirlpool() {
   }
 
   const connect = () => {
-    try {
-      connectFn({ connector: injected() })
-    } catch { addLog('No wallet provider available', 'error') }
+    ensureAnvilChain().catch((e: any) => {
+      addLog(`✗ Wallet: ${e.shortMessage || e.message || 'Connection failed'}`, 'error')
+    })
   }
 
   const disconnect = () => {
@@ -583,7 +596,7 @@ export function useWhirlpool() {
   // Init: load from cache or fetch, start polling
   useEffect(() => {
     addLog('═══ ERC-1142 · Whirlpool Terminal ═══', 'system', { category: 'system' })
-    addLog(`RPC: http://192.168.0.82:8545 · Chain 31337`, 'system', { category: 'system' })
+    addLog(`RPC: ${getAnvilRpcUrl()} · Chain 31337`, 'system', { category: 'system' })
 
     const cacheAge = Date.now() - _shared.lastLoadTime
     const addressChanged = _shared.lastAddress !== address
@@ -652,8 +665,8 @@ export function useWhirlpool() {
 
   return {
     cards, selectedCard, setSelectedCard,
-    ethBalance, wavesBalance, wethBalance, wethPoolWaves, wethPoolWeth, myWethShares, myWethStake, claimableWeth, claimableWaves, pendingGlobal,
-    isConnected, address, loading, logs,
+    ethBalance, wavesBalance, wethBalance, wethPoolWaves, wethPoolWeth, wethPoolSeeded, myWethShares, myWethStake, claimableWeth, claimableWaves, pendingGlobal,
+    isConnected: isAnvilReady, address, chainId, loading, logs,
     createCard, swap, stake, unstake, swapStake, batchSwapStake, lastCreatedCard, clearLastCreated: () => setLastCreatedCard(null),
     claimRewards, wrapEth, stakeWETH, unstakeWETH, connect, disconnect, clearLogs, getCardEvents,
     loadCards,

@@ -30,6 +30,7 @@ export const SURFSWAP_ABI = [
   { inputs: [{ name: 'cardId', type: 'uint256' }], name: 'getPrice', outputs: [{ name: '', type: 'uint256' }], stateMutability: 'view', type: 'function' },
   { inputs: [{ name: 'cardId', type: 'uint256' }], name: 'getReserves', outputs: [{ name: 'wavesR', type: 'uint256' }, { name: 'cardsR', type: 'uint256' }], stateMutability: 'view', type: 'function' },
   { inputs: [], name: 'getWethReserves', outputs: [{ name: 'wavesR', type: 'uint256' }, { name: 'wethR', type: 'uint256' }], stateMutability: 'view', type: 'function' },
+  { inputs: [], name: 'isWethPoolSeeded', outputs: [{ name: '', type: 'bool' }], stateMutability: 'view', type: 'function' },
 ] as const;
 
 // WhirlpoolStaking ABI - Staking and rewards

@@ -4,8 +4,8 @@
  * Always scrollable. Snap zones handle hero↔content transitions.
  */
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
-import { injected } from 'wagmi/connectors'
+import { useAccount, useDisconnect } from 'wagmi'
+import { ensureAnvilChain } from './contracts/connect-anvil'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /** Generate a randomized lightning bolt path from origin toward target center */
@@ -310,7 +310,6 @@ const heroItems: GearNavItem[] = [
 // ─── App ────────────────────────────────────────────────────────
 export default function App() {
   const { address, isConnected } = useAccount()
-  const { connect } = useConnect()
   const { disconnect } = useDisconnect()
   const [activePage, setActivePage] = useState<{ parent: GearNavItem; sub: GearSubItem } | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -603,7 +602,7 @@ export default function App() {
         {/* Wallet Connect — bottom-right of hero */}
         <div className="absolute bottom-6 right-6 z-30 pointer-events-auto">
           <button
-            onClick={() => isConnected ? disconnect() : connect({ connector: injected() })}
+            onClick={() => isConnected ? disconnect() : ensureAnvilChain().catch(console.error)}
             className="group relative flex items-center gap-3 px-5 py-2.5 cursor-pointer overflow-hidden rounded-sm border-2 border-[#2a2d40] bg-[#1a1d2e] text-white font-bold text-sm tracking-wider transition-all duration-200 hover:border-cyan-500/60 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
             style={{ fontFamily: "'Inter Tight', sans-serif" }}
           >
