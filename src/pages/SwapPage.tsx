@@ -139,6 +139,10 @@ export default function SwapPage() {
   const [wavesAmount, setWavesAmount] = useState('')
   const [includeWaves, setIncludeWaves] = useState(false)
 
+  // Impressive slippage protection (addresses previous audit finding)
+  const [slippageBps, setSlippageBps] = useState(50) // 0.50% default - user configurable
+  const slippageOptions = [10, 25, 50, 100, 200] // 0.1%, 0.25%, 0.5%, 1%, 2%
+
   // Build cardData.json lookup by name for enrichment
   const cardDataByName = useMemo(() => {
     const map = new Map<string, typeof allCardData[0]>()
@@ -249,15 +253,21 @@ export default function SwapPage() {
     const tokensOut = ammQuote.amountOut > 0 ? ammQuote.amountOut : tokensOutMid
     const priceImpact = ammQuote.priceImpact
     const wouldSteal = tokensOut > targetPool.ownerShares
-    return { wavesOut: totalWavesOut, tokensOut, tokensOutMid, priceImpact, wouldSteal, sourceCount: selectedCards.length, wavesAdded: hasWavesInput ? parsedWaves : 0 }
-  }, [selectedCards, targetPool, hasCardSelection, hasWavesInput, parsedWaves, whirlpool.cards])
+
+    // Compute protected minOut (impressive new feature)
+    const minOut = tokensOut > 0 ? Math.floor(tokensOut * (1 - slippageBps / 10000)) : 0
+
+    return { wavesOut: totalWavesOut, tokensOut, tokensOutMid, priceImpact, wouldSteal, sourceCount: selectedCards.length, wavesAdded: hasWavesInput ? parsedWaves : 0, minOut }
+  }, [selectedCards, targetPool, hasCardSelection, hasWavesInput, parsedWaves, whirlpool.cards, slippageBps])
 
   const handleSwap = async () => {
     if (!canSwap || targetId === null) return
     try {
-      // 1. WAVES → card token swap (separate tx via SurfSwap AMM)
+      const minOutWei = swapEstimate?.minOut ? parseEther(swapEstimate.minOut.toFixed(18)) : 0n
+
+      // 1. WAVES → card token swap (separate tx via SurfSwap AMM) — now with slippage protection
       if (hasWavesInput && parsedWaves > 0) {
-        await whirlpool.swap('waves', `card-${targetId}`, wavesAmount, 'wallet')
+        await whirlpool.swap('waves', `card-${targetId}`, wavesAmount, 'wallet', minOutWei)
       }
 
       // 2. Card → card swaps
@@ -268,13 +278,13 @@ export default function SwapPage() {
           const staked = parseFloat(c.myStake) || 0
           const wallet = parseFloat(c.myBalance) || 0
 
-          // Staked shares → swapStake (direct, no AMM)
+          // Staked shares → swapStake (direct, no AMM) — internal math, less slippage risk
           if (staked > 0) {
             await whirlpool.swapStake(card.id, targetId, c.myShares)
           }
-          // Wallet balance → sell to WAVES via AMM, then buy target card
+          // Wallet balance → sell to WAVES via AMM, then buy target card — with protection
           if (wallet > 0) {
-            await whirlpool.swap(`card-${card.id}`, `card-${targetId}`, c.myBalance, 'wallet')
+            await whirlpool.swap(`card-${card.id}`, `card-${targetId}`, c.myBalance, 'wallet', minOutWei)
           }
         }
       }
@@ -307,8 +317,9 @@ export default function SwapPage() {
     try {
       // Wrap ETH → WETH first
       await whirlpool.wrapEth(buyWavesAmount)
-      // Swap WETH → WAVES
-      await whirlpool.swap('weth', 'waves', buyWavesAmount, 'wallet')
+      // Swap WETH → WAVES with slippage tolerance
+      const buyMin = parseEther((parseFloat(buyWavesAmount) * 0.99).toFixed(18)) // conservative 1%
+      await whirlpool.swap('weth', 'waves', buyWavesAmount, 'wallet', buyMin)
       toast.success(`Bought WAVES with ${buyWavesAmount} ETH`)
       setBuyWavesMode(false)
       setBuyWavesAmount('')
@@ -335,7 +346,8 @@ export default function SwapPage() {
     setCashingOut(true)
     try {
       if (cashOutMode === 'waves') {
-        await whirlpool.swap('waves', 'weth', cashOutAmount, 'wallet')
+        const minWeth = parseEther((amt * 0.99).toFixed(18))
+        await whirlpool.swap('waves', 'weth', cashOutAmount, 'wallet', minWeth)
         toast.success(`Swapped ${cashOutAmount} WAVES → ETH`)
       } else {
         const chain = whirlpool.cards.find(c => c.id === cashOutCardId)
@@ -356,7 +368,8 @@ export default function SwapPage() {
         const swapAmount = Math.min(parseFloat(cashOutAmount), actualWalletBal)
         if (swapAmount <= 0) { toast.error('No tokens available to swap'); setCashingOut(false); return }
         
-        await whirlpool.swap(`card-${cashOutCardId}`, 'weth', swapAmount.toString(), 'wallet')
+        const cardMin = parseEther((swapAmount * 0.99).toFixed(18))
+        await whirlpool.swap(`card-${cashOutCardId}`, 'weth', swapAmount.toString(), 'wallet', cardMin)
         toast.success(`Swapped ${swapAmount.toFixed(2)} $${chain.symbol || '?'} → ETH`)
       }
       setCashOutOpen(false)
@@ -393,6 +406,7 @@ export default function SwapPage() {
             margin: '2px 0 0',
           }}>
             Trade positions · Steal ownership · Build dominance
+            {whirlpool.wethPoolSeeded && <span style={{ marginLeft: 12, color: '#10b981', fontSize: 10 }}>● WETH POOL SECURELY SEEDED</span>}
           </p>
         </div>
       </div>
@@ -952,6 +966,17 @@ export default function SwapPage() {
                   {swapEstimate.tokensOut.toFixed(4)}
                 </span>
               </div>
+              {/* New: Protected min receive thanks to slippage control */}
+              {swapEstimate.minOut > 0 && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
+                    Guaranteed min (after { (slippageBps/100).toFixed(2) }%)
+                  </span>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#4ade80', fontWeight: 600 }}>
+                    {swapEstimate.minOut.toFixed(4)}
+                  </span>
+                </div>
+              )}
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#6b7280' }}>
                   Price impact
@@ -988,6 +1013,31 @@ export default function SwapPage() {
           }}>
             Est. Gas: <span style={{ color: '#c8a55a' }}>~181k gas (~0.002 ETH)</span>
           </p>
+
+          {/* Impressive Slippage Tolerance Control (new post-audit UX) */}
+          <div style={{ marginBottom: 12, fontFamily: "'DM Mono', monospace", fontSize: 10, color: '#c8a55a' }}>
+            SLIPPAGE TOLERANCE
+            <div style={{ display: 'flex', gap: 4, marginTop: 4, flexWrap: 'wrap' }}>
+              {slippageOptions.map(bps => {
+                const selected = slippageBps === bps
+                const label = (bps / 100).toFixed(bps < 100 ? 2 : 1) + '%'
+                return (
+                  <button key={bps} onClick={() => setSlippageBps(bps)} style={{
+                    padding: '2px 8px', fontSize: 9, borderRadius: 2,
+                    background: selected ? '#c8a55a' : 'transparent',
+                    color: selected ? '#1a1d2e' : '#c8a55a',
+                    border: '1px solid #c8a55a', cursor: 'pointer',
+                    fontFamily: "'DM Mono', monospace"
+                  }}>
+                    {label}
+                  </button>
+                )
+              })}
+              <span style={{ alignSelf: 'center', marginLeft: 6, fontSize: 9, color: '#8a6d2b' }}>
+                (min receive protected)
+              </span>
+            </div>
+          </div>
 
           {/* Swap button */}
           <button

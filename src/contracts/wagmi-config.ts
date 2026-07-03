@@ -1,6 +1,9 @@
 import { http, createConfig } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { injected } from 'wagmi/connectors';
+import { getAnvilRpcUrl } from './anvil-rpc';
+
+const anvilRpcUrl = getAnvilRpcUrl();
 
 // Anvil local testnet as custom chain
 export const anvilChain = {
@@ -8,10 +11,10 @@ export const anvilChain = {
   name: 'Anvil Local',
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
-    default: { http: ['http://192.168.0.82:8545'] },
+    default: { http: [anvilRpcUrl] },
   },
   blockExplorers: {
-    default: { name: 'Local', url: 'http://localhost:8545' },
+    default: { name: 'Local', url: anvilRpcUrl },
   },
 } as const;
 
@@ -21,7 +24,7 @@ export const config = createConfig({
     injected(), // Rabby, MetaMask, etc.
   ],
   transports: {
-    [anvilChain.id]: http('http://192.168.0.82:8545'),
+    [anvilChain.id]: http(anvilRpcUrl),
     [mainnet.id]: http(),
   },
 });

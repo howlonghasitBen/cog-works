@@ -63,7 +63,12 @@ export default function MintPage() {
   const canMint = card.name.trim().length > 0 && whirlpool.isConnected && !minting
 
   const handleMint = async () => {
-    if (!canMint) return
+    if (minting) return
+    if (!whirlpool.isConnected) {
+      whirlpool.connect()
+      return
+    }
+    if (!card.name.trim()) return
     setMinting(true)
     try {
       // Save card data + metadata file locally (adds to cardData.json + metadata dir)
